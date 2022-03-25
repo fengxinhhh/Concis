@@ -1,5 +1,5 @@
 ---
-title: Table
+title: Table 表格
 nav:
   title: 视图
   path: /view
@@ -15,8 +15,8 @@ group:
 
 <code src="./demos/index.tsx" />
 
-<API></API>
-
 ## 复杂用法
 
 <code src="./demos/index.tsx" />
+
+<API></API>

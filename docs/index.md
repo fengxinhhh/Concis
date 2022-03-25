@@ -1,10 +1,10 @@
 ---
 hero:
-  title: react-view-ui
+  title: React View UI
   desc: 一套易用的轻量级的React UI 组件库
   actions:
     - text: Getting Started
-      link: /view/table
+      link: /common/button
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
     title: 开箱即用
@@ -19,4 +19,5 @@ footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](http
 ---
 
 ## 快速网站成型工具
+
 ##### 易用于多端开发
