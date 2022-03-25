@@ -9,10 +9,6 @@
     "strict": true,
     "skipLibCheck": true,
     "declaration": true,
-    "paths": {
-      "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"],
-      "component-lib-demo": ["src/index.ts"]
-    },
+    "baseUrl": "./"
   }
 }
