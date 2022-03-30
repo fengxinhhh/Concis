@@ -1,0 +1,869 @@
+From 0f26a0f527e0bc98b711765c4620f37b675c008c Mon Sep 17 00:00:00 2001
+From: apple <apple@appledeMacBook-Pro.local>
+Date: Sat, 26 Mar 2022 00:37:41 +0800
+Subject: [PATCH] Button Divider finish
+
+---
+ .umirc.ts                     |  12 +++-
+ docs/index.md                 |   5 +-
+ package.json                  |   2 +-
+ src/Button/demos/index.tsx    |   7 ---
+ src/Button/demos/index1.tsx   |  13 +++++
+ src/Button/demos/index2.tsx   |  18 ++++++
+ src/Button/demos/index3.tsx   |  21 +++++++
+ src/Button/demos/index4.tsx   |  21 +++++++
+ src/Button/demos/index5.tsx   |  21 +++++++
+ src/Button/demos/index6.tsx   |  21 +++++++
+ src/Button/index.md           |  53 +++++++++++++----
+ src/Button/index.module.less  |  83 +++++++++++++++++++++++++++
+ src/Button/index.tsx          | 103 ++++++++++++++++++++++++++++++++--
+ src/Divider/demos/index1.tsx  |  12 ++++
+ src/Divider/demos/index2.tsx  |  20 +++++++
+ src/Divider/demos/index3.tsx  |  26 +++++++++
+ src/Divider/demos/index4.tsx  |  24 ++++++++
+ src/Divider/demos/index5.tsx  |  12 ++++
+ src/Divider/index.md          |  39 +++++++++++++
+ src/Divider/index.module.less |  30 ++++++++++
+ src/Divider/index.tsx         |  66 ++++++++++++++++++++++
+ src/Table/index.md            |   8 +--
+ src/index.ts                  |   5 +-
+ tsconfig.json                 |   6 +-
+ 24 files changed, 590 insertions(+), 38 deletions(-)
+ delete mode 100644 src/Button/demos/index.tsx
+ create mode 100644 src/Button/demos/index1.tsx
+ create mode 100644 src/Button/demos/index2.tsx
+ create mode 100644 src/Button/demos/index3.tsx
+ create mode 100644 src/Button/demos/index4.tsx
+ create mode 100644 src/Button/demos/index5.tsx
+ create mode 100644 src/Button/demos/index6.tsx
+ create mode 100644 src/Button/index.module.less
+ create mode 100644 src/Divider/demos/index1.tsx
+ create mode 100644 src/Divider/demos/index2.tsx
+ create mode 100644 src/Divider/demos/index3.tsx
+ create mode 100644 src/Divider/demos/index4.tsx
+ create mode 100644 src/Divider/demos/index5.tsx
+ create mode 100644 src/Divider/index.md
+ create mode 100644 src/Divider/index.module.less
+ create mode 100644 src/Divider/index.tsx
+
+diff --git a/.umirc.ts b/.umirc.ts
+index 55d6a7e4..182b0b16 100644
+--- a/.umirc.ts
++++ b/.umirc.ts
+@@ -7,5 +7,15 @@ export default defineConfig({
+   logo: 'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
+   outputPath: 'docs-dist',
+   mode: 'site',
+-  // more config: https://d.umijs.org/config
++  apiParser: {
++    // 自定义属性过滤配置，也可以是一个函数，用法参考：https://github.com/styleguidist/react-docgen-typescript/#propfilter
++    propFilter: {
++      // 是否忽略从 node_modules 继承的属性，默认值为 false
++      skipNodeModules: true,
++      // 需要忽略的属性名列表，默认为空数组
++      skipPropsWithName: ['autoFocus', 'form', 'formAction', 'formEncType', 'title'],
++      // 是否忽略没有文档说明的属性，默认值为 false
++      skipPropsWithoutDoc: false,
++    },
++  },
+ });
+diff --git a/docs/index.md b/docs/index.md
+index 8d866060..84082263 100644
+--- a/docs/index.md
++++ b/docs/index.md
+@@ -1,10 +1,10 @@
+ ---
+ hero:
+-  title: react-view-ui
++  title: React View UI
+   desc: 一套易用的轻量级的React UI 组件库
+   actions:
+     - text: Getting Started
+-      link: /view/table
++      link: /common/button
+ features:
+   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
+     title: 开箱即用
+@@ -19,4 +19,5 @@ footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](http
+ ---
+ 
+ ## 快速网站成型工具
++
+ ##### 易用于多端开发
+diff --git a/package.json b/package.json
+index 0523d98a..8100a804 100644
+--- a/package.json
++++ b/package.json
+@@ -1,7 +1,7 @@
+ {
+   "private": true,
+   "name": "react-view-ui",
+-  "version": "1.0.0",
++  "version": "1.0.1",
+   "scripts": {
+     "start": "dumi dev",
+     "docs:build": "dumi build",
+diff --git a/src/Button/demos/index.tsx b/src/Button/demos/index.tsx
+deleted file mode 100644
+index 297c7661..00000000
+--- a/src/Button/demos/index.tsx
++++ /dev/null
+@@ -1,7 +0,0 @@
+-import React from 'react'
+-
+-export default function ButtonDemo() {
+-  return (
+-    <div>123</div>
+-  )
+-}
+diff --git a/src/Button/demos/index1.tsx b/src/Button/demos/index1.tsx
+new file mode 100644
+index 00000000..8d4c3868
+--- /dev/null
++++ b/src/Button/demos/index1.tsx
+@@ -0,0 +1,13 @@
++import React from 'react';
++import Button from '..';
++
++export default function ButtonDemo1() {
++  return (
++    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
++      <Button type="primary">基础按钮</Button>
++      <Button type="danger">危险按钮</Button>
++      <Button type="warning">警告按钮</Button>
++      <Button type="text">文本按钮</Button>
++    </div>
++  );
++}
+diff --git a/src/Button/demos/index2.tsx b/src/Button/demos/index2.tsx
+new file mode 100644
+index 00000000..4bb5b396
+--- /dev/null
++++ b/src/Button/demos/index2.tsx
+@@ -0,0 +1,18 @@
++import React from 'react';
++import Button from '..';
++
++export default function ButtonDemo2() {
++  return (
++    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
++      <Button type="primary" width={80} height={50}>
++        小型按钮
++      </Button>
++      <Button type="primary" width={120} height={70}>
++        中型按钮
++      </Button>
++      <Button type="warning" width={150} height={90}>
++        大型按钮
++      </Button>
++    </div>
++  );
++}
+diff --git a/src/Button/demos/index3.tsx b/src/Button/demos/index3.tsx
+new file mode 100644
+index 00000000..f52fc2f8
+--- /dev/null
++++ b/src/Button/demos/index3.tsx
+@@ -0,0 +1,21 @@
++import React from 'react';
++import Button from '..';
++
++export default function ButtonDemo3() {
++  return (
++    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
++      <Button type="primary" width={30} height={30} circle>
++        P
++      </Button>
++      <Button type="danger" width={30} height={30} circle>
++        D
++      </Button>
++      <Button type="warning" width={30} height={30} circle>
++        W
++      </Button>
++      <Button type="text" width={30} height={30} circle>
++        T
++      </Button>
++    </div>
++  );
++}
+diff --git a/src/Button/demos/index4.tsx b/src/Button/demos/index4.tsx
+new file mode 100644
+index 00000000..ad79067b
+--- /dev/null
++++ b/src/Button/demos/index4.tsx
+@@ -0,0 +1,21 @@
++import React from 'react';
++import Button from '..';
++
++export default function ButtonDemo4() {
++  return (
++    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
++      <Button type="primary" disabled>
++        禁用
++      </Button>
++      <Button type="danger" disabled>
++        禁用
++      </Button>
++      <Button type="warning" disabled>
++        禁用
++      </Button>
++      <Button type="text" disabled>
++        禁用
++      </Button>
++    </div>
++  );
++}
+diff --git a/src/Button/demos/index5.tsx b/src/Button/demos/index5.tsx
+new file mode 100644
+index 00000000..bc9010fd
+--- /dev/null
++++ b/src/Button/demos/index5.tsx
+@@ -0,0 +1,21 @@
++import React from 'react';
++import Button from '..';
++
++export default function ButtonDemo5() {
++  return (
++    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
++      <Button type="primary" dashed>
++        虚线按钮
++      </Button>
++      <Button type="danger" dashed>
++        虚线按钮
++      </Button>
++      <Button type="warning" dashed>
++        虚线按钮
++      </Button>
++      <Button type="text" dashed>
++        虚线按钮
++      </Button>
++    </div>
++  );
++}
+diff --git a/src/Button/demos/index6.tsx b/src/Button/demos/index6.tsx
+new file mode 100644
+index 00000000..ffe48e92
+--- /dev/null
++++ b/src/Button/demos/index6.tsx
+@@ -0,0 +1,21 @@
++import React from 'react';
++import Button from '..';
++
++export default function ButtonDemo6() {
++  return (
++    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
++      <Button type="primary" loading>
++        加载按钮
++      </Button>
++      <Button type="danger" loading>
++        加载按钮
++      </Button>
++      <Button type="warning" loading>
++        加载按钮
++      </Button>
++      <Button type="text" loading>
++        加载按钮
++      </Button>
++    </div>
++  );
++}
+diff --git a/src/Button/index.md b/src/Button/index.md
+index e6283cd1..f14d0c1b 100644
+--- a/src/Button/index.md
++++ b/src/Button/index.md
+@@ -1,22 +1,53 @@
+ ---
+-title: Button
++title: Button 按钮
+ nav:
+-  title: 导航
+-  path: /navigator
++  title: 通用
++  path: /common
+ group:
+-  path: /navigator
++  path: /common
+ ---
+ 
+-# Button
++# Button 按钮
+ 
+-排行榜组件用于简易排行榜业务场景。
++按钮用于开始一个即时操作。
+ 
+-## 基础使用
++#### 何时使用
+ 
+-<code src="./demos/index.tsx" />
++<p>标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。</p>
++<p></p>
++<p>在 React View UI 中我们提供了六种按钮。</p>
+ 
+-<API></API>
++- 状态颜色改变的主题按钮
++- 不同尺寸的按钮
++- 圆形字体按钮
++- 禁用状态按钮
++- 虚线按钮
++- 加载状态按钮
++
++## 基本使用
++
++<code src="./demos/index1.tsx" />
++
++## 不同尺寸
++
++<code src="./demos/index2.tsx" />
++
++## 字体按钮
++
++<code src="./demos/index3.tsx" />
+ 
+-## 复杂用法
++## 禁用按钮
+ 
+-<code src="./demos/index.tsx" />
+\ No newline at end of file
++<code src="./demos/index4.tsx" />
++
++## 虚线按钮
++
++<p>只有文本按钮（type=text）支持虚线样式</p>
++
++<code src="./demos/index5.tsx" />
++
++## 加载状态
++
++<code src="./demos/index6.tsx" />
++
++<API></API>
+diff --git a/src/Button/index.module.less b/src/Button/index.module.less
+new file mode 100644
+index 00000000..aa698fe7
+--- /dev/null
++++ b/src/Button/index.module.less
+@@ -0,0 +1,83 @@
++.button {
++  .primary {
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    color: #fff;
++    background-color: #1890ff;
++    border: none;
++    border-radius: 10px;
++    cursor: pointer;
++    transition: 0.2s linear;
++    &:hover {
++      opacity: 0.7;
++    }
++  }
++  .danger {
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    color: #fff;
++    background-color: brown;
++    border: none;
++    border-radius: 10px;
++    cursor: pointer;
++    transition: 0.2s linear;
++    &:hover {
++      opacity: 0.7;
++    }
++  }
++  .warning {
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    color: #fff;
++    background-color: rgb(224, 197, 41);
++    border: none;
++    border-radius: 10px;
++    cursor: pointer;
++    transition: 0.2s linear;
++    &:hover {
++      opacity: 0.7;
++    }
++  }
++  .text {
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    color: #000000;
++    background-color: #fff;
++    border: none;
++    border: 1px solid #ccc;
++    border-radius: 10px;
++    cursor: pointer;
++    transition: 0.2s linear;
++    &:hover {
++      color: #1890ff;
++      border-color: #1890ff !important;
++    }
++  }
++  .loading1 {
++    width: 10px;
++    height: 10px;
++    margin-right: 10px;
++    border: 2px solid #ccc;
++    border-color: #ccc #eee rgb(226, 226, 226) rgb(109, 108, 108);
++    border-radius: 50%;
++    animation: 1s loadingWatch infinite linear;
++  }
++  @keyframes loadingWatch {
++    0% {
++      transform: rotate(0deg);
++    }
++    50% {
++      transform: rotate(100deg);
++    }
++    75% {
++      transform: rotate(200deg);
++    }
++    100% {
++      transform: rotate(360deg);
++    }
++  }
++}
+diff --git a/src/Button/index.tsx b/src/Button/index.tsx
+index 77478a60..43fab264 100644
+--- a/src/Button/index.tsx
++++ b/src/Button/index.tsx
+@@ -1,7 +1,100 @@
+-import React from 'react'
++import React, { useEffect, useMemo, FC, memo } from 'react';
++import './index.module.less';
+ 
+-export default function Button() {
+-  return (
+-    <div>按钮组件</div>
+-  )
++interface ButtonProps {
++  //自定义button接口
++  /**
++   * @description 按钮主题
++   * @default primary
++   */
++  type?: String;
++  /**
++   * @description 宽度
++   */
++  width?: Number;
++  /**
++   * @description 高度
++   */
++  height?: Number;
++  /**
++   * @description 禁用状态
++   * @default false
++   */
++  disabled?: Boolean;
++  /**
++   * @description 字体按钮
++   * @default false
++   */
++  circle?: Boolean;
++  /**
++   * @description 按钮边框为虚线
++   * @default false
++   */
++  dashed?: Boolean;
++  /**
++   * @description 加载状态
++   * @default false
++   */
++  loading?: Boolean;
++  /**
++   * @description 按钮点击回调事件
++   */
++  handleClick?: Function | undefined;
++}
++interface ButtonStyle {
++  //button样式接口
++  width?: String;
++  height?: String;
++  borderRadius?: String;
++  border?: String;
++  cursor?: String;
+ }
++type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; //原生button接口
++
++const Button: FC<ButtonProps & NativeButtonProps> = memo((props) => {
++  const { type, width, height, disabled, circle, dashed, loading, handleClick, children } = props;
++
++  const buttonStyle = useMemo(() => {
++    if (!type && type !== 'danger' && type !== 'warning' && type !== 'warning' && type !== 'text') {
++      return 'primary';
++    }
++    return type as any;
++  }, [type]);
++  const buttonSize = useMemo(() => {
++    var size: ButtonStyle = {
++      width: '100px',
++      height: '40px',
++    };
++    if (width) {
++      size.width = width + 'px';
++    }
++    if (height) {
++      size.height = height + 'px';
++    }
++    if (circle) {
++      size = { ...size, borderRadius: '50%' };
++    }
++    if (dashed && type === 'text') {
++      size = { ...size, border: '1px dashed #ccc' };
++    }
++    if (disabled) {
++      size = { ...size, cursor: 'not-allowed' };
++    }
++    return size;
++  }, [width, height, circle, dashed]);
++  return (
++    <div className="button">
++      <button
++        className={buttonStyle}
++        style={buttonSize as any}
++        disabled={disabled ? true : false}
++        onClick={handleClick as undefined}
++      >
++        {loading && <div className="loading1" />}
++        {children}
++      </button>
++    </div>
++  );
++});
++
++export default Button;
+diff --git a/src/Divider/demos/index1.tsx b/src/Divider/demos/index1.tsx
+new file mode 100644
+index 00000000..68d11dfa
+--- /dev/null
++++ b/src/Divider/demos/index1.tsx
+@@ -0,0 +1,12 @@
++import Divider from '..';
++import React from 'react';
++/**
++ * transform: true
++ */
++export default function DividerDemo1() {
++  return (
++    <div>
++      <Divider>React View UI</Divider>
++    </div>
++  );
++}
+diff --git a/src/Divider/demos/index2.tsx b/src/Divider/demos/index2.tsx
+new file mode 100644
+index 00000000..347195bc
+--- /dev/null
++++ b/src/Divider/demos/index2.tsx
+@@ -0,0 +1,20 @@
++import Divider from '..';
++import React from 'react';
++/**
++ * transform: true
++ */
++export default function DividerDemo2() {
++  return (
++    <div>
++      <div style={{ marginBottom: '40px' }}>
++        <Divider fontSize={12}>React View UI</Divider>
++      </div>
++      <div style={{ marginBottom: '40px' }}>
++        <Divider fontSize={16}>React View UI</Divider>
++      </div>
++      <div style={{ marginBottom: '40px' }}>
++        <Divider fontSize={22}>React View UI</Divider>
++      </div>
++    </div>
++  );
++}
+diff --git a/src/Divider/demos/index3.tsx b/src/Divider/demos/index3.tsx
+new file mode 100644
+index 00000000..0ceee774
+--- /dev/null
++++ b/src/Divider/demos/index3.tsx
+@@ -0,0 +1,26 @@
++import Divider from '..';
++import React from 'react';
++/**
++ * transform: true
++ */
++export default function DividerDemo3() {
++  return (
++    <div>
++      <div style={{ marginBottom: '40px' }}>
++        <Divider fontSize={12} borderColor={'green'}>
++          React View UI
++        </Divider>
++      </div>
++      <div style={{ marginBottom: '40px' }}>
++        <Divider fontSize={16} borderColor={'pink'}>
++          React View UI
++        </Divider>
++      </div>
++      <div style={{ marginBottom: '40px' }}>
++        <Divider fontSize={22} borderColor={'lightblue'}>
++          React View UI
++        </Divider>
++      </div>
++    </div>
++  );
++}
+diff --git a/src/Divider/demos/index4.tsx b/src/Divider/demos/index4.tsx
+new file mode 100644
+index 00000000..7dfe6aa5
+--- /dev/null
++++ b/src/Divider/demos/index4.tsx
+@@ -0,0 +1,24 @@
++import Divider from '..';
++import React from 'react';
++/**
++ * transform: true
++ */
++export default function DividerDemo3() {
++  return (
++    <div>
++      <div style={{ marginBottom: '40px' }}>
++        <Divider fontSize={12} align={'left'}>
++          React View UI
++        </Divider>
++      </div>
++      <div style={{ marginBottom: '40px' }}>
++        <Divider fontSize={16}>React View UI</Divider>
++      </div>
++      <div style={{ marginBottom: '40px' }}>
++        <Divider fontSize={22} align={'right'}>
++          React View UI
++        </Divider>
++      </div>
++    </div>
++  );
++}
+diff --git a/src/Divider/demos/index5.tsx b/src/Divider/demos/index5.tsx
+new file mode 100644
+index 00000000..73e369ae
+--- /dev/null
++++ b/src/Divider/demos/index5.tsx
+@@ -0,0 +1,12 @@
++import Divider from '..';
++import React from 'react';
++/**
++ * transform: true
++ */
++export default function DividerDemo5() {
++  return (
++    <div>
++      <Divider dashed>React View UI</Divider>
++    </div>
++  );
++}
+diff --git a/src/Divider/index.md b/src/Divider/index.md
+new file mode 100644
+index 00000000..89787048
+--- /dev/null
++++ b/src/Divider/index.md
+@@ -0,0 +1,39 @@
++---
++title: Divider 分割线
++nav:
++  title: 视图
++  path: /view
++group:
++  path: /view
++---
++
++# Divider 分割线
++
++<p>分隔内容的文档分割线</p>
++
++#### 何时使用
++
++- 对不同章节的文本段落进行分割。
++- 对行内文字/链接进行分割，例如表格的操作列。
++
++## 基本用法
++
++<code src="./demos/index1.tsx"/>
++
++## 字体大小
++
++<code src="./demos/index2.tsx"/>
++
++## 分割线色彩
++
++<code src="./demos/index3.tsx"/>
++
++## 对齐方式
++
++<code src="./demos/index4.tsx"/>
++
++## 虚线
++
++<code src="./demos/index5.tsx"/>
++
++<API></API>
+diff --git a/src/Divider/index.module.less b/src/Divider/index.module.less
+new file mode 100644
+index 00000000..2bbf74e0
+--- /dev/null
++++ b/src/Divider/index.module.less
+@@ -0,0 +1,30 @@
++.divider {
++  .line {
++    position: relative;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    width: 100%;
++    height: 1px;
++    border-top: 1px solid #ccc;
++    .line-text {
++      position: absolute;
++      padding: 0 10px;
++      background-color: #fff;
++    }
++  }
++  .dashed {
++    position: relative;
++    display: flex;
++    align-items: center;
++    justify-content: center;
++    width: 100%;
++    height: 1px;
++    border-top: 1px dashed #ccc;
++    .line-text {
++      position: absolute;
++      padding: 0 10px;
++      background-color: #fff;
++    }
++  }
++}
+diff --git a/src/Divider/index.tsx b/src/Divider/index.tsx
+new file mode 100644
+index 00000000..4db85911
+--- /dev/null
++++ b/src/Divider/index.tsx
+@@ -0,0 +1,66 @@
++import React, { FC, useMemo, memo } from 'react';
++import './index.module.less';
++
++interface dividerProps {
++  /**
++   * @description 字体大小
++   */
++  fontSize?: Number;
++  /**
++   * @description 分割线颜色
++   * @default #cccccc
++   */
++  borderColor?: String;
++  /**
++   * @description 对齐方式
++   * @default center
++   */
++  align?: String;
++  /**
++   * @description 分割线类型
++   * @default border
++   */
++  dashed?: Boolean;
++}
++const Divider: FC<dividerProps> = memo((props) => {
++  const { children, fontSize, borderColor, align, dashed } = props;
++  const lineAlign = useMemo(() => {
++    if (align === 'left') {
++      return {
++        justifyContent: 'left',
++      };
++    } else if (align === 'right') {
++      return {
++        justifyContent: 'right',
++      };
++    }
++    return {};
++  }, [align]);
++  const lineColor = useMemo((): Object => {
++    if (borderColor) {
++      return {
++        borderColor: borderColor,
++      };
++    }
++    return {};
++  }, [borderColor]);
++  const textStyle = useMemo(() => {
++    if (fontSize) {
++      return {
++        fontSize: `${fontSize}px`,
++      };
++    }
++  }, [fontSize]);
++  return (
++    <div className="divider">
++      <div className={dashed ? 'dashed' : 'line'} style={{ ...lineAlign, ...lineColor }}>
++        {children && (
++          <span className="line-text" style={textStyle}>
++            {children}
++          </span>
++        )}
++      </div>
++    </div>
++  );
++});
++export default Divider;
+diff --git a/src/Table/index.md b/src/Table/index.md
+index 2c290024..2dbe71fe 100644
+--- a/src/Table/index.md
++++ b/src/Table/index.md
+@@ -1,5 +1,5 @@
+ ---
+-title: Table
++title: Table 表格
+ nav:
+   title: 视图
+   path: /view
+@@ -15,8 +15,8 @@ group:
+ 
+ <code src="./demos/index.tsx" />
+ 
+-<API></API>
+-
+ ## 复杂用法
+ 
+-<code src="./demos/index.tsx" />
+\ No newline at end of file
++<code src="./demos/index.tsx" />
++
++<API></API>
+diff --git a/src/index.ts b/src/index.ts
+index c3a015ce..81fbd4b5 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -1,2 +1,3 @@
+-export { default as Button} from './Button';
+-export { default as Table} from './Table';
+\ No newline at end of file
++export { default as Button } from './Button';
++export { default as Table } from './Table';
++export { default as Divider } from './Divider';
+diff --git a/tsconfig.json b/tsconfig.json
+index 8d4a25aa..10c03be0 100644
+--- a/tsconfig.json
++++ b/tsconfig.json
+@@ -9,10 +9,6 @@
+     "strict": true,
+     "skipLibCheck": true,
+     "declaration": true,
+-    "paths": {
+-      "@/*": ["src/*"],
+-      "@@/*": ["src/.umi/*"],
+-      "component-lib-demo": ["src/index.ts"]
+-    },
++    "baseUrl": "./"
+   }
+ }
+-- 
+2.32.0 (Apple Git-132)
+
