@@ -18,4 +18,14 @@ export default defineConfig({
       skipPropsWithoutDoc: false,
     },
   },
+  history: {
+    type: 'hash'
+  },
+  navs: [
+    null,
+    {
+      title: 'GitHub',
+      path: 'https://github.com/fengxinhhh/React-View-UI-fs',
+    },
+  ],
 });
