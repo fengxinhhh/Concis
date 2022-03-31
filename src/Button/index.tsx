@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, FC, memo } from 'react';
+import React, { useMemo, FC, memo } from 'react';
 import './index.module.less';
 
 interface ButtonProps {

@@ -1,0 +1,93 @@
+.pagination {
+  display: flex;
+}
+.prev,
+.next,
+.numberBox {
+  min-width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.numberBox:hover {
+  color: #1890ff;
+  border: 1px solid #1890ff;
+  cursor: pointer;
+}
+.disabled {
+  color: #c0c4cc;
+}
+.actived {
+  color: #1890ff;
+  border-color: #1890ff;
+}
+.pageSizeSelect {
+  width: 80px;
+  height: 30px;
+  margin-left: 10px;
+  padding: 0 5px;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: 0.2s linear;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .size {
+    margin-right: 5px;
+  }
+  .options {
+    position: relative;
+    top: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    box-shadow: 0 0 20px rgb(218, 218, 218);
+    transition: 0.2s linear;
+    .option {
+      font-size: 14px;
+      line-height: 2em;
+      text-align: center;
+      &:hover {
+        color: #1890ff;
+      }
+    }
+  }
+  &:hover {
+    border: 1px solid #1890ff;
+  }
+}
+.jumpBox {
+  margin-left: 10px;
+  .jump {
+    width: 40px;
+    height: 25px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline-color: #1890ff;
+    transition: 0.2s linear;
+    &:hover {
+      border-color: #1890ff;
+    }
+    &:active {
+      border-color: #1890ff;
+    }
+  }
+}
