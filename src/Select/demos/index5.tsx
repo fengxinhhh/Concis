@@ -21,12 +21,18 @@ export default function SelectDemo1() {
   const handleSelectCallback = (v: number) => {
     console.log(v);
   };
+  const handleTextChange = (v: number) => {
+    console.log(v);
+  };
   return (
     <Select
       option={option}
       width={200}
       handleSelectCallback={handleSelectCallback}
-      placeholder={'请选择'}
+      handleTextChange={handleTextChange}
+      showSearch
+      placeholder={'请输入'}
+      clearable
     />
   );
 }

@@ -22,6 +22,12 @@ export default function SelectDemo1() {
     console.log(v);
   };
   return (
-    <Select option={option} width={200} disabled handleSelectCallback={handleSelectCallback} />
+    <Select
+      option={option}
+      width={200}
+      disabled
+      handleSelectCallback={handleSelectCallback}
+      placeholder={'请选择'}
+    />
   );
 }

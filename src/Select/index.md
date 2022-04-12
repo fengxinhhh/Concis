@@ -30,3 +30,9 @@ group:
 ## 下拉项单独禁用
 
 <code src="./demos/index4.tsx" />
+
+## 可输入
+
+<code src="./demos/index5.tsx" />
+
+<API></API>

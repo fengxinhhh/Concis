@@ -19,6 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 100%;
     padding: 0 5px;
     .size {
       margin-right: 5px;
@@ -31,6 +32,10 @@
   &:hover {
     border-color: #1890ff;
   }
+  input {
+    border: none;
+    outline: none;
+  }
   .selectOptions {
     position: relative;
     top: 5px;
@@ -39,7 +44,7 @@
     width: 80px;
     height: 0px;
     overflow: hidden;
-    box-shadow: 0 0 20px rgb(218, 218, 218);
+    box-shadow: 0 3px 10px #8c8c8c;
     transition: 0.1s linear;
     .option {
       font-size: 14px;
@@ -49,6 +54,26 @@
       &:hover {
         color: #1890ff;
       }
+    }
+  }
+}
+.selectOptions {
+  position: relative;
+  top: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  height: 0px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px #8c8c8c;
+  transition: 0.1s linear;
+  .option {
+    font-size: 14px;
+    line-height: 2em;
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+      color: #1890ff;
     }
   }
 }

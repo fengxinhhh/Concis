@@ -21,5 +21,13 @@ export default function SelectDemo1() {
   const handleSelectCallback = (v: number) => {
     console.log(v);
   };
-  return <Select option={option} width={200} loading handleSelectCallback={handleSelectCallback} />;
+  return (
+    <Select
+      option={option}
+      width={200}
+      loading
+      handleSelectCallback={handleSelectCallback}
+      placeholder={'请选择'}
+    />
+  );
 }
