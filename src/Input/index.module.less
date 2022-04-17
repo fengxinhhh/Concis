@@ -1,0 +1,35 @@
+.box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  .input {
+    padding: 4px 11px;
+    color: #000000d9;
+    font-size: 14px;
+    line-height: 1.5715;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    outline: none;
+    transition: all 0.3s;
+    &:hover {
+      border-color: #8fb6d8;
+    }
+    &:focus {
+      border-color: #8fb6d8;
+      box-shadow: 0px 0px 10px 1px #aed7ec;
+    }
+    .closeIcon {
+      position: absolute;
+    }
+  }
+  .numTags {
+    position: absolute;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    color: #bebdbd;
+  }
+}

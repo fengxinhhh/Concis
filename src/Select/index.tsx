@@ -1,4 +1,4 @@
-import React, { FC, useMemo, createRef, useEffect, useState, useCallback } from 'react';
+import React, { FC, useMemo, createRef, useEffect, useState, useCallback, memo } from 'react';
 import { DownOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
 import style from './index.module.less';
 
@@ -203,4 +203,4 @@ const Select: FC<SelectProps> = (props) => {
     </div>
   );
 };
-export default Select;
+export default memo(Select);

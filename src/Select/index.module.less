@@ -1,4 +1,5 @@
 .select {
+  position: relative;
   width: 80px;
   height: 30px;
   margin-left: 10px;
@@ -28,6 +29,9 @@
       margin-right: 5px;
       color: #ccc;
     }
+    &:focus {
+      border-color: #1890ff;
+    }
   }
   &:hover {
     border-color: #1890ff;
@@ -37,8 +41,9 @@
     outline: none;
   }
   .selectOptions {
-    position: relative;
-    top: 5px;
+    position: absolute;
+    top: 35px;
+    z-index: 500;
     display: flex;
     flex-direction: column;
     width: 80px;
@@ -58,8 +63,9 @@
   }
 }
 .selectOptions {
-  position: relative;
-  top: 5px;
+  position: absolute;
+  top: 35px;
+  z-index: 500;
   display: flex;
   flex-direction: column;
   width: 80px;
