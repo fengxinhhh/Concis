@@ -3,20 +3,72 @@ import { CloseOutlined, EyeOutlined, UpOutlined, DownOutlined } from '@ant-desig
 import style from './index.module.less';
 
 interface InputProps {
+  /**
+   * @description 自定义宽度
+   * @default 170px
+   */
   width?: string;
+  /**
+   * @description 自定义样式
+   * @default {}
+   */
   moreStyle?: object;
+  /**
+   * @description 输入框类型
+   * @default text
+   */
   type?: string;
+  /**
+   * @description 提示
+   * @default ''
+   */
   placeholder?: string;
+  /**
+   * @description 显示清空按钮
+   * @default false
+   */
   showClear?: boolean;
+  /**
+   * @description 显示密码切换按钮(需同时设置type="password")
+   * @default false
+   */
   showTogglePwd?: boolean;
+  /**
+   * @description 数字框最小值
+   * @default ''
+   */
   min?: number;
+  /**
+   * @description 数字框最大值
+   * @default ''
+   */
   max?: number;
+  /**
+   * @description 数字框递增/减值
+   * @default 1
+   */
   step?: number;
+  /**
+   * @description 输入框内容改变回调
+   */
   handleIptChange?: Function;
+  /**
+   * @description 输入框键盘监听
+   */
+  handleKeyDown?: Function;
+  /**
+   * @description 数字框内容改变回调
+   */
   handleNumChange?: Function;
+  /**
+   * @description 默认内容
+   * @default ''
+   */
   defaultValue?: string;
 }
-const Input: FC<InputProps> = (props) => {
+
+type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLElement>, 'type'>; //原生Input接口
+const Input: FC<InputProps & NativeInputProps> = (props) => {
   const {
     width,
     moreStyle,
@@ -28,6 +80,7 @@ const Input: FC<InputProps> = (props) => {
     max,
     step,
     handleIptChange,
+    handleKeyDown,
     handleNumChange,
     defaultValue,
   } = props;
@@ -87,7 +140,6 @@ const Input: FC<InputProps> = (props) => {
     if (width) {
       style.width = width + 'px';
     }
-    console.log({ ...style, ...moreStyle });
     return { ...style, ...moreStyle };
   }, [width, moreStyle]);
   return (
@@ -100,6 +152,7 @@ const Input: FC<InputProps> = (props) => {
         value={iptValue}
         onChange={changeIpt}
         onBlur={blurIpt}
+        onKeyUp={(e) => handleKeyDown && handleKeyDown(e)}
       />
       {
         //可清除

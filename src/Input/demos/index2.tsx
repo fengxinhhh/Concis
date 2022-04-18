@@ -28,7 +28,7 @@ export default function InputDemo2() {
     <>
       <div style={{ display: 'flex' }}>
         <Input placeholder="请输入" handleIptChange={handleIptChange} />
-        <div style={{ marginLeft: '-10px' }}>
+        <div>
           <Select
             option={option}
             width={100}
@@ -39,7 +39,9 @@ export default function InputDemo2() {
       </div>
       <div style={{ display: 'flex', marginTop: '20px' }}>
         <Input placeholder="请输入" handleIptChange={handleIptChange} />
-        <Button type="primary">搜索</Button>
+        <div style={{ marginLeft: '10px' }}>
+          <Button type="primary">搜索</Button>
+        </div>
       </div>
     </>
   );
