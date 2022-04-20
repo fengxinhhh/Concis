@@ -1,0 +1,139 @@
+.menu {
+  width: 220px;
+  padding: 2px 0px;
+  color: black;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  .menuOptions {
+    padding: 0 10px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 50px;
+    cursor: pointer;
+    transition: 0.2s linear;
+    .fatherTitle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 50px;
+      &:hover {
+        color: #1890ff;
+      }
+    }
+    .activeFatherTitle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 50px;
+      color: #1890ff;
+      &:hover {
+        color: #1890ff;
+      }
+    }
+    .left {
+      i {
+        margin-right: 10px;
+      }
+    }
+  }
+  .activeMenuOptions {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-left: 5px;
+    overflow: hidden;
+    color: #1890ff;
+    font-size: 14px;
+    line-height: 50px;
+    background-color: #e6f7ff;
+    cursor: pointer;
+    transition: 0.2s linear;
+    :after {
+      width: 3px;
+      height: 50px;
+      background-color: #1890ff;
+      content: '';
+    }
+  }
+  .childMenuOptions {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-left: 5px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 50px;
+    cursor: pointer;
+    transition: 0.2s linear;
+  }
+}
+.darkMenu {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 2px 0px;
+  color: #ffffffa6;
+  background-color: #001529;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  .menuOptions {
+    padding: 0 10px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 50px;
+    cursor: pointer;
+    transition: 0.2s linear;
+    .fatherTitle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 50px;
+      &:hover {
+        color: #fff;
+      }
+    }
+    .activeFatherTitle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      height: 50px;
+      color: #fff;
+      &:hover {
+        color: #fff;
+      }
+    }
+    .left {
+      i {
+        margin-right: 10px;
+      }
+    }
+  }
+  .activeMenuOptions {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-left: 5px;
+    overflow: hidden;
+    color: #fff;
+    font-size: 14px;
+    line-height: 50px;
+    background-color: #1890ff;
+    cursor: pointer;
+    transition: 0.2s linear;
+  }
+  .childMenuOptions {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-left: 5px;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 50px;
+    cursor: pointer;
+    transition: 0.2s linear;
+  }
+}

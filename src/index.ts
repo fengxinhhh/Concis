@@ -10,3 +10,4 @@ export { default as Select } from './Select';
 export { default as Input } from './Input';
 export { default as Radio } from './Radio';
 export { default as RadioGroup } from './Radio/RadioGroup';
+export { default as Menu } from './Menu';
