@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, memo, useCallback } from 'react';
 import Input from '@/Input';
-import style from './index.module.less';
+import './index.module.less';
 
 interface RadioGroupProps {
   children: Array<Object>;
@@ -62,18 +62,18 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
   const boxStyleClassName = useCallback(
     (props: RadioProps, i: number) => {
       if (props.disabled) {
-        return style.groupDisabledStyle;
+        return 'groupDisabledStyle';
       }
       if (i == selectIndex) {
-        return style.groupActive;
+        return 'groupActive';
       }
-      return style.groupStyle;
+      return 'groupStyle';
     },
     [children, boxStyle, value, selectIndex],
   );
 
   return (
-    <div className={style.radioGroup}>
+    <div className="radioGroup">
       {renderOptions.map((item: any, index: number) => {
         return boxStyle ? (
           <div
@@ -86,16 +86,16 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
           </div>
         ) : (
           <div
-            className={style.radioBox}
+            className="radioBox"
             style={item.props.disabled ? { cursor: 'not-allowed' } : { cursor: 'pointer' }}
             key={index}
             onClick={(e) => changeOptions(item.props, index, e)}
           >
-            <span className={item.props.disabled ? style.disabledLabel : style.radioLabel}>
+            <span className={item.props.disabled ? 'disabledLabel' : 'radioLabel'}>
               {item.props.children}
             </span>
             <input
-              className={item.props.disabled ? style.disabledRadio : style.radio}
+              className={item.props.disabled ? 'disabledRadio' : 'radio'}
               readOnly
               type="radio"
               checked={selectIndex === index}
@@ -108,11 +108,9 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
         //新增Options项(优雅之王)
         canAddOption ? (
           boxStyle ? (
-            <div className={style.addOption}>
+            <div className="addOption">
               <div
-                className={
-                  selectIndex === renderOptions.length ? style.groupActive : style.groupStyle
-                }
+                className={selectIndex === renderOptions.length ? 'groupActive' : 'groupStyle'}
                 onClick={addOptions}
               >
                 More...
@@ -122,11 +120,11 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
               )}
             </div>
           ) : (
-            <div className={style.addOption}>
-              <div className={style.radioBox} onClick={addOptions}>
-                <span className={style.radioLabel}>More...</span>
+            <div className="addOption">
+              <div className="radioBox" onClick={addOptions}>
+                <span className="radioLabel">More...</span>
                 <input
-                  className={style.radio}
+                  className="radio"
                   type="radio"
                   readOnly
                   checked={selectIndex === renderOptions.length}

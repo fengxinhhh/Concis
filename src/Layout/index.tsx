@@ -1,34 +1,34 @@
-import React, { useMemo, memo, FC } from 'react'
-import style from './index.module.less'
+import React, { useMemo, memo, FC } from 'react';
+import './index.module.less';
 
 interface layoutProps {
-    children?: any
-    /**
+  children?: any;
+  /**
    * @description 自定义样式
    * @default {}
    */
-    extraStyle?: Object
-     /**
+  extraStyle?: Object;
+  /**
    * @description Slider/Content横向栅格比例
    * @default Slider-3,Content-7
    */
-  row?: Number
+  row?: Number;
 }
 
 const Layout: FC<layoutProps> = (props) => {
-    const { children, extraStyle } = props;
+  const { children, extraStyle } = props;
 
-    const propsStyles = useMemo(() => {
-        if (extraStyle) {
-            return extraStyle
-        }
-        return {};
-    }, [extraStyle])
+  const propsStyles = useMemo(() => {
+    if (extraStyle) {
+      return extraStyle;
+    }
+    return {};
+  }, [extraStyle]);
 
-    return (
-        <div className={style.layout} style={propsStyles}>
-            {children}
-        </div>
-    )
-}
+  return (
+    <div className="layout" style={propsStyles}>
+      {children}
+    </div>
+  );
+};
 export default memo(Layout);

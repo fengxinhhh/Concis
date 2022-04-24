@@ -2,6 +2,7 @@ import React, { FC, useMemo, memo } from 'react';
 import './index.module.less';
 
 interface dividerProps {
+  children?: any;
   /**
    * @description 字体大小
    */

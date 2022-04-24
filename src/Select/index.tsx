@@ -1,6 +1,6 @@
 import React, { FC, useMemo, createRef, useEffect, useState, useCallback, memo } from 'react';
 import { DownOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
-import style from './index.module.less';
+import './index.module.less';
 
 interface Options {
   label: String | number;
@@ -71,7 +71,8 @@ const Select: FC<SelectProps> = (props) => {
   const optionRef = createRef() as any;
 
   useEffect(() => {
-    optionRef.current.style.height = `0px`;
+    optionRef.current.height = `0px`;
+    console.log(option);
   }, []);
 
   const ownsWidth = useMemo(() => {
@@ -97,7 +98,8 @@ const Select: FC<SelectProps> = (props) => {
     //切换下拉
     e.stopPropagation();
     if (disabled) return;
-    if (optionRef.current.style.height === '0px') {
+    console.log(optionRef.current.style.height);
+    if (optionRef.current.style.height === '0px' || optionRef.current.style.height === '') {
       if (showSearch) {
         optionRef.current.style.height = `${inputFilterOtpions.length * 100}%`;
       } else {
@@ -106,6 +108,7 @@ const Select: FC<SelectProps> = (props) => {
     } else {
       optionRef.current.style.height = '0px';
     }
+    console.log(optionRef.current.height);
   };
   const changeOptions = (v: Options, e: any) => {
     //选择选项
@@ -142,11 +145,11 @@ const Select: FC<SelectProps> = (props) => {
 
   return showSearch ? (
     <>
-      <div className={style.select} style={{ ...ownsWidth, ...disabledStyle }}>
-        <div className={style.selected}>
+      <div className="select" style={{ ...ownsWidth, ...disabledStyle }}>
+        <div className="selected">
           <input
             type="text"
-            className={style.selected}
+            className="selected"
             value={selected}
             placeholder={placeholder as string}
             onClick={toggleOptions}
@@ -158,12 +161,12 @@ const Select: FC<SelectProps> = (props) => {
             <DownOutlined onClick={toggleOptions} />
           )}
         </div>
-        <div className={style.selectOptions} style={ownsWidth} ref={optionRef}>
+        <div className="selectOptions" style={ownsWidth} ref={optionRef}>
           {inputFilterOtpions.map((s) => {
             return (
               <div
                 key={s.label as any}
-                className={style.option}
+                className="option"
                 style={
                   s.disabled ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' } : {}
                 }
@@ -177,21 +180,21 @@ const Select: FC<SelectProps> = (props) => {
       </div>
     </>
   ) : (
-    <div className={style.select} style={{ ...ownsWidth, ...disabledStyle }}>
-      <div className={style.selected} onClick={toggleOptions}>
+    <div className="select" style={{ ...ownsWidth, ...disabledStyle }}>
+      <div className="selected" onClick={toggleOptions}>
         {selected ? (
-          <div className={style.size}>{selected}</div>
+          <div className="size">{selected}</div>
         ) : (
-          (placeholder && <div className={style.placeholder}>{placeholder}</div>) || <div />
+          (placeholder && <div className="placeholder">{placeholder}</div>) || <div />
         )}
         {loading ? <LoadingOutlined /> : <DownOutlined />}
       </div>
-      <div className={style.selectOptions} style={ownsWidth} ref={optionRef}>
+      <div className="selectOptions" style={ownsWidth} ref={optionRef}>
         {option.map((s) => {
           return (
             <div
               key={s.label as any}
-              className={style.option}
+              className="option"
               style={s.disabled ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' } : {}}
               onClick={(e) => changeOptions(s as Options, e)}
             >

@@ -1,7 +1,7 @@
 import React, { FC, memo } from 'react';
 
 interface RadioProps {
-  children: Object;
+  children: any;
   /**
    * @description 默认选中索引
    * @default 0

@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, memo, useCallback, useMemo } from 'react';
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
-import style from './index.module.less';
+import './index.module.less';
 
 interface MenuProps {
   /**
@@ -113,32 +113,32 @@ const Menu: FC<MenuProps> = (props) => {
     //点击父级菜单
     e.stopPropagation();
     const selectKey = fMenu.key;
-    setParentMenuHeightList((old: any) => {
-      old[selectKey].height =
-        old[selectKey].height == '50px' ? (old[selectKey].childNum + 1) * 50 + 'px' : '50px';
-      if (ableToggle) {
-        //手风琴折叠
-        if (old[selectKey].height !== '50px') {
-          for (var key in old) {
-            if (key !== selectKey) {
-              old[key].height = '50px';
-              if (old[key].children) {
-                old[key].children.map((item: MenuHeightProps) => (item.height = '50px'));
-              }
+    const refreshObject = { ...parentMenuHeightList };
+    refreshObject[selectKey].height =
+      refreshObject[selectKey].height == '50px'
+        ? (refreshObject[selectKey].childNum + 1) * 50 + 'px'
+        : '50px';
+    if (ableToggle) {
+      //手风琴折叠
+      if (refreshObject[selectKey].height !== '50px') {
+        for (var key in refreshObject) {
+          if (key !== selectKey) {
+            refreshObject[key].height = '50px';
+            if (refreshObject[key].children) {
+              refreshObject[key].children.map((item: MenuHeightProps) => (item.height = '50px'));
             }
           }
         }
-      } else {
-        //普通折叠
-        if (old[selectKey].children) {
-          old[selectKey].children.forEach((c: MenuHeightProps) => {
-            c.height = '50px';
-          });
-        }
       }
-
-      return JSON.parse(JSON.stringify(old));
-    });
+    } else {
+      //普通折叠
+      if (refreshObject[selectKey].children.length !== 0) {
+        refreshObject[selectKey].children.forEach((c: MenuHeightProps) => {
+          c.height = '50px';
+        });
+      }
+    }
+    setParentMenuHeightList(refreshObject);
   };
   const toggleChildMenu = (cMenu: RenderOptions, e: any, fKey: string) => {
     //点击子级菜单
@@ -148,31 +148,58 @@ const Menu: FC<MenuProps> = (props) => {
     }
     if (cMenu.level == 2) {
       //二级菜单扩展切换
-      setParentMenuHeightList((old: any) => {
-        for (var key in old) {
-          if (
-            old[key].children &&
-            old[key].children.findIndex((item: MenuHeightProps) => item.key == cMenu.key) !== -1
-          ) {
-            //找出是哪个一级菜单的children
-            const childIndex = old[key].children.findIndex(
-              (item: MenuHeightProps) => item.key == cMenu.key,
-            );
-            old[key].children[childIndex].height =
-              old[key].children[childIndex].height == '50px'
-                ? (old[key].children[childIndex].childNum + 1) * 50 + 'px'
-                : '50px';
-            let parentHeight = (old[key].childNum - old[key].children.length) * 50 + 50; //改变子菜单高度后统计父菜单高度
-            parentHeight += old[key].children.reduce(
-              (pre: MenuHeightProps, next: MenuHeightProps) => {
-                return Number(pre.height.split('px')[0]) + Number(next.height.split('px')[0]);
-              },
-            );
-            old[key].height = parentHeight;
-          }
+      const refreshObject = { ...parentMenuHeightList };
+      for (var key in refreshObject) {
+        if (
+          refreshObject[key].children &&
+          refreshObject[key].children.findIndex(
+            (item: MenuHeightProps) => item.key == cMenu.key,
+          ) !== -1
+        ) {
+          //找出是哪个一级菜单的children
+          const childIndex = refreshObject[key].children.findIndex(
+            (item: MenuHeightProps) => item.key == cMenu.key,
+          );
+          refreshObject[key].children[childIndex].height =
+            refreshObject[key].children[childIndex].height == '50px'
+              ? (refreshObject[key].children[childIndex].childNum + 1) * 50 + 'px'
+              : '50px';
+          let parentHeight =
+            (refreshObject[key].childNum - refreshObject[key].children.length) * 50 + 50; //改变子菜单高度后统计父菜单高度
+          parentHeight += refreshObject[key].children.reduce(
+            (pre: MenuHeightProps, next: MenuHeightProps) => {
+              return Number(pre.height.split('px')[0]) + Number(next.height.split('px')[0]);
+            },
+          );
+          refreshObject[key].height = parentHeight;
         }
-        return JSON.parse(JSON.stringify(old));
-      });
+      }
+      setParentMenuHeightList(refreshObject);
+      // setParentMenuHeightList((old: any) => {
+      //   for (var key in old) {
+      //     if (
+      //       old[key].children &&
+      //       old[key].children.findIndex((item: MenuHeightProps) => item.key == cMenu.key) !== -1
+      //     ) {
+      //       //找出是哪个一级菜单的children
+      //       const childIndex = old[key].children.findIndex(
+      //         (item: MenuHeightProps) => item.key == cMenu.key,
+      //       );
+      //       old[key].children[childIndex].height =
+      //         old[key].children[childIndex].height == '50px'
+      //           ? (old[key].children[childIndex].childNum + 1) * 50 + 'px'
+      //           : '50px';
+      //       let parentHeight = (old[key].childNum - old[key].children.length) * 50 + 50;          //改变子菜单高度后统计父菜单高度
+      //       parentHeight += old[key].children.reduce(
+      //         (pre: MenuHeightProps, next: MenuHeightProps) => {
+      //           return Number(pre.height.split('px')[0]) + Number(next.height.split('px')[0]);
+      //         },
+      //       );
+      //       old[key].height = parentHeight;
+      //     }
+      //   }
+      //   return JSON.parse(JSON.stringify(old));
+      // });
     }
     if (cMenu.level == 3) {
       for (var key in parentMenuHeightList) {
@@ -187,22 +214,19 @@ const Menu: FC<MenuProps> = (props) => {
       }
     }
   };
-  const firstMenuHeight = useCallback(
-    (key) => {
-      //第一级菜单高度
-      if (parentMenuHeightList[key]) {
-        return {
-          height: parentMenuHeightList[key]?.height,
-        };
-      }
+  const firstMenuHeight = (key: any) => {
+    //第一级菜单高度
+    if (parentMenuHeightList[key]) {
       return {
-        height: '50px',
+        height: parentMenuHeightList[key]?.height,
       };
-    },
-    [parentMenuHeightList],
-  );
+    }
+    return {
+      height: '50px',
+    };
+  };
   const childMenuHeight = useCallback(
-    (key) => {
+    (key: any) => {
       //第二级菜单高度
       for (var i in parentMenuHeightList) {
         const childIndex = parentMenuHeightList[i].children?.findIndex(
@@ -244,15 +268,15 @@ const Menu: FC<MenuProps> = (props) => {
         return (
           <div key={m.key}>
             <div
-              className={nowActiveKey == m.key ? style.activeMenuOptions : style.childMenuOptions}
+              className={nowActiveKey == m.key ? 'activeMenuOptions' : 'childMenuOptions'}
               style={{ ...childMenuHeight(m.key) }}
             >
               <div
                 className={
                   m.children &&
                   m.children.findIndex((i: RenderOptions) => i.key == nowActiveKey) !== -1
-                    ? style.activeFatherTitle
-                    : style.fatherTitle
+                    ? 'activeFatherTitle'
+                    : 'fatherTitle'
                 }
                 onClick={(e) => toggleChildMenu(m, e, childM.key as string)}
               >
@@ -264,7 +288,7 @@ const Menu: FC<MenuProps> = (props) => {
                     <CaretUpOutlined />
                   ))}
               </div>
-              <div className={style.childMenuOptions} key={m.key}>
+              <div className="childMenuOptions" key={m.key}>
                 {m.children && renderChildOptions(m)}
               </div>
             </div>
@@ -275,16 +299,16 @@ const Menu: FC<MenuProps> = (props) => {
   };
 
   return (
-    <div className={dark ? style.darkMenu : style.menu} style={customWidth}>
+    <div className={dark ? 'darkMenu' : 'menu'} style={customWidth}>
       {items.map((m) => {
         return (
           <div key={m.key}>
-            <div className={style.menuOptions} style={firstMenuHeight(m.key)}>
+            <div className="menuOptions" style={firstMenuHeight(m.key)}>
               <div
-                className={nowActiveMainKey == m.key ? style.activeFatherTitle : style.fatherTitle}
+                className={nowActiveMainKey == m.key ? 'activeFatherTitle' : 'fatherTitle'}
                 onClick={(e) => toggleFirstMenu(m, e)}
               >
-                <div className={style.left}>
+                <div className="left">
                   <i>{m.icon}</i>
                   <span>{m.label}</span>
                 </div>

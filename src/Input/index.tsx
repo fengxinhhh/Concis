@@ -1,6 +1,6 @@
 import React, { FC, useState, useMemo, memo } from 'react';
 import { CloseOutlined, EyeOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
-import style from './index.module.less';
+import './index.module.less';
 
 interface InputProps {
   /**
@@ -143,9 +143,9 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     return { ...style, ...moreStyle };
   }, [width, moreStyle]);
   return (
-    <div className={style.box} style={{ width: width ? width + 'px' : '170px' }}>
+    <div className="box" style={{ width: width ? width + 'px' : '170px' }}>
       <input
-        className={style.input}
+        className="input"
         style={exticStyle}
         type={iptType}
         placeholder={placeholder}
@@ -171,7 +171,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
           )) ||
           //数字框
           (type === 'num' && (
-            <div className={style.numTags}>
+            <div className="numTags">
               <UpOutlined style={{ cursor: 'pointer', fontSize: '10px' }} onClick={addNum} />
               <DownOutlined style={{ cursor: 'pointer', fontSize: '10px' }} onClick={lowNum} />
             </div>
