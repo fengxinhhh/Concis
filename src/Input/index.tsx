@@ -53,6 +53,14 @@ interface InputProps {
    */
   handleIptChange?: Function;
   /**
+   * @description 输入框聚焦回调
+   */
+  handleIptFocus?: Function;
+  /**
+   * @description 输入框失去焦点回调
+   */
+  handleIptBlur?: Function;
+  /**
    * @description 输入框键盘监听
    */
   handleKeyDown?: Function;
@@ -60,6 +68,10 @@ interface InputProps {
    * @description 数字框内容改变回调
    */
   handleNumChange?: Function;
+  /**
+   * @description 清空回调
+   */
+  clearCallback?: Function;
   /**
    * @description 默认内容
    * @default ''
@@ -81,7 +93,10 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     step,
     handleIptChange,
     handleKeyDown,
+    handleIptFocus,
+    handleIptBlur,
     handleNumChange,
+    clearCallback,
     defaultValue,
   } = props;
   const [iptValue, setIptValue] = useState<string | number>(defaultValue || '');
@@ -98,6 +113,10 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     if (type === 'num' && Number(iptValue) == NaN) {
       setIptValue('');
     }
+    handleIptBlur && handleIptBlur();
+  };
+  const focusIpt = () => {
+    handleIptFocus && handleIptFocus(iptValue);
   };
   const addNum = () => {
     //加
@@ -149,9 +168,10 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
         style={exticStyle}
         type={iptType}
         placeholder={placeholder}
-        value={iptValue}
+        value={defaultValue || iptValue}
         onChange={changeIpt}
         onBlur={blurIpt}
+        onFocus={focusIpt}
         onKeyUp={(e) => handleKeyDown && handleKeyDown(e)}
       />
       {
@@ -159,7 +179,10 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
         (showClear && (
           <CloseOutlined
             style={{ position: 'absolute', right: '5px', fontSize: '12px', cursor: 'pointer' }}
-            onClick={() => setIptValue('')}
+            onClick={() => {
+              setIptValue('');
+              clearCallback && clearCallback();
+            }}
           />
         )) ||
           //密码框

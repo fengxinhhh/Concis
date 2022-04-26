@@ -1,9 +1,3 @@
-.layout {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
 .button .primary {
   display: flex;
   align-items: center;
@@ -85,6 +79,12 @@
     transform: rotate(360deg);
   }
 }
+.layout {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 .divider .line {
   position: relative;
   display: flex;
@@ -113,133 +113,90 @@
   padding: 0 10px;
   background-color: #fff;
 }
-.box {
+.select {
   position: relative;
+  width: 80px;
+  height: 30px;
+  margin-left: 10px;
+  padding: 0 2px;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: 0.2s linear;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.select .selected {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #fff;
-}
-.box .input {
-  padding: 4px 11px;
-  color: #000000d9;
-  font-size: 14px;
-  line-height: 1.5715;
-  background-color: #fff;
-  border: 1px solid #d9d9d9;
-  border-radius: 2px;
-  outline: none;
-  transition: all 0.3s;
-}
-.box .input:hover {
-  border-color: #8fb6d8;
-}
-.box .input:focus {
-  border-color: #8fb6d8;
-  box-shadow: 0px 0px 10px 1px #aed7ec;
-}
-.box .input .closeIcon {
-  position: absolute;
-}
-.box .numTags {
-  position: absolute;
-  right: 5px;
-  display: flex;
-  flex-direction: column;
-  color: #bebdbd;
-}
-.pagination {
-  display: flex;
-}
-.prev,
-.next,
-.numberBox {
-  min-width: 30px;
-  height: 30px;
-  margin: 0 5px;
-  font-size: 14px;
-  line-height: 30px;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.numberBox:hover {
-  color: #1890ff;
-  border: 1px solid #1890ff;
-  cursor: pointer;
-}
-.disabled {
-  color: #c0c4cc;
-}
-.actived {
-  color: #1890ff;
-  border-color: #1890ff;
-}
-.pageSizeSelect {
-  width: 80px;
-  height: 30px;
-  margin-left: 10px;
+  height: 100%;
   padding: 0 5px;
-  font-size: 14px;
-  line-height: 30px;
-  text-align: center;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  transition: 0.2s linear;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
-.pageSizeSelect .size {
+.select .selected .size {
   margin-right: 5px;
 }
-.pageSizeSelect .options {
-  position: relative;
-  top: 5px;
+.select .selected .placeholder {
+  margin-right: 5px;
+  color: #ccc;
+}
+.select .selected:focus {
+  border-color: #1890ff;
+}
+.select:hover {
+  border-color: #1890ff;
+}
+.select input {
+  border: none;
+  outline: none;
+}
+.select .selectOptions {
+  position: absolute;
+  top: 35px;
+  z-index: 500;
   display: flex;
   flex-direction: column;
   width: 80px;
-  box-shadow: 0 0 20px #dadada;
-  transition: 0.2s linear;
+  height: 0px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px #8c8c8c;
+  transition: 0.1s linear;
 }
-.pageSizeSelect .options .option {
+.select .selectOptions .option {
   font-size: 14px;
   line-height: 2em;
   text-align: center;
+  cursor: pointer;
 }
-.pageSizeSelect .options .option:hover {
+.select .selectOptions .option:hover {
   color: #1890ff;
 }
-.pageSizeSelect:hover {
-  border: 1px solid #1890ff;
+.selectOptions {
+  position: absolute;
+  top: 35px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  height: 0px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px #8c8c8c;
+  transition: 0.1s linear;
 }
-.jumpBox {
-  margin-left: 10px;
+.selectOptions .option {
+  font-size: 14px;
+  line-height: 2em;
+  text-align: center;
+  cursor: pointer;
 }
-.jumpBox .jump {
-  width: 40px;
-  height: 25px;
-  margin: 0 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  outline-color: #1890ff;
-  transition: 0.2s linear;
-}
-.jumpBox .jump:hover {
-  border-color: #1890ff;
-}
-.jumpBox .jump:active {
-  border-color: #1890ff;
+.selectOptions .option:hover {
+  color: #1890ff;
 }
 .menu {
   width: 220px;
@@ -378,17 +335,261 @@
 }
 .affix {
   position: relative;
-  background-color: #1890ff;
   z-index: 99;
   display: inline-block;
   color: #fff;
+  background-color: #1890ff;
 }
-.select {
+.time-picker {
   position: relative;
+}
+.time-picker .result {
+  color: #000000;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: 0.3s linear;
+  cursor: pointer;
+  display: flex;
+  width: 150px;
+  justify-content: center;
+}
+.time-picker .result:hover {
+  letter-spacing: normal;
+  color: #1890FF;
+  width: 120px;
+}
+.time-picker .result:hover .icon {
+  opacity: 1;
+  margin-left: 5px;
+}
+.time-picker .result:active {
+  letter-spacing: normal;
+  color: #1890FF;
+}
+.time-picker .result:active .icon {
+  opacity: 1;
+  margin-left: 5px;
+}
+.time-picker .result .icon {
+  opacity: 0;
+  transition: 0.2s linear;
+}
+.time-picker .input {
+  padding: 4px 11px;
+  color: #000000d9;
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  outline: none;
+  transition: all 0.3s;
+}
+.time-picker .input:hover {
+  border-color: #8fb6d8;
+}
+.time-picker .input:focus {
+  border-color: #8fb6d8;
+  box-shadow: 0px 0px 10px 1px #aed7ec;
+}
+.time-picker .check-box {
+  width: 220px;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 5px;
+  position: absolute;
+  transition: 0.2s linear;
+  opacity: 0;
+  z-index: 999;
+}
+.time-picker .check-box .top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 0 5px;
+}
+.time-picker .check-box .top-bar .month,
+.time-picker .check-box .top-bar .year {
+  cursor: pointer;
+}
+.time-picker .check-box .close-icon {
+  font-size: 22px;
+  color: #1890FF;
+  cursor: pointer;
+}
+.time-picker .check-box .date-content .week {
+  margin-top: 5px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+.time-picker .check-box .date-content .day-list {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 35px;
+  font-size: 13px;
+}
+.time-picker .check-box .date-content .day-list .day {
+  width: 31.4px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+.time-picker .check-box .date-content .day-list .day:hover {
+  background-color: #1890FF;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.time-picker .check-box .date-content .day-list .white {
+  width: 31.4px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+.time-picker .check-box .date-content .month-toggle-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+.time-picker .check-box .date-content .month-toggle-box .month {
+  width: 33%;
+  height: 55px;
+  text-align: center;
+  line-height: 55px;
+  transition: 0.3s linear;
+  cursor: pointer;
+}
+.time-picker .check-box .date-content .month-toggle-box .month:hover {
+  background-color: #1890FF;
+  color: #fff;
+  border-radius: 5px;
+}
+.time-picker .check-box .date-content .year-toggle-box {
+  font-size: 14px;
+}
+.time-picker .check-box .date-content .year-toggle-box .toggle-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.time-picker .check-box .date-content .year-toggle-box .list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.time-picker .check-box .date-content .year-toggle-box .list .year {
+  width: 33%;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+.time-picker .check-box .date-content .year-toggle-box .list .year:hover {
+  background-color: #1890FF;
+  color: #fff;
+  border-radius: 5px;
+}
+.time-picker .check-box .time-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  width: 90%;
+}
+.time-picker .check-box .time-footer .today {
+  color: #1890FF;
+  font-size: 15px;
+  cursor: pointer;
+}
+.time-picker .check-box .time-footer .today span {
+  margin-right: 5px;
+}
+.time-picker .check-box .time-footer .toggle-month {
+  color: #1890FF;
+  font-size: 15px;
+  cursor: pointer;
+}
+.time-picker .check-box .time-footer .go-back-icon {
+  cursor: pointer;
+}
+.box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+}
+.box .input {
+  padding: 4px 11px;
+  color: #000000d9;
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  outline: none;
+  transition: all 0.3s;
+}
+.box .input:hover {
+  border-color: #8fb6d8;
+}
+.box .input:focus {
+  border-color: #8fb6d8;
+  box-shadow: 0px 0px 10px 1px #aed7ec;
+}
+.box .input .closeIcon {
+  position: absolute;
+}
+.box .numTags {
+  position: absolute;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+  color: #bebdbd;
+}
+.pagination {
+  display: flex;
+}
+.prev,
+.next,
+.numberBox {
+  min-width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.numberBox:hover {
+  color: #1890ff;
+  border: 1px solid #1890ff;
+  cursor: pointer;
+}
+.disabled {
+  color: #c0c4cc;
+}
+.actived {
+  color: #1890ff;
+  border-color: #1890ff;
+}
+.pageSizeSelect {
   width: 80px;
   height: 30px;
   margin-left: 10px;
-  padding: 0 2px;
+  padding: 0 5px;
   font-size: 14px;
   line-height: 30px;
   text-align: center;
@@ -402,75 +603,50 @@
   -ms-user-select: none;
   user-select: none;
 }
-.select .selected {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  padding: 0 5px;
-}
-.select .selected .size {
+.pageSizeSelect .size {
   margin-right: 5px;
 }
-.select .selected .placeholder {
-  margin-right: 5px;
-  color: #ccc;
-}
-.select .selected:focus {
-  border-color: #1890ff;
-}
-.select:hover {
-  border-color: #1890ff;
-}
-.select input {
-  border: none;
-  outline: none;
-}
-.select .selectOptions {
-  position: absolute;
-  top: 35px;
-  z-index: 500;
+.pageSizeSelect .options {
+  position: relative;
+  top: 5px;
   display: flex;
   flex-direction: column;
   width: 80px;
-  height: 0px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px #8c8c8c;
-  transition: 0.1s linear;
+  box-shadow: 0 0 20px #dadada;
+  transition: 0.2s linear;
 }
-.select .selectOptions .option {
+.pageSizeSelect .options .option {
   font-size: 14px;
   line-height: 2em;
   text-align: center;
-  cursor: pointer;
 }
-.select .selectOptions .option:hover {
+.pageSizeSelect .options .option:hover {
   color: #1890ff;
 }
-.selectOptions {
-  position: absolute;
-  top: 35px;
-  z-index: 500;
-  display: flex;
-  flex-direction: column;
-  width: 80px;
-  height: 0px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px #8c8c8c;
-  transition: 0.1s linear;
+.pageSizeSelect:hover {
+  border: 1px solid #1890ff;
 }
-.selectOptions .option {
-  font-size: 14px;
-  line-height: 2em;
-  text-align: center;
-  cursor: pointer;
+.jumpBox {
+  margin-left: 10px;
 }
-.selectOptions .option:hover {
-  color: #1890ff;
+.jumpBox .jump {
+  width: 40px;
+  height: 25px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline-color: #1890ff;
+  transition: 0.2s linear;
 }
-.footer {
-  width: 100%;
-  background-color: #7dbcea;
+.jumpBox .jump:hover {
+  border-color: #1890ff;
+}
+.jumpBox .jump:active {
+  border-color: #1890ff;
+}
+.slider {
+  width: 30%;
+  background-color: #3ba0e9;
   color: #fff;
   text-align: center;
   padding: 50px 0;
@@ -482,16 +658,16 @@
   text-align: center;
   padding: 50px 0;
 }
-.slider {
-  width: 30%;
-  background-color: #3ba0e9;
+.content {
+  width: 70%;
+  background-color: #108EE9;
   color: #fff;
   text-align: center;
   padding: 50px 0;
 }
-.content {
-  width: 70%;
-  background-color: #108EE9;
+.footer {
+  width: 100%;
+  background-color: #7dbcea;
   color: #fff;
   text-align: center;
   padding: 50px 0;
@@ -568,4 +744,117 @@
 }
 .radioGroup .groupActive:hover {
   opacity: 0.7;
+}
+.range {
+  position: relative;
+  user-select: none;
+}
+.range .rangePicker {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.range .rangePicker .activeBorder {
+  position: absolute;
+  bottom: -2px;
+  width: 100px;
+  height: 3px;
+  background-color: #1890FF;
+  z-index: 99;
+  left: 0;
+  transition: 0.3s linear;
+}
+.range .date-box {
+  width: 550px;
+  height: 300px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px 2px #d0d0d0;
+  display: flex;
+  padding-top: 20px;
+  position: absolute;
+  opacity: 0;
+  transition: 0.2s linear;
+  z-index: 999;
+}
+.range .date-box .left {
+  width: 50%;
+  font-size: 14px;
+  padding: 0 35px 0 5px;
+}
+.range .date-box .left .top-bar {
+  display: flex;
+  justify-content: space-between;
+}
+.range .date-box .left .week {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 25px 0 12px;
+}
+.range .date-box .left .day-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.range .date-box .left .day-list .box-list {
+  width: 35.7px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+  line-height: 40px;
+}
+.range .date-box .left .day-list .box-list:hover {
+  background-color: #1890FF;
+  color: #fff;
+  border-radius: 5px;
+}
+.range .date-box .left .day-list .white {
+  width: 35.7px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+}
+.range .date-box .right {
+  width: 50%;
+  font-size: 14px;
+  padding: 0 5px;
+}
+.range .date-box .right .top-bar {
+  display: flex;
+  justify-content: space-between;
+}
+.range .date-box .right .week {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 25px 0 12px;
+}
+.range .date-box .right .day-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.range .date-box .right .day-list .day-box {
+  width: 35.7px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+  line-height: 40px;
+}
+.range .date-box .right .day-list .day-box:hover {
+  background-color: #1890FF;
+  color: #fff;
+  border-radius: 5px;
+}
+.range .date-box .right .day-list .disabled-day {
+  width: 35.7px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: #ccc;
+  cursor: not-allowed;
+}
+.range .date-box .right .day-list .white {
+  width: 35.7px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
 }
