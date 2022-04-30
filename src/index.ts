@@ -13,3 +13,4 @@ export { default as RadioGroup } from './Radio/RadioGroup';
 export { default as Menu } from './Menu';
 export { default as Affix } from './Affix';
 export { default as DatePicker } from './DatePicker';
+export { default as LazyLoad } from './LazyLoad';
