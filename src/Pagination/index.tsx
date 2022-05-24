@@ -36,7 +36,6 @@ const Pagination: FC<PaginationProps> = (props) => {
   const [nowIndex, setNowIndex] = useState<number>(1);
   const [pageRenderArray, setPageRenderArray] = useState<Array<number>>([]);
   const [sizePage, setSizePage] = useState<number>(pageSizeOptions ? pageSizeOptions[0] : 10);
-  const [showSizeOptions, setShowSizeOptions] = useState(false);
 
   const totalPage = useMemo(() => {
     setNowIndex(1);
