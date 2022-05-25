@@ -5,29 +5,22 @@
 Install dependencies,
 
 ```bash
-$ npm i
+$ npm i react-view-ui & yarn add react-view-ui
 ```
 
-Start the dev server,
+Import the UI,
 
 ```bash
-$ npm start
+$ import { Button } from "react-view-ui/dist/my-lib-esm";
+$ import "react-view-ui/dist/index.css";
 ```
 
-Build documentation,
+Use,
 
 ```bash
-$ npm run docs:build
+$ <Button type="primary">基础按钮</Button>
 ```
 
-Run test,
+Contact,
 
-```bash
-$ npm test
-```
-
-Build library via `father-build`,
-
-```bash
-$ npm run build
-```
+Wx: 18913594546 or github email
