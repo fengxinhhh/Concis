@@ -1,10 +1,10 @@
 ---
 title: Steps 步骤条
 nav:
-  title: 通用
+  title: 组件
   path: /common
 group:
-  path: /common
+  title: 导航
 ---
 
 # Steps 步骤条

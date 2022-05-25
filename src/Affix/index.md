@@ -1,10 +1,10 @@
 ---
 title: Affix 固钉
 nav:
-  title: 通用
+  title: 组件
   path: /common
 group:
-  path: /common
+  title: 导航
 ---
 
 # Affix 固钉

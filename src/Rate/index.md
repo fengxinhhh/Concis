@@ -1,10 +1,10 @@
 ---
 title: Rate 评分
 nav:
-  title: 通用
+  title: 组件
   path: /common
 group:
-  path: /common
+  title: 数据录入
 ---
 
 # Rate 评分

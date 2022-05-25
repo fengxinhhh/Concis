@@ -1,10 +1,10 @@
 ---
 title: DatePicker 日期选择器
 nav:
-  title: 通用
+  title: 组件
   path: /common
 group:
-  path: /common
+  title: 数据录入
 ---
 
 # DatePicker 日期选择器

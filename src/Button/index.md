@@ -1,10 +1,10 @@
 ---
 title: Button 按钮
 nav:
-  title: 通用
+  title: 组件
   path: /common
 group:
-  path: /common
+  title: 通用
 ---
 
 # Button 按钮

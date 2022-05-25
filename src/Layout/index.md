@@ -1,10 +1,10 @@
 ---
 title: Layout 快速布局
 nav:
-  title: 通用
+  title: 组件
   path: /common
 group:
-  path: /common
+  title: 布局
 ---
 
 # Layout 快速布局

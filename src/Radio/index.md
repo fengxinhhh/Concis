@@ -1,10 +1,10 @@
 ---
 title: Radio 单选框
 nav:
-  title: 通用
+  title: 组件
   path: /common
 group:
-  path: /common
+  title: 数据录入
 ---
 
 # Radio 单选框

@@ -1,10 +1,10 @@
 ---
 title: Pagination 分页器
 nav:
-  title: 通用
+  title: 组件
   path: /common
 group:
-  path: /common
+  title: 导航
 ---
 
 # Pagination 分页器
