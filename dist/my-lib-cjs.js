@@ -1350,7 +1350,7 @@ var ut = e.memo((t) => {
     [d, u] = e.useState([]),
     [f, m] = e.useState(l ? l[0] : 10),
     h = e.useMemo(() => {
-      if ((s(1), Math.ceil(r / f) > 6)) u([2, 3, 4, 5, 6]);
+      if ((s(1), console.log(r, Math.ceil(r / f)), Math.ceil(r / f) > 6)) u([2, 3, 4, 5, 6]);
       else if (Math.ceil(r / f) > 2) {
         const e = new Array(Math.ceil(r / f) - 2).fill(0);
         e.forEach((t, a) => {
@@ -1358,11 +1358,14 @@ var ut = e.memo((t) => {
         }),
           u(e);
       } else u([]);
-      return Math.ceil(r / f);
+      return console.log('一共有', d), Math.ceil(r / f);
     }, [r, f]);
   e.useEffect(() => {
     console.log(typeof c);
-  }, [c]);
+  }, [c]),
+    e.useEffect(() => {
+      console.log('数组变化', d);
+    }, [d]);
   const p = (e) => () => {
     if (h <= 6) return a(e), s(e);
     e > 4 && e <= h - 4 && u([e - 2, e - 1, e, e + 1, e + 2]),
@@ -1416,11 +1419,11 @@ var ut = e.memo((t) => {
       ),
     h <= 4 &&
       d.length >= 1 &&
-      d.map((e) =>
+      d.map((e, t) =>
         n.default.createElement(
           'div',
-          { className: c === e + 2 ? 'actived numberBox' : 'numberBox', key: e, onClick: p(e + 2) },
-          e + 2,
+          { className: c === e ? 'actived numberBox' : 'numberBox 123', key: t, onClick: p(e) },
+          e,
         ),
       ),
     h > 4 &&
@@ -1480,7 +1483,7 @@ var ut = e.memo((t) => {
         option: l.map((e) => ({ label: `${e} 条/页`, value: e })),
         width: 100,
         handleSelectCallback: (e) => {
-          console.log(e), m(e);
+          console.log(e.value), m(e.value);
         },
       }),
     o &&
@@ -1495,14 +1498,15 @@ var ut = e.memo((t) => {
             if (13 === e.keyCode) {
               const t = Number(e.target.value);
               if (t > h || t < 0 || isNaN(t)) return (e.target.value = '');
-              t > 6 && t < h - 6
-                ? u([t - 2, t - 1, t, t + 1, t + 2])
-                : t - 5 < 0
-                ? u([2, 3, 4, 5, 6])
-                : t + 5 > h && u([h - 5, h - 4, h - 3, h - 2, h - 1]),
-                s(t),
-                a(t),
-                (e.target.value = '');
+              if (Math.ceil(r / f) > 6) u([2, 3, 4, 5, 6]);
+              else if (Math.ceil(r / f) > 2) {
+                const e = new Array(Math.ceil(r / f) - 2).fill(0);
+                e.forEach((t, a) => {
+                  e[a] = a + 2;
+                }),
+                  u(e);
+              } else u([]);
+              console.log(d, h), s(t), a(t), (e.target.value = '');
             }
           },
         }),
@@ -1523,32 +1527,36 @@ var ft = e.memo((t) => {
       handleTextChange: u,
     } = t,
     [f, m] = e.useState(''),
-    h = e.createRef();
+    [h, p] = e.useState(''),
+    g = e.createRef();
   e.useEffect(() => {
-    (h.current.height = '0px'), console.log(a);
-  }, []);
-  const p = e.useMemo(() => (r ? { width: `${r}px` } : {}), [r]),
-    g = e.useMemo(() => {
+    (g.current.height = '0px'), console.log(a);
+  }, []),
+    e.useEffect(() => {
+      console.log(f);
+    }, [f]);
+  const b = e.useMemo(() => (r ? { width: `${r}px` } : {}), [r]),
+    y = e.useMemo(() => {
       if (o) return { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' };
     }, [o]),
-    b = (e) => {
+    v = (e) => {
       e.stopPropagation(),
         o ||
-          (console.log(h.current.style.height),
-          '0px' === h.current.style.height || '' === h.current.style.height
-            ? (h.current.style.height = c ? 100 * v.length + '%' : 100 * a.length + '%')
-            : (h.current.style.height = '0px'),
-          console.log(h.current.height));
+          (console.log(g.current.style.height),
+          '0px' === g.current.style.height || '' === g.current.style.height
+            ? (g.current.style.height = c ? 100 * x.length + '%' : 100 * a.length + '%')
+            : (g.current.style.height = '0px'));
     },
-    y = (e, t) => {
+    E = (e, t) => {
       t.stopPropagation(),
-        e.disabled || ((h.current.style.height = '0px'), m(e.label), d && d(e.value));
+        e.disabled || ((g.current.style.height = '0px'), m(e.label), p(e.value), d && d(e));
     },
-    v = e.useMemo(() => a.filter((e) => e.label.includes(f)), [a, f]),
-    E = e.useCallback(
+    x = e.useMemo(() => a.filter((e) => e.label.includes(f)), [a, f]),
+    k = e.useCallback(
       (e) => {
         m(e.target.value),
-          (h.current.style.height =
+          console.log(f),
+          (g.current.style.height =
             100 * a.filter((t) => t.label.includes(e.target.value)).length + '%'),
           u && u(e.target.value);
       },
@@ -1560,7 +1568,7 @@ var ft = e.memo((t) => {
         null,
         n.default.createElement(
           'div',
-          { className: 'select', style: Object.assign(Object.assign({}, p), g) },
+          { className: 'select', style: Object.assign(Object.assign({}, b), y) },
           n.default.createElement(
             'div',
             { className: 'selected' },
@@ -1569,17 +1577,17 @@ var ft = e.memo((t) => {
               className: 'selected',
               value: f,
               placeholder: l,
-              onClick: b,
-              onChange: (e) => E(e),
+              onClick: v,
+              onChange: (e) => k(e),
             }),
             s
               ? n.default.createElement(Se, { onClick: () => m('') })
-              : n.default.createElement(ze, { onClick: b }),
+              : n.default.createElement(ze, { onClick: v }),
           ),
           n.default.createElement(
             'div',
-            { className: 'selectOptions', style: p, ref: h },
-            v.map((e) =>
+            { className: 'selectOptions', style: b, ref: g },
+            x.map((e) =>
               n.default.createElement(
                 'div',
                 {
@@ -1588,7 +1596,7 @@ var ft = e.memo((t) => {
                   style: e.disabled
                     ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' }
                     : {},
-                  onClick: (t) => y(e, t),
+                  onClick: (t) => E(e, t),
                 },
                 e.label,
               ),
@@ -1598,10 +1606,10 @@ var ft = e.memo((t) => {
       )
     : n.default.createElement(
         'div',
-        { className: 'select', style: Object.assign(Object.assign({}, p), g) },
+        { className: 'select', style: Object.assign(Object.assign({}, b), y) },
         n.default.createElement(
           'div',
-          { className: 'selected', onClick: b },
+          { className: 'selected', onClick: v },
           f
             ? n.default.createElement('div', { className: 'size' }, f)
             : (l && n.default.createElement('div', { className: 'placeholder' }, l)) ||
@@ -1610,17 +1618,17 @@ var ft = e.memo((t) => {
         ),
         n.default.createElement(
           'div',
-          { className: 'selectOptions', style: p, ref: h },
+          { className: 'selectOptions', style: b, ref: g },
           a.map((e) =>
             n.default.createElement(
               'div',
               {
                 key: e.label,
-                className: 'option',
+                className: e.value == h ? 'select-option' : 'option',
                 style: e.disabled
                   ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' }
                   : {},
-                onClick: (t) => y(e, t),
+                onClick: (t) => E(e, t),
               },
               e.label,
             ),

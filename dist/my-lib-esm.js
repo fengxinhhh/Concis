@@ -151,7 +151,7 @@ function x(e, t) {
   for (var n = 0, a = new Array(t); n < t; n++) a[n] = e[n];
   return a;
 }
-function k(e, t) {
+function w(e, t) {
   return (
     (function (e) {
       if (Array.isArray(e)) return e;
@@ -204,7 +204,7 @@ function k(e, t) {
     })()
   );
 }
-function w(e, t) {
+function k(e, t) {
   if (null == e) return {};
   var n,
     a,
@@ -869,7 +869,7 @@ var pe = function (e) {
     c = e.style,
     s = e.primaryColor,
     d = e.secondaryColor,
-    u = w(e, he),
+    u = k(e, he),
     m = ge;
   if (
     (s && (m = { primaryColor: s, secondaryColor: d || ue(s) }),
@@ -921,7 +921,7 @@ var pe = function (e) {
   });
 var be = pe;
 function ye(e) {
-  var t = k(me(e), 2),
+  var t = w(me(e), 2),
     n = t[0],
     a = t[1];
   return be.setTwoToneColors({ primaryColor: n, secondaryColor: a });
@@ -937,7 +937,7 @@ var Ee = e.forwardRef(function (t, n) {
     c = t.tabIndex,
     s = t.onClick,
     d = t.twoToneColor,
-    u = w(t, ve),
+    u = k(t, ve),
     m = e.useContext(b).prefixCls,
     f = void 0 === m ? 'anticon' : m,
     h = O(
@@ -952,7 +952,7 @@ var Ee = e.forwardRef(function (t, n) {
   var p = i
       ? { msTransform: 'rotate('.concat(i, 'deg)'), transform: 'rotate('.concat(i, 'deg)') }
       : void 0,
-    v = k(me(d), 2),
+    v = w(me(d), 2),
     x = v[0],
     N = v[1];
   return e.createElement(
@@ -972,7 +972,7 @@ var Ee = e.forwardRef(function (t, n) {
   }),
   (Ee.setTwoToneColor = ye);
 var xe = Ee,
-  ke = {
+  we = {
     icon: {
       tag: 'svg',
       attrs: { viewBox: '0 0 1024 1024', focusable: 'false' },
@@ -988,11 +988,11 @@ var xe = Ee,
     name: 'caret-down',
     theme: 'outlined',
   },
-  we = function (t, n) {
-    return e.createElement(xe, E(E({}, t), {}, { ref: n, icon: ke }));
+  ke = function (t, n) {
+    return e.createElement(xe, E(E({}, t), {}, { ref: n, icon: we }));
   };
-we.displayName = 'CaretDownOutlined';
-var Ne = e.forwardRef(we),
+ke.displayName = 'CaretDownOutlined';
+var Ne = e.forwardRef(ke),
   Ce = {
     icon: {
       tag: 'svg',
@@ -1327,7 +1327,7 @@ var pt = n((e) => {
     [m, f] = i([]),
     [h, g] = i(l ? l[0] : 10),
     p = a(() => {
-      if ((u(1), Math.ceil(r / h) > 6)) f([2, 3, 4, 5, 6]);
+      if ((u(1), console.log(r, Math.ceil(r / h)), Math.ceil(r / h) > 6)) f([2, 3, 4, 5, 6]);
       else if (Math.ceil(r / h) > 2) {
         const e = new Array(Math.ceil(r / h) - 2).fill(0);
         e.forEach((t, n) => {
@@ -1335,11 +1335,14 @@ var pt = n((e) => {
         }),
           f(e);
       } else f([]);
-      return Math.ceil(r / h);
+      return console.log('一共有', m), Math.ceil(r / h);
     }, [r, h]);
   o(() => {
     console.log(typeof d);
-  }, [d]);
+  }, [d]),
+    o(() => {
+      console.log('数组变化', m);
+    }, [m]);
   const b = (e) => () => {
     if (p <= 6) return n(e), u(e);
     e > 4 && e <= p - 4 && f([e - 2, e - 1, e, e + 1, e + 2]),
@@ -1393,11 +1396,11 @@ var pt = n((e) => {
       ),
     p <= 4 &&
       m.length >= 1 &&
-      m.map((e) =>
+      m.map((e, n) =>
         t.createElement(
           'div',
-          { className: d === e + 2 ? 'actived numberBox' : 'numberBox', key: e, onClick: b(e + 2) },
-          e + 2,
+          { className: d === e ? 'actived numberBox' : 'numberBox 123', key: n, onClick: b(e) },
+          e,
         ),
       ),
     p > 4 &&
@@ -1457,7 +1460,7 @@ var pt = n((e) => {
         option: l.map((e) => ({ label: `${e} 条/页`, value: e })),
         width: 100,
         handleSelectCallback: (e) => {
-          console.log(e), g(e);
+          console.log(e.value), g(e.value);
         },
       }),
     c &&
@@ -1472,14 +1475,15 @@ var pt = n((e) => {
             if (13 === e.keyCode) {
               const t = Number(e.target.value);
               if (t > p || t < 0 || isNaN(t)) return (e.target.value = '');
-              t > 6 && t < p - 6
-                ? f([t - 2, t - 1, t, t + 1, t + 2])
-                : t - 5 < 0
-                ? f([2, 3, 4, 5, 6])
-                : t + 5 > p && f([p - 5, p - 4, p - 3, p - 2, p - 1]),
-                u(t),
-                n(t),
-                (e.target.value = '');
+              if (Math.ceil(r / h) > 6) f([2, 3, 4, 5, 6]);
+              else if (Math.ceil(r / h) > 2) {
+                const e = new Array(Math.ceil(r / h) - 2).fill(0);
+                e.forEach((t, n) => {
+                  e[n] = n + 2;
+                }),
+                  f(e);
+              } else f([]);
+              console.log(m, p), u(t), n(t), (e.target.value = '');
             }
           },
         }),
@@ -1500,32 +1504,36 @@ var bt = n((e) => {
       handleTextChange: g,
     } = e,
     [p, b] = i(''),
-    y = c();
+    [y, v] = i(''),
+    E = c();
   o(() => {
-    (y.current.height = '0px'), console.log(n);
-  }, []);
-  const v = a(() => (r ? { width: `${r}px` } : {}), [r]),
-    E = a(() => {
+    (E.current.height = '0px'), console.log(n);
+  }, []),
+    o(() => {
+      console.log(p);
+    }, [p]);
+  const x = a(() => (r ? { width: `${r}px` } : {}), [r]),
+    w = a(() => {
       if (d) return { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' };
     }, [d]),
-    x = (e) => {
+    k = (e) => {
       e.stopPropagation(),
         d ||
-          (console.log(y.current.style.height),
-          '0px' === y.current.style.height || '' === y.current.style.height
-            ? (y.current.style.height = m ? 100 * w.length + '%' : 100 * n.length + '%')
-            : (y.current.style.height = '0px'),
-          console.log(y.current.height));
+          (console.log(E.current.style.height),
+          '0px' === E.current.style.height || '' === E.current.style.height
+            ? (E.current.style.height = m ? 100 * C.length + '%' : 100 * n.length + '%')
+            : (E.current.style.height = '0px'));
     },
-    k = (e, t) => {
+    N = (e, t) => {
       t.stopPropagation(),
-        e.disabled || ((y.current.style.height = '0px'), b(e.label), h && h(e.value));
+        e.disabled || ((E.current.style.height = '0px'), b(e.label), v(e.value), h && h(e));
     },
-    w = a(() => n.filter((e) => e.label.includes(p)), [n, p]),
-    N = s(
+    C = a(() => n.filter((e) => e.label.includes(p)), [n, p]),
+    O = s(
       (e) => {
         b(e.target.value),
-          (y.current.style.height =
+          console.log(p),
+          (E.current.style.height =
             100 * n.filter((t) => t.label.includes(e.target.value)).length + '%'),
           g && g(e.target.value);
       },
@@ -1537,7 +1545,7 @@ var bt = n((e) => {
         null,
         t.createElement(
           'div',
-          { className: 'select', style: Object.assign(Object.assign({}, v), E) },
+          { className: 'select', style: Object.assign(Object.assign({}, x), w) },
           t.createElement(
             'div',
             { className: 'selected' },
@@ -1546,15 +1554,15 @@ var bt = n((e) => {
               className: 'selected',
               value: p,
               placeholder: l,
-              onClick: x,
-              onChange: (e) => N(e),
+              onClick: k,
+              onChange: (e) => O(e),
             }),
-            f ? t.createElement(Ye, { onClick: () => b('') }) : t.createElement(He, { onClick: x }),
+            f ? t.createElement(Ye, { onClick: () => b('') }) : t.createElement(He, { onClick: k }),
           ),
           t.createElement(
             'div',
-            { className: 'selectOptions', style: v, ref: y },
-            w.map((e) =>
+            { className: 'selectOptions', style: x, ref: E },
+            C.map((e) =>
               t.createElement(
                 'div',
                 {
@@ -1563,7 +1571,7 @@ var bt = n((e) => {
                   style: e.disabled
                     ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' }
                     : {},
-                  onClick: (t) => k(e, t),
+                  onClick: (t) => N(e, t),
                 },
                 e.label,
               ),
@@ -1573,10 +1581,10 @@ var bt = n((e) => {
       )
     : t.createElement(
         'div',
-        { className: 'select', style: Object.assign(Object.assign({}, v), E) },
+        { className: 'select', style: Object.assign(Object.assign({}, x), w) },
         t.createElement(
           'div',
-          { className: 'selected', onClick: x },
+          { className: 'selected', onClick: k },
           p
             ? t.createElement('div', { className: 'size' }, p)
             : (l && t.createElement('div', { className: 'placeholder' }, l)) ||
@@ -1585,17 +1593,17 @@ var bt = n((e) => {
         ),
         t.createElement(
           'div',
-          { className: 'selectOptions', style: v, ref: y },
+          { className: 'selectOptions', style: x, ref: E },
           n.map((e) =>
             t.createElement(
               'div',
               {
                 key: e.label,
-                className: 'option',
+                className: e.value == y ? 'select-option' : 'option',
                 style: e.disabled
                   ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' }
                   : {},
-                onClick: (t) => k(e, t),
+                onClick: (t) => N(e, t),
               },
               e.label,
             ),
@@ -1623,8 +1631,8 @@ var yt = n((e) => {
       defaultValue: v,
     } = e,
     [E, x] = i(v || ''),
-    [k, w] = i(!0),
-    N = a(() => (s && 'password' === l ? (k ? 'password' : 'text') : l || 'text'), [l, s, k]),
+    [w, k] = i(!0),
+    N = a(() => (s && 'password' === l ? (w ? 'password' : 'text') : l || 'text'), [l, s, w]),
     C = a(() => {
       let e = { width: '170px' };
       return n && (e.width = n + 'px'), Object.assign(Object.assign({}, e), r);
@@ -1660,7 +1668,7 @@ var yt = n((e) => {
         s &&
         t.createElement(Ue, {
           style: { position: 'absolute', right: '5px', fontSize: '12px', cursor: 'pointer' },
-          onClick: () => w(!k),
+          onClick: () => k(!w),
         })) ||
       ('num' === l &&
         t.createElement(
@@ -1715,7 +1723,7 @@ var Et = n((e) => {
     x = (e) => {
       g(e);
     },
-    k = s(
+    w = s(
       (e, t) => (e.disabled ? 'groupDisabledStyle' : t == d ? 'groupActive' : 'groupStyle'),
       [n, l, a, d],
     );
@@ -1727,7 +1735,7 @@ var Et = n((e) => {
         ? t.createElement(
             'div',
             {
-              className: k(e.props, n),
+              className: w(e.props, n),
               style: e.props.disabled ? { cursor: 'not-allowed' } : { cursor: 'pointer' },
               key: n,
               onClick: (t) => y(e.props, n, t),
@@ -1855,7 +1863,7 @@ var xt = n((e) => {
       }
       return { width: '220px' };
     }, [f]),
-    k = (e) => {
+    w = (e) => {
       if (e.children)
         return e.children.map((n) =>
           t.createElement(
@@ -1916,7 +1924,7 @@ var xt = n((e) => {
               t.createElement(
                 'div',
                 { className: 'childMenuOptions', key: n.key },
-                n.children && k(n),
+                n.children && w(n),
               ),
             ),
           ),
@@ -1967,13 +1975,13 @@ var xt = n((e) => {
             ),
             '50px' == v(e.key).height ? t.createElement(Ne, null) : t.createElement(Me, null),
           ),
-          t.createElement(t.Fragment, null, e.children && k(e)),
+          t.createElement(t.Fragment, null, e.children && w(e)),
         ),
       ),
     ),
   );
 });
-var kt = n((e) => {
+var wt = n((e) => {
   const {
       children: n,
       affixType: a,
@@ -2050,7 +2058,7 @@ var kt = n((e) => {
     n,
   );
 });
-var wt = n((e) => {
+var kt = n((e) => {
   const { showClear: n, align: a, handleChange: r } = e,
     [l, c] = i({
       startYear: new Date().getFullYear(),
@@ -2067,7 +2075,7 @@ var wt = n((e) => {
     [p, b] = i(0),
     [y, v] = i(0),
     [E, x] = i([]),
-    [k, w] = i([]),
+    [w, k] = i([]),
     [N, C] = i(!1),
     [O, M] = i(!1),
     [j, D] = i({ start: !1, end: !1 });
@@ -2083,7 +2091,7 @@ var wt = n((e) => {
       u = new Array(o).fill('');
     for (let e = 1; e < i + 1; e++) s.push(e);
     for (let e = 1; e < c + 1; e++) u.push(e);
-    x(s), b(r), w(u), v(o);
+    x(s), b(r), k(u), v(o);
   }, [l.startYear, l.startMonth, d.endYear, d.endMonth]),
     o(() => {
       window.addEventListener('click', () => {
@@ -2385,7 +2393,7 @@ var wt = n((e) => {
           t.createElement(
             'div',
             { className: 'day-list' },
-            k.map((e, n) =>
+            w.map((e, n) =>
               t.createElement(
                 'div',
                 {
@@ -2449,7 +2457,7 @@ var Ct = n((e) => {
     [p, b] = i(0),
     [y, v] = i([]),
     [E, x] = i(0),
-    [k, w] = i(null),
+    [w, k] = i(null),
     [N, C] = i([2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]);
   o(() => {
     window.addEventListener('click', () => {
@@ -2494,7 +2502,7 @@ var Ct = n((e) => {
       [l],
     );
   return a
-    ? t.createElement(wt, {
+    ? t.createElement(kt, {
         showClear: r,
         align: l || 'bottom',
         handleChange: (e, t) => {
@@ -2521,20 +2529,20 @@ var Ct = n((e) => {
             null,
             t.createElement('input', {
               className: 'input',
-              value: null !== k ? k : `${h.year}-${h.month}-${h.day}`,
+              value: null !== w ? w : `${h.year}-${h.month}-${h.day}`,
               onClick: (e) => O(e),
               onChange: (e) =>
                 ((e) => {
-                  w(e.target.value);
+                  k(e.target.value);
                 })(e),
               onKeyDown: (e) =>
                 ((e) => {
                   if (13 == e.keyCode) {
                     if (
-                      null !== k &&
-                      /^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(k)
+                      null !== w &&
+                      /^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(w)
                     ) {
-                      const e = k.split('-');
+                      const e = w.split('-');
                       g(
                         (t) => (
                           (t.year = Number(e[0])),
@@ -2545,7 +2553,7 @@ var Ct = n((e) => {
                       ),
                         c && c(`${Number(e[0])}-${Number(e[1])}-${Number(e[2])}`);
                     }
-                    w(null),
+                    k(null),
                       u(!1),
                       setTimeout(() => {
                         f(!1);
@@ -2554,10 +2562,10 @@ var Ct = n((e) => {
                 })(e),
               onBlur: () => {
                 if (
-                  null !== k &&
-                  /^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(k)
+                  null !== w &&
+                  /^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(w)
                 ) {
-                  const e = k.split('-');
+                  const e = w.split('-');
                   g(
                     (t) => (
                       (t.year = Number(e[0])),
@@ -2567,7 +2575,7 @@ var Ct = n((e) => {
                     ),
                   );
                 }
-                w(null);
+                k(null);
               },
             }),
             r &&
@@ -2582,7 +2590,7 @@ var Ct = n((e) => {
                       Object.assign({}, e)
                     ),
                   ),
-                    w(null);
+                    k(null);
                 },
               }),
           ),
@@ -2807,7 +2815,7 @@ var Ot = n((e) => {
   return t.createElement('div', { className: 'lazyLoad', ref: s }, r && n);
 });
 export {
-  kt as Affix,
+  wt as Affix,
   d as Button,
   g as Content,
   Ct as DatePicker,

@@ -39,6 +39,7 @@ const Pagination: FC<PaginationProps> = (props) => {
 
   const totalPage = useMemo(() => {
     setNowIndex(1);
+    console.log(total, Math.ceil(total / sizePage));
     if (Math.ceil(total / sizePage) > 6) {
       setPageRenderArray([2, 3, 4, 5, 6]);
     } else {
@@ -52,12 +53,15 @@ const Pagination: FC<PaginationProps> = (props) => {
         setPageRenderArray([]);
       }
     }
+    console.log('一共有', pageRenderArray);
     return Math.ceil(total / sizePage);
   }, [total, sizePage]);
   useEffect(() => {
     console.log(typeof nowIndex);
   }, [nowIndex]);
-
+  useEffect(() => {
+    console.log('数组变化', pageRenderArray);
+  }, [pageRenderArray]);
   //点击改页码
   const changePage = (pageNum: number) => {
     return () => {
@@ -192,28 +196,29 @@ const Pagination: FC<PaginationProps> = (props) => {
         //超出页码范围，不挑
         return (e.target.value = '');
       }
-      if (jumpPage > 6 && jumpPage < totalPage - 6) {
-        setPageRenderArray([jumpPage - 2, jumpPage - 1, jumpPage, jumpPage + 1, jumpPage + 2]);
-      } else if (jumpPage - 5 < 0) {
+      if (Math.ceil(total / sizePage) > 6) {
         setPageRenderArray([2, 3, 4, 5, 6]);
-      } else if (jumpPage + 5 > totalPage) {
-        setPageRenderArray([
-          totalPage - 5,
-          totalPage - 4,
-          totalPage - 3,
-          totalPage - 2,
-          totalPage - 1,
-        ]);
+      } else {
+        if (Math.ceil(total / sizePage) > 2) {
+          const array = new Array((Math.ceil(total / sizePage) as number) - 2).fill(0);
+          array.forEach((item, index) => {
+            array[index] = index + 2;
+          });
+          setPageRenderArray(array);
+        } else {
+          setPageRenderArray([]);
+        }
       }
+      console.log(pageRenderArray, totalPage);
       setNowIndex(jumpPage);
       changePageCallback(jumpPage);
       e.target.value = '';
     }
   };
   //select回调
-  const handleSelectCallback = (pageSize: number) => {
-    console.log(pageSize);
-    setSizePage(pageSize);
+  const handleSelectCallback = (pageSize: any) => {
+    console.log(pageSize.value);
+    setSizePage(pageSize.value);
   };
 
   return (
@@ -232,14 +237,14 @@ const Pagination: FC<PaginationProps> = (props) => {
 
       {totalPage <= 4 &&
         pageRenderArray.length >= 1 &&
-        pageRenderArray.map((index) => {
+        pageRenderArray.map((item, index) => {
           return (
             <div
-              className={nowIndex === index + 2 ? `actived numberBox` : `numberBox`}
+              className={nowIndex === item ? `actived numberBox` : `numberBox 123`}
               key={index}
-              onClick={changePage(index + 2)}
+              onClick={changePage(item)}
             >
-              {index + 2}
+              {item}
             </div>
           );
         })}

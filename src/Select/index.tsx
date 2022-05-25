@@ -68,12 +68,16 @@ const Select: FC<SelectProps> = (props) => {
     handleTextChange,
   } = props;
   const [selected, setSelected] = useState<string | number | any>('');
+  const [selectedValue, setSelectedValue] = useState<string | number | any>('');
   const optionRef = createRef() as any;
 
   useEffect(() => {
     optionRef.current.height = `0px`;
     console.log(option);
   }, []);
+  useEffect(() => {
+    console.log(selected);
+  }, [selected]);
 
   const ownsWidth = useMemo(() => {
     //传参宽度
@@ -108,7 +112,6 @@ const Select: FC<SelectProps> = (props) => {
     } else {
       optionRef.current.style.height = '0px';
     }
-    console.log(optionRef.current.height);
   };
   const changeOptions = (v: Options, e: any) => {
     //选择选项
@@ -116,8 +119,9 @@ const Select: FC<SelectProps> = (props) => {
     if (v.disabled) return;
     optionRef.current.style.height = '0px';
     setSelected(v.label);
+    setSelectedValue(v.value);
     if (handleSelectCallback) {
-      handleSelectCallback(v.value);
+      handleSelectCallback(v);
     }
   };
   const inputFilterOtpions = useMemo(() => {
@@ -130,6 +134,7 @@ const Select: FC<SelectProps> = (props) => {
     (e: any) => {
       //输入后的回调
       setSelected(e.target.value);
+      console.log(selected);
       optionRef.current.style.height =
         option.filter((item) => {
           return (item.label as string).includes(e.target.value);
@@ -194,7 +199,7 @@ const Select: FC<SelectProps> = (props) => {
           return (
             <div
               key={s.label as any}
-              className="option"
+              className={s.value == selectedValue ? 'select-option' : 'option'}
               style={s.disabled ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' } : {}}
               onClick={(e) => changeOptions(s as Options, e)}
             >

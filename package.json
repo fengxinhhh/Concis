@@ -1,6 +1,6 @@
 {
   "name": "react-view-ui",
-  "version": "1.3.4",
+  "version": "1.3.6",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -38,7 +38,7 @@
     "antd": "^4.19.5",
     "core-js": "^3.22.2",
     "lodash": "^4.17.21",
-    "react": "^16.12.0 || ^17.0.0",
+    "react": "^18.1.0",
     "react-view-ui": "^1.2.16",
     "rollup": "^2.70.2",
     "rollup-plugin-clear": "^2.0.7",
