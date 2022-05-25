@@ -1,10 +1,10 @@
 ---
 title: Divider 分割线
 nav:
-  title: 视图
-  path: /view
+  title: 通用
+  path: /common
 group:
-  path: /view
+  path: /common
 ---
 
 # Divider 分割线

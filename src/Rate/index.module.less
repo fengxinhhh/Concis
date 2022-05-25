@@ -1,19 +1,29 @@
 .rate {
-  display: flex;
-  .rate-box {
-    position: relative;
-    margin-right: 8px;
-    cursor: pointer;
-    .half-dialog {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 50%;
-      height: 16px;
-      background-color: #fff;
-    }
-    .rate-row {
-      color: yellow;
+  cursor: pointer;
+  .rate-container {
+    display: flex;
+    width: 100%;
+    .rate-box {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      .half-dialog {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 20px;
+        background-color: #fff;
+        transition: 0.2s linear;
+      }
+      .rate-row {
+        color: #f6dd06;
+      }
+      &:last-of-type {
+        position: relative;
+        padding-right: 10px;
+      }
     }
   }
 }

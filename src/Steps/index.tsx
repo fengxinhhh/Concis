@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect, useCallback } from 'react';
+import React, { FC, memo, useCallback } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
 
@@ -10,17 +10,14 @@ interface stepsProps {
   current: number;
   /**
    * @description 步骤标题
-   * @default ""
    */
   title?: string;
   /**
    * @description 步骤子标题
-   * @default ""
    */
   subTitle?: string;
   /**
    * @description 步骤描述
-   * @default ""
    */
   description?: string;
   children: any;
@@ -28,10 +25,6 @@ interface stepsProps {
 
 const Steps: FC<stepsProps> = (props) => {
   const { current, children } = props;
-
-  useEffect(() => {
-    console.log(children);
-  }, []);
 
   const indexClassName = useCallback(
     (index: any): string => {
@@ -54,7 +47,7 @@ const Steps: FC<stepsProps> = (props) => {
         <div className="step-line">
           {children.map((step: any, index: number) => {
             return (
-              <div className="step-box">
+              <div className="step-box" key={index}>
                 {index + 1 < current ? (
                   <div className={indexClassName(index + 1)}>
                     <CheckOutlined />

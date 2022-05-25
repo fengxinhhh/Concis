@@ -14,3 +14,6 @@ export { default as Menu } from './Menu';
 export { default as Affix } from './Affix';
 export { default as DatePicker } from './DatePicker';
 export { default as LazyLoad } from './LazyLoad';
+export { default as Steps } from './Steps';
+export { default as Step } from './Steps/Step';
+export { default as Rate } from './Rate';

@@ -20,3 +20,25 @@ group:
 ## 基本使用
 
 <code src="./demos/index1.tsx" />
+
+## 自定义颜色
+
+<code src="./demos/index2.tsx" />
+
+## 数量与默认显示
+
+<code src="./demos/index3.tsx" />
+
+## 半星
+
+<code src="./demos/index4.tsx" />
+
+## 可清除
+
+<code src="./demos/index5.tsx" />
+
+## 案例
+
+<code src="./demos/index6.tsx" />
+
+<API />

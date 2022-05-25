@@ -1,10 +1,6 @@
 import React, { FC, memo } from 'react';
 
 interface stepProps {
-  /**
-   * @description 步骤标题
-   * @default ""
-   */
   title: string;
   subTitle?: string;
   description?: string;
