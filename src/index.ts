@@ -17,3 +17,4 @@ export { default as LazyLoad } from './LazyLoad';
 export { default as Steps } from './Steps';
 export { default as Step } from './Steps/Step';
 export { default as Rate } from './Rate';
+export { default as Tree } from './Tree';

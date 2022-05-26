@@ -1,0 +1,27 @@
+.tree-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .tree-select-dialog {
+    box-sizing: border-box;
+    // height: 200px;
+    padding: 0 10px 0 10px;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 0 2px 2px 0;
+    box-shadow: 0 0px 2px 1px #d4d4d4;
+    transition: 0.2s linear;
+    .treeNode {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s linear;
+      .text {
+        margin-left: 10px;
+        user-select: none;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC, useMemo, memo } from 'react';
+import React, { useState, FC, useMemo, memo } from 'react';
 import { EllipsisOutlined, LeftOutlined, RightOutlined, DownOutlined } from '@ant-design/icons';
 import { Select } from '..';
 import './index.module.less';
@@ -39,7 +39,6 @@ const Pagination: FC<PaginationProps> = (props) => {
 
   const totalPage = useMemo(() => {
     setNowIndex(1);
-    console.log(total, Math.ceil(total / sizePage));
     if (Math.ceil(total / sizePage) > 6) {
       setPageRenderArray([2, 3, 4, 5, 6]);
     } else {
@@ -53,15 +52,8 @@ const Pagination: FC<PaginationProps> = (props) => {
         setPageRenderArray([]);
       }
     }
-    console.log('一共有', pageRenderArray);
     return Math.ceil(total / sizePage);
   }, [total, sizePage]);
-  useEffect(() => {
-    console.log(typeof nowIndex);
-  }, [nowIndex]);
-  useEffect(() => {
-    console.log('数组变化', pageRenderArray);
-  }, [pageRenderArray]);
   //点击改页码
   const changePage = (pageNum: number) => {
     return () => {
@@ -240,7 +232,7 @@ const Pagination: FC<PaginationProps> = (props) => {
         pageRenderArray.map((item, index) => {
           return (
             <div
-              className={nowIndex === item ? `actived numberBox` : `numberBox 123`}
+              className={nowIndex === item ? `actived numberBox` : `numberBox`}
               key={index}
               onClick={changePage(item)}
             >

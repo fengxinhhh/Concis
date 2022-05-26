@@ -57,6 +57,10 @@ interface InputProps {
    */
   handleIptFocus?: Function;
   /**
+   * @description 输入框点击回调
+   */
+  handleClick?: Function;
+  /**
    * @description 输入框失去焦点回调
    */
   handleIptBlur?: Function;
@@ -94,6 +98,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     handleIptChange,
     handleKeyDown,
     handleIptFocus,
+    handleClick,
     handleIptBlur,
     handleNumChange,
     clearCallback,
@@ -103,6 +108,9 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
   const [pwdIptState, setPwdIptState] = useState(true); //密码框切换状态
   const changeIpt = (e: any) => {
     //改变文本框
+    if (moreStyle && Object.keys(moreStyle).includes('caretColor')) {
+      return;
+    }
     setIptValue(e.target.value);
     if (handleIptChange) {
       handleIptChange(e.target.value);
@@ -117,6 +125,9 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
   };
   const focusIpt = () => {
     handleIptFocus && handleIptFocus(iptValue);
+  };
+  const iptHandleClick = () => {
+    handleClick && handleClick();
   };
   const addNum = () => {
     //加
@@ -173,6 +184,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
         onBlur={blurIpt}
         onFocus={focusIpt}
         onKeyUp={(e) => handleKeyDown && handleKeyDown(e)}
+        onClick={iptHandleClick}
       />
       {
         //可清除

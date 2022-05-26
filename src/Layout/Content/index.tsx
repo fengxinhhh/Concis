@@ -24,7 +24,7 @@ const Content: FC<ContentProps> = (props) => {
   }, [extraStyle]);
 
   return (
-    <div className="content" style={{ ...contentRow, ...propsStyle }}>
+    <div className="layout-content" style={{ ...contentRow, ...propsStyle }}>
       {children}
     </div>
   );
