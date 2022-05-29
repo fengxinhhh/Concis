@@ -47,12 +47,10 @@ const Tree: FC<treeProps> = (props) => {
   const [stateTreeData, setStateTreeData] = useState<Array<treeNode>>(treeData); //树结构
   const [activedVal, setActivedVal] = useState<string>(''); //选中的节点值
   const [containerHeight, setContainerHeight] = useState<string>('0px'); //容器高度
-  const [showContainer, setShowContainer] = useState<boolean>(false); //显示容器
   const [isFocus, setIsFocus] = useState(false); //聚焦状态
 
   useEffect(() => {
     resolveTreeData(treeData as Array<treeNode>, 1);
-    console.log(treeData);
     window.addEventListener('click', () => setContainerHeight('0px'));
   }, []);
 
@@ -75,6 +73,7 @@ const Tree: FC<treeProps> = (props) => {
       }
     });
     setStateTreeData(treeData); //更新状态
+    console.log(treeData);
   };
   const toggleTreeMenu = (clickTreeNode: treeNode) => {
     //菜单切换或直接选中终极节点

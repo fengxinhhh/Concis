@@ -20,18 +20,30 @@ interface PaginationProps {
    */
   pageSizeOptions?: Array<number>;
   /**
-   * @description 改变页码后的回调
-   * @default {}
-   */
-  showJumpInput?: Boolean;
-  /**
    * @description 显示跳转页面输入框
    * @default false
    */
-  changePageCallback: Function;
+  showJumpInput?: Boolean;
+  /**
+   * @description 改变页码后的回调
+   * @default {}
+   */
+  changePageCallback?: Function;
+  /**
+   * @description 改变每页显示后的回调
+   * @default {}
+   */
+  changePageSizeCallback?: Function;
 }
 const Pagination: FC<PaginationProps> = (props) => {
-  const { changePageCallback, total, pageSizeOptions, showJumpInput, showSizeChanger } = props;
+  const {
+    changePageCallback,
+    changePageSizeCallback,
+    total,
+    pageSizeOptions,
+    showJumpInput,
+    showSizeChanger,
+  } = props;
 
   const [nowIndex, setNowIndex] = useState<number>(1);
   const [pageRenderArray, setPageRenderArray] = useState<Array<number>>([]);
@@ -59,7 +71,7 @@ const Pagination: FC<PaginationProps> = (props) => {
     return () => {
       //小型分页器
       if (totalPage <= 6) {
-        changePageCallback(pageNum);
+        changePageCallback && changePageCallback(pageNum);
         return setNowIndex(pageNum);
       }
       if (pageNum > 4 && pageNum <= totalPage - 4) {
@@ -80,7 +92,7 @@ const Pagination: FC<PaginationProps> = (props) => {
         ]);
       }
       setNowIndex(pageNum);
-      changePageCallback(pageNum);
+      changePageCallback && changePageCallback(pageNum);
     };
   };
   //向前翻一页
@@ -103,7 +115,7 @@ const Pagination: FC<PaginationProps> = (props) => {
         setPageRenderArray([2, 3, 4, 5, 6]);
       }
     }
-    changePageCallback(nowIndex - 1);
+    changePageCallback && changePageCallback(nowIndex - 1);
   };
   //向后翻一页
   const nextPage = () => {
@@ -130,7 +142,7 @@ const Pagination: FC<PaginationProps> = (props) => {
         );
       }
     }
-    changePageCallback(nowIndex + 1);
+    changePageCallback && changePageCallback(nowIndex + 1);
   };
   //向前翻五页
   const prevFivePage = () => {
@@ -152,7 +164,7 @@ const Pagination: FC<PaginationProps> = (props) => {
       updateIndex = nowIndex - 5;
     }
     setNowIndex(updateIndex);
-    changePageCallback(updateIndex);
+    changePageCallback && changePageCallback(updateIndex);
   };
   //向后翻五页
   const nextFivePage = () => {
@@ -178,7 +190,7 @@ const Pagination: FC<PaginationProps> = (props) => {
       updateIndex = nowIndex + 5;
     }
     setNowIndex(updateIndex);
-    changePageCallback(updateIndex);
+    changePageCallback && changePageCallback(updateIndex);
   };
   //跳页
   const jumpPageNum = (e: any) => {
@@ -203,14 +215,14 @@ const Pagination: FC<PaginationProps> = (props) => {
       }
       console.log(pageRenderArray, totalPage);
       setNowIndex(jumpPage);
-      changePageCallback(jumpPage);
+      changePageCallback && changePageCallback(jumpPage);
       e.target.value = '';
     }
   };
   //select回调
   const handleSelectCallback = (pageSize: any) => {
-    console.log(pageSize.value);
     setSizePage(pageSize.value);
+    changePageSizeCallback && changePageSizeCallback(pageSize.value);
   };
 
   return (

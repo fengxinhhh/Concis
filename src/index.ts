@@ -18,3 +18,4 @@ export { default as Steps } from './Steps';
 export { default as Step } from './Steps/Step';
 export { default as Rate } from './Rate';
 export { default as Tree } from './Tree';
+export { default as TreeView } from './TreeView';
