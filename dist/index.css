@@ -79,6 +79,12 @@
     transform: rotate(360deg);
   }
 }
+.layout {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 .divider .line {
   position: relative;
   display: flex;
@@ -106,12 +112,6 @@
   position: absolute;
   padding: 0 10px;
   background-color: #fff;
-}
-.layout {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 .select {
   position: relative;
@@ -246,196 +246,6 @@
   display: inline-block;
   color: #fff;
   background-color: #1890ff;
-}
-.menu {
-  width: 220px;
-  padding: 2px 0px;
-  color: black;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-.menu .menuOptions {
-  padding: 0 10px;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 50px;
-  cursor: pointer;
-  transition: 0.2s linear;
-}
-.menu .menuOptions .fatherTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
-}
-.menu .menuOptions .fatherTitle:hover {
-  color: #1890ff;
-}
-.menu .menuOptions .activeFatherTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
-  color: #1890ff;
-}
-.menu .menuOptions .activeFatherTitle:hover {
-  color: #1890ff;
-}
-.menu .menuOptions .left i {
-  margin-right: 10px;
-}
-.menu .activeMenuOptions {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding-left: 5px;
-  overflow: hidden;
-  color: #1890ff;
-  font-size: 14px;
-  line-height: 50px;
-  background-color: #e6f7ff;
-  cursor: pointer;
-  transition: 0.2s linear;
-}
-.menu .activeMenuOptions :after {
-  width: 3px;
-  height: 50px;
-  background-color: #1890ff;
-  content: '';
-}
-.menu .childMenuOptions {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding-left: 5px;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 50px;
-  cursor: pointer;
-  transition: 0.2s linear;
-}
-.darkMenu {
-  box-sizing: border-box;
-  width: 200px;
-  padding: 2px 0px;
-  color: #ffffffa6;
-  background-color: #001529;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-.darkMenu .menuOptions {
-  padding: 0 10px;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 50px;
-  cursor: pointer;
-  transition: 0.2s linear;
-}
-.darkMenu .menuOptions .fatherTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
-}
-.darkMenu .menuOptions .fatherTitle:hover {
-  color: #fff;
-}
-.darkMenu .menuOptions .activeFatherTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  height: 50px;
-  color: #fff;
-}
-.darkMenu .menuOptions .activeFatherTitle:hover {
-  color: #fff;
-}
-.darkMenu .menuOptions .left i {
-  margin-right: 10px;
-}
-.darkMenu .activeMenuOptions {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding-left: 5px;
-  overflow: hidden;
-  color: #fff;
-  font-size: 14px;
-  line-height: 50px;
-  background-color: #1890ff;
-  cursor: pointer;
-  transition: 0.2s linear;
-}
-.darkMenu .childMenuOptions {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding-left: 5px;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 50px;
-  cursor: pointer;
-  transition: 0.2s linear;
-}
-.rate {
-  cursor: pointer;
-}
-.rate .rate-container {
-  display: flex;
-  width: 100%;
-}
-.rate .rate-container .rate-box {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-}
-.rate .rate-container .rate-box .half-dialog {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 20px;
-  background-color: #fff;
-  transition: 0.2s linear;
-}
-.rate .rate-container .rate-box .rate-row {
-  color: #f6dd06;
-}
-.rate .rate-container .rate-box:last-of-type {
-  position: relative;
-  padding-right: 10px;
-}
-.tree-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.tree-container .tree-select-dialog {
-  box-sizing: border-box;
-  padding: 0 10px 0 10px;
-  overflow: hidden;
-  background-color: #fff;
-  border-radius: 0 2px 2px 0;
-  box-shadow: 0 0px 2px 1px #d4d4d4;
-  transition: 0.2s linear;
-}
-.tree-container .tree-select-dialog .treeNode {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.2s linear;
-}
-.tree-container .tree-select-dialog .treeNode .text {
-  margin-left: 10px;
-  user-select: none;
 }
 .time-picker {
   position: relative;
@@ -612,6 +422,141 @@
 }
 .time-picker .check-box .time-footer .go-back-icon {
   cursor: pointer;
+}
+.menu {
+  width: 220px;
+  padding: 2px 0px;
+  color: black;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.menu .menuOptions {
+  padding: 0 10px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.menu .menuOptions .fatherTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+.menu .menuOptions .fatherTitle:hover {
+  color: #1890ff;
+}
+.menu .menuOptions .activeFatherTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  color: #1890ff;
+}
+.menu .menuOptions .activeFatherTitle:hover {
+  color: #1890ff;
+}
+.menu .menuOptions .left i {
+  margin-right: 10px;
+}
+.menu .activeMenuOptions {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 5px;
+  overflow: hidden;
+  color: #1890ff;
+  font-size: 14px;
+  line-height: 50px;
+  background-color: #e6f7ff;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.menu .activeMenuOptions :after {
+  width: 3px;
+  height: 50px;
+  background-color: #1890ff;
+  content: '';
+}
+.menu .childMenuOptions {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 5px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.darkMenu {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 2px 0px;
+  color: #ffffffa6;
+  background-color: #001529;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.darkMenu .menuOptions {
+  padding: 0 10px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.darkMenu .menuOptions .fatherTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+.darkMenu .menuOptions .fatherTitle:hover {
+  color: #fff;
+}
+.darkMenu .menuOptions .activeFatherTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 50px;
+  color: #fff;
+}
+.darkMenu .menuOptions .activeFatherTitle:hover {
+  color: #fff;
+}
+.darkMenu .menuOptions .left i {
+  margin-right: 10px;
+}
+.darkMenu .activeMenuOptions {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 5px;
+  overflow: hidden;
+  color: #fff;
+  font-size: 14px;
+  line-height: 50px;
+  background-color: #1890ff;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.darkMenu .childMenuOptions {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 5px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: 0.2s linear;
 }
 .steps .step-content {
   position: relative;
@@ -854,12 +799,60 @@
     font-size: 14px;
   }
 }
-.layout-content {
-  width: 70%;
-  padding: 50px 0;
-  color: #fff;
-  text-align: center;
-  background-color: #108ee9;
+.rate {
+  cursor: pointer;
+}
+.rate .rate-container {
+  display: flex;
+  width: 100%;
+}
+.rate .rate-container .rate-box {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+.rate .rate-container .rate-box .half-dialog {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 20px;
+  background-color: #fff;
+  transition: 0.2s linear;
+}
+.rate .rate-container .rate-box .rate-row {
+  color: #f6dd06;
+}
+.rate .rate-container .rate-box:last-of-type {
+  position: relative;
+  padding-right: 10px;
+}
+.tree-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.tree-container .tree-select-dialog {
+  box-sizing: border-box;
+  padding: 0 10px 0 10px;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0px 2px 1px #d4d4d4;
+  transition: 0.2s linear;
+}
+.tree-container .tree-select-dialog .treeNode {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.tree-container .tree-select-dialog .treeNode .text {
+  margin-left: 10px;
+  user-select: none;
 }
 .pagination {
   display: flex;
@@ -961,12 +954,12 @@
   text-align: center;
   padding: 50px 0;
 }
-.slider {
-  width: 30%;
-  background-color: #3ba0e9;
+.layout-content {
+  width: 70%;
+  padding: 50px 0;
   color: #fff;
   text-align: center;
-  padding: 50px 0;
+  background-color: #108ee9;
 }
 .footer {
   width: 100%;
@@ -975,23 +968,19 @@
   text-align: center;
   padding: 50px 0;
 }
-.tree-select-dialog {
-  box-sizing: border-box;
-  padding: 0 10px 0 10px;
-  overflow: hidden;
-  background-color: #fff;
-  border-radius: 0 2px 2px 0;
-  transition: 0.2s linear;
+.slider {
+  width: 30%;
+  background-color: #3ba0e9;
+  color: #fff;
+  text-align: center;
+  padding: 50px 0;
 }
-.tree-select-dialog .treeNode {
+.checkbox {
   display: flex;
   align-items: center;
-  overflow: hidden;
-  font-size: 14px;
   cursor: pointer;
-  transition: 0.2s linear;
 }
-.tree-select-dialog .treeNode .disblaed-checkBox {
+.checkbox .disblaed-checkBox {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1001,7 +990,7 @@
   border: 1px solid #d9d9d9;
   cursor: not-allowed;
 }
-.tree-select-dialog .treeNode .checkBox-actived {
+.checkbox .checkBox-actived {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1010,8 +999,9 @@
   margin-left: 5px;
   color: #fff;
   background: #1890ff;
+  border: 1px solid transparent;
 }
-.tree-select-dialog .treeNode .checkBox-noActived {
+.checkbox .checkBox-noActived {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1022,10 +1012,10 @@
   border: 1px solid #d9d9d9;
   transition: 0.3s linear;
 }
-.tree-select-dialog .treeNode .checkBox-noActived:hover {
+.checkbox .checkBox-noActived:hover {
   border: 1px solid #1890ff;
 }
-.tree-select-dialog .treeNode .checkBox-activedLess {
+.checkbox .checkBox-activedLess {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1035,14 +1025,19 @@
   color: #fff;
   border: 1px solid #d9d9d9;
 }
-.tree-select-dialog .treeNode .checkBox-activedLess .less-box {
+.checkbox .checkBox-activedLess .less-box {
   width: 8px;
   height: 8px;
   background-color: #1890ff;
 }
-.tree-select-dialog .treeNode .text {
-  margin-left: 10px;
-  user-select: none;
+.checkbox .text {
+  margin-left: 5px;
+}
+.checkGroup {
+  display: flex;
+}
+.checkGroup .groupBox {
+  margin-right: 10px;
 }
 .radioGroup {
   display: flex;
@@ -1116,6 +1111,75 @@
 }
 .radioGroup .groupActive:hover {
   opacity: 0.7;
+}
+.tree-select-dialog {
+  box-sizing: border-box;
+  padding: 0 10px 0 10px;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 0 2px 2px 0;
+  transition: 0.2s linear;
+}
+.tree-select-dialog .treeNode {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.tree-select-dialog .treeNode .disblaed-checkBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  border: 1px solid #d9d9d9;
+  cursor: not-allowed;
+}
+.tree-select-dialog .treeNode .checkBox-actived {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  color: #fff;
+  background: #1890ff;
+}
+.tree-select-dialog .treeNode .checkBox-noActived {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  color: #fff;
+  border: 1px solid #d9d9d9;
+  transition: 0.3s linear;
+}
+.tree-select-dialog .treeNode .checkBox-noActived:hover {
+  border: 1px solid #1890ff;
+}
+.tree-select-dialog .treeNode .checkBox-activedLess {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  color: #fff;
+  border: 1px solid #d9d9d9;
+}
+.tree-select-dialog .treeNode .checkBox-activedLess .less-box {
+  width: 8px;
+  height: 8px;
+  background-color: #1890ff;
+}
+.tree-select-dialog .treeNode .text {
+  margin-left: 10px;
+  user-select: none;
 }
 .range {
   position: relative;
