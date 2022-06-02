@@ -1,0 +1,118 @@
+.swipers {
+  position: relative;
+  top: 0;
+  right: 0;
+  // display: flex;
+  // width: 600px;
+  height: 240px;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: 0.2s linear;
+  .swiperList {
+    position: relative;
+    display: flex;
+    width: 3600px;
+  }
+  .swiper-img {
+    // width: 600px;
+    height: 240px;
+  }
+  .prev-btn,
+  .next-btn {
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    font-size: 30px;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .prev-btn {
+    left: 20px;
+  }
+  .next-btn {
+    right: 20px;
+  }
+  .menu-options {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    display: flex;
+    transform: translate(-50%);
+    .option {
+      width: 6px;
+      height: 6px;
+      margin-right: 6px;
+      background-color: #ffffff4d;
+      border-radius: 50%;
+      cursor: pointer;
+      // transition: 0.2s linear;
+      &:hover {
+        background-color: #ffffff;
+      }
+    }
+    .option-active {
+      width: 6px;
+      height: 6px;
+      margin-right: 6px;
+      // transition: 0.2s linear;
+      background-color: #ffffff;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+}
+.card-swiper {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  .center-pic {
+    height: 240px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .center {
+    position: absolute;
+    z-index: 5;
+    transition: 0.2s linear;
+  }
+  .left {
+    position: absolute;
+    transition: 0.2s linear;
+  }
+  .right {
+    position: absolute;
+    transition: 0.2s linear;
+  }
+  .menu-options {
+    position: absolute;
+    bottom: -20px;
+    left: 55%;
+    display: flex;
+    // transform: translate(-50%);
+    .option {
+      width: 6px;
+      height: 6px;
+      margin-right: 6px;
+      background-color: #e5e5e5;
+      border-radius: 50%;
+      cursor: pointer;
+      // transition: 0.2s linear;
+      &:hover {
+        background-color: #c9cace;
+      }
+    }
+    .option-active {
+      width: 6px;
+      height: 6px;
+      margin-right: 6px;
+      // transition: 0.2s linear;
+      background-color: #c9cace;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+}

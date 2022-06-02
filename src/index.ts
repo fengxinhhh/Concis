@@ -20,3 +20,4 @@ export { default as Rate } from './Rate';
 export { default as Tree } from './Tree';
 export { default as TreeView } from './TreeView';
 export { default as CheckBox } from './CheckBox';
+export { default as Swiper } from './Swiper';

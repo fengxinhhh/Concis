@@ -1,3 +1,9 @@
+.layout {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 .button .primary {
   display: flex;
   align-items: center;
@@ -78,12 +84,6 @@
   100% {
     transform: rotate(360deg);
   }
-}
-.layout {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 .divider .line {
   position: relative;
@@ -205,6 +205,148 @@
   text-align: center;
   cursor: pointer;
 }
+.menu {
+  width: 220px;
+  padding: 2px 0px;
+  color: black;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.menu .menuOptions {
+  padding: 0 10px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.menu .menuOptions .fatherTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+.menu .menuOptions .fatherTitle:hover {
+  color: #1890ff;
+}
+.menu .menuOptions .activeFatherTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  color: #1890ff;
+}
+.menu .menuOptions .activeFatherTitle:hover {
+  color: #1890ff;
+}
+.menu .menuOptions .left i {
+  margin-right: 10px;
+}
+.menu .activeMenuOptions {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 5px;
+  overflow: hidden;
+  color: #1890ff;
+  font-size: 14px;
+  line-height: 50px;
+  background-color: #e6f7ff;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.menu .activeMenuOptions :after {
+  width: 3px;
+  height: 50px;
+  background-color: #1890ff;
+  content: '';
+}
+.menu .childMenuOptions {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 5px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.darkMenu {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 2px 0px;
+  color: #ffffffa6;
+  background-color: #001529;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.darkMenu .menuOptions {
+  padding: 0 10px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.darkMenu .menuOptions .fatherTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+.darkMenu .menuOptions .fatherTitle:hover {
+  color: #fff;
+}
+.darkMenu .menuOptions .activeFatherTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 50px;
+  color: #fff;
+}
+.darkMenu .menuOptions .activeFatherTitle:hover {
+  color: #fff;
+}
+.darkMenu .menuOptions .left i {
+  margin-right: 10px;
+}
+.darkMenu .activeMenuOptions {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 5px;
+  overflow: hidden;
+  color: #fff;
+  font-size: 14px;
+  line-height: 50px;
+  background-color: #1890ff;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.darkMenu .childMenuOptions {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding-left: 5px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 50px;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+.affix {
+  position: relative;
+  z-index: 99;
+  display: inline-block;
+  color: #fff;
+  background-color: #1890ff;
+}
 .box {
   position: relative;
   display: flex;
@@ -239,13 +381,6 @@
   display: flex;
   flex-direction: column;
   color: #bebdbd;
-}
-.affix {
-  position: relative;
-  z-index: 99;
-  display: inline-block;
-  color: #fff;
-  background-color: #1890ff;
 }
 .time-picker {
   position: relative;
@@ -423,140 +558,34 @@
 .time-picker .check-box .time-footer .go-back-icon {
   cursor: pointer;
 }
-.menu {
-  width: 220px;
-  padding: 2px 0px;
-  color: black;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-.menu .menuOptions {
-  padding: 0 10px;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 50px;
+.rate {
   cursor: pointer;
-  transition: 0.2s linear;
 }
-.menu .menuOptions .fatherTitle {
+.rate .rate-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
+  width: 100%;
 }
-.menu .menuOptions .fatherTitle:hover {
-  color: #1890ff;
-}
-.menu .menuOptions .activeFatherTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
-  color: #1890ff;
-}
-.menu .menuOptions .activeFatherTitle:hover {
-  color: #1890ff;
-}
-.menu .menuOptions .left i {
-  margin-right: 10px;
-}
-.menu .activeMenuOptions {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding-left: 5px;
-  overflow: hidden;
-  color: #1890ff;
-  font-size: 14px;
-  line-height: 50px;
-  background-color: #e6f7ff;
-  cursor: pointer;
-  transition: 0.2s linear;
-}
-.menu .activeMenuOptions :after {
-  width: 3px;
-  height: 50px;
-  background-color: #1890ff;
-  content: '';
-}
-.menu .childMenuOptions {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding-left: 5px;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 50px;
-  cursor: pointer;
-  transition: 0.2s linear;
-}
-.darkMenu {
-  box-sizing: border-box;
-  width: 200px;
-  padding: 2px 0px;
-  color: #ffffffa6;
-  background-color: #001529;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-.darkMenu .menuOptions {
-  padding: 0 10px;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 50px;
-  cursor: pointer;
-  transition: 0.2s linear;
-}
-.darkMenu .menuOptions .fatherTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
-}
-.darkMenu .menuOptions .fatherTitle:hover {
-  color: #fff;
-}
-.darkMenu .menuOptions .activeFatherTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  height: 50px;
-  color: #fff;
-}
-.darkMenu .menuOptions .activeFatherTitle:hover {
-  color: #fff;
-}
-.darkMenu .menuOptions .left i {
-  margin-right: 10px;
-}
-.darkMenu .activeMenuOptions {
+.rate .rate-container .rate-box {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding-left: 5px;
-  overflow: hidden;
-  color: #fff;
-  font-size: 14px;
-  line-height: 50px;
-  background-color: #1890ff;
-  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+.rate .rate-container .rate-box .half-dialog {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 20px;
+  background-color: #fff;
   transition: 0.2s linear;
 }
-.darkMenu .childMenuOptions {
+.rate .rate-container .rate-box .rate-row {
+  color: #f6dd06;
+}
+.rate .rate-container .rate-box:last-of-type {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding-left: 5px;
-  overflow: hidden;
-  font-size: 14px;
-  line-height: 50px;
-  cursor: pointer;
-  transition: 0.2s linear;
+  padding-right: 10px;
 }
 .steps .step-content {
   position: relative;
@@ -799,35 +828,6 @@
     font-size: 14px;
   }
 }
-.rate {
-  cursor: pointer;
-}
-.rate .rate-container {
-  display: flex;
-  width: 100%;
-}
-.rate .rate-container .rate-box {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-}
-.rate .rate-container .rate-box .half-dialog {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 20px;
-  background-color: #fff;
-  transition: 0.2s linear;
-}
-.rate .rate-container .rate-box .rate-row {
-  color: #f6dd06;
-}
-.rate .rate-container .rate-box:last-of-type {
-  position: relative;
-  padding-right: 10px;
-}
 .tree-container {
   display: flex;
   flex-direction: column;
@@ -947,9 +947,9 @@
 .jumpBox .jump:active {
   border-color: #1890ff;
 }
-.header {
-  width: 100%;
-  background-color: #7dbcea;
+.slider {
+  width: 30%;
+  background-color: #3ba0e9;
   color: #fff;
   text-align: center;
   padding: 50px 0;
@@ -961,16 +961,16 @@
   text-align: center;
   background-color: #108ee9;
 }
-.footer {
+.header {
   width: 100%;
   background-color: #7dbcea;
   color: #fff;
   text-align: center;
   padding: 50px 0;
 }
-.slider {
-  width: 30%;
-  background-color: #3ba0e9;
+.footer {
+  width: 100%;
+  background-color: #7dbcea;
   color: #fff;
   text-align: center;
   padding: 50px 0;
@@ -1111,6 +1111,117 @@
 }
 .radioGroup .groupActive:hover {
   opacity: 0.7;
+}
+.swipers {
+  position: relative;
+  top: 0;
+  right: 0;
+  height: 240px;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: 0.2s linear;
+}
+.swipers .swiperList {
+  position: relative;
+  display: flex;
+  width: 3600px;
+}
+.swipers .swiper-img {
+  height: 240px;
+}
+.swipers .prev-btn,
+.swipers .next-btn {
+  position: absolute;
+  top: 50%;
+  color: #fff;
+  font-size: 30px;
+  transform: translate(0, -50%);
+  cursor: pointer;
+}
+.swipers .prev-btn img,
+.swipers .next-btn img {
+  width: 30px;
+  height: 30px;
+}
+.swipers .prev-btn {
+  left: 20px;
+}
+.swipers .next-btn {
+  right: 20px;
+}
+.swipers .menu-options {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  display: flex;
+  transform: translate(-50%);
+}
+.swipers .menu-options .option {
+  width: 6px;
+  height: 6px;
+  margin-right: 6px;
+  background-color: #ffffff4d;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.swipers .menu-options .option:hover {
+  background-color: #ffffff;
+}
+.swipers .menu-options .option-active {
+  width: 6px;
+  height: 6px;
+  margin-right: 6px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.card-swiper {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
+.card-swiper .center-pic {
+  height: 240px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.card-swiper .center {
+  position: absolute;
+  z-index: 5;
+  transition: 0.2s linear;
+}
+.card-swiper .left {
+  position: absolute;
+  transition: 0.2s linear;
+}
+.card-swiper .right {
+  position: absolute;
+  transition: 0.2s linear;
+}
+.card-swiper .menu-options {
+  position: absolute;
+  bottom: -20px;
+  left: 55%;
+  display: flex;
+}
+.card-swiper .menu-options .option {
+  width: 6px;
+  height: 6px;
+  margin-right: 6px;
+  background-color: #e5e5e5;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.card-swiper .menu-options .option:hover {
+  background-color: #c9cace;
+}
+.card-swiper .menu-options .option-active {
+  width: 6px;
+  height: 6px;
+  margin-right: 6px;
+  background-color: #c9cace;
+  border-radius: 50%;
+  cursor: pointer;
 }
 .tree-select-dialog {
   box-sizing: border-box;
