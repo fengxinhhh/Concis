@@ -67,12 +67,16 @@
 }
 .card-swiper {
   position: relative;
+  width: 100% !important;
   margin: 0 auto;
   text-align: center;
   .center-pic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     height: 240px;
     margin: 0 auto;
-    overflow: hidden;
+    transform: translate(-50%, -50%);
   }
   .center {
     position: absolute;
@@ -90,9 +94,9 @@
   .menu-options {
     position: absolute;
     bottom: -20px;
-    left: 55%;
+    left: 50%;
     display: flex;
-    // transform: translate(-50%);
+    transform: translate(-50%);
     .option {
       width: 6px;
       height: 6px;

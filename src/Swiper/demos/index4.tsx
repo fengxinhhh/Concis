@@ -10,6 +10,15 @@ export default function MenuDemos1() {
     'http://react-view-ui.com:92/images/swiper-img5.webp',
   ];
   return (
-    <Swiper imgList={imgList} pictureSize={600} height={240} deply={3000} autoPlayer showTrigger />
+    <Swiper
+      imgList={imgList}
+      pictureSize={500}
+      height={240}
+      showTrigger
+      deply={3000}
+      card
+      autoPlayer
+      showTrigger
+    />
   );
 }

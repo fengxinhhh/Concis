@@ -25,6 +25,11 @@ interface swiperProps {
    */
   autoPlayer?: boolean;
   /**
+   * @description 展示小圆点
+   * @default false
+   */
+  showTrigger?: boolean;
+  /**
    * @description 自动播放间隔
    * @default 3000ms
    */
@@ -35,19 +40,66 @@ interface swiperProps {
    */
   card?: boolean;
 }
+type imgPos = {
+  //卡片图配置接口范式
+  left: number | string;
+  top?: number | string;
+  right?: number;
+  bottom?: number;
+  margin?: string;
+};
+interface imgOptions {
+  leftPic: {
+    pos: imgPos;
+    width: string;
+    height: string;
+    zIndex: number;
+    top: string;
+    picIndex: number;
+    opacity: number;
+  };
+  centerPic: {
+    pos: imgPos;
+    width: string;
+    height: string;
+    zIndex: number;
+    top: string;
+    picIndex: number;
+    opacity: number;
+  };
+  rightPic: {
+    pos: imgPos;
+    width: string;
+    height: string;
+    zIndex: number;
+    top: string;
+    picIndex: number;
+    opacity: number;
+  };
+}
 
 const Swiper: FC<swiperProps> = (props) => {
-  let { imgList, pictureSize = 400, height = 240, autoPlayer, deply = 3000, card } = props;
+  let {
+    imgList,
+    pictureSize = 400,
+    height = 240,
+    autoPlayer,
+    deply = 3000,
+    showTrigger,
+    card,
+  } = props;
 
   const [renderImgList, setRenderImgList] = useState<Array<string>>(imgList);
   const [propsImgList, setPropsImgList] = useState<Array<string>>(imgList);
   const [rightTransform, setRightTransform] = useState(pictureSize);
   const [transition, setTransition] = useState('0.2s linear');
   const [cardSwiperIndex, setCardSwiperIndex] = useState<any>(swiperIndex[imgList.length]);
-  const [cardImgTransform, setCardImgTransform] = useState({
+  const [cardImgTransform, setCardImgTransform] = useState<imgOptions>({
     //卡片图片样式参数
     leftPic: {
-      pos: pictureSize + 150 + 'px',
+      pos: {
+        left: 0,
+      },
       width: pictureSize / 2 + 'px',
       height: height - 60 + 'px',
       zIndex: 2,
@@ -56,7 +108,13 @@ const Swiper: FC<swiperProps> = (props) => {
       opacity: 0.4,
     },
     centerPic: {
-      pos: '180px',
+      pos: {
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        margin: 'auto',
+      },
       width: pictureSize + 'px',
       height: height + 'px',
       zIndex: 5,
@@ -65,7 +123,9 @@ const Swiper: FC<swiperProps> = (props) => {
       opacity: 1,
     },
     rightPic: {
-      pos: '-20px',
+      pos: {
+        left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+      },
       width: pictureSize / 2 + 'px',
       height: height - 60 + 'px',
       zIndex: 2,
@@ -119,9 +179,11 @@ const Swiper: FC<swiperProps> = (props) => {
     //卡片图自动播放
     cardTimer.current = setInterval(() => {
       setCardImgTransform((old) => {
-        if (old.centerPic.pos == '180px') {
+        if (old.centerPic.pos.margin) {
           old.centerPic = {
-            pos: pictureSize + 150 + 'px',
+            pos: {
+              left: 0,
+            },
             width: pictureSize / 2 + 'px',
             height: height - 60 + 'px',
             zIndex: 2,
@@ -129,9 +191,11 @@ const Swiper: FC<swiperProps> = (props) => {
             picIndex: 0,
             opacity: 0.4,
           };
-        } else if (old.centerPic.pos == pictureSize + 150 + 'px') {
+        } else if (!old.centerPic.pos.margin && old.centerPic.pos.left == 0) {
           old.centerPic = {
-            pos: '-20px',
+            pos: {
+              left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+            },
             width: pictureSize / 2 + 'px',
             height: height - 60 + 'px',
             zIndex: 2,
@@ -141,7 +205,13 @@ const Swiper: FC<swiperProps> = (props) => {
           };
         } else {
           old.centerPic = {
-            pos: '180px',
+            pos: {
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              margin: 'auto',
+            },
             width: pictureSize + 'px',
             height: height + 'px',
             zIndex: 5,
@@ -150,9 +220,11 @@ const Swiper: FC<swiperProps> = (props) => {
             opacity: 1,
           };
         }
-        if (old.leftPic.pos == '180px') {
+        if (old.leftPic.pos.margin) {
           old.leftPic = {
-            pos: pictureSize + 150 + 'px',
+            pos: {
+              left: 0,
+            },
             width: pictureSize / 2 + 'px',
             height: height - 60 + 'px',
             zIndex: 2,
@@ -160,9 +232,11 @@ const Swiper: FC<swiperProps> = (props) => {
             picIndex: 0,
             opacity: 0.4,
           };
-        } else if (old.leftPic.pos == pictureSize + 150 + 'px') {
+        } else if (!old.leftPic.pos.margin && old.leftPic.pos.left == 0) {
           old.leftPic = {
-            pos: '-20px',
+            pos: {
+              left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+            },
             width: pictureSize / 2 + 'px',
             height: height - 60 + 'px',
             zIndex: 2,
@@ -172,7 +246,13 @@ const Swiper: FC<swiperProps> = (props) => {
           };
         } else {
           old.leftPic = {
-            pos: '180px',
+            pos: {
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              margin: 'auto',
+            },
             width: pictureSize + 'px',
             height: height + 'px',
             zIndex: 5,
@@ -181,9 +261,11 @@ const Swiper: FC<swiperProps> = (props) => {
             opacity: 1,
           };
         }
-        if (old.rightPic.pos == '180px') {
+        if (old.rightPic.pos.margin) {
           old.rightPic = {
-            pos: pictureSize + 150 + 'px',
+            pos: {
+              left: 0,
+            },
             width: pictureSize / 2 + 'px',
             height: height - 60 + 'px',
             zIndex: 2,
@@ -191,9 +273,11 @@ const Swiper: FC<swiperProps> = (props) => {
             picIndex: 0,
             opacity: 0.4,
           };
-        } else if (old.rightPic.pos == pictureSize + 150 + 'px') {
+        } else if (!old.rightPic.pos.margin && old.rightPic.pos.left == 0) {
           old.rightPic = {
-            pos: '-20px',
+            pos: {
+              left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+            },
             width: pictureSize / 2 + 'px',
             height: height - 60 + 'px',
             zIndex: 2,
@@ -203,7 +287,13 @@ const Swiper: FC<swiperProps> = (props) => {
           };
         } else {
           old.rightPic = {
-            pos: '180px',
+            pos: {
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              margin: 'auto',
+            },
             width: pictureSize + 'px',
             height: height + 'px',
             zIndex: 5,
@@ -277,7 +367,7 @@ const Swiper: FC<swiperProps> = (props) => {
         //center
         return {
           width: cardImgTransform.centerPic.width,
-          right: cardImgTransform.centerPic.pos,
+          ...cardImgTransform.centerPic.pos,
           height: cardImgTransform.centerPic.height,
           zIndex: cardImgTransform.centerPic.zIndex,
           top: cardImgTransform.centerPic.top,
@@ -287,7 +377,7 @@ const Swiper: FC<swiperProps> = (props) => {
         //left
         return {
           width: cardImgTransform.leftPic.width,
-          right: cardImgTransform.leftPic.pos,
+          ...cardImgTransform.leftPic.pos,
           height: cardImgTransform.leftPic.height,
           zIndex: cardImgTransform.leftPic.zIndex,
           top: cardImgTransform.leftPic.top,
@@ -297,7 +387,7 @@ const Swiper: FC<swiperProps> = (props) => {
         //right
         return {
           width: cardImgTransform.rightPic.width,
-          right: cardImgTransform.rightPic.pos,
+          ...cardImgTransform.rightPic.pos,
           height: cardImgTransform.rightPic.height,
           zIndex: cardImgTransform.rightPic.zIndex,
           top: cardImgTransform.rightPic.top,
@@ -309,12 +399,14 @@ const Swiper: FC<swiperProps> = (props) => {
   );
   const toggleCard = (styles: any) => {
     //卡片轮播手动切换
-    if (styles.zIndex == 2 && styles.right == '-20px') {
+    if (styles.zIndex == 2 && styles.left !== 0) {
       //点击next
       const oldCardImgTransform = { ...cardImgTransform };
-      if (oldCardImgTransform.centerPic.pos == '180px') {
+      if (oldCardImgTransform.centerPic.pos.margin) {
         oldCardImgTransform.centerPic = {
-          pos: pictureSize + 150 + 'px',
+          pos: {
+            left: 0,
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -322,9 +414,14 @@ const Swiper: FC<swiperProps> = (props) => {
           picIndex: 0,
           opacity: 0.4,
         };
-      } else if (oldCardImgTransform.centerPic.pos == pictureSize + 150 + 'px') {
+      } else if (
+        !oldCardImgTransform.centerPic.pos.margin &&
+        oldCardImgTransform.centerPic.pos.left == 0
+      ) {
         oldCardImgTransform.centerPic = {
-          pos: '-20px',
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -334,7 +431,13 @@ const Swiper: FC<swiperProps> = (props) => {
         };
       } else {
         oldCardImgTransform.centerPic = {
-          pos: '180px',
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
           width: pictureSize + 'px',
           height: height + 'px',
           zIndex: 5,
@@ -343,9 +446,11 @@ const Swiper: FC<swiperProps> = (props) => {
           opacity: 1,
         };
       }
-      if (oldCardImgTransform.leftPic.pos == '180px') {
+      if (oldCardImgTransform.leftPic.pos.margin) {
         oldCardImgTransform.leftPic = {
-          pos: pictureSize + 150 + 'px',
+          pos: {
+            left: 0,
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -353,9 +458,14 @@ const Swiper: FC<swiperProps> = (props) => {
           picIndex: 0,
           opacity: 0.4,
         };
-      } else if (oldCardImgTransform.leftPic.pos == pictureSize + 150 + 'px') {
+      } else if (
+        !oldCardImgTransform.leftPic.pos.margin &&
+        oldCardImgTransform.leftPic.pos.left == 0
+      ) {
         oldCardImgTransform.leftPic = {
-          pos: '-20px',
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -365,7 +475,13 @@ const Swiper: FC<swiperProps> = (props) => {
         };
       } else {
         oldCardImgTransform.leftPic = {
-          pos: '180px',
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
           width: pictureSize + 'px',
           height: height + 'px',
           zIndex: 5,
@@ -374,9 +490,11 @@ const Swiper: FC<swiperProps> = (props) => {
           opacity: 1,
         };
       }
-      if (oldCardImgTransform.rightPic.pos == '180px') {
+      if (oldCardImgTransform.rightPic.pos.margin) {
         oldCardImgTransform.rightPic = {
-          pos: pictureSize + 150 + 'px',
+          pos: {
+            left: 0,
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -384,9 +502,14 @@ const Swiper: FC<swiperProps> = (props) => {
           picIndex: 0,
           opacity: 0.4,
         };
-      } else if (oldCardImgTransform.rightPic.pos == pictureSize + 150 + 'px') {
+      } else if (
+        !oldCardImgTransform.rightPic.pos.margin &&
+        oldCardImgTransform.rightPic.pos.left == 0
+      ) {
         oldCardImgTransform.rightPic = {
-          pos: '-20px',
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -396,7 +519,13 @@ const Swiper: FC<swiperProps> = (props) => {
         };
       } else {
         oldCardImgTransform.rightPic = {
-          pos: '180px',
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
           width: pictureSize + 'px',
           height: height + 'px',
           zIndex: 5,
@@ -415,12 +544,14 @@ const Swiper: FC<swiperProps> = (props) => {
         }
         return old + 1;
       });
-    } else if (styles.zIndex == 2 && styles.right !== '-20px') {
+    } else if (styles.zIndex == 2 && styles.left == 0) {
       //点击prev，中间图往右，右图往左，左图往中
       const oldCardImgTransform = { ...cardImgTransform };
-      if (oldCardImgTransform.centerPic.pos == '180px') {
+      if (oldCardImgTransform.centerPic.pos.margin) {
         oldCardImgTransform.centerPic = {
-          pos: '-20px',
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -428,9 +559,18 @@ const Swiper: FC<swiperProps> = (props) => {
           picIndex: 2,
           opacity: 0.4,
         };
-      } else if (oldCardImgTransform.centerPic.pos == pictureSize + 150 + 'px') {
+      } else if (
+        !oldCardImgTransform.centerPic.pos.margin &&
+        oldCardImgTransform.centerPic.pos.left == 0
+      ) {
         oldCardImgTransform.centerPic = {
-          pos: '180px',
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
           width: pictureSize + 'px',
           height: height + 'px',
           zIndex: 5,
@@ -440,7 +580,9 @@ const Swiper: FC<swiperProps> = (props) => {
         };
       } else {
         oldCardImgTransform.centerPic = {
-          pos: pictureSize + 150 + 'px',
+          pos: {
+            left: 0,
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -449,9 +591,11 @@ const Swiper: FC<swiperProps> = (props) => {
           opacity: 0.4,
         };
       }
-      if (oldCardImgTransform.leftPic.pos == '180px') {
+      if (oldCardImgTransform.leftPic.pos.margin) {
         oldCardImgTransform.leftPic = {
-          pos: '-20px',
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -459,9 +603,18 @@ const Swiper: FC<swiperProps> = (props) => {
           picIndex: 2,
           opacity: 0.4,
         };
-      } else if (oldCardImgTransform.leftPic.pos == pictureSize + 150 + 'px') {
+      } else if (
+        !oldCardImgTransform.leftPic.pos.margin &&
+        oldCardImgTransform.leftPic.pos.left == 0
+      ) {
         oldCardImgTransform.leftPic = {
-          pos: '180px',
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
           width: pictureSize + 'px',
           height: height + 'px',
           zIndex: 5,
@@ -471,7 +624,9 @@ const Swiper: FC<swiperProps> = (props) => {
         };
       } else {
         oldCardImgTransform.leftPic = {
-          pos: pictureSize + 150 + 'px',
+          pos: {
+            left: 0,
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -480,9 +635,11 @@ const Swiper: FC<swiperProps> = (props) => {
           opacity: 0.4,
         };
       }
-      if (oldCardImgTransform.rightPic.pos == '180px') {
+      if (oldCardImgTransform.rightPic.pos.margin) {
         oldCardImgTransform.rightPic = {
-          pos: '-20px',
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -490,9 +647,18 @@ const Swiper: FC<swiperProps> = (props) => {
           picIndex: 2,
           opacity: 0.4,
         };
-      } else if (oldCardImgTransform.rightPic.pos == pictureSize + 150 + 'px') {
+      } else if (
+        !oldCardImgTransform.rightPic.pos.margin &&
+        oldCardImgTransform.rightPic.pos.left == 0
+      ) {
         oldCardImgTransform.rightPic = {
-          pos: '180px',
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
           width: pictureSize + 'px',
           height: height + 'px',
           zIndex: 5,
@@ -502,7 +668,9 @@ const Swiper: FC<swiperProps> = (props) => {
         };
       } else {
         oldCardImgTransform.rightPic = {
-          pos: pictureSize + 150 + 'px',
+          pos: {
+            left: 0,
+          },
           width: pictureSize / 2 + 'px',
           height: height - 60 + 'px',
           zIndex: 2,
@@ -528,102 +696,140 @@ const Swiper: FC<swiperProps> = (props) => {
     //点击卡片轮播图小圆点
     if (cardPlayCircleIndex < index) {
       setCardPlayCircleIndex(index);
-      setCardImgTransform((old) => {
-        if (old.centerPic.pos == '180px') {
-          old.centerPic = {
-            pos: pictureSize + 150 + 'px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 0,
-            opacity: 0.4,
-          };
-        } else if (old.centerPic.pos == pictureSize + 150 + 'px') {
-          old.centerPic = {
-            pos: '-20px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 2,
-            opacity: 0.4,
-          };
-        } else {
-          old.centerPic = {
-            pos: '180px',
-            width: pictureSize + 'px',
-            height: '240px',
-            zIndex: 5,
-            top: '',
-            picIndex: 1,
-            opacity: 1,
-          };
-        }
-        if (old.leftPic.pos == '180px') {
-          old.leftPic = {
-            pos: pictureSize + 150 + 'px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 0,
-            opacity: 0.4,
-          };
-        } else if (old.leftPic.pos == pictureSize + 150 + 'px') {
-          old.leftPic = {
-            pos: '-20px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 2,
-            opacity: 0.4,
-          };
-        } else {
-          old.leftPic = {
-            pos: '180px',
-            width: pictureSize + 'px',
-            height: '240px',
-            zIndex: 5,
-            top: '',
-            picIndex: 1,
-            opacity: 1,
-          };
-        }
-        if (old.rightPic.pos == '180px') {
-          old.rightPic = {
-            pos: pictureSize + 150 + 'px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 0,
-            opacity: 0.4,
-          };
-        } else if (old.rightPic.pos == pictureSize + 150 + 'px') {
-          old.rightPic = {
-            pos: '-20px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 2,
-            opacity: 0.4,
-          };
-        } else {
-          old.rightPic = {
-            pos: '180px',
-            width: pictureSize + 'px',
-            height: '240px',
-            zIndex: 5,
-            top: '',
-            picIndex: 1,
-            opacity: 1,
-          };
-        }
-        return JSON.parse(JSON.stringify(old));
-      });
+      const oldCardImgTransform = { ...cardImgTransform };
+      if (oldCardImgTransform.centerPic.pos.margin) {
+        oldCardImgTransform.centerPic = {
+          pos: {
+            left: 0,
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 0,
+          opacity: 0.4,
+        };
+      } else if (
+        !oldCardImgTransform.centerPic.pos.margin &&
+        oldCardImgTransform.centerPic.pos.left == 0
+      ) {
+        oldCardImgTransform.centerPic = {
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 2,
+          opacity: 0.4,
+        };
+      } else {
+        oldCardImgTransform.centerPic = {
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
+          width: pictureSize + 'px',
+          height: height + 'px',
+          zIndex: 5,
+          top: '',
+          picIndex: 1,
+          opacity: 1,
+        };
+      }
+      if (oldCardImgTransform.leftPic.pos.margin) {
+        oldCardImgTransform.leftPic = {
+          pos: {
+            left: 0,
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 0,
+          opacity: 0.4,
+        };
+      } else if (
+        !oldCardImgTransform.leftPic.pos.margin &&
+        oldCardImgTransform.leftPic.pos.left == 0
+      ) {
+        oldCardImgTransform.leftPic = {
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 2,
+          opacity: 0.4,
+        };
+      } else {
+        oldCardImgTransform.leftPic = {
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
+          width: pictureSize + 'px',
+          height: height + 'px',
+          zIndex: 5,
+          top: '',
+          picIndex: 1,
+          opacity: 1,
+        };
+      }
+      if (oldCardImgTransform.rightPic.pos.margin) {
+        oldCardImgTransform.rightPic = {
+          pos: {
+            left: 0,
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 0,
+          opacity: 0.4,
+        };
+      } else if (
+        !oldCardImgTransform.rightPic.pos.margin &&
+        oldCardImgTransform.rightPic.pos.left == 0
+      ) {
+        oldCardImgTransform.rightPic = {
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 2,
+          opacity: 0.4,
+        };
+      } else {
+        oldCardImgTransform.rightPic = {
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
+          width: pictureSize + 'px',
+          height: height + 'px',
+          zIndex: 5,
+          top: '',
+          picIndex: 1,
+          opacity: 1,
+        };
+      }
+      setCardImgTransform(oldCardImgTransform);
       setCardSwiperIndex((old: any) => {
         old.sort((a: any, b: any) => a[0] - b[0]);
         for (let i = 0; i < index; i++) {
@@ -633,102 +839,140 @@ const Swiper: FC<swiperProps> = (props) => {
       });
     } else if (cardPlayCircleIndex > index) {
       setCardPlayCircleIndex(index);
-      setCardImgTransform((old) => {
-        if (old.centerPic.pos == '180px') {
-          old.centerPic = {
-            pos: '-20px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 2,
-            opacity: 0.4,
-          };
-        } else if (old.centerPic.pos == pictureSize + 150 + 'px') {
-          old.centerPic = {
-            pos: '180px',
-            width: pictureSize + 'px',
-            height: '240px',
-            zIndex: 5,
-            top: '',
-            picIndex: 1,
-            opacity: 1,
-          };
-        } else {
-          old.centerPic = {
-            pos: pictureSize + 150 + 'px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 0,
-            opacity: 0.4,
-          };
-        }
-        if (old.leftPic.pos == '180px') {
-          old.leftPic = {
-            pos: '-20px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 2,
-            opacity: 0.4,
-          };
-        } else if (old.leftPic.pos == pictureSize + 150 + 'px') {
-          old.leftPic = {
-            pos: '180px',
-            width: pictureSize + 'px',
-            height: '240px',
-            zIndex: 5,
-            top: '',
-            picIndex: 1,
-            opacity: 1,
-          };
-        } else {
-          old.leftPic = {
-            pos: pictureSize + 150 + 'px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 0,
-            opacity: 0.4,
-          };
-        }
-        if (old.rightPic.pos == '180px') {
-          old.rightPic = {
-            pos: '-20px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 2,
-            opacity: 0.4,
-          };
-        } else if (old.rightPic.pos == pictureSize + 150 + 'px') {
-          old.rightPic = {
-            pos: '180px',
-            width: pictureSize + 'px',
-            height: '240px',
-            zIndex: 5,
-            top: '',
-            picIndex: 1,
-            opacity: 1,
-          };
-        } else {
-          old.rightPic = {
-            pos: pictureSize + 150 + 'px',
-            width: pictureSize / 2 + 'px',
-            height: '180px',
-            zIndex: 2,
-            top: '20px',
-            picIndex: 0,
-            opacity: 0.4,
-          };
-        }
-        return JSON.parse(JSON.stringify(old));
-      });
+      const oldCardImgTransform = { ...cardImgTransform };
+      if (oldCardImgTransform.centerPic.pos.margin) {
+        oldCardImgTransform.centerPic = {
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 2,
+          opacity: 0.4,
+        };
+      } else if (
+        !oldCardImgTransform.centerPic.pos.margin &&
+        oldCardImgTransform.centerPic.pos.left == 0
+      ) {
+        oldCardImgTransform.centerPic = {
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
+          width: pictureSize + 'px',
+          height: height + 'px',
+          zIndex: 5,
+          top: '',
+          picIndex: 1,
+          opacity: 1,
+        };
+      } else {
+        oldCardImgTransform.centerPic = {
+          pos: {
+            left: 0,
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 0,
+          opacity: 0.4,
+        };
+      }
+      if (oldCardImgTransform.leftPic.pos.margin) {
+        oldCardImgTransform.leftPic = {
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 2,
+          opacity: 0.4,
+        };
+      } else if (
+        !oldCardImgTransform.leftPic.pos.margin &&
+        oldCardImgTransform.leftPic.pos.left == 0
+      ) {
+        oldCardImgTransform.leftPic = {
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
+          width: pictureSize + 'px',
+          height: height + 'px',
+          zIndex: 5,
+          top: '',
+          picIndex: 1,
+          opacity: 1,
+        };
+      } else {
+        oldCardImgTransform.leftPic = {
+          pos: {
+            left: 0,
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 0,
+          opacity: 0.4,
+        };
+      }
+      if (oldCardImgTransform.rightPic.pos.margin) {
+        oldCardImgTransform.rightPic = {
+          pos: {
+            left: pictureSize * 2 - 40 - pictureSize / 2 + 'px',
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 2,
+          opacity: 0.4,
+        };
+      } else if (
+        !oldCardImgTransform.rightPic.pos.margin &&
+        oldCardImgTransform.rightPic.pos.left == 0
+      ) {
+        oldCardImgTransform.rightPic = {
+          pos: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            margin: 'auto',
+          },
+          width: pictureSize + 'px',
+          height: height + 'px',
+          zIndex: 5,
+          top: '',
+          picIndex: 1,
+          opacity: 1,
+        };
+      } else {
+        oldCardImgTransform.rightPic = {
+          pos: {
+            left: 0,
+          },
+          width: pictureSize / 2 + 'px',
+          height: height - 60 + 'px',
+          zIndex: 2,
+          top: '20px',
+          picIndex: 0,
+          opacity: 0.4,
+        };
+      }
+      setCardImgTransform(oldCardImgTransform);
       setCardSwiperIndex((old: any) => {
         old.sort((a: any, b: any) => a[0] - b[0]);
         for (let i = 0; i < old.length; i++) {
@@ -746,7 +990,7 @@ const Swiper: FC<swiperProps> = (props) => {
   return (
     <Fragment>
       {!card ? (
-        <div className="swipers" style={{ width: pictureSize + 'px' }}>
+        <div className="swipers" style={{ width: pictureSize + 'px', height: height + 'px' }}>
           <div
             className="swiperList"
             style={{
@@ -760,7 +1004,7 @@ const Swiper: FC<swiperProps> = (props) => {
                 <img
                   key={index}
                   className="swiper-img"
-                  style={{ width: pictureSize + 'px' }}
+                  style={{ width: pictureSize + 'px', height: height + 'px' }}
                   src={img}
                 ></img>
               );
@@ -772,18 +1016,25 @@ const Swiper: FC<swiperProps> = (props) => {
           <div className="next-btn" onClick={toggleNext}>
             <RightCircleOutlined />
           </div>
-          <div className="menu-options">
-            {new Array(imgList.length).fill('').map((o, i) => {
-              return <div key={i} className={circleStyle(i)} onClick={() => clickToggle(i)}></div>;
-            })}
-          </div>
+          {showTrigger && (
+            <div className="menu-options">
+              {new Array(imgList.length).fill('').map((o, i) => {
+                return (
+                  <div key={i} className={circleStyle(i)} onClick={() => clickToggle(i)}></div>
+                );
+              })}
+            </div>
+          )}
         </div>
       ) : (
         <div
           className="card-swiper"
           style={{ height: height + 'px', width: pictureSize * 2 + 'px' }}
         >
-          <div className="center-pic" style={{ width: pictureSize * 2 + 'px' }}>
+          <div
+            className="center-pic"
+            style={{ width: pictureSize * 2 - 40 + 'px', height: height + 'px' }}
+          >
             <img
               src={propsImgList[cardSwiperIndex[0][cardImgTransform.centerPic.picIndex]]}
               style={cardImgStyle(0)}
@@ -803,17 +1054,19 @@ const Swiper: FC<swiperProps> = (props) => {
               onClick={() => toggleCard(cardImgStyle(2))}
             ></img>
           </div>
-          <div className="menu-options">
-            {new Array(propsImgList.length).fill('').map((o, i) => {
-              return (
-                <div
-                  key={i}
-                  className={i == cardPlayCircleIndex ? 'option-active' : 'option'}
-                  onClick={() => clickCardToggle(i)}
-                ></div>
-              );
-            })}
-          </div>
+          {showTrigger && (
+            <div className="menu-options">
+              {new Array(propsImgList.length).fill('').map((o, i) => {
+                return (
+                  <div
+                    key={i}
+                    className={i == cardPlayCircleIndex ? 'option-active' : 'option'}
+                    onClick={() => clickCardToggle(i)}
+                  ></div>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
     </Fragment>

@@ -52,7 +52,17 @@ interface ButtonStyle {
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; //原生button接口
 
 const Button: FC<ButtonProps & NativeButtonProps> = memo((props) => {
-  const { type, width, height, disabled, circle, dashed, loading, handleClick, children } = props;
+  const {
+    type,
+    width = '100',
+    height = '40',
+    disabled,
+    circle,
+    dashed,
+    loading,
+    handleClick,
+    children,
+  } = props;
 
   const buttonStyle = useMemo(() => {
     if (!type && type !== 'danger' && type !== 'warning' && type !== 'warning' && type !== 'text') {
@@ -83,7 +93,7 @@ const Button: FC<ButtonProps & NativeButtonProps> = memo((props) => {
     return size;
   }, [width, height, circle, dashed]);
   return (
-    <div className="button">
+    <div className="button" style={{ width: width + 'px', height: height + 'px' }}>
       <button
         className={buttonStyle}
         style={buttonSize as any}
