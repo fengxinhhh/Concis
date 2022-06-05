@@ -1,13 +1,4 @@
-import React, {
-  FC,
-  memo,
-  ReactNode,
-  useState,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-} from 'react';
+import React, { FC, memo, ReactNode, useState, useEffect, useMemo, useRef } from 'react';
 import lodash from 'loadsh';
 import './index.module.less';
 
@@ -61,6 +52,7 @@ const Popover: FC<popoverProps> = (props) => {
   } = props;
 
   const showBtnRef = useRef();
+  const dialogRef = useRef();
   const [showDialog, setShowDialog] = useState<boolean>(propsVisiable || false); //是否显示
   const [showBtnSize, setShowBtnSize] = useState({
     width: '',
@@ -84,10 +76,25 @@ const Popover: FC<popoverProps> = (props) => {
 
   useEffect(() => {
     if (propsVisiable != undefined) {
-      console.log('执行');
       setShowDialog(propsVisiable as boolean);
     }
   }, [propsVisiable]);
+  useEffect(() => {
+    const dialogDom = dialogRef.current;
+    if (showDialog) {
+      (dialogDom as any).style.width = showDialog ? `${dialogWidth}px` : '0px';
+      (dialogDom as any).style.height = showDialog ? '' : '0px';
+      setTimeout(() => {
+        (dialogDom as any).style.opacity = showDialog ? 1 : 0;
+      }, 100);
+    } else {
+      (dialogDom as any).style.opacity = showDialog ? 1 : 0;
+      setTimeout(() => {
+        (dialogDom as any).style.width = showDialog ? `${dialogWidth}px` : '0px';
+        (dialogDom as any).style.height = showDialog ? '' : '0px';
+      }, 100);
+    }
+  }, [showDialog]);
   const clickToggleDialog = (e: any) => {
     //点击打开dialog
     e.stopPropagation();
@@ -124,9 +131,9 @@ const Popover: FC<popoverProps> = (props) => {
       alignStyle.bottom = Number(showBtnSize.height) / 2 + 'px';
     }
     return {
-      width: showDialog ? `${dialogWidth}px` : '0px',
-      height: showDialog ? '' : '0px',
-      opacity: showDialog ? 1 : 0,
+      // width: showDialog ? `${dialogWidth}px` : '0px',
+      // height: showDialog ? '' : '0px',
+      // opacity: showDialog ? 1 : 0,
       ...alignStyle,
     };
   }, [content, showDialog, propsVisiable, showBtnSize]);
@@ -146,6 +153,7 @@ const Popover: FC<popoverProps> = (props) => {
           onClick={(e) => e.stopPropagation()}
           onMouseEnter={() => hoverOpenDialog()}
           onMouseLeave={() => hoverCloseDialog()}
+          ref={dialogRef as any}
         >
           {content}
         </div>
