@@ -29,7 +29,7 @@ interface RadioProps {
 }
 const Radio: FC<RadioProps> = (props) => {
   const { children } = props;
-  return <div style={{ display: 'none' }}>{children}</div>;
+  return <div>{children}</div>;
 };
 
 export default memo(Radio);

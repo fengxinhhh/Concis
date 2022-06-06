@@ -22,3 +22,4 @@ export { default as TreeView } from './TreeView';
 export { default as CheckBox } from './CheckBox';
 export { default as Swiper } from './Swiper';
 export { default as Popover } from './Popover';
+export { default as Table } from './Table';

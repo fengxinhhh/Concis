@@ -1,4 +1,13 @@
-import React, { FC, memo, ReactNode, useState, useCallback, useMemo, Fragment } from 'react';
+import React, {
+  FC,
+  memo,
+  ReactNode,
+  useState,
+  useCallback,
+  useMemo,
+  Fragment,
+  useEffect,
+} from 'react';
 import { CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
 
@@ -38,9 +47,16 @@ interface checkBoxProps {
 const CheckBox: FC<checkBoxProps> = (props) => {
   const { children, checked, disabled, group, checkCallback, checkGroupCallback } = props;
 
-  const [checkStatus, setCheckStatus] = useState<boolean>(checked || false);
+  const [checkStatus, setCheckStatus] = useState<boolean>();
   const [checkGroup, setCheckGroup] = useState<Array<checkGroup>>(group || []);
 
+  useEffect(() => {
+    if (checked != undefined) {
+      setCheckStatus(checked);
+    } else {
+      setCheckStatus(false);
+    }
+  }, [checked]);
   const toggleCheckedStatus = () => {
     //多选单组件切换状态
     if (disabled) return;
