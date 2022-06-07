@@ -53,13 +53,9 @@ const Table: FC<tableProps> = (props) => {
       //表头样式
       const styleResult = {
         width: 'auto',
-        textAlign: 'left',
       };
       if (thData?.width) {
         styleResult.width = `${thData.width}px`;
-      }
-      if (align) {
-        styleResult.textAlign = align;
       }
       return styleResult;
     },
@@ -206,19 +202,27 @@ const Table: FC<tableProps> = (props) => {
             {doColumnData.map((t, key) => {
               return (
                 <th key={key} style={tableStyle(t) as any} className="tableHead">
-                  <span>{t.title}</span>
-                  {t.sorter && avableSort && (
-                    <div className="sort-icon">
-                      <CaretUpOutlined
-                        onClick={() => sortColumn(key, t, 2)}
-                        style={sortIconStyle(t, 0)}
-                      />
-                      <CaretDownOutlined
-                        onClick={() => sortColumn(key, t, 3)}
-                        style={sortIconStyle(t, 1)}
-                      />
-                    </div>
-                  )}
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: align || 'flex-start',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <span>{t.title}</span>
+                    {t.sorter && avableSort && (
+                      <div className="sort-icon">
+                        <CaretUpOutlined
+                          onClick={() => sortColumn(key, t, 2)}
+                          style={sortIconStyle(t, 0)}
+                        />
+                        <CaretDownOutlined
+                          onClick={() => sortColumn(key, t, 3)}
+                          style={sortIconStyle(t, 1)}
+                        />
+                      </div>
+                    )}
+                  </div>
                 </th>
               );
             })}
