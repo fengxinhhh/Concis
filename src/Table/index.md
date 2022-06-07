@@ -27,10 +27,20 @@ group:
 
 ## 单选
 
+配置 radio 以支持单选，radioSelectCallback 获取选择结果
+
 <code src="./demos/index4.tsx" />
 
 ## 多选
 
+配置 checked 以支持多选，checkedSelectCallback 获取选择结果
+
 <code src="./demos/index5.tsx" />
+
+## 排序
+
+配置表头数组结构 sorter，默认排序设定值为 true 即可，自定义排序可设定为数组，0 下标位表示升序规则，1 下标位表示降序规则
+
+<code src="./demos/index6.tsx" />
 
 <API />

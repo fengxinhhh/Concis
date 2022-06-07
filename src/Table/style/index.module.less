@@ -5,6 +5,21 @@
     border-collapse: collapse;
     tr {
       border: 1px solid #e6e5e7;
+      .tableHead {
+        span {
+          float: left;
+        }
+        .sort-icon {
+          display: flex;
+          flex-direction: column;
+          float: left;
+          margin-left: 10px;
+          color: #a9adb2;
+          font-size: 12px;
+          cursor: pointer;
+        }
+      }
+
       td,
       th {
         padding: 10px 30px;

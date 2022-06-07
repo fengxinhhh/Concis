@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useCallback, useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { tableProps } from './interface';
 import CheckBox from '../CheckBox';
 import './style/index.module.less';
@@ -14,8 +14,10 @@ const Table: FC<tableProps> = (props) => {
     checked,
     radioSelectCallback,
     checkedSelectCallback,
+    avableSort,
   } = props;
 
+  const [doColumnData, setDoColumnData] = useState(titleParams); //表头数据
   const [doTableData, setDoTableData] = useState(tableData); //表数据
   const [radioRow, setRadioRow] = useState({}); //单选选中行
   const [checkedRow, setCheckedRow] = useState<Array<object>>([]); //单选选中行
@@ -26,6 +28,22 @@ const Table: FC<tableProps> = (props) => {
       //展开行处理
       newDoTableData.forEach((item: any) => {
         item.openLine = '';
+      });
+    }
+    if (avableSort) {
+      //排序处理
+      setDoColumnData((old) => {
+        old.forEach((item: any) => {
+          if (Array.isArray(item.sorter)) {
+            item.sorter = item.sorter.map((s: any) => {
+              return {
+                fn: s,
+                sorted: false,
+              };
+            });
+          }
+        });
+        return [...old];
       });
     }
     setDoTableData(newDoTableData);
@@ -49,14 +67,18 @@ const Table: FC<tableProps> = (props) => {
   );
   const openRow = (row: object, key: number): void => {
     //展开列表
-    expandedRowRender && expandedRowRender(row);
-    const newTableData = [...doTableData];
-    if (newTableData[key].openLine) {
-      newTableData[key].openLine = '';
-    } else {
-      newTableData[key]['openLine'] = expandedRowRender(row);
+    if (expandedRowRender) {
+      expandedRowRender(row);
+      const newTableData = [...doTableData];
+      if (newTableData[key].openLine) {
+        newTableData[key].openLine = '';
+      } else {
+        if (expandedRowRender(row)) {
+        }
+        newTableData[key]['openLine'] = expandedRowRender(row);
+      }
+      setDoTableData(newTableData);
     }
-    setDoTableData(newTableData);
   };
   const radioSelectRow = (row: object): void => {
     //单选行
@@ -90,6 +112,37 @@ const Table: FC<tableProps> = (props) => {
       return [...old];
     });
   };
+  const sortColumn = (index: number, row: any, sortType: number) => {
+    //表格单列排序  -> 2为升序 3为降序
+    const sortKey = row.dataIndex;
+    const newTableData = [...doTableData];
+    if (Array.isArray(row.sorter) && typeof row.sorter[0] == 'object') {
+      //自定义排序
+      newTableData.sort(row.sorter[sortType - 2].fn);
+      setDoTableData(newTableData);
+      setDoColumnData((old: Array<any>): Array<any> => {
+        if (sortType == 2) {
+          old[index].sorter[0].sorted = true;
+          old[index].sorter[1].sorted = false;
+        } else {
+          old[index].sorter[0].sorted = false;
+          old[index].sorter[1].sorted = true;
+        }
+
+        return [...old];
+      });
+    } else {
+      //默认排序
+      newTableData.sort((a, b) => {
+        return sortType == 2 ? a[sortKey] - b[sortKey] : b[sortKey] - a[sortKey];
+      });
+      setDoTableData(newTableData);
+      setDoColumnData((old) => {
+        old[index].sorter = sortType;
+        return [...old];
+      });
+    }
+  };
 
   const renderContentTd = (rowData: object) => {
     //渲染正文行
@@ -103,6 +156,39 @@ const Table: FC<tableProps> = (props) => {
       }
     });
   };
+  const sortIconStyle = useCallback(
+    (thRow: any, iconType: number) => {
+      //表头排序按钮样式
+      if (typeof thRow.sorter == 'number' || typeof thRow.sorter == 'boolean') {
+        //默认排序
+        if (iconType == 0) {
+          //升序箭头
+          return {
+            color: thRow.sorter == 2 ? '#1890ff' : '#a9adb2',
+          };
+        } else {
+          //降序箭头
+          return {
+            color: thRow.sorter == 3 ? '#1890ff' : '#a9adb2',
+          };
+        }
+      } else {
+        //自定义排序
+        if (iconType == 0) {
+          //升序箭头
+          return {
+            color: thRow.sorter[0].sorted ? '#1890ff' : '#a9adb2',
+          };
+        } else {
+          //降序箭头
+          return {
+            color: thRow.sorter[1].sorted ? '#1890ff' : '#a9adb2',
+          };
+        }
+      }
+    },
+    [titleParams, doColumnData],
+  );
   return (
     <div className="table">
       <table>
@@ -117,10 +203,22 @@ const Table: FC<tableProps> = (props) => {
                 />
               </th>
             )}
-            {titleParams.map((t, key) => {
+            {doColumnData.map((t, key) => {
               return (
-                <th key={key} style={tableStyle(t) as any}>
-                  {t.title}
+                <th key={key} style={tableStyle(t) as any} className="tableHead">
+                  <span>{t.title}</span>
+                  {t.sorter && avableSort && (
+                    <div className="sort-icon">
+                      <CaretUpOutlined
+                        onClick={() => sortColumn(key, t, 2)}
+                        style={sortIconStyle(t, 0)}
+                      />
+                      <CaretDownOutlined
+                        onClick={() => sortColumn(key, t, 3)}
+                        style={sortIconStyle(t, 1)}
+                      />
+                    </div>
+                  )}
                 </th>
               );
             })}

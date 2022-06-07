@@ -4,12 +4,12 @@ interface tableProps {
    * @description 表头配置项
    * @default []
    */
-  titleParams: Array<object>;
+  titleParams: Array<tableThType>;
   /**
    * @description 表内容配置项
    * @default []
    */
-  tableData: Array<object>;
+  tableData: Array<any>;
   /**
    * @description 表格对齐方式
    * @default left
@@ -43,6 +43,16 @@ interface tableProps {
    * @description 多选回调
    */
   checkedSelectCallback?: Function;
+  /**
+   * @description 支持排序
+   * @default false
+   */
+  avableSort?: boolean;
+  /**
+   * @description 表头中的排序规则，true采用列默认排序，Array采用自定义排序
+   * @default ''
+   */
+  sorter?: boolean | Array<Function>;
 }
 interface groupProps {
   prop: string;
@@ -50,5 +60,10 @@ interface groupProps {
   data: any;
   tableProps: any;
 }
-
+interface tableThType {
+  title: string | number;
+  dataIndex: string | number;
+  width?: string;
+  sorter?: boolean | Array<Function> | number | string;
+}
 export type { tableProps, groupProps };
