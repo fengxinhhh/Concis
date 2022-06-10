@@ -43,4 +43,30 @@ group:
 
 <code src="./demos/index6.tsx" />
 
+### 以下虚拟列表滚动、懒加载、分页为大数据时的建议方案，无法同时使用，只能选择其一进行开发
+
+## 虚拟列表滚动
+
+largeDateShowNum 表示固定列展示的数据条数，默认 10 条，通过 virtualized 开启虚拟列表
+
+<code src="./demos/index7.tsx" />
+
+## 懒加载
+
+largeDateShowNum 表示初始展示条数，默认 10 条，通过 lazyLoad 开启懒加载
+
+<code src="./demos/index8.tsx" />
+
+## 分页
+
+通过 pagination 开启分页，通过 paginationAlign 改变分页对齐方式
+
+<code src="./demos/index9.tsx" />
+
+## 拖拽
+
+通过 dropabled 开启拖拽
+
+<code src="./demos/index10.tsx" />
+
 <API />

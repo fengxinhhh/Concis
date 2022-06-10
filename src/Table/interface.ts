@@ -1,4 +1,3 @@
-import React, { ReactNode } from 'react';
 interface tableProps {
   /**
    * @description 表头配置项
@@ -53,12 +52,53 @@ interface tableProps {
    * @default ''
    */
   sorter?: boolean | Array<Function>;
-}
-interface groupProps {
-  prop: string;
-  width: string | number;
-  data: any;
-  tableProps: any;
+  /**
+   * @description 虚拟列表，大数据量的解决方案之一，无法与lazyLoad、pagination并用
+   * @default false
+   */
+  virtualized?: boolean;
+  /**
+   * @description 懒加载、虚拟列表默认展示数据条数
+   * @default 10
+   */
+  largeDateShowNum?: number;
+  /**
+   * @description 懒加载，大数据量的解决方案之一，无法与virtualized、pagination并用
+   * @default false
+   */
+  lazyLoad?: boolean;
+  /**
+   * @description 分页，大数据量的解决方案之一，无法与virtualized、lazyLoad并用
+   * @default false
+   */
+  pagination?: boolean;
+  /**
+   * @description 分页器对齐方式
+   * @default left
+   */
+  paginationAlign?: string;
+  /**
+   * @description 分页器每页展示配置
+   * @default [10, 20, 30, 50]
+   */
+  pageSizeOption?: Array<number>;
+  /**
+   * @description 分页器改变页码回调函数
+   */
+  changePNumCallback?: Function;
+  /**
+   * @description 分页器改变页码回调函数
+   */
+  changePSizeCallback?: Function;
+  /**
+   * @description 配置拖拽
+   * @default false
+   */
+  dropabled?: boolean;
+  /**
+   * @description 拖拽成功回调
+   */
+  dropCallback?: Function;
 }
 interface tableThType {
   title: string | number;
@@ -66,4 +106,4 @@ interface tableThType {
   width?: string;
   sorter?: boolean | Array<Function> | number | string;
 }
-export type { tableProps, groupProps };
+export type { tableProps };

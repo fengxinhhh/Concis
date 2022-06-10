@@ -4,6 +4,7 @@ import { Select } from '..';
 import './index.module.less';
 
 interface PaginationProps {
+  style?: object;
   /**
    * @description 总数据条数
    * @default 0
@@ -37,6 +38,7 @@ interface PaginationProps {
 }
 const Pagination: FC<PaginationProps> = (props) => {
   const {
+    style,
     changePageCallback,
     changePageSizeCallback,
     total,
@@ -200,20 +202,19 @@ const Pagination: FC<PaginationProps> = (props) => {
         //超出页码范围，不挑
         return (e.target.value = '');
       }
-      if (Math.ceil(total / sizePage) > 6) {
+      if (jumpPage > 6 && jumpPage < totalPage - 6) {
+        setPageRenderArray([jumpPage - 2, jumpPage - 1, jumpPage, jumpPage + 1, jumpPage + 2]);
+      } else if (jumpPage - 5 < 0) {
         setPageRenderArray([2, 3, 4, 5, 6]);
-      } else {
-        if (Math.ceil(total / sizePage) > 2) {
-          const array = new Array((Math.ceil(total / sizePage) as number) - 2).fill(0);
-          array.forEach((item, index) => {
-            array[index] = index + 2;
-          });
-          setPageRenderArray(array);
-        } else {
-          setPageRenderArray([]);
-        }
+      } else if (jumpPage + 5 > totalPage) {
+        setPageRenderArray([
+          totalPage - 5,
+          totalPage - 4,
+          totalPage - 3,
+          totalPage - 2,
+          totalPage - 1,
+        ]);
       }
-      console.log(pageRenderArray, totalPage);
       setNowIndex(jumpPage);
       changePageCallback && changePageCallback(jumpPage);
       e.target.value = '';
@@ -226,7 +227,7 @@ const Pagination: FC<PaginationProps> = (props) => {
   };
 
   return (
-    <div className="pagination">
+    <div className="pagination" style={style}>
       <div className={nowIndex === 1 ? `prev disabled` : `prev`} onClick={prevPage}>
         <LeftOutlined />
       </div>

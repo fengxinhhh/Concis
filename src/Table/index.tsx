@@ -1,8 +1,12 @@
-import React, { FC, useEffect, useCallback, useState } from 'react';
+import React, { FC, useEffect, useCallback, useState, createRef, useMemo, memo } from 'react';
 import { PlusOutlined, CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { tableProps } from './interface';
 import CheckBox from '../CheckBox';
+import Pagination from '../Pagination';
 import './style/index.module.less';
+
+let sTop = 0;
+const options = [10, 20, 30, 50];
 
 const Table: FC<tableProps> = (props) => {
   const {
@@ -15,15 +19,30 @@ const Table: FC<tableProps> = (props) => {
     radioSelectCallback,
     checkedSelectCallback,
     avableSort,
+    virtualized,
+    largeDateShowNum = 10,
+    lazyLoad,
+    pagination,
+    paginationAlign,
+    pageSizeOption,
+    changePNumCallback,
+    changePSizeCallback,
+    dropabled,
+    dropCallback,
   } = props;
 
   const [doColumnData, setDoColumnData] = useState(titleParams); //表头数据
   const [doTableData, setDoTableData] = useState(tableData); //表数据
   const [radioRow, setRadioRow] = useState({}); //单选选中行
   const [checkedRow, setCheckedRow] = useState<Array<object>>([]); //单选选中行
+  const [scrollTop, setScrollTop] = useState(0);
+  const [pageSize, setPageSize] = useState(options[0]);
+  const [pageNum, setPageNum] = useState(1);
+
+  const scrollDom = createRef();
 
   useEffect(() => {
-    const newDoTableData = [...doTableData];
+    let newDoTableData = [...doTableData];
     if (expandedRowRender) {
       //展开行处理
       newDoTableData.forEach((item: any) => {
@@ -46,8 +65,15 @@ const Table: FC<tableProps> = (props) => {
         return [...old];
       });
     }
+    if (virtualized || lazyLoad) {
+      newDoTableData = newDoTableData.slice(0, largeDateShowNum || 10);
+    }
+    if (pagination) {
+      newDoTableData = newDoTableData.slice(0, pageSize);
+    }
     setDoTableData(newDoTableData);
   }, []);
+
   const tableStyle = useCallback(
     (thData: any) => {
       //表头样式
@@ -185,49 +211,206 @@ const Table: FC<tableProps> = (props) => {
     },
     [titleParams, doColumnData],
   );
-  return (
-    <div className="table">
-      <table>
-        <thead>
-          <tr>
-            {(expandedRowRender || radio) && <th style={{ textAlign: (align as any) || 'left' }} />}
-            {checked && (
-              <th style={{ textAlign: (align as any) || 'left' }}>
-                <CheckBox
-                  checked={checkedRow.length == doTableData.length}
-                  checkCallback={(checked: boolean) => checkAll(checked)}
-                />
-              </th>
-            )}
-            {doColumnData.map((t, key) => {
-              return (
-                <th key={key} style={tableStyle(t) as any} className="tableHead">
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: align || 'flex-start',
-                      alignItems: 'center',
-                    }}
+  const scrollTable = (e: any) => {
+    if (virtualized) {
+      //虚拟加载
+      const top = (scrollDom.current as any).scrollTop;
+      //滚到底，不继续滚
+      if (
+        (tableData.length + 2) *
+          (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight -
+          sTop <
+          (largeDateShowNum + 2) *
+            (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight &&
+        top > sTop
+      ) {
+        return;
+      }
+
+      const listHeight = (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight || 40;
+      sTop = top;
+      setScrollTop(top);
+      setDoTableData((old) => {
+        const showNum = largeDateShowNum ? largeDateShowNum : 10;
+        old = tableData.slice(Math.floor(top / listHeight), Math.floor(top / listHeight) + showNum);
+        return [...old];
+      });
+    } else if (lazyLoad) {
+      //懒加载
+      if (
+        e.nativeEvent.target.scrollHeight -
+          e.nativeEvent.target.clientHeight -
+          e.nativeEvent.target.scrollTop ==
+        0
+      ) {
+        setDoTableData((old) => {
+          old = [...old, ...tableData.slice(old.length + 1, old.length + 11)];
+          return [...old];
+        });
+      }
+    }
+  };
+  const changePageCallback = (pageNum: number) => {
+    //页码改变回调
+    setPageNum(pageNum);
+    setDoTableData((old) => {
+      old = tableData.slice((pageNum - 1) * pageSize, (pageNum - 1) * pageSize + pageSize);
+      return [...old];
+    });
+    changePNumCallback &&
+      changePNumCallback(
+        pageNum,
+        tableData.slice((pageNum - 1) * pageSize, (pageNum - 1) * pageSize + pageSize),
+      );
+  };
+  const changePageSizeCallback = (pageSize: number) => {
+    //页数改变回调
+    setPageSize(pageSize);
+    setDoTableData((old) => {
+      old = tableData.slice(0, pageSize);
+      return [...old];
+    });
+    changePSizeCallback && changePSizeCallback(pageSize, tableData.slice(0, pageSize));
+  };
+  const dargStart = (e: any, index: number) => {
+    e.nativeEvent.dataTransfer.setData('dragKey', index);
+  };
+
+  const drop = (e: any, index: number) => {
+    e.nativeEvent.preventDefault();
+    const drapIndex = e.nativeEvent.dataTransfer.getData('dragKey');
+    const dropIndex = index;
+    setDoTableData((old) => {
+      [old[drapIndex], old[dropIndex]] = [old[dropIndex], old[drapIndex]];
+      dropCallback && dropCallback(old);
+      return [...old];
+    });
+  };
+  const dragOver = (e: any) => {
+    e.nativeEvent.preventDefault();
+  };
+  const renderScrollList = useCallback(() => {
+    //虚拟列表tr栏渲染
+    return doTableData?.map((t, key) => {
+      return (
+        <>
+          <tr key={key} className="victurl-scroll-tr">
+            {
+              //展开行
+              expandedRowRender && (
+                <td
+                  style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}
+                  onClick={() => openRow(t, key)}
+                >
+                  <PlusOutlined />
+                </td>
+              )
+            }
+            {
+              //单选
+              radio && (
+                <td style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}>
+                  <input
+                    className="radioBox"
+                    type="radio"
+                    checked={radioRow == t ? true : false}
+                    onClick={() => radioSelectRow(t)}
+                  ></input>
+                </td>
+              )
+            }
+            {
+              //多选
+              checked && (
+                <td style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}>
+                  <CheckBox
+                    checked={checkedRow.indexOf(t) == -1 ? false : true}
+                    checkCallback={(check: boolean) => checkedSelectRow(check, t)}
                   >
-                    <span>{t.title}</span>
-                    {t.sorter && avableSort && (
-                      <div className="sort-icon">
-                        <CaretUpOutlined
-                          onClick={() => sortColumn(key, t, 2)}
-                          style={sortIconStyle(t, 0)}
-                        />
-                        <CaretDownOutlined
-                          onClick={() => sortColumn(key, t, 3)}
-                          style={sortIconStyle(t, 1)}
-                        />
-                      </div>
-                    )}
-                  </div>
-                </th>
-              );
-            })}
+                    {checkedRow.indexOf(t) == -1}
+                  </CheckBox>
+                </td>
+              )
+            }
+            {renderContentTd(t)}
           </tr>
-        </thead>
+          {t.openLine && (
+            <tr>
+              <td
+                style={{ textAlign: (align as any) || 'left' }}
+                colSpan={Object.keys(doTableData[0]).length + 1}
+              >
+                {t.openLine}
+              </td>
+            </tr>
+          )}
+        </>
+      );
+    });
+  }, [doTableData, sTop, scrollTop, checkedRow, radioRow]);
+  const tableContentRender = () => {
+    //表正文渲染
+    if (virtualized) {
+      //虚拟列表
+      return (
+        <div
+          style={{
+            height:
+              (tableData.length + 2) *
+                (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight -
+              sTop +
+              'px',
+            transform: `translateY(${sTop}px)`,
+          }}
+        >
+          <thead>
+            <tr>
+              {(expandedRowRender || radio) && (
+                <th style={{ textAlign: (align as any) || 'left' }} />
+              )}
+              {checked && (
+                <th style={{ textAlign: (align as any) || 'left' }}>
+                  <CheckBox
+                    checked={checkedRow.length == doTableData.length}
+                    checkCallback={(checked: boolean) => checkAll(checked)}
+                  />
+                </th>
+              )}
+              {doColumnData?.map((t, key) => {
+                return (
+                  <th key={key} style={tableStyle(t) as any} className="tableHead">
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: align || 'flex-start',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <span>{t.title}</span>
+                      {t.sorter && avableSort && (
+                        <div className="sort-icon">
+                          <CaretUpOutlined
+                            onClick={() => sortColumn(key, t, 2)}
+                            style={sortIconStyle(t, 0)}
+                          />
+                          <CaretDownOutlined
+                            onClick={() => sortColumn(key, t, 3)}
+                            style={sortIconStyle(t, 1)}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </th>
+                );
+              })}
+            </tr>
+          </thead>
+          <tbody>{renderScrollList()}</tbody>
+        </div>
+      );
+    } else if (lazyLoad) {
+      //懒加载
+      return (
         <tbody>
           {doTableData?.map((t, key) => {
             return (
@@ -286,10 +469,340 @@ const Table: FC<tableProps> = (props) => {
             );
           })}
         </tbody>
-      </table>
+      );
+    } else if (pagination) {
+      //分页渲染
+      return (
+        <tbody>
+          {
+            //常规表正文
+            doTableData?.map((t, key) => {
+              return (
+                <>
+                  <tr key={key}>
+                    {
+                      //展开行
+                      expandedRowRender && (
+                        <td
+                          style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}
+                          onClick={() => openRow(t, key)}
+                        >
+                          <PlusOutlined />
+                        </td>
+                      )
+                    }
+                    {
+                      //单选
+                      radio && (
+                        <td style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}>
+                          <input
+                            className="radioBox"
+                            type="radio"
+                            checked={radioRow == t ? true : false}
+                            onClick={() => radioSelectRow(t)}
+                          ></input>
+                        </td>
+                      )
+                    }
+                    {
+                      //多选
+                      checked && (
+                        <td style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}>
+                          <CheckBox
+                            checked={checkedRow.indexOf(t) == -1 ? false : true}
+                            checkCallback={(check: boolean) => checkedSelectRow(check, t)}
+                          >
+                            {checkedRow.indexOf(t) == -1}
+                          </CheckBox>
+                        </td>
+                      )
+                    }
+                    {renderContentTd(t)}
+                  </tr>
+                  {t.openLine && (
+                    <tr>
+                      <td
+                        style={{ textAlign: (align as any) || 'left' }}
+                        colSpan={Object.keys(doTableData[0]).length + 1}
+                      >
+                        {t.openLine}
+                      </td>
+                    </tr>
+                  )}
+                </>
+              );
+            })
+          }
+        </tbody>
+      );
+    } else if (dropabled) {
+      //拖拽表渲染
+      return (
+        <tbody>
+          {
+            //常规表正文
+            doTableData?.map((t, key) => {
+              return (
+                <>
+                  <tr
+                    key={key}
+                    style={{ cursor: 'move' }}
+                    draggable
+                    onDragStart={(e) => dargStart(e, key)}
+                    onDrop={(e) => drop(e, key)}
+                    onDragOver={(e) => dragOver(e)}
+                  >
+                    {
+                      //展开行
+                      expandedRowRender && (
+                        <td
+                          style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}
+                          onClick={() => openRow(t, key)}
+                        >
+                          <PlusOutlined />
+                        </td>
+                      )
+                    }
+                    {
+                      //单选
+                      radio && (
+                        <td style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}>
+                          <input
+                            className="radioBox"
+                            type="radio"
+                            checked={radioRow == t ? true : false}
+                            onClick={() => radioSelectRow(t)}
+                          ></input>
+                        </td>
+                      )
+                    }
+                    {
+                      //多选
+                      checked && (
+                        <td style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}>
+                          <CheckBox
+                            checked={checkedRow.indexOf(t) == -1 ? false : true}
+                            checkCallback={(check: boolean) => checkedSelectRow(check, t)}
+                          >
+                            {checkedRow.indexOf(t) == -1}
+                          </CheckBox>
+                        </td>
+                      )
+                    }
+                    {renderContentTd(t)}
+                  </tr>
+                  {t.openLine && (
+                    <tr>
+                      <td
+                        style={{ textAlign: (align as any) || 'left' }}
+                        colSpan={Object.keys(doTableData[0]).length + 1}
+                      >
+                        {t.openLine}
+                      </td>
+                    </tr>
+                  )}
+                </>
+              );
+            })
+          }
+        </tbody>
+      );
+    } else {
+      //常规表渲染
+      return (
+        <tbody>
+          {
+            //常规表正文
+            doTableData?.map((t, key) => {
+              return (
+                <>
+                  <tr key={key}>
+                    {
+                      //展开行
+                      expandedRowRender && (
+                        <td
+                          style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}
+                          onClick={() => openRow(t, key)}
+                        >
+                          <PlusOutlined />
+                        </td>
+                      )
+                    }
+                    {
+                      //单选
+                      radio && (
+                        <td style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}>
+                          <input
+                            className="radioBox"
+                            type="radio"
+                            checked={radioRow == t ? true : false}
+                            onClick={() => radioSelectRow(t)}
+                          ></input>
+                        </td>
+                      )
+                    }
+                    {
+                      //多选
+                      checked && (
+                        <td style={{ textAlign: (align as any) || 'left', cursor: 'pointer' }}>
+                          <CheckBox
+                            checked={checkedRow.indexOf(t) == -1 ? false : true}
+                            checkCallback={(check: boolean) => checkedSelectRow(check, t)}
+                          >
+                            {checkedRow.indexOf(t) == -1}
+                          </CheckBox>
+                        </td>
+                      )
+                    }
+                    {renderContentTd(t)}
+                  </tr>
+                  {t.openLine && (
+                    <tr>
+                      <td
+                        style={{ textAlign: (align as any) || 'left' }}
+                        colSpan={Object.keys(doTableData[0]).length + 1}
+                      >
+                        {t.openLine}
+                      </td>
+                    </tr>
+                  )}
+                </>
+              );
+            })
+          }
+        </tbody>
+      );
+    }
+  };
+  const paginationAlignStyle = useMemo(() => {
+    let returnStyle = {};
+    if (!paginationAlign) {
+      returnStyle = {
+        justifyContent: 'flex-start',
+      };
+    } else {
+      switch (paginationAlign) {
+        case 'left':
+          returnStyle = {
+            justifyContent: 'flex-start',
+          };
+          break;
+        case 'center':
+          returnStyle = {
+            justifyContent: 'center',
+          };
+          break;
+        case 'right':
+          returnStyle = {
+            justifyContent: 'flex-end',
+          };
+          break;
+      }
+    }
+    return returnStyle;
+  }, [paginationAlign]);
+  return (
+    <div
+      className="table-container"
+      style={
+        virtualized || lazyLoad
+          ? {
+              height: `${
+                (largeDateShowNum + 2) *
+                (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight
+              }px`,
+            }
+          : {}
+      }
+    >
+      <div
+        className="table"
+        style={
+          virtualized || lazyLoad
+            ? {
+                maxHeight: `${
+                  (largeDateShowNum + 2) *
+                  (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight
+                }px`,
+                overflow: 'scroll',
+                position: 'absolute',
+                top: '40px',
+                left: '0',
+              }
+            : {}
+        }
+        onScroll={(e) => scrollTable(e)}
+        ref={scrollDom as any}
+      >
+        <table>
+          {
+            //常规表格
+            !virtualized && (
+              <thead>
+                <tr>
+                  {(expandedRowRender || radio) && (
+                    <th style={{ textAlign: (align as any) || 'left' }} />
+                  )}
+                  {checked && (
+                    <th style={{ textAlign: (align as any) || 'left' }}>
+                      <CheckBox
+                        checked={checkedRow.length == doTableData.length}
+                        checkCallback={(checked: boolean) => checkAll(checked)}
+                      />
+                    </th>
+                  )}
+                  {doColumnData.map((t, key) => {
+                    return (
+                      <th key={key} style={tableStyle(t) as any} className="tableHead">
+                        <div
+                          style={{
+                            display: 'flex',
+                            justifyContent: align || 'flex-start',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <span>{t.title}</span>
+                          {t.sorter && avableSort && (
+                            <div className="sort-icon">
+                              <CaretUpOutlined
+                                onClick={() => sortColumn(key, t, 2)}
+                                style={sortIconStyle(t, 0)}
+                              />
+                              <CaretDownOutlined
+                                onClick={() => sortColumn(key, t, 3)}
+                                style={sortIconStyle(t, 1)}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </th>
+                    );
+                  })}
+                </tr>
+              </thead>
+            )
+          }
+          {
+            //表正文
+            tableContentRender()
+          }
+        </table>
+      </div>
+      {pagination && (
+        <div className="pagination" style={paginationAlignStyle}>
+          <Pagination
+            style={paginationAlignStyle}
+            total={tableData.length}
+            showSizeChanger
+            pageSizeOptions={pageSizeOption || options}
+            showJumpInput
+            changePageSizeCallback={changePageSizeCallback}
+            changePageCallback={changePageCallback}
+          />
+        </div>
+      )}
     </div>
   );
 };
-// Table.Group = Group;
 
-export default Table;
+export default memo(Table);
