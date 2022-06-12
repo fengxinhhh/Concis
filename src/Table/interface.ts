@@ -48,6 +48,11 @@ interface tableProps {
    */
   avableSort?: boolean;
   /**
+   * @description 支持筛选
+   * @default false
+   */
+  filter?: boolean;
+  /**
    * @description 表头中的排序规则，true采用列默认排序，Array采用自定义排序
    * @default ''
    */
@@ -105,5 +110,6 @@ interface tableThType {
   dataIndex: string | number;
   width?: string;
   sorter?: boolean | Array<Function> | number | string;
+  filter?: boolean | string;
 }
-export type { tableProps };
+export type { tableProps, tableThType };

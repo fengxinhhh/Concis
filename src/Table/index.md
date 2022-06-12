@@ -43,6 +43,12 @@ group:
 
 <code src="./demos/index6.tsx" />
 
+## 筛选
+
+配置表头数组结构 filter，以及组件传参 filter，开启筛选
+
+<code src="./demos/index11.tsx" />
+
 ### 以下虚拟列表滚动、懒加载、分页为大数据时的建议方案，无法同时使用，只能选择其一进行开发
 
 ## 虚拟列表滚动

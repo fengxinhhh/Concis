@@ -25,6 +25,11 @@ interface popoverProps {
    */
   dialogWidth?: number;
   /**
+   * @description 无边框
+   * @default false
+   */
+  noBorder?: boolean;
+  /**
    * @description 提供给调用层的卡片显示隐藏状态
    * @default false
    */
@@ -39,6 +44,7 @@ type alignStyle = {
   right?: string;
   top?: string;
   bottom?: string;
+  border?: string;
 };
 const Popover: FC<popoverProps> = (props) => {
   const {
@@ -46,6 +52,7 @@ const Popover: FC<popoverProps> = (props) => {
     type = 'hover',
     align = 'bottom',
     content,
+    noBorder,
     dialogWidth = 200,
     propsVisiable,
     onVisableChange,
@@ -130,10 +137,10 @@ const Popover: FC<popoverProps> = (props) => {
       alignStyle.right = showBtnSize.width + 'px';
       alignStyle.bottom = Number(showBtnSize.height) / 2 + 'px';
     }
+    if (!noBorder) {
+      alignStyle.border = '1px solid #ccc';
+    }
     return {
-      // width: showDialog ? `${dialogWidth}px` : '0px',
-      // height: showDialog ? '' : '0px',
-      // opacity: showDialog ? 1 : 0,
       ...alignStyle,
     };
   }, [content, showDialog, propsVisiable, showBtnSize]);

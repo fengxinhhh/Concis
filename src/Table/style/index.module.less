@@ -32,11 +32,41 @@
           }
         }
       }
+      .search-th-btn {
+        width: 24px;
+        height: 40px;
+        margin-left: 10px;
+        font-size: 17px;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.2s linear;
+        &:hover {
+          background-color: #c9cdd4;
+        }
+        &:active {
+          background-color: #c9cdd4;
+        }
+      }
     }
   }
   .pagination {
     display: flex;
     width: 100%;
     margin-top: 30px;
+  }
+}
+.filter-dialog {
+  display: flex;
+  .search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-left: 24px;
+    color: #fff;
+    background: #1890ff;
+    cursor: pointer;
   }
 }

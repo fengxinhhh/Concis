@@ -1,8 +1,15 @@
 import React, { FC, useEffect, useCallback, useState, createRef, useMemo, memo } from 'react';
-import { PlusOutlined, CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
-import { tableProps } from './interface';
+import {
+  PlusOutlined,
+  CaretUpOutlined,
+  CaretDownOutlined,
+  SearchOutlined,
+} from '@ant-design/icons';
+import { tableProps, tableThType } from './interface';
 import CheckBox from '../CheckBox';
 import Pagination from '../Pagination';
+import Popover from '../Popover';
+import Input from '../Input';
 import './style/index.module.less';
 
 let sTop = 0;
@@ -18,6 +25,7 @@ const Table: FC<tableProps> = (props) => {
     checked,
     radioSelectCallback,
     checkedSelectCallback,
+    filter,
     avableSort,
     virtualized,
     largeDateShowNum = 10,
@@ -165,7 +173,32 @@ const Table: FC<tableProps> = (props) => {
       });
     }
   };
-
+  const handleIptChange = (v: string | boolean, t: tableThType) => {
+    //筛选input改变回调
+    if (v == '') {
+      v = true;
+    }
+    setDoColumnData((old: Array<tableThType>) => {
+      old.forEach((item: tableThType) => {
+        if (item == t && old.filter) {
+          item.filter = v;
+        }
+      });
+      return [...old];
+    });
+  };
+  const filterList = (t: tableThType) => {
+    setDoTableData((old: Array<object>) => {
+      if (t.filter == true) {
+        old = tableData;
+      } else {
+        old = tableData.filter((item) => {
+          return String(item[t.dataIndex]).includes(t.filter as string);
+        });
+      }
+      return [...old];
+    });
+  };
   const renderContentTd = (rowData: object) => {
     //渲染正文行
     return Object.entries(rowData).map((value: any, key) => {
@@ -226,7 +259,6 @@ const Table: FC<tableProps> = (props) => {
       ) {
         return;
       }
-
       const listHeight = (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight || 40;
       sTop = top;
       setScrollTop(top);
@@ -387,7 +419,7 @@ const Table: FC<tableProps> = (props) => {
                       }}
                     >
                       <span>{t.title}</span>
-                      {t.sorter && avableSort && (
+                      {t?.sorter && avableSort && (
                         <div className="sort-icon">
                           <CaretUpOutlined
                             onClick={() => sortColumn(key, t, 2)}
@@ -398,6 +430,30 @@ const Table: FC<tableProps> = (props) => {
                             style={sortIconStyle(t, 1)}
                           />
                         </div>
+                      )}
+                      {t?.filter && filter && (
+                        <Popover
+                          type="click"
+                          align="bottom"
+                          dialogWidth={130}
+                          noBorder
+                          content={
+                            <div className="filter-dialog">
+                              <Input
+                                placeholder="请输入"
+                                width="70"
+                                handleIptChange={(v: string) => handleIptChange(v, t)}
+                              />
+                              <div className="search-btn" onClick={() => filterList(t)}>
+                                <SearchOutlined />
+                              </div>
+                            </div>
+                          }
+                        >
+                          <div className="search-th-btn">
+                            <SearchOutlined />
+                          </div>
+                        </Popover>
                       )}
                     </div>
                   </th>
@@ -762,7 +818,7 @@ const Table: FC<tableProps> = (props) => {
                           }}
                         >
                           <span>{t.title}</span>
-                          {t.sorter && avableSort && (
+                          {t?.sorter && avableSort && (
                             <div className="sort-icon">
                               <CaretUpOutlined
                                 onClick={() => sortColumn(key, t, 2)}
@@ -773,6 +829,30 @@ const Table: FC<tableProps> = (props) => {
                                 style={sortIconStyle(t, 1)}
                               />
                             </div>
+                          )}
+                          {t?.filter && filter && (
+                            <Popover
+                              type="click"
+                              align="bottom"
+                              dialogWidth={130}
+                              noBorder
+                              content={
+                                <div className="filter-dialog">
+                                  <Input
+                                    placeholder="请输入"
+                                    width="70"
+                                    handleIptChange={(v: string) => handleIptChange(v, t)}
+                                  />
+                                  <div className="search-btn" onClick={() => filterList(t)}>
+                                    <SearchOutlined />
+                                  </div>
+                                </div>
+                              }
+                            >
+                              <div className="search-th-btn">
+                                <SearchOutlined />
+                              </div>
+                            </Popover>
                           )}
                         </div>
                       </th>
