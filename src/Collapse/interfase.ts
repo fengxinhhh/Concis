@@ -54,6 +54,10 @@ interface CollapseProps {
    * @default false
    */
   lazyLoad?: boolean;
+  /**
+   * @description 切换回调函数，返回打开列表的listKey
+   */
+  toggleCallback?: Function;
 }
 
 export type { CollapseItemProps, CollapseProps };

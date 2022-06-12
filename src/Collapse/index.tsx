@@ -12,6 +12,7 @@ const Collapse: FC<CollapseProps> = (props) => {
     noBorder,
     headerAlign = 'left',
     lazyLoad = false,
+    toggleCallback,
   } = props;
   const [activeKeyList, setActiveKeyList] = useState<Array<number | string>>(defaultActive || []); //父组件管理选中列表
 
@@ -22,6 +23,7 @@ const Collapse: FC<CollapseProps> = (props) => {
     accordion,
     headerAlign,
     lazyLoad,
+    toggleCallback,
   };
 
   return (

@@ -11,7 +11,8 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
   const [contentDomHeight, setContentDomHeight] = useStateCallback(0);
   const [hasOpen, setHasOpen] = useStateCallback(false);
 
-  const { activeKeyList, setActiveKeyList, accordion, headerAlign, lazyLoad } = useContext(ctx); //父组件共享状态
+  const { activeKeyList, setActiveKeyList, accordion, headerAlign, lazyLoad, toggleCallback } =
+    useContext(ctx); //父组件共享状态
 
   useEffect(() => {
     //根据默认值展开或收起
@@ -22,7 +23,6 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
         (document.querySelector('.collapse-item-content') as HTMLElement).scrollHeight + 30,
       );
     }
-    console.log(activeKeyList);
   }, [activeKeyList]);
 
   const toggleContent = () => {
@@ -38,10 +38,12 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
           if (accordion) {
             //手风琴，全部清除再加入
             setActiveKeyList([Number(listKey)]);
+            toggleCallback && toggleCallback([Number(listKey)]);
           } else {
-            setActiveKeyList((oldAList: Array<string | number>) => [
-              ...[...oldAList, Number(listKey)].sort(),
-            ]);
+            setActiveKeyList((oldAList: Array<string | number>) => {
+              toggleCallback && toggleCallback([...[...oldAList, Number(listKey)].sort()]);
+              return [...[...oldAList, Number(listKey)].sort()];
+            });
           }
           setContentDomHeight(newHeight);
         });
@@ -51,10 +53,12 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
         if (accordion) {
           //手风琴，全部清除再加入
           setActiveKeyList([Number(listKey)]);
+          toggleCallback && toggleCallback([Number(listKey)]);
         } else {
-          setActiveKeyList((oldAList: Array<string | number>) => [
-            ...[...oldAList, Number(listKey)].sort(),
-          ]);
+          setActiveKeyList((oldAList: Array<string | number>) => {
+            toggleCallback && toggleCallback([...[...oldAList, Number(listKey)].sort()]);
+            return [...[...oldAList, Number(listKey)].sort()];
+          });
         }
         setContentDomHeight(newHeight);
       }
