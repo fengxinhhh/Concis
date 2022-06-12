@@ -180,7 +180,7 @@ const Table: FC<tableProps> = (props) => {
     }
     setDoColumnData((old: Array<tableThType>) => {
       old.forEach((item: tableThType) => {
-        if (item == t && old.filter) {
+        if (item == t && old?.filter) {
           item.filter = v;
         }
       });
