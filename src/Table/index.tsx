@@ -275,10 +275,12 @@ const Table: FC<tableProps> = (props) => {
           e.nativeEvent.target.scrollTop ==
         0
       ) {
-        setDoTableData((old) => {
-          old = [...old, ...tableData.slice(old.length + 1, old.length + 11)];
-          return [...old];
-        });
+        setTimeout(() => {
+          setDoTableData((old) => {
+            old = [...old, ...tableData.slice(old.length + 1, old.length + 11)];
+            return [...old];
+          });
+        }, 300);
       }
     }
   };
