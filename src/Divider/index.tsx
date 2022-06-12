@@ -9,7 +9,7 @@ interface dividerProps {
   fontSize?: Number;
   /**
    * @description 分割线颜色
-   * @default #cccccc
+   * @default #e5e6eb
    */
   borderColor?: String;
   /**

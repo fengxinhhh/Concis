@@ -23,3 +23,5 @@ export { default as CheckBox } from './CheckBox';
 export { default as Swiper } from './Swiper';
 export { default as Popover } from './Popover';
 export { default as Table } from './Table';
+export { default as Collapse } from './Collapse';
+export { default as CollapseItem } from './Collapse/CollapseItem';
