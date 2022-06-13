@@ -1,5 +1,6 @@
 import React from 'react';
 import TreeView from '..';
+import usePageListener from '../../_util/hooks/usePageListener';
 
 const treeData = [
   {
@@ -65,6 +66,7 @@ const treeData = [
 ];
 
 export default function MenuDemos1() {
+  process.env.NODE_ENV === 'production' && usePageListener('TreeView');
   const checkCallback = (va: Array<object>) => {
     console.log(va);
   };

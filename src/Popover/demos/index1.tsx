@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import Popover from '..';
 import Button from '../../Button';
+import usePageListener from '../../_util/hooks/usePageListener';
 
 export default function MenuDemos1() {
+  process.env.NODE_ENV === 'production' && usePageListener('Popover');
+
   return (
     <>
       <Popover

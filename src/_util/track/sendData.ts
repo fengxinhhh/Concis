@@ -1,6 +1,6 @@
 const sendData = (params: object) => {
   const sendScript = document.createElement('script');
-  console.log(params, JSON.stringify(params));
+  console.log(params);
   const requestAddress =
     process.env.NODE_ENV === 'development'
       ? `http://localhost:9999/saveComponentLog?info=${JSON.stringify(params)}`

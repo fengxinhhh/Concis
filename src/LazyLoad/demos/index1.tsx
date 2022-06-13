@@ -1,7 +1,9 @@
 import React from 'react';
 import LazyLoad from '..';
+import usePageListener from '../../_util/hooks/usePageListener';
 
 export default function LazyLoadDemo1() {
+  process.env.NODE_ENV === 'production' && usePageListener('LazyLoad');
   return (
     <>
       <p>第一页</p>

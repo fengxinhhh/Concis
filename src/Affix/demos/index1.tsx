@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import Affix from '../index';
 import Button from '../../Button';
+import usePageListener from '../../_util/hooks/usePageListener';
 
 export default function AffixDemo1() {
   const [align, setAlign] = useState('top');
+  process.env.NODE_ENV === 'production' && usePageListener('button');
+
   return (
     <div>
       {align == 'top' && (

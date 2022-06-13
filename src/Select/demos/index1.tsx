@@ -1,9 +1,12 @@
 import React from 'react';
 import Select from '..';
+import usePageListener from '../../_util/hooks/usePageListener';
 /**
  * transform: true
  */
 export default function SelectDemo1() {
+  process.env.NODE_ENV === 'production' && usePageListener('Select');
+
   const option = [
     {
       label: 'Mucy',

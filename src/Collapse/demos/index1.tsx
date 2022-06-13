@@ -2,8 +2,11 @@ import React from 'react';
 import Collapse from '..';
 import CollapseItem from '../CollapseItem';
 import Divider from '..';
+import usePageListener from '../../_util/hooks/usePageListener';
 
 export default function CollapseDemo1() {
+  process.env.NODE_ENV === 'production' && usePageListener('Collapse');
+
   return (
     <Collapse defaultActive={[1, 2]}>
       <CollapseItem header="Beijing Toutiao Technology Co., Ltd." listKey="1">

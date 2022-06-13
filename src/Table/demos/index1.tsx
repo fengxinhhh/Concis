@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from '..';
 import Button from '../../Button';
+import usePageListener from '../../_util/hooks/usePageListener';
 
 const columns = [
   {
@@ -57,5 +58,7 @@ const defaultData = [
 ];
 
 export default function MenuDemos1() {
+  process.env.NODE_ENV === 'production' && usePageListener('Table');
+
   return <Table titleParams={columns} tableData={defaultData} />;
 }

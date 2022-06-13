@@ -1,5 +1,6 @@
 import React from 'react';
 import Tree from '..';
+import usePageListener from '../../_util/hooks/usePageListener';
 
 const treeData = [
   {
@@ -34,6 +35,7 @@ const treeData = [
   },
 ];
 export default function MenuDemos1() {
+  process.env.NODE_ENV === 'production' && usePageListener('Tree');
   const chooseCallback = (val: string) => {
     console.log(val);
   };

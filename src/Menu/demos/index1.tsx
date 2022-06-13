@@ -1,8 +1,11 @@
 import React from 'react';
 import Menu from '..';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import usePageListener from '../../_util/hooks/usePageListener';
 
 export default function MenuDemos1() {
+  process.env.NODE_ENV === 'production' && usePageListener('Menu');
+
   const getItem = (
     label: string,
     key: string | number,
