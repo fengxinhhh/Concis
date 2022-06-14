@@ -25,3 +25,5 @@ export { default as Popover } from './Popover';
 export { default as Table } from './Table';
 export { default as Collapse } from './Collapse';
 export { default as CollapseItem } from './Collapse/CollapseItem';
+export { default as Avatar } from './Avatar';
+export { default as AvatarGroup } from './Avatar/group';

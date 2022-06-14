@@ -1,9 +1,11 @@
 import React from 'react';
 import Avatar from '..';
-import AvatarGroup from '../group';
 import { UserOutlined } from '@ant-design/icons';
+import usePageListener from '../../_util/hooks/usePageListener';
 
 export default function avatarDemo1() {
+  process.env.NODE_ENV === 'production' && usePageListener('Avatar');
+
   return (
     <div style={{ display: 'flex' }}>
       <Avatar style={{ marginRight: '20px' }}>A</Avatar>
