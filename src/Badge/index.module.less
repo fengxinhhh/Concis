@@ -1,0 +1,59 @@
+.badge {
+  position: relative;
+  display: inline-block;
+  .count {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    padding: 0 6px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 12px;
+    background-color: #f53f3f;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+  }
+  .badge-text {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 3;
+    padding: 2px 6px;
+    color: #fff;
+    font-size: 12px;
+    background-color: #f53f3f;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    transform: translate(50%, -50%);
+  }
+  .dot {
+    position: absolute;
+    z-index: 3;
+    width: 6px;
+    height: 6px;
+    background-color: #f53f3f;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+.no-child-badge {
+  position: relative;
+  display: inline-block;
+  min-width: 20px;
+  height: 20px;
+  // padding: 0 6px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  background-color: #f53f3f;
+  border-radius: 20px;
+}
