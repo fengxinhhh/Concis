@@ -1,8 +1,9 @@
-import React, { useMemo, FC, memo } from 'react';
+import React, { useMemo, FC, memo, forwardRef, ReactNode } from 'react';
 import './index.module.less';
 
 interface ButtonProps {
   //自定义button接口
+  children?: ReactNode;
   /**
    * @description 按钮主题
    * @default primary
@@ -51,7 +52,7 @@ interface ButtonStyle {
 }
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; //原生button接口
 
-const Button: FC<ButtonProps & NativeButtonProps> = memo((props) => {
+const Button = (props: ButtonProps) => {
   const {
     type,
     width = '100',
@@ -105,6 +106,12 @@ const Button: FC<ButtonProps & NativeButtonProps> = memo((props) => {
       </button>
     </div>
   );
-});
+};
 
-export default Button;
+const ForwardRefButton = forwardRef<unknown, ButtonProps>(Button);
+
+const ButtonComponent = ForwardRefButton as typeof ForwardRefButton;
+
+ButtonComponent.displayName = 'Button';
+
+export default ButtonComponent;
