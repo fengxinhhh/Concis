@@ -45,6 +45,10 @@ interface listProps<T = any> {
    * @default 5
    */
   virtualShowNum?: number;
+  /**
+   * @description 懒加载滚动到底部监听
+   */
+  lazyScrollToBottom?: Function;
 }
 interface listItemProps {
   children: ReactNode;

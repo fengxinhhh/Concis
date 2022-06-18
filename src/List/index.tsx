@@ -15,12 +15,13 @@ const List = (props: listProps) => {
     defaultShowNum = 5,
     virtualListProps,
     virtualShowNum = 5,
+    lazyScrollToBottom,
   } = props;
 
   const contextProps = {
     size,
   };
-  const [formatDataSrouce, setFormatDataSource] = useState([...dataSource]); //处理过的数据源
+  const [formatDataSrouce, setFormatDataSource] = useState(dataSource ? [...dataSource] : []); //处理过的数据源
   const [scrollTop, setScrollTop] = useState(0);
   const listItemHeight = useRef<any>(null);
 
@@ -88,12 +89,15 @@ const List = (props: listProps) => {
     const { scrollHeight, clientHeight, scrollTop } = listContentRef.current as any;
     const bottomTran = scrollHeight - clientHeight - scrollTop; //距离底部距离
     if (bottomTran === 0) {
+      lazyScrollToBottom && lazyScrollToBottom(bottomTran, true);
       setTimeout(() => {
         setFormatDataSource((old) => {
           old = dataSource.slice(0, old.length + defaultShowNum);
           return [...old];
         });
       }, 500);
+    } else {
+      lazyScrollToBottom && lazyScrollToBottom(bottomTran, false);
     }
   };
   const victurlScroll = () => {
@@ -125,7 +129,7 @@ const List = (props: listProps) => {
                 transform: `translate(0, ${scrollTop}px)`,
               }}
             >
-              {formatDataSrouce.map(render)}
+              {formatDataSrouce.length !== 0 && formatDataSrouce.map(render)}
             </div>
           </div>
         ) : (
@@ -135,7 +139,7 @@ const List = (props: listProps) => {
             ref={listContentRef}
             onScroll={scrollList}
           >
-            {formatDataSrouce.map(render)}
+            {formatDataSrouce.length !== 0 && formatDataSrouce.map(render)}
           </div>
         )}
       </div>
