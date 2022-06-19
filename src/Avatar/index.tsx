@@ -20,7 +20,7 @@ const Avatar: FC<avatarProps> = (props) => {
 
   useEffect(() => {
     autoFixFontSizeHandler();
-  }, []);
+  }, [size, autoFixFontSize]);
   const autoFixFontSizeHandler = () => {
     if (autoFixFontSize) {
       //如果用户配置了文本自适应
@@ -32,7 +32,6 @@ const Avatar: FC<avatarProps> = (props) => {
           (textRef.current as HTMLElement).style.transform = `scale(${
             1 - (textDomWidth - avatarSize + 5) / 100
           })`;
-          console.log(textDomWidth, avatarSize);
         }
       }
     }
