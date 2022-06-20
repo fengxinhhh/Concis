@@ -15,3 +15,4 @@ declare module '*.module.scss' {
 declare module 'react-view-ui/lib/umd';
 declare module 'react-view-ui/dist/my-lib-esm';
 declare module 'loadsh';
+declare module 'crypto-js';

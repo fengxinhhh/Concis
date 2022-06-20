@@ -64,6 +64,7 @@
     "@umijs/test": "^3.0.5",
     "babel-jest": "^28.1.1",
     "cheerio": "1.0.0-rc.3",
+    "crypto-js": "^4.1.1",
     "dumi": "^1.1.40",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",

@@ -25,6 +25,7 @@ interface dividerProps {
 }
 const Divider: FC<dividerProps> = memo((props) => {
   const { children, fontSize, borderColor, align, dashed } = props;
+
   const lineAlign = useMemo(() => {
     if (align === 'left') {
       return {

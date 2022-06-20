@@ -20,7 +20,7 @@ const Avatar: FC<avatarProps> = (props) => {
 
   useEffect(() => {
     autoFixFontSizeHandler();
-  }, [size, autoFixFontSize]);
+  }, []);
   const autoFixFontSizeHandler = () => {
     if (autoFixFontSize) {
       //如果用户配置了文本自适应
