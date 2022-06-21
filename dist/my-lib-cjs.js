@@ -9971,8 +9971,7 @@ var ln = e.memo((t) => {
       if (o && d.current) {
         const e = d.current.clientWidth,
           t = f.size || l || 40;
-        e - t > 0 &&
-          ((d.current.style.transform = `scale(${1 - (e - t + 5) / 100})`), console.log(e, t));
+        e - t > 0 && (d.current.style.transform = `scale(${1 - (e - t + 5) / 100})`);
       }
     },
     p = e.useMemo(() => {
@@ -10104,16 +10103,17 @@ const un = e.createContext({}),
         defaultShowNum: u = 5,
         virtualListProps: s,
         virtualShowNum: f = 5,
+        lazyScrollToBottom: d,
       } = t,
-      d = { size: o },
-      [h, p] = e.useState([...a]),
-      [g, m] = e.useState(0),
-      v = e.useRef(null),
+      h = { size: o },
+      [p, g] = e.useState(a ? [...a] : []),
+      [m, v] = e.useState(0),
       y = e.useRef(null),
-      b = e.useRef(null);
+      b = e.useRef(null),
+      x = e.useRef(null);
     e.useEffect(() => {
       var e;
-      if (c && u) p((e) => ((e = a.slice(0, u)), [...e]));
+      if (c && u) g((e) => ((e = a.slice(0, u)), [...e]));
       else if (s) {
         let t =
           null === (e = document.querySelector('.list-item')) || void 0 === e
@@ -10129,10 +10129,10 @@ const un = e.createContext({}),
           case 'large':
             t += 34;
         }
-        (v.current = t), p((e) => ((e = a.slice(0, f + 2)), [...e]));
+        (y.current = t), g((e) => ((e = a.slice(0, f + 2)), [...e]));
       }
     }, []);
-    const x = e.useMemo(() => {
+    const E = e.useMemo(() => {
         const e = {};
         switch (o) {
           case 'default':
@@ -10146,28 +10146,28 @@ const un = e.createContext({}),
         }
         return e;
       }, [o]),
-      E = e.useMemo(() => n, [n]),
-      _ = e.useMemo(() => {
+      _ = e.useMemo(() => n, [n]),
+      w = e.useMemo(() => {
         const e = {};
         return c && u && ((e.height = '400px'), (e.overflow = 'scroll')), e;
       }, [c, u]);
     return r.default.createElement(
       un.Provider,
-      { value: d },
+      { value: h },
       r.default.createElement(
         'div',
-        { className: 'rList', style: E },
-        r.default.createElement('div', { className: 'list-header', style: x }, i),
+        { className: 'rList', style: _ },
+        r.default.createElement('div', { className: 'list-header', style: E }, i),
         s
           ? r.default.createElement(
               'div',
               {
                 className: 'victurl-list-content',
-                style: { height: f * v.current + 'px' },
-                ref: b,
+                style: { height: f * y.current + 'px' },
+                ref: x,
                 onScroll: () => {
-                  const e = Math.floor(b.current.scrollTop / v.current);
-                  m(b.current.scrollTop), p((t) => ((t = a.slice(e, e + f + 2)), [...t]));
+                  const e = Math.floor(x.current.scrollTop / y.current);
+                  v(x.current.scrollTop), g((t) => ((t = a.slice(e, e + f + 2)), [...t]));
                 },
               },
               r.default.createElement(
@@ -10175,35 +10175,37 @@ const un = e.createContext({}),
                 {
                   className: 'victurl-relly-content',
                   style: {
-                    height: a.length * v.current - g + 'px',
-                    transform: `translate(0, ${g}px)`,
+                    height: a.length * y.current - m + 'px',
+                    transform: `translate(0, ${m}px)`,
                   },
                 },
-                h.map(l),
+                0 !== p.length && p.map(l),
               ),
             )
           : r.default.createElement(
               'div',
               {
                 className: 'list-content',
-                style: _,
-                ref: y,
+                style: w,
+                ref: b,
                 onScroll: () => {
-                  const { scrollHeight: e, clientHeight: t, scrollTop: n } = y.current;
-                  0 === e - t - n &&
-                    setTimeout(() => {
-                      p((e) => ((e = a.slice(0, e.length + u)), [...e]));
-                    }, 500);
+                  const { scrollHeight: e, clientHeight: t, scrollTop: n } = b.current,
+                    r = e - t - n;
+                  0 === r
+                    ? (d && d(r, !0),
+                      setTimeout(() => {
+                        g((e) => ((e = a.slice(0, e.length + u)), [...e]));
+                      }, 500))
+                    : d && d(r, !1);
                 },
               },
-              h.map(l),
+              0 !== p.length && p.map(l),
             ),
       ),
     );
   });
-(sn.Item = cn),
-  (sn.displayName = 'List'),
-  (exports.Affix = Lt),
+(sn.Item = cn), (sn.displayName = 'List');
+(exports.Affix = Lt),
   (exports.Avatar = ln),
   (exports.AvatarGroup = an),
   (exports.Badge = on),
@@ -10220,6 +10222,75 @@ const un = e.createContext({}),
   (exports.Layout = o),
   (exports.LazyLoad = Tt),
   (exports.List = sn),
+  (exports.Loading = (t) => {
+    const {
+        type: n = 'default',
+        mask: a = !1,
+        loadingText: l,
+        icon: i,
+        width: o = '2em',
+        height: c = '2em',
+        style: u = {},
+      } = t,
+      s = e.useRef(null),
+      [f, d] = e.useState(0);
+    e.useEffect(
+      () => (
+        (s.current = setInterval(() => {
+          d((e) => (2 === e ? (e = 0) : e++, e));
+        }, 500)),
+        () => {
+          clearInterval(s.current);
+        }
+      ),
+      [],
+    );
+    const h = e.useMemo(() => {
+      const e = u;
+      return (e.width = o), (e.height = c), e;
+    }, [o, c, u]);
+    return r.default.createElement(
+      e.Fragment,
+      null,
+      a && r.default.createElement('div', { className: 'dialog' }),
+      'default' === n
+        ? r.default.createElement(
+            'div',
+            { className: 'loading', style: h },
+            r.default.createElement(
+              'div',
+              { className: 'loading-container' },
+              i ||
+                r.default.createElement(
+                  'svg',
+                  {
+                    fill: 'none',
+                    stroke: 'currentColor',
+                    'stroke-width': '4',
+                    width: o,
+                    height: c,
+                    viewBox: '0 0 48 48',
+                    'aria-hidden': 'true',
+                    focusable: 'false',
+                  },
+                  r.default.createElement('path', {
+                    d: 'M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6',
+                  }),
+                ),
+            ),
+            r.default.createElement('div', { className: 'text' }, l),
+          )
+        : r.default.createElement(
+            'div',
+            { className: 'dot-loading' },
+            new Array(3)
+              .fill('')
+              .map((e, t) =>
+                r.default.createElement('div', { className: f === t ? 'dot-active' : 'dot' }, e),
+              ),
+          ),
+    );
+  }),
   (exports.Menu = Pt),
   (exports.Pagination = jt),
   (exports.Popover = Kt),

@@ -1,6 +1,6 @@
 {
   "name": "react-view-ui",
-  "version": "1.6.6",
+  "version": "1.6.8",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
