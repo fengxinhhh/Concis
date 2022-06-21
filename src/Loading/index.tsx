@@ -59,8 +59,7 @@ const Loading: FC<LoadingProps> = (props) => {
               </svg>
             )}
           </div>
-
-          <div className="text">{loadingText}</div>
+          {loadingText && <div className="text">{loadingText}</div>}
         </div>
       ) : (
         <div className="dot-loading">
