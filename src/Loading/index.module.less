@@ -1,0 +1,77 @@
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #1890ff;
+  transform: translate(-50%, -50%);
+  .loading-container {
+    svg {
+      display: inline-block;
+      color: inherit;
+      font-style: normal;
+      vertical-align: -2px;
+      -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+      transform-origin: center center;
+      animation: arco-loading-circle 1s linear infinite;
+    }
+    @keyframes arco-loading-circle {
+      from {
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      to {
+        -ms-transform: rotate(-360deg);
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+      }
+    }
+  }
+  .text {
+    display: inline-block;
+    width: 200px;
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+.dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: 0.7;
+}
+.dot-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 99999;
+  display: flex;
+  align-items: flex-end;
+  color: #1890ff;
+  transform: translate(-50%, -50%);
+  .dot-active {
+    width: 20px;
+    height: 20px;
+    margin: 0 7px;
+    background-color: #1890ff;
+    border-radius: 50%;
+    transition: 0.3s linear;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 7px;
+    background-color: #94c4f1;
+    border-radius: 50%;
+    transition: 0.3s linear;
+  }
+}
