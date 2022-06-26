@@ -67,8 +67,36 @@ describe('DatePicker', () => {
       input.simulate('click');
     });
     component.update();
+    //测试月份选择框正常
+    component.find('.top-bar .month').simulate('click');
+    expect(component.find('.month-toggle-box')).toHaveLength(1);
+    component.find('.month-toggle-box .month').at(0).simulate('click');
+    expect(component.find('.top-bar .month').text()).toBe('1');
+    //测试选择日期正常
     const firstDay = component.find('.day-list .day').at(0);
     firstDay.simulate('click');
     expect(mockFn).toBeCalled();
+  });
+
+  it('test range DatePicker show correctly', () => {
+    //测试区间式选择器的正确性
+    const mockFn = jest.fn();
+    const component = mount(<TimePicker type="primary" showRange handleChange={mockFn} />);
+    component.find('.rangePicker .box input').at(0).simulate('focus');
+
+    expect(component.find('.range .date-box')).toHaveLength(1);
+
+    const startPickerDom = component.find('.left .day-list .box-list');
+    const endPickerDom = component.find('.right .day-list .day-box');
+    startPickerDom.at(0).simulate('click');
+    endPickerDom.at(0).simulate('click');
+    expect(mockFn).toBeCalled();
+  });
+
+  it('test range clearly DatePicker show correctly', () => {
+    //测试可清除式选择器显示icon
+    const component = <TimePicker type="primary" showRange showClear />;
+    ReactDOM.render(component, container);
+    expect(container?.querySelector('.rangePicker .box')?.childNodes.length).toBe(2);
   });
 });
