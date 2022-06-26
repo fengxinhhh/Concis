@@ -1,4 +1,4 @@
-import React, { useEffect, FC, memo, useState, useCallback } from 'react';
+import React, { useEffect, FC, memo, useState, useCallback, useRef } from 'react';
 import {
   DoubleLeftOutlined,
   LeftOutlined,
@@ -39,7 +39,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     end: false,
   }); //是否被选择过
 
-  let activeBorderDom: Element | null = document.querySelector('.activeBorder');
+  let activeBorderDom = useRef(null);
 
   useEffect(() => {
     const { startYear, startMonth } = startDate;
@@ -87,12 +87,12 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
   const startIptFocus = () => {
     setShowTimeDialog(true);
     setRenderShowDialog(true);
-    (activeBorderDom as any).style.left = '0';
+    (activeBorderDom.current as any).style.left = '0';
   };
   const endIptFocus = () => {
     setShowTimeDialog(true);
     setRenderShowDialog(true);
-    (activeBorderDom as any).style.left = '190px';
+    (activeBorderDom.current as any).style.left = '190px';
   };
   const preYear = (type: string) => {
     //切换上一年
@@ -389,7 +389,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
           clearCallback={clearEndTime}
           showClear={showClear as boolean}
         />
-        <div className="activeBorder"></div>
+        <div className="activeBorder" ref={activeBorderDom}></div>
       </div>
       {renderShowDialog && (
         <div
