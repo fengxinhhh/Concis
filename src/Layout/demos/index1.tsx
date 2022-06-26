@@ -28,7 +28,6 @@ export default function LayoutDemo1() {
             <Slider row={3}>slider</Slider>
             <Content row={7}>content</Content>
           </Layout>
-
           <Footer>footer</Footer>
         </Layout>
       </div>
