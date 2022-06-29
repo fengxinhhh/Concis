@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect, memo, useCallback } from 'react';
-import Input from '@/Input';
+import Input from '../../Input';
 import './index.module.less';
 
 interface RadioGroupProps {
