@@ -126,7 +126,7 @@ const Select: FC<SelectProps> = (props) => {
   };
   const inputFilterOtpions = useMemo(() => {
     //输入状态options过滤
-    return option.filter((item) => {
+    return option?.filter((item) => {
       return (item.label as string).includes(selected);
     });
   }, [option, selected]);
@@ -195,7 +195,7 @@ const Select: FC<SelectProps> = (props) => {
         {loading ? <LoadingOutlined /> : <DownOutlined />}
       </div>
       <div className="selectOptions" style={ownsWidth} ref={optionRef}>
-        {option.map((s) => {
+        {option?.map((s) => {
           return (
             <div
               key={s.label as any}
