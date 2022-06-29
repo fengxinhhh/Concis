@@ -79,4 +79,34 @@ describe('Input', () => {
     });
     expect(component.find('input').getDOMNode().getAttribute('type')).toBe('password');
   });
+
+  it('test events callback correctly', () => {
+    const handleIptChange = jest.fn();
+    const handleIptFocus = jest.fn();
+    const handleClick = jest.fn();
+    const handleIptBlur = jest.fn();
+    const handleKeyDown = jest.fn();
+    const component = mount(
+      <Input
+        placeholder="请输入"
+        width="200"
+        handleIptChange={handleIptChange}
+        handleIptFocus={handleIptFocus}
+        handleClick={handleClick}
+        handleIptBlur={handleIptBlur}
+      />,
+    );
+
+    const input = component.find('input');
+    input.simulate('change', {
+      target: '123',
+    });
+    expect(handleIptChange).toBeCalled();
+    input.simulate('focus');
+    expect(handleIptFocus).toBeCalled();
+    input.simulate('blur');
+    expect(handleIptBlur).toBeCalled();
+    input.simulate('click');
+    expect(handleClick).toBeCalled();
+  });
 });
