@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef, memo, CSSProperties } from 'react';
+import React, { useState, useEffect, useMemo, useRef, CSSProperties } from 'react';
 import ReactDOM from 'react-dom';
 import { MessageProps } from './interface';
 import './index.module.less';
@@ -82,7 +82,7 @@ const Message = (props: MessageProps) => {
   }, []);
   useEffect(() => {
     const transform = position || 'top';
-    (messageDom.current as HTMLElement).style[transform] =
+    (messageDom?.current as HTMLElement).style[transform] =
       (transform === 'top' ? topMessageNum : bottomMessageNum) * 70 + 'px';
   }, [topMessageNum, bottomMessageNum]);
 
@@ -130,4 +130,4 @@ Message.loading = (props: string | MessageProps) => {
   return addInstance('loading', props);
 };
 
-export default memo(Message);
+export default Message;
