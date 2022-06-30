@@ -1,0 +1,28 @@
+.message-container {
+  position: fixed;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // min-width: 200px;
+  height: 40px;
+  padding: 0 20px;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 5px;
+  transform: translate(-50%, 0);
+  opacity: 1;
+  animation: showElement 0.3s;
+  .toast-content {
+    margin: 0 10px;
+  }
+}
+@keyframes showElement {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

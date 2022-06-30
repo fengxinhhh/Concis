@@ -38,6 +38,10 @@ interface ButtonProps {
    */
   loading?: Boolean;
   /**
+   * @description 自定义样式
+   */
+  style?: Object;
+  /**
    * @description 按钮点击回调事件
    */
   handleClick?: Function | undefined;
@@ -55,7 +59,7 @@ type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; 
 const Button = (props: ButtonProps) => {
   const {
     type,
-    width = '100',
+    width = '100%',
     height = '40',
     disabled,
     circle,
@@ -63,6 +67,7 @@ const Button = (props: ButtonProps) => {
     loading,
     handleClick,
     children,
+    style = {},
   } = props;
 
   const buttonStyle = useMemo(() => {
@@ -73,8 +78,9 @@ const Button = (props: ButtonProps) => {
   }, [type]);
   const buttonSize = useMemo(() => {
     var size: ButtonStyle = {
-      width: '100px',
+      width: '100%',
       height: '40px',
+      ...style,
     };
     if (width) {
       size.width = width + 'px';
