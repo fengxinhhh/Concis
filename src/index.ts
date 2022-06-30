@@ -30,3 +30,4 @@ export { default as AvatarGroup } from './Avatar/group';
 export { default as Badge } from './Badge';
 export { default as List } from './List';
 export { default as Loading } from './Loading';
+export { default as Message } from './Message';
