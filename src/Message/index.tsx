@@ -16,7 +16,7 @@ let bottomMessageNum: number = 0;
 
 function addInstance(
   type: 'info' | 'success' | 'warning' | 'error' | 'normal' | 'loading',
-  props: string | MessageProps,
+  props: string | MessageProps<string>,
 ) {
   let style: CSSProperties = {},
     duration: number = 3000,
@@ -33,6 +33,8 @@ function addInstance(
     content = props;
   }
   const div = document.createElement('div');
+  const messageBoxId = String(Math.floor(Math.random() * 1000));
+  div.setAttribute('class', `${position}-${messageBoxId}`);
   if (container) {
     container.appendChild(div);
   } else {
@@ -42,12 +44,15 @@ function addInstance(
     container.appendChild(div);
   }
   setTimeout(() => {
-    if (position === 'top') {
-      topMessageNum--;
-    } else {
-      bottomMessageNum--;
+    if (Array.prototype.slice.call(container?.childNodes).includes(div)) {
+      changeHeight(Array.prototype.slice.call(container?.childNodes), position);
+      container?.removeChild(div);
+      if (position === 'top') {
+        topMessageNum--;
+      } else {
+        bottomMessageNum--;
+      }
     }
-    container?.removeChild(div);
   }, duration + 200);
   ReactDOM.render(
     <Message
@@ -57,12 +62,38 @@ function addInstance(
       duration={duration}
       position={position}
       clearable={clearable}
+      messageBoxId={messageBoxId}
     />,
     div,
   );
 }
-const Message = (props: MessageProps) => {
-  const { style, content, type, duration, position, clearable } = props;
+function remove(id: string, position: string) {
+  //重排节点下元素高度
+  const container = document.querySelector('.all-container');
+  const children = Array.prototype.slice.call(container?.childNodes);
+  for (let key in children) {
+    if (children[key].getAttribute('class') === `${position}-${id}`) {
+      const removeDom = children[key];
+      container?.removeChild(removeDom);
+      if (position === 'top') {
+        topMessageNum--;
+      } else {
+        bottomMessageNum--;
+      }
+      changeHeight(children.slice(Number(key)), position);
+    }
+  }
+}
+function changeHeight(children: Array<HTMLElement>, position: any) {
+  for (let key in children) {
+    const child = children[key].childNodes[0] as HTMLElement;
+    if (children[key].getAttribute('class')?.startsWith(position)) {
+      child.style[position] = Number(child.style[position].split('p')[0]) - 70 + 'px';
+    }
+  }
+}
+const Message = (props: MessageProps<string>) => {
+  const { style, content, type, duration, position, clearable, messageBoxId } = props;
   const [opac, setOpac] = useState(1);
   const messageDom = useRef<any>(null);
 
@@ -101,32 +132,35 @@ const Message = (props: MessageProps) => {
       return <LoadingOutlined style={{ color: '#1890ff', fontSize: '16px' }} />;
     }
   }, [type]);
+  const closeMessage = () => {
+    remove(messageBoxId as string, position as string);
+  };
 
   return (
     <div className="message-container" style={{ opacity: opac, ...style }} ref={messageDom}>
       {messageIcon}
       <span className="toast-content">{content}</span>
-      {clearable && <CloseOutlined onClick={() => setOpac(0)} />}
+      {clearable && <CloseOutlined onClick={closeMessage} />}
     </div>
   );
 };
 
-Message.info = (props: string | MessageProps) => {
+Message.info = (props: string | MessageProps<string>) => {
   return addInstance('info', props);
 };
-Message.success = (props: string | MessageProps) => {
+Message.success = (props: string | MessageProps<string>) => {
   return addInstance('success', props);
 };
-Message.error = (props: string | MessageProps) => {
+Message.error = (props: string | MessageProps<string>) => {
   return addInstance('error', props);
 };
-Message.normal = (props: string | MessageProps) => {
+Message.normal = (props: string | MessageProps<string>) => {
   return addInstance('normal', props);
 };
-Message.warning = (props: string | MessageProps) => {
+Message.warning = (props: string | MessageProps<string>) => {
   return addInstance('warning', props);
 };
-Message.loading = (props: string | MessageProps) => {
+Message.loading = (props: string | MessageProps<string>) => {
   return addInstance('loading', props);
 };
 

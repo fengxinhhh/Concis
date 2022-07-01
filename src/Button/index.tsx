@@ -46,13 +46,13 @@ interface ButtonProps {
    */
   handleClick?: Function | undefined;
 }
-interface ButtonStyle {
+interface ButtonStyle<T> {
   //button样式接口
-  width?: String;
-  height?: String;
-  borderRadius?: String;
-  border?: String;
-  cursor?: String;
+  width?: T;
+  height?: T;
+  borderRadius?: T;
+  border?: T;
+  cursor?: T;
 }
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; //原生button接口
 
@@ -77,7 +77,7 @@ const Button = (props: ButtonProps) => {
     return type as any;
   }, [type]);
   const buttonSize = useMemo(() => {
-    var size: ButtonStyle = {
+    var size: ButtonStyle<string> = {
       width: '100%',
       height: '40px',
       ...style,

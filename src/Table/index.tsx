@@ -115,13 +115,13 @@ const Table: FC<tableProps> = (props) => {
     setRadioRow(row);
     radioSelectCallback && radioSelectCallback(row);
   };
-  const checkedSelectRow = (checked: boolean, row: object): void => {
+  const checkedSelectRow = <T,>(checked: boolean, row: T): void => {
     //多选单行
     setCheckedRow((old: any) => {
       if (checked) {
         old.push(row);
       } else {
-        const delIndex = old.findIndex((s: object) => s == row);
+        const delIndex = old.findIndex((s: T) => s == row);
         old.splice(delIndex, 1);
       }
       checkedSelectCallback && checkedSelectCallback(old);

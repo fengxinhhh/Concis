@@ -1,10 +1,10 @@
 import { CSSProperties } from 'react';
 
-interface MessageProps {
+interface MessageProps<T> {
   /**
    * @description 对象类型传参时的内容
    */
-  content?: string;
+  content?: T;
   /**
    * @description Message类型
    */
@@ -29,6 +29,7 @@ interface MessageProps {
    * @default {}
    */
   style?: CSSProperties;
+  messageBoxId?: string;
 }
 
 export type { MessageProps };
