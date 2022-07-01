@@ -59,6 +59,6 @@ const defaultData = [
 
 export default function MenuDemos1() {
   process.env.NODE_ENV === 'production' && usePageListener('Table');
-  console.log(aaa);
+
   return <Table titleParams={columns} tableData={defaultData} />;
 }
