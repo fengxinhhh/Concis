@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import getUserIp from '../track/getUserIp';
 import getNativeBrowserInfo from '../track/getNativeBrowserInfo';
+import { getErrorInfo } from '../track/getErrorInfo';
 import sendData from '../track/sendData';
 
 const usePageListener = (componentName: string) => {
@@ -8,11 +9,13 @@ const usePageListener = (componentName: string) => {
   const leaveTime = useRef<number>(0);
   const timer = useRef<any>();
 
+  getErrorInfo();
   useEffect(() => {
     //计算页面停留时间
     timer.current = setInterval(() => {
       leaveTime.current = leaveTime.current + 1;
     }, 1000);
+
     return () => {
       clearInterval(timer.current);
     };
@@ -29,6 +32,7 @@ const usePageListener = (componentName: string) => {
       const userDeviceInfo = (await getUserIp()) as object; //用户个人相关信息
       const nativeBrowserInfo = (await getNativeBrowserInfo()) as object; //浏览器原生的信息
       trackInfo = { ...trackInfo, ...userDeviceInfo, ...nativeBrowserInfo };
+      console.log(trackInfo);
       //将收集到的数据发送给后端
       const result = await sendData(trackInfo);
       return result;
