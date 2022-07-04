@@ -7,7 +7,7 @@ export default function index1() {
     Notification.info({
       title: 'Notification',
       content: val,
-      duration: 3000,
+      duration: 1000000,
       clearable: true,
       showFooter: true,
       footerBtnVal: {
