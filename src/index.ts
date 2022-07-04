@@ -31,3 +31,4 @@ export { default as Badge } from './Badge';
 export { default as List } from './List';
 export { default as Loading } from './Loading';
 export { default as Message } from './Message';
+export { default as Notification } from './Notification';
