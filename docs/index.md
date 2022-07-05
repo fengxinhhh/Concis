@@ -4,7 +4,7 @@ hero:
   desc: 一套易用的轻量级的React UI 组件库
   actions:
     - text: 查看文档
-      link: /common/button
+      link: /guide/introduce
     - text: 快速开始
       link: /common/button
 features:
