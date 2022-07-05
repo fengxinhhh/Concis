@@ -26,7 +26,7 @@ features:
   - icon: https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/q48YQ5X4ytAAAAAAAAAAAAAAFl94AQBr
     title: 简单易用
     desc: 在 Ant Design 上进行了自己的封装，更加易用
-footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [Xin Feng](https://github.com/fengxinhhh/React-View-UI-fs)
+footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [Xin Feng](https://github.com/fengxinhhh/react-view-ui)
 ---
 
 ## 快速网站成型工具

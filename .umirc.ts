@@ -25,7 +25,7 @@ export default defineConfig({
     null,
     {
       title: 'GitHub',
-      path: 'https://github.com/fengxinhhh/React-View-UI-fs',
+      path: 'https://github.com/fengxinhhh/react-view-ui',
     },
   ],
   styles: [

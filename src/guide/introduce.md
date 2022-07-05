@@ -36,7 +36,7 @@ React-View-UI 是基于 Ant Design 设计体系的 React UI 组件库，主要�
 
 ## 如何贡献
 
-通过 github <a href="https://github.com/fengxinhhh/React-View-UI-fs">https://github.com/fengxinhhh/React-View-UI-fs</a>提交 issue，即可开始参数组件开发任务。
+通过 github <a href="https://github.com/fengxinhhh/react-view-ui">https://github.com/fengxinhhh/react-view-ui</a>提交 issue，即可开始参数组件开发任务。
 
 ## 问题汇报
 
