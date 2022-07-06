@@ -71,7 +71,29 @@ export default () => (
     scale={1.2}
   >
     <a href="http://react-view-ui.com:92/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://react-view-ui.com:92/images/index-demo.jpg" width="800" />
+      <img src="http://react-view-ui.com:92/images/index-demo.jpg" />
+    </a>
+  </Section>
+);
+```
+
+```tsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { Section } from './site/Section';
+import './site/styles.less';
+
+export default () => (
+  <Section
+    title="答疑报错，请联系我"
+    style={{ marginTop: 140, fontWeight: 'bold' }}
+    titleStyle={{ paddingBottom: 140 }}
+    scale={1.2}
+  >
+    <a href="http://react-view-ui.com:92/#/common/button" target="_blank" rel="noreferrer">
+      <img src="http://react-view-ui.com:92/images/wechat-code.jpg" style={{ width: '400px' }} />
     </a>
   </Section>
 );

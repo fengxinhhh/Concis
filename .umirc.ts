@@ -24,6 +24,19 @@ export default defineConfig({
   navs: [
     null,
     {
+      title: '作者',
+      children: [
+        {
+          title: 'CSDN',
+          path: 'https://blog.csdn.net/m0_46995864?spm=1019.2139.3001.5343',
+        },
+        {
+          title: '掘金',
+          path: 'https://juejin.cn/user/3061476130044487',
+        },
+      ],
+    },
+    {
       title: 'GitHub',
       path: 'https://github.com/fengxinhhh/react-view-ui',
     },
@@ -44,6 +57,20 @@ export default defineConfig({
     .__dumi-default-layout-features, .__dumi-default-layout-features + .__dumi-default-layout-content, .__dumi-default-layout-hero + .__dumi-default-layout-content{
       max-width: 1160px !important;
     }
+    .__dumi-default-menu-inner::-webkit-scrollbar {
+      width: 4px;    
+      /*height: 4px;*/
+  }
+  .__dumi-default-menu-inner::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.2);
+  }
+  .__dumi-default-menu-inner::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+      border-radius: 0;
+      background: rgba(0,0,0,0.1);
+  }
     `,
   ],
 });
