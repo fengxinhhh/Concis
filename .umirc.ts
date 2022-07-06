@@ -43,34 +43,37 @@ export default defineConfig({
   ],
   styles: [
     `
-    .__dumi-default-layout-hero{
-      background-image: url(//img.alicdn.com/imgextra/i4/O1CN01ZcvS4e26XMsdsCkf9_!!6000000007671-2-tps-6001-4001.png);
-      background-size: cover;
-      background-repeat: no-repeat;
-      padding: 120px 0 !important;
-    }
-    .__dumi-default-layout-hero h1{
-      color:#45124e !important;
-      font-size:80px !important;
-      padding-bottom: 30px !important;
-    }
-    .__dumi-default-layout-features, .__dumi-default-layout-features + .__dumi-default-layout-content, .__dumi-default-layout-hero + .__dumi-default-layout-content{
-      max-width: 1160px !important;
-    }
-    .__dumi-default-menu-inner::-webkit-scrollbar {
-      width: 4px;    
-      /*height: 4px;*/
-  }
-  .__dumi-default-menu-inner::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-      background: rgba(0,0,0,0.2);
-  }
-  .__dumi-default-menu-inner::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-      border-radius: 0;
-      background: rgba(0,0,0,0.1);
-  }
+        .__dumi-default-layout-hero{
+          background-image: url(//img.alicdn.com/imgextra/i4/O1CN01ZcvS4e26XMsdsCkf9_!!6000000007671-2-tps-6001-4001.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+          padding: 120px 0 !important;
+        }
+        .__dumi-default-layout-hero h1{
+          color:#45124e !important;
+          font-size:80px !important;
+          padding-bottom: 30px !important;
+        }
+        .__dumi-default-layout-features, .__dumi-default-layout-features + .__dumi-default-layout-content, .__dumi-default-layout-hero + .__dumi-default-layout-content{
+          max-width: 1160px !important;
+        }
+        .__dumi-default-menu-inner::-webkit-scrollbar {
+          width: 4px;    
+          /*height: 4px;*/
+      }
+      .__dumi-default-menu-inner::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+          background: rgba(0,0,0,0.2);
+      }
+      .__dumi-default-menu-inner::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+          border-radius: 0;
+          background: rgba(0,0,0,0.1);
+      }
+      .__dumi-default-menu-list li {
+        font-size: 14px;
+      }
     `,
   ],
 });

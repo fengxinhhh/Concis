@@ -4,7 +4,7 @@ nav:
   path: /guide
 ---
 
-# 项目中安装使用
+# 在 create-react-app 中使用
 
 你可以使用 create-react-app 或自建一个包管理工程目录，安装完预设包，如 react、react-dom。
 
@@ -20,7 +20,7 @@ npm init -y
 npm i --save-dev react react-dom
 ```
 
-# 安装
+## 安装
 
 通过命令安装 react-view-ui：
 
@@ -28,7 +28,7 @@ npm i --save-dev react react-dom
 npm i --save-dev react-view-ui
 ```
 
-# 引入和使用
+## 引入和使用
 
 ```tsx pure
 import { Button, DatePicker, Loading } from 'react-view-ui/dist/my-lib-esm';

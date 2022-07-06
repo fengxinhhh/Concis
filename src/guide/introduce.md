@@ -34,9 +34,29 @@ React-View-UI 是基于 Ant Design 设计体系的 React UI 组件库，主要�
 
 对于 IE 系列浏览器，需要提供相应的 Polyfill 支持，建议使用 @babel/preset-env 来解决浏览器兼容问题。如果你在使用 umi，可以直接使用 targets 配置。
 
-## 如何贡献
+## 如何贡献？
 
-通过 github <a href="https://github.com/fengxinhhh/react-view-ui">https://github.com/fengxinhhh/react-view-ui</a>提交 issue，即可开始参数组件开发任务。
+#### 拉取仓库
+
+- 原始仓库： <a href="https://github.com/fengxinhhh/react-view-ui">https://github.com/fengxinhhh/react-view-ui</a>
+
+- 目标仓库：fork 到自己的 github 上
+
+#### 拉取分支
+
+拉取分支 fengxinhhh/react-view-ui/master 分支即可。
+
+<Alert>注意：建议分支名为[feat]-[name]，[feat]是这个分支的类型，可选的有[feat][unitest][docs][bugfix][other]，[name]则是名字，自定义就好了。eg. unittest-core(意为：对核心补充单测)</Alert>
+
+#### 提交代码
+
+代码风格遵循 2 空格，无分号，非说明请不要在代码中附带任何 console 相关的方法及 debugger。 开发完成后，到自己 fork 出来的仓库提交 pull request。
+
+<img src="http://react-view-ui.com:92/images/github-doc.png" />
+
+#### 审核与合并
+
+由于目前社区人数有限，审核流程比较简单，作者在 review 代码后会将反馈留在 pull request commit 中，关注提交的 pull request 即可。
 
 ## 问题汇报
 
