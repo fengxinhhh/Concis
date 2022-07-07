@@ -1,4 +1,5 @@
 .form-item {
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -8,5 +9,23 @@
     margin-right: 20px;
     color: #4e5969;
     text-align: right;
+  }
+  .hide-rule-label {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    color: #f53f3f;
+    font-size: 12px;
+    opacity: 0;
+    transition: 0.2s linear;
+  }
+  .show-rule-label {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    color: #f53f3f;
+    font-size: 12px;
+    opacity: 1;
+    transition: 0.1s linear;
   }
 }

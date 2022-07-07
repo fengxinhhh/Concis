@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useCallback, useContext } from 'react';
+import React, { useEffect, useState, useCallback, useContext, createRef } from 'react';
 import { FormItemProps } from './interface';
 import { FormItemAttrs, FormItemLabel } from './classes';
 import { ctx } from './index';
 import './styles/form-item.module.less';
 
 const FormItem = (props: FormItemProps) => {
-  const { children, label, wrapperCol = 0, wrapperTol = 0 } = props;
+  const { children, label, wrapperCol = 0, wrapperTol = 0, field, rules = [] } = props;
 
   const [propsStyle, setPropsStyle] = useState({});
   const [labelStyle, setLabelStyle] = useState({});
@@ -41,7 +41,10 @@ const FormItem = (props: FormItemProps) => {
       <div className="label" style={labelStyle}>
         {label || ''}
       </div>
-      {children}
+      <div className={field || 'content'}>
+        {children}
+        {field && rules.length > 0 && <div className="hide-rule-label">{rules[0].message}</div>}
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { FC, useState, useMemo, memo } from 'react';
+import React, { FC, useState, useMemo, memo, createRef, useEffect } from 'react';
 import { CloseOutlined, EyeOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
 import './index.module.less';
 
@@ -106,6 +106,9 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
   } = props;
   const [iptValue, setIptValue] = useState<string | number>(defaultValue || '');
   const [pwdIptState, setPwdIptState] = useState(true); //密码框切换状态
+
+  const iptRef = createRef();
+
   const changeIpt = (e: any) => {
     //改变文本框
     if (moreStyle && Object.keys(moreStyle).includes('caretColor')) {
@@ -185,6 +188,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
         onFocus={focusIpt}
         onKeyUp={(e) => handleKeyDown && handleKeyDown(e)}
         onClick={iptHandleClick}
+        ref={() => iptRef}
       />
       {
         //可清除
@@ -215,4 +219,4 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     </div>
   );
 };
-export default memo(Input);
+export default Input;

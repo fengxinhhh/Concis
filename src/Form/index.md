@@ -18,3 +18,7 @@ group:
 ## 布局方式
 
 <code src="./demos/index2.tsx"/>
+
+## 受控表单
+
+<code src="./demos/index3.tsx"/>
