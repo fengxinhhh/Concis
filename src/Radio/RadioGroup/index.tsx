@@ -26,9 +26,6 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
   const [addOptionVal, setAddOptionVal] = useState('');
   const [showAddOption, setShowAddOption] = useState(canAddOption && false);
 
-  useEffect(() => {
-    console.log(boxStyle);
-  });
   const changeOptions = (item: RadioProps, i: number, e: any) => {
     if (item.disabled) return;
     e && e.stopPropagation();

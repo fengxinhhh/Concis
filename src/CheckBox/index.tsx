@@ -79,7 +79,7 @@ const CheckBox: FC<checkBoxProps> = (props) => {
     } else if (checkStatus) {
       return (
         <div className="checkBox-actived">
-          <CheckOutlined />
+          <CheckOutlined style={{ fontSize: '12px' }} />
         </div>
       );
     } else {
@@ -94,7 +94,7 @@ const CheckBox: FC<checkBoxProps> = (props) => {
       } else if (checkBoxOptions.checked) {
         return (
           <div className="checkBox-actived">
-            <CheckOutlined />
+            <CheckOutlined style={{ fontSize: '12px' }} />
           </div>
         );
       } else if (!checkBoxOptions.checked) {
