@@ -1,6 +1,6 @@
 ---
 hero:
-  title: React View UI
+  title: Concis
   desc: 一套易用的轻量级的React UI 组件库
   actions:
     - text: 查看文档
@@ -26,7 +26,7 @@ features:
   - icon: https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/q48YQ5X4ytAAAAAAAAAAAAAAFl94AQBr
     title: 简单易用
     desc: 在 Ant Design 上进行了自己的封装，更加易用
-footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [Xin Feng](https://github.com/fengxinhhh/react-view-ui)
+footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [Xin Feng](https://github.com/fengxinhhh/Concis)
 ---
 
 ## 快速网站成型工具
@@ -41,7 +41,7 @@ import './site/styles.less';
 
 export default () => (
   <Section
-    title="在线体验React-View-UI的极致性"
+    title="在线体验Concis的极致性"
     style={{ marginTop: 40 }}
     titleStyle={{ paddingBottom: 100, fontWeight: 'bold' }}
   >

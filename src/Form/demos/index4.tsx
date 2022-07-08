@@ -30,7 +30,7 @@ export default function index1() {
 
   return (
     <div>
-      <Form layout={'vertical'} formField={formRef} style={{ width: '600px' }}>
+      <Form layout={'horizontal'} formField={formRef} style={{ width: '600px' }}>
         <Form.Item
           label="Username"
           field="username"
@@ -54,6 +54,13 @@ export default function index1() {
         <Form.Item wrapperTol={5}>
           <Button type="primary" handleClick={submit}>
             Submit
+          </Button>
+          <Button
+            type="text"
+            handleClick={() => form.resetFields(formRef)}
+            style={{ margin: '0 10px' }}
+          >
+            Reset
           </Button>
         </Form.Item>
       </Form>

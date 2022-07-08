@@ -38,11 +38,12 @@ export default function index1() {
             { required: true, message: '请输入用户名' },
             { maxLength: 10, message: '最大长度为10位' },
             { minLength: 3, message: '最小长度为3位' },
+            { fn: (a: string) => a.includes('a'), message: '必须包含a' },
           ]}
         >
           <Input placeholder="Please enter your usename" width="200"></Input>
         </Form.Item>
-        <Form.Item label="Post" field="post">
+        <Form.Item label="Post" field="post" disabled>
           <Input placeholder="Please enter your post" width="200"></Input>
         </Form.Item>
         <Form.Item label="Name" field="name" rules={[{ required: true, message: '请输入名字' }]}>

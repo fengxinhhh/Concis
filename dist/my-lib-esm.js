@@ -1712,31 +1712,37 @@ var Vt = i((e) => {
     } = e,
     [m, v] = c(''),
     [y, b] = c(''),
-    x = u();
-  o(() => {
-    (x.current.height = '0px'), console.log(n);
-  }, []),
-    o(() => {
-      console.log(m);
-    }, [m]);
-  const E = r(() => (i ? { width: `${i}px` } : {}), [i]),
-    _ = r(() => {
+    x = u(),
+    E = () => {
+      x.current && x.current.style && (x.current.style.height = '0px');
+    };
+  o(
+    () => (
+      (x.current.height = '0px'),
+      window.addEventListener('click', E),
+      () => {
+        window.removeEventListener('click', E);
+      }
+    ),
+    [],
+  );
+  const _ = r(() => (i ? { width: `${i}px` } : {}), [i]),
+    w = r(() => {
       if (l) return { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' };
     }, [l]),
-    w = (e) => {
+    k = (e) => {
       e.stopPropagation(),
         l ||
-          (console.log(x.current.style.height),
-          '0px' === x.current.style.height || '' === x.current.style.height
-            ? (x.current.style.height = d ? 100 * N.length + '%' : 100 * n.length + '%')
+          ('0px' === x.current.style.height || '' === x.current.style.height
+            ? (x.current.style.height = d ? 100 * C.length + '%' : 100 * n.length + '%')
             : (x.current.style.height = '0px'));
     },
-    k = (e, t) => {
+    N = (e, t) => {
       t.stopPropagation(),
         e.disabled || ((x.current.style.height = '0px'), v(e.label), b(e.value), p && p(e));
     },
-    N = r(() => (null == n ? void 0 : n.filter((e) => e.label.includes(m))), [n, m]),
-    C = s(
+    C = r(() => (null == n ? void 0 : n.filter((e) => e.label.includes(m))), [n, m]),
+    O = s(
       (e) => {
         v(e.target.value),
           console.log(m),
@@ -1752,7 +1758,7 @@ var Vt = i((e) => {
         null,
         t.createElement(
           'div',
-          { className: 'select', style: Object.assign(Object.assign({}, E), _) },
+          { className: 'select', style: Object.assign(Object.assign({}, _), w) },
           t.createElement(
             'div',
             { className: 'selected' },
@@ -1761,15 +1767,15 @@ var Vt = i((e) => {
               className: 'selected',
               value: m,
               placeholder: a,
-              onClick: w,
-              onChange: (e) => C(e),
+              onClick: k,
+              onChange: (e) => O(e),
             }),
-            h ? t.createElement(Ke, { onClick: () => v('') }) : t.createElement(it, { onClick: w }),
+            h ? t.createElement(Ke, { onClick: () => v('') }) : t.createElement(it, { onClick: k }),
           ),
           t.createElement(
             'div',
-            { className: 'selectOptions', style: E, ref: x },
-            N.map((e) =>
+            { className: 'selectOptions', style: _, ref: x },
+            C.map((e) =>
               t.createElement(
                 'div',
                 {
@@ -1778,7 +1784,7 @@ var Vt = i((e) => {
                   style: e.disabled
                     ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' }
                     : {},
-                  onClick: (t) => k(e, t),
+                  onClick: (t) => N(e, t),
                 },
                 e.label,
               ),
@@ -1788,10 +1794,10 @@ var Vt = i((e) => {
       )
     : t.createElement(
         'div',
-        { className: 'select', style: Object.assign(Object.assign({}, E), _) },
+        { className: 'select', style: Object.assign(Object.assign({}, _), w) },
         t.createElement(
           'div',
-          { className: 'selected', onClick: w },
+          { className: 'selected', onClick: k },
           m
             ? t.createElement('div', { className: 'size' }, m)
             : (a && t.createElement('div', { className: 'placeholder' }, a)) ||
@@ -1800,7 +1806,7 @@ var Vt = i((e) => {
         ),
         t.createElement(
           'div',
-          { className: 'selectOptions', style: E, ref: x },
+          { className: 'selectOptions', style: _, ref: x },
           null == n
             ? void 0
             : n.map((e) =>
@@ -1812,7 +1818,7 @@ var Vt = i((e) => {
                     style: e.disabled
                       ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' }
                       : {},
-                    onClick: (t) => k(e, t),
+                    onClick: (t) => N(e, t),
                   },
                   e.label,
                 ),
@@ -1820,30 +1826,31 @@ var Vt = i((e) => {
         ),
       );
 });
-var Kt = i((e) => {
+const Kt = (e) => {
   const {
       width: n,
       moreStyle: i,
       type: a,
       placeholder: l,
       showClear: o,
-      showTogglePwd: u,
-      min: s,
-      max: f,
-      step: d,
-      handleIptChange: h,
-      handleKeyDown: p,
-      handleIptFocus: g,
-      handleClick: m,
-      handleIptBlur: v,
-      handleNumChange: y,
-      clearCallback: b,
-      defaultValue: x,
+      showTogglePwd: s,
+      min: f,
+      max: d,
+      step: h,
+      handleIptChange: p,
+      handleKeyDown: g,
+      handleIptFocus: m,
+      handleClick: v,
+      handleIptBlur: y,
+      handleNumChange: b,
+      clearCallback: x,
+      defaultValue: E,
     } = e,
-    [E, _] = c(x || ''),
-    [w, k] = c(!0),
-    N = r(() => (u && 'password' === a ? (w ? 'password' : 'text') : a || 'text'), [a, u, w]),
-    C = r(() => {
+    [_, w] = c(E || ''),
+    [k, N] = c(!0),
+    C = u(),
+    O = r(() => (s && 'password' === a ? (k ? 'password' : 'text') : a || 'text'), [a, s, k]),
+    j = r(() => {
       let e = { width: '170px' };
       return n && (e.width = n + 'px'), Object.assign(Object.assign({}, e), i);
     }, [n, i]);
@@ -1852,36 +1859,37 @@ var Kt = i((e) => {
     { className: 'box', style: { width: n ? n + 'px' : '170px' } },
     t.createElement('input', {
       className: 'input',
-      style: C,
-      type: N,
+      style: j,
+      type: O,
       placeholder: l,
-      value: x || E,
+      value: E || _,
       onChange: (e) => {
-        (i && Object.keys(i).includes('caretColor')) || (_(e.target.value), h && h(e.target.value));
+        (i && Object.keys(i).includes('caretColor')) || (w(e.target.value), p && p(e.target.value));
       },
       onBlur: (e) => {
-        'num' === a && NaN == Number(E) && _(''), v && v();
+        'num' === a && NaN == Number(_) && w(''), y && y();
       },
       onFocus: () => {
-        g && g(E);
+        m && m(_);
       },
-      onKeyUp: (e) => p && p(e),
+      onKeyUp: (e) => g && g(e),
       onClick: () => {
-        m && m();
+        v && v();
       },
+      ref: () => C,
     }),
     (o &&
       t.createElement(Ke, {
         style: { position: 'absolute', right: '5px', fontSize: '12px', cursor: 'pointer' },
         onClick: () => {
-          _(''), b && b();
+          w(''), x && x();
         },
       })) ||
       ('password' === a &&
-        u &&
+        s &&
         t.createElement(ht, {
           style: { position: 'absolute', right: '5px', fontSize: '12px', cursor: 'pointer' },
-          onClick: () => k(!w),
+          onClick: () => N(!k),
         })) ||
       ('num' === a &&
         t.createElement(
@@ -1890,68 +1898,65 @@ var Kt = i((e) => {
           t.createElement(Jt, {
             style: { cursor: 'pointer', fontSize: '10px' },
             onClick: () => {
-              if ('num' === a && NaN == Number(E)) return _('');
-              const e = d || 1;
-              return d && f && Number(E) + e > f
-                ? (y && y(f), _(f))
-                : d && s && Number(E) + e < s
-                ? (y && y(s), _(s))
-                : (y && y(Number(E) + e), void _(Number(E) + e));
+              if ('num' === a && NaN == Number(_)) return w('');
+              const e = h || 1;
+              return h && d && Number(_) + e > d
+                ? (b && b(d), w(d))
+                : h && f && Number(_) + e < f
+                ? (b && b(f), w(f))
+                : (b && b(Number(_) + e), void w(Number(_) + e));
             },
           }),
           t.createElement(it, {
             style: { cursor: 'pointer', fontSize: '10px' },
             onClick: () => {
-              if ('num' === a && NaN == Number(E)) return _('');
-              const e = d || 1;
-              if (d && s && Number(E) - e < s) return y && y(s), _(s);
-              y && y(Number(E) - e), _(Number(E) - e);
+              if ('num' === a && NaN == Number(_)) return w('');
+              const e = h || 1;
+              if (h && f && Number(_) - e < f) return b && b(f), w(f);
+              b && b(Number(_) - e), w(Number(_) - e);
             },
           }),
         )),
   );
-});
+};
 var Gt = i((e) => {
   const { children: n } = e;
   return t.createElement('div', null, n);
 });
 var Zt = i((e) => {
   const { children: n, value: r, canAddOption: i, boxStyle: a, onChange: l } = e,
-    [u, f] = c(r || 0),
-    [d, h] = c(n),
-    [p, g] = c(''),
-    [m, v] = c(i && !1);
-  o(() => {
-    console.log(a);
-  });
-  const y = (e, t, n) => {
-      e.disabled || (n && n.stopPropagation(), f(t), l && l(e, t), i && v(!1));
+    [o, u] = c(r || 0),
+    [f, d] = c(n),
+    [h, p] = c(''),
+    [g, m] = c(i && !1),
+    v = (e, t, n) => {
+      e.disabled || (n && n.stopPropagation(), u(t), l && l(e, t), i && m(!1));
     },
-    b = () => {
-      f(d.length), v(!0);
+    y = () => {
+      u(f.length), m(!0);
+    },
+    b = (e) => {
+      13 == e.keyCode && h && (d((e) => [...e, { props: { children: h } }]), m(!1));
     },
     x = (e) => {
-      13 == e.keyCode && p && (h((e) => [...e, { props: { children: p } }]), v(!1));
+      p(e);
     },
-    E = (e) => {
-      g(e);
-    },
-    _ = s(
-      (e, t) => (e.disabled ? 'groupDisabledStyle' : t == u ? 'groupActive' : 'groupStyle'),
-      [n, a, r, u],
+    E = s(
+      (e, t) => (e.disabled ? 'groupDisabledStyle' : t == o ? 'groupActive' : 'groupStyle'),
+      [n, a, r, o],
     );
   return t.createElement(
     'div',
     { className: 'radioGroup' },
-    d.map((e, n) =>
+    f.map((e, n) =>
       a
         ? t.createElement(
             'div',
             {
-              className: _(e.props, n),
+              className: E(e.props, n),
               style: e.props.disabled ? { cursor: 'not-allowed' } : { cursor: 'pointer' },
               key: n,
-              onClick: (t) => y(e.props, n, t),
+              onClick: (t) => v(e.props, n, t),
             },
             e.props.children,
           )
@@ -1961,7 +1966,7 @@ var Zt = i((e) => {
               className: 'radioBox',
               style: e.props.disabled ? { cursor: 'not-allowed' } : { cursor: 'pointer' },
               key: n,
-              onClick: (t) => y(e.props, n, t),
+              onClick: (t) => v(e.props, n, t),
             },
             t.createElement(
               'span',
@@ -1972,7 +1977,7 @@ var Zt = i((e) => {
               className: e.props.disabled ? 'disabledRadio' : 'radio',
               readOnly: !0,
               type: 'radio',
-              checked: u === n,
+              checked: o === n,
               disabled: e.props.disabled,
             }),
           ),
@@ -1984,26 +1989,26 @@ var Zt = i((e) => {
             { className: 'addOption' },
             t.createElement(
               'div',
-              { className: u === d.length ? 'groupActive' : 'groupStyle', onClick: b },
+              { className: o === f.length ? 'groupActive' : 'groupStyle', onClick: y },
               'More...',
             ),
-            m && t.createElement(Kt, { handleKeyDown: x, handleIptChange: E }),
+            g && t.createElement(Kt, { handleKeyDown: b, handleIptChange: x }),
           )
         : t.createElement(
             'div',
             { className: 'addOption' },
             t.createElement(
               'div',
-              { className: 'radioBox', onClick: b },
+              { className: 'radioBox', onClick: y },
               t.createElement('span', { className: 'radioLabel' }, 'More...'),
               t.createElement('input', {
                 className: 'radio',
                 type: 'radio',
                 readOnly: !0,
-                checked: u === d.length,
+                checked: o === f.length,
               }),
             ),
-            m && t.createElement(Kt, { handleKeyDown: x, handleIptChange: E }),
+            g && t.createElement(Kt, { handleKeyDown: b, handleIptChange: x }),
           )
       : t.createElement(t.Fragment, null),
   );
@@ -8207,7 +8212,11 @@ var fn = i((e) => {
         a
           ? t.createElement('div', { className: 'disblaed-checkBox' })
           : h
-          ? t.createElement('div', { className: 'checkBox-actived' }, t.createElement(Ye, null))
+          ? t.createElement(
+              'div',
+              { className: 'checkBox-actived' },
+              t.createElement(Ye, { style: { fontSize: '12px' } }),
+            )
           : t.createElement('div', { className: 'checkBox-noActived' }),
       [h, i],
     ),
@@ -8216,7 +8225,11 @@ var fn = i((e) => {
         e.disabled
           ? t.createElement('div', { className: 'disblaed-checkBox' })
           : e.checked
-          ? t.createElement('div', { className: 'checkBox-actived' }, t.createElement(Ye, null))
+          ? t.createElement(
+              'div',
+              { className: 'checkBox-actived' },
+              t.createElement(Ye, { style: { fontSize: '12px' } }),
+            )
           : e.checked
           ? void 0
           : t.createElement('div', { className: 'checkBox-noActived' }),

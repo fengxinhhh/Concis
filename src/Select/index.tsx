@@ -71,13 +71,18 @@ const Select: FC<SelectProps> = (props) => {
   const [selectedValue, setSelectedValue] = useState<string | number | any>('');
   const optionRef = createRef() as any;
 
+  const closeSelect = () => {
+    if (optionRef.current && optionRef.current.style) {
+      optionRef.current.style.height = '0px';
+    }
+  };
   useEffect(() => {
     optionRef.current.height = `0px`;
-    console.log(option);
+    window.addEventListener('click', closeSelect);
+    return () => {
+      window.removeEventListener('click', closeSelect);
+    };
   }, []);
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
 
   const ownsWidth = useMemo(() => {
     //传参宽度
@@ -102,7 +107,6 @@ const Select: FC<SelectProps> = (props) => {
     //切换下拉
     e.stopPropagation();
     if (disabled) return;
-    console.log(optionRef.current.style.height);
     if (optionRef.current.style.height === '0px' || optionRef.current.style.height === '') {
       if (showSearch) {
         optionRef.current.style.height = `${inputFilterOtpions.length * 100}%`;

@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { useRef } from 'react';
 import Form from '..';
 import Input from '../../Input';
 import CheckBox from '../../CheckBox';
@@ -20,17 +20,14 @@ const option = [
   },
 ];
 export default function index1() {
-  const form = Form.useForm(); //使用Form组件回传的hooks，调用组件内链方法
-  const formRef = createRef(); //调用端设一个ref，保证单页面多表单唯一性
-
+  const formRef = Form.useForm(); //创建一个Form ref hook，调用一系列表单方法
   const submit = () => {
-    const submitParams = form.onSubmit(formRef);
-    console.log(submitParams);
+    console.log(formRef.onSubmit());
   };
 
   return (
     <div>
-      <Form layout={'vertical'} formField={formRef} style={{ width: '600px' }}>
+      <Form layout={'vertical'} style={{ width: '600px' }}>
         <Form.Item
           label="Username"
           field="username"
@@ -54,6 +51,16 @@ export default function index1() {
         <Form.Item wrapperTol={5}>
           <Button type="primary" handleClick={submit}>
             Submit
+          </Button>
+          <Button
+            type="text"
+            handleClick={() => formRef.resetFields()}
+            style={{ margin: '0 10px' }}
+          >
+            重置
+          </Button>
+          <Button type="text" handleClick={() => formRef.validateFields()}>
+            校验
           </Button>
         </Form.Item>
       </Form>

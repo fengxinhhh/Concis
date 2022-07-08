@@ -30,7 +30,7 @@ export default function index1() {
 
   return (
     <div>
-      <Form layout={'vertical'} formField={formRef} style={{ width: '600px' }}>
+      <Form layout={'vertical'} formField={formRef} disabled style={{ width: '600px' }}>
         <Form.Item
           label="Username"
           field="username"

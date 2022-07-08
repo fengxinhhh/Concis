@@ -7,7 +7,7 @@ import Radio from '../../Radio';
 import RadioGroup from '../../Radio/RadioGroup';
 
 export default function index1() {
-  const [align, setAlign] = useState('horizontal');
+  const [align, setAlign] = useState<'horizontal' | 'vertical'>('horizontal');
 
   const onChange = (val: any) => {
     setAlign(val.children);

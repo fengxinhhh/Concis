@@ -1,5 +1,5 @@
 {
-  "name": "react-view-ui",
+  "name": "concis",
   "version": "1.6.12",
   "scripts": {
     "start": "dumi dev",

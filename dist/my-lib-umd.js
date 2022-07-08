@@ -1752,31 +1752,37 @@
       } = e,
       [d, h] = t.useState(''),
       [p, m] = t.useState(''),
-      g = t.createRef();
-    t.useEffect(() => {
-      (g.current.height = '0px'), console.log(n);
-    }, []),
-      t.useEffect(() => {
-        console.log(d);
-      }, [d]);
-    const v = t.useMemo(() => (r ? { width: `${r}px` } : {}), [r]),
-      y = t.useMemo(() => {
+      g = t.createRef(),
+      v = () => {
+        g.current && g.current.style && (g.current.style.height = '0px');
+      };
+    t.useEffect(
+      () => (
+        (g.current.height = '0px'),
+        window.addEventListener('click', v),
+        () => {
+          window.removeEventListener('click', v);
+        }
+      ),
+      [],
+    );
+    const y = t.useMemo(() => (r ? { width: `${r}px` } : {}), [r]),
+      b = t.useMemo(() => {
         if (i) return { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' };
       }, [i]),
-      b = (e) => {
+      x = (e) => {
         e.stopPropagation(),
           i ||
-            (console.log(g.current.style.height),
-            '0px' === g.current.style.height || '' === g.current.style.height
-              ? (g.current.style.height = c ? 100 * E.length + '%' : 100 * n.length + '%')
+            ('0px' === g.current.style.height || '' === g.current.style.height
+              ? (g.current.style.height = c ? 100 * _.length + '%' : 100 * n.length + '%')
               : (g.current.style.height = '0px'));
       },
-      x = (e, t) => {
+      E = (e, t) => {
         t.stopPropagation(),
           e.disabled || ((g.current.style.height = '0px'), h(e.label), m(e.value), s && s(e));
       },
-      E = t.useMemo(() => (null == n ? void 0 : n.filter((e) => e.label.includes(d))), [n, d]),
-      _ = t.useCallback(
+      _ = t.useMemo(() => (null == n ? void 0 : n.filter((e) => e.label.includes(d))), [n, d]),
+      w = t.useCallback(
         (e) => {
           h(e.target.value),
             console.log(d),
@@ -1792,7 +1798,7 @@
           null,
           l.default.createElement(
             'div',
-            { className: 'select', style: Object.assign(Object.assign({}, v), y) },
+            { className: 'select', style: Object.assign(Object.assign({}, y), b) },
             l.default.createElement(
               'div',
               { className: 'selected' },
@@ -1801,17 +1807,17 @@
                 className: 'selected',
                 value: d,
                 placeholder: a,
-                onClick: b,
-                onChange: (e) => _(e),
+                onClick: x,
+                onChange: (e) => w(e),
               }),
               u
                 ? l.default.createElement(Ye, { onClick: () => h('') })
-                : l.default.createElement(Qe, { onClick: b }),
+                : l.default.createElement(Qe, { onClick: x }),
             ),
             l.default.createElement(
               'div',
-              { className: 'selectOptions', style: v, ref: g },
-              E.map((e) =>
+              { className: 'selectOptions', style: y, ref: g },
+              _.map((e) =>
                 l.default.createElement(
                   'div',
                   {
@@ -1820,7 +1826,7 @@
                     style: e.disabled
                       ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' }
                       : {},
-                    onClick: (t) => x(e, t),
+                    onClick: (t) => E(e, t),
                   },
                   e.label,
                 ),
@@ -1830,10 +1836,10 @@
         )
       : l.default.createElement(
           'div',
-          { className: 'select', style: Object.assign(Object.assign({}, v), y) },
+          { className: 'select', style: Object.assign(Object.assign({}, y), b) },
           l.default.createElement(
             'div',
-            { className: 'selected', onClick: b },
+            { className: 'selected', onClick: x },
             d
               ? l.default.createElement('div', { className: 'size' }, d)
               : (a && l.default.createElement('div', { className: 'placeholder' }, a)) ||
@@ -1842,7 +1848,7 @@
           ),
           l.default.createElement(
             'div',
-            { className: 'selectOptions', style: v, ref: g },
+            { className: 'selectOptions', style: y, ref: g },
             null == n
               ? void 0
               : n.map((e) =>
@@ -1854,7 +1860,7 @@
                       style: e.disabled
                         ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' }
                         : {},
-                      onClick: (t) => x(e, t),
+                      onClick: (t) => E(e, t),
                     },
                     e.label,
                   ),
@@ -1862,7 +1868,7 @@
           ),
         );
   });
-  var Yt = t.memo((e) => {
+  const Yt = (e) => {
     const {
         width: n,
         moreStyle: r,
@@ -1884,11 +1890,12 @@
       } = e,
       [x, E] = t.useState(b || ''),
       [_, w] = t.useState(!0),
-      k = t.useMemo(
+      k = t.createRef(),
+      N = t.useMemo(
         () => (c && 'password' === a ? (_ ? 'password' : 'text') : a || 'text'),
         [a, c, _],
       ),
-      N = t.useMemo(() => {
+      C = t.useMemo(() => {
         let e = { width: '170px' };
         return n && (e.width = n + 'px'), Object.assign(Object.assign({}, e), r);
       }, [n, r]);
@@ -1897,8 +1904,8 @@
       { className: 'box', style: { width: n ? n + 'px' : '170px' } },
       l.default.createElement('input', {
         className: 'input',
-        style: N,
-        type: k,
+        style: C,
+        type: N,
         placeholder: i,
         value: b || x,
         onChange: (e) => {
@@ -1915,6 +1922,7 @@
         onClick: () => {
           m && m();
         },
+        ref: () => k,
       }),
       (o &&
         l.default.createElement(Ye, {
@@ -1956,7 +1964,7 @@
             }),
           )),
     );
-  });
+  };
   var Ht = t.memo((e) => {
     const { children: t } = e;
     return l.default.createElement('div', null, t);
@@ -1966,11 +1974,8 @@
       [c, u] = t.useState(r || 0),
       [s, f] = t.useState(n),
       [d, h] = t.useState(''),
-      [p, m] = t.useState(a && !1);
-    t.useEffect(() => {
-      console.log(i);
-    });
-    const g = (e, t, n) => {
+      [p, m] = t.useState(a && !1),
+      g = (e, t, n) => {
         e.disabled || (n && n.stopPropagation(), u(t), o && o(e, t), a && m(!1));
       },
       v = () => {
@@ -8342,7 +8347,7 @@
             ? l.default.createElement(
                 'div',
                 { className: 'checkBox-actived' },
-                l.default.createElement(Be, null),
+                l.default.createElement(Be, { style: { fontSize: '12px' } }),
               )
             : l.default.createElement('div', { className: 'checkBox-noActived' }),
         [u, r],
@@ -8355,7 +8360,7 @@
             ? l.default.createElement(
                 'div',
                 { className: 'checkBox-actived' },
-                l.default.createElement(Be, null),
+                l.default.createElement(Be, { style: { fontSize: '12px' } }),
               )
             : e.checked
             ? void 0
