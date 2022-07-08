@@ -2,7 +2,7 @@
 
 ## Introduce
 
-Docs path: <a href="http://react-view-ui.com:92">http://react-view-ui.com:92</a>
+Docs path: <a href="http://concis.org.cn/">http://concis.org.cn/</a>
 
 ## Getting Started
 
