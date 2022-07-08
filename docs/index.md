@@ -70,8 +70,8 @@ export default () => (
     titleStyle={{ paddingBottom: 140 }}
     scale={1.2}
   >
-    <a href="http://react-view-ui.com:92/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://react-view-ui.com:92/images/index-demo.jpg" />
+    <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
+      <img src="http://concis.org.cn/images/index-demo.jpg" />
     </a>
   </Section>
 );
@@ -92,8 +92,8 @@ export default () => (
     titleStyle={{ paddingBottom: 140 }}
     scale={1.2}
   >
-    <a href="http://react-view-ui.com:92/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://react-view-ui.com:92/images/wechat-code.jpg" style={{ width: '400px' }} />
+    <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
+      <img src="http://concis.org.cn/images/wechat-code.jpg" style={{ width: '400px' }} />
     </a>
   </Section>
 );
