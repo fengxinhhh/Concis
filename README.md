@@ -15,8 +15,8 @@ $ npm i react-view-ui & yarn add react-view-ui
 Import the UI,
 
 ```bash
-$ import { Button } from "react-view-ui/dist/my-lib-esm";
-$ import "react-view-ui/dist/index.css";
+$ import { Button } from 'react-view-ui/web-react';
+$ import 'react-view-ui/web-react/style/index.css'
 ```
 
 Use,
