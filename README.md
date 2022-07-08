@@ -1,6 +1,6 @@
 # Concis component package~~~~
 
-## Introduce 
+## Introduce
 
 Docs path: <a href="http://react-view-ui.com:92">http://react-view-ui.com:92</a>
 
@@ -16,7 +16,7 @@ Import the UI,
 
 ```bash
 $ import { Button } from 'react-view-ui/web-react';
-$ import 'react-view-ui/web-react/style/index.css'
+$ import 'react-view-ui/web-react/style/index.css';
 ```
 
 Use,

@@ -38,13 +38,13 @@ React-View-UI 是基于 Ant Design 设计体系的 React UI 组件库，主要�
 
 #### 拉取仓库
 
-- 原始仓库： <a href="https://github.com/fengxinhhh/react-view-ui">https://github.com/fengxinhhh/react-view-ui</a>
+- 原始仓库： <a href="https://github.com/fengxinhhh/Concis">https://github.com/fengxinhhh/Concis</a>
 
 - 目标仓库：fork 到自己的 github 上
 
 #### 拉取分支
 
-拉取分支 fengxinhhh/react-view-ui/master 分支即可。
+拉取分支 fengxinhhh/Concis/master 分支即可。
 
 <Alert>注意：建议分支名为[feat]-[name]，[feat]是这个分支的类型，可选的有[feat][unitest][docs][bugfix][other]，[name]则是名字，自定义就好了。eg. unittest-core(意为：对核心补充单测)</Alert>
 
