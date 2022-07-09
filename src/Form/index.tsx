@@ -29,7 +29,7 @@ const collectFormFns: FromRefFunctions = {
 };
 
 const Form = <T,>(props: FormProps<T>) => {
-  const { children, layout = 'horizontal', style, formField, disabled } = props;
+  const { children, layout = 'horizontal', style, formField = null, disabled } = props;
 
   const [fieldList, setFieldList] = useState<any>({});
 
@@ -38,7 +38,7 @@ const Form = <T,>(props: FormProps<T>) => {
     layout,
   };
 
-  function outputFormData(ref: Ref<T> | null) {
+  const outputFormData = (ref: Ref<T> | null) => {
     //生成表体内容
     const returnField: any = {};
     let fieldType = '';
@@ -74,7 +74,7 @@ const Form = <T,>(props: FormProps<T>) => {
       }
     }
     return returnField;
-  }
+  };
   const onSubmit = (ref: Ref<T> | null) => {
     //表单提交
     const result = outputFormData(ref);
@@ -192,22 +192,26 @@ const Form = <T,>(props: FormProps<T>) => {
     return outputFormData(ref);
   };
   useEffect(() => {
-    const fieldL: any = {};
-    children.forEach((child: any) => {
-      if (child.props.field) {
-        const key = child.props.field;
-        fieldL[key] = {};
-        fieldL[key].rules = child.props.rules || null;
-      }
-    });
-    setFieldList(fieldL);
+    if (formField) {
+      const fieldL: any = {};
+      children.forEach((child: any) => {
+        if (child.props.field) {
+          const key = child.props.field;
+          fieldL[key] = {};
+          fieldL[key].rules = child.props.rules || null;
+        }
+      });
+      setFieldList(fieldL);
+    }
   }, []);
   useEffect(() => {
-    collectFormFns.onSubmit = onSubmit;
-    collectFormFns.resetFields = resetFields;
-    collectFormFns.validateFields = validateFields;
-    collectFormFns.useFormContext = useFormContext;
-    collectFormFns.formRef = formField;
+    if (formField) {
+      collectFormFns.onSubmit = onSubmit;
+      collectFormFns.resetFields = resetFields;
+      collectFormFns.validateFields = validateFields;
+      collectFormFns.useFormContext = useFormContext;
+      collectFormFns.formRef = formField;
+    }
   }, [fieldList]);
 
   return (

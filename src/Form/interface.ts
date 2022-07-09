@@ -22,7 +22,7 @@ interface FormProps<T>
    * @description 表单唯一ref，受控表单必传，通过useRef声明
    * @default null
    */
-  formField: any;
+  formField?: any;
   /**
    * @description 全局禁用
    * @default false
