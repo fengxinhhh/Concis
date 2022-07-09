@@ -49,7 +49,7 @@
     height: 0px;
     overflow: hidden;
     background-color: #fff;
-    box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: 0.1s linear;
     .option {
       font-size: 14px;
@@ -60,34 +60,5 @@
         color: #1890ff;
       }
     }
-  }
-}
-.selectOptions {
-  position: absolute;
-  top: 35px;
-  z-index: 500;
-  display: flex;
-  flex-direction: column;
-  width: 80px;
-  height: 0px;
-  overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
-  transition: 0.1s linear;
-  .option {
-    font-size: 14px;
-    line-height: 2em;
-    text-align: center;
-    cursor: pointer;
-    &:hover {
-      color: #1890ff;
-    }
-  }
-  .select-option {
-    color: #1890ff;
-    font-size: 14px;
-    line-height: 2em;
-    text-align: center;
-    cursor: pointer;
   }
 }
