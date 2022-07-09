@@ -290,7 +290,7 @@ function A(e, t) {
   );
 }
 function P(e) {
-  return e <= 1 ? 100 * Number(e) + '%' : e;
+  return e <= 1 ? ''.concat(100 * Number(e), '%') : e;
 }
 function M(e) {
   return 1 === e.length ? '0' + e : String(e);
@@ -581,9 +581,13 @@ function B(e) {
     }
   );
 }
-var T = '(?:[-\\+]?\\d*\\.\\d+%?)|(?:[-\\+]?\\d+%?)',
-  F = '[\\s|\\(]+(' + T + ')[,|\\s]+(' + T + ')[,|\\s]+(' + T + ')\\s*\\)?',
-  q = '[\\s|\\(]+(' + T + ')[,|\\s]+(' + T + ')[,|\\s]+(' + T + ')[,|\\s]+(' + T + ')\\s*\\)?',
+var T = '(?:'.concat('[-\\+]?\\d*\\.\\d+%?', ')|(?:').concat('[-\\+]?\\d+%?', ')'),
+  F = '[\\s|\\(]+('.concat(T, ')[,|\\s]+(').concat(T, ')[,|\\s]+(').concat(T, ')\\s*\\)?'),
+  q = '[\\s|\\(]+('
+    .concat(T, ')[,|\\s]+(')
+    .concat(T, ')[,|\\s]+(')
+    .concat(T, ')[,|\\s]+(')
+    .concat(T, ')\\s*\\)?'),
   W = {
     CSS_UNIT: new RegExp(T),
     rgb: new RegExp('rgb' + F),
@@ -9106,16 +9110,15 @@ var vn = i((e) => {
           S(i),
           C((e) => ((e[t].sorter = n), [...e])));
     },
-    V = (n, r) => {
-      '' == n && (n = !0),
-        C(
-          (t) => (
-            t.forEach((e) => {
-              e == r && null != t && t.filter && (e.filter = n);
-            }),
-            [...t]
-          ),
-        );
+    V = (t, n) => {
+      C(
+        (e) => (
+          e.forEach((e) => {
+            e == n && e.filter && (e.filter = t);
+          }),
+          [...e]
+        ),
+      );
     },
     G = (t) => {
       S((e) => [

@@ -71,7 +71,7 @@ export default () => (
     scale={1.2}
   >
     <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://concis.org.cn/images/index-demo.jpg" />
+      <img src="http://react-view-ui.com:92/images/index-demo.jpg" />
     </a>
   </Section>
 );
@@ -93,7 +93,7 @@ export default () => (
     scale={1.2}
   >
     <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://concis.org.cn/images/wechat-code.jpg" style={{ width: '400px' }} />
+      <img src="http://react-view-ui.com:92/images/wechat-code.jpg" style={{ width: '400px' }} />
     </a>
   </Section>
 );

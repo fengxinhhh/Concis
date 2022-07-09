@@ -175,13 +175,10 @@ const Table: FC<tableProps> = (props) => {
   };
   const handleIptChange = (v: string | boolean, t: tableThType) => {
     //筛选input改变回调
-    if (v == '') {
-      v = true;
-    }
     setDoColumnData((old: Array<tableThType>) => {
       old.forEach((item: tableThType) => {
-        if (item == t && old?.filter) {
-          item.filter = v;
+        if (item == t) {
+          if (item.filter) item.filter = v;
         }
       });
       return [...old];
