@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
-import Avatar from '../../Avatar/index';
-import AvatarGroup from '../../Avatar/group';
+import Avatar from '../../src/Avatar/index';
+import AvatarGroup from '../../src/Avatar/group';
 import { CameraOutlined } from '@ant-design/icons';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';

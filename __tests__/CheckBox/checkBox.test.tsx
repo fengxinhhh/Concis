@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckBox from '../../CheckBox/index';
+import CheckBox from '../../src/CheckBox/index';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
 import { act } from 'react-dom/test-utils';

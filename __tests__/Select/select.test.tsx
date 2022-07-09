@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from '../../Select';
+import Select from '../../src/Select';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
 

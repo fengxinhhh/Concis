@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TimePicker from '../../DatePicker/index';
+import TimePicker from '../../src/DatePicker/index';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
 import { act } from 'react-dom/test-utils';

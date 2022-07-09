@@ -1,5 +1,5 @@
 import React from 'react';
-import Loading from '../../Loading/index';
+import Loading from '../../src/Loading/index';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
 import ReactDOM from 'react-dom';

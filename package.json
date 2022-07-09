@@ -12,7 +12,7 @@
     "prepublishOnly": "npm run buildNpm",
     "deploy": "gh-pages -d docs-dist",
     "buildNpm": "rollup -c rollup.config.js",
-    "jest:test": "jest"
+    "test:jest": "jest"
   },
   "module": "es/index.js",
   "typings": "es/index.d.ts",

@@ -1,6 +1,5 @@
 import React from 'react';
-import RadioGroup from '../../Radio/RadioGroup';
-import Rate from '../../Rate';
+import Rate from '../../src/Rate';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
 

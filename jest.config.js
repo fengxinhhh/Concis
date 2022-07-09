@@ -1,5 +1,5 @@
 module.exports = {
-  roots: ['<rootDir>/src'],
+  roots: ['<rootDir>'],
   transform: {
     '^.+\\.(ts|tsx|js|jsx)?$': 'ts-jest',
     '\\.(less|css)$': 'jest-less-loader', // 支持less

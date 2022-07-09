@@ -1,9 +1,9 @@
 import React, { createRef } from 'react';
-import Form from '../../Form/index';
-import Input from '../../Input';
-import CheckBox from '../../CheckBox';
-import Button from '../../Button';
-import Select from '../../Select';
+import Form from '../../src/Form/index';
+import Input from '../../src/Input';
+import CheckBox from '../../src/CheckBox';
+import Button from '../../src/Button';
+import Select from '../../src/Select';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
 

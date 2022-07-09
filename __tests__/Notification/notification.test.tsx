@@ -1,5 +1,5 @@
 import React from 'react';
-import Notification from '../../Notification/index';
+import Notification from '../../src/Notification/index';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
 

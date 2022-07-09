@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Divider from '../../Divider/index';
+import Divider from '../../src/Divider/index';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
 

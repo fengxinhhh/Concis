@@ -22,6 +22,7 @@
   },
   "include": [
     "src",
-    "typings.d.ts" //配置的.d.ts文件
+    "typings.d.ts", //配置的.d.ts文件
+    "__tests__"
   ]
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import Message from '../../Message/index';
+import Message from '../../src/Message/index';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
 

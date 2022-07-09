@@ -1,6 +1,6 @@
 import React from 'react';
-import RadioGroup from '../../Radio/RadioGroup';
-import Radio from '../../Radio';
+import RadioGroup from '../../src/Radio/RadioGroup';
+import Radio from '../../src/Radio';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
 
