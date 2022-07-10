@@ -1,5 +1,6 @@
-import React, { FC, useState, useMemo, memo, createRef, useEffect } from 'react';
+import React, { FC, useState, useMemo, createRef, useContext, useEffect } from 'react';
 import { CloseOutlined, EyeOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
+import { ctx } from '../Form';
 import './index.module.less';
 
 interface InputProps {
@@ -81,6 +82,7 @@ interface InputProps {
    * @default ''
    */
   defaultValue?: string;
+  isFather?: boolean;
 }
 
 type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLElement>, 'type'>; //原生Input接口
@@ -103,11 +105,26 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     handleNumChange,
     clearCallback,
     defaultValue,
+    isFather = false,
   } = props;
   const [iptValue, setIptValue] = useState<string | number>(defaultValue || '');
   const [pwdIptState, setPwdIptState] = useState(true); //密码框切换状态
 
+  const formCtx = useContext(ctx);
   const iptRef = createRef();
+
+  useEffect(() => {
+    //用于监听Form组件的重置任务
+    console.log('haha');
+    if (formCtx.reset) {
+      setIptValue('');
+    }
+  }, [formCtx.reset]);
+  useEffect(() => {
+    if (formCtx.submitStatus && !isFather) {
+      formCtx.getChildVal(iptValue);
+    }
+  }, [formCtx.submitStatus]);
 
   const changeIpt = (e: any) => {
     //改变文本框

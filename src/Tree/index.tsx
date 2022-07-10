@@ -1,6 +1,7 @@
-import React, { FC, memo, Fragment, useState, useEffect, useCallback } from 'react';
+import React, { FC, memo, Fragment, useState, useEffect, useCallback, useContext } from 'react';
 import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
 import Input from '../Input';
+import { ctx } from '../Form';
 import './index.module.less';
 
 interface treeProps {
@@ -49,10 +50,24 @@ const Tree: FC<treeProps> = (props) => {
   const [containerHeight, setContainerHeight] = useState<string>('0px'); //容器高度
   const [isFocus, setIsFocus] = useState(false); //聚焦状态
 
+  const formCtx = useContext(ctx);
+
   useEffect(() => {
     resolveTreeData(treeData as Array<treeNode>, 1);
     window.addEventListener('click', () => setContainerHeight('0px'));
   }, []);
+  useEffect(() => {
+    //用于监听Form组件的重置任务
+    if (formCtx.reset) {
+      resolveTreeData(treeData as Array<treeNode>, 1);
+      setActivedVal('');
+    }
+  }, [formCtx.reset]);
+  useEffect(() => {
+    if (formCtx.submitStatus) {
+      formCtx.getChildVal(activedVal);
+    }
+  }, [formCtx.submitStatus]);
 
   const resolveTreeData = (treeData: Array<treeNode>, nowIndexLevel: number) => {
     //二次处理treeData
@@ -73,7 +88,6 @@ const Tree: FC<treeProps> = (props) => {
       }
     });
     setStateTreeData(treeData); //更新状态
-    console.log(treeData);
   };
   const toggleTreeMenu = (clickTreeNode: treeNode) => {
     //菜单切换或直接选中终极节点
@@ -267,13 +281,14 @@ const Tree: FC<treeProps> = (props) => {
           handleIptBlur={handleIptBlur}
           clearCallback={clearCallback}
           showClear
+          isFather
         />
 
         <div
           className="tree-select-dialog"
           style={{
             width: `${width}px`,
-            height: containerHeight,
+            height: containerHeight == '0px' ? '0px' : '',
             opacity: containerHeight == '0px' ? '0' : '1',
             padding: containerHeight == '0px' ? '0 10px 0 10px' : '10px',
           }}

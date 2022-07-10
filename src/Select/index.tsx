@@ -1,5 +1,15 @@
-import React, { FC, useMemo, createRef, useEffect, useState, useCallback, memo } from 'react';
+import React, {
+  FC,
+  useMemo,
+  createRef,
+  useEffect,
+  useState,
+  useCallback,
+  memo,
+  useContext,
+} from 'react';
 import { DownOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
+import { ctx } from '../Form';
 import './index.module.less';
 
 interface Options {
@@ -70,6 +80,7 @@ const Select: FC<SelectProps> = (props) => {
   const [selected, setSelected] = useState<string | number | any>('');
   const [selectedValue, setSelectedValue] = useState<string | number | any>('');
   const optionRef = createRef() as any;
+  const formCtx = useContext(ctx);
 
   const closeSelect = () => {
     if (optionRef.current && optionRef.current.style) {
@@ -83,6 +94,17 @@ const Select: FC<SelectProps> = (props) => {
       window.removeEventListener('click', closeSelect);
     };
   }, []);
+  useEffect(() => {
+    //用于监听Form组件的重置任务
+    if (formCtx.reset) {
+      setSelected('');
+    }
+  }, [formCtx.reset]);
+  useEffect(() => {
+    if (formCtx.submitStatus) {
+      formCtx.getChildVal(selected);
+    }
+  }, [formCtx.submitStatus]);
 
   const ownsWidth = useMemo(() => {
     //传参宽度
@@ -151,6 +173,10 @@ const Select: FC<SelectProps> = (props) => {
     },
     [selected],
   );
+  const selectClassName = useMemo(() => {
+    console.log(155, selected ? 'size' : 'placeholder');
+    return selected ? 'size' : 'placeholder';
+  }, [selected]);
 
   return showSearch ? (
     <>
@@ -191,11 +217,17 @@ const Select: FC<SelectProps> = (props) => {
   ) : (
     <div className="select" style={{ ...ownsWidth, ...disabledStyle }}>
       <div className="selected" onClick={toggleOptions}>
-        {selected ? (
+        {
+          <div className={selectClassName}>
+            {selected || placeholder}
+            {/* {selectClassName} */}
+          </div>
+        }
+        {/* {selected ? (
           <div className="size">{selected}</div>
         ) : (
           (placeholder && <div className="placeholder">{placeholder}</div>) || <div />
-        )}
+        )} */}
         {loading ? <LoadingOutlined /> : <DownOutlined />}
       </div>
       <div className="selectOptions" style={ownsWidth} ref={optionRef}>

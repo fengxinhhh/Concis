@@ -1,5 +1,6 @@
-import React, { FC, useState, useEffect, memo, useCallback } from 'react';
+import React, { FC, useState, useEffect, memo, useCallback, useContext } from 'react';
 import loadsh from 'loadsh';
+import { ctx } from '../Form';
 import './index.module.less';
 
 interface rateProps {
@@ -47,6 +48,8 @@ const Rate: FC<rateProps> = (props) => {
   const [logStarShowStatus, setLogStarShowStatus] = useState<Array<number | boolean | string>>([]); //鼠标移动临时状态
   const [hasClick, setHasClick] = useState<boolean>(false);
 
+  const formCtx = useContext(ctx);
+
   useEffect(() => {
     setStarShowStatus((oldArr: any): Array<boolean | string> => {
       for (let i = 0; i < defaultShow; i++) {
@@ -58,6 +61,27 @@ const Rate: FC<rateProps> = (props) => {
       return JSON.parse(JSON.stringify(oldArr));
     });
   }, []);
+  useEffect(() => {
+    //用于监听Form组件的重置任务
+    if (formCtx.reset) {
+      setLogStarShowStatus([]);
+      setStarShowStatus((): Array<boolean | string> => {
+        const oldArr = [];
+        for (let i = 0; i < defaultShow; i++) {
+          oldArr[i] = true;
+        }
+        if (num > defaultShow && oldArr.length < num) {
+          oldArr.splice(oldArr.length, 0, ...new Array(num - defaultShow).fill(false));
+        }
+        return JSON.parse(JSON.stringify(oldArr));
+      });
+    }
+  }, [formCtx.reset]);
+  useEffect(() => {
+    if (formCtx.submitStatus) {
+      formCtx.getChildVal(starShowStatus.filter((s) => s).length);
+    }
+  }, [formCtx.submitStatus]);
 
   const rateShowConfig = useCallback(
     //星星样式

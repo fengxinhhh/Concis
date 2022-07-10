@@ -1,8 +1,7 @@
-import React, { createContext, Ref, useEffect, useState } from 'react';
+import React, { createContext, Ref, useEffect, useState, useRef } from 'react';
 import FormItem from './form-item';
 import { FormProps, ruleType } from './interface';
 import './styles/index.module.less';
-import { getNowTime } from '../_util/getNowTime';
 
 export const ctx = createContext<any>({} as any); //顶层通信装置
 
@@ -18,7 +17,7 @@ export interface FromRefFunctions {
 }
 export type fieldListType = {
   rules?: Array<any>;
-  field?: string;
+  val?: string;
 };
 const collectFormFns: FromRefFunctions = {
   formRef: '',
@@ -32,83 +31,75 @@ const Form = <T,>(props: FormProps<T>) => {
   const { children, layout = 'horizontal', style, formField = null, disabled } = props;
 
   const [fieldList, setFieldList] = useState<any>({});
+  const [reset, setReset] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(false);
+  const depsValList = useRef<Array<string>>([]); //所有受控控件的值
 
+  const getChildVal = (depVal: string) => {
+    //提交时获取Form.Item中控件的值
+    console.log(depVal);
+    depsValList.current.push(depVal);
+  };
   //根组件状态管理，向下传入
   const providerList = {
     layout,
+    reset,
+    submitStatus,
+    getChildVal,
   };
 
-  const outputFormData = (ref: Ref<T> | null) => {
+  const outputFormData = () => {
     //生成表体内容
-    const returnField: any = {};
-    let fieldType = '';
+    const depsCloneList = depsValList.current;
+    const returnField = JSON.parse(JSON.stringify(fieldList));
+    console.log(fieldList);
     for (var key in fieldList) {
-      getDomVal((ref as any).current.querySelector(` .form-item .${key}`), key);
+      returnField[key].val = depsCloneList[0];
+      depsCloneList.shift();
     }
-    function getDomVal(dom: any, field: string) {
-      if (dom?.childNodes.length === 0) {
-        if (fieldType === 'input') {
-          returnField[field] = dom.value;
-        } else if (fieldType === 'select') {
-          if (dom.parentNode.getAttribute('class') === 'placeholder') {
-            returnField[field] = '';
-          } else {
-            returnField[field] = dom.parentNode.innerText;
-          }
-        }
-        fieldType = '';
-      } else {
-        if (dom !== null) {
-          if (fieldType === '') {
-            switch (dom.getAttribute('class')) {
-              case 'select':
-                fieldType = 'select';
-                break;
-              case 'box':
-                fieldType = 'input';
-                break;
-            }
-          }
-          getDomVal(dom.childNodes[0], field);
-        }
-      }
-    }
+    depsValList.current = [];
     return returnField;
   };
   const onSubmit = (ref: Ref<T> | null) => {
     //表单提交
-    const result = outputFormData(ref);
-    const ruleResult = validateFields(result, ref);
-    if (Object.keys(ruleResult).length > 0) {
-      return { ...{ submitResult: false }, ruleResult };
-    }
-    return { ...{ submitResult: true }, result };
+    return new Promise((resolve) => {
+      setSubmitStatus(true);
+      setTimeout(async () => {
+        setSubmitStatus(false);
+        const result = outputFormData();
+        const ruleResult = validateFields(result, ref);
+        if (Object.keys(ruleResult).length > 0) {
+          resolve({ ...{ submitResult: false }, ruleResult });
+        }
+        resolve({ ...{ submitResult: true }, result });
+      });
+    });
   };
 
   const validateFields = (resultField: any, ref: Ref<T> | null) => {
     //表单校验
-    //表单校验
     if (resultField === undefined) {
-      resultField = outputFormData(ref);
+      resultField = outputFormData();
     }
     const resultRules: any = {};
     for (var key in resultField) {
       const field = fieldList[key];
+      const value = resultField[key].val;
       if (field.rules) {
         let isPass = true;
         const rules = fieldList[key].rules;
         rules.forEach((rule: ruleType) => {
-          if (rule.required && resultField[key] == '' && isPass) {
+          if (rule.required && value == '' && isPass) {
             isPass = false;
             changeValidateText(` .form-item .${key}`, rule.message, key, ref);
-          } else if (rule.maxLength && resultField[key].length > rule.maxLength && isPass) {
+          } else if (rule.maxLength && value.length > rule.maxLength && isPass) {
             isPass = false;
             changeValidateText(` .form-item .${key}`, rule.message, key, ref);
-          } else if (rule.minLength && resultField[key].length < rule.minLength && isPass) {
+          } else if (rule.minLength && value.length < rule.minLength && isPass) {
             isPass = false;
             changeValidateText(` .form-item .${key}`, rule.message, key, ref);
           } else {
-            if (rule.fn && !rule.fn(resultField[key])) {
+            if (rule.fn && !rule.fn(value)) {
               isPass = false;
               changeValidateText(` .form-item .${key}`, rule.message, key, ref);
             }
@@ -148,48 +139,22 @@ const Form = <T,>(props: FormProps<T>) => {
   };
   const resetFields = (ref: Ref<T | unknown> | null) => {
     //重置表单
-    let fieldType = '';
-    for (var key in fieldList) {
-      getDomVal((ref as any).current.querySelector(` .form-item .${key}`), key);
-    }
-    function getDomVal(dom: any, field: string) {
-      if (dom?.childNodes.length === 0) {
-        if (fieldType === 'input') {
-          dom.value = '';
-        } else if (fieldType === 'select' && (ref as any).current.querySelector('.size') !== null) {
-          ((ref as any).current.querySelector('.size') as HTMLElement).innerText = '请选择';
-          (ref as any).current.querySelector('.size')?.setAttribute('class', 'placeholder');
-        } else if (fieldType === 'datePicker') {
-          const datePickerInputs = (ref as any).current.querySelectorAll('.rangePicker input');
-          datePickerInputs[0].value = getNowTime(false).split(' ')[0];
-          if (datePickerInputs.length === 2) {
-            const endDay: Array<string | number> = getNowTime(false).split(' ')[0].split('-');
-            endDay[1] = (Number(endDay[1]) + 1) as number;
-            datePickerInputs[1].value = endDay.join('-');
-          }
-        }
-        fieldType = '';
-      } else {
-        if (dom !== null) {
-          if (fieldType === '') {
-            switch (dom.getAttribute('class')) {
-              case 'select':
-                fieldType = 'select';
-                break;
-              case 'box':
-                fieldType = 'input';
-                break;
-              case 'rangePicker':
-                fieldType = 'datePicker';
-            }
-          }
-          getDomVal(dom.childNodes[0], field);
-        }
-      }
-    }
+    console.log(142, fieldList);
+    setReset(true);
+    setTimeout(() => {
+      setReset(false);
+    });
   };
-  const useFormContext = (ref: Ref<T> | null) => {
-    return outputFormData(ref);
+  const useFormContext = () => {
+    //表单提交
+    return new Promise((resolve) => {
+      setSubmitStatus(true);
+      setTimeout(async () => {
+        setSubmitStatus(false);
+        const result = outputFormData();
+        resolve(result);
+      });
+    });
   };
   useEffect(() => {
     if (formField) {
@@ -199,6 +164,7 @@ const Form = <T,>(props: FormProps<T>) => {
           const key = child.props.field;
           fieldL[key] = {};
           fieldL[key].rules = child.props.rules || null;
+          fieldL[key].val = '';
         }
       });
       setFieldList(fieldL);
@@ -212,7 +178,7 @@ const Form = <T,>(props: FormProps<T>) => {
       collectFormFns.useFormContext = useFormContext;
       collectFormFns.formRef = formField;
     }
-  }, [fieldList]);
+  }, [fieldList, formField]);
 
   return (
     <ctx.Provider value={providerList}>

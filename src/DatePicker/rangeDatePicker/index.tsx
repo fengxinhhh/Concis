@@ -1,4 +1,4 @@
-import React, { useEffect, FC, memo, useState, useCallback, useRef } from 'react';
+import React, { useEffect, FC, memo, useState, useCallback, useRef, useContext } from 'react';
 import {
   DoubleLeftOutlined,
   LeftOutlined,
@@ -7,6 +7,7 @@ import {
   SwapRightOutlined,
 } from '@ant-design/icons';
 import Input from '../../Input';
+import { ctx } from '../../Form';
 import './index.module.less';
 
 interface RangeProps {
@@ -39,6 +40,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     end: false,
   }); //是否被选择过
 
+  const formCtx = useContext(ctx);
   let activeBorderDom = useRef(null);
 
   useEffect(() => {
@@ -83,6 +85,32 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
       handleChange && handleChange(startTime, endTime);
     }
   }, [chooseStatus]);
+  useEffect(() => {
+    //用于监听Form组件的重置任务
+    if (formCtx.reset) {
+      setStartDate({
+        startYear: new Date().getFullYear(),
+        startMonth: new Date().getMonth() + 1,
+        startDay: new Date().getDate(),
+      });
+      setEndDate({
+        endYear: new Date().getFullYear(),
+        endMonth: new Date().getMonth() + 2,
+        endDay: new Date().getDate(),
+      });
+      setStartTime('');
+      setEndTime('');
+    }
+  }, [formCtx.reset]);
+  useEffect(() => {
+    if (formCtx.submitStatus) {
+      const { startYear, startMonth, startDay } = startDate;
+      const { endYear, endMonth, endDay } = endDate;
+      formCtx.getChildVal(
+        `${startYear}-${startMonth}-${startDay} ${endYear}-${endMonth}-${endDay}`,
+      );
+    }
+  }, [formCtx.submitStatus]);
 
   const startIptFocus = () => {
     setShowTimeDialog(true);
@@ -375,6 +403,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
           handleIptBlur={blurStartTime}
           clearCallback={clearStartTime}
           showClear={showClear as boolean}
+          isFather
         />
         <SwapRightOutlined style={{ color: '#cccccc', fontSize: '20px' }} />
         <Input
@@ -388,6 +417,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
           handleIptBlur={blurEndTime}
           clearCallback={clearEndTime}
           showClear={showClear as boolean}
+          isFather
         />
         <div className="activeBorder" ref={activeBorderDom}></div>
       </div>

@@ -1,5 +1,6 @@
-import React, { FC, memo, useState, useEffect, useCallback } from 'react';
+import React, { FC, memo, useState, useEffect, useCallback, useContext } from 'react';
 import RangeDatePicker from './rangeDatePicker';
+import { ctx } from '../Form';
 import {
   FieldTimeOutlined,
   CloseOutlined,
@@ -73,6 +74,8 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
   ]);
 
+  const formCtx = useContext(ctx);
+
   useEffect(() => {
     window.addEventListener('click', () => {
       setShowTimeDialog(false);
@@ -92,6 +95,23 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     setThisMonthFirstDay(firstDay); //重新计算本月第一天为周几
     setDayListArray(dayList); //重排本月日历
   }, [nowDate.year, nowDate.month]);
+  useEffect(() => {
+    //用于监听Form组件的重置任务
+    if (formCtx.reset) {
+      setNowDate({
+        year: new Date().getFullYear(),
+        month: new Date().getMonth() + 1,
+        day: new Date().getDate(),
+      });
+    }
+  }, [formCtx.reset]);
+  useEffect(() => {
+    if (formCtx.submitStatus && !showRange) {
+      const { year, month, day } = nowDate;
+      formCtx.getChildVal(`${year}-${month}-${day}`);
+    }
+  }, [formCtx.submitStatus]);
+
   const openDialog = (e: any) => {
     e.stopPropagation();
     setShowTimeDialog(true);

@@ -8,8 +8,8 @@ export default function index1() {
   const form = Form.useForm(); //使用Form组件回传的hooks，调用组件内链方法
   const formRef = createRef(); //调用端设一个ref，保证单页面多表单唯一性
 
-  const submit = () => {
-    const submitParams = form.onSubmit(formRef);
+  const submit = async () => {
+    const submitParams = await form.onSubmit(formRef);
     console.log(submitParams);
     if (submitParams.submitResult) {
       Message.success('注册成功');
@@ -17,8 +17,9 @@ export default function index1() {
       Message.error('注册失败');
     }
   };
-  const getFormState = () => {
-    console.log(form.useFormContext(formRef));
+  const getFormState = async () => {
+    const context = await form.useFormContext(formRef);
+    console.log(context);
   };
 
   return (

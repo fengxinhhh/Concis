@@ -7,7 +7,9 @@ import React, {
   useMemo,
   Fragment,
   useEffect,
+  useContext,
 } from 'react';
+import { ctx } from '../Form';
 import { CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
 
@@ -49,6 +51,7 @@ const CheckBox: FC<checkBoxProps> = (props) => {
 
   const [checkStatus, setCheckStatus] = useState<boolean>();
   const [checkGroup, setCheckGroup] = useState<Array<checkGroup>>(group || []);
+  const formCtx = useContext(ctx);
 
   useEffect(() => {
     if (checked != undefined) {
@@ -57,6 +60,13 @@ const CheckBox: FC<checkBoxProps> = (props) => {
       setCheckStatus(false);
     }
   }, [checked]);
+  useEffect(() => {
+    //用于监听Form组件的重置任务
+    if (formCtx.reset) {
+      setCheckStatus(checked);
+    }
+  }, [formCtx.reset]);
+
   const toggleCheckedStatus = () => {
     //多选单组件切换状态
     if (disabled) return;
