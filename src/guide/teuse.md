@@ -26,7 +26,7 @@ export default () => (
   <Section titleStyle={{ paddingBottom: 100, fontWeight: 'bold' }}>
     <iframe
       className="codesandbox"
-      src="http://codesandbox.io/s/naughty-gates-uyh0kk?fontsize=12&file=/src/App.js&theme=dark"
+      src="https://codesandbox.io/s/concis-up772x?file=/src/App.js"
       allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
       sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
     ></iframe>

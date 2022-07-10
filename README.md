@@ -1,4 +1,4 @@
-# Concis component package~~~~
+# Concis component library~
 
 ## Introduce
 
@@ -9,14 +9,14 @@ Docs path: <a href="http://concis.org.cn/">http://concis.org.cn/</a>
 Install dependencies,
 
 ```bash
-$ npm i react-view-ui & yarn add react-view-ui
+$ npm i concis & yarn add concis
 ```
 
 Import the UI,
 
 ```bash
-$ import { Button } from 'react-view-ui/web-react';
-$ import 'react-view-ui/web-react/style/index.css';
+$ import { Button } from 'concis/web-react';
+$ import 'concis/web-react/style/index.css';
 ```
 
 Use,
