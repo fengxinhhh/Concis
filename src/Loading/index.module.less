@@ -76,3 +76,26 @@
     transition: 0.3s linear;
   }
 }
+.strip {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 60px;
+  .strip-list {
+    --map-time: calc(var(--lineIndex) * 200ms);
+    width: 8px;
+    height: 50px;
+    margin: 0 5px;
+    background-color: #1890ff;
+    border-radius: 10px;
+    animation: beat 1s ease-in-out var(--map-time) infinite alternate;
+  }
+  @keyframes beat {
+    0% {
+      height: 15px;
+    }
+    100% {
+      height: 50px;
+    }
+  }
+}

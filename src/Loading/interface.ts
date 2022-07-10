@@ -5,7 +5,7 @@ interface LoadingProps {
    * @description 加载Icon类型
    * @default default
    */
-  type?: 'default' | 'dot';
+  type?: 'default' | 'dot' | 'strip';
   /**
    * @description 配置蒙层
    * @default false

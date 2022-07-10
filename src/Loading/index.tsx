@@ -38,10 +38,10 @@ const Loading: FC<LoadingProps> = (props) => {
     returnStyle.height = height;
     return returnStyle;
   }, [width, height, style]);
-  return (
-    <Fragment>
-      {mask && <div className="dialog" />}
-      {type === 'default' ? (
+
+  const renderLoadingContainer = useMemo(() => {
+    if (type === 'default') {
+      return (
         <div className="loading" style={loadingStyle}>
           <div className="loading-container">
             {icon || (
@@ -61,13 +61,30 @@ const Loading: FC<LoadingProps> = (props) => {
           </div>
           {loadingText && <div className="text">{loadingText}</div>}
         </div>
-      ) : (
+      );
+    } else if (type === 'dot') {
+      return (
         <div className="dot-loading">
           {new Array(3).fill('').map((item, index) => {
             return <div className={activeDotIndex === index ? 'dot-active' : 'dot'}>{item}</div>;
           })}
         </div>
-      )}
+      );
+    } else if (type === 'strip') {
+      return (
+        <div className="strip">
+          {new Array(6).fill('').map((item, index) => {
+            return <div className="strip-list" style={{ '--lineIndex': index } as any} />;
+          })}
+        </div>
+      );
+    }
+  }, [type, activeDotIndex]);
+
+  return (
+    <Fragment>
+      {mask && <div className="dialog" />}
+      {renderLoadingContainer}
     </Fragment>
   );
 };

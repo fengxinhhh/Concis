@@ -23,6 +23,12 @@ group:
 
 <code src="./demos/index2.tsx" />
 
+## 列表式加载
+
+配置 type=dot，可以展示省略号显示。
+
+<code src="./demos/index7.tsx" />
+
 ## 蒙层
 
 配置 mask 属性，对展示内容进行蒙层显示，适用于容器内加载。
