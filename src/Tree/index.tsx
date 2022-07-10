@@ -37,7 +37,7 @@ interface treeProps {
 interface treeNode {
   title: string;
   value: string;
-  level: number;
+  level?: number;
   height?: string;
   children?: Array<treeNode>;
 }
@@ -240,7 +240,7 @@ const Tree: FC<treeProps> = (props) => {
           <div
             className="treeNode"
             style={{
-              marginLeft: `${treeNode.level * 10}px`,
+              marginLeft: `${(treeNode.level as number) * 10}px`,
               height: `${treeNode.height}`,
               color: searchStyle(treeNode),
               background: activedStyle(treeNode),

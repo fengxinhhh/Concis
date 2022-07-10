@@ -1,4 +1,4 @@
-import React, { createContext, Ref, useEffect, useState, useRef } from 'react';
+import React, { createContext, Ref, useEffect, useState, useRef, useCallback } from 'react';
 import FormItem from './form-item';
 import { FormProps, ruleType } from './interface';
 import './styles/index.module.less';
@@ -34,14 +34,15 @@ const Form = <T,>(props: FormProps<T>) => {
   const [reset, setReset] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(false);
   const depsValList = useRef<Array<string>>([]); //所有受控控件的值
+  const [formControlRef, setFormControlRef] = useState(formField);
 
   const getChildVal = (depVal: string) => {
     //提交时获取Form.Item中控件的值
-    console.log(depVal);
     depsValList.current.push(depVal);
   };
   //根组件状态管理，向下传入
   const providerList = {
+    formControlRef,
     layout,
     reset,
     submitStatus,
@@ -52,7 +53,6 @@ const Form = <T,>(props: FormProps<T>) => {
     //生成表体内容
     const depsCloneList = depsValList.current;
     const returnField = JSON.parse(JSON.stringify(fieldList));
-    console.log(fieldList);
     for (var key in fieldList) {
       returnField[key].val = depsCloneList[0];
       depsCloneList.shift();
@@ -128,23 +128,26 @@ const Form = <T,>(props: FormProps<T>) => {
       const showDom = (ref as any).current.querySelector(
         `${className} .show-rule-label`,
       ) as HTMLElement;
-      if (hideDom) {
+      if (hideDom && hideDom?.innerText) {
         hideDom.innerText = text;
-      } else {
+      } else if (showDom && showDom?.innerText) {
         showDom.innerText = text;
       }
       hideDom?.setAttribute('class', 'show-rule-label');
     }
     return resultRules;
   };
-  const resetFields = (ref: Ref<T | unknown> | null) => {
-    //重置表单
-    console.log(142, fieldList);
-    setReset(true);
-    setTimeout(() => {
-      setReset(false);
-    });
-  };
+  const resetFields = useCallback(
+    (ref: Ref<T | unknown> | null) => {
+      //重置表单
+      setFormControlRef(ref);
+      setReset(true);
+      setTimeout(() => {
+        setReset(false);
+      });
+    },
+    [formControlRef],
+  );
   const useFormContext = () => {
     //表单提交
     return new Promise((resolve) => {

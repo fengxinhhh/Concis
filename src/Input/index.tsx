@@ -1,4 +1,13 @@
-import React, { FC, useState, useMemo, createRef, useContext, useEffect } from 'react';
+import React, {
+  FC,
+  useState,
+  useMemo,
+  createRef,
+  useContext,
+  useEffect,
+  memo,
+  useRef,
+} from 'react';
 import { CloseOutlined, EyeOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
 import { ctx } from '../Form';
 import './index.module.less';
@@ -111,11 +120,10 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
   const [pwdIptState, setPwdIptState] = useState(true); //密码框切换状态
 
   const formCtx = useContext(ctx);
-  const iptRef = createRef();
+  const iptRef = useRef(null);
 
   useEffect(() => {
     //用于监听Form组件的重置任务
-    console.log('haha');
     if (formCtx.reset) {
       setIptValue('');
     }
@@ -205,7 +213,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
         onFocus={focusIpt}
         onKeyUp={(e) => handleKeyDown && handleKeyDown(e)}
         onClick={iptHandleClick}
-        ref={() => iptRef}
+        ref={iptRef}
       />
       {
         //可清除
@@ -236,4 +244,4 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     </div>
   );
 };
-export default Input;
+export default memo(Input);

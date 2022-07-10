@@ -10,7 +10,6 @@ export default function index1() {
 
   const submit = async () => {
     const submitParams = await form.onSubmit(formRef);
-    console.log(submitParams);
     if (submitParams.submitResult) {
       Message.success('注册成功');
     } else {

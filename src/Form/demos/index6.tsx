@@ -7,6 +7,7 @@ import Select from '../../Select';
 import TimePicker from '../../DatePicker';
 import Rate from '../../Rate';
 import Tree from '../../Tree';
+import Message from '../../Message';
 
 const option = [
   {
@@ -54,13 +55,18 @@ const treeData = [
     ],
   },
 ];
+
 export default function index1() {
   const form = Form.useForm(); //使用Form组件回传的hooks，调用组件内链方法
   const formRef = createRef(); //调用端设一个ref，保证单页面多表单唯一性
 
   const submit = async () => {
     const submitParams = await form.onSubmit(formRef);
-    console.log(63, submitParams);
+    if (submitParams.submitResult) {
+      Message.success('注册成功');
+    } else {
+      Message.error('注册失败');
+    }
   };
 
   return (
@@ -106,7 +112,7 @@ export default function index1() {
           </Button>
           <Button
             type="text"
-            handleClick={() => form.resetFields(formRef)}
+            handleClick={async () => await form.resetFields(formRef)}
             style={{ margin: '0 10px' }}
           >
             Reset

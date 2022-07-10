@@ -23,29 +23,21 @@ export default function index1() {
   const form = Form.useForm(); //使用Form组件回传的hooks，调用组件内链方法
   const formRef = createRef(); //调用端设一个ref，保证单页面多表单唯一性
 
-  const submit = () => {
-    const submitParams = form.onSubmit(formRef);
+  const submit = async () => {
+    const submitParams = await form.onSubmit(formRef);
     console.log(submitParams);
   };
 
   return (
     <div>
       <Form layout={'vertical'} formField={formRef} style={{ width: '600px' }}>
-        <Form.Item
-          label="Username"
-          field="username"
-          rules={[
-            { required: true, message: '请输入用户名' },
-            { maxLength: 10, message: '最大长度为10位' },
-            { minLength: 3, message: '最小长度为3位' },
-          ]}
-        >
+        <Form.Item label="Username" field="username">
           <Input placeholder="Please enter your usename" width="200"></Input>
         </Form.Item>
         <Form.Item label="Post" field="post">
           <Input placeholder="Please enter your post" width="200"></Input>
         </Form.Item>
-        <Form.Item label="Name" field="name" rules={[{ required: true, message: '请输入名字' }]}>
+        <Form.Item label="Name" field="name">
           <Select option={option} width={200} placeholder={'请选择'} />
         </Form.Item>
         <Form.Item wrapperTol={20}>

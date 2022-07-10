@@ -9,7 +9,8 @@ group:
 
 # Form 表单
 
-具有数据收集、校验和提交功能的表单，包含复选框、单选框、输入框、下拉选择框等元素。
+- 具有数据收集、校验和提交功能的表单，包含复选框、单选框、输入框、下拉选择框等元素。
+- 如需直接体验完整功能，可查看完整功能 demo，以下案例可参考代码，交互有偏差。
 
 ## 基本用法
 
@@ -31,6 +32,8 @@ group:
 2. 配置 Form.Item 中的 field 属性，使其成为受控项，field 属性名不可重复;
 
 这样，你就可以通过 const form = Form.useForm(); 使用表单所提供的内部方法，获取表单的信息。在 onSubmit 方法触发时，会自动进行校验，但你也可以手动触发 validateFields 进行校验。
+
+在 rules 中，你可以添加自定义方法{fn: () => , message: '自定义提示'}传递自定义校验规则。
 
 <code src="./demos/index3.tsx"/>
 
@@ -70,16 +73,8 @@ group:
 
 <code src="./demos/index10.tsx" />
 
-## 自定义校验
-
-在 rules 中，你可以添加自定义方法{fn: () => , message: '自定义提示'}传递自定义校验规则。
+## 完整功能
 
 <code src="./demos/index6.tsx"/>
-
-## 畅享 Concis 内置组件在 Form 中的体验
-
-结合全部 Concis 提供的表单控件案例。
-
-<code src="./demos/index11.tsx"/>
 
 <API />

@@ -160,7 +160,6 @@ const Select: FC<SelectProps> = (props) => {
     (e: any) => {
       //输入后的回调
       setSelected(e.target.value);
-      console.log(selected);
       optionRef.current.style.height =
         option.filter((item) => {
           return (item.label as string).includes(e.target.value);
@@ -174,7 +173,6 @@ const Select: FC<SelectProps> = (props) => {
     [selected],
   );
   const selectClassName = useMemo(() => {
-    console.log(155, selected ? 'size' : 'placeholder');
     return selected ? 'size' : 'placeholder';
   }, [selected]);
 
