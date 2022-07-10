@@ -23,6 +23,7 @@
   "include": [
     "src",
     "typings.d.ts", //配置的.d.ts文件
-    "__tests__"
+    "__tests__",
+    "docs/guide"
   ]
 }

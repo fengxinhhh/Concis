@@ -6,9 +6,9 @@ nav:
 
 # 介绍
 
-## React-View-UI
+## Concis
 
-React-View-UI 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。
+concis 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。
 
 ## 特性
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './color.less';
 
 interface ColorProps {
@@ -10,17 +10,8 @@ interface ColorProps {
 export default function Color(props: ColorProps) {
   const { title, theme, colorList } = props;
 
-  const [colorValOp, setColorValOp] = useState(0);
-
-  const enterContainer = () => {
-    setColorValOp(1);
-  };
-  const leaveContainer = () => {
-    setColorValOp(0);
-  };
-
   return (
-    <div className="color-container" onMouseEnter={enterContainer} onMouseLeave={leaveContainer}>
+    <div className="color-container">
       <span className="color-title">{title}</span>
       <div className="color-list">
         {colorList.map((c, i) => {

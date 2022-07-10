@@ -6,21 +6,21 @@ nav:
 
 # 快速开始
 
-React-View-UI 致力于提供给程序员愉悦的开发体验。
+Concis 致力于提供给程序员愉悦的开发体验。
 
 <Alert>在开始之前，推荐先学习 React 和 ES2015，并正确安装和配置了 Node.js v8 或以上。官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识，并且已经完全掌握了 React 全家桶的正确开发方式。如果你刚开始学习前端或者 React，将 UI 框架作为你的第一步可能不是最好的主意。</Alert>
 
 # 第一个例子
 
-这是一个最简单的 React-View-UI 组件的在线 codesandbox 演示。
+这是一个最简单的 Concis 组件的在线 codesandbox 演示。
 
 ```tsx
 /**
  * inline: true
  */
 import React from 'react';
-import { Section } from '../../docs/site/Section';
-import '../../docs/site/styles.less';
+import { Section } from '../site/Section';
+import '../site/styles.less';
 
 export default () => (
   <Section titleStyle={{ paddingBottom: 100, fontWeight: 'bold' }}>

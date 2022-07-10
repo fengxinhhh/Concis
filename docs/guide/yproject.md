@@ -22,16 +22,16 @@ npm i --save-dev react react-dom
 
 ## 安装
 
-通过命令安装 react-view-ui：
+通过命令安装 Concis：
 
 ```tsx pure
-npm i --save-dev react-view-ui
+npm i --save-dev concis
 ```
 
 ## 引入和使用
 
 ```tsx pure
-import { Button } from 'react-view-ui/web-react';
+import { Button } from 'concis/web-react';
 
 const App = () => (
   <div className="App">
@@ -43,9 +43,9 @@ const App = () => (
 修改 src/App.css，在文件顶部引入 antd/dist/antd.css。
 
 ```tsx pure
-@import 'react-view-ui/web-react/style/index.css';
+@import 'concis/web-react/style/index.css';
 ```
 
-好了，现在你应该能看到页面上已经有了 React-View-UI 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程你可以参考 create-react-app 的官方文档。
+好了，现在你应该能看到页面上已经有了 Concis 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程你可以参考 create-react-app 的官方文档。
 
-我们现在已经把 React-View-UI 组件成功运行起来了，开始开发你的应用吧！
+我们现在已经把 Concis 组件成功运行起来了，开始开发你的应用吧！
