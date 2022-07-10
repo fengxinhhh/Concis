@@ -1,4 +1,5 @@
 import React, { useMemo, FC, memo, forwardRef, ReactNode } from 'react';
+import '../styles/compiled-colors.less';
 import './index.module.less';
 
 interface ButtonProps {

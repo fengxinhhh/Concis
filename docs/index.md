@@ -38,7 +38,6 @@ footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [Xin Feng](
 import React from 'react';
 import { Section } from './site/Section';
 import './site/styles.less';
-
 export default () => (
   <Section
     title="在线体验Concis的极致性"
