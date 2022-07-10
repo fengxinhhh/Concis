@@ -51,15 +51,15 @@ const Rate: FC<rateProps> = (props) => {
   const formCtx = useContext(ctx);
 
   useEffect(() => {
-    setStarShowStatus((oldArr: any): Array<boolean | string> => {
-      for (let i = 0; i < defaultShow; i++) {
-        oldArr[i] = true;
-      }
-      if (num > defaultShow && oldArr.length < num) {
-        oldArr.splice(oldArr.length, 0, ...new Array(num - defaultShow).fill(false));
-      }
-      return JSON.parse(JSON.stringify(oldArr));
-    });
+    const initStar = [];
+    for (let i = 0; i < defaultShow; i++) {
+      initStar[i] = true;
+    }
+    if (num > defaultShow && initStar.length < num) {
+      initStar.splice(initStar.length, 0, ...new Array(num - defaultShow).fill(false));
+    }
+    setStarShowStatus(initStar);
+    setLogStarShowStatus(initStar);
   }, []);
   useEffect(() => {
     //用于监听Form组件的重置任务
@@ -225,6 +225,7 @@ const Rate: FC<rateProps> = (props) => {
             <div
               className="rate-box"
               key={i}
+              style={starShowStatus[i] ? { opacity: 1 } : { opacity: 0 }}
               onMouseMove={(event: any) => enterStar(event.nativeEvent, i)}
               onClick={isSureNowStatus}
             >
