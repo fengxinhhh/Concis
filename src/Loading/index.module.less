@@ -77,18 +77,25 @@
   }
 }
 .strip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 99999;
+  display: flex;
   display: flex;
   align-items: center;
   width: 200px;
   height: 60px;
+  color: #1890ff;
+  transform: translate(-50%, -50%);
   .strip-list {
-    --map-time: calc(var(--lineIndex) * 200ms);
+    --map-time: calc(var(--lineIndex) * 150ms);
     width: 8px;
     height: 50px;
     margin: 0 5px;
     background-color: #1890ff;
     border-radius: 10px;
-    animation: beat 1s ease-in-out var(--map-time) infinite alternate;
+    animation: beat 0.8s ease-in-out var(--map-time) infinite alternate;
   }
   @keyframes beat {
     0% {
