@@ -259,3 +259,35 @@ export default () => (
   </div>
 );
 ```
+
+## 使用色彩库
+
+如果需要使用组件库内置的色彩值，请在你的 react 项目入口 less 文件中（App.less）引入:
+
+```css pure
+@import 'concis/web-react/style/compiled-colors.less';
+```
+
+这样就可以在项目中直接使用这些色彩变量，如:
+
+```less pure
+.App {
+  background: @red-1;
+}
+```
+
+你也可以基于 Concis 色彩库挑选出一些喜欢的颜色封装在自己的项目中，就像这样:
+
+```less pure
+@import 'concis/web-react/style/compiled-colors.less';
+
+@primary: @cyan-5;
+@danger: @red-7;
+@warning: @gold-6;
+@success: @green-6;
+@dark: @gray-6;
+
+.App {
+  background: @primary;
+}
+```
