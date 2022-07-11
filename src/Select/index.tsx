@@ -10,6 +10,8 @@ import React, {
 } from 'react';
 import { DownOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
 import { ctx } from '../Form';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface Options {
@@ -79,8 +81,10 @@ const Select: FC<SelectProps> = (props) => {
   } = props;
   const [selected, setSelected] = useState<string | number | any>('');
   const [selectedValue, setSelectedValue] = useState<string | number | any>('');
+
   const optionRef = createRef() as any;
   const formCtx = useContext(ctx);
+  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   const closeSelect = () => {
     if (optionRef.current && optionRef.current.style) {
@@ -120,7 +124,7 @@ const Select: FC<SelectProps> = (props) => {
     if (disabled) {
       return {
         cursor: 'not-allowed',
-        background: 'rgb(238, 238, 238)',
+        background: '#F2F3F5',
       };
     }
   }, [disabled]);
@@ -178,8 +182,13 @@ const Select: FC<SelectProps> = (props) => {
 
   return showSearch ? (
     <>
-      <div className="select" style={{ ...ownsWidth, ...disabledStyle }}>
-        <div className="selected">
+      <div
+        className="select"
+        style={
+          { ...ownsWidth, '--global-color': disabled ? '#ccc' : globalColor || '#1890ff' } as any
+        }
+      >
+        <div className="selected" style={disabledStyle}>
           <input
             type="text"
             className="selected"
@@ -201,7 +210,13 @@ const Select: FC<SelectProps> = (props) => {
                 key={s.label as any}
                 className="option"
                 style={
-                  s.disabled ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' } : {}
+                  s.disabled
+                    ? ({
+                        cursor: 'not-allowed',
+                        background: '#F2F3F5',
+                        '--line-disabled': '#000000',
+                      } as any)
+                    : ({ '--line-disabled': globalColor || '#1890ff' } as any)
                 }
                 onClick={(e) => changeOptions(s as Options, e)}
               >
@@ -213,8 +228,17 @@ const Select: FC<SelectProps> = (props) => {
       </div>
     </>
   ) : (
-    <div className="select" style={{ ...ownsWidth, ...disabledStyle }}>
-      <div className="selected" onClick={toggleOptions}>
+    <div
+      className="select"
+      style={
+        {
+          ...ownsWidth,
+          ...disabledStyle,
+          '--global-color': disabled ? '#ccc' : globalColor || '#1890ff',
+        } as any
+      }
+    >
+      <div className="selected" onClick={toggleOptions} style={disabledStyle}>
         {
           <div className={selectClassName}>
             {selected || placeholder}
@@ -234,7 +258,15 @@ const Select: FC<SelectProps> = (props) => {
             <div
               key={s.label as any}
               className={s.value == selectedValue ? 'select-option' : 'option'}
-              style={s.disabled ? { cursor: 'not-allowed', background: 'rgb(238, 238, 238)' } : {}}
+              style={
+                s.disabled
+                  ? ({
+                      cursor: 'not-allowed',
+                      background: '#F2F3F5',
+                      '--line-disabled': '#000000',
+                    } as any)
+                  : ({ '--line-disabled': globalColor || '#1890ff' } as any)
+              }
               onClick={(e) => changeOptions(s as Options, e)}
             >
               {s.label}

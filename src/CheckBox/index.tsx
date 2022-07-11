@@ -10,6 +10,8 @@ import React, {
   useContext,
 } from 'react';
 import { ctx } from '../Form';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import { CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
 
@@ -51,7 +53,9 @@ const CheckBox: FC<checkBoxProps> = (props) => {
 
   const [checkStatus, setCheckStatus] = useState<boolean>();
   const [checkGroup, setCheckGroup] = useState<Array<checkGroup>>(group || []);
+
   const formCtx = useContext(ctx);
+  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   useEffect(() => {
     if (checked != undefined) {
@@ -82,6 +86,7 @@ const CheckBox: FC<checkBoxProps> = (props) => {
     setCheckGroup(oldCheckGroup);
     checkGroupCallback && checkGroupCallback(oldCheckGroup);
   };
+
   const renderCheckBoxDom = useMemo(() => {
     //渲染单check状态
     if (disabled) {
@@ -117,7 +122,7 @@ const CheckBox: FC<checkBoxProps> = (props) => {
   return (
     <Fragment>
       {group && group.length ? (
-        <div className="checkGroup">
+        <div className="checkGroup" style={{ '--global-color': globalColor || '#1890ff' } as any}>
           {group.map((c: checkGroup, i: number) => {
             return (
               <div
@@ -132,7 +137,11 @@ const CheckBox: FC<checkBoxProps> = (props) => {
           })}
         </div>
       ) : (
-        <div className="checkbox" onClick={toggleCheckedStatus}>
+        <div
+          className="checkbox"
+          onClick={toggleCheckedStatus}
+          style={{ '--global-color': globalColor || '#1890ff' } as any}
+        >
           {renderCheckBoxDom}
           <div className="text">{children}</div>
         </div>

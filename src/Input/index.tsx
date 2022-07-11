@@ -1,15 +1,8 @@
-import React, {
-  FC,
-  useState,
-  useMemo,
-  createRef,
-  useContext,
-  useEffect,
-  memo,
-  useRef,
-} from 'react';
+import React, { FC, useState, useMemo, useContext, useEffect, memo, useRef } from 'react';
 import { CloseOutlined, EyeOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
 import { ctx } from '../Form';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface InputProps {
@@ -120,6 +113,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
   const [pwdIptState, setPwdIptState] = useState(true); //密码框切换状态
 
   const formCtx = useContext(ctx);
+  const { input } = useContext(globalCtx) as GlobalConfigProps;
   const iptRef = useRef(null);
 
   useEffect(() => {
@@ -201,7 +195,10 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     return { ...style, ...moreStyle };
   }, [width, moreStyle]);
   return (
-    <div className="box" style={{ width: width ? width + 'px' : '170px' }}>
+    <div
+      className="box"
+      style={{ width: width ? width + 'px' : '170px', '--global-color': input || '#8fb6d8' } as any}
+    >
       <input
         className="input"
         style={exticStyle}

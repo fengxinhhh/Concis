@@ -1,4 +1,6 @@
-import React, { FC, useState, useEffect, memo, useCallback, useMemo } from 'react';
+import React, { FC, useState, useEffect, memo, useCallback, useMemo, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import './index.module.less';
 
@@ -54,6 +56,8 @@ const Menu: FC<MenuProps> = (props) => {
   const [parentMenuHeightList, setParentMenuHeightList] = useState<any>({}); //父菜单高度集合
 
   const { items, width, dark, ableToggle, defaultOpen, handleRouteChange } = props;
+
+  const { globalColor, menuSelectBgColor } = useContext(globalCtx) as GlobalConfigProps;
 
   useEffect(() => {
     const initList = initParentMenuHeight(items, {}, '');
@@ -175,31 +179,6 @@ const Menu: FC<MenuProps> = (props) => {
         }
       }
       setParentMenuHeightList(refreshObject);
-      // setParentMenuHeightList((old: any) => {
-      //   for (var key in old) {
-      //     if (
-      //       old[key].children &&
-      //       old[key].children.findIndex((item: MenuHeightProps) => item.key == cMenu.key) !== -1
-      //     ) {
-      //       //找出是哪个一级菜单的children
-      //       const childIndex = old[key].children.findIndex(
-      //         (item: MenuHeightProps) => item.key == cMenu.key,
-      //       );
-      //       old[key].children[childIndex].height =
-      //         old[key].children[childIndex].height == '50px'
-      //           ? (old[key].children[childIndex].childNum + 1) * 50 + 'px'
-      //           : '50px';
-      //       let parentHeight = (old[key].childNum - old[key].children.length) * 50 + 50;          //改变子菜单高度后统计父菜单高度
-      //       parentHeight += old[key].children.reduce(
-      //         (pre: MenuHeightProps, next: MenuHeightProps) => {
-      //           return Number(pre.height.split('px')[0]) + Number(next.height.split('px')[0]);
-      //         },
-      //       );
-      //       old[key].height = parentHeight;
-      //     }
-      //   }
-      //   return JSON.parse(JSON.stringify(old));
-      // });
     }
     if (cMenu.level == 3) {
       for (var key in parentMenuHeightList) {
@@ -299,7 +278,16 @@ const Menu: FC<MenuProps> = (props) => {
   };
 
   return (
-    <div className={dark ? 'darkMenu' : 'menu'} style={customWidth}>
+    <div
+      className={dark ? 'darkMenu' : 'menu'}
+      style={
+        {
+          ...customWidth,
+          '--global-color': globalColor || '#1890ff',
+          '--global-menu-option-bg': menuSelectBgColor || '#e6f7ff',
+        } as any
+      }
+    >
       {items.map((m) => {
         return (
           <div key={m.key}>

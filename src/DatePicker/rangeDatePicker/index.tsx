@@ -7,6 +7,8 @@ import {
   SwapRightOutlined,
 } from '@ant-design/icons';
 import Input from '../../Input';
+import { GlobalConfigProps } from '../../GlobalConfig/interface';
+import { globalCtx } from '../../GlobalConfig';
 import { ctx } from '../../Form';
 import './index.module.less';
 
@@ -41,6 +43,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
   }); //是否被选择过
 
   const formCtx = useContext(ctx);
+  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
   let activeBorderDom = useRef(null);
 
   useEffect(() => {
@@ -338,7 +341,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     return {
       activeDay: {
         color: '#fff',
-        background: '#1890FF',
+        background: globalColor || '#1890FF',
         fontWeight: 'bold',
         borderRadius: '5px',
       },
@@ -388,7 +391,11 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     [startDate, endDate],
   );
   return (
-    <div className="range" onClick={(e) => e.stopPropagation()}>
+    <div
+      className="range"
+      onClick={(e) => e.stopPropagation()}
+      style={globalColor ? ({ '--hover-color': globalColor } as any) : {}}
+    >
       <div className="rangePicker" onClick={(e) => e.stopPropagation()}>
         <Input
           placeholder="请输入开始日期"

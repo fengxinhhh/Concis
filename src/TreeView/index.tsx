@@ -1,13 +1,6 @@
-import React, {
-  memo,
-  FC,
-  Fragment,
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-  Children,
-} from 'react';
+import React, { memo, FC, Fragment, useState, useEffect, useCallback, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import { CaretRightOutlined, CaretDownOutlined, CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
 
@@ -57,6 +50,8 @@ const TreeView: FC<treeViewProps> = (props) => {
 
   const [stateTreeData, setStateTreeData] = useState<Array<treeData>>(treeData); //树结构
   const [hoverTreeNode, setHoverTreeNode] = useState(''); //当前覆盖的节点
+
+  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   useEffect(() => {
     resolveTreeData(stateTreeData as Array<treeData>, 1, null);
@@ -445,7 +440,12 @@ const TreeView: FC<treeViewProps> = (props) => {
 
   return (
     <Fragment>
-      <div className="tree-select-dialog">{render(stateTreeData)}</div>
+      <div
+        className="tree-select-dialog"
+        style={{ '--global-color': globalColor || '#1890ff' } as any}
+      >
+        {render(stateTreeData)}
+      </div>
     </Fragment>
   );
 };

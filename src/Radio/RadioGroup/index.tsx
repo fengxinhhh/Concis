@@ -1,5 +1,7 @@
-import React, { FC, useState, useEffect, memo, useCallback } from 'react';
+import React, { FC, useState, memo, useCallback, useContext } from 'react';
 import Input from '../../Input';
+import { GlobalConfigProps } from '../../GlobalConfig/interface';
+import { globalCtx } from '../../GlobalConfig';
 import './index.module.less';
 
 interface RadioGroupProps {
@@ -25,6 +27,8 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
   const [renderOptions, setRenderOptions] = useState(children);
   const [addOptionVal, setAddOptionVal] = useState('');
   const [showAddOption, setShowAddOption] = useState(canAddOption && false);
+
+  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   const changeOptions = (item: RadioProps, i: number, e: any) => {
     if (item.disabled) return;
@@ -70,7 +74,7 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
   );
 
   return (
-    <div className="radioGroup">
+    <div className="radioGroup" style={{ '--global-color': globalColor || '#1890ff' } as any}>
       {renderOptions.map((item: any, index: number) => {
         return boxStyle ? (
           <div
@@ -88,16 +92,13 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
             key={index}
             onClick={(e) => changeOptions(item.props, index, e)}
           >
+            <div
+              className={selectIndex === index ? 'radio-checked' : 'radio'}
+              style={item.props.disabled ? { cursor: 'not-allowed' } : { cursor: 'pointer' }}
+            ></div>
             <span className={item.props.disabled ? 'disabledLabel' : 'radioLabel'}>
               {item.props.children}
             </span>
-            <input
-              className={item.props.disabled ? 'disabledRadio' : 'radio'}
-              readOnly
-              type="radio"
-              checked={selectIndex === index}
-              disabled={item.props.disabled}
-            ></input>
           </div>
         );
       })}
@@ -119,13 +120,8 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
           ) : (
             <div className="addOption">
               <div className="radioBox" onClick={addOptions}>
+                <div className={selectIndex === renderOptions.length ? 'radio-checked' : 'radio'} />
                 <span className="radioLabel">More...</span>
-                <input
-                  className="radio"
-                  type="radio"
-                  readOnly
-                  checked={selectIndex === renderOptions.length}
-                ></input>
               </div>
               {showAddOption && (
                 <Input handleKeyDown={handleKeyDown} handleIptChange={handleIptChange} />

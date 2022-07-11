@@ -1,4 +1,6 @@
-import React, { FC, memo, useCallback } from 'react';
+import React, { FC, memo, useCallback, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import { CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
 
@@ -26,6 +28,8 @@ interface stepsProps {
 const Steps: FC<stepsProps> = (props) => {
   const { current, children } = props;
 
+  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+
   const indexClassName = useCallback(
     (index: any): string => {
       if (index == current) {
@@ -41,7 +45,7 @@ const Steps: FC<stepsProps> = (props) => {
   );
 
   return (
-    <div className="steps">
+    <div className="steps" style={{ '--global-color': globalColor || '#1890ff' } as any}>
       <div className="step-content">
         {/* <div className="line" /> */}
         <div className="step-line">

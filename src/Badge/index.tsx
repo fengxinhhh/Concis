@@ -1,5 +1,7 @@
-import React, { FC, memo, useMemo } from 'react';
+import React, { FC, memo, useMemo, useContext } from 'react';
 import { badgeProps } from './interface';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 const Badge: FC<badgeProps> = (props) => {
@@ -13,7 +15,8 @@ const Badge: FC<badgeProps> = (props) => {
     offset = [2, 2],
     text,
   } = props;
-  console.log(children);
+
+  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   const computedCount = useMemo(() => {
     if (count) {
@@ -54,7 +57,10 @@ const Badge: FC<badgeProps> = (props) => {
   return (
     <>
       {children ? (
-        <div className="badge" style={style}>
+        <div
+          className="badge"
+          style={{ ...style, ...({ '--global-color': globalColor || '#f53f3f' } as any) }}
+        >
           {children}
           {dot ? (
             <span
@@ -70,7 +76,15 @@ const Badge: FC<badgeProps> = (props) => {
           )}
         </div>
       ) : (
-        <div className="no-child-badge" style={{ ...style, ...dotStyle, ...countStyle }}>
+        <div
+          className="no-child-badge"
+          style={{
+            ...style,
+            ...dotStyle,
+            ...countStyle,
+            ...{ '--global-color': globalColor || '#f53f3f' },
+          }}
+        >
           {computedCount}
         </div>
       )}

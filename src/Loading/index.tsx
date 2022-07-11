@@ -1,5 +1,7 @@
-import React, { FC, useEffect, useRef, useState, Fragment, useMemo } from 'react';
+import React, { FC, useEffect, useRef, useState, Fragment, useMemo, useContext } from 'react';
 import { LoadingProps } from './interface';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 const Loading: FC<LoadingProps> = (props) => {
@@ -15,6 +17,7 @@ const Loading: FC<LoadingProps> = (props) => {
 
   const timer = useRef<any>(null);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
+  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   useEffect(() => {
     timer.current = setInterval(() => {
@@ -33,11 +36,22 @@ const Loading: FC<LoadingProps> = (props) => {
   }, []);
 
   const loadingStyle = useMemo(() => {
-    const returnStyle = style;
+    const returnStyle: any = style;
     returnStyle.width = width;
     returnStyle.height = height;
+    if (globalColor) {
+      returnStyle.color = globalColor;
+    }
     return returnStyle;
   }, [width, height, style]);
+  const gloabLoadingStyle = useMemo(() => {
+    if (globalColor) {
+      return {
+        background: globalColor,
+      };
+    }
+    return {};
+  }, [globalColor]);
 
   const renderLoadingContainer = useMemo(() => {
     if (type === 'default') {
@@ -66,7 +80,14 @@ const Loading: FC<LoadingProps> = (props) => {
       return (
         <div className="dot-loading">
           {new Array(3).fill('').map((item, index) => {
-            return <div className={activeDotIndex === index ? 'dot-active' : 'dot'}>{item}</div>;
+            return (
+              <div
+                className={activeDotIndex === index ? 'dot-active' : 'dot'}
+                style={gloabLoadingStyle}
+              >
+                {item}
+              </div>
+            );
           })}
         </div>
       );
@@ -74,7 +95,12 @@ const Loading: FC<LoadingProps> = (props) => {
       return (
         <div className="strip">
           {new Array(6).fill('').map((item, index) => {
-            return <div className="strip-list" style={{ '--lineIndex': index } as any} />;
+            return (
+              <div
+                className="strip-list"
+                style={{ ...gloabLoadingStyle, '--lineIndex': index } as any}
+              />
+            );
           })}
         </div>
       );

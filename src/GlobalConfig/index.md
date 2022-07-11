@@ -9,13 +9,30 @@ group:
 
 # GlobalConfig 全局配置
 
-<p>分隔内容的文档分割线</p>
+为组件提供统一的全局化配置。
 
-#### 何时使用
+## 使用
 
-- 对不同章节的文本段落进行分割。
-- 对行内文字/链接进行分割，例如表格的操作列。
+GlobalConfig 使用 React 的 context 特性，只需在应用外围包裹一次即可全局生效。
+
+```tsx pure
+import { GlobalConfig } from 'concis/web-react';
+
+// ...
+
+export default () => (
+  <GlobalConfig globalColor="orange">
+    <App />
+  </GlobalConfig>
+);
+```
 
 ## 基本用法
 
+此处列出了 Concis 所有支持主题色自定义的组件，你可以在演示中切换主题色。
+
+Input、Tree、Menu 三款组件可以单独配置其特定的背景/字体色，这为了更好的搭配主题色，因为它们其中的某些色彩偏离了主题色，具体可参照 API。
+
 <code src="./demos/index1.tsx"/>
+
+<API />

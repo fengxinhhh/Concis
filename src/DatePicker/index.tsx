@@ -1,6 +1,8 @@
 import React, { FC, memo, useState, useEffect, useCallback, useContext } from 'react';
 import RangeDatePicker from './rangeDatePicker';
 import { ctx } from '../Form';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import {
   FieldTimeOutlined,
   CloseOutlined,
@@ -75,6 +77,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   ]);
 
   const formCtx = useContext(ctx);
+  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   useEffect(() => {
     window.addEventListener('click', () => {
@@ -254,7 +257,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     //选中的所有样式
     result: {
       letterSpacing: 'normal',
-      color: '#1890FF',
+      color: globalColor || '#1890FF',
       width: '120px',
     },
     icon: {
@@ -265,7 +268,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       opacity: 1,
     },
     dayActive: {
-      backgroundColor: '#1890FF',
+      backgroundColor: globalColor || '#1890FF',
       color: '#fff',
       fontWeight: 'bold',
       borderRadius: '5px',
@@ -309,7 +312,11 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       {(type == 'primary' || !type) && (
         <div
           className="result"
-          style={showTimeDialog ? activeStyle.result : {}}
+          style={
+            showTimeDialog
+              ? { ...activeStyle.result }
+              : ({ '--hover-color': globalColor || '#1890ff' } as any)
+          }
           onClick={(e) => openDialog(e)}
         >
           <span>
@@ -341,7 +348,14 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       {renderShowDialog && (
         <div
           className="check-box"
-          style={{ ...(showTimeDialog ? activeStyle.checkBox : {}), ...alignFn() } as any}
+          style={
+            {
+              ...(showTimeDialog
+                ? { ...activeStyle.checkBox, '--hover-color': globalColor || '#1890ff' }
+                : { '--hover-color': globalColor || '#1890ff' }),
+              ...alignFn(),
+            } as any
+          }
           onClick={(e) => e.stopPropagation()}
         >
           <div className="top-bar">

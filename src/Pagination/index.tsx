@@ -1,6 +1,8 @@
-import React, { useState, FC, useMemo, memo } from 'react';
+import React, { useState, FC, useMemo, memo, useContext } from 'react';
 import { EllipsisOutlined, LeftOutlined, RightOutlined, DownOutlined } from '@ant-design/icons';
 import { Select } from '..';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface PaginationProps {
@@ -50,6 +52,8 @@ const Pagination: FC<PaginationProps> = (props) => {
   const [nowIndex, setNowIndex] = useState<number>(1);
   const [pageRenderArray, setPageRenderArray] = useState<Array<number>>([]);
   const [sizePage, setSizePage] = useState<number>(pageSizeOptions ? pageSizeOptions[0] : 10);
+
+  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   const totalPage = useMemo(() => {
     setNowIndex(1);
@@ -227,7 +231,10 @@ const Pagination: FC<PaginationProps> = (props) => {
   };
 
   return (
-    <div className="pagination" style={style}>
+    <div
+      className="pagination"
+      style={{ ...style, '--global-color': globalColor || '#1890ff' } as any}
+    >
       <div className={nowIndex === 1 ? `prev disabled` : `prev`} onClick={prevPage}>
         <LeftOutlined />
       </div>

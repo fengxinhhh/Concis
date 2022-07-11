@@ -2,6 +2,8 @@ import React, { FC, memo, Fragment, useState, useEffect, useCallback, useContext
 import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
 import Input from '../Input';
 import { ctx } from '../Form';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface treeProps {
@@ -51,6 +53,7 @@ const Tree: FC<treeProps> = (props) => {
   const [isFocus, setIsFocus] = useState(false); //聚焦状态
 
   const formCtx = useContext(ctx);
+  const { globalColor, treeSelectTextColor } = useContext(globalCtx) as GlobalConfigProps;
 
   useEffect(() => {
     resolveTreeData(treeData as Array<treeNode>, 1);
@@ -200,7 +203,7 @@ const Tree: FC<treeProps> = (props) => {
     (treeNode: treeNode): string => {
       //搜索高亮样式
       if (treeNode.title.includes(activedVal) && activedVal !== '') {
-        return '#1890FF';
+        return treeSelectTextColor || '#1890FF';
       } else {
         return '#000000';
       }
@@ -213,14 +216,14 @@ const Tree: FC<treeProps> = (props) => {
       if (avaChooseMore) {
         //多选
         if (activedVal.split(',').includes(treeNode.title)) {
-          return '#bae8ff';
+          return globalColor || '#bae8ff';
         } else {
           return '#ffffff';
         }
       } else {
         //单选
         if (activedVal == treeNode.title) {
-          return '#bae8ff';
+          return globalColor || '#bae8ff';
         } else {
           return '#ffffff';
         }
@@ -288,7 +291,7 @@ const Tree: FC<treeProps> = (props) => {
           className="tree-select-dialog"
           style={{
             width: `${width}px`,
-            height: containerHeight == '0px' ? '0px' : '',
+            maxHeight: containerHeight == '0px' ? '0px' : '100%',
             opacity: containerHeight == '0px' ? '0' : '1',
             padding: containerHeight == '0px' ? '0 10px 0 10px' : '10px',
           }}
