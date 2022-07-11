@@ -9,13 +9,13 @@
 
 <div align="center">
 
-A Lightweight React UI components library.
+一套轻量的 React UI 组件库。
 
 </div>
 
 <div align="center">
 
-English | [简体中文](./README.zh-CN.md)
+[English](./README.md) | 简体中文
 
 </div>
 
@@ -23,25 +23,25 @@ English | [简体中文](./README.zh-CN.md)
   <img src="http://react-view-ui.com:92/images/index-document.jpg" width="1200" />
 </div>
 
-# Features
+# 特征
 
-## Comprehensive
+## 全面
 
-With more than 30 crafted components that you can use out of the box.
+拥有 30 多种开箱即用的高质量组件，可以覆盖绝大部分业务场景。
 
-## Customizable theme
+## 主题配置
 
-Extensive design tokens can be customized to build your own theme. the way of customization are supported:
+海量色彩，支持全局引入使用：
 
-- [With colors-system](http://react-view-ui.com:92/#/guide/xcolor)
+- [色彩系统-内置主题色](http://react-view-ui.com:92/#/guide/xcolor)
 
-## TypeScript friendly
+## 基于 TypeScript
 
-All components are written in TypeScript so it's type friendly.
+所有组件都是用 TypeScript 编写的，所以天然的类型友好。
 
-# Installation
+# 安装
 
-Available as an [npm package](https://www.npmjs.com/package/@arco-design/web-react)
+[npm package](https://www.npmjs.com/package/@arco-design/web-react)
 
 ```bash
 // with npm
@@ -51,7 +51,7 @@ npm install concis@latest
 yarn add concis@latest
 ```
 
-# Examples
+# 例子
 
 ```typescript
 import React from 'react';
@@ -66,12 +66,12 @@ function App() {
 ReactDOM.render(<App />, document.getElementById('app'));
 ```
 
-# Useful Links
+# 相关链接
 
-- [Documentation website](http://react-view-ui.com:92/#/)
-- [Components documentation](http://react-view-ui.com:92/#/common/button)
-- [Guide introduce](http://react-view-ui.com:92/#/guide/introduce)
-- [Get started quickly](http://react-view-ui.com:92/#/guide/teuse)
+- [官网](http://react-view-ui.com:92/#/)
+- [组件文档](http://react-view-ui.com:92/#/common/button)
+- [指南介绍](http://react-view-ui.com:92/#/guide/introduce)
+- [快速上手](http://react-view-ui.com:92/#/guide/teuse)
 
 # Browser Support
 
