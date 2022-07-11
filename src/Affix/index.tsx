@@ -1,7 +1,5 @@
-import React, { FC, memo, useEffect, useState, useContext } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 import './index.module.less';
-import { GlobalConfigProps } from '../GlobalConfig/interface';
-import { globalCtx } from '../GlobalConfig';
 
 interface AffixProps {
   /**
@@ -50,8 +48,6 @@ const Affix: FC<AffixProps> = (props) => {
   const { children, affixType, offsetTop, offsetLeft, offsetBottom, offsetRight, style } = props;
 
   const [affixElOffset, setAffixElOffset] = useState<offsetProps>({});
-
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   let io: IntersectionObserver; //观察者
 
@@ -148,7 +144,6 @@ const Affix: FC<AffixProps> = (props) => {
       style={{
         ...(affixElOffset as React.HtmlHTMLAttributes<any>),
         ...style,
-        ...{ '--global-color': globalColor || '#1890ff' },
       }}
     >
       {children}
