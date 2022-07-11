@@ -1,6 +1,6 @@
 {
   "name": "concis",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -34,7 +34,6 @@
     "@ant-design/icons": "^4.7.0",
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-react": "^7.17.12",
-    "antd": "^4.19.5",
     "core-js": "^3.22.2",
     "loadsh": "^0.0.4"
   },

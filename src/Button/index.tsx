@@ -1,4 +1,6 @@
-import React, { useMemo, FC, memo, forwardRef, ReactNode } from 'react';
+import React, { useMemo, useContext, forwardRef, ReactNode } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { globalCtx } from '../GlobalConfig';
 import '../styles/compiled-colors.less';
 import './index.module.less';
 
@@ -54,6 +56,7 @@ interface ButtonStyle<T> {
   borderRadius?: T;
   border?: T;
   cursor?: T;
+  background?: T;
 }
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; //原生button接口
 
@@ -70,6 +73,8 @@ const Button = (props: ButtonProps) => {
     children,
     style = {},
   } = props;
+
+  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   const buttonStyle = useMemo(() => {
     if (!type && type !== 'danger' && type !== 'warning' && type !== 'warning' && type !== 'text') {
@@ -97,6 +102,9 @@ const Button = (props: ButtonProps) => {
     }
     if (disabled) {
       size = { ...size, cursor: 'not-allowed' };
+    }
+    if (globalColor) {
+      size = { ...size, background: globalColor };
     }
     return size;
   }, [width, height, circle, dashed]);
