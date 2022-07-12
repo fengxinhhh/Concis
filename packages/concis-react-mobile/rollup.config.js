@@ -28,7 +28,7 @@ export default {
     },
   ],
   plugins: [
-    typescript(), // 会自动读取 文件tsconfig.json配置
+    typescript(),
     less({ output: './web-react-mobile/style/index.css' }),
     clear({
       targets: ['web-react'],

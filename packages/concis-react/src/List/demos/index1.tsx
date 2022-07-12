@@ -1,7 +1,7 @@
 import React from 'react';
 import List from '..';
 import './demo.module.less';
-import usePageListener from '../../_util/hooks/usePageListener';
+import usePageListener from '../../../../../scripts/common_utils/hooks/usePageListener';
 
 export default function listDemo1() {
   process.env.NODE_ENV === 'production' && usePageListener('List');

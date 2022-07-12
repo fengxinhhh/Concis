@@ -1,7 +1,7 @@
 import React from 'react';
 import Steps from '..';
 import Step from '../Step';
-import usePageListener from '../../_util/hooks/usePageListener';
+import usePageListener from '../../../../../scripts/common_utils/hooks/usePageListener';
 /**
  * transform: true
  */

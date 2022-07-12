@@ -17,6 +17,7 @@ import Pagination from '../../Pagination';
 import Steps from '../../Steps';
 import Step from '../../Steps/Step';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import usePageListener from '../../../../../scripts/common_utils/hooks/usePageListener';
 
 const checkGroup = [
   {
@@ -140,6 +141,8 @@ const stepsData = [
 ];
 
 export default function index1() {
+  process.env.NODE_ENV === 'production' && usePageListener('GlobalConfig');
+
   const [globalColor, setGlobalColor] = useState<Array<string>>(['#1890ff', 'orange', 'green']);
 
   const toggle = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Avatar from '..';
 import { UserOutlined } from '@ant-design/icons';
-import usePageListener from '../../_util/hooks/usePageListener';
+import usePageListener from '../../../../../scripts/common_utils/hooks/usePageListener';
 
 export default function avatarDemo1() {
   process.env.NODE_ENV === 'production' && usePageListener('Avatar');

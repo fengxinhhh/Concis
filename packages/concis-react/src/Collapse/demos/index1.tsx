@@ -2,7 +2,7 @@ import React from 'react';
 import Collapse from '..';
 import CollapseItem from '../CollapseItem';
 import Divider from '..';
-import usePageListener from '../../_util/hooks/usePageListener';
+import usePageListener from '../../../../../scripts/common_utils/hooks/usePageListener';
 
 export default function CollapseDemo1() {
   process.env.NODE_ENV === 'production' && usePageListener('Collapse');

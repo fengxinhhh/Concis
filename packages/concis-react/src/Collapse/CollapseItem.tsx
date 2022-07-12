@@ -2,7 +2,7 @@ import React, { FC, memo, useMemo, useEffect, useContext } from 'react';
 import { CollapseItemProps } from './interfase';
 import { CaretDownOutlined, CaretRightOutlined, CaretLeftOutlined } from '@ant-design/icons';
 import './style/item.module.less';
-import useStateCallback from '../_util/hooks/useStateCallback';
+import useStateCallback from '../../../../scripts/common_utils/hooks/useStateCallback';
 import { ctx } from './index';
 
 const CollapseItem: FC<CollapseItemProps> = (props) => {
