@@ -1,6 +1,6 @@
 ---
 nav:
-  title: 贡献指南
+  title: 指南
   path: /guide
 ---
 

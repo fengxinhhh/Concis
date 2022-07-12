@@ -14,14 +14,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "baseUrl": "src",
+    "baseUrl": "components",
     "paths": {
       "@/*": ["./*"]
     },
     "experimentalDecorators": true
   },
   "include": [
-    "src",
+    "components",
     "typings.d.ts", //配置的.d.ts文件
     "__tests__",
     "docs/guide"

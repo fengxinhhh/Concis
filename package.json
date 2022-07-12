@@ -1,6 +1,9 @@
 {
   "name": "concis",
-  "version": "1.0.9",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -9,9 +12,6 @@
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
-    "prepublishOnly": "npm run buildNpm",
-    "deploy": "gh-pages -d docs-dist",
-    "buildNpm": "rollup -c rollup.config.js",
     "test:jest": "jest"
   },
   "module": "es/index.js",
@@ -19,9 +19,6 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
-  "files": [
-    "web-react"
-  ],
   "lint-staged": {
     "*.{js,jsx,less,md,json}": [
       "prettier --write"
@@ -35,7 +32,7 @@
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-react": "^7.17.12",
     "core-js": "^3.22.2",
-    "loadsh": "^0.0.4"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
@@ -58,11 +55,11 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.3.5",
-    "father-build": "^1.17.2",
     "gh-pages": "^3.2.3",
     "jest": "^28.1.1",
     "jest-less-loader": "^0.1.2",
     "jsdom": "^19.0.0",
+    "lerna": "^5.1.8",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
     "react": "^16.13.0",
