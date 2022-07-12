@@ -1,13 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 /node_modules
-
 /packages/concis-react/node_modules
 /packages/concis-react/README.md
 /packages/concis-react/README.zh-CN.md
 /packages/concis-react/package-lock.json
 /packages/concis-react/web-react
-
 /npm-debug.log*
 /yarn-error.log
 /yarn.lock
