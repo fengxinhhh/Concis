@@ -52,7 +52,7 @@ concis 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研
 
 代码风格遵循 2 空格，无分号，非说明请不要在代码中附带任何 console 相关的方法及 debugger。 开发完成后，到自己 fork 出来的仓库提交 pull request。
 
-<img src="http://concis.org.cn/images/github-doc.png" />
+<img src="http://react-view-ui.com:92/images/github-doc.png" />
 
 #### 审核与合并
 

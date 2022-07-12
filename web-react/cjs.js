@@ -2481,48 +2481,47 @@ var Vt = e.memo((t) => {
         affixType: r,
         offsetTop: l,
         offsetLeft: i,
-        offsetBottom: c,
-        offsetRight: u,
-        style: s,
+        offsetBottom: o,
+        offsetRight: c,
+        style: u,
       } = t,
-      [f, d] = e.useState({}),
-      h = e.useContext(o)['globalColor'];
-    let p;
+      [s, f] = e.useState({});
+    let d;
     e.useEffect(() => {
       const e = document.querySelector('.affix');
       return (
-        (p = new IntersectionObserver((e) => g(e))).observe(e),
+        (d = new IntersectionObserver((e) => p(e))).observe(e),
         'scroll' == r
-          ? (window.addEventListener('scroll', m),
-            d(
+          ? (window.addEventListener('scroll', h),
+            f(
               (e) => (
                 (e.position = 'relative'),
                 l && !e.bottom && (e.top = 0),
-                c && !e.top && (e.bottom = 0),
+                o && !e.top && (e.bottom = 0),
                 i && !e.right && (e.left = 0),
-                u && !e.left && (e.right = 0),
+                c && !e.left && (e.right = 0),
                 JSON.parse(JSON.stringify(e))
               ),
             ))
-          : d(
+          : f(
               (e) => (
                 (e.position = 'fixed'),
                 l && !e.bottom && (e.top = l),
-                c && !e.top && (e.bottom = c),
+                o && !e.top && (e.bottom = o),
                 i && !e.right && (e.left = i),
-                u && !e.left && (e.right = u),
+                c && !e.left && (e.right = c),
                 JSON.parse(JSON.stringify(e))
               ),
             ),
         () => {
-          p.unobserve(e);
+          d.unobserve(e);
         }
       );
     }, []);
-    const m = () => {
+    const h = () => {
         document.querySelector('.affix'),
           window.scrollY < 200 &&
-            d((e) => {
+            f((e) => {
               for (const t in e)
                 'position' == t
                   ? (e[t] = 'relative')
@@ -2530,17 +2529,17 @@ var Vt = e.memo((t) => {
               return JSON.parse(JSON.stringify(e));
             });
       },
-      g = (e) => {
+      p = (e) => {
         e.forEach((e) => {
           e.isIntersecting ||
-            ('relative' == f.position &&
-              d(
+            ('relative' == s.position &&
+              f(
                 (e) => (
                   (e.position = 'fixed'),
                   l && l !== e.top && (e.top = l + 'px'),
-                  c && c !== e.bottom && (e.bottom = c + 'px'),
+                  o && o !== e.bottom && (e.bottom = o + 'px'),
                   i && i !== e.left && (e.left = i + 'px'),
-                  u && u !== e.right && (e.right = u + 'px'),
+                  c && c !== e.right && (e.right = c + 'px'),
                   JSON.parse(JSON.stringify(e))
                 ),
               ));
@@ -2548,12 +2547,7 @@ var Vt = e.memo((t) => {
       };
     return a.default.createElement(
       'div',
-      {
-        className: 'affix',
-        style: Object.assign(Object.assign(Object.assign({}, f), s), {
-          '--global-color': h || '#1890ff',
-        }),
-      },
+      { className: 'affix', style: Object.assign(Object.assign({}, s), u) },
       n,
     );
   }),

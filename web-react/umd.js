@@ -2505,15 +2505,14 @@
           offsetRight: i,
           style: o,
         } = e,
-        [c, u] = U.useState({}),
-        s = U.useContext(P)['globalColor'];
-      let f;
+        [c, u] = U.useState({});
+      let s;
       U.useEffect(() => {
         const e = document.querySelector('.affix');
         return (
-          (f = new IntersectionObserver((e) => h(e))).observe(e),
+          (s = new IntersectionObserver((e) => d(e))).observe(e),
           'scroll' == n
-            ? (window.addEventListener('scroll', d),
+            ? (window.addEventListener('scroll', f),
               u(
                 (e) => (
                   (e.position = 'relative'),
@@ -2535,11 +2534,11 @@
                 ),
               ),
           () => {
-            f.unobserve(e);
+            s.unobserve(e);
           }
         );
       }, []);
-      const d = () => {
+      const f = () => {
           document.querySelector('.affix'),
             window.scrollY < 200 &&
               u((e) => {
@@ -2550,7 +2549,7 @@
                 return JSON.parse(JSON.stringify(e));
               });
         },
-        h = (e) => {
+        d = (e) => {
           e.forEach((e) => {
             e.isIntersecting ||
               ('relative' == c.position &&
@@ -2568,12 +2567,7 @@
         };
       return V.default.createElement(
         'div',
-        {
-          className: 'affix',
-          style: Object.assign(Object.assign(Object.assign({}, c), o), {
-            '--global-color': s || '#1890ff',
-          }),
-        },
+        { className: 'affix', style: Object.assign(Object.assign({}, c), o) },
         t,
       );
     }),
