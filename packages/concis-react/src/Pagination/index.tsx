@@ -246,20 +246,6 @@ const Pagination: FC<PaginationProps> = (props) => {
           <EllipsisOutlined />
         </div>
       )}
-      {/* 
-      {totalPage <= 4 &&
-        pageRenderArray.length >= 1 &&
-        pageRenderArray.map((item, index) => {
-          return (
-            <div
-              className={nowIndex === item ? `actived numberBox` : `numberBox`}
-              key={index}
-              onClick={changePage(item)}
-            >
-              {item}
-            </div>
-          );
-        })} */}
       {totalPage >= 1 &&
         pageRenderArray.map((item, index) => {
           {

@@ -14,16 +14,19 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "baseUrl": "components",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/": ["./packages"]
     },
     "experimentalDecorators": true
   },
   "include": [
-    "components",
+    "packages/concis-react/src",
+    "packages/concis-react-mobile/src",
     "typings.d.ts", //配置的.d.ts文件
     "__tests__",
     "docs/guide"
-  ]
+  ],
+  "exclude": ["node_modules", "lib"]
 }
