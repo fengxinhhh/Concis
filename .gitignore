@@ -4,6 +4,9 @@
 /packages/concis-react/node_modules
 /packages/concis-react/package-lock.json
 /packages/concis-react/web-react
+/packages/concis-react-mobile/node_modules
+/packages/concis-react-mobile/package-lock.json
+/packages/concis-react-mobile/web-react-mobile
 /npm-debug.log*
 /yarn-error.log
 /yarn.lock

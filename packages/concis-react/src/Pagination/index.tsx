@@ -246,7 +246,7 @@ const Pagination: FC<PaginationProps> = (props) => {
           <EllipsisOutlined />
         </div>
       )}
-
+      {/* 
       {totalPage <= 4 &&
         pageRenderArray.length >= 1 &&
         pageRenderArray.map((item, index) => {
@@ -259,8 +259,8 @@ const Pagination: FC<PaginationProps> = (props) => {
               {item}
             </div>
           );
-        })}
-      {totalPage > 4 &&
+        })} */}
+      {totalPage >= 1 &&
         pageRenderArray.map((item, index) => {
           {
             return (
@@ -293,32 +293,6 @@ const Pagination: FC<PaginationProps> = (props) => {
       >
         <RightOutlined />
       </div>
-      {/* {
-                Array.isArray(pageSizeOptions) && showSizeChanger
-                &&
-                <div className={pageSizeSelect} onClick={() => setShowSizeOptions(!showSizeOptions)}>
-                    <>
-                        <span className={size}>{sizePage} 条/页</span>
-                        <DownOutlined />
-
-                    </>
-                    {
-                        showSizeOptions
-                        &&
-                        <div className={options}>
-                            {
-                                pageSizeOptions.map(s => {
-                                    return (
-                                        <div key={s as number} className={option} onClick={() => setSizePage(s as number)}>
-                                            {s} 条/页
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    }
-                </div>
-            } */}
       {Array.isArray(pageSizeOptions) && showSizeChanger && (
         <Select
           option={pageSizeOptions.map((item) => {
