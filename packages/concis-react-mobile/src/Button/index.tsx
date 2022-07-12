@@ -105,9 +105,9 @@ const Button = (props: ButtonProps) => {
     if (disabled) {
       size = { ...size, cursor: 'not-allowed' };
     }
-    if (globalColor) {
-      size = { ...size, background: globalColor };
-    }
+    // if (globalColor) {
+    //   size = { ...size, background: globalColor };
+    // }
     return size;
   }, [width, height, circle, dashed]);
   return (
