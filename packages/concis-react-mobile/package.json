@@ -1,7 +1,7 @@
 {
-  "name": "concis",
-  "version": "1.0.16",
-  "description": "Concis Component library for PC",
+  "name": "concis-mobile",
+  "version": "0.0.1",
+  "description": "Concis Component library for Mobile",
   "authors": {
     "name": "fengxin",
     "email": "1244200081@qq.com"
@@ -15,7 +15,7 @@
     "pre-commit": "lint-staged"
   },
   "files": [
-    "web-react",
+    "web-react-mobile",
     "README.md",
     "README.zh-CN.md",
     "package.json"

@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect, memo, useCallback, useContext } from 'react';
-import lodash from 'lodash';
 import { ctx } from '../Form';
 import './index.module.less';
 

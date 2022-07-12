@@ -2,8 +2,6 @@
 
 /node_modules
 /packages/concis-react/node_modules
-/packages/concis-react/README.md
-/packages/concis-react/README.zh-CN.md
 /packages/concis-react/package-lock.json
 /packages/concis-react/web-react
 /npm-debug.log*

@@ -1,6 +1,6 @@
 import React, { useMemo, useContext, forwardRef, ReactNode } from 'react';
-import { GlobalConfigProps } from '../GlobalConfig/interface';
-import { globalCtx } from '../GlobalConfig';
+// import { GlobalConfigProps } from '../GlobalConfig/interface';
+// import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface ButtonProps {
@@ -73,7 +73,7 @@ const Button = (props: ButtonProps) => {
     style = {},
   } = props;
 
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+  // const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   const buttonStyle = useMemo(() => {
     if (!type && type !== 'danger' && type !== 'warning' && type !== 'info' && type !== 'text') {

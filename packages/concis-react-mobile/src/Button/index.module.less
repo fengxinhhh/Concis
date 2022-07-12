@@ -1,0 +1,116 @@
+.button {
+  display: inline-block;
+  .primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    color: #fff;
+    background-color: #1890ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s linear;
+    &:hover {
+      opacity: var(--isDisabled);
+    }
+  }
+  .danger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    color: #fff;
+    background-color: #f53f3f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s linear;
+    &:hover {
+      opacity: var(--isDisabled);
+    }
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    color: #fff;
+    background-color: #26c48f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s linear;
+    &:hover {
+      opacity: var(--isDisabled);
+    }
+  }
+  .warning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    color: #fff;
+    background-color: rgb(224, 197, 41);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s linear;
+    &:hover {
+      opacity: var(--isDisabled);
+    }
+  }
+  .disabled-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    color: #000000;
+    background-color: #fff;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s linear;
+  }
+  .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    color: #000000;
+    background-color: #fff;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s linear;
+    &:hover {
+      color: #1890ff;
+      border-color: #1890ff !important;
+    }
+  }
+  .loading1 {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border: 2px solid #ccc;
+    border-color: transparent rgb(226, 226, 226) rgb(226, 226, 226);
+    border-radius: 50%;
+    animation: 1s loadingWatch infinite linear;
+  }
+  @keyframes loadingWatch {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(100deg);
+    }
+    75% {
+      transform: rotate(200deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
