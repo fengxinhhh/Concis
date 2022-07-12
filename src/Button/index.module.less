@@ -14,7 +14,7 @@
     cursor: pointer;
     transition: 0.2s linear;
     &:hover {
-      opacity: 0.7;
+      opacity: var(--isDisabled);
     }
   }
   .danger {
@@ -29,7 +29,22 @@
     cursor: pointer;
     transition: 0.2s linear;
     &:hover {
-      opacity: 0.7;
+      opacity: var(--isDisabled);
+    }
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    color: #fff;
+    background-color: #26c48f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s linear;
+    &:hover {
+      opacity: var(--isDisabled);
     }
   }
   .warning {
@@ -44,8 +59,21 @@
     cursor: pointer;
     transition: 0.2s linear;
     &:hover {
-      opacity: 0.7;
+      opacity: var(--isDisabled);
     }
+  }
+  .disabled-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    color: #000000;
+    background-color: #fff;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s linear;
   }
   .text {
     display: flex;

@@ -2,18 +2,23 @@ import React from 'react';
 import Button from '..';
 
 export default function ButtonDemo6() {
+  const buttonStyle = { margin: '8px' };
+
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-      <Button type="primary" loading>
+    <div style={{ display: 'flex' }}>
+      <Button type="primary" style={buttonStyle} loading>
         加载按钮
       </Button>
-      <Button type="danger" loading>
+      <Button type="danger" style={buttonStyle} loading>
         加载按钮
       </Button>
-      <Button type="warning" loading>
+      <Button type="warning" style={buttonStyle} loading>
         加载按钮
       </Button>
-      <Button type="text" loading>
+      <Button type="info" style={buttonStyle} loading>
+        加载按钮
+      </Button>
+      <Button type="text" style={buttonStyle} loading>
         加载按钮
       </Button>
     </div>

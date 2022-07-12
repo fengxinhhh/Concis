@@ -2,18 +2,23 @@ import React from 'react';
 import Button from '..';
 
 export default function ButtonDemo3() {
+  const buttonStyle = { margin: '8px' };
+
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-      <Button type="primary" width={30} height={30} circle>
+    <div style={{ display: 'flex' }}>
+      <Button type="primary" style={buttonStyle} width={30} height={30} circle>
         P
       </Button>
-      <Button type="danger" width={30} height={30} circle>
+      <Button type="danger" style={buttonStyle} width={30} height={30} circle>
         D
       </Button>
-      <Button type="warning" width={30} height={30} circle>
+      <Button type="warning" style={buttonStyle} width={30} height={30} circle>
         W
       </Button>
-      <Button type="text" width={30} height={30} circle>
+      <Button type="info" style={buttonStyle} width={30} height={30} circle>
+        H
+      </Button>
+      <Button type="text" style={buttonStyle} width={30} height={30} circle>
         T
       </Button>
     </div>

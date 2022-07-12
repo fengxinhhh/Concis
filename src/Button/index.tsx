@@ -11,7 +11,7 @@ interface ButtonProps {
    * @description 按钮主题
    * @default primary
    */
-  type?: String;
+  type?: 'primary' | 'danger' | 'warning' | 'info' | 'text';
   /**
    * @description 宽度
    */
@@ -77,8 +77,18 @@ const Button = (props: ButtonProps) => {
   const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   const buttonStyle = useMemo(() => {
-    if (!type && type !== 'danger' && type !== 'warning' && type !== 'warning' && type !== 'text') {
+    if (
+      !type &&
+      type !== 'danger' &&
+      type !== 'warning' &&
+      type !== 'warning' &&
+      type !== 'info' &&
+      type !== 'text'
+    ) {
       return 'primary';
+    }
+    if (type === 'text' && disabled) {
+      return 'disabled-text';
     }
     return type as any;
   }, [type]);
@@ -109,10 +119,17 @@ const Button = (props: ButtonProps) => {
     return size;
   }, [width, height, circle, dashed]);
   return (
-    <div className="button" style={{ width: width + 'px', height: height + 'px' }}>
+    <div className="button">
       <button
         className={buttonStyle}
-        style={buttonSize as any}
+        style={
+          {
+            width: width + 'px',
+            height: height + 'px',
+            ...buttonSize,
+            '--isDisabled': disabled ? 1 : 0.7,
+          } as any
+        }
         disabled={disabled ? true : false}
         onClick={handleClick as undefined}
       >

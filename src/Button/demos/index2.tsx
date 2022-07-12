@@ -2,16 +2,18 @@ import React from 'react';
 import Button from '..';
 
 export default function ButtonDemo2() {
+  const buttonStyle = { margin: '8px' };
+
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-      <Button type="primary" width={80} height={50}>
-        小型按钮
+    <div style={{ display: 'flex' }}>
+      <Button type="primary" style={buttonStyle} width={90} height={40}>
+        small
       </Button>
-      <Button type="primary" width={120} height={70}>
-        中型按钮
+      <Button type="danger" style={buttonStyle} width={120} height={40}>
+        big
       </Button>
-      <Button type="warning" width={150} height={90}>
-        大型按钮
+      <Button type="warning" style={buttonStyle} width={150} height={40}>
+        large
       </Button>
     </div>
   );
