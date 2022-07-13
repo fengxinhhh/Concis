@@ -14,6 +14,7 @@ import Avatar from '../../Avatar';
 import TreeView from '../../TreeView';
 import Menu from '../../Menu';
 import Pagination from '../../Pagination';
+import Switch from '../../Switch';
 import Steps from '../../Steps';
 import Step from '../../Steps/Step';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
@@ -168,6 +169,8 @@ export default function index1() {
         <Loading loadingText="正在加载中..." />
         <p></p>
         <CheckBox>5</CheckBox>
+        <p></p>
+        <Switch />
         <p></p>
         <TimePicker type="primary" showRange />
         <p></p>

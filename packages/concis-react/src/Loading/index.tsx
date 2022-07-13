@@ -57,7 +57,7 @@ const Loading: FC<LoadingProps> = (props) => {
     if (type === 'default') {
       return (
         <div className="loading" style={loadingStyle}>
-          <div className="loading-container">
+          <div className="loading-container" style={loadingStyle}>
             {icon || (
               <svg
                 fill="none"
