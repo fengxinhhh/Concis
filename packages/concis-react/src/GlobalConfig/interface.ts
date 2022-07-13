@@ -26,7 +26,7 @@ interface GlobalConfigProps {
    * @description 全局组件类名前缀
    * @default concis
    */
-  prefixCls?: string;
+  prefixCls?: any;
 }
 
 export type { GlobalConfigProps };

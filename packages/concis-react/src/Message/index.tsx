@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, CSSProperties, useContext } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import ReactDOM from 'react-dom';
 import { MessageProps } from './interface';

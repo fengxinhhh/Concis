@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, memo, useCallback, useContext } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { ctx } from '../Form';
 import './index.module.less';
@@ -59,7 +59,7 @@ const Rate: FC<rateProps> = (props: rateProps) => {
 
   const classNames = cs(prefixCls, className, 'concis-rate');
 
-  const formCtx = useContext(ctx);
+  const formCtx: any = useContext(ctx);
 
   useEffect(() => {
     const initStar = [];

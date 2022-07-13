@@ -2,7 +2,7 @@ import React from 'react';
 import Badge from '..';
 import Avatar from '../../Avatar';
 import { ClockCircleOutlined } from '@ant-design/icons';
-import usePageListener from '../../../../../scripts/common_utils/hooks/usePageListener';
+import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function avatarDemo1() {
   process.env.NODE_ENV === 'production' && usePageListener('Badge');

@@ -15,7 +15,7 @@ import {
   SearchOutlined,
 } from '@ant-design/icons';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { tableProps, tableThType } from './interface';
 import CheckBox from '../CheckBox';

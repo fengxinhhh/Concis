@@ -1,6 +1,6 @@
 import React from 'react';
 import Tree from '..';
-import usePageListener from '../../../../../scripts/common_utils/hooks/usePageListener';
+import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const treeData = [
   {

@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef, useState, Fragment, useMemo, useContext } from 'react';
 import { LoadingProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 

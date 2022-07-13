@@ -3,7 +3,7 @@ import Form from '..';
 import Input from '../../Input';
 import CheckBox from '../../CheckBox';
 import Button from '../../Button';
-import usePageListener from '../../../../../scripts/common_utils/hooks/usePageListener';
+import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index1() {
   process.env.NODE_ENV === 'production' && usePageListener('Form');

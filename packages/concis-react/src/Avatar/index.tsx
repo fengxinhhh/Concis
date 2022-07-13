@@ -1,6 +1,6 @@
 import React, { FC, useContext, useEffect, memo, useMemo, useRef } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { ctx } from './group';
 import { avatarProps, avatarStyles } from './interface';

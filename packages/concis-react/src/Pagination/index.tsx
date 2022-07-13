@@ -2,7 +2,7 @@ import React, { useState, FC, useMemo, memo, useContext } from 'react';
 import { EllipsisOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Select } from '..';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 

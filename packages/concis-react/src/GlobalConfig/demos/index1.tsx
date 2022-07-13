@@ -18,7 +18,7 @@ import Switch from '../../Switch';
 import Steps from '../../Steps';
 import Step from '../../Steps/Step';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-import usePageListener from '../../../../../scripts/common_utils/hooks/usePageListener';
+import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const checkGroup = [
   {

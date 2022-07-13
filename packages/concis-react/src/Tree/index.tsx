@@ -3,7 +3,7 @@ import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
 import Input from '../Input';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
@@ -65,7 +65,7 @@ const Tree: FC<treeProps> = (props) => {
   const [containerHeight, setContainerHeight] = useState<string>('0px'); //容器高度
   const [isFocus, setIsFocus] = useState(false); //聚焦状态
 
-  const formCtx = useContext(ctx);
+  const formCtx: any = useContext(ctx);
 
   const { globalColor, treeSelectTextColor, prefixCls } = useContext(
     globalCtx,

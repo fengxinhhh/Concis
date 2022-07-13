@@ -1,6 +1,6 @@
 import React, { FC, memo, useCallback, useContext } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { CheckOutlined } from '@ant-design/icons';
 import './index.module.less';

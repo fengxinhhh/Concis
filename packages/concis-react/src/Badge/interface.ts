@@ -6,6 +6,11 @@ interface badgeProps {
    * @description 徽标样式
    * @default {}
    */
+  className?: string;
+  /**
+   * @description 徽标样式
+   * @default {}
+   */
   style?: CSSProperties;
   /**
    * @description 徽标数字值

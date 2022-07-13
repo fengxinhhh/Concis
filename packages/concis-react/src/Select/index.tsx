@@ -11,7 +11,7 @@ import React, {
 import { DownOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
@@ -72,7 +72,7 @@ interface SelectProps {
   handleTextChange?: Function;
 }
 
-const Select: FC<SelectProps> = (props) => {
+const Select: FC<SelectProps> = (props: SelectProps) => {
   const {
     option,
     className,
@@ -89,7 +89,7 @@ const Select: FC<SelectProps> = (props) => {
   const [selectedValue, setSelectedValue] = useState<string | number | any>('');
 
   const optionRef = createRef() as any;
-  const formCtx = useContext(ctx);
+  const formCtx: any = useContext(ctx);
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, 'concis-select');
@@ -212,7 +212,7 @@ const Select: FC<SelectProps> = (props) => {
           )}
         </div>
         <div className="selectOptions" style={ownsWidth} ref={optionRef}>
-          {inputFilterOtpions.map((s) => {
+          {inputFilterOtpions.map((s: any) => {
             return (
               <div
                 key={s.label as any}

@@ -1,11 +1,11 @@
 import React, { FC, memo, useMemo, useEffect, useContext } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { CollapseItemProps } from './interfase';
 import { CaretDownOutlined, CaretRightOutlined, CaretLeftOutlined } from '@ant-design/icons';
 import './style/item.module.less';
-import useStateCallback from '../../../../scripts/common_utils/hooks/useStateCallback';
+import useStateCallback from '../common_utils/hooks/useStateCallback';
 import { ctx } from './index';
 
 const CollapseItem: FC<CollapseItemProps> = (props) => {

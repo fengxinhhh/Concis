@@ -1,6 +1,6 @@
 import React, { createContext, useMemo, useState, useEffect, useRef, useContext } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { listProps, listHeaderStyle, listContentStyle } from './interface';
 import Item from './item';

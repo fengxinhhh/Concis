@@ -1,6 +1,7 @@
 import React, { CSSProperties, ReactNode } from 'react';
 interface groupProps {
   children?: ReactNode;
+  className?: string;
   size?: number;
   /**
    * @description 按钮组样式

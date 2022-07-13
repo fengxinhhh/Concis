@@ -2,7 +2,7 @@ import React, { FC, useState, useMemo, useContext, useEffect, memo, useRef } fro
 import { CloseOutlined, EyeOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
@@ -122,7 +122,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
 
   const classNames = cs(prefixCls, className, 'concis-input');
 
-  const formCtx = useContext(ctx);
+  const formCtx: any = useContext(ctx);
   const iptRef = useRef(null);
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, memo, useMemo } from 'react';
 import { SwitchProps } from './interface';
 import Loading from '../Loading';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 

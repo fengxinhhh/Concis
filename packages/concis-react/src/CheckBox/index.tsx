@@ -11,7 +11,7 @@ import React, {
 } from 'react';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
@@ -53,14 +53,14 @@ interface checkBoxProps {
   checkGroupCallback?: Function;
 }
 
-const CheckBox: FC<checkBoxProps> = (props) => {
+const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
   const { children, className, checked, disabled, group, checkCallback, checkGroupCallback } =
     props;
 
   const [checkStatus, setCheckStatus] = useState<boolean>();
   const [checkGroup, setCheckGroup] = useState<Array<checkGroup>>(group || []);
 
-  const formCtx = useContext(ctx);
+  const formCtx: any = useContext(ctx);
 
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
   const classNames = cs(

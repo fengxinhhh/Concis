@@ -1,7 +1,7 @@
 import React from 'react';
 import Table from '..';
 import Button from '../../Button';
-import usePageListener from '../../../../../scripts/common_utils/hooks/usePageListener';
+import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const columns = [
   {

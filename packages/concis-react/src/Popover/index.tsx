@@ -9,7 +9,7 @@ import React, {
   useContext,
 } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import lodash from 'lodash';
 import './index.module.less';

@@ -8,12 +8,13 @@ import {
 } from '@ant-design/icons';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
-import cs from '../../../../../scripts/common_utils/classNames';
+import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
 import { ctx } from '../../Form';
 import './index.module.less';
 
 interface RangeProps {
+  className?: string;
   showClear?: Boolean;
   align?: string;
   handleChange?: Function;

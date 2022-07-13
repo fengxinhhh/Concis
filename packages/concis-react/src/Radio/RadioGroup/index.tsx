@@ -1,7 +1,7 @@
 import React, { FC, useState, memo, useCallback, useContext } from 'react';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
-import cs from '../../../../../scripts/common_utils/classNames';
+import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
 import './index.module.less';
 
@@ -11,6 +11,7 @@ interface RadioGroupProps {
    * @description 默认值
    * @default 0
    */
+  className?: string;
   value?: Number;
   canAddOption?: Boolean;
   boxStyle?: Boolean;
@@ -21,7 +22,7 @@ interface RadioProps {
   disabled: Boolean;
 }
 
-const RadioGroup: FC<RadioGroupProps> = (props) => {
+const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
   const { children, className, value, canAddOption, boxStyle, onChange } = props;
 
   const [selectIndex, setSelectIndex] = useState(value || 0); //选中索引

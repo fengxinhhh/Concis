@@ -1,6 +1,6 @@
 import React, { FC, memo, useEffect, useState, createRef, useContext } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 
 interface LazyLoadProps {

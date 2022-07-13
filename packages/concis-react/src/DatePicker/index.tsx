@@ -2,7 +2,7 @@ import React, { FC, memo, useState, useEffect, useCallback, useContext } from 'r
 import RangeDatePicker from './rangeDatePicker';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../../../../scripts/common_utils/classNames';
+import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import {
   FieldTimeOutlined,
@@ -84,7 +84,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, 'concis-date-picker');
-  const formCtx = useContext(ctx);
+  const formCtx: any = useContext(ctx);
 
   useEffect(() => {
     window.addEventListener('click', () => {
