@@ -1,10 +1,17 @@
 import React, { FC, memo, useMemo, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import { listItemProps } from './interface';
 import { ctx } from './index';
 import './style/item.module.less';
 
 const Item: FC<listItemProps> = (props) => {
-  const { children, style = {} } = props;
+  const { children, className, style = {} } = props;
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-list-item');
   const { size } = useContext(ctx);
 
   const listItemStyle = useMemo(() => {
@@ -23,7 +30,7 @@ const Item: FC<listItemProps> = (props) => {
     return defaultStyles;
   }, [size]);
   return (
-    <div className="list-item" style={listItemStyle}>
+    <div className={classNames} style={listItemStyle}>
       {children}
     </div>
   );

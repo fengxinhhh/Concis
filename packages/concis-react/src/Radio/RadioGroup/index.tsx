@@ -1,6 +1,7 @@
 import React, { FC, useState, memo, useCallback, useContext } from 'react';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
+import cs from '../../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
 import './index.module.less';
 
@@ -21,14 +22,16 @@ interface RadioProps {
 }
 
 const RadioGroup: FC<RadioGroupProps> = (props) => {
-  const { children, value, canAddOption, boxStyle, onChange } = props;
+  const { children, className, value, canAddOption, boxStyle, onChange } = props;
 
   const [selectIndex, setSelectIndex] = useState(value || 0); //选中索引
   const [renderOptions, setRenderOptions] = useState(children);
   const [addOptionVal, setAddOptionVal] = useState('');
   const [showAddOption, setShowAddOption] = useState(canAddOption && false);
 
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-radio-group');
 
   const changeOptions = (item: RadioProps, i: number, e: any) => {
     if (item.disabled) return;
@@ -74,7 +77,7 @@ const RadioGroup: FC<RadioGroupProps> = (props) => {
   );
 
   return (
-    <div className="radioGroup" style={{ '--global-color': globalColor || '#1890ff' } as any}>
+    <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
       {renderOptions.map((item: any, index: number) => {
         return boxStyle ? (
           <div

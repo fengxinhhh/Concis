@@ -1,5 +1,9 @@
 interface tableProps {
   /**
+   * @description 类名
+   */
+  className?: string;
+  /**
    * @description 表头配置项
    * @default []
    */

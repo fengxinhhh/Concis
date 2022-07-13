@@ -18,9 +18,7 @@ export default function MenuDemos1() {
           </>
         }
       >
-        <Button type="primary" width={80} height={30}>
-          Hover me
-        </Button>
+        <Button type="primary">Hover me</Button>
       </Popover>
     </>
   );

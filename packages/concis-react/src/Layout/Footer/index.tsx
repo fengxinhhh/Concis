@@ -1,12 +1,20 @@
-import React, { FC, useMemo, memo } from 'react';
+import React, { FC, useMemo, memo, useContext } from 'react';
+import { GlobalConfigProps } from '../../GlobalConfig/interface';
+import cs from '../../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../../GlobalConfig';
 import './index.module.less';
 
 interface FooterProps {
+  className?: string;
   extraStyle?: Object;
   children?: Element | undefined | String | any;
 }
 const Footer: FC<FooterProps> = (props) => {
-  const { children, extraStyle } = props;
+  const { className, children, extraStyle } = props;
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-footer');
 
   const propsStyle = useMemo(() => {
     if (extraStyle) {
@@ -16,7 +24,7 @@ const Footer: FC<FooterProps> = (props) => {
   }, [extraStyle]);
 
   return (
-    <div className="footer" style={propsStyle}>
+    <div className={classNames} style={propsStyle}>
       {children}
     </div>
   );

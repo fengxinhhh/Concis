@@ -1,11 +1,16 @@
 import React, { useMemo, useContext, forwardRef, ReactNode } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface ButtonProps {
   //自定义button接口
   children?: ReactNode;
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 按钮主题
    * @default primary
@@ -62,6 +67,7 @@ type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; 
 const Button = (props: ButtonProps) => {
   const {
     type,
+    className,
     width = '100%',
     height = '40',
     disabled,
@@ -73,7 +79,9 @@ const Button = (props: ButtonProps) => {
     style = {},
   } = props;
 
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-button');
 
   const buttonStyle = useMemo(() => {
     if (!type && type !== 'danger' && type !== 'warning' && type !== 'info' && type !== 'text') {
@@ -111,7 +119,7 @@ const Button = (props: ButtonProps) => {
     return size;
   }, [width, height, circle, dashed]);
   return (
-    <div className="button">
+    <div className={classNames}>
       <button
         className={buttonStyle}
         style={

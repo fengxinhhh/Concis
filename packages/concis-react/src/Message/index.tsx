@@ -1,4 +1,7 @@
-import React, { useState, useEffect, useMemo, useRef, CSSProperties } from 'react';
+import React, { useState, useEffect, useMemo, useRef, CSSProperties, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import ReactDOM from 'react-dom';
 import { MessageProps } from './interface';
 import './index.module.less';
@@ -97,6 +100,10 @@ const Message = (props: MessageProps<string>) => {
   const [opac, setOpac] = useState(1);
   const messageDom = useRef<any>(null);
 
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, 'concis-message-container');
+
   useEffect(() => {
     if (position === 'top') {
       topMessageNum++;
@@ -137,7 +144,7 @@ const Message = (props: MessageProps<string>) => {
   };
 
   return (
-    <div className="message-container" style={{ opacity: opac, ...style }} ref={messageDom}>
+    <div className={classNames} style={{ opacity: opac, ...style }} ref={messageDom}>
       {messageIcon}
       <span className="toast-content">{content}</span>
       {clearable && <CloseOutlined onClick={closeMessage} />}

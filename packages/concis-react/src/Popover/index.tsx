@@ -1,9 +1,25 @@
-import React, { FC, memo, ReactNode, useState, useEffect, useMemo, useRef } from 'react';
+import React, {
+  FC,
+  memo,
+  ReactNode,
+  useState,
+  useEffect,
+  useMemo,
+  useRef,
+  useContext,
+} from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import lodash from 'lodash';
 import './index.module.less';
 
 interface popoverProps {
   children?: ReactNode;
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 触发形式 hover/click
    * @default hover
@@ -49,6 +65,7 @@ type alignStyle = {
 const Popover: FC<popoverProps> = (props) => {
   const {
     children,
+    className,
     type = 'hover',
     align = 'bottom',
     content,
@@ -65,6 +82,10 @@ const Popover: FC<popoverProps> = (props) => {
     width: '',
     height: '',
   });
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-popover-card');
 
   useEffect(() => {
     setShowBtnSize({
@@ -145,7 +166,7 @@ const Popover: FC<popoverProps> = (props) => {
     };
   }, [content, showDialog, propsVisiable, showBtnSize]);
   return (
-    <div className="popover-card">
+    <div className={classNames}>
       <div
         className="open-container"
         onMouseEnter={() => hoverOpenDialog()}

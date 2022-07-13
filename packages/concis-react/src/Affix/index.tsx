@@ -1,7 +1,14 @@
-import React, { FC, memo, useEffect, useState } from 'react';
+import React, { FC, memo, useEffect, useState, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface AffixProps {
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 类型 scroll表示滚动容器
    * @default ''
@@ -45,14 +52,26 @@ interface offsetProps {
   position?: string;
 }
 const Affix: FC<AffixProps> = (props) => {
-  const { children, affixType, offsetTop, offsetLeft, offsetBottom, offsetRight, style } = props;
+  const {
+    children,
+    className,
+    affixType,
+    offsetTop,
+    offsetLeft,
+    offsetBottom,
+    offsetRight,
+    style,
+  } = props;
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const classNames = cs(prefixCls, className, 'concis-affix');
 
   const [affixElOffset, setAffixElOffset] = useState<offsetProps>({});
 
   let io: IntersectionObserver; //观察者
 
   useEffect(() => {
-    const el = document.querySelector('.affix') as Element;
+    const el = document.querySelector('.concis-affix') as Element;
     io = new IntersectionObserver((entries) => elementObverse(entries));
     io.observe(el); //数据劫持监听
     if (affixType == 'scroll') {
@@ -140,7 +159,7 @@ const Affix: FC<AffixProps> = (props) => {
 
   return (
     <div
-      className="affix"
+      className={classNames}
       style={{
         ...(affixElOffset as React.HtmlHTMLAttributes<any>),
         ...style,

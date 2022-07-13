@@ -1,4 +1,7 @@
-import React, { FC, memo, useEffect, useState, createRef } from 'react';
+import React, { FC, memo, useEffect, useState, createRef, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 
 interface LazyLoadProps {
   children?: any;
@@ -13,6 +16,11 @@ const LazyLoad: FC<LazyLoadProps> = (props) => {
   const { children, delay } = props;
   const [showEl, setShowEl] = useState(false);
   const lazyRef = createRef();
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, 'concis-lazyLoad');
+
   let io: IntersectionObserver; //观察者
 
   useEffect(() => {
@@ -36,7 +44,7 @@ const LazyLoad: FC<LazyLoadProps> = (props) => {
   };
 
   return (
-    <div className="lazyLoad" ref={lazyRef as any}>
+    <div className={classNames} ref={lazyRef as any}>
       {showEl && children}
     </div>
   );

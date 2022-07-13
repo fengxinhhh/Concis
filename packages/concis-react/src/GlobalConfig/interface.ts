@@ -22,6 +22,11 @@ interface GlobalConfigProps {
    * @default #C6F7FF
    */
   menuSelectBgColor?: string;
+  /**
+   * @description 全局组件类名前缀
+   * @default concis
+   */
+  prefixCls?: string;
 }
 
 export type { GlobalConfigProps };

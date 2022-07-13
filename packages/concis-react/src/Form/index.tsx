@@ -1,4 +1,15 @@
-import React, { createContext, Ref, useEffect, useState, useRef, useCallback } from 'react';
+import React, {
+  createContext,
+  Ref,
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  useContext,
+} from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import FormItem from './form-item';
 import { FormProps, ruleType } from './interface';
 import './styles/index.module.less';
@@ -28,7 +39,11 @@ const collectFormFns: FromRefFunctions = {
 };
 
 const Form = <T,>(props: FormProps<T>) => {
-  const { children, layout = 'horizontal', style, formField = null, disabled } = props;
+  const { children, className, layout = 'horizontal', style, formField = null, disabled } = props;
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-form');
 
   const [fieldList, setFieldList] = useState<any>({});
   const [reset, setReset] = useState(false);
@@ -91,25 +106,25 @@ const Form = <T,>(props: FormProps<T>) => {
         rules.forEach((rule: ruleType) => {
           if (rule.required && value == '' && isPass) {
             isPass = false;
-            changeValidateText(` .form-item .${key}`, rule.message, key, ref);
+            changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
           } else if (rule.maxLength && value.length > rule.maxLength && isPass) {
             isPass = false;
-            changeValidateText(` .form-item .${key}`, rule.message, key, ref);
+            changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
           } else if (rule.minLength && value.length < rule.minLength && isPass) {
             isPass = false;
-            changeValidateText(` .form-item .${key}`, rule.message, key, ref);
+            changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
           } else {
             if (rule.fn && !rule.fn(value)) {
               isPass = false;
-              changeValidateText(` .form-item .${key}`, rule.message, key, ref);
+              changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
             }
           }
           if (
             isPass &&
-            (ref as any).current.querySelector(` .form-item .${key} .show-rule-label`)
+            (ref as any).current.querySelector(` .concis-form-item .${key} .show-rule-label`)
           ) {
             (ref as any).current
-              .querySelector(` .form-item .${key} .show-rule-label`)
+              .querySelector(` .concis-form-item .${key} .show-rule-label`)
               ?.setAttribute('class', 'hide-rule-label');
           }
         });
@@ -185,7 +200,7 @@ const Form = <T,>(props: FormProps<T>) => {
 
   return (
     <ctx.Provider value={providerList}>
-      <div className="form" style={style} ref={formField || null}>
+      <div className={classNames} style={style} ref={formField || null}>
         {disabled && <div className="disabled" />}
         {children}
       </div>

@@ -2,10 +2,15 @@ import React, { FC, useState, useMemo, useContext, useEffect, memo, useRef } fro
 import { CloseOutlined, EyeOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface InputProps {
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 自定义宽度
    * @default 170px
@@ -90,6 +95,7 @@ interface InputProps {
 type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLElement>, 'type'>; //原生Input接口
 const Input: FC<InputProps & NativeInputProps> = (props) => {
   const {
+    className,
     width,
     moreStyle,
     type,
@@ -112,8 +118,11 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
   const [iptValue, setIptValue] = useState<string | number>(defaultValue || '');
   const [pwdIptState, setPwdIptState] = useState(true); //密码框切换状态
 
+  const { input, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-input');
+
   const formCtx = useContext(ctx);
-  const { input } = useContext(globalCtx) as GlobalConfigProps;
   const iptRef = useRef(null);
 
   useEffect(() => {
@@ -196,7 +205,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
   }, [width, moreStyle]);
   return (
     <div
-      className="box"
+      className={classNames}
       style={{ width: width ? width + 'px' : '170px', '--global-color': input || '#8fb6d8' } as any}
     >
       <input

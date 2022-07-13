@@ -1,12 +1,20 @@
-import React, { FC, memo, useMemo } from 'react';
+import React, { FC, memo, useMemo, useContext } from 'react';
+import { GlobalConfigProps } from '../../GlobalConfig/interface';
+import cs from '../../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../../GlobalConfig';
 import './index.module.less';
 
 interface HeaderProps {
+  className?: string;
   extraStyle?: Object;
   children?: Element | undefined | String | any;
 }
 const Header: FC<HeaderProps> = (props) => {
-  const { children, extraStyle } = props;
+  const { className, children, extraStyle } = props;
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-header');
 
   const propsStyle = useMemo(() => {
     if (extraStyle) {
@@ -16,7 +24,7 @@ const Header: FC<HeaderProps> = (props) => {
   }, [extraStyle]);
 
   return (
-    <div className="header" style={propsStyle}>
+    <div className={classNames} style={propsStyle}>
       {children}
     </div>
   );

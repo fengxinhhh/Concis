@@ -11,6 +11,7 @@ import React, {
 } from 'react';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
@@ -23,6 +24,10 @@ type checkGroup = {
 };
 interface checkBoxProps {
   children?: ReactNode;
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 默认选中状态
    * @default boolean
@@ -49,13 +54,20 @@ interface checkBoxProps {
 }
 
 const CheckBox: FC<checkBoxProps> = (props) => {
-  const { children, checked, disabled, group, checkCallback, checkGroupCallback } = props;
+  const { children, className, checked, disabled, group, checkCallback, checkGroupCallback } =
+    props;
 
   const [checkStatus, setCheckStatus] = useState<boolean>();
   const [checkGroup, setCheckGroup] = useState<Array<checkGroup>>(group || []);
 
   const formCtx = useContext(ctx);
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const classNames = cs(
+    prefixCls,
+    className,
+    group && group.length ? 'concis-checkGroup' : 'concis-checkbox',
+  );
 
   useEffect(() => {
     if (checked != undefined) {
@@ -122,7 +134,7 @@ const CheckBox: FC<checkBoxProps> = (props) => {
   return (
     <Fragment>
       {group && group.length ? (
-        <div className="checkGroup" style={{ '--global-color': globalColor || '#1890ff' } as any}>
+        <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
           {group.map((c: checkGroup, i: number) => {
             return (
               <div
@@ -138,7 +150,7 @@ const CheckBox: FC<checkBoxProps> = (props) => {
         </div>
       ) : (
         <div
-          className="checkbox"
+          className={classNames}
           onClick={toggleCheckedStatus}
           style={{ '--global-color': globalColor || '#1890ff' } as any}
         >

@@ -1,4 +1,7 @@
-import React, { createContext, useMemo, useState, useEffect, useRef } from 'react';
+import React, { createContext, useMemo, useState, useEffect, useRef, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import { listProps, listHeaderStyle, listContentStyle } from './interface';
 import Item from './item';
 import './style/list.module.less';
@@ -7,6 +10,7 @@ export const ctx = createContext<any>({} as any); //顶层通信装置
 const List = (props: listProps) => {
   const {
     style = {},
+    className,
     dataSource,
     render,
     header,
@@ -28,6 +32,10 @@ const List = (props: listProps) => {
   const listContentRef = useRef<any>(null);
   const victurlListContentRef = useRef<any>(null);
 
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-list');
+
   useEffect(() => {
     if (lazyLoad && defaultShowNum) {
       setFormatDataSource((old) => {
@@ -35,7 +43,7 @@ const List = (props: listProps) => {
         return [...old];
       });
     } else if (virtualListProps) {
-      let rowHeight = document.querySelector('.list-item')?.clientHeight as any;
+      let rowHeight = document.querySelector('.concis-list-item')?.clientHeight as any;
       switch (size) {
         case 'default':
           rowHeight += 26;
@@ -88,7 +96,7 @@ const List = (props: listProps) => {
   const scrollList = () => {
     const { scrollHeight, clientHeight, scrollTop } = listContentRef.current as any;
     const bottomTran = scrollHeight - clientHeight - scrollTop; //距离底部距离
-    if (bottomTran === 0) {
+    if (bottomTran <= 10) {
       lazyScrollToBottom && lazyScrollToBottom(bottomTran, true);
       setTimeout(() => {
         setFormatDataSource((old) => {
@@ -111,7 +119,7 @@ const List = (props: listProps) => {
 
   return (
     <ctx.Provider value={contextProps}>
-      <div className="rList" style={listStyle}>
+      <div className={classNames} style={listStyle}>
         <div className="list-header" style={listHeaderStyle}>
           {header}
         </div>

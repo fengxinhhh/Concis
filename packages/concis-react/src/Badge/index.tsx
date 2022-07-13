@@ -1,12 +1,14 @@
 import React, { FC, memo, useMemo, useContext } from 'react';
 import { badgeProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 const Badge: FC<badgeProps> = (props) => {
   const {
     children,
+    className,
     style = {},
     count,
     maxCount = 99,
@@ -16,7 +18,9 @@ const Badge: FC<badgeProps> = (props) => {
     text,
   } = props;
 
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, children ? 'concis-badge' : 'concis-no-child-badge');
 
   const computedCount = useMemo(() => {
     if (count) {
@@ -58,7 +62,7 @@ const Badge: FC<badgeProps> = (props) => {
     <>
       {children ? (
         <div
-          className="badge"
+          className={classNames}
           style={{ ...style, ...({ '--global-color': globalColor || '#f53f3f' } as any) }}
         >
           {children}
@@ -77,7 +81,7 @@ const Badge: FC<badgeProps> = (props) => {
         </div>
       ) : (
         <div
-          className="no-child-badge"
+          className={classNames}
           style={{
             ...style,
             ...dotStyle,

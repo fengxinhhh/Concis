@@ -1,4 +1,7 @@
 import React, { useEffect, useState, useCallback, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import { FormItemProps } from './interface';
 import { FormItemAttrs, FormItemLabel } from './classes';
 import { ctx } from './index';
@@ -7,6 +10,7 @@ import './styles/form-item.module.less';
 const FormItem = (props: FormItemProps) => {
   const {
     children,
+    className,
     style = {},
     label,
     wrapperCol = 0,
@@ -18,6 +22,10 @@ const FormItem = (props: FormItemProps) => {
 
   const [propsStyle, setPropsStyle] = useState({});
   const [labelStyle, setLabelStyle] = useState({});
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-form-item');
 
   const Ctx = (function () {
     //创建一个ctx单例，防止组件内污染全局变量
@@ -46,7 +54,7 @@ const FormItem = (props: FormItemProps) => {
   }, [Ctx.get('layout')]);
 
   return (
-    <div className="form-item" style={propsStyle}>
+    <div className={classNames} style={propsStyle}>
       <div className="label" style={labelStyle}>
         {rules.length > 0 && (
           <svg fill="currentColor" viewBox="0 0 1024 1024" width="0.5em" height="0.5em">

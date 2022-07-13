@@ -1,8 +1,15 @@
-import React, { FC, useMemo, memo } from 'react';
+import React, { FC, useMemo, memo, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface dividerProps {
   children?: any;
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 字体大小
    */
@@ -24,7 +31,11 @@ interface dividerProps {
   dashed?: Boolean;
 }
 const Divider: FC<dividerProps> = memo((props) => {
-  const { children, fontSize, borderColor, align, dashed } = props;
+  const { children, className, fontSize, borderColor, align, dashed } = props;
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-divider');
 
   const lineAlign = useMemo(() => {
     if (align === 'left') {
@@ -54,7 +65,7 @@ const Divider: FC<dividerProps> = memo((props) => {
     }
   }, [fontSize]);
   return (
-    <div className="divider">
+    <div className={classNames}>
       <div className={dashed ? 'dashed' : 'line'} style={{ ...lineAlign, ...lineColor }}>
         {children && (
           <span className="line-text" style={textStyle}>

@@ -1,6 +1,8 @@
-import React, { memo, Children, Fragment, useMemo } from 'react';
+import React, { memo, Children, Fragment, useMemo, useContext } from 'react';
 import { SpaceProps, sizeType } from './interface';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 const Space = <T,>(props: SpaceProps<T>) => {
@@ -13,7 +15,9 @@ const Space = <T,>(props: SpaceProps<T>) => {
     wrap = false,
   } = props;
 
-  const classNames = cs(className, 'concis-space');
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const classNames = cs(prefixCls, className, 'concis-space');
+
   const childrenList = Children.toArray(children);
 
   const getMargin = (size: sizeType) => {

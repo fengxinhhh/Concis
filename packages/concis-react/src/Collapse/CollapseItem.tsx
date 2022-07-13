@@ -1,4 +1,7 @@
 import React, { FC, memo, useMemo, useEffect, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import { CollapseItemProps } from './interfase';
 import { CaretDownOutlined, CaretRightOutlined, CaretLeftOutlined } from '@ant-design/icons';
 import './style/item.module.less';
@@ -6,11 +9,14 @@ import useStateCallback from '../../../../scripts/common_utils/hooks/useStateCal
 import { ctx } from './index';
 
 const CollapseItem: FC<CollapseItemProps> = (props) => {
-  const { children, header, disabled = false, listKey, extra } = props;
+  const { children, className, header, disabled = false, listKey, extra } = props;
 
   const [contentDomHeight, setContentDomHeight] = useStateCallback(0);
   const [hasOpen, setHasOpen] = useStateCallback(false);
 
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-collapse-item');
   const { activeKeyList, setActiveKeyList, accordion, headerAlign, lazyLoad, toggleCallback } =
     useContext(ctx); //父组件共享状态
 
@@ -135,7 +141,7 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
     }
   }, [headerAlign, headerHeight, disabled]);
   return (
-    <div className="collapse-item">
+    <div className={classNames}>
       {renderHeader}
       <div className="collapse-item-content" style={headerHeight}>
         {lazyLoad ? hasOpen && children : children}

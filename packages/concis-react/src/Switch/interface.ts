@@ -2,6 +2,10 @@ import { ReactNode } from 'react';
 
 interface SwitchProps<T> {
   /**
+   * @description 类名
+   */
+  className?: string;
+  /**
    * @description 禁用
    * @default false
    */

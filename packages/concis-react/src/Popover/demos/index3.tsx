@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Popover from '..';
 import Button from '../../Button';
+import Space from '../../Space';
 
 export default function MenuDemos1() {
   return (
-    <>
+    <Space>
       <Popover
         type="click"
         align="bottom"
@@ -65,6 +66,6 @@ export default function MenuDemos1() {
           Click to right
         </Button>
       </Popover>
-    </>
+    </Space>
   );
 }

@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useMemo, useRef, CSSProperties } from 'react';
+import React, { useState, useEffect, useMemo, useRef, CSSProperties, useContext } from 'react';
 import ReactDOM from 'react-dom';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import { NotificationProps, footerBtnVal } from './interface';
 import Button from '../Button';
 import './index.module.less';
@@ -101,6 +104,7 @@ function addInstance(
 function remove(id: string, position: string, callback: Function) {
   const container = document.querySelector('.notification-container');
   const children = Array.prototype.slice.call(container?.childNodes);
+  console.log(children);
   for (let key in children) {
     if (children[key].getAttribute('class') === `${position}-${id}`) {
       const removeDom = children[key];
@@ -130,7 +134,7 @@ function changeHeight(children: Array<HTMLElement>, position: any) {
   for (let key in children) {
     const child = children[key].childNodes[0] as HTMLElement;
     if (children[key].getAttribute('class')?.startsWith(transform)) {
-      const domHeight = document.querySelector('.notifica-container')?.clientHeight;
+      const domHeight = document.querySelector('.concis-notifica-container')?.clientHeight;
       child.style[transform] =
         Number(child.style[transform].split('p')[0]) - 30 - (domHeight as number) + 'px';
     }
@@ -152,6 +156,10 @@ const Notification = (props: NotificationProps<string>) => {
   } = props;
   const [opac, setOpac] = useState(1);
   const messageDom = useRef<any>(null);
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, 'concis-notifica-container');
 
   useEffect(() => {
     if (position === 'topLeft') {
@@ -247,7 +255,7 @@ const Notification = (props: NotificationProps<string>) => {
 
   return (
     <div
-      className="notifica-container"
+      className={classNames}
       style={{ opacity: opac, ...messageXtransform, ...style }}
       ref={messageDom}
     >

@@ -2,12 +2,14 @@ import React, { useState, useContext, useEffect, memo, useMemo } from 'react';
 import { SwitchProps } from './interface';
 import Loading from '../Loading';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 const Switch = <T,>(props: SwitchProps<T>) => {
   const {
     disabled,
+    className,
     defaultChecked = false,
     small,
     checkedChildren,
@@ -20,10 +22,11 @@ const Switch = <T,>(props: SwitchProps<T>) => {
   const [switchChildWidth, setSwitchChildWidth] = useState<T>(0);
   const [switchStatus, setSwitchStatus] = useState(defaultChecked);
 
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-switch');
 
   useEffect(() => {
-    console.log(checkedChildren);
     if (checkedChildren && unCheckedChildren && document.querySelector('.concis-switch-child')) {
       setSwitchChildWidth(document.querySelector('.concis-switch-child').clientWidth);
       setSwitchWidth(document.querySelector('.concis-switch-child').clientWidth + 30);
@@ -57,10 +60,10 @@ const Switch = <T,>(props: SwitchProps<T>) => {
       '--disabled': disabled || loading ? 'not-allowed' : 'pointer',
       '--opacity': disabled || loading ? '0.6' : '1',
     };
-  }, [switchStatus, disabled, switchWidth, small]);
+  }, [switchStatus, disabled, switchWidth, small, globalColor]);
 
   return (
-    <div className="concis-switch" style={switchStyle} onClick={toggleSwitch}>
+    <div className={classNames} style={switchStyle} onClick={toggleSwitch}>
       <div className="concis-switch-dot">{loading && <Loading width="1em" height="1em" />}</div>
       {checkedChildren && unCheckedChildren && (
         <div className="concis-switch-child">

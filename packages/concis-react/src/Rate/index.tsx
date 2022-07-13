@@ -1,8 +1,15 @@
 import React, { FC, useState, useEffect, memo, useCallback, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import { ctx } from '../Form';
 import './index.module.less';
 
 interface rateProps {
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 星星个数
    * @default 5
@@ -36,6 +43,7 @@ interface rateProps {
 const Rate: FC<rateProps> = (props: rateProps) => {
   const {
     num = 5,
+    className,
     starColor,
     defaultShow = num ? num : 0,
     avaHalf,
@@ -46,6 +54,10 @@ const Rate: FC<rateProps> = (props: rateProps) => {
   const [starShowStatus, setStarShowStatus] = useState<Array<number | boolean | string>>([]); //真实星星状态
   const [logStarShowStatus, setLogStarShowStatus] = useState<Array<number | boolean | string>>([]); //鼠标移动临时状态
   const [hasClick, setHasClick] = useState<boolean>(false);
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-rate');
 
   const formCtx = useContext(ctx);
 
@@ -214,7 +226,7 @@ const Rate: FC<rateProps> = (props: rateProps) => {
     setHasClick(false);
   };
   return (
-    <div className="rate">
+    <div className={classNames}>
       <div className="rate-container" onMouseLeave={leaveRate} onMouseEnter={enterRate}>
         {new Array(num).fill('').map((ra, i) => {
           return (

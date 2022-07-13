@@ -17,9 +17,7 @@ export default function MenuDemos1() {
           </>
         }
       >
-        <Button type="primary" width={80} height={30}>
-          Click me
-        </Button>
+        <Button type="primary">Click me</Button>
       </Popover>
     </>
   );

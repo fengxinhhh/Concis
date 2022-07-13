@@ -2,6 +2,7 @@ import React, { FC, memo, useState, useEffect, useCallback, useContext } from 'r
 import RangeDatePicker from './rangeDatePicker';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import {
   FieldTimeOutlined,
@@ -16,6 +17,10 @@ import {
 import './index.module.less';
 
 interface DatePickerProps {
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 日期选择器类型(primary/input)仅支持非range
    * @default primary
@@ -58,7 +63,7 @@ const monthList = [
 ];
 
 const DatePicker: FC<DatePickerProps> = (props) => {
-  const { type, showRange, showClear, align, handleChange } = props;
+  const { type, className, showRange, showClear, align, handleChange } = props;
 
   const [showTimeDialog, setShowTimeDialog] = useState(false); //显示dialog
   const [renderShowDialog, setRenderShowDialog] = useState(false);
@@ -76,8 +81,10 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
   ]);
 
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-date-picker');
   const formCtx = useContext(ctx);
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   useEffect(() => {
     window.addEventListener('click', () => {
@@ -308,7 +315,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       handleChange={rangeDatePickChangeCallback}
     />
   ) : (
-    <div className="time-picker">
+    <div className={classNames}>
       {(type == 'primary' || !type) && (
         <div
           className="result"

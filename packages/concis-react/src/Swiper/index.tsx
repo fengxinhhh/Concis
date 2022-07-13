@@ -1,9 +1,25 @@
-import React, { FC, memo, Fragment, useState, useEffect, useCallback, useRef } from 'react';
+import React, {
+  FC,
+  memo,
+  Fragment,
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useContext,
+} from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import { RightCircleOutlined, LeftCircleOutlined } from '@ant-design/icons';
 import swiperIndex from './cardSwiperIndex';
 import './index.module.less';
 
 interface swiperProps {
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 图片列表
    * @default []
@@ -81,6 +97,7 @@ interface imgOptions {
 const Swiper: FC<swiperProps> = (props) => {
   let {
     imgList,
+    className,
     pictureSize = 400,
     height = 240,
     autoPlayer,
@@ -138,6 +155,11 @@ const Swiper: FC<swiperProps> = (props) => {
 
   let timer: any = useRef();
   let cardTimer: any = useRef();
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, card ? 'concis-card-swiper' : 'concis-swipers');
+
   useEffect(() => {
     let propsImgList = JSON.parse(JSON.stringify(imgList));
     setPropsImgList(imgList);
@@ -990,7 +1012,7 @@ const Swiper: FC<swiperProps> = (props) => {
   return (
     <Fragment>
       {!card ? (
-        <div className="swipers" style={{ width: pictureSize + 'px', height: height + 'px' }}>
+        <div className={classNames} style={{ width: pictureSize + 'px', height: height + 'px' }}>
           <div
             className="swiperList"
             style={{
@@ -1028,7 +1050,7 @@ const Swiper: FC<swiperProps> = (props) => {
         </div>
       ) : (
         <div
-          className="card-swiper"
+          className={classNames}
           style={{ height: height + 'px', width: pictureSize * 2 + 'px' }}
         >
           <div

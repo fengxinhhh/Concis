@@ -1,10 +1,15 @@
 import React, { memo, FC, Fragment, useState, useEffect, useCallback, useContext } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { CaretRightOutlined, CaretDownOutlined, CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
 
 type treeViewProps = {
+  /**
+   * @description Tree配置参数
+   */
+  className?: string;
   /**
    * @description Tree配置参数
    */
@@ -46,12 +51,14 @@ interface treeData {
 }
 
 const TreeView: FC<treeViewProps> = (props) => {
-  const { treeData, defaultOpen, avaDrop, checkCallback, dropCallback } = props;
+  const { treeData, className, defaultOpen, avaDrop, checkCallback, dropCallback } = props;
 
   const [stateTreeData, setStateTreeData] = useState<Array<treeData>>(treeData); //树结构
   const [hoverTreeNode, setHoverTreeNode] = useState(''); //当前覆盖的节点
 
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-tree-select');
 
   useEffect(() => {
     resolveTreeData(stateTreeData as Array<treeData>, 1, null);
@@ -440,10 +447,7 @@ const TreeView: FC<treeViewProps> = (props) => {
 
   return (
     <Fragment>
-      <div
-        className="tree-select-dialog"
-        style={{ '--global-color': globalColor || '#1890ff' } as any}
-      >
+      <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
         {render(stateTreeData)}
       </div>
     </Fragment>

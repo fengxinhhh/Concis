@@ -1,12 +1,17 @@
 import React, { useState, FC, useMemo, memo, useContext } from 'react';
-import { EllipsisOutlined, LeftOutlined, RightOutlined, DownOutlined } from '@ant-design/icons';
+import { EllipsisOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Select } from '..';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface PaginationProps {
   style?: object;
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 总数据条数
    * @default 0
@@ -40,6 +45,7 @@ interface PaginationProps {
 }
 const Pagination: FC<PaginationProps> = (props) => {
   const {
+    className,
     style,
     changePageCallback,
     changePageSizeCallback,
@@ -53,7 +59,9 @@ const Pagination: FC<PaginationProps> = (props) => {
   const [pageRenderArray, setPageRenderArray] = useState<Array<number>>([]);
   const [sizePage, setSizePage] = useState<number>(pageSizeOptions ? pageSizeOptions[0] : 10);
 
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-pagination');
 
   const totalPage = useMemo(() => {
     setNowIndex(1);
@@ -232,7 +240,7 @@ const Pagination: FC<PaginationProps> = (props) => {
 
   return (
     <div
-      className="pagination"
+      className={classNames}
       style={{ ...style, '--global-color': globalColor || '#1890ff' } as any}
     >
       <div className={nowIndex === 1 ? `prev disabled` : `prev`} onClick={prevPage}>

@@ -1,8 +1,15 @@
-import React, { useMemo, memo, FC } from 'react';
+import React, { useMemo, memo, FC, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface layoutProps {
   children?: any;
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 自定义样式
    * @default {}
@@ -16,7 +23,11 @@ interface layoutProps {
 }
 
 const Layout: FC<layoutProps> = (props) => {
-  const { children, extraStyle } = props;
+  const { children, className, extraStyle } = props;
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-layout');
 
   const propsStyles = useMemo(() => {
     if (extraStyle) {
@@ -26,7 +37,7 @@ const Layout: FC<layoutProps> = (props) => {
   }, [extraStyle]);
 
   return (
-    <div className="layout" style={propsStyles}>
+    <div className={classNames} style={propsStyles}>
       {children}
     </div>
   );

@@ -11,7 +11,7 @@ interface FormProps<T>
    * @description 类名
    * @default null
    */
-  className?: T | T[];
+  className?: string;
   /**
    * @description 布局方式
    * @default horizontal
@@ -83,6 +83,7 @@ type ruleType = {
 };
 interface FormItemProps {
   children: ReactNode;
+  className?: string;
   style?: CSSProperties;
   label?: string;
   wrapperCol?: number;

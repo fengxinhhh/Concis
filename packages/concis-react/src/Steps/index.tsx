@@ -1,11 +1,18 @@
 import React, { FC, memo, useCallback, useContext } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
 
 interface stepsProps {
   /**
+   *
+   * @description 类名
+   */
+  className?: string;
+  /**
+   *
    * @description 当前步骤下标
    * @default 1
    */
@@ -26,9 +33,11 @@ interface stepsProps {
 }
 
 const Steps: FC<stepsProps> = (props) => {
-  const { current, children } = props;
+  const { current, className, children } = props;
 
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-steps');
 
   const indexClassName = useCallback(
     (index: any): string => {
@@ -45,7 +54,7 @@ const Steps: FC<stepsProps> = (props) => {
   );
 
   return (
-    <div className="steps" style={{ '--global-color': globalColor || '#1890ff' } as any}>
+    <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
       <div className="step-content">
         {/* <div className="line" /> */}
         <div className="step-line">

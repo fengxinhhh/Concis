@@ -2,6 +2,10 @@ import { ReactNode, CSSProperties } from 'react';
 
 interface listProps<T = any> {
   /**
+   * @description 类名
+   */
+  className?: CSSProperties;
+  /**
    * @description 列表自定义样式
    * @default {}
    */
@@ -52,6 +56,7 @@ interface listProps<T = any> {
 }
 interface listItemProps {
   children: ReactNode;
+  className?: string;
   style?: CSSProperties;
 }
 type listHeaderStyle = {

@@ -8,6 +8,7 @@ import {
 } from '@ant-design/icons';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
+import cs from '../../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
 import { ctx } from '../../Form';
 import './index.module.less';
@@ -18,7 +19,7 @@ interface RangeProps {
   handleChange?: Function;
 }
 const RangeDatePicker: FC<RangeProps> = (props) => {
-  const { showClear, align, handleChange } = props;
+  const { className, showClear, align, handleChange } = props;
   const [startDate, setStartDate] = useState({
     startYear: new Date().getFullYear(),
     startMonth: new Date().getMonth() + 1,
@@ -43,7 +44,9 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
   }); //是否被选择过
 
   const formCtx = useContext(ctx);
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-range-picker');
   let activeBorderDom = useRef(null);
 
   useEffect(() => {
@@ -392,9 +395,9 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
   );
   return (
     <div
-      className="range"
+      className={classNames}
       onClick={(e) => e.stopPropagation()}
-      style={globalColor ? ({ '--hover-color': globalColor } as any) : {}}
+      style={{ '--hover-color': globalColor || '#1890ff' } as any}
     >
       <div className="rangePicker" onClick={(e) => e.stopPropagation()}>
         <Input

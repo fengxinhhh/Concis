@@ -35,4 +35,8 @@ Input、Tree、Menu 三款组件可以单独配置其特定的背景/字体色�
 
 <code src="./demos/index1.tsx"/>
 
+## 全局类名
+
+<code src="./demos/index2.tsx"/>
+
 <API />

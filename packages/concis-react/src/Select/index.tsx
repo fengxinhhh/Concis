@@ -11,6 +11,7 @@ import React, {
 import { DownOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
@@ -25,6 +26,10 @@ interface SelectProps {
    * @default []
    */
   option: Array<Options>;
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 宽度
    * @default 80px
@@ -70,6 +75,7 @@ interface SelectProps {
 const Select: FC<SelectProps> = (props) => {
   const {
     option,
+    className,
     width,
     placeholder,
     disabled,
@@ -84,7 +90,9 @@ const Select: FC<SelectProps> = (props) => {
 
   const optionRef = createRef() as any;
   const formCtx = useContext(ctx);
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-select');
 
   const closeSelect = () => {
     if (optionRef.current && optionRef.current.style) {
@@ -183,7 +191,7 @@ const Select: FC<SelectProps> = (props) => {
   return showSearch ? (
     <>
       <div
-        className="select"
+        className={classNames}
         style={
           { ...ownsWidth, '--global-color': disabled ? '#ccc' : globalColor || '#1890ff' } as any
         }
@@ -229,7 +237,7 @@ const Select: FC<SelectProps> = (props) => {
     </>
   ) : (
     <div
-      className="select"
+      className={classNames}
       style={
         {
           ...ownsWidth,

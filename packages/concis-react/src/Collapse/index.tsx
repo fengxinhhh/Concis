@@ -1,4 +1,7 @@
-import React, { FC, memo, useState, createContext } from 'react';
+import React, { FC, memo, useState, createContext, useContext } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import { CollapseProps } from './interfase';
 import './style/index.module.less';
 
@@ -7,6 +10,7 @@ export const ctx = createContext<any>({} as any); //顶层通信装置
 const Collapse: FC<CollapseProps> = (props) => {
   const {
     children,
+    className,
     defaultActive,
     accordion,
     noBorder,
@@ -16,6 +20,9 @@ const Collapse: FC<CollapseProps> = (props) => {
   } = props;
   const [activeKeyList, setActiveKeyList] = useState<Array<number | string>>(defaultActive || []); //父组件管理选中列表
 
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-collapse-box');
   const providerList = {
     //父组件状态管理store
     activeKeyList,
@@ -29,7 +36,7 @@ const Collapse: FC<CollapseProps> = (props) => {
   return (
     <ctx.Provider value={providerList}>
       <div
-        className="collapse-box"
+        className={classNames}
         style={noBorder ? {} : { border: '1px solid rgba(229, 230, 235, 1)' }}
       >
         {children}

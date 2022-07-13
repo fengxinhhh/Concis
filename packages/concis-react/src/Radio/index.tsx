@@ -3,6 +3,10 @@ import React, { FC, memo } from 'react';
 interface RadioProps {
   children: any;
   /**
+   * @description 类名
+   */
+  className?: string;
+  /**
    * @description 默认选中索引
    * @default 0
    */

@@ -1,13 +1,21 @@
-import React, { FC, useMemo, memo } from 'react';
+import React, { FC, useMemo, memo, useContext } from 'react';
+import { GlobalConfigProps } from '../../GlobalConfig/interface';
+import cs from '../../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../../GlobalConfig';
 import './index.module.less';
 
 interface SliderProps {
+  className?: string;
   row?: Number;
   extraStyle?: Object;
   children?: Element | undefined | String | any;
 }
 const Slider: FC<SliderProps> = (props) => {
-  const { row, extraStyle } = props;
+  const { className, row, extraStyle } = props;
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-slider');
 
   const sliderRow = useMemo(() => {
     if (row) {
@@ -25,7 +33,7 @@ const Slider: FC<SliderProps> = (props) => {
   }, [extraStyle]);
 
   return (
-    <div className="slider" style={{ ...sliderRow, ...propsStyle }}>
+    <div className={classNames} style={{ ...sliderRow, ...propsStyle }}>
       {props.children}
     </div>
   );

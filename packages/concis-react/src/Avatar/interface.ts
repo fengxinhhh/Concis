@@ -11,6 +11,10 @@ interface groupProps {
 interface avatarProps {
   children?: ReactNode;
   /**
+   * @description 类名
+   */
+  className?: string;
+  /**
    * @description 头像自定义样式
    * @default {}
    */

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Popover from '..';
 import Button from '../../Button';
+import Space from '../../Space';
 
 export default function MenuDemos1() {
   const [dialogStatus1, setDialogStatus1] = useState(false);
   const [dialogStatus2, setDialogStatus2] = useState(false);
 
   return (
-    <>
+    <Space>
       <Popover
         type="hover"
         align="bottom"
@@ -54,6 +55,6 @@ export default function MenuDemos1() {
           Click
         </Button>
       </Popover>
-    </>
+    </Space>
   );
 }

@@ -8,7 +8,7 @@ interface SpaceProps<T> {
   /**
    * @description 类名
    */
-  className?: T;
+  className?: string;
   /**
    * @description 方向
    * @default horizontal
@@ -28,7 +28,7 @@ interface SpaceProps<T> {
    * @description 环绕间距
    * @default false
    */
-  wrap?: boolean;
+  wrap?: T;
 }
 
 export type { SpaceProps, sizeType, alignType };

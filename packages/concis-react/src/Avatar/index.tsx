@@ -1,4 +1,7 @@
 import React, { FC, useContext, useEffect, memo, useMemo, useRef } from 'react';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import { ctx } from './group';
 import { avatarProps, avatarStyles } from './interface';
 import './styles/avatar.module.less';
@@ -6,6 +9,7 @@ import './styles/avatar.module.less';
 const Avatar: FC<avatarProps> = (props) => {
   const {
     children,
+    className,
     style = {},
     size = 40,
     shape,
@@ -17,6 +21,9 @@ const Avatar: FC<avatarProps> = (props) => {
 
   const groupProps = useContext(ctx);
   const textRef = useRef(null);
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const classNames = cs(prefixCls, className, 'concis-avatar');
 
   useEffect(() => {
     autoFixFontSizeHandler();
@@ -67,7 +74,7 @@ const Avatar: FC<avatarProps> = (props) => {
   };
 
   return (
-    <div className="avatar" style={formatStyle}>
+    <div className={classNames} style={formatStyle}>
       {children && (children as any).type === 'img' ? (
         children
       ) : (

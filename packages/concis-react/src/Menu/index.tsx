@@ -1,10 +1,15 @@
 import React, { FC, useState, useEffect, memo, useCallback, useMemo, useContext } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import './index.module.less';
 
 interface MenuProps {
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 配置对象
    * @default {}
@@ -55,9 +60,11 @@ const Menu: FC<MenuProps> = (props) => {
   const [nowActiveKey, setNowActiveKey] = useState(''); //选中的子菜单key
   const [parentMenuHeightList, setParentMenuHeightList] = useState<any>({}); //父菜单高度集合
 
-  const { items, width, dark, ableToggle, defaultOpen, handleRouteChange } = props;
+  const { items, className, width, dark, ableToggle, defaultOpen, handleRouteChange } = props;
 
-  const { globalColor, menuSelectBgColor } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, menuSelectBgColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, dark ? 'concis-dark-menu' : 'concis-menu');
 
   useEffect(() => {
     const initList = initParentMenuHeight(items, {}, '');
@@ -279,7 +286,7 @@ const Menu: FC<MenuProps> = (props) => {
 
   return (
     <div
-      className={dark ? 'darkMenu' : 'menu'}
+      className={classNames}
       style={
         {
           ...customWidth,

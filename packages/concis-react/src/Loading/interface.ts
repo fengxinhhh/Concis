@@ -2,6 +2,10 @@ import { ReactNode, CSSProperties } from 'react';
 
 interface LoadingProps {
   /**
+   * @description 类名
+   */
+  className?: string;
+  /**
    * @description 加载Icon类型
    * @default default
    */

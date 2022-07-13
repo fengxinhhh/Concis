@@ -3,10 +3,15 @@ import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
 import Input from '../Input';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface treeProps {
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description Tree配置参数
    */
@@ -45,7 +50,15 @@ interface treeNode {
 }
 
 const Tree: FC<treeProps> = (props) => {
-  const { width = '200', treeData, avaSearch, avaChooseMore, defaultOpen, chooseCallback } = props;
+  const {
+    width = '200',
+    className,
+    treeData,
+    avaSearch,
+    avaChooseMore,
+    defaultOpen,
+    chooseCallback,
+  } = props;
 
   const [stateTreeData, setStateTreeData] = useState<Array<treeNode>>(treeData); //树结构
   const [activedVal, setActivedVal] = useState<string>(''); //选中的节点值
@@ -53,7 +66,12 @@ const Tree: FC<treeProps> = (props) => {
   const [isFocus, setIsFocus] = useState(false); //聚焦状态
 
   const formCtx = useContext(ctx);
-  const { globalColor, treeSelectTextColor } = useContext(globalCtx) as GlobalConfigProps;
+
+  const { globalColor, treeSelectTextColor, prefixCls } = useContext(
+    globalCtx,
+  ) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'cocnis-tree-container');
 
   useEffect(() => {
     resolveTreeData(treeData as Array<treeNode>, 1);
@@ -272,7 +290,7 @@ const Tree: FC<treeProps> = (props) => {
 
   return (
     <Fragment>
-      <div className="tree-container" onClick={(e) => e.stopPropagation()}>
+      <div className={classNames} onClick={(e) => e.stopPropagation()}>
         <Input
           moreStyle={avaSearch ? {} : { caretColor: 'transparent' }}
           placeholder={avaSearch ? '请输入' : ''}

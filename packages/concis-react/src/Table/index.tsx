@@ -1,10 +1,22 @@
-import React, { FC, useEffect, useCallback, useState, createRef, useMemo, memo } from 'react';
+import React, {
+  FC,
+  useEffect,
+  useCallback,
+  useState,
+  createRef,
+  useMemo,
+  memo,
+  useContext,
+} from 'react';
 import {
   PlusOutlined,
   CaretUpOutlined,
   CaretDownOutlined,
   SearchOutlined,
 } from '@ant-design/icons';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
 import { tableProps, tableThType } from './interface';
 import CheckBox from '../CheckBox';
 import Pagination from '../Pagination';
@@ -17,6 +29,7 @@ const options = [10, 20, 30, 50];
 
 const Table: FC<tableProps> = (props) => {
   const {
+    className,
     titleParams,
     tableData,
     align,
@@ -48,6 +61,10 @@ const Table: FC<tableProps> = (props) => {
   const [pageNum, setPageNum] = useState(1);
 
   const scrollDom = createRef();
+
+  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, 'concis-table-container');
 
   useEffect(() => {
     let newDoTableData = [...doTableData];
@@ -269,8 +286,8 @@ const Table: FC<tableProps> = (props) => {
       if (
         e.nativeEvent.target.scrollHeight -
           e.nativeEvent.target.clientHeight -
-          e.nativeEvent.target.scrollTop ==
-        0
+          e.nativeEvent.target.scrollTop <=
+        10
       ) {
         setTimeout(() => {
           setDoTableData((old) => {
@@ -758,7 +775,7 @@ const Table: FC<tableProps> = (props) => {
   }, [paginationAlign]);
   return (
     <div
-      className="table-container"
+      className={classNames}
       style={
         virtualized || lazyLoad
           ? {

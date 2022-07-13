@@ -1,12 +1,14 @@
 import React, { FC, useEffect, useRef, useState, Fragment, useMemo, useContext } from 'react';
 import { LoadingProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../../../../scripts/common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 const Loading: FC<LoadingProps> = (props) => {
   const {
     type = 'default',
+    className,
     mask = false,
     loadingText,
     icon,
@@ -17,7 +19,21 @@ const Loading: FC<LoadingProps> = (props) => {
 
   const timer = useRef<any>(null);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
-  const { globalColor } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  function getLoadingClass() {
+    switch (type) {
+      case 'default':
+        return 'concis-loading';
+      case 'dot':
+        return 'concis-dot-loading';
+      case 'strip':
+        return 'concis-strip-loading';
+      default:
+        return 'concis-loading';
+    }
+  }
+  const classNames = cs(prefixCls, className, getLoadingClass());
 
   useEffect(() => {
     timer.current = setInterval(() => {
@@ -56,7 +72,7 @@ const Loading: FC<LoadingProps> = (props) => {
   const renderLoadingContainer = useMemo(() => {
     if (type === 'default') {
       return (
-        <div className="loading" style={loadingStyle}>
+        <div className={classNames} style={loadingStyle}>
           <div className="loading-container" style={loadingStyle}>
             {icon || (
               <svg
@@ -78,7 +94,7 @@ const Loading: FC<LoadingProps> = (props) => {
       );
     } else if (type === 'dot') {
       return (
-        <div className="dot-loading">
+        <div className={classNames}>
           {new Array(3).fill('').map((item, index) => {
             return (
               <div
@@ -93,7 +109,7 @@ const Loading: FC<LoadingProps> = (props) => {
       );
     } else if (type === 'strip') {
       return (
-        <div className="strip">
+        <div className={classNames}>
           {new Array(6).fill('').map((item, index) => {
             return (
               <div

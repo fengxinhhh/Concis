@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 interface CollapseItemProps {
   children?: ReactNode;
+  className?: string;
   header: string;
   disabled?: boolean;
   listKey: number | string;
@@ -9,6 +10,10 @@ interface CollapseItemProps {
 }
 interface CollapseProps {
   children?: ReactNode;
+  /**
+   * @description 类名
+   */
+  className?: string;
   /**
    * @description 默认展开列表
    * @default []

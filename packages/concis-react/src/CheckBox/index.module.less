@@ -1,4 +1,4 @@
-.checkbox {
+.concis-checkbox {
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -58,13 +58,69 @@
     font-size: 14px;
   }
 }
-.checkGroup {
+.concis-checkGroup {
   display: flex;
+  cursor: pointer;
   .checkbox {
     display: flex;
     align-items: center;
   }
   .groupBox {
     margin-right: 10px;
+  }
+  .disblaed-checkBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+    border: 1px solid #d9d9d9;
+    cursor: not-allowed;
+  }
+  .checkBox-actived {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+    color: #fff;
+    background: var(--global-color);
+    border: 1px solid transparent;
+  }
+  .checkBox-noActived {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+    color: #fff;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    transition: 0.3s linear;
+    &:hover {
+      border: 1px solid #afacac;
+    }
+  }
+  .checkBox-activedLess {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+    color: #fff;
+    border: 1px solid #d9d9d9;
+    .less-box {
+      width: 8px;
+      height: 8px;
+      background-color: var(--global-color);
+    }
+  }
+  .text {
+    margin-left: 5px;
+    font-size: 14px;
   }
 }
