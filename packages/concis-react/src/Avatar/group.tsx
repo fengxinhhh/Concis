@@ -6,7 +6,7 @@ import { groupProps } from './interface';
 import './styles/group.module.less';
 
 export const ctx = createContext<any>({} as any); //顶层通信装置
-const AvatarGroup: FC<groupProps> = (props) => {
+const AvatarGroup: FC<groupProps> = (props: groupProps) => {
   const { children, className } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;

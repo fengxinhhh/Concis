@@ -62,7 +62,7 @@ const monthList = [
   '十二月',
 ];
 
-const DatePicker: FC<DatePickerProps> = (props) => {
+const DatePicker: FC<DatePickerProps> = (props: DatePickerProps) => {
   const { type, className, showRange, showClear, align, handleChange } = props;
 
   const [showTimeDialog, setShowTimeDialog] = useState(false); //显示dialog
@@ -130,7 +130,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   const changeDay = (day: number) => {
     //改变日期
     if (!day) return;
-    setNowDate((old) => {
+    setNowDate((old: any) => {
       old.day = day;
       return { ...old };
     });
@@ -143,7 +143,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   const setToToday = () => {
     //改变到今天
     const today = new Date();
-    setNowDate((old) => {
+    setNowDate((old: any) => {
       old.year = today.getFullYear();
       old.month = today.getMonth() + 1;
       old.day = today.getDate();
@@ -177,7 +177,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   };
   const changeMonth = (month: number) => {
     //改变月份
-    setNowDate((old) => {
+    setNowDate((old: any) => {
       old.month = month;
       return { ...old };
     });
@@ -185,7 +185,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   };
   const changeYear = (year: number) => {
     //改变年份
-    setNowDate((old) => {
+    setNowDate((old: any) => {
       old.year = year;
       return { ...old };
     });
@@ -202,7 +202,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       if (iptValue !== null) {
         if (/^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(iptValue)) {
           const inputValue = iptValue.split('-');
-          setNowDate((old) => {
+          setNowDate((old: any) => {
             old.year = Number(inputValue[0]);
             old.month = Number(inputValue[1]);
             old.day = Number(inputValue[2]);
@@ -226,7 +226,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     if (iptValue !== null) {
       if (/^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(iptValue)) {
         const inputValue = iptValue.split('-');
-        setNowDate((old) => {
+        setNowDate((old: any) => {
           old.year = Number(inputValue[0]);
           old.month = Number(inputValue[1]);
           old.day = Number(inputValue[2]);
@@ -238,18 +238,18 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   };
   const setNextGroupYear = () => {
     //设定下一组年份
-    setYearList((old) => {
-      return [...old.map((y) => y + 9)];
+    setYearList((old: any) => {
+      return [...old.map((y: number) => y + 9)];
     });
   };
   const setPreGroupYear = () => {
-    setYearList((old) => {
-      return [...old.map((y) => y - 9)];
+    setYearList((old: any) => {
+      return [...old.map((y: number) => y - 9)];
     });
   };
   const clearDate = () => {
     //清空
-    setNowDate((old) => {
+    setNowDate((old: any) => {
       (old.year = new Date().getFullYear()),
         (old.month = new Date().getMonth() + 1),
         (old.day = new Date().getDate());
@@ -305,7 +305,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       bottom: {
         top: '40px',
       },
-    }[align];
+    };
   }, [align]);
 
   return showRange ? (
@@ -398,7 +398,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
                   <div>六</div>
                 </div>
                 <div className="day-list">
-                  {dayListArray.map((day, index) => {
+                  {dayListArray.map((day: number, index: number) => {
                     return (
                       <div
                         key={index}

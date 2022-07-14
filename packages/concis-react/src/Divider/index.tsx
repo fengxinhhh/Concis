@@ -35,7 +35,8 @@ const Divider: FC<dividerProps> = memo((props) => {
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, 'concis-divider');
+  const classFirstName = 'concis-divider';
+  const classNames = cs(prefixCls, className, classFirstName);
 
   const lineAlign = useMemo(() => {
     if (align === 'left') {
@@ -66,9 +67,12 @@ const Divider: FC<dividerProps> = memo((props) => {
   }, [fontSize]);
   return (
     <div className={classNames}>
-      <div className={dashed ? 'dashed' : 'line'} style={{ ...lineAlign, ...lineColor }}>
+      <div
+        className={dashed ? `${classFirstName}-dashed` : `${classFirstName}-line`}
+        style={{ ...lineAlign, ...lineColor }}
+      >
         {children && (
-          <span className="line-text" style={textStyle}>
+          <span className={`${classFirstName}-line-text`} style={textStyle}>
             {children}
           </span>
         )}
@@ -76,4 +80,5 @@ const Divider: FC<dividerProps> = memo((props) => {
     </div>
   );
 });
+
 export default Divider;

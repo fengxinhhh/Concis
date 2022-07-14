@@ -12,7 +12,7 @@ interface LazyLoadProps {
   delay?: number;
 }
 
-const LazyLoad: FC<LazyLoadProps> = (props) => {
+const LazyLoad: FC<LazyLoadProps> = (props: LazyLoadProps) => {
   const { children, delay } = props;
   const [showEl, setShowEl] = useState(false);
   const lazyRef = createRef();

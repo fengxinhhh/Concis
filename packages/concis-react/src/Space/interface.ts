@@ -2,6 +2,11 @@ import { ReactNode } from 'react';
 
 type sizeType = 'mini' | 'smail' | 'medium' | 'large';
 type alignType = 'start' | 'center' | 'end' | 'baseline';
+type spaceAlignParams = {
+  display?: 'flex';
+  flexDirection?: 'row' | 'column';
+  alignItems?: any;
+};
 
 interface SpaceProps<T> {
   children?: ReactNode;
@@ -31,4 +36,4 @@ interface SpaceProps<T> {
   wrap?: T;
 }
 
-export type { SpaceProps, sizeType, alignType };
+export type { SpaceProps, sizeType, alignType, spaceAlignParams };

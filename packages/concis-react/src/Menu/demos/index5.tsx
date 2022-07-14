@@ -53,14 +53,22 @@ export default function MenuDemos1() {
   };
   return (
     <Layout>
-      <Header>header</Header>
+      <Header extraStyle={{ background: '#8eb8e0' }}>header</Header>
       <Layout>
-        <Slider row={3} extraStyle={{ height: '100%', padding: '0 0 50px 0' }}>
-          <Menu items={items} width={'100%'} dark handleRouteChange={handleRouteChange} />
+        <Slider row={3} extraStyle={{ height: '100%', padding: '0' }}>
+          <Menu
+            items={items}
+            width={'100%'}
+            defaultOpen
+            dark
+            handleRouteChange={handleRouteChange}
+          />
         </Slider>
-        <Content row={7}>content</Content>
+        <Content row={7} extraStyle={{ background: '#8eb8e0' }}>
+          content
+        </Content>
       </Layout>
-      <Footer>footer</Footer>
+      <Footer extraStyle={{ background: '#8eb8e0' }}>footer</Footer>
     </Layout>
   );
 }

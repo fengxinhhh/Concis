@@ -68,13 +68,13 @@ const Badge: FC<badgeProps> = (props) => {
           {children}
           {dot ? (
             <span
-              className="dot"
+              className="concis-badge-dot"
               style={{ ...dotStyle, right: `${offset[0]}px`, top: `${offset[1]}px` }}
             ></span>
           ) : text ? (
-            <span className="badge-text">{text}</span>
+            <span className="concis-badge-text">{text}</span>
           ) : (
-            <span className="count" style={{ ...dotStyle, ...countStyle }}>
+            <span className="concis-badge-count" style={{ ...dotStyle, ...countStyle }}>
               {computedCount}
             </span>
           )}

@@ -10,7 +10,7 @@ interface ContentProps {
   extraStyle?: Object;
   children?: Element | undefined | String | any;
 }
-const Content: FC<ContentProps> = (props) => {
+const Content: FC<ContentProps> = (props: ContentProps) => {
   const { children, className, row, extraStyle } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;

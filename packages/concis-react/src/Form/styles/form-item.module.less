@@ -1,23 +1,30 @@
+@import '../../styles/common.less';
+
+@concis-red-color: #f53f3f;
+@concis-half-opacity: 0.5;
+@concis-none-opacity: 0;
+@concis-full-opacity: 1;
+
 .concis-form-item {
   position: relative;
   display: flex;
-  margin-bottom: 20px;
-  font-size: 14px;
-  .label {
+  margin-bottom: @concis-transform-lg;
+  font-size: @concis-font-md;
+  &-label {
     position: relative;
-    top: 5px;
+    top: @concis-transform-xs;
     min-width: 100px;
-    margin-right: 20px;
+    margin-right: @concis-transform-lg;
     color: #4e5969;
     text-align: right;
     svg {
       position: relative;
       bottom: 2px;
       margin-right: 4px;
-      color: #f53f3f;
+      color: @concis-red-color;
     }
   }
-  .form-item-disabled {
+  &-disabled {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,24 +32,22 @@
     height: 100%;
     background: #fff;
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: @concis-half-opacity;
   }
-  .hide-rule-label {
-    position: absolute;
-    bottom: -20px;
-    left: 0;
-    color: #f53f3f;
-    font-size: 12px;
-    opacity: 0;
-    transition: 0.2s linear;
-  }
+  .hide-rule-label,
   .show-rule-label {
     position: absolute;
-    bottom: -20px;
+    bottom: calc(-1 * @concis-transform-lg);
     left: 0;
-    color: #f53f3f;
-    font-size: 12px;
-    opacity: 1;
-    transition: 0.1s linear;
+    color: @concis-red-color;
+    font-size: @concis-font-sm;
+    opacity: @concis-none-opacity;
+    transition: 0.2s linear;
+  }
+  .hide-rule-label {
+    opacity: @concis-none-opacity;
+  }
+  .show-rule-label {
+    opacity: @concis-full-opacity;
   }
 }

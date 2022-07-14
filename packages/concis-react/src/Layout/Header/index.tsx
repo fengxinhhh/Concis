@@ -9,7 +9,7 @@ interface HeaderProps {
   extraStyle?: Object;
   children?: Element | undefined | String | any;
 }
-const Header: FC<HeaderProps> = (props) => {
+const Header: FC<HeaderProps> = (props: HeaderProps) => {
   const { className, children, extraStyle } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;

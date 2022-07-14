@@ -9,7 +9,7 @@ interface FooterProps {
   extraStyle?: Object;
   children?: Element | undefined | String | any;
 }
-const Footer: FC<FooterProps> = (props) => {
+const Footer: FC<FooterProps> = (props: FooterProps) => {
   const { className, children, extraStyle } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;

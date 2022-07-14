@@ -1,13 +1,14 @@
+@import '../../styles/common.less';
+
 .concis-collapse-item {
-  // border-bottom: 1px solid rgba(229, 230, 235, 1);
-  .collapse-item-header {
+  &-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 15px;
-    padding: 10px 0;
-    font-size: 14px;
+    margin-bottom: @concis-transform-md;
+    padding: @concis-transform-ms 0;
+    font-size: @concis-font-md;
     border-bottom: 1px solid rgba(229, 230, 235, 1);
     cursor: pointer;
     .left {
@@ -15,25 +16,25 @@
       align-items: center;
       justify-content: space-between;
       .header-icon {
-        font-size: 12px;
+        font-size: @concis-font-sm;
       }
       .header-text {
-        margin-left: 10px;
+        margin-left: @concis-transform-ms;
       }
     }
     .right {
       display: flex;
       align-items: center;
       .header-icon {
-        margin-left: 10px;
-        font-size: 12px;
+        margin-left: @concis-transform-ms;
+        font-size: @concis-font-sm;
       }
     }
   }
-  .collapse-item-content {
+  &-content {
     box-sizing: border-box;
     max-height: 0;
-    padding: 0 10px;
+    padding: 0 @concis-transform-ms;
     overflow: hidden;
     line-height: 30px;
     transition: max-height 0.2s;

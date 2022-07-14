@@ -55,7 +55,7 @@ interface RenderOptions {
   children?: Array<any> | null | undefined;
 }
 
-const Menu: FC<MenuProps> = (props) => {
+const Menu: FC<MenuProps> = (props: MenuProps) => {
   const [nowActiveMainKey, setNowActiveMainKey] = useState(''); //选中的一级菜单key
   const [nowActiveKey, setNowActiveKey] = useState(''); //选中的子菜单key
   const [parentMenuHeightList, setParentMenuHeightList] = useState<any>({}); //父菜单高度集合
@@ -64,7 +64,8 @@ const Menu: FC<MenuProps> = (props) => {
 
   const { globalColor, menuSelectBgColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, dark ? 'concis-dark-menu' : 'concis-menu');
+  const classFirstName = dark ? 'concis-dark-menu' : 'concis-menu';
+  const classNames = cs(prefixCls, className, classFirstName);
 
   useEffect(() => {
     const initList = initParentMenuHeight(items, {}, '');
@@ -254,15 +255,19 @@ const Menu: FC<MenuProps> = (props) => {
         return (
           <div key={m.key}>
             <div
-              className={nowActiveKey == m.key ? 'activeMenuOptions' : 'childMenuOptions'}
+              className={
+                nowActiveKey == m.key
+                  ? `${classFirstName}-activeMenuOptions`
+                  : `${classFirstName}-childMenuOptions`
+              }
               style={{ ...childMenuHeight(m.key) }}
             >
               <div
                 className={
                   m.children &&
                   m.children.findIndex((i: RenderOptions) => i.key == nowActiveKey) !== -1
-                    ? 'activeFatherTitle'
-                    : 'fatherTitle'
+                    ? `${classFirstName}-activeFatherTitle`
+                    : `${classFirstName}-fatherTitle`
                 }
                 onClick={(e) => toggleChildMenu(m, e, childM.key as string)}
               >
@@ -274,7 +279,7 @@ const Menu: FC<MenuProps> = (props) => {
                     <CaretUpOutlined />
                   ))}
               </div>
-              <div className="childMenuOptions" key={m.key}>
+              <div className={`${classFirstName}-childMenuOptions`} key={m.key}>
                 {m.children && renderChildOptions(m)}
               </div>
             </div>
@@ -295,12 +300,16 @@ const Menu: FC<MenuProps> = (props) => {
         } as any
       }
     >
-      {items.map((m) => {
+      {items.map((m: any) => {
         return (
           <div key={m.key}>
-            <div className="menuOptions" style={firstMenuHeight(m.key)}>
+            <div className={`${classFirstName}-menuOptions`} style={firstMenuHeight(m.key)}>
               <div
-                className={nowActiveMainKey == m.key ? 'activeFatherTitle' : 'fatherTitle'}
+                className={
+                  nowActiveMainKey == m.key
+                    ? `${classFirstName}-activeFatherTitle`
+                    : `${classFirstName}-fatherTitle`
+                }
                 onClick={(e) => toggleFirstMenu(m, e)}
               >
                 <div className="left">

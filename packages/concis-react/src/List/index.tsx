@@ -38,7 +38,7 @@ const List = (props: listProps) => {
 
   useEffect(() => {
     if (lazyLoad && defaultShowNum) {
-      setFormatDataSource((old) => {
+      setFormatDataSource((old: Array<any>) => {
         old = dataSource.slice(0, defaultShowNum);
         return [...old];
       });
@@ -56,7 +56,7 @@ const List = (props: listProps) => {
           break;
       }
       listItemHeight.current = rowHeight;
-      setFormatDataSource((old) => {
+      setFormatDataSource((old: Array<any>) => {
         old = dataSource.slice(0, virtualShowNum + 2);
         return [...old];
       });
@@ -99,7 +99,7 @@ const List = (props: listProps) => {
     if (bottomTran <= 10) {
       lazyScrollToBottom && lazyScrollToBottom(bottomTran, true);
       setTimeout(() => {
-        setFormatDataSource((old) => {
+        setFormatDataSource((old: Array<any>) => {
           old = dataSource.slice(0, old.length + defaultShowNum);
           return [...old];
         });
@@ -111,7 +111,7 @@ const List = (props: listProps) => {
   const victurlScroll = () => {
     const startIndex = Math.floor(victurlListContentRef.current.scrollTop / listItemHeight.current);
     setScrollTop(victurlListContentRef.current.scrollTop);
-    setFormatDataSource((old) => {
+    setFormatDataSource((old: Array<any>) => {
       old = dataSource.slice(startIndex, startIndex + virtualShowNum + 2);
       return [...old];
     });

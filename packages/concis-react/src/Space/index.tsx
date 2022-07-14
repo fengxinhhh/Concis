@@ -1,5 +1,5 @@
-import React, { memo, Children, Fragment, useMemo, useContext } from 'react';
-import { SpaceProps, sizeType } from './interface';
+import React, { memo, Children, Fragment, useMemo, useContext, ReactNode } from 'react';
+import { SpaceProps, sizeType, spaceAlignParams } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -37,7 +37,7 @@ const Space = <T,>(props: SpaceProps<T>) => {
         return 8;
     }
   };
-  const getMarginStyle = (index) => {
+  const getMarginStyle = (index: number) => {
     const isLastDom = childrenList.length - 1 === index;
     if (!Array.isArray(size)) {
       const marginNum = getMargin(size);
@@ -88,8 +88,9 @@ const Space = <T,>(props: SpaceProps<T>) => {
     }
   };
   const spaceStyles = useMemo(() => {
-    const returnStyle = direction === 'horizontal' ? getAlignStyle() : {};
+    const returnStyle: spaceAlignParams = direction === 'horizontal' ? getAlignStyle() : {};
     returnStyle['display'] = 'flex';
+    console.log(direction);
     if (direction === 'vertical') {
       returnStyle['flexDirection'] = 'column';
     } else {
@@ -100,7 +101,7 @@ const Space = <T,>(props: SpaceProps<T>) => {
 
   return (
     <div className={classNames} style={spaceStyles}>
-      {childrenList.map((child, index) => {
+      {childrenList.map((child: ReactNode, index: number) => {
         return (
           <Fragment key={index}>
             <div className="concis-space-item" style={getMarginStyle(index)}>

@@ -1,30 +1,32 @@
+@import '../styles/common.less';
+
+@concis-white-color: #ffffff;
+@concis-gray-color: #cccccc;
+
 .concis-divider {
-  .line {
+  &-line,
+  &-dashed {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 1px;
-    border-top: 1px solid #e5e6eb;
-    .line-text {
-      position: absolute;
-      padding: 0 10px;
-      background-color: #fff;
+  }
+  &-line-text {
+    position: absolute;
+    padding: 0 @concis-radius-sm;
+  }
+  &-line {
+    border-top: 1px solid @concis-gray-color;
+    &-text {
+      background-color: @concis-white-color;
     }
   }
-  .dashed {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 1px;
-    border-top: 1px dashed #e5e6eb;
+  &-dashed {
+    border-top: 1px dashed @concis-gray-color;
     .line-text {
-      position: absolute;
-      padding: 0 10px;
-      background-color: #e5e6eb;
+      border-top: 1px dashed @concis-white-color;
     }
   }
 }

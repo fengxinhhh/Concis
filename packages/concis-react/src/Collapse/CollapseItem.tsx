@@ -8,7 +8,7 @@ import './style/item.module.less';
 import useStateCallback from '../common_utils/hooks/useStateCallback';
 import { ctx } from './index';
 
-const CollapseItem: FC<CollapseItemProps> = (props) => {
+const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
   const { children, className, header, disabled = false, listKey, extra } = props;
 
   const [contentDomHeight, setContentDomHeight] = useStateCallback(0);
@@ -26,7 +26,7 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
       setContentDomHeight(0);
     } else {
       setContentDomHeight(
-        (document.querySelector('.collapse-item-content') as HTMLElement).scrollHeight + 30,
+        (document.querySelector('.concis-collapse-item-content') as HTMLElement).scrollHeight + 30,
       );
     }
   }, [activeKeyList]);
@@ -40,7 +40,8 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
         //首次展开懒加载
         setHasOpen(true, (state: boolean) => {
           newHeight =
-            (document.querySelector('.collapse-item-content') as HTMLElement).scrollHeight + 30;
+            (document.querySelector('.concis-collapse-item-content') as HTMLElement).scrollHeight +
+            30;
           if (accordion) {
             //手风琴，全部清除再加入
             setActiveKeyList([Number(listKey)]);
@@ -55,7 +56,8 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
         });
       } else {
         newHeight =
-          (document.querySelector('.collapse-item-content') as HTMLElement).scrollHeight + 30;
+          (document.querySelector('.concis-collapse-item-content') as HTMLElement).scrollHeight +
+          30;
         if (accordion) {
           //手风琴，全部清除再加入
           setActiveKeyList([Number(listKey)]);
@@ -94,7 +96,7 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
     if (headerAlign == 'left') {
       return (
         <div
-          className="collapse-item-header"
+          className="concis-collapse-item-header"
           onClick={toggleContent}
           style={disabled ? { color: '#c9cdd4', cursor: 'not-allowed' } : {}}
         >
@@ -110,7 +112,7 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
     } else if (headerAlign == 'right') {
       return (
         <div
-          className="collapse-item-header"
+          className="concis-collapse-item-header"
           onClick={toggleContent}
           style={disabled ? { color: '#c9cdd4', cursor: 'not-allowed' } : {}}
         >
@@ -128,7 +130,7 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
     } else if (headerAlign == 'hide') {
       return (
         <div
-          className="collapse-item-header"
+          className="concis-collapse-item-header"
           onClick={toggleContent}
           style={disabled ? { color: '#c9cdd4', cursor: 'not-allowed' } : {}}
         >
@@ -143,7 +145,7 @@ const CollapseItem: FC<CollapseItemProps> = (props) => {
   return (
     <div className={classNames}>
       {renderHeader}
-      <div className="collapse-item-content" style={headerHeight}>
+      <div className="concis-collapse-item-content" style={headerHeight}>
         {lazyLoad ? hasOpen && children : children}
       </div>
     </div>

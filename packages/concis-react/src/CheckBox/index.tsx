@@ -102,30 +102,30 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
   const renderCheckBoxDom = useMemo(() => {
     //渲染单check状态
     if (disabled) {
-      return <div className="disblaed-checkBox"></div>;
+      return <div className="concis-checkbox-disabled"></div>;
     } else if (checkStatus) {
       return (
-        <div className="checkBox-actived">
+        <div className="concis-checkbox-actived">
           <CheckOutlined style={{ fontSize: '12px' }} />
         </div>
       );
     } else {
-      return <div className="checkBox-noActived"></div>;
+      return <div className="concis-checkbox-noActived"></div>;
     }
   }, [checkStatus, checked]);
   const renderCheckGroupDom = useCallback(
     (checkBoxOptions: checkGroup) => {
       //渲染checkbox组状态
       if (checkBoxOptions.disabled) {
-        return <div className="disblaed-checkBox"></div>;
+        return <div className="concis-checkbox-disabled"></div>;
       } else if (checkBoxOptions.checked) {
         return (
-          <div className="checkBox-actived">
+          <div className="concis-checkbox-actived">
             <CheckOutlined style={{ fontSize: '12px' }} />
           </div>
         );
       } else if (!checkBoxOptions.checked) {
-        return <div className="checkBox-noActived"></div>;
+        return <div className="concis-checkbox-noActived"></div>;
       }
     },
     [group],

@@ -6,7 +6,7 @@ import { ctx } from './group';
 import { avatarProps, avatarStyles } from './interface';
 import './styles/avatar.module.less';
 
-const Avatar: FC<avatarProps> = (props) => {
+const Avatar: FC<avatarProps> = (props: avatarProps) => {
   const {
     children,
     className,

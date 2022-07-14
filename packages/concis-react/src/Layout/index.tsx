@@ -22,7 +22,7 @@ interface layoutProps {
   row?: Number;
 }
 
-const Layout: FC<layoutProps> = (props) => {
+const Layout: FC<layoutProps> = (props: layoutProps) => {
   const { children, className, extraStyle } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;

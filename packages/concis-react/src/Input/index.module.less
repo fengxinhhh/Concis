@@ -1,3 +1,8 @@
+@import '../styles/common.less';
+
+@concis-gray-color: #c5c5c5;
+@concis-tag-color: #bebdbd;
+
 .concis-input {
   position: relative;
   display: flex;
@@ -7,7 +12,7 @@
   .input {
     padding: 4px 11px;
     color: #000000d9;
-    font-size: 14px;
+    font-size: @concis-font-md;
     line-height: 1.5715;
     background-color: #fff;
     border: 1px solid #d9d9d9;
@@ -26,25 +31,22 @@
     }
   }
   .input::-webkit-input-placeholder {
-    color: #c5c5c5;
+    color: @concis-gray-color;
   }
   .input::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: #c5c5c5;
+    color: @concis-gray-color;
   }
   .input:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: #c5c5c5;
+    color: @concis-gray-color;
   }
   .input:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #c5c5c5;
+    color: @concis-gray-color;
   }
   .numTags {
     position: absolute;
-    right: 5px;
+    right: @concis-transform-xs;
     display: flex;
     flex-direction: column;
-    color: #bebdbd;
+    color: @concis-tag-color;
   }
 }

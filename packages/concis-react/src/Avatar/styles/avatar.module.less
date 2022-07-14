@@ -1,17 +1,20 @@
+@import '../../styles/common.less';
+
+@concis-avatar-size: 40px;
+@concis-avatar-dialog-size: 20px;
+
 .concis-avatar {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: @concis-avatar-size;
+  height: @concis-avatar-size;
   overflow: hidden;
   color: #fff;
-  font-size: 12px;
+  font-size: @concis-font-sm;
   background-color: #c9cdd4;
-  border-radius: 50%;
-  .text-ref {
-  }
+  border-radius: @concis-radius-lg;
   img {
     width: 100%;
     height: 100%;
@@ -23,10 +26,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
+    width: @concis-avatar-dialog-size;
+    height: @concis-avatar-dialog-size;
     background-color: #fff;
-    border-radius: 50%;
+    border-radius: @concis-radius-lg;
     cursor: pointer;
     transition: 0.2s linear;
     &:hover {

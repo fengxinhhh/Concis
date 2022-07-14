@@ -10,7 +10,7 @@ interface SliderProps {
   extraStyle?: Object;
   children?: Element | undefined | String | any;
 }
-const Slider: FC<SliderProps> = (props) => {
+const Slider: FC<SliderProps> = (props: SliderProps) => {
   const { className, row, extraStyle } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
