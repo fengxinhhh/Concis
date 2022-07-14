@@ -85,12 +85,12 @@ const Button = (props: ButtonProps) => {
 
   const buttonStyle = useMemo(() => {
     if (!type && type !== 'danger' && type !== 'warning' && type !== 'info' && type !== 'text') {
-      return 'primary';
+      return 'concis-button-primary';
     }
     if (type === 'text' && disabled) {
-      return 'disabled-text';
+      return 'concis-button-disabled';
     }
-    return type as any;
+    return `concis-button-${type}` as any;
   }, [type]);
   const buttonSize = useMemo(() => {
     var size: ButtonStyle<string> = {
@@ -119,13 +119,17 @@ const Button = (props: ButtonProps) => {
     return size;
   }, [width, height, circle, dashed]);
   return (
-    <div className={classNames}>
+    <div
+      className={classNames}
+      style={{ '--loading-icon-color': type === 'text' ? '#000000' : '#ffffff' } as any}
+    >
       <button
         className={buttonStyle}
         style={
           {
             width: width + 'px',
             height: height + 'px',
+            opacity: disabled ? '0.7' : '1',
             ...buttonSize,
             '--isDisabled': disabled ? 1 : 0.7,
           } as any
@@ -133,7 +137,7 @@ const Button = (props: ButtonProps) => {
         disabled={disabled ? true : false}
         onClick={handleClick as undefined}
       >
-        {loading && <div className="loading1" />}
+        {loading && <div className="concis-button-loading" />}
         {children}
       </button>
     </div>

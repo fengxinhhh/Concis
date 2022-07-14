@@ -1,105 +1,72 @@
+@import '../styles/common.less';
+
+@concis-button-white-color: #ffffff;
+@concis-button-black-color: #000000;
+
 .concis-button {
   display: inline-block;
-  .primary {
+  &-primary,
+  &-danger,
+  &-info,
+  &-warning,
+  &-disabled,
+  &-text {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 15px;
-    color: #fff;
-    background-color: #1890ff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.2s linear;
+  }
+  &-primary,
+  &-danger,
+  &-info,
+  &-warning {
     &:hover {
       opacity: var(--isDisabled);
     }
   }
-  .danger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 15px;
-    color: #fff;
-    background-color: #f53f3f;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.2s linear;
-    &:hover {
-      opacity: var(--isDisabled);
-    }
+  &-primary {
+    color: @concis-button-white-color;
+    background-color: @concis-primary-color;
   }
-  .info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 15px;
-    color: #fff;
-    background-color: #26c48f;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.2s linear;
-    &:hover {
-      opacity: var(--isDisabled);
-    }
+  &-danger {
+    color: @concis-button-white-color;
+    background-color: @concis-danger-color;
   }
-  .warning {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 15px;
-    color: #fff;
-    background-color: rgb(224, 197, 41);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.2s linear;
-    &:hover {
-      opacity: var(--isDisabled);
-    }
+  &-info {
+    color: @concis-button-white-color;
+    background-color: @concis-info-color;
   }
-  .disabled-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 15px;
-    color: #000000;
-    background-color: #fff;
-    border: none;
+  &-warning {
+    color: @concis-button-white-color;
+    background-color: @concis-warning-color;
+  }
+  &-disabled {
+    color: @concis-button-white-color;
+    background-color: @concis-disabled-color;
+  }
+  &-text {
+    color: @concis-button-black-color;
+    background-color: @concis-text-color;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.2s linear;
-  }
-  .text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 15px;
-    color: #000000;
-    background-color: #fff;
-    border: none;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.2s linear;
     &:hover {
-      color: #1890ff;
-      border-color: #1890ff !important;
+      color: @concis-primary-color;
+      border-color: @concis-primary-color !important;
     }
   }
-  .loading1 {
-    width: 10px;
-    height: 10px;
+  &-loading {
+    width: @concis-font-xs;
+    height: @concis-font-xs;
     margin-right: 10px;
-    border: 2px solid #ccc;
-    border-color: transparent rgb(226, 226, 226) rgb(226, 226, 226);
-    border-radius: 50%;
-    animation: 1s loadingWatch infinite linear;
+    border: 2px solid var(--loading-icon-color);
+    border-color: transparent var(--loading-icon-color) var(--loading-icon-color);
+    border-radius: @concis-radius-lg;
+    animation: 1s concis-button-loading infinite linear;
   }
-  @keyframes loadingWatch {
+  @keyframes concis-button-loading {
     0% {
       transform: rotate(0deg);
     }
