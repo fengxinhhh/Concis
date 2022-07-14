@@ -34,3 +34,4 @@ export { default as Message } from './Message';
 export { default as Notification } from './Notification';
 export { default as Form } from './Form';
 export { default as GlobalConfig } from './GlobalConfig';
+export { default as Skeleton } from './Skeleton';
