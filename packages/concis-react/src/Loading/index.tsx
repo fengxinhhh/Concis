@@ -19,6 +19,7 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
 
   const [activeDotIndex, setActiveDotIndex] = useState(0);
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  console.log(22, globalColor);
 
   function getLoadingClass() {
     switch (type) {
@@ -53,24 +54,16 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
     const returnStyle: any = style;
     returnStyle.width = width;
     returnStyle.height = height;
-    if (globalColor) {
-      returnStyle.color = globalColor;
-    }
     return returnStyle;
   }, [width, height, style]);
-  const gloabLoadingStyle = useMemo(() => {
-    if (globalColor) {
-      return {
-        background: globalColor,
-      };
-    }
-    return {};
-  }, [globalColor]);
 
   const renderLoadingContainer = useMemo(() => {
     if (type === 'default') {
       return (
-        <div className={classNames} style={loadingStyle}>
+        <div
+          className={classNames}
+          style={{ ...loadingStyle, '--global-color': globalColor || '#1890ff' } as any}
+        >
           <div className="loading-container" style={loadingStyle}>
             {icon || (
               <svg
@@ -92,34 +85,22 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
       );
     } else if (type === 'dot') {
       return (
-        <div className={classNames}>
+        <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
           {new Array(3).fill('').map((item, index) => {
-            return (
-              <div
-                className={activeDotIndex === index ? 'dot-active' : 'dot'}
-                style={gloabLoadingStyle}
-              >
-                {item}
-              </div>
-            );
+            return <div className={activeDotIndex === index ? 'dot-active' : 'dot'}>{item}</div>;
           })}
         </div>
       );
     } else if (type === 'strip') {
       return (
-        <div className={classNames}>
+        <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
           {new Array(6).fill('').map((item, index) => {
-            return (
-              <div
-                className="strip-list"
-                style={{ ...gloabLoadingStyle, '--lineIndex': index } as any}
-              />
-            );
+            return <div className="strip-list" style={{ '--lineIndex': index } as any} />;
           })}
         </div>
       );
     }
-  }, [type, activeDotIndex]);
+  }, [type, activeDotIndex, globalColor]);
 
   return (
     <Fragment>

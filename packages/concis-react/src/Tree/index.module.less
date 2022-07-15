@@ -1,10 +1,11 @@
+@import '../styles/common.less';
+
 .cocnis-tree-container {
   display: inline-block;
   height: 100%;
   .tree-select-dialog {
     box-sizing: border-box;
-    // height: 200px;
-    padding: 0 10px 0 10px;
+    padding: 0 @concis-transform-ms 0 @concis-transform-ms;
     overflow: hidden;
     background-color: #fff;
     border-radius: 0 2px 2px 0;
@@ -14,11 +15,11 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      font-size: 14px;
+      font-size: @concis-font-md;
       cursor: pointer;
       transition: 0.2s linear;
       .text {
-        margin-left: 10px;
+        margin-left: @concis-transform-ms;
         user-select: none;
       }
     }

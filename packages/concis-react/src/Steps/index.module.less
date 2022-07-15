@@ -1,3 +1,9 @@
+@import '../styles/common.less';
+
+@concis-pc-step-size: 32px;
+@concis-mobile-step-size: 24px;
+@concis-after-step-bg: #999999;
+
 .concis-steps {
   .step-content {
     position: relative;
@@ -18,7 +24,7 @@
         display: flex;
         align-items: center;
         height: 54px;
-        padding: 0 5px;
+        padding: 0 @concis-transform-xs;
         background-color: #fff;
         &:last-of-type {
           margin-right: 0;
@@ -27,57 +33,53 @@
             height: 0;
           }
         }
-        &:after {
-          width: 100px;
-          height: 2px;
-          background-color: var(--global-color);
-          content: '';
+        @media screen and (min-width: 1068px) {
+          &:after {
+            width: 100px;
+            height: 2px;
+            background-color: var(--global-color);
+            content: '';
+          }
+        }
+        .before-index,
+        .after-index,
+        .active-index {
+          width: @concis-pc-step-size;
+          height: @concis-pc-step-size;
+          line-height: @concis-pc-step-size;
+          text-align: center;
+          border-radius: @concis-radius-lg;
         }
         .before-index {
-          width: 32px;
-          height: 32px;
           color: var(--global-color);
-          line-height: 32px;
-          text-align: center;
           border: 1px solid var(--global-color);
-          border-radius: 50%;
         }
         .after-index {
-          width: 32px;
-          height: 32px;
-          color: #999999;
-          line-height: 32px;
-          text-align: center;
-          border: 1px solid #999999;
-          border-radius: 50%;
+          color: @concis-after-step-bg;
+          border: 1px solid @concis-after-step-bg;
         }
         .active-index {
-          width: 32px;
-          height: 32px;
           color: #fff;
-          line-height: 32px;
-          text-align: center;
           background: var(--global-color);
           border: 1px solid var(--global-color);
-          border-radius: 50%;
         }
         .sub-content {
           position: relative;
-          top: 5px;
+          top: @concis-transform-xs;
           display: flex;
           flex-direction: column;
-          margin-left: 10px;
-          font-size: 16px;
+          margin-left: @concis-transform-ms;
+          font-size: @concis-font-lg;
           .top {
             .sub-title {
-              margin-left: 10px;
-              color: #999999;
-              font-size: 14px;
+              margin-left: @concis-transform-ms;
+              color: @concis-after-step-bg;
+              font-size: @concis-font-md;
             }
           }
           .bottom {
-            margin-top: 10px;
-            font-size: 14px;
+            margin-top: @concis-transform-ms;
+            font-size: @concis-font-md;
           }
         }
       }
@@ -87,83 +89,28 @@
 @media screen and (max-width: 1068px) {
   .concis-steps {
     .step-content {
-      position: relative;
-      .line {
-        position: relative;
-        top: 27px;
-        left: 0;
-        z-index: 1;
-        width: 100%;
-        height: 2px;
-        background: var(--global-color);
-      }
       .step-line {
-        display: flex;
         .step-box {
-          position: relative;
-          z-index: 999;
-          display: flex;
-          align-items: center;
-          height: 54px;
           margin-right: 100px;
-          padding: 0 5px;
-          font-size: 12px;
-          background-color: #fff;
+          font-size: @concis-font-sm;
           &:last-of-type {
             margin-right: 0;
           }
-          &:after {
-            width: 0;
-            height: 0;
-            background-color: var(--global-color);
-            content: '';
+          .before-index,
+          .after-index,
+          .active-index {
+            width: @concis-mobile-step-size;
+            height: @concis-mobile-step-size;
           }
-          .before-index {
-            width: 24px;
-            height: 24px;
-            color: var(--global-color);
-            line-height: 24px;
-            text-align: center;
-            border: 1px solid var(--global-color);
-            border-radius: 50%;
-          }
-          .after-index {
-            width: 24px;
-            height: 24px;
-            color: #999999;
-            line-height: 24px;
-            text-align: center;
-            border: 1px solid #999999;
-            border-radius: 50%;
+          .after-index,
+          .active-index {
+            line-height: @concis-mobile-step-size;
           }
           .active-index {
-            width: 24px;
-            height: 24px;
-            color: #fff;
-            line-height: 24px;
             text-align: center;
-            background: var(--global-color);
-            border: 1px solid var(--global-color);
-            border-radius: 50%;
           }
           .sub-content {
-            position: relative;
-            top: 15px;
-            display: flex;
-            flex-direction: column;
-            margin-left: 10px;
-            font-size: 16px;
-            .top {
-              .sub-title {
-                margin-left: 10px;
-                color: #999999;
-                font-size: 14px;
-              }
-            }
-            .bottom {
-              margin-top: 10px;
-              font-size: 14px;
-            }
+            top: @concis-transform-md;
           }
         }
       }
@@ -173,78 +120,17 @@
 @media screen and (max-width: 768px) {
   .concis-steps {
     .step-content {
-      position: relative;
       height: 100%;
       .line {
-        position: relative;
-        top: 27px;
-        left: 0;
-        z-index: 1;
-        width: 2px;
         height: 100%;
-        background: var(--global-color);
       }
       .step-line {
-        display: flex;
         flex-direction: column;
         .step-box {
-          position: relative;
-          z-index: 999;
-          display: flex;
-          align-items: center;
           height: 94px;
           margin-right: 100px;
-          padding: 0 5px;
-          background-color: #fff;
-          &:last-of-type {
-            margin-right: 0;
-          }
-          .before-index {
-            width: 32px;
-            height: 32px;
-            color: var(--global-color);
-            line-height: 32px;
-            text-align: center;
-            border: 1px solid var(--global-color);
-            border-radius: 50%;
-          }
-          .after-index {
-            width: 32px;
-            height: 32px;
-            color: #999999;
-            line-height: 32px;
-            text-align: center;
-            border: 1px solid #999999;
-            border-radius: 50%;
-          }
-          .active-index {
-            width: 32px;
-            height: 32px;
-            color: #fff;
-            line-height: 32px;
-            text-align: center;
-            background: var(--global-color);
-            border: 1px solid var(--global-color);
-            border-radius: 50%;
-          }
           .sub-content {
-            position: relative;
-            top: 15px;
-            display: flex;
-            flex-direction: column;
-            margin-left: 10px;
-            font-size: 16px;
-            .top {
-              .sub-title {
-                margin-left: 10px;
-                color: #999999;
-                font-size: 14px;
-              }
-            }
-            .bottom {
-              margin-top: 10px;
-              font-size: 14px;
-            }
+            top: @concis-transform-md;
           }
         }
       }

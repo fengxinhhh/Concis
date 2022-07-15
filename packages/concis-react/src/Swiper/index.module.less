@@ -1,9 +1,11 @@
+@import '../styles/common.less';
+
+@concis-swiper-btn-size: 30px;
+
 .concis-swipers {
   position: relative;
   top: 0;
   right: 0;
-  // display: flex;
-  // width: 600px;
   height: 240px;
   margin: 0 auto;
   overflow: hidden;
@@ -14,7 +16,6 @@
     width: 3600px;
   }
   .swiper-img {
-    // width: 600px;
     height: 240px;
   }
   .prev-btn,
@@ -26,42 +27,38 @@
     transform: translate(0, -50%);
     cursor: pointer;
     img {
-      width: 30px;
-      height: 30px;
+      width: @concis-swiper-btn-size;
+      height: @concis-swiper-btn-size;
     }
   }
   .prev-btn {
-    left: 20px;
+    left: @concis-transform-lg;
   }
   .next-btn {
-    right: 20px;
+    right: @concis-transform-lg;
   }
   .menu-options {
     position: absolute;
-    bottom: 20px;
+    bottom: @concis-transform-lg;
     left: 50%;
     display: flex;
     transform: translate(-50%);
-    .option {
+    .option,
+    .option-active {
       width: 6px;
       height: 6px;
       margin-right: 6px;
-      background-color: #ffffff4d;
-      border-radius: 50%;
+      border-radius: @concis-radius-lg;
       cursor: pointer;
-      // transition: 0.2s linear;
+    }
+    .option {
+      background-color: #ffffff4d;
       &:hover {
         background-color: #ffffff;
       }
     }
     .option-active {
-      width: 6px;
-      height: 6px;
-      margin-right: 6px;
-      // transition: 0.2s linear;
       background-color: #ffffff;
-      border-radius: 50%;
-      cursor: pointer;
     }
   }
 }
@@ -83,10 +80,7 @@
     z-index: 5;
     transition: 0.2s linear;
   }
-  .left {
-    position: absolute;
-    transition: 0.2s linear;
-  }
+  .left,
   .right {
     position: absolute;
     transition: 0.2s linear;
@@ -97,26 +91,22 @@
     left: 50%;
     display: flex;
     transform: translate(-50%);
-    .option {
+    .option,
+    .option-active {
       width: 6px;
       height: 6px;
       margin-right: 6px;
-      background-color: #e5e5e5;
-      border-radius: 50%;
+      border-radius: @concis-radius-lg;
       cursor: pointer;
-      // transition: 0.2s linear;
+    }
+    .option {
+      background-color: #e5e5e5;
       &:hover {
         background-color: #c9cace;
       }
     }
     .option-active {
-      width: 6px;
-      height: 6px;
-      margin-right: 6px;
-      // transition: 0.2s linear;
       background-color: #c9cace;
-      border-radius: 50%;
-      cursor: pointer;
     }
   }
 }

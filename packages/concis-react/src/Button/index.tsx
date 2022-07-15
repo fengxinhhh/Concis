@@ -1,4 +1,4 @@
-import React, { useMemo, useContext, forwardRef, ReactNode } from 'react';
+import React, { useMemo, useContext, memo, ReactNode } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -133,9 +133,8 @@ const Button = (props: ButtonProps) => {
           {
             width: width + 'px',
             height: height + 'px',
-            opacity: disabled ? '0.7' : '1',
             ...buttonSize,
-            '--isDisabled': disabled ? 1 : 0.7,
+            '--isDisabled': disabled ? 0.7 : 1,
           } as any
         }
         disabled={disabled ? true : false}
@@ -148,10 +147,4 @@ const Button = (props: ButtonProps) => {
   );
 };
 
-const ForwardRefButton = forwardRef<unknown, ButtonProps>(Button);
-
-const ButtonComponent = ForwardRefButton as typeof ForwardRefButton;
-
-ButtonComponent.displayName = 'Button';
-
-export default ButtonComponent;
+export default memo(Button);

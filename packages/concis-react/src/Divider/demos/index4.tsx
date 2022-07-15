@@ -8,15 +8,15 @@ export default function DividerDemo3() {
     <div>
       <div style={{ marginBottom: '40px' }}>
         <Divider fontSize={12} align={'left'}>
-          React View UI
+          Concis
         </Divider>
       </div>
       <div style={{ marginBottom: '40px' }}>
-        <Divider fontSize={16}>React View UI</Divider>
+        <Divider fontSize={16}>Concis</Divider>
       </div>
       <div style={{ marginBottom: '40px' }}>
         <Divider fontSize={22} align={'right'}>
-          React View UI
+          Concis
         </Divider>
       </div>
     </div>

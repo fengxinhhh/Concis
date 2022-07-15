@@ -1,3 +1,5 @@
+@import '../styles/common.less';
+
 .concis-switch {
   position: relative;
   display: inline-block;
@@ -21,16 +23,16 @@
     width: var(--dot-size);
     height: var(--dot-size);
     background: #ffffff;
-    border-radius: 50%;
+    border-radius: @concis-radius-lg;
     transition: 0.1s linear;
   }
   &-child {
     position: absolute;
     top: 0;
     left: var(--child-transform);
-    min-width: 20px;
+    min-width: @concis-transform-lg;
     color: #ffffff;
-    font-size: 12px;
+    font-size: @concis-font-sm;
     transition: 0.1s linear;
   }
 }

@@ -1,31 +1,33 @@
+@import '../../styles/common.less';
+
+@concis-table-searchBtn-size: 32px;
+@concis-table-searchBtn-th-height: 40px;
+
 .concis-table-container {
   position: relative;
   .table {
     display: flex;
-    font-size: 14px;
+    font-size: @concis-font-md;
     table {
-      // border-collapse: collapse;
       tr {
-        height: 40px;
+        height: @concis-table-searchBtn-th-height;
         border: 1px solid #e6e5e7;
         .tableHead {
           span {
-            // float: left;
           }
           .sort-icon {
             display: flex;
             flex-direction: column;
             float: left;
-            margin-left: 10px;
+            margin-left: @concis-transform-ms;
             color: #a9adb2;
-            font-size: 12px;
+            font-size: @concis-font-sm;
             cursor: pointer;
           }
         }
-
         td,
         th {
-          padding: 10px 30px;
+          padding: @concis-transform-ms 30px;
           text-align: left;
           .radioBox {
             cursor: pointer;
@@ -34,16 +36,14 @@
       }
       .search-th-btn {
         width: 24px;
-        height: 40px;
-        margin-left: 10px;
+        height: @concis-table-searchBtn-th-height;
+        margin-left: @concis-transform-ms;
         font-size: 17px;
-        line-height: 40px;
+        line-height: @concis-table-searchBtn-th-height;
         text-align: center;
         cursor: pointer;
         transition: 0.2s linear;
-        &:hover {
-          background-color: #c9cdd4;
-        }
+        &:hover,
         &:active {
           background-color: #c9cdd4;
         }
@@ -62,11 +62,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: @concis-table-searchBtn-size;
+    height: @concis-table-searchBtn-size;
     margin-left: 24px;
     color: #fff;
-    background: #1890ff;
+    background: @concis-primary-color;
     cursor: pointer;
   }
 }

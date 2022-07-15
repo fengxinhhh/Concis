@@ -9,7 +9,7 @@ interface stepProps {
   subTitle?: string;
   description?: string;
 }
-const Step: FC<stepProps> = (props) => {
+const Step: FC<stepProps> = (props: stepProps) => {
   const { title, className } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;

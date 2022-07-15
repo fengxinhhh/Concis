@@ -1,7 +1,11 @@
+@import '../styles/common.less';
+
+@concis-treeView-border-color: #d9d9d9;
+
 .concis-tree-select {
   display: inline-block;
   box-sizing: border-box;
-  padding: 0 10px 0 10px;
+  padding: 0 @concis-transform-ms 0 @concis-transform-ms;
   overflow: hidden;
   border-radius: 0 2px 2px 0;
   transition: 0.2s linear;
@@ -9,52 +13,37 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    font-size: 14px;
+    font-size: @concis-font-md;
     cursor: pointer;
     transition: 0.2s linear;
-    .disblaed-checkBox {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 16px;
-      height: 16px;
-      margin-left: 5px;
-      border: 1px solid #d9d9d9;
-      cursor: not-allowed;
-    }
-    .checkBox-actived {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 16px;
-      height: 16px;
-      margin-left: 5px;
-      color: #fff;
-      background: var(--global-color);
-    }
-    .checkBox-noActived {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 16px;
-      height: 16px;
-      margin-left: 5px;
-      color: #fff;
-      border: 1px solid #d9d9d9;
-      transition: 0.3s linear;
-      &:hover {
-        border: 1px solid var(--global-color);
-      }
-    }
+    .disblaed-checkBox,
+    .checkBox-actived,
+    .checkBox-noActived,
     .checkBox-activedLess {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 16px;
       height: 16px;
-      margin-left: 5px;
+      margin-left: @concis-transform-xs;
       color: #fff;
-      border: 1px solid #d9d9d9;
+    }
+    .disblaed-checkBox {
+      border: 1px solid @concis-treeView-border-color;
+      cursor: not-allowed;
+    }
+    .checkBox-actived {
+      background: var(--global-color);
+    }
+    .checkBox-noActived {
+      border: 1px solid @concis-treeView-border-color;
+      transition: 0.3s linear;
+      &:hover {
+        border: 1px solid var(--global-color);
+      }
+    }
+    .checkBox-activedLess {
+      border: 1px solid @concis-treeView-border-color;
       .less-box {
         width: 8px;
         height: 8px;
@@ -62,7 +51,7 @@
       }
     }
     .text {
-      margin-left: 10px;
+      margin-left: @concis-transform-ms;
       user-select: none;
     }
   }

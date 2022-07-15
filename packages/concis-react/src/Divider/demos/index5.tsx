@@ -6,7 +6,7 @@ import React from 'react';
 export default function DividerDemo5() {
   return (
     <div>
-      <Divider dashed>React View UI</Divider>
+      <Divider dashed>Concis</Divider>
     </div>
   );
 }

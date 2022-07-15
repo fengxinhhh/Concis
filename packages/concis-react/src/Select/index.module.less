@@ -1,12 +1,19 @@
+@import '../styles/common.less';
+
+@concis-select-width: 80px;
+@concis-select-height: 30px;
+@concis-select-placeholder-border-color: #cccccc;
+@concis-select-background: #ffffff;
+
 .concis-select {
   position: relative;
-  width: 80px;
-  height: 30px;
+  width: @concis-select-width;
+  height: @concis-select-height;
   padding: 0 2px;
-  font-size: 14px;
-  line-height: 30px;
+  font-size: @concis-font-md;
+  line-height: @concis-select-height;
   text-align: center;
-  border: 1px solid #ccc;
+  border: 1px solid @concis-select-placeholder-border-color;
   cursor: pointer;
   transition: 0.2s linear;
   -moz-user-select: none;
@@ -20,14 +27,14 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    padding: 0 5px;
-    background: #fff;
+    padding: 0 @concis-transform-xs;
+    background: @concis-select-background;
     .size {
-      margin-right: 5px;
+      margin-right: @concis-transform-xs;
     }
     .placeholder {
-      margin-right: 5px;
-      color: #ccc;
+      margin-right: @concis-transform-xs;
+      color: @concis-select-placeholder-border-color;
     }
     &:focus {
       border-color: var(--global-color);
@@ -46,14 +53,14 @@
     z-index: 500;
     display: flex;
     flex-direction: column;
-    width: 80px;
+    width: @concis-select-width;
     height: 0px;
     overflow: hidden;
-    background-color: #fff;
+    background-color: @concis-select-background;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: 0.1s linear;
     .option {
-      font-size: 14px;
+      font-size: @concis-font-md;
       line-height: 2em;
       text-align: center;
       cursor: pointer;

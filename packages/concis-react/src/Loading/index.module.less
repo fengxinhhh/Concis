@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: @concis-primary-color;
+  color: var(--global-color);
   transform: translate(
     @concis-loading-fail-center-transform,
     @concis-loading-fail-center-transform
@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: @concis-primary-color;
+    color: var(--global-color);
     transform: translate(
       @concis-loading-fail-center-transform,
       @concis-loading-fail-center-transform
@@ -82,7 +82,7 @@
   display: flex;
   align-items: flex-end;
   height: 30px;
-  color: @concis-primary-color;
+  color: var(--global-color);
   transform: translate(
     @concis-loading-fail-center-transform,
     @concis-loading-fail-center-transform
@@ -91,7 +91,7 @@
     width: @concis-dot-actived-size;
     height: @concis-dot-actived-size;
     margin: 0 7px;
-    background-color: @concis-primary-color;
+    background-color: var(--global-color);
     border-radius: @concis-radius-lg;
     transition: 0.3s linear;
   }
@@ -99,7 +99,7 @@
     width: @concis-dot-size;
     height: @concis-dot-size;
     margin: 0 7px;
-    background-color: @concis-primary-color;
+    background-color: var(--global-color);
     border-radius: @concis-radius-lg;
     opacity: 0.5;
     transition: 0.3s linear;
@@ -114,7 +114,7 @@
   align-items: center;
   width: 200px;
   height: 60px;
-  color: @concis-primary-color;
+  color: var(--global-color);
   transform: translate(
     @concis-loading-fail-center-transform,
     @concis-loading-fail-center-transform
@@ -124,7 +124,7 @@
     width: 8px;
     height: 50px;
     margin: 0 @concis-transform-xs;
-    background-color: @concis-primary-color;
+    background-color: var(--global-color);
     border-radius: 10px;
     animation: concis-strip-loading 0.6s ease-in-out var(--map-time) infinite alternate;
   }

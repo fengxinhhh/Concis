@@ -9,7 +9,7 @@ export default function DividerDemo1() {
 
   return (
     <div>
-      <Divider>React View UI</Divider>
+      <Divider>Concis</Divider>
     </div>
   );
 }

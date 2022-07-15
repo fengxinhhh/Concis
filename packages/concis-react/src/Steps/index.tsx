@@ -32,7 +32,7 @@ interface stepsProps {
   children: any;
 }
 
-const Steps: FC<stepsProps> = (props) => {
+const Steps: FC<stepsProps> = (props: stepsProps) => {
   const { current, className, children } = props;
 
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;

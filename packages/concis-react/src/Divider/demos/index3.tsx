@@ -8,17 +8,17 @@ export default function DividerDemo3() {
     <div>
       <div style={{ marginBottom: '40px' }}>
         <Divider fontSize={12} borderColor={'green'}>
-          React View UI
+          Concis
         </Divider>
       </div>
       <div style={{ marginBottom: '40px' }}>
         <Divider fontSize={16} borderColor={'pink'}>
-          React View UI
+          Concis
         </Divider>
       </div>
       <div style={{ marginBottom: '40px' }}>
         <Divider fontSize={22} borderColor={'lightblue'}>
-          React View UI
+          Concis
         </Divider>
       </div>
     </div>
