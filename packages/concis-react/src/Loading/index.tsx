@@ -19,7 +19,6 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
 
   const [activeDotIndex, setActiveDotIndex] = useState(0);
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
-  console.log(22, globalColor);
 
   function getLoadingClass() {
     switch (type) {

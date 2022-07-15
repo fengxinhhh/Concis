@@ -18,7 +18,6 @@ const usePageListener = (componentName: string) => {
       readTime.current = Math.round(
         Math.abs((startTime.current as Date).getTime() - endTime.getTime()) / 1000,
       );
-      console.log(readTime.current, 25);
     };
   }, [startTime]);
 

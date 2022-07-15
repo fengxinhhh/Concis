@@ -149,7 +149,6 @@ export default function index1() {
   const toggle = () => {
     setGlobalColor((oldColor) => {
       oldColor.push(oldColor.shift() as string);
-      console.log(oldColor);
       return [...oldColor];
     });
   };

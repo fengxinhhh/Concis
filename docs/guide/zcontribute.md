@@ -22,6 +22,43 @@ nav:
 
 更多可以直接参考项目中上线组件的编写方式。
 
+## 开始编写
+
+clone 完项目以后需安装项目依赖和 packages 下包的依赖，分别执行:
+
+```tsx pure
+yarn install            //项目依赖
+lerna bootstrap         //包依赖
+```
+
+此时即可通过打开本地文档服务器
+
+```tsx pure
+yarn start
+```
+
+## 打包
+
+打包方式分文档打包和 npm 打包:
+
+```tsx pure
+yarn docs:build        //文档打包，产物于docs-dist
+```
+
+在 packages/子包目录下执行:
+
+```tsx pure
+yarn build             //npm打包，产物于web-react/web-react/mobile
+```
+
+## 测试
+
+在 packages/自包目录下执行对指定包的组件进行整体测试。
+
+```tsx pure
+yarn test
+```
+
 ## 分支管理
 
 请遵守常用分支指南，使用 feat、fix-bug、docs 等关键词，另开一个新的分支，并提交 pull request 至<a href="https://github.com/fengxinhhh/Concis">项目</a>的 master 分支中，每天傍晚都会对所有 pull request 进行审核。
