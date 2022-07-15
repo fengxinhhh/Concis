@@ -62,7 +62,7 @@ type alignStyle = {
   bottom?: string;
   border?: string;
 };
-const Popover: FC<popoverProps> = (props) => {
+const Popover: FC<popoverProps> = (props: popoverProps) => {
   const {
     children,
     className,

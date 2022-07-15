@@ -1,11 +1,11 @@
-import React, { FC, useEffect, useRef, useState, Fragment, useMemo, useContext } from 'react';
+import React, { FC, useEffect, useState, Fragment, useMemo, useContext } from 'react';
 import { LoadingProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-const Loading: FC<LoadingProps> = (props) => {
+const Loading: FC<LoadingProps> = (props: LoadingProps) => {
   const {
     type = 'default',
     className,
@@ -17,7 +17,6 @@ const Loading: FC<LoadingProps> = (props) => {
     style = {},
   } = props;
 
-  const timer = useRef<any>(null);
   const [activeDotIndex, setActiveDotIndex] = useState(0);
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -36,20 +35,19 @@ const Loading: FC<LoadingProps> = (props) => {
   const classNames = cs(prefixCls, className, getLoadingClass());
 
   useEffect(() => {
-    timer.current = setInterval(() => {
-      setActiveDotIndex((old) => {
-        if (old === 2) {
-          old = 0;
-        } else {
-          old++;
-        }
-        return old;
-      });
-    }, 500);
-    return () => {
-      clearInterval(timer.current);
-    };
-  }, []);
+    if (type === 'dot') {
+      setTimeout(() => {
+        setActiveDotIndex((old: number) => {
+          if (old === 2) {
+            old = 0;
+          } else {
+            old++;
+          }
+          return old;
+        });
+      }, 500);
+    }
+  }, [activeDotIndex]);
 
   const loadingStyle = useMemo(() => {
     const returnStyle: any = style;

@@ -43,7 +43,7 @@ interface PaginationProps {
    */
   changePageSizeCallback?: Function;
 }
-const Pagination: FC<PaginationProps> = (props) => {
+const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
   const {
     className,
     style,
@@ -61,7 +61,8 @@ const Pagination: FC<PaginationProps> = (props) => {
 
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, 'concis-pagination');
+  const classFirstName = 'concis-pagination';
+  const classNames = cs(prefixCls, className, classFirstName);
 
   const totalPage = useMemo(() => {
     setNowIndex(1);
@@ -120,7 +121,7 @@ const Pagination: FC<PaginationProps> = (props) => {
         return;
       } else if (nowIndex > 4) {
         setPageRenderArray(
-          pageRenderArray.map((item) => {
+          pageRenderArray.map((item: number) => {
             return item - 1;
           }),
         );
@@ -150,7 +151,7 @@ const Pagination: FC<PaginationProps> = (props) => {
         return;
       } else if (nowIndex + 5 < totalPage) {
         setPageRenderArray(
-          pageRenderArray.map((item) => {
+          pageRenderArray.map((item: number) => {
             return item + 1;
           }),
         );
@@ -171,7 +172,7 @@ const Pagination: FC<PaginationProps> = (props) => {
     } else if (nowIndex - 5 > 4) {
       //中间翻页的情况
       setPageRenderArray(
-        pageRenderArray.map((item) => {
+        pageRenderArray.map((item: number) => {
           return item - 5;
         }),
       );
@@ -197,7 +198,7 @@ const Pagination: FC<PaginationProps> = (props) => {
       updateIndex = nowIndex + 5;
     } else if (nowIndex + 5 < totalPage) {
       setPageRenderArray(
-        pageRenderArray.map((item) => {
+        pageRenderArray.map((item: number) => {
           return item + 5;
         }),
       );
@@ -243,23 +244,41 @@ const Pagination: FC<PaginationProps> = (props) => {
       className={classNames}
       style={{ ...style, '--global-color': globalColor || '#1890ff' } as any}
     >
-      <div className={nowIndex === 1 ? `prev disabled` : `prev`} onClick={prevPage}>
+      <div
+        className={
+          nowIndex === 1
+            ? `${classFirstName}-prev ${classFirstName}-disabled`
+            : `${classFirstName}-prev`
+        }
+        onClick={prevPage}
+      >
         <LeftOutlined />
       </div>
-      <div className={nowIndex === 1 ? `actived numberBox` : `numberBox`} onClick={changePage(1)}>
+      <div
+        className={
+          nowIndex === 1
+            ? `${classFirstName}-actived ${classFirstName}-numberBox`
+            : `${classFirstName}-numberBox`
+        }
+        onClick={changePage(1)}
+      >
         1
       </div>
       {nowIndex > 4 && totalPage > 6 && (
-        <div className="numberBox" onClick={prevFivePage}>
+        <div className={`${classFirstName}-numberBox`} onClick={prevFivePage}>
           <EllipsisOutlined />
         </div>
       )}
       {totalPage >= 1 &&
-        pageRenderArray.map((item, index) => {
+        pageRenderArray.map((item: number, index: number) => {
           {
             return (
               <div
-                className={nowIndex === item ? `actived numberBox` : `numberBox`}
+                className={
+                  nowIndex === item
+                    ? `${classFirstName}-actived  ${classFirstName}-numberBox`
+                    : `${classFirstName}-numberBox`
+                }
                 key={index}
                 onClick={changePage(item)}
               >
@@ -269,20 +288,28 @@ const Pagination: FC<PaginationProps> = (props) => {
           }
         })}
       {totalPage - nowIndex >= 4 && totalPage > 6 && (
-        <div className="numberBox" onClick={nextFivePage}>
+        <div className={`${classFirstName}-numberBox`} onClick={nextFivePage}>
           <EllipsisOutlined />
         </div>
       )}
       {totalPage > 1 && (
         <div
-          className={nowIndex === totalPage ? `actived numberBox` : `numberBox`}
+          className={
+            nowIndex === totalPage
+              ? `${classFirstName}-actived ${classFirstName}-numberBox`
+              : `${classFirstName}-numberBox`
+          }
           onClick={changePage(totalPage)}
         >
           {totalPage}
         </div>
       )}
       <div
-        className={nowIndex === totalPage || totalPage <= 1 ? `next disabled` : `next`}
+        className={
+          nowIndex === totalPage || totalPage <= 1
+            ? `${classFirstName}-next ${classFirstName}-disabled`
+            : `${classFirstName}-next`
+        }
         onClick={nextPage}
       >
         <RightOutlined />
@@ -300,9 +327,13 @@ const Pagination: FC<PaginationProps> = (props) => {
         />
       )}
       {showJumpInput && (
-        <div className="jumpBox">
+        <div className={`${classFirstName}-jumpBox`}>
           <span>跳至</span>
-          <input type="text" className="jump" onKeyUp={jumpPageNum}></input>
+          <input
+            type="text"
+            className={`${classFirstName}-jumpBox-jump`}
+            onKeyUp={jumpPageNum}
+          ></input>
           <span>页</span>
         </div>
       )}
