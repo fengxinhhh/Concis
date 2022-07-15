@@ -1,7 +1,10 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "include": ["src", "../../__tests__/concis-react"]
-  }
+    "target": "es2017",
+    "module": "commonjs",
+    "baseUrl": "./",
+    "typeRoots": ["node_modules/@types", "types"]
+  },
+  "include": ["./typings.d.ts"]
 }

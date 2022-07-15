@@ -31,8 +31,9 @@ interface RadioProps {
    */
   onChange?: Function;
 }
-const Radio: FC<RadioProps> = (props) => {
+const Radio: FC<RadioProps> = (props: RadioProps) => {
   const { children } = props;
+
   return <div>{children}</div>;
 };
 

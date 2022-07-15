@@ -1,80 +1,51 @@
+@import '../styles/common.less';
+
+@concis-pc-notifica-width: 300px;
+@concis-mobile-notifica-width: 220px;
+
 .concis-notifica-container {
   position: fixed;
   z-index: 99999;
-  min-width: 300px;
+  min-width: @concis-pc-notifica-width;
   min-height: 60px;
-  padding: 20px;
-  font-size: 14px;
+  padding: @concis-transform-lg;
+  font-size: @concis-font-md;
   background-color: #fff;
   border: 1px solid rgb(221, 221, 221);
-  border-radius: 5px;
+  border-radius: @concis-radius-xs;
   opacity: 1;
-  animation: showElement 0.3s;
+  animation: concis-show-notifica 0.3s;
   .title {
     display: flex;
     align-items: center;
     justify-content: space-between;
     .title-content {
-      margin-left: 20px;
+      margin-left: @concis-transform-lg;
       font-weight: 500;
-      font-size: 16px;
+      font-size: @concis-font-lg;
     }
     .close-icon {
       position: relative;
       bottom: 15px;
-      font-size: 10px;
+      font-size: @concis-font-xs;
     }
   }
   .notification-content {
-    margin: 10px 0 0 44px;
+    margin: @concis-transform-ms 0 0 44px;
   }
   .notification-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: @concis-transform-lg;
   }
 }
 @media screen and (max-width: 400px) {
-  .notifica-container {
-    position: fixed;
-    z-index: 99999;
-    min-width: 220px;
-    min-height: 60px;
-    padding: 20px;
-    font-size: 14px;
-    background-color: #fff;
-    border: 1px solid rgb(221, 221, 221);
-    border-radius: 5px;
-    opacity: 1;
-    animation: showElement 0.3s;
-    .title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .title-content {
-        margin-left: 20px;
-        font-weight: 500;
-        font-size: 16px;
-      }
-      .close-icon {
-        position: relative;
-        bottom: 15px;
-        font-size: 10px;
-      }
-    }
-    .notification-content {
-      margin: 10px 0 0 44px;
-    }
-    .notification-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
+  .concis-notifica-container {
+    min-width: @concis-mobile-notifica-width;
   }
 }
-@keyframes showElement {
+@keyframes concis-show-notifica {
   0% {
     opacity: 0;
   }

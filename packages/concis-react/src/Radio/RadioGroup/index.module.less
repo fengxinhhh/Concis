@@ -1,73 +1,70 @@
+@import '../../styles/common.less';
+
+@concis-radio-size: 15px;
+@concis-radioBox-height: 32px;
+
 .concis-radio-group {
   display: flex;
   align-items: center;
-  height: 32px;
+  height: @concis-radioBox-height;
   .radioBox {
     display: flex;
     align-items: center;
-    height: 32px;
-    margin: 0 5px;
+    height: @concis-radioBox-height;
+    margin: 0 @concis-transform-xs;
     cursor: pointer;
-    .radio-checked {
+    .radio-checked,
+    .radio {
       box-sizing: border-box;
-      width: 15px;
-      height: 15px;
-      margin-right: 5px;
+      width: @concis-radio-size;
+      height: @concis-radio-size;
+      margin-right: @concis-transform-xs;
       background: #fff;
-      border: 5px solid var(--global-color);
-      border-radius: 50%;
+      border-radius: @concis-radius-lg;
       cursor: pointer;
       transition: 0.1s linear;
     }
+    .radio-checked {
+      border: 5px solid var(--global-color);
+    }
     .radio {
-      box-sizing: border-box;
-      width: 15px;
-      height: 15px;
-      margin-right: 5px;
-      background: #fff;
       border: 2px solid rgb(226, 226, 226);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: 0.1s linear;
     }
     .disabledRadio {
       cursor: not-allowed;
     }
     .radioLabel {
-      font-size: 14px;
+      font-size: @concis-font-md;
     }
     .disabledLabel {
       color: #00000040;
-      font-size: 14px;
+      font-size: @concis-font-md;
     }
   }
   .addOption {
     display: flex;
     flex-direction: row;
   }
-  .groupDisabledStyle {
+  .groupDisabledStyle,
+  .groupStyle,
+  .groupActive {
     display: inline-block;
-    height: 32px;
+    height: @concis-radioBox-height;
     margin: 0;
-    padding: 0 20px;
+    padding: 0 @concis-transform-lg;
     color: #000000d9;
-    font-size: 14px;
+    font-size: @concis-font-md;
     line-height: 30px;
+  }
+  .groupDisabledStyle {
     background: #00000040;
-    border: 1px solid #d9d9d9;
+    border: 1px solid @concis-disabled-color;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.6;
   }
   .groupStyle {
-    display: inline-block;
-    height: 32px;
-    margin: 0;
-    padding: 0 20px;
-    color: #000000d9;
-    font-size: 14px;
-    line-height: 30px;
     background: #fff;
-    border: 1px solid #d9d9d9;
+    border: 1px solid @concis-disabled-color;
     cursor: pointer;
     transition: 0.4s linear;
     &:hover {
@@ -75,15 +72,9 @@
     }
   }
   .groupActive {
-    display: inline-block;
-    height: 32px;
-    margin: 0;
-    padding: 0 20px;
     color: #fff;
-    font-size: 14px;
-    line-height: 30px;
     background: var(--global-color);
-    border: 1px solid #d9d9d9;
+    border: 1px solid @concis-disabled-color;
     cursor: pointer;
     transition: 0.4s linear;
     &:hover {

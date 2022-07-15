@@ -61,6 +61,7 @@ interface ButtonStyle<T> {
   border?: T;
   cursor?: T;
   background?: T;
+  color?: T;
 }
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; //原生button接口
 
@@ -111,6 +112,9 @@ const Button = (props: ButtonProps) => {
       size = { ...size, border: '1px dashed #ccc' };
     }
     if (disabled) {
+      if (type === 'text') {
+        size = { ...size, color: '#000000' };
+      }
       size = { ...size, cursor: 'not-allowed' };
     }
     if (globalColor) {
