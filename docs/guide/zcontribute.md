@@ -53,10 +53,11 @@ yarn build             //npm打包，产物于web-react/web-react/mobile
 
 ## 测试
 
-在 packages/自包目录下执行对指定包的组件进行整体测试。
+在 packages/自包目录下执行对指定包的组件进行单元测试和 e2e 测试。
 
 ```tsx pure
-yarn test
+yarn test:unit          //单元测试，对应/__tests__/unit
+yarn test:e2e          //e2e测试，对应/__tests__/e2e
 ```
 
 ## 分支管理
