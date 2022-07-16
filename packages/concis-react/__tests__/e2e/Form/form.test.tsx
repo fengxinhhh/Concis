@@ -63,7 +63,11 @@ describe('form e2e test', () => {
     await click(
       '#form-index6 .concis-form .concis-form-item:nth-child(8) .concis-form-item-content .concis-button:nth-child(2)',
     );
+    //测试重置后所有form-item都为空
     expect(await getValue('#form-index6 .concis-form .concis-form-item:nth-child(1) input')).toBe(
+      '',
+    );
+    expect(await getValue('#form-index6 .concis-form .concis-form-item:nth-child(2) input')).toBe(
       '',
     );
   };
