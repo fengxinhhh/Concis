@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "target": "es6",
+    "lib": ["es6"],
+    "sourceMap": true,
+    "rootDir": "src",
+    "strict": true
+  },
+  "exclude": ["node_modules"]
+}

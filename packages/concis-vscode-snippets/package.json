@@ -1,0 +1,49 @@
+{
+  "name": "concis-snippets",
+	"displayName": "concis-snippets",
+	"description": "concis snippets for vscode",
+	"version": "0.0.1",
+	"publisher": "fengxin",
+	"engines": {
+		"vscode": "^1.63.0"
+	},
+	"categories": [
+		"Other",
+		"Snippets"
+	],
+	"activationEvents": [
+		"onLanguage:react",
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets.json"
+      },
+			{
+        "language": "typescript",
+        "path": "./snippets.json"
+      }
+    ]
+	},
+	"scripts": {
+		"compile": "rollup -c ./rollup.config.js",
+		"build": "vsce package",
+		"publish": "npm run compile && npm run build && vsce publish"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.63.0",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"glob": "^8.0.3",
+		"typescript": "^4.7.4",
+		"ts-loader": "^9.3.1",
+		"@vscode/test-electron": "^2.1.5"
+	}
+}

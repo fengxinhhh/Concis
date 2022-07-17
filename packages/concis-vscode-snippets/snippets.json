@@ -1,0 +1,53 @@
+{
+  "Concis Button Component": {
+    "prefix": "cbutton",
+    "body": ["<Button type=\"primary\">${1:}</Button>"],
+    "description": "Concis Button Component"
+  },
+  "Concis Form Component": {
+    "prefix": "cform",
+    "body": ["<Form layout={'vertical'} style={{ width: '600px' }}>", "", "</Form>"],
+    "description": "Concis Form Component"
+  },
+  "Concis Form.Item Component": {
+    "prefix": "cformitem",
+    "body": ["<Form.Item label=\"\" field=\"\">", "", "</Form.Item>"],
+    "description": "Concis Form.Item Component"
+  },
+  "Concis Input Component": {
+    "prefix": "cinput",
+    "body": ["<Input placeholder=\"请输入\" width=\"200\" />"],
+    "description": "Concis Input Component"
+  },
+  "Concis Radio Component": {
+    "prefix": "cradio",
+    "body": [
+      "<RadioGroup value={0}>",
+      "  <Radio></Radio>",
+      "  <Radio></Radio>",
+      "  <Radio></Radio>",
+      "</RadioGroup>"
+    ],
+    "description": "Concis Radio Component"
+  },
+  "Concis Rate Component": {
+    "prefix": "crate",
+    "body": ["<Rate ", "  num={4} ", "  defaultShow={3} ", "/>"],
+    "description": "Concis Rate Component"
+  },
+  "Concis Select Component": {
+    "prefix": "cselect",
+    "body": ["<Select", "  option={option}", "  width={200}", "  placeholder={'请选择'}", "/>"],
+    "description": "Concis Select Component"
+  },
+  "Concis Switch Component": {
+    "prefix": "cswitch",
+    "body": ["<Switch", "  defaultChecked={true}", "/>"],
+    "description": "Concis Switch Component"
+  },
+  "Concis Tree Component": {
+    "prefix": "ctree",
+    "body": ["<Tree ", "  treeData={treeData} ", "  avaChooseMore", "/>", ""],
+    "description": "Concis Tree Component"
+  }
+}
