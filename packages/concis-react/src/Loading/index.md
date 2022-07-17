@@ -25,7 +25,7 @@ group:
 
 ## 列表式加载
 
-配置 type=dot，可以展示省略号显示。
+配置 type=strip，可以展示列表式显示。
 
 <code src="./demos/index7.tsx" />
 
