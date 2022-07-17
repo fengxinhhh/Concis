@@ -12,7 +12,8 @@
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
-    "test:jest": "jest"
+    "test:jest": "jest",
+    "publish": "node ./scripts/replace-version-in-pc.ts && lerna publish from-package"
   },
   "module": "es/index.js",
   "typings": "es/index.d.ts",
