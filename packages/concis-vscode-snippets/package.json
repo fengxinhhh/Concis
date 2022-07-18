@@ -2,7 +2,7 @@
   "name": "concis-snippets",
 	"displayName": "concis-snippets",
 	"description": "concis snippets for vscode",
-  "version":"0.0.11",
+  "version": "0.1.1",
 	"publisher": "fengxin",
 	"icon": "src/logo.png",
 	"engines": {
@@ -47,6 +47,7 @@
 		"upgrade": "node ../../scripts/replace-version-in-vscode.ts",
 		"compile": "rollup -c ./rollup.config.js",
 		"build": "vsce package",
+		"generate:readme": "node ../../scripts/vscode/generate-vscode-snippet.ts",
 		"publish": "npm run compile && npm run build && vsce publish"
 	},
 	"devDependencies": {

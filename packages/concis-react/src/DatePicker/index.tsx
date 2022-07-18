@@ -264,7 +264,7 @@ const DatePicker: FC<DatePickerProps> = (props: DatePickerProps) => {
     //选中的所有样式
     result: {
       letterSpacing: 'normal',
-      color: globalColor || '#1890FF',
+      color: globalColor,
       width: '120px',
     },
     icon: {
@@ -275,7 +275,7 @@ const DatePicker: FC<DatePickerProps> = (props: DatePickerProps) => {
       opacity: 1,
     },
     dayActive: {
-      backgroundColor: globalColor || '#1890FF',
+      backgroundColor: globalColor,
       color: '#fff',
       fontWeight: 'bold',
       borderRadius: '5px',

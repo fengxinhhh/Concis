@@ -10,7 +10,7 @@ function provideHover(document: vscode.TextDocument, position: vscode.Position) 
   let matchComponent = '';
   for (let i = 0; i < componentList.length; i++) {
     const component = componentList[i];
-    if (line.text.includes(component)) {
+    if (line.text.includes(`<${component}`)) {
       isConcisComponentDom = true;
       matchComponent = component;
     }

@@ -18,9 +18,9 @@
 /docs-dist
 .DS_Store
 /coverage
-.umi
 .umi-production
 .umi-test
 .env.local
 /.vscode
 /.idea
+/.umi/.cache

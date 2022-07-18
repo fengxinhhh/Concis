@@ -2281,6 +2281,38 @@ export function getRoutes() {
         "title": "色彩 - Concis"
       },
       {
+        "path": "/guide/vscode",
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/vscode.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/guide/vscode.md",
+          "updatedTime": 1658166497231,
+          "nav": {
+            "title": "指南",
+            "path": "/guide"
+          },
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "vscode 支持",
+              "heading": "vscode-支持"
+            },
+            {
+              "depth": 2,
+              "value": "介绍",
+              "heading": "介绍"
+            },
+            {
+              "depth": 2,
+              "value": "使用",
+              "heading": "使用"
+            }
+          ],
+          "title": "vscode 支持"
+        },
+        "title": "vscode 支持 - Concis"
+      },
+      {
         "path": "/guide/wclass",
         "component": require('/Users/apple/Desktop/Concis/docs/guide/wclass.md').default,
         "exact": true,

@@ -258,6 +258,11 @@
           "meta": {}
         },
         {
+          "path": "/guide/vscode",
+          "title": "vscode 支持",
+          "meta": {}
+        },
+        {
           "path": "/guide/wclass",
           "title": "自定义类名",
           "meta": {}
