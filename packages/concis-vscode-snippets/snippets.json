@@ -49,5 +49,121 @@
     "prefix": "ctree",
     "body": ["<Tree ", "  treeData={treeData} ", "  avaChooseMore", "/>", ""],
     "description": "Concis Tree Component"
+  },
+  "Concis DatePicker Component": {
+    "prefix": "cdatepicker",
+    "body": ["<DatePicker ", "  type=\"primary\" ", "  showRange ", "  showClear", "/>", ""],
+    "description": "Concis DatePicker Component"
+  },
+  "Concis CheckBox Component": {
+    "prefix": "ccheckbox",
+    "body": ["<CheckBox checked={true}>", "  ", "</CheckBox>"],
+    "description": "Concis CheckBox Component"
+  },
+  "Concis Loading Component": {
+    "prefix": "cloading",
+    "body": [
+      "<div style={{ position: 'relative', width: '200px', height: '50px' }}>",
+      "  <Loading />",
+      "</div>"
+    ],
+    "description": "Concis Loading Component"
+  },
+  "Concis Message Component": {
+    "prefix": "cmessage",
+    "body": [
+      "Message.info({",
+      "  content: \"\",",
+      "  duration: \"\",",
+      "  clearable: true,",
+      "});"
+    ],
+    "description": "Concis Message Component"
+  },
+  "Concis Notification Component": {
+    "prefix": "cnotification",
+    "body": [
+      "Notification.info({",
+      "  title: 'Notification',",
+      "  content: val,",
+      "  duration: 3000,",
+      "  style: {{}},",
+      "});"
+    ],
+    "description": "Concis Notification Component"
+  },
+  "Concis Skeleton Component": {
+    "prefix": "cskeleton",
+    "body": [
+      "<Skeleton ",
+      "  loading ",
+      "  title ",
+      "  avatar ",
+      "  row={} ",
+      "  width={[]} ",
+      "/>"
+    ],
+    "description": "Concis Skeleton Component"
+  },
+  "Concis Divider Component": {
+    "prefix": "cdivider",
+    "body": ["<Divider fontSize={12} align={'center'}>", " ", "</Divider>"],
+    "description": "Concis Divider Component"
+  },
+  "Concis Layout Component": {
+    "prefix": "clayout",
+    "body": [
+      "<Layout>",
+      "  <Header extraStyle={headerBg}></Header>",
+      "  <Layout>",
+      "    <Slider row={3} extraStyle={sliderBg}>",
+      "             ",
+      "    </Slider>",
+      "    <Content row={7} extraStyle={contentBg}>",
+      "             ",
+      "    </Content>",
+      "  </Layout>",
+      "  <Footer></Footer>",
+      "</Layout>"
+    ],
+    "description": "Concis Layout Component"
+  },
+  "Concis Space Component": {
+    "prefix": "cspace",
+    "body": ["<Space size={} direction={}></Space>"],
+    "description": "Concis Space Component"
+  },
+  "Concis LazyLoad Component": {
+    "prefix": "clazyload",
+    "body": ["<LazyLoad delay={}>", "", "</LazyLoad>"],
+    "description": "Concis LazyLoad Component"
+  },
+  "Concis GlobalConfig Component": {
+    "prefix": "cglobalconfig",
+    "body": ["<GlobalConfig globalColor={} prefixCls={}>", "  ", "</GlobalConfig>"],
+    "description": "Concis GlobalConfig Component"
+  },
+  "Concis Avatar Component": {
+    "prefix": "cavatar",
+    "body": [
+      "<Avatar",
+      "  size={48}",
+      "  style={{}}",
+      "  triggerType=\"mask\"",
+      "  triggerIcon={}",
+      "/>"
+    ],
+    "description": "Concis Avatar Component"
+  },
+  "Concis AvatarGroup Component": {
+    "prefix": "cavatargroup",
+    "body": [
+      "<AvatarGroup size={50} groupStyle={{}}>",
+      "  <Avatar></Avatar>",
+      "  <Avatar></Avatar>",
+      "  <Avatar></Avatar>",
+      "</AvatarGroup>"
+    ],
+    "description": "Concis AvatarGroup Component"
   }
 }

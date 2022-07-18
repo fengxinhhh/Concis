@@ -2,8 +2,9 @@
   "name": "concis-snippets",
 	"displayName": "concis-snippets",
 	"description": "concis snippets for vscode",
-	"version": "0.0.1",
+  "version":"0.0.10",
 	"publisher": "fengxin",
+	"icon": "src/logo.png",
 	"engines": {
 		"vscode": "^1.63.0"
 	},
@@ -12,13 +13,16 @@
 		"Snippets"
 	],
 	"activationEvents": [
-		"onLanguage:react",
-    "onLanguage:javascript",
-    "onLanguage:typescript",
-    "onLanguage:javascriptreact",
-    "onLanguage:typescriptreact"
+	"*"
 	],
 	"main": "./dist/extension.js",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/fengxinhhh/Concis"
+  },
+  "bugs": {
+    "url": "https://github.com/fengxinhhh/Concis/issues"
+  },
 	"contributes": {
 		"snippets": [
       {
@@ -28,10 +32,19 @@
 			{
         "language": "typescript",
         "path": "./snippets.json"
+      },
+			{
+        "language": "javascriptreact",
+        "path": "./snippets.json"
+      },
+			{
+        "language": "typescriptreact",
+        "path": "./snippets.json"
       }
     ]
 	},
 	"scripts": {
+		"upgrade": "node ../../scripts/replace-version-in-vscode.ts",
 		"compile": "rollup -c ./rollup.config.js",
 		"build": "vsce package",
 		"publish": "npm run compile && npm run build && vsce publish"

@@ -1,3 +1,3 @@
 # Concis snippets for vscode
 
-# Concis 组件库代码自动补全
+<img src="http://react-view-ui.com:92/videos/snippet-demo.gif" />
