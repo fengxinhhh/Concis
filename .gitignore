@@ -7,6 +7,8 @@
 /packages/concis-react-mobile/node_modules
 /packages/concis-react-mobile/package-lock.json
 /packages/concis-react-mobile/web-react-mobile
+/packages/concis-vscode-snippets/node_modules
+/packages/concis-vscode-snippets/dist
 /npm-debug.log*
 /yarn-error.log
 /yarn.lock

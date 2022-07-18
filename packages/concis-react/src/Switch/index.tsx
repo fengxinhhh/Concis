@@ -18,9 +18,9 @@ const Switch = <T,>(props: SwitchProps<T>) => {
     handleChange,
   } = props;
 
-  const [switchWidth, setSwitchWidth] = useState<T>(0);
-  const [switchChildWidth, setSwitchChildWidth] = useState<T>(0);
-  const [switchStatus, setSwitchStatus] = useState(defaultChecked);
+  const [switchWidth, setSwitchWidth] = useState<number>(0);
+  const [switchChildWidth, setSwitchChildWidth] = useState<number>(0);
+  const [switchStatus, setSwitchStatus] = useState<boolean>(defaultChecked);
 
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -28,8 +28,8 @@ const Switch = <T,>(props: SwitchProps<T>) => {
 
   useEffect(() => {
     if (checkedChildren && unCheckedChildren && document.querySelector('.concis-switch-child')) {
-      setSwitchChildWidth(document.querySelector('.concis-switch-child').clientWidth);
-      setSwitchWidth(document.querySelector('.concis-switch-child').clientWidth + 30);
+      setSwitchChildWidth((document.querySelector('.concis-switch-child') as any).clientWidth);
+      setSwitchWidth((document.querySelector('.concis-switch-child') as any).clientWidth + 30);
     } else {
       setSwitchWidth(small ? 28 : 40);
     }
@@ -63,7 +63,7 @@ const Switch = <T,>(props: SwitchProps<T>) => {
   }, [switchStatus, disabled, switchWidth, small, globalColor]);
 
   return (
-    <div className={classNames} style={switchStyle} onClick={toggleSwitch}>
+    <div className={classNames} style={switchStyle as any} onClick={toggleSwitch}>
       <div className="concis-switch-dot">{loading && <Loading width="1em" height="1em" />}</div>
       {checkedChildren && unCheckedChildren && (
         <div className="concis-switch-child">
