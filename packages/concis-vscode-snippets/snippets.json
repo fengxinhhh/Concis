@@ -165,5 +165,109 @@
       "</AvatarGroup>"
     ],
     "description": "Concis AvatarGroup Component"
+  },
+  "Concis Badge Component": {
+    "prefix": "cbadge",
+    "body": ["<Badge count={} dot dotStyle={{}}>", "   ", "</Badge>"],
+    "description": "Concis Badge Component"
+  },
+  "Concis Collapse Component": {
+    "prefix": "ccollapse",
+    "body": [
+      "<Collapse defaultActive={[1, 2]}>",
+      "  <CollapseItem header=\"\" listKey=\"1\">",
+      "  </CollapseItem>",
+      "  <CollapseItem header=\"\" listKey=\"2\">",
+      "  </CollapseItem>",
+      "  <CollapseItem header=\"\" listKey=\"3\">",
+      "  </CollapseItem>",
+      "</Collapse>"
+    ],
+    "description": "Concis Collapse Component"
+  },
+  "Concis List Component": {
+    "prefix": "clist",
+    "body": [
+      "<List",
+      "  style={{ fontSize: '14px', width: '600px' }}",
+      "  header=\"List title\"",
+      "  size={'default'}",
+      "  dataSource={dataSource}",
+      "  render={(item) => {",
+      "    return (",
+      "      <List.Item style={{ fontSize: '14px' }}>",
+      "        <div>{item}</div>",
+      "      </List.Item>",
+      "    );",
+      "  }}",
+      "/>"
+    ],
+    "description": "Concis List Component"
+  },
+  "Concis Popover Component": {
+    "prefix": "cpopover",
+    "body": [
+      "<Popover",
+      "  type=\"hover\"",
+      "  content={",
+      "    <></>",
+      "  }",
+      ">",
+      "  <Button type=\"primary\">Hover me</Button>",
+      "</Popover>"
+    ],
+    "description": "Concis Popover Component"
+  },
+  "Concis Swiper Component": {
+    "prefix": "cswiper",
+    "body": ["<Swiper imgList={imgList} pictureSize={600} height={240} />"],
+    "description": "Concis Swiper Component"
+  },
+  "Concis Table Component": {
+    "prefix": "ctable",
+    "body": ["<Table titleParams={titleParams} tableData={tableData} />"],
+    "description": "Concis Table Component"
+  },
+  "Concis TreeView Component": {
+    "prefix": "ctreeview",
+    "body": ["<TreeView treeData={treeData} />"],
+    "description": "Concis TreeView Component"
+  },
+  "Concis Affix Component": {
+    "prefix": "caffix",
+    "body": [
+      "<Affix affixType=\"scroll\" offsetTop={100} offsetLeft={600}>",
+      "  <div>top Affix</div>",
+      "</Affix>"
+    ],
+    "description": "Concis Affix Component"
+  },
+  "Concis Menu Component": {
+    "prefix": "cmenu",
+    "body": ["<Menu items={items} />"],
+    "description": "Concis Menu Component"
+  },
+  "Concis Pagination Component": {
+    "prefix": "cpagination",
+    "body": [
+      "<Pagination",
+      "  total={100}",
+      "  showSizeChanger",
+      "  pageSizeOptions={}",
+      "  showJumpInput",
+      "/>"
+    ],
+    "description": "Concis Pagination Component"
+  },
+  "Concis Steps Component": {
+    "prefix": "csteps",
+    "body": [
+      "<Steps current={2}>",
+      "  <Step title=\"first\" subTitle=\"\" description=\"\" />",
+      "  <Step title=\"secord\" subTitle=\"\" description=\"\" />",
+      "  <Step title=\"third\" subTitle=\"\" description=\"\" />",
+      "</Steps>"
+    ],
+    "description": "Concis Steps Component"
   }
 }

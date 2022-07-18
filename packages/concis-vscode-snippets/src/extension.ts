@@ -1,18 +1,35 @@
 import * as vscode from 'vscode';
+import { componentList } from './componentList';
 
 const compileFiles = ['react', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact'];
 
 function provideHover(document: vscode.TextDocument, position: vscode.Position) {
   //移入Concis组件Dom，出现介绍
   const line = document.lineAt(position);
-  const isConcisComponentDom = line.text.includes('<Button');
+  let isConcisComponentDom = false;
+  let matchComponent = '';
+  for (let i = 0; i < componentList.length; i++) {
+    const component = componentList[i];
+    if (line.text.includes(component)) {
+      isConcisComponentDom = true;
+      matchComponent = component;
+    }
+  }
   if (isConcisComponentDom) {
     const isCN = vscode.env.language === 'zh-cn';
+    let componentDocPath = '';
+    for (let i = 0; i < matchComponent.length; i++) {
+      const str = matchComponent[i];
+      if (i !== 0 && str.charCodeAt(0) >= 65 && str.charCodeAt(0) <= 90) {
+        componentDocPath += '-';
+      }
+      componentDocPath += str;
+    }
     let text = isCN
-      ? `查看Button组件官方文档\n
-Concis -> http://react-view-ui.com:92/#/common/button`
+      ? `查看${matchComponent}组件官方文档\n
+Concis -> http://react-view-ui.com:92/#/common/${componentDocPath.toLowerCase()}`
       : `View the official documentation of the Button component\n
-Concis -> http://react-view-ui.com:92/#/common/button`;
+Concis -> http://react-view-ui.com:92/#/common/${componentDocPath.toLowerCase()}`;
 
     return new vscode.Hover(text);
   }
