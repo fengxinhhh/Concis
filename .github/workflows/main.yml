@@ -1,24 +1,23 @@
-# This is a basic workflow to help you get started with Actions
-name: deploy the concis
+name: pr_check
 
-on: [push, pull_request]
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Build
-        run: yarn && yarn docs:build
+      - name: install
+        run: yarn
 
-      - name: Deploy
-        uses: easingthemes/ssh-deploy@v2.1.2
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.CONCIS_SSH_KEY }}
-          ARGS: '-avzr --delete'
-          SOURCE: 'docs-dist'
-          REMOTE_HOST: ${{ secrets.CONCIS_HOST }}
-          REMOTE_USER: ${{ secrets.CONCIS_USERNAME }}
-          TARGET: '/www/wwwroot/concis-docs'
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: jest test
+        run: yarn test:jest
