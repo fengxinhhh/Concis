@@ -2155,7 +2155,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/guide/introduce.md",
-          "updatedTime": 1657619625000,
+          "updatedTime": 1658156830000,
           "nav": {
             "title": "指南",
             "path": "/guide"
@@ -2286,7 +2286,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/guide/vscode.md",
-          "updatedTime": 1658166497231,
+          "updatedTime": 1658166591000,
           "nav": {
             "title": "指南",
             "path": "/guide"
@@ -2462,7 +2462,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/guide/zcontribute.md",
-          "updatedTime": 1657997360000,
+          "updatedTime": 1658156830000,
           "nav": {
             "title": "指南",
             "path": "/guide"
