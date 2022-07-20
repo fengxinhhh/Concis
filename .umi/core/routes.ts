@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import { ApplyPluginsType } from 'D:/Code/openScource/Concis/node_modules/@umijs/runtime';
+import { ApplyPluginsType } from '/Users/apple/Desktop/Concis/node_modules/@umijs/runtime';
 import * as umiExports from './umiExports';
 import { plugin } from './plugin';
 
@@ -12,7 +12,7 @@ export function getRoutes() {
     "wrappers": [require('../dumi/layout').default],
     "component": ((props) => {
         const React = require('react');
-        const { default: getDemoRenderArgs } = require('D:/Code/openScource/Concis/node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs');
+        const { default: getDemoRenderArgs } = require('/Users/apple/Desktop/Concis/node_modules/@umijs/preset-dumi/lib/plugins/features/demo/getDemoRenderArgs');
         const { default: Previewer } = require('dumi-theme-default/es/builtins/Previewer.js');
         const { usePrefersColor, context } = require('dumi/theme');
 
@@ -55,11 +55,11 @@ export function getRoutes() {
     "__dumiRoot": true,
     "layout": false,
     "path": "/",
-    "wrappers": [require('../dumi/layout').default, require('D:/Code/openScource/Concis/node_modules/dumi-theme-default/es/layout.js').default],
+    "wrappers": [require('../dumi/layout').default, require('/Users/apple/Desktop/Concis/node_modules/dumi-theme-default/es/layout.js').default],
     "routes": [
       {
         "path": "/mobile/button",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react-mobile/src/Button/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react-mobile/src/Button/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react-mobile/src/Button/index.md",
@@ -128,7 +128,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/affix",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Affix/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Affix/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Affix/index.md",
@@ -172,7 +172,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/avatar",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Avatar/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Avatar/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Avatar/index.md",
@@ -236,7 +236,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/back-top",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/BackTop/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/BackTop/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/BackTop/index.md",
@@ -275,7 +275,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/badge",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Badge/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Badge/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Badge/index.md",
@@ -334,7 +334,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/button",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Button/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Button/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Button/index.md",
@@ -403,7 +403,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/check-box",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/CheckBox/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/CheckBox/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/CheckBox/index.md",
@@ -462,7 +462,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/collapse",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Collapse/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Collapse/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Collapse/index.md",
@@ -526,7 +526,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/date-picker",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/DatePicker/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/DatePicker/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/DatePicker/index.md",
@@ -590,7 +590,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/divider",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Divider/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Divider/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Divider/index.md",
@@ -644,7 +644,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/form",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Form/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Form/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Form/index.md",
@@ -728,7 +728,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/global-config",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/GlobalConfig/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/GlobalConfig/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/GlobalConfig/index.md",
@@ -772,7 +772,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/input",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Input/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Input/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Input/index.md",
@@ -836,7 +836,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/layout",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Layout/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Layout/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Layout/index.md",
@@ -885,7 +885,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/lazy-load",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/LazyLoad/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/LazyLoad/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/LazyLoad/index.md",
@@ -929,7 +929,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/list",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/List/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/List/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/List/index.md",
@@ -983,7 +983,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/loading",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Loading/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Loading/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Loading/index.md",
@@ -1052,7 +1052,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/menu",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Menu/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Menu/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Menu/index.md",
@@ -1121,7 +1121,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/message",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Message/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Message/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Message/index.md",
@@ -1180,7 +1180,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/notification",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Notification/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Notification/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Notification/index.md",
@@ -1244,7 +1244,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/pagination",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Pagination/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Pagination/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Pagination/index.md",
@@ -1303,7 +1303,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/popover",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Popover/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Popover/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Popover/index.md",
@@ -1362,7 +1362,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/radio",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Radio/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Radio/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Radio/index.md",
@@ -1421,7 +1421,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/rate",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Rate/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Rate/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Rate/index.md",
@@ -1490,7 +1490,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/select",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Select/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Select/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Select/index.md",
@@ -1554,7 +1554,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/skeleton",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Skeleton/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Skeleton/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Skeleton/index.md",
@@ -1618,7 +1618,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/space",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Space/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Space/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Space/index.md",
@@ -1682,11 +1682,11 @@ export function getRoutes() {
       },
       {
         "path": "/common/steps",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Steps/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Steps/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Steps/index.md",
-          "updatedTime": 1657640436000,
+          "updatedTime": 1658318078000,
           "componentName": "Steps",
           "title": "Steps 步骤条",
           "nav": {
@@ -1741,7 +1741,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/swiper",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Swiper/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Swiper/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Swiper/index.md",
@@ -1805,7 +1805,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/switch",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Switch/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Switch/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Switch/index.md",
@@ -1869,7 +1869,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/table",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Table/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Table/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Table/index.md",
@@ -1963,7 +1963,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/tree",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/Tree/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Tree/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/Tree/index.md",
@@ -2022,7 +2022,7 @@ export function getRoutes() {
       },
       {
         "path": "/common/tree-view",
-        "component": require('D:/Code/openScource/Concis/packages/concis-react/src/TreeView/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/TreeView/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/TreeView/index.md",
@@ -2081,7 +2081,7 @@ export function getRoutes() {
       },
       {
         "path": "/",
-        "component": require('D:/Code/openScource/Concis/docs/index.md').default,
+        "component": require('/Users/apple/Desktop/Concis/docs/index.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/index.md",
@@ -2146,7 +2146,7 @@ export function getRoutes() {
       },
       {
         "path": "/guide/introduce",
-        "component": require('D:/Code/openScource/Concis/docs/guide/introduce.md').default,
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/introduce.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/guide/introduce.md",
@@ -2213,7 +2213,7 @@ export function getRoutes() {
       },
       {
         "path": "/guide/teuse",
-        "component": require('D:/Code/openScource/Concis/docs/guide/teuse.md').default,
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/teuse.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/guide/teuse.md",
@@ -2245,7 +2245,7 @@ export function getRoutes() {
       },
       {
         "path": "/guide/vcolor",
-        "component": require('D:/Code/openScource/Concis/docs/guide/vcolor.md').default,
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/vcolor.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/guide/vcolor.md",
@@ -2277,7 +2277,7 @@ export function getRoutes() {
       },
       {
         "path": "/guide/vscode",
-        "component": require('D:/Code/openScource/Concis/docs/guide/vscode.md').default,
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/vscode.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/guide/vscode.md",
@@ -2309,7 +2309,7 @@ export function getRoutes() {
       },
       {
         "path": "/guide/wclass",
-        "component": require('D:/Code/openScource/Concis/docs/guide/wclass.md').default,
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/wclass.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/guide/wclass.md",
@@ -2341,7 +2341,7 @@ export function getRoutes() {
       },
       {
         "path": "/guide/wtheme",
-        "component": require('D:/Code/openScource/Concis/docs/guide/wtheme.md').default,
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/wtheme.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/guide/wtheme.md",
@@ -2374,7 +2374,7 @@ export function getRoutes() {
       },
       {
         "path": "/guide/xproject",
-        "component": require('D:/Code/openScource/Concis/docs/guide/xproject.md').default,
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/xproject.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/guide/xproject.md",
@@ -2406,7 +2406,7 @@ export function getRoutes() {
       },
       {
         "path": "/guide/yproject",
-        "component": require('D:/Code/openScource/Concis/docs/guide/yproject.md').default,
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/yproject.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/guide/yproject.md",
@@ -2453,7 +2453,7 @@ export function getRoutes() {
       },
       {
         "path": "/guide/zcontribute",
-        "component": require('D:/Code/openScource/Concis/docs/guide/zcontribute.md').default,
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/zcontribute.md').default,
         "exact": true,
         "meta": {
           "filePath": "docs/guide/zcontribute.md",
