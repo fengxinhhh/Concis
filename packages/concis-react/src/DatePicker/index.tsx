@@ -47,10 +47,6 @@ interface DatePickerProps {
    */
   handleChange?: Function;
 }
-interface DayItemType {
-  disable: boolean;
-  day: number;
-}
 const monthList = [
   '一月',
   '二月',
@@ -78,15 +74,15 @@ const DatePicker: FC<DatePickerProps> = (props: DatePickerProps) => {
     day: new Date().getDate(),
   });
   const [thisMonthFirstDay, setThisMonthFirstDay] = useState(0); //本月第一天是周几
-  const [dayListArray, setDayListArray] = useState<Array<DayItemType>>([]); //每月的日历
+  const [dayListArray, setDayListArray] = useState<Array<number>>([]); //每月的日历
   const [pickStatus, setPickStatus] = useState(0); //timerpick状态，0表示选择日期，1表示改变月份，2表示改变年份
   const [iptValue, setIptValue] = useState<null | string>(null); //文本框输入的值
   const [yearList, setYearList] = useState<Array<number>>([
     2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
   ]);
 
-  const { globalColor = '#1890FF', prefixCls } = useContext(globalCtx) as GlobalConfigProps;
-  // console.log(globalColor)
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
   const classNames = cs(prefixCls, className, 'concis-date-picker');
   const formCtx: any = useContext(ctx);
 
@@ -104,11 +100,7 @@ const DatePicker: FC<DatePickerProps> = (props: DatePickerProps) => {
     const totalDay = new Date(year, month, 0).getDate();
     const dayList = new Array(firstDay).fill('');
     for (let i = 1; i < totalDay + 1; i++) {
-      dayList.push({
-        disable: disableCheck(new Date(`${year}/${month}/${i}`)),
-        day: i,
-      });
-      // console.log(`${year}/${month}/${i}`);
+      dayList.push(i);
     }
     setThisMonthFirstDay(firstDay); //重新计算本月第一天为周几
     setDayListArray(dayList); //重排本月日历
@@ -135,14 +127,11 @@ const DatePicker: FC<DatePickerProps> = (props: DatePickerProps) => {
     setShowTimeDialog(true);
     setRenderShowDialog(true);
   };
-  const disableCheck = (date: Date) => {
-    return date.getDate() > 12;
-  };
-  const changeDay = (day: DayItemType) => {
+  const changeDay = (day: number) => {
     //改变日期
-    if (!day.day || day.disable) return;
+    if (!day) return;
     setNowDate((old: any) => {
-      old.day = day.day;
+      old.day = day;
       return { ...old };
     });
     handleChange && handleChange(`${nowDate.year}-${nowDate.month}-${nowDate.day}`);
@@ -318,185 +307,182 @@ const DatePicker: FC<DatePickerProps> = (props: DatePickerProps) => {
       },
     };
   }, [align]);
-  if (showRange) {
-    return (
-      <RangeDatePicker
-        showClear={showClear}
-        align={align ? align : 'bottom'}
-        handleChange={rangeDatePickChangeCallback}
-      />
-    );
-  } else {
-    return (
-      <div className={classNames}>
-        {(type == 'primary' || !type) && (
-          <div
-            className="result"
-            style={
-              showTimeDialog ? { ...activeStyle.result } : ({ '--hover-color': globalColor } as any)
-            }
+
+  return showRange ? (
+    <RangeDatePicker
+      showClear={showClear}
+      align={align ? align : 'bottom'}
+      handleChange={rangeDatePickChangeCallback}
+    />
+  ) : (
+    <div className={classNames}>
+      {(type == 'primary' || !type) && (
+        <div
+          className="result"
+          style={
+            showTimeDialog
+              ? { ...activeStyle.result }
+              : ({ '--hover-color': globalColor || '#1890ff' } as any)
+          }
+          onClick={(e) => openDialog(e)}
+        >
+          <span>
+            {nowDate.year}-{nowDate.month}-{nowDate.day}
+          </span>
+          <div className="icon" style={showTimeDialog ? activeStyle.icon : {}}>
+            <FieldTimeOutlined />
+          </div>
+        </div>
+      )}
+      {type == 'input' && (
+        <div>
+          <input
+            className="input"
+            value={iptValue !== null ? iptValue : `${nowDate.year}-${nowDate.month}-${nowDate.day}`}
             onClick={(e) => openDialog(e)}
-          >
-            <span>
-              {nowDate.year}-{nowDate.month}-{nowDate.day}
-            </span>
-            <div className="icon" style={showTimeDialog ? activeStyle.icon : {}}>
-              <FieldTimeOutlined />
-            </div>
-          </div>
-        )}
-        {type == 'input' && (
-          <div>
-            <input
-              className="input"
-              value={
-                iptValue !== null ? iptValue : `${nowDate.year}-${nowDate.month}-${nowDate.day}`
-              }
-              onClick={(e) => openDialog(e)}
-              onChange={(e) => bindIptText(e)}
-              onKeyDown={(e) => enterChangeDate(e)}
-              onBlur={blurInput}
+            onChange={(e) => bindIptText(e)}
+            onKeyDown={(e) => enterChangeDate(e)}
+            onBlur={blurInput}
+          />
+          {showClear && (
+            <CloseOutlined
+              style={{ position: 'relative', right: '15px', fontSize: '12px', cursor: 'pointer' }}
+              onClick={clearDate}
             />
-            {showClear && (
-              <CloseOutlined
-                style={{ position: 'relative', right: '15px', fontSize: '12px', cursor: 'pointer' }}
-                onClick={clearDate}
-              />
-            )}
-          </div>
-        )}
-        {renderShowDialog && (
-          <div
-            className="check-box"
-            style={
-              {
-                ...(showTimeDialog
-                  ? { ...activeStyle.checkBox, '--hover-color': globalColor }
-                  : { '--hover-color': globalColor }),
-                ...alignFn(),
-              } as any
-            }
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="top-bar">
-              <b className="year" onClick={() => setPickStatus(2)}>
-                {nowDate.year}
-              </b>
-              <b className="month" onClick={() => setPickStatus(1)} style={{ marginRight: '20px' }}>
-                {nowDate.month}
-              </b>
-              <div
-                className="close-icon"
-                onClick={() => {
-                  setShowTimeDialog(false);
-                  setTimeout(() => {
-                    setRenderShowDialog(false);
-                  }, 300);
-                }}
-              >
-                <CloseOutlined />
-              </div>
+          )}
+        </div>
+      )}
+      {renderShowDialog && (
+        <div
+          className="check-box"
+          style={
+            {
+              ...(showTimeDialog
+                ? { ...activeStyle.checkBox, '--hover-color': globalColor || '#1890ff' }
+                : { '--hover-color': globalColor || '#1890ff' }),
+              ...alignFn(),
+            } as any
+          }
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="top-bar">
+            <b className="year" onClick={() => setPickStatus(2)}>
+              {nowDate.year}
+            </b>
+            <b className="month" onClick={() => setPickStatus(1)} style={{ marginRight: '20px' }}>
+              {nowDate.month}
+            </b>
+            <div
+              className="close-icon"
+              onClick={() => {
+                setShowTimeDialog(false);
+                setTimeout(() => {
+                  setRenderShowDialog(false);
+                }, 300);
+              }}
+            >
+              <CloseOutlined />
             </div>
-            <div className="date-content">
-              {/* 日历 */}
-              {pickStatus == 0 && (
-                <>
-                  <div className="week">
-                    <div>日</div>
-                    <div>一</div>
-                    <div>二</div>
-                    <div>三</div>
-                    <div>四</div>
-                    <div>五</div>
-                    <div>六</div>
-                  </div>
-                  <div className="day-list">
-                    {dayListArray.map((day: DayItemType, index: number) => {
-                      return (
-                        <div
-                          key={index}
-                          className={`${day.day ? 'day' : 'white'} ${day.disable ? 'disable' : ''}`}
-                          style={nowDate.day == day.day ? activeStyle.dayActive : {}}
-                          onClick={() => changeDay(day)}
-                        >
-                          {day.day}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </>
-              )}
-              {/* 月份选择框 */}
-              {pickStatus == 1 && (
-                <div className="month-toggle-box">
-                  {monthList.map((m: string, index) => {
+          </div>
+          <div className="date-content">
+            {/* 日历 */}
+            {pickStatus == 0 && (
+              <>
+                <div className="week">
+                  <div>日</div>
+                  <div>一</div>
+                  <div>二</div>
+                  <div>三</div>
+                  <div>四</div>
+                  <div>五</div>
+                  <div>六</div>
+                </div>
+                <div className="day-list">
+                  {dayListArray.map((day: number, index: number) => {
+                    return (
+                      <div
+                        key={index}
+                        className={day ? 'day' : 'white'}
+                        style={nowDate.day == day ? activeStyle.dayActive : {}}
+                        onClick={() => changeDay(day)}
+                      >
+                        {day}
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+            {/* 月份选择框 */}
+            {pickStatus == 1 && (
+              <div className="month-toggle-box">
+                {monthList.map((m: string, index) => {
+                  return (
+                    <div
+                      key={m}
+                      className="month"
+                      style={index + 1 == nowDate.month ? activeStyle.dayActive : {}}
+                      onClick={() => changeMonth(index + 1)}
+                    >
+                      {m}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {/* 年份选择框 */}
+            {pickStatus == 2 && (
+              <div className="year-toggle-box">
+                <div className="toggle-bar">
+                  <DoubleLeftOutlined style={{ cursor: 'pointer' }} onClick={setPreGroupYear} />
+                  <span>
+                    {yearList[0]}-{yearList[8]}
+                  </span>
+                  <DoubleRightOutlined style={{ cursor: 'pointer' }} onClick={setNextGroupYear} />
+                </div>
+                <div className="list">
+                  {yearList.map((m: number) => {
                     return (
                       <div
                         key={m}
-                        className="month"
-                        style={index + 1 == nowDate.month ? activeStyle.dayActive : {}}
-                        onClick={() => changeMonth(index + 1)}
+                        className="year"
+                        style={m == nowDate.year ? activeStyle.dayActive : {}}
+                        onClick={() => changeYear(m)}
                       >
                         {m}
                       </div>
                     );
                   })}
                 </div>
-              )}
-              {/* 年份选择框 */}
-              {pickStatus == 2 && (
-                <div className="year-toggle-box">
-                  <div className="toggle-bar">
-                    <DoubleLeftOutlined style={{ cursor: 'pointer' }} onClick={setPreGroupYear} />
-                    <span>
-                      {yearList[0]}-{yearList[8]}
-                    </span>
-                    <DoubleRightOutlined style={{ cursor: 'pointer' }} onClick={setNextGroupYear} />
-                  </div>
-                  <div className="list">
-                    {yearList.map((m: number) => {
-                      return (
-                        <div
-                          key={m}
-                          className="year"
-                          style={m == nowDate.year ? activeStyle.dayActive : {}}
-                          onClick={() => changeYear(m)}
-                        >
-                          {m}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
-            <div className="time-footer">
-              {pickStatus == 0 && (
-                <>
-                  <div className="today" onClick={setToToday}>
-                    <span>今天</span>
-                    <CheckOutlined />
-                  </div>
-                  <div className="toggle-month">
-                    <LeftOutlined style={{ marginRight: '5px' }} onClick={changeToPreMonth} />
-                    <RightOutlined onClick={changeToNextMonth} />
-                  </div>
-                </>
-              )}
-              {(pickStatus == 1 || pickStatus == 2) && (
-                <>
-                  <div></div>
-                  <div className="go-back-icon" onClick={() => setPickStatus(0)}>
-                    <RollbackOutlined />
-                  </div>
-                </>
-              )}
-            </div>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    );
-  }
+          <div className="time-footer">
+            {pickStatus == 0 && (
+              <>
+                <div className="today" onClick={setToToday}>
+                  <span>今天</span>
+                  <CheckOutlined />
+                </div>
+                <div className="toggle-month">
+                  <LeftOutlined style={{ marginRight: '5px' }} onClick={changeToPreMonth} />
+                  <RightOutlined onClick={changeToNextMonth} />
+                </div>
+              </>
+            )}
+            {(pickStatus == 1 || pickStatus == 2) && (
+              <>
+                <div></div>
+                <div className="go-back-icon" onClick={() => setPickStatus(0)}>
+                  <RollbackOutlined />
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default memo(DatePicker);

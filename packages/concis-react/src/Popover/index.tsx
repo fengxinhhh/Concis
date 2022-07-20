@@ -39,7 +39,7 @@ interface popoverProps {
    * @description 卡片宽度
    * @default 200px
    */
-  dialogWidth?: number | string;
+  dialogWidth?: number;
   /**
    * @description 无边框
    * @default false
@@ -74,10 +74,9 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
     propsVisiable,
     onVisableChange,
   } = props;
-  let isUnMounted = true;
+
   const showBtnRef = useRef();
   const dialogRef = useRef();
-
   const [showDialog, setShowDialog] = useState<boolean>(propsVisiable || false); //是否显示
   const [showBtnSize, setShowBtnSize] = useState({
     width: '',
@@ -108,29 +107,21 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
       setShowDialog(propsVisiable as boolean);
     }
   }, [propsVisiable]);
-
   useEffect(() => {
     const dialogDom = dialogRef.current;
     if (showDialog) {
-      (dialogDom as any).style.width = `${
-        showDialog ? (dialogWidth === 'auto' ? 'auto' : dialogWidth + 'px') : '0px'
-      }`;
+      (dialogDom as any).style.width = showDialog ? `${dialogWidth}px` : '0px';
       (dialogDom as any).style.height = showDialog ? '' : '0px';
       setTimeout(() => {
-        if (!isUnMounted) return;
         (dialogDom as any).style.opacity = showDialog ? 1 : 0;
       }, 100);
     } else {
       (dialogDom as any).style.opacity = showDialog ? 1 : 0;
       setTimeout(() => {
-        if (!isUnMounted) return;
         (dialogDom as any).style.width = showDialog ? `${dialogWidth}px` : '0px';
         (dialogDom as any).style.height = showDialog ? '' : '0px';
       }, 100);
     }
-    return () => {
-      isUnMounted = false;
-    };
   }, [showDialog]);
   const clickToggleDialog = (e: any) => {
     //点击打开dialog

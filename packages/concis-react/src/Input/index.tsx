@@ -225,15 +225,8 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
         //可清除
         (showClear && (
           <CloseOutlined
-            style={{
-              position: 'absolute',
-              right: '0',
-              fontSize: '12px',
-              cursor: 'pointer',
-              padding: '0 5px',
-            }}
-            onClick={(e) => {
-              e.stopPropagation();
+            style={{ position: 'absolute', right: '5px', fontSize: '12px', cursor: 'pointer' }}
+            onClick={() => {
               setIptValue('');
               clearCallback && clearCallback();
             }}

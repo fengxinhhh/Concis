@@ -8,13 +8,5 @@ export default function TimePickerDemo1() {
   const handleChange = (date: string) => {
     console.log(date);
   };
-
-  return (
-    <DatePicker
-      disableCheck={(date: Date) => date.getDate() > 12}
-      align="top"
-      showClear={true}
-      handleChange={handleChange}
-    />
-  );
+  return <DatePicker type="primary" handleChange={handleChange} />;
 }
