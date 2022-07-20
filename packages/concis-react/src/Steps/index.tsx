@@ -29,18 +29,22 @@ interface stepsProps {
    * @description 步骤描述
    */
   description?: string;
+  /**
+   * @description 点击步骤条回调函数
+   */
+  onChange?: (value: number) => void;
   children: any;
 }
 
 const Steps: FC<stepsProps> = (props: stepsProps) => {
-  const { current, className, children } = props;
+  const { current, className, onChange, children } = props;
 
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, 'concis-steps');
 
   const indexClassName = useCallback(
-    (index: any): string => {
+    (index: number): string => {
       if (index == current) {
         return 'active-index';
       } else if (index > current) {
@@ -52,7 +56,12 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
     },
     [current],
   );
-
+  const indexTitleClassName = useCallback(
+    (args: string): string => {
+      return onChange ? 'hover-title ' + args : args;
+    },
+    [current],
+  );
   return (
     <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
       <div className="step-content">
@@ -60,7 +69,13 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
         <div className="step-line">
           {children.map((step: any, index: number) => {
             return (
-              <div className="step-box" key={index}>
+              <div
+                className="step-box"
+                key={index}
+                onClick={() => {
+                  onChange && onChange(index + 1);
+                }}
+              >
                 {index + 1 < current ? (
                   <div className={indexClassName(index + 1)}>
                     <CheckOutlined />
@@ -72,16 +87,22 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
                 <div className="sub-content">
                   <div className="top">
                     <span
-                      className="title"
-                      style={index + 1 > current ? { color: '#999999' } : { color: '#000000' }}
+                      className={
+                        index + 1 > current
+                          ? indexTitleClassName('grey-title')
+                          : indexTitleClassName('light-title')
+                      }
                     >
                       {step.props.title}
                     </span>
                     <span className="sub-title">{step.props.subTitle}</span>
                   </div>
                   <div
-                    className="bottom"
-                    style={index + 1 !== current ? { color: '#999999' } : { color: '#000000' }}
+                    className={
+                      index + 1 !== current
+                        ? indexTitleClassName('bottom grey-title')
+                        : indexTitleClassName('bottom light-title')
+                    }
                   >
                     {step.props.description}
                   </div>

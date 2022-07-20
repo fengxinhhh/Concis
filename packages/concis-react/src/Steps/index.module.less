@@ -71,6 +71,20 @@
           margin-left: @concis-transform-ms;
           font-size: @concis-font-lg;
           .top {
+            .hover-title {
+              cursor: pointer;
+            }
+            .hover-title:hover {
+              color: var(--global-color);
+              transition: color 0.3s;
+            }
+            .grey-title {
+              color: '#999999';
+            }
+            .light-title {
+              color: '#000000';
+            }
+
             .sub-title {
               margin-left: @concis-transform-ms;
               color: @concis-after-step-bg;

@@ -2,11 +2,6 @@
   "Button": {
     "default": [
       {
-        "identifier": "className",
-        "description": "类名",
-        "type": "string"
-      },
-      {
         "identifier": "type",
         "description": "按钮主题",
         "type": "\"primary\" | \"danger\" | \"warning\" | \"info\" | \"text\"",
@@ -1195,6 +1190,11 @@
         "identifier": "description",
         "description": "步骤描述",
         "type": "string"
+      },
+      {
+        "identifier": "onChange",
+        "description": "点击步骤条回调函数",
+        "type": "(value: number) => void"
       }
     ]
   },

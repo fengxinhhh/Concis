@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { createHashHistory, History } from '/Users/apple/Desktop/Concis/node_modules/@umijs/runtime';
+import { createHashHistory, History } from 'D:/Code/openScource/Concis/node_modules/@umijs/runtime';
 
 let options = {
   "basename": "/"

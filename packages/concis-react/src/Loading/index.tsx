@@ -38,14 +38,9 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
     if (type === 'dot') {
       setTimeout(() => {
         setActiveDotIndex((old: number) => {
-          if (old === 2) {
-            old = 0;
-          } else {
-            old++;
-          }
-          return old;
+          return old === 2 ? 0 : ++old;
         });
-      }, 500);
+      }, 400);
     }
   }, [activeDotIndex]);
 
@@ -68,7 +63,7 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
               <svg
                 fill="none"
                 stroke="currentColor"
-                stroke-width="4"
+                strokeWidth="4"
                 width={width}
                 height={height}
                 viewBox="0 0 48 48"
@@ -86,7 +81,11 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
       return (
         <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
           {new Array(3).fill('').map((item, index) => {
-            return <div className={activeDotIndex === index ? 'dot-active' : 'dot'}>{item}</div>;
+            return (
+              <div className={activeDotIndex === index ? 'dot-active' : 'dot'} key={index}>
+                {item}
+              </div>
+            );
           })}
         </div>
       );
@@ -94,7 +93,9 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
       return (
         <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
           {new Array(6).fill('').map((item, index) => {
-            return <div className="strip-list" style={{ '--lineIndex': index } as any} />;
+            return (
+              <div className="strip-list" style={{ '--lineIndex': index } as any} key={index} />
+            );
           })}
         </div>
       );
