@@ -23,4 +23,4 @@
 .env.local
 /.vscode
 /.idea
-/.umi/.cache
+/.umi

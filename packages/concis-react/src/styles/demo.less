@@ -34,6 +34,47 @@ html[data-prefers-color='light'] {
   .concis-loading .text {
     color: @concis-primary-color;
   }
+  //message
+  .concis-message-container {
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid rgb(240, 240, 240);
+  }
+  //notification
+  .concis-notifica-container {
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid rgb(240, 240, 240);
+  }
+  //skeleton
+  .concis-skeleton-avatar,
+  .concis-skeleton-container-title,
+  .concis-skeleton-container-line {
+    &::after {
+      background: linear-gradient(
+        90deg,
+        hsla(0, 0%, 100%, 0),
+        hsla(0, 0%, 100%, 0.3),
+        hsla(0, 0%, 100%, 0)
+      );
+    }
+  }
+  //divider
+  .concis-divider {
+    .concis-divider-line {
+      .concis-divider-before-line-text,
+      .concis-divider-after-line-text {
+        color: #e5e6eb;
+      }
+      .concis-divider-line-text {
+        color: #000000;
+      }
+    }
+  }
+  //checkbox
+  .concis-checkbox .text {
+    color: #000000;
+  }
 }
 html[data-prefers-color='dark'] {
   //button
@@ -55,18 +96,84 @@ html[data-prefers-color='dark'] {
     }
   }
   //loading
-  .concis-loading .loading-container,
-  .concis-dot-loading,
-  .concis-strip-loading {
-    color: @concis-dark-primary-color;
-    .strip-list {
-      background-color: @concis-dark-primary-color;
-    }
-  }
-  .concis-loading .text {
-    color: @concis-dark-primary-color;
-  }
   .concis-loading-dialog {
     background-color: #2b2b2b;
   }
+  //message
+  .concis-message-container {
+    color: #ffffff;
+    background-color: #000000;
+    border: 1px solid #939393;
+  }
+  //notification
+  .concis-notifica-container {
+    color: #ffffff;
+    background-color: #000000;
+    border: 1px solid #939393;
+  }
+  //skeleton
+  .concis-skeleton-avatar,
+  .concis-skeleton-container-title,
+  .concis-skeleton-container-line {
+    background: #ffffff1f;
+    &::after {
+      background: linear-gradient(
+        90deg,
+        hsla(0, 0%, 100%, 0),
+        hsla(0, 0%, 100%, 0.3),
+        hsla(0, 0%, 100%, 0)
+      );
+    }
+  }
+  //divider
+  .concis-divider {
+    .concis-divider-line {
+      .concis-divider-before-line-text,
+      .concis-divider-after-line-text {
+        color: #484849;
+      }
+      .concis-divider-line-text {
+        color: #ffffffe6;
+      }
+    }
+  }
+  //checkbox
+  .concis-checkbox .text {
+    color: #ffffffe6;
+  }
+  //input
+  .concis-input input {
+    color: #ffffffe6 !important;
+    background: black;
+  }
+  //form
+  .concis-form .concis-form-item-label {
+    color: #ffffffb3;
+  }
+  //radio
+  .concis-radio-group {
+    .groupDisabledStyle,
+    .disabledLabel {
+      color: #ffffff;
+    }
+    .groupActive {
+      background: @concis-dark-primary-color;
+    }
+    .groupStyle:hover {
+      color: @concis-dark-primary-color;
+    }
+  }
+  //select
+  .concis-select {
+    .selected,
+    .selectOptions,
+    .option {
+      color: #b0b0b0;
+      background: #343436 !important;
+    }
+    .select-option {
+      background-color: #474749 !important;
+    }
+  }
+  //switch
 }

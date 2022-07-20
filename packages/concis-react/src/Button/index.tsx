@@ -3,7 +3,7 @@ import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
-import { useTheme } from '../common_utils/hooks/useTheme';
+import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 
 interface ButtonProps {
   //自定义button接口
@@ -81,8 +81,7 @@ const Button = (props: ButtonProps) => {
     style = {},
   } = props;
 
-  const [theme] = useTheme();
-  console.log(theme);
+  const theme = getSiteTheme();
 
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 

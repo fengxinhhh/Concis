@@ -7,15 +7,15 @@ export default function DividerDemo3() {
   return (
     <div>
       <div style={{ marginBottom: '40px' }}>
-        <Divider fontSize={12} align={'left'}>
+        <Divider fontSize={14} align={'left'}>
           Concis
         </Divider>
       </div>
       <div style={{ marginBottom: '40px' }}>
-        <Divider fontSize={16}>Concis</Divider>
+        <Divider fontSize={14}>Concis</Divider>
       </div>
       <div style={{ marginBottom: '40px' }}>
-        <Divider fontSize={22} align={'right'}>
+        <Divider fontSize={14} align={'right'}>
           Concis
         </Divider>
       </div>
