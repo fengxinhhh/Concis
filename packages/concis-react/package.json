@@ -1,40 +1,29 @@
 {
   "name": "concis",
-  "version":"1.1.5",
+  "version": "1.1.5",
   "description": "Concis Component library for PC",
-  "authors": {
-    "name": "fengxin",
-    "email": "1244200081@qq.com"
-  },
-  "scripts": {
-    "build": "rollup -c ./rollup.config.js",
-    "test:unit": "jest ./__tests__/unit",
-    "test:e2e": "jest ./__tests__/e2e",
-    "upgrade": "node ../../scripts/replace-version-in-pc.ts",
-    "prepublish": "npm run build"
-  },
+  "license": "MIT",
   "module": "es/index.js",
   "typings": "es/index.d.ts",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
   "files": [
     "web-react",
     "README.md",
     "README.zh-CN.md",
     "package.json"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+  "scripts": {
+    "build": "rollup -c ./rollup.config.js",
+    "prepublish": "npm run build",
+    "test:e2e": "jest ./__tests__/e2e",
+    "test:unit": "jest ./__tests__/unit",
+    "upgrade": "node ../../scripts/replace-version-in-pc.ts"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-react": "^7.17.12",
     "core-js": "^3.22.2",
+    "dayjs": "^1.11.4",
     "lodash": "^4.17.21"
-  },
-  "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -47,6 +36,18 @@
     "puppeteer": "^15.4.0",
     "ts-jest": "^28.0.6"
   },
-  "license": "MIT",
-  "gitHead": "ce812c263bec669470e12af97e9c737cbc05d730"
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "authors": {
+    "name": "fengxin",
+    "email": "1244200081@qq.com"
+  },
+  "gitHead": "ce812c263bec669470e12af97e9c737cbc05d730",
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  }
 }

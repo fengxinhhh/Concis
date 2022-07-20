@@ -46,6 +46,7 @@
     "@testing-library/react": "^12.1.2",
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^27.0.3",
+    "@types/lodash": "^4.14.182",
     "@umijs/fabric": "^2.8.1",
     "@umijs/test": "^3.0.5",
     "babel-jest": "^28.1.1",

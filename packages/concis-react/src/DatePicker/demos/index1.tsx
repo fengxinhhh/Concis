@@ -1,5 +1,5 @@
 import React from 'react';
-import TimePicker from '..';
+import TimePicker from '../DatePicker';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function TimePickerDemo1() {
@@ -8,5 +8,12 @@ export default function TimePickerDemo1() {
   const handleChange = (date: string) => {
     console.log(date);
   };
-  return <TimePicker type="primary" handleChange={handleChange} />;
+  return (
+    <TimePicker
+      disableCheck={(date: Date) => date.getDate() > 12}
+      align="top"
+      showClear={true}
+      handleChange={handleChange}
+    />
+  );
 }
