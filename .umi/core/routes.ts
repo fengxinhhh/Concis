@@ -629,18 +629,8 @@ export function getRoutes() {
             },
             {
               "depth": 2,
-              "value": "分割线色彩",
-              "heading": "分割线色彩"
-            },
-            {
-              "depth": 2,
               "value": "对齐方式",
               "heading": "对齐方式"
-            },
-            {
-              "depth": 2,
-              "value": "虚线",
-              "heading": "虚线"
             },
             {
               "depth": 2,

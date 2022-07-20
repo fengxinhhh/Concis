@@ -24,16 +24,8 @@ group:
 
 <code src="./demos/index2.tsx"/>
 
-## 分割线色彩
-
-<code src="./demos/index3.tsx"/>
-
 ## 对齐方式
 
 <code src="./demos/index4.tsx"/>
-
-## 虚线
-
-<code src="./demos/index5.tsx"/>
 
 <API></API>

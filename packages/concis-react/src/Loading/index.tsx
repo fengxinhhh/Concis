@@ -3,6 +3,8 @@ import { LoadingProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
+import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
+import { getRenderColor } from '../common_utils/getRenderColor';
 import './index.module.less';
 
 const Loading: FC<LoadingProps> = (props: LoadingProps) => {
@@ -19,6 +21,7 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
 
   const [activeDotIndex, setActiveDotIndex] = useState(0);
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const theme = getSiteTheme();
 
   function getLoadingClass() {
     switch (type) {
@@ -56,7 +59,12 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
       return (
         <div
           className={classNames}
-          style={{ ...loadingStyle, '--global-color': globalColor || '#1890ff' } as any}
+          style={
+            {
+              ...loadingStyle,
+              '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor),
+            } as any
+          }
         >
           <div className="loading-container" style={loadingStyle}>
             {icon || (
@@ -79,7 +87,12 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
       );
     } else if (type === 'dot') {
       return (
-        <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
+        <div
+          className={classNames}
+          style={
+            { '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) } as any
+          }
+        >
           {new Array(3).fill('').map((item, index) => {
             return (
               <div className={activeDotIndex === index ? 'dot-active' : 'dot'} key={index}>
@@ -91,7 +104,12 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
       );
     } else if (type === 'strip') {
       return (
-        <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
+        <div
+          className={classNames}
+          style={
+            { '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) } as any
+          }
+        >
           {new Array(6).fill('').map((item, index) => {
             return (
               <div className="strip-list" style={{ '--lineIndex': index } as any} key={index} />
@@ -104,7 +122,7 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
 
   return (
     <Fragment>
-      {mask && <div className="dialog" />}
+      {mask && <div className="concis-loading-dialog" />}
       {renderLoadingContainer}
     </Fragment>
   );

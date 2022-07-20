@@ -1,4 +1,4 @@
-import React, { FC, useMemo, memo, useContext } from 'react';
+import React, { FC, useMemo, memo, useContext, useCallback } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -15,23 +15,13 @@ interface dividerProps {
    */
   fontSize?: Number;
   /**
-   * @description 分割线颜色
-   * @default #e5e6eb
-   */
-  borderColor?: String;
-  /**
    * @description 对齐方式
    * @default center
    */
   align?: String;
-  /**
-   * @description 分割线类型
-   * @default border
-   */
-  dashed?: Boolean;
 }
 const Divider: FC<dividerProps> = memo((props) => {
-  const { children, className, fontSize, borderColor, align, dashed } = props;
+  const { children, className, fontSize, align } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -50,14 +40,6 @@ const Divider: FC<dividerProps> = memo((props) => {
     }
     return {};
   }, [align]);
-  const lineColor = useMemo((): Object => {
-    if (borderColor) {
-      return {
-        borderColor: borderColor,
-      };
-    }
-    return {};
-  }, [borderColor]);
   const textStyle = useMemo(() => {
     if (fontSize) {
       return {
@@ -65,16 +47,33 @@ const Divider: FC<dividerProps> = memo((props) => {
       };
     }
   }, [fontSize]);
+  const lineStyle = useCallback(
+    (domAlign: string) => {
+      if (domAlign === 'left' && align === 'left') {
+        return {
+          flexBasis: '24px',
+          flexGrow: 0,
+        };
+      } else if (domAlign === 'right' && align === 'right') {
+        return {
+          flexBasis: '24px',
+          flexGrow: 0,
+        };
+      }
+    },
+    [align],
+  );
   return (
     <div className={classNames}>
-      <div
-        className={dashed ? `${classFirstName}-dashed` : `${classFirstName}-line`}
-        style={{ ...lineAlign, ...lineColor }}
-      >
+      <div className={`${classFirstName}-line`} style={{ ...lineAlign }}>
         {children && (
-          <span className={`${classFirstName}-line-text`} style={textStyle}>
-            {children}
-          </span>
+          <>
+            <span className={`${classFirstName}-before-line-text`} style={lineStyle('left')}></span>
+            <span className={`${classFirstName}-line-text`} style={textStyle}>
+              {children}
+            </span>
+            <span className={`${classFirstName}-after-line-text`} style={lineStyle('right')}></span>
+          </>
         )}
       </div>
     </div>

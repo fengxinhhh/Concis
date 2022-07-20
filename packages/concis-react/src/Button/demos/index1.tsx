@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '..';
+import '../../styles/demo.less';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function ButtonDemo1() {

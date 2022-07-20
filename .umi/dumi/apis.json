@@ -368,22 +368,10 @@
         "type": "Number"
       },
       {
-        "identifier": "borderColor",
-        "description": "分割线颜色",
-        "type": "String",
-        "default": "#e5e6eb"
-      },
-      {
         "identifier": "align",
         "description": "对齐方式",
         "type": "String",
         "default": "center"
-      },
-      {
-        "identifier": "dashed",
-        "description": "分割线类型",
-        "type": "Boolean",
-        "default": "border"
       }
     ]
   },
