@@ -920,7 +920,7 @@
       {
         "identifier": "dialogWidth",
         "description": "卡片宽度",
-        "type": "number",
+        "type": "string | number",
         "default": "200px"
       },
       {

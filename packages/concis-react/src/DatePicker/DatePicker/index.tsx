@@ -187,7 +187,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       dialogWidth={'auto'}
       propsVisiable={false}
       content={
-        <div className="concis-data-picker">
+        <div className={classNames}>
           <div className="date-picker-select">
             <div className="left-select">
               <DoubleLeftOutlined onClick={() => setYear(nowDate.year - 1)} />

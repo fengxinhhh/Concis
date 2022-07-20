@@ -13,11 +13,6 @@ interface GlobalConfigProps {
    */
   input?: string;
   /**
-   * @description Tree选择器组件选中时的字体颜色
-   * @default #1890FF
-   */
-  treeSelectTextColor?: string;
-  /**
    * @description Menu导航菜单组件选中时的背景颜色
    * @default #C6F7FF
    */

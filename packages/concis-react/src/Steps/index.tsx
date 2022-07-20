@@ -70,7 +70,6 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
       style={{ '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) } as any}
     >
       <div className="step-content">
-        {/* <div className="line" /> */}
         <div className="step-line">
           {children.map((step: any, index: number) => {
             return (

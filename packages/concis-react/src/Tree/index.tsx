@@ -5,6 +5,8 @@ import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
+import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
+import { getRenderColor } from '../common_utils/getRenderColor';
 import './index.module.less';
 
 interface treeProps {
@@ -67,9 +69,9 @@ const Tree: FC<treeProps> = (props) => {
 
   const formCtx: any = useContext(ctx);
 
-  const { globalColor, treeSelectTextColor, prefixCls } = useContext(
-    globalCtx,
-  ) as GlobalConfigProps;
+  const theme = getSiteTheme();
+
+  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, 'cocnis-tree-container');
 
@@ -219,36 +221,29 @@ const Tree: FC<treeProps> = (props) => {
   };
   const searchStyle = useCallback(
     (treeNode: treeNode): string => {
+      if (avaChooseMore) {
+        if (activedVal.split(',').includes(treeNode.title)) {
+          if (theme === ('auto' || 'dark')) {
+            return globalColor || '#1d6db8';
+          }
+          return globalColor || '#1890FF';
+        }
+        return theme === ('auto' || 'dark') ? '#c7c7c8' : '#000000';
+      }
+
       //搜索高亮样式
       if (treeNode.title.includes(activedVal) && activedVal !== '') {
-        return treeSelectTextColor || '#1890FF';
+        if (theme === ('auto' || 'dark')) {
+          return globalColor || '#1d6db8';
+        }
+        return globalColor || '#1890FF';
       } else {
-        return '#000000';
+        return theme === ('auto' || 'dark') ? '#c7c7c8' : '#000000';
       }
     },
     [activedVal],
   );
-  const activedStyle = useCallback(
-    (treeNode: treeNode): string => {
-      //选中高亮样式
-      if (avaChooseMore) {
-        //多选
-        if (activedVal.split(',').includes(treeNode.title)) {
-          return globalColor || '#bae8ff';
-        } else {
-          return '#ffffff';
-        }
-      } else {
-        //单选
-        if (activedVal == treeNode.title) {
-          return globalColor || '#bae8ff';
-        } else {
-          return '#ffffff';
-        }
-      }
-    },
-    [activedVal],
-  );
+
   const clearCallback = () => {
     //清空
     setActivedVal('');
@@ -260,20 +255,21 @@ const Tree: FC<treeProps> = (props) => {
         <Fragment key={index}>
           <div
             className="treeNode"
-            style={{
-              marginLeft: `${(treeNode.level as number) * 10}px`,
-              height: `${treeNode.height}`,
-              color: searchStyle(treeNode),
-              background: activedStyle(treeNode),
-            }}
+            style={
+              {
+                marginLeft: `${(treeNode.level as number) * 10}px`,
+                height: `${treeNode.height}`,
+                '--tree-node-color': searchStyle(treeNode),
+              } as any
+            }
             onClick={() => toggleTreeMenu(treeNode)}
           >
             {
               treeNode?.children?.length ? (
                 treeNode.children[0].height == '0' ? (
-                  <CaretDownOutlined />
-                ) : (
                   <CaretRightOutlined />
+                ) : (
+                  <CaretDownOutlined />
                 )
               ) : (
                 <div style={{ width: '12px', height: '12px' }}></div>
