@@ -249,7 +249,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
       style={
         {
           ...style,
-          '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor),
+          '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) as string,
         } as any
       }
     >
