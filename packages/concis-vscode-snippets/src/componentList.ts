@@ -1,4 +1,4 @@
-const componentList: Array<string> = [
+const componentList = [
   'Affix',
   'Avatar',
   'Badge',
