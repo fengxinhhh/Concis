@@ -1,11 +1,11 @@
 import React from 'react';
-import TimePicker from '..';
+import DatePicker from '..';
 
 export default function TimePickerDemo5() {
   const handleChange = (start: string, end: string) => {
     console.log(start, end);
   };
   return (
-    <TimePicker type="primary" showRange showClear align="right" handleChange={handleChange} />
+    <DatePicker type="primary" showRange showClear align="right" handleChange={handleChange} />
   );
 }

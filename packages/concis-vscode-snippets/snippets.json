@@ -49,5 +49,225 @@
     "prefix": "ctree",
     "body": ["<Tree ", "  treeData={treeData} ", "  avaChooseMore", "/>", ""],
     "description": "Concis Tree Component"
+  },
+  "Concis DatePicker Component": {
+    "prefix": "cdatepicker",
+    "body": ["<DatePicker ", "  type=\"primary\" ", "  showRange ", "  showClear", "/>", ""],
+    "description": "Concis DatePicker Component"
+  },
+  "Concis CheckBox Component": {
+    "prefix": "ccheckbox",
+    "body": ["<CheckBox checked={true}>", "  ", "</CheckBox>"],
+    "description": "Concis CheckBox Component"
+  },
+  "Concis Loading Component": {
+    "prefix": "cloading",
+    "body": [
+      "<div style={{ position: 'relative', width: '200px', height: '50px' }}>",
+      "  <Loading />",
+      "</div>"
+    ],
+    "description": "Concis Loading Component"
+  },
+  "Concis Message Component": {
+    "prefix": "cmessage",
+    "body": [
+      "Message.info({",
+      "  content: \"\",",
+      "  duration: \"\",",
+      "  clearable: true,",
+      "});"
+    ],
+    "description": "Concis Message Component"
+  },
+  "Concis Notification Component": {
+    "prefix": "cnotification",
+    "body": [
+      "Notification.info({",
+      "  title: 'Notification',",
+      "  content: val,",
+      "  duration: 3000,",
+      "  style: {{}},",
+      "});"
+    ],
+    "description": "Concis Notification Component"
+  },
+  "Concis Skeleton Component": {
+    "prefix": "cskeleton",
+    "body": [
+      "<Skeleton ",
+      "  loading ",
+      "  title ",
+      "  avatar ",
+      "  row={} ",
+      "  width={[]} ",
+      "/>"
+    ],
+    "description": "Concis Skeleton Component"
+  },
+  "Concis Divider Component": {
+    "prefix": "cdivider",
+    "body": ["<Divider fontSize={12} align={'center'}>", " ", "</Divider>"],
+    "description": "Concis Divider Component"
+  },
+  "Concis Layout Component": {
+    "prefix": "clayout",
+    "body": [
+      "<Layout>",
+      "  <Header extraStyle={headerBg}></Header>",
+      "  <Layout>",
+      "    <Slider row={3} extraStyle={sliderBg}>",
+      "             ",
+      "    </Slider>",
+      "    <Content row={7} extraStyle={contentBg}>",
+      "             ",
+      "    </Content>",
+      "  </Layout>",
+      "  <Footer></Footer>",
+      "</Layout>"
+    ],
+    "description": "Concis Layout Component"
+  },
+  "Concis Space Component": {
+    "prefix": "cspace",
+    "body": ["<Space size={} direction={}></Space>"],
+    "description": "Concis Space Component"
+  },
+  "Concis LazyLoad Component": {
+    "prefix": "clazyload",
+    "body": ["<LazyLoad delay={}>", "", "</LazyLoad>"],
+    "description": "Concis LazyLoad Component"
+  },
+  "Concis GlobalConfig Component": {
+    "prefix": "cglobalconfig",
+    "body": ["<GlobalConfig globalColor={} prefixCls={}>", "  ", "</GlobalConfig>"],
+    "description": "Concis GlobalConfig Component"
+  },
+  "Concis Avatar Component": {
+    "prefix": "cavatar",
+    "body": [
+      "<Avatar",
+      "  size={48}",
+      "  style={{}}",
+      "  triggerType=\"mask\"",
+      "  triggerIcon={}",
+      "/>"
+    ],
+    "description": "Concis Avatar Component"
+  },
+  "Concis AvatarGroup Component": {
+    "prefix": "cavatargroup",
+    "body": [
+      "<AvatarGroup size={50} groupStyle={{}}>",
+      "  <Avatar></Avatar>",
+      "  <Avatar></Avatar>",
+      "  <Avatar></Avatar>",
+      "</AvatarGroup>"
+    ],
+    "description": "Concis AvatarGroup Component"
+  },
+  "Concis Badge Component": {
+    "prefix": "cbadge",
+    "body": ["<Badge count={} dot dotStyle={{}}>", "   ", "</Badge>"],
+    "description": "Concis Badge Component"
+  },
+  "Concis Collapse Component": {
+    "prefix": "ccollapse",
+    "body": [
+      "<Collapse defaultActive={[1, 2]}>",
+      "  <CollapseItem header=\"\" listKey=\"1\">",
+      "  </CollapseItem>",
+      "  <CollapseItem header=\"\" listKey=\"2\">",
+      "  </CollapseItem>",
+      "  <CollapseItem header=\"\" listKey=\"3\">",
+      "  </CollapseItem>",
+      "</Collapse>"
+    ],
+    "description": "Concis Collapse Component"
+  },
+  "Concis List Component": {
+    "prefix": "clist",
+    "body": [
+      "<List",
+      "  style={{ fontSize: '14px', width: '600px' }}",
+      "  header=\"List title\"",
+      "  size={'default'}",
+      "  dataSource={dataSource}",
+      "  render={(item) => {",
+      "    return (",
+      "      <List.Item style={{ fontSize: '14px' }}>",
+      "        <div>{item}</div>",
+      "      </List.Item>",
+      "    );",
+      "  }}",
+      "/>"
+    ],
+    "description": "Concis List Component"
+  },
+  "Concis Popover Component": {
+    "prefix": "cpopover",
+    "body": [
+      "<Popover",
+      "  type=\"hover\"",
+      "  content={",
+      "    <></>",
+      "  }",
+      ">",
+      "  <Button type=\"primary\">Hover me</Button>",
+      "</Popover>"
+    ],
+    "description": "Concis Popover Component"
+  },
+  "Concis Swiper Component": {
+    "prefix": "cswiper",
+    "body": ["<Swiper imgList={imgList} pictureSize={600} height={240} />"],
+    "description": "Concis Swiper Component"
+  },
+  "Concis Table Component": {
+    "prefix": "ctable",
+    "body": ["<Table titleParams={titleParams} tableData={tableData} />"],
+    "description": "Concis Table Component"
+  },
+  "Concis TreeView Component": {
+    "prefix": "ctreeview",
+    "body": ["<TreeView treeData={treeData} />"],
+    "description": "Concis TreeView Component"
+  },
+  "Concis Affix Component": {
+    "prefix": "caffix",
+    "body": [
+      "<Affix affixType=\"scroll\" offsetTop={100} offsetLeft={600}>",
+      "  <div>top Affix</div>",
+      "</Affix>"
+    ],
+    "description": "Concis Affix Component"
+  },
+  "Concis Menu Component": {
+    "prefix": "cmenu",
+    "body": ["<Menu items={items} />"],
+    "description": "Concis Menu Component"
+  },
+  "Concis Pagination Component": {
+    "prefix": "cpagination",
+    "body": [
+      "<Pagination",
+      "  total={100}",
+      "  showSizeChanger",
+      "  pageSizeOptions={}",
+      "  showJumpInput",
+      "/>"
+    ],
+    "description": "Concis Pagination Component"
+  },
+  "Concis Steps Component": {
+    "prefix": "csteps",
+    "body": [
+      "<Steps current={2}>",
+      "  <Step title=\"first\" subTitle=\"\" description=\"\" />",
+      "  <Step title=\"secord\" subTitle=\"\" description=\"\" />",
+      "  <Step title=\"third\" subTitle=\"\" description=\"\" />",
+      "</Steps>"
+    ],
+    "description": "Concis Steps Component"
   }
 }

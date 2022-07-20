@@ -1,0 +1,340 @@
+{
+  "menus": {
+    "en-US": {
+      "/mobile": [
+        {
+          "title": "移动端",
+          "meta": {
+            "__fallback": true
+          },
+          "children": [
+            {
+              "path": "/mobile/button",
+              "title": "Button 按钮",
+              "meta": {}
+            }
+          ]
+        }
+      ],
+      "/common": [
+        {
+          "title": "反馈",
+          "meta": {
+            "__fallback": true
+          },
+          "children": [
+            {
+              "path": "/common/loading",
+              "title": "Loading 加载中",
+              "meta": {}
+            },
+            {
+              "path": "/common/message",
+              "title": "Message 全局提示",
+              "meta": {}
+            },
+            {
+              "path": "/common/notification",
+              "title": "Notification 通知提醒框",
+              "meta": {}
+            },
+            {
+              "path": "/common/skeleton",
+              "title": "Skeleton 骨架屏",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "布局",
+          "meta": {
+            "__fallback": true
+          },
+          "children": [
+            {
+              "path": "/common/divider",
+              "title": "Divider 分割线",
+              "meta": {}
+            },
+            {
+              "path": "/common/layout",
+              "title": "Layout 快速布局",
+              "meta": {}
+            },
+            {
+              "path": "/common/space",
+              "title": "Space 间距",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "数据录入",
+          "meta": {
+            "__fallback": true
+          },
+          "children": [
+            {
+              "path": "/common/check-box",
+              "title": "CheckBox 多选框",
+              "meta": {}
+            },
+            {
+              "path": "/common/date-picker",
+              "title": "DatePicker 日期选择器",
+              "meta": {}
+            },
+            {
+              "path": "/common/form",
+              "title": "Form 表单",
+              "meta": {}
+            },
+            {
+              "path": "/common/input",
+              "title": "Input 输入框",
+              "meta": {}
+            },
+            {
+              "path": "/common/radio",
+              "title": "Radio 单选框",
+              "meta": {}
+            },
+            {
+              "path": "/common/rate",
+              "title": "Rate 评分",
+              "meta": {}
+            },
+            {
+              "path": "/common/select",
+              "title": "Select 下拉菜单",
+              "meta": {}
+            },
+            {
+              "path": "/common/switch",
+              "title": "Switch 开关",
+              "meta": {}
+            },
+            {
+              "path": "/common/tree",
+              "title": "Tree 树选择器",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "通用",
+          "meta": {
+            "__fallback": true
+          },
+          "children": [
+            {
+              "path": "/common/button",
+              "title": "Button 按钮",
+              "meta": {}
+            },
+            {
+              "path": "/common/lazy-load",
+              "title": "LazyLoad 懒加载",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "其他",
+          "meta": {
+            "__fallback": true
+          },
+          "children": [
+            {
+              "path": "/common/back-top",
+              "title": "BackTop 回到顶部",
+              "meta": {}
+            },
+            {
+              "path": "/common/global-config",
+              "title": "GlobalConfig 全局配置",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "数据展示",
+          "meta": {
+            "__fallback": true
+          },
+          "children": [
+            {
+              "path": "/common/avatar",
+              "title": "Avatar 头像",
+              "meta": {}
+            },
+            {
+              "path": "/common/badge",
+              "title": "Badge 徽标",
+              "meta": {}
+            },
+            {
+              "path": "/common/collapse",
+              "title": "Collapse 折叠面板",
+              "meta": {}
+            },
+            {
+              "path": "/common/list",
+              "title": "List 列表",
+              "meta": {}
+            },
+            {
+              "path": "/common/popover",
+              "title": "Popover 气泡卡片",
+              "meta": {}
+            },
+            {
+              "path": "/common/swiper",
+              "title": "Swiper 轮播图",
+              "meta": {}
+            },
+            {
+              "path": "/common/table",
+              "title": "Table 表格",
+              "meta": {}
+            },
+            {
+              "path": "/common/tree-view",
+              "title": "TreeView 树型控件",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "导航",
+          "meta": {
+            "__fallback": true
+          },
+          "children": [
+            {
+              "path": "/common/affix",
+              "title": "Affix 固钉",
+              "meta": {}
+            },
+            {
+              "path": "/common/menu",
+              "title": "Menu 导航菜单",
+              "meta": {}
+            },
+            {
+              "path": "/common/pagination",
+              "title": "Pagination 分页器",
+              "meta": {}
+            },
+            {
+              "path": "/common/steps",
+              "title": "Steps 步骤条",
+              "meta": {}
+            }
+          ]
+        }
+      ],
+      "*": [
+        {
+          "path": "/",
+          "title": "快速网站成型工具",
+          "meta": {}
+        }
+      ],
+      "/guide": [
+        {
+          "path": "/guide/introduce",
+          "title": "介绍",
+          "meta": {}
+        },
+        {
+          "path": "/guide/teuse",
+          "title": "快速开始",
+          "meta": {}
+        },
+        {
+          "path": "/guide/vcolor",
+          "title": "色彩",
+          "meta": {}
+        },
+        {
+          "path": "/guide/vscode",
+          "title": "vscode 支持",
+          "meta": {}
+        },
+        {
+          "path": "/guide/wclass",
+          "title": "自定义类名",
+          "meta": {}
+        },
+        {
+          "path": "/guide/wtheme",
+          "title": "定制主题",
+          "meta": {}
+        },
+        {
+          "path": "/guide/xproject",
+          "title": "在 create-react-app 中使用",
+          "meta": {}
+        },
+        {
+          "path": "/guide/yproject",
+          "title": "在 TypeScript 中使用",
+          "meta": {}
+        },
+        {
+          "path": "/guide/zcontribute",
+          "title": "贡献指南",
+          "meta": {}
+        }
+      ]
+    }
+  },
+  "locales": [
+    {
+      "name": "en-US",
+      "label": "English"
+    }
+  ],
+  "navs": {
+    "en-US": [
+      {
+        "title": "指南",
+        "path": "/guide"
+      },
+      {
+        "title": "移动端",
+        "path": "/mobile"
+      },
+      {
+        "title": "组件",
+        "path": "/common"
+      },
+      {
+        "title": "作者",
+        "children": [
+          {
+            "title": "CSDN",
+            "path": "https://blog.csdn.net/m0_46995864?spm=1019.2139.3001.5343"
+          },
+          {
+            "title": "掘金",
+            "path": "https://juejin.cn/user/3061476130044487"
+          }
+        ]
+      },
+      {
+        "title": "GitHub",
+        "path": "https://github.com/fengxinhhh/Concis"
+      }
+    ]
+  },
+  "title": "Concis",
+  "logo": "http://react-view-ui.com:92/images/logo.png",
+  "mode": "site",
+  "repository": {
+    "url": "",
+    "branch": "master"
+  },
+  "theme": {}
+}

@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+/.umi
 /node_modules
 /packages/concis-react/node_modules
 /packages/concis-react/package-lock.json
@@ -7,6 +8,8 @@
 /packages/concis-react-mobile/node_modules
 /packages/concis-react-mobile/package-lock.json
 /packages/concis-react-mobile/web-react-mobile
+/packages/concis-vscode-snippets/node_modules
+/packages/concis-vscode-snippets/dist
 /npm-debug.log*
 /yarn-error.log
 /yarn.lock
@@ -16,9 +19,9 @@
 /docs-dist
 .DS_Store
 /coverage
-.umi
 .umi-production
 .umi-test
 .env.local
 /.vscode
 /.idea
+

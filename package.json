@@ -7,12 +7,8 @@
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
-    "docs:deploy": "gh-pages -d docs-dist",
-    "build": "father-build",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
-    "test": "umi-test",
-    "test:coverage": "umi-test --coverage",
-    "test:jest": "jest",
+    "test:jest": "jest --detectOpenHandles",
     "publish": "node ./scripts/replace-version-in-pc.ts && lerna publish from-package"
   },
   "module": "es/index.js",
@@ -47,8 +43,7 @@
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^27.0.3",
     "@types/lodash": "^4.14.182",
-    "@umijs/fabric": "^2.8.1",
-    "@umijs/test": "^3.0.5",
+    "@umijs/fabric": "^2.12.2",
     "babel-jest": "^28.1.1",
     "cheerio": "1.0.0-rc.3",
     "concis": "^1.0.8",
@@ -80,6 +75,7 @@
     "rollup-plugin-typescript2": "^0.31.2",
     "rollup-plugin-uglify": "^6.0.4",
     "ts-jest": "^28.0.5",
+    "umi": "^3.5.0",
     "yorkie": "^2.0.0"
   }
 }

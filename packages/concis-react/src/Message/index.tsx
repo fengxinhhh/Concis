@@ -132,9 +132,9 @@ const Message = (props: MessageProps<string>) => {
     } else if (type === 'normal') {
       return <></>;
     } else if (type === 'success') {
-      return <CheckCircleFilled style={{ color: '#19b42a', fontSize: '16px' }} />;
+      return <CheckCircleFilled style={{ color: '#00b42a', fontSize: '16px' }} />;
     } else if (type === 'warning') {
-      return <ExclamationCircleFilled style={{ color: '#fa7d00', fontSize: '16px' }} />;
+      return <ExclamationCircleFilled style={{ color: '#ff7d00', fontSize: '16px' }} />;
     } else if (type === 'loading') {
       return <LoadingOutlined style={{ color: '#1890ff', fontSize: '16px' }} />;
     }

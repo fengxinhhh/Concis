@@ -26,6 +26,7 @@
         height: 54px;
         padding: 0 @concis-transform-xs;
         background-color: #fff;
+        cursor: pointer;
         &:last-of-type {
           margin-right: 0;
           &:after {
@@ -71,6 +72,21 @@
           margin-left: @concis-transform-ms;
           font-size: @concis-font-lg;
           .top {
+            .hover-title {
+              cursor: pointer;
+            }
+            .hover-title:hover,
+            .light-title:hover {
+              color: var(--global-color);
+              transition: color 0.3s;
+            }
+            .grey-title {
+              color: #999999;
+            }
+            .light-title {
+              color: #000000;
+            }
+
             .sub-title {
               margin-left: @concis-transform-ms;
               color: @concis-after-step-bg;

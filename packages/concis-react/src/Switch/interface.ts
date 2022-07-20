@@ -4,7 +4,7 @@ interface SwitchProps<T> {
   /**
    * @description 类名
    */
-  className?: string;
+  className?: T;
   /**
    * @description 禁用
    * @default false
@@ -19,16 +19,16 @@ interface SwitchProps<T> {
    * @description 默认选中
    * @default false
    */
-  defaultChecked?: T;
+  defaultChecked?: boolean;
   /**
    * @description 选中文字
 
    */
-  checkedChildren?: T | ReactNode;
+  checkedChildren?: ReactNode;
   /**
    * @description 未选中文字
    */
-  unCheckedChildren?: T | ReactNode;
+  unCheckedChildren?: ReactNode;
   /**
    * @description 加载状态
    * @default false

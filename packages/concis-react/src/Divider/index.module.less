@@ -1,32 +1,23 @@
 @import '../styles/common.less';
 
-@concis-white-color: #ffffff;
-@concis-gray-color: #cccccc;
-
 .concis-divider {
-  &-line,
-  &-dashed {
-    position: relative;
+  &-line {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    height: 1px;
-  }
-  &-line-text {
-    position: absolute;
     padding: 0 @concis-radius-sm;
   }
-  &-line {
-    border-top: 1px solid @concis-gray-color;
-    &-text {
-      background-color: @concis-white-color;
-    }
+  &-before-line-text,
+  &-after-line-text {
+    flex: 1;
+    height: 1px;
+    color: #fff;
+    border-color: inherit;
+    border-bottom: 1px solid;
   }
-  &-dashed {
-    border-top: 1px dashed @concis-gray-color;
-    .line-text {
-      border-top: 1px dashed @concis-white-color;
-    }
+  &-line-text {
+    padding: 0 20px;
+    color: #fff;
+    font-size: 14px;
   }
 }

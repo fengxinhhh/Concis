@@ -3,6 +3,8 @@ import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
+import { getSiteTheme } from '../../common_utils/storage/getSiteTheme';
+import { getRenderColor } from '../../common_utils/getRenderColor';
 import './index.module.less';
 
 interface RadioGroupProps {
@@ -31,6 +33,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
   const [showAddOption, setShowAddOption] = useState(canAddOption && false);
 
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const theme = getSiteTheme();
 
   const classNames = cs(prefixCls, className, 'concis-radio-group');
 
@@ -78,7 +81,10 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
   );
 
   return (
-    <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
+    <div
+      className={classNames}
+      style={{ '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) } as any}
+    >
       {renderOptions.map((item: any, index: number) => {
         return boxStyle ? (
           <div

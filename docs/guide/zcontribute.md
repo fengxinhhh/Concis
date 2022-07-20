@@ -74,8 +74,8 @@ yarn test:e2e          //e2e测试，对应/__tests__/e2e
 
 - npm start 在本地运行 Concis 网站。
 
-- npm test:jest 运行测试。
-
-- npm run buildNpm 打包 npm 包。
+- npm test:jest 测试所有包的 unit、e2e 测试。
 
 - npm run docs:build 打包网站 Web 包。
+
+对于组件库 npm 包，在 packages 目录下对应的子包中的 package.json 中可以查看相应命令。
