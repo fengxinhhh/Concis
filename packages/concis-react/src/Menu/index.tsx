@@ -300,7 +300,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
           ...customWidth,
           '--global-color': globalColor || '#1890ff',
           '--global-menu-option-bg':
-            menuSelectBgColor || (theme === ('dark' || 'auto') && '#1d6db8') || '#e6f7ff',
+            menuSelectBgColor || (theme === ('dark' || 'auto') ? '#1d6db8' : '#e6f7ff'),
         } as any
       }
     >
