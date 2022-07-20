@@ -1,8 +1,9 @@
-import React, { useMemo, useContext, memo, ReactNode } from 'react';
+import React, { useMemo, useContext, memo, ReactNode, useEffect } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
+import { useTheme } from '../common_utils/hooks/useTheme';
 
 interface ButtonProps {
   //自定义button接口
@@ -79,6 +80,9 @@ const Button = (props: ButtonProps) => {
     children,
     style = {},
   } = props;
+
+  const [theme] = useTheme();
+  console.log(theme);
 
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 

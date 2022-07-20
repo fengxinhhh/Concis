@@ -103,7 +103,7 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
 
   return (
     <Fragment>
-      {mask && <div className="dialog" />}
+      {mask && <div className="concis-loading-dialog" />}
       {renderLoadingContainer}
     </Fragment>
   );

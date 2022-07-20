@@ -2286,7 +2286,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/guide/vscode.md",
-          "updatedTime": 1658166591000,
+          "updatedTime": 1658283370000,
           "nav": {
             "title": "指南",
             "path": "/guide"
