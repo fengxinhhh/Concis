@@ -219,26 +219,27 @@ const Tree: FC<treeProps> = (props) => {
     //失去焦点回调
     setIsFocus(false);
   };
+  console.log(theme);
   const searchStyle = useCallback(
     (treeNode: treeNode): string => {
       if (avaChooseMore) {
         if (activedVal.split(',').includes(treeNode.title)) {
-          if (theme === ('auto' || 'dark')) {
+          if (theme === 'auto' || 'dark') {
             return globalColor || '#1d6db8';
           }
           return globalColor || '#1890FF';
         }
-        return theme === ('auto' || 'dark') ? '#c7c7c8' : '#000000';
+        return theme === 'light' ? '#000000' : '#ffffffe6';
       }
 
       //搜索高亮样式
       if (treeNode.title.includes(activedVal) && activedVal !== '') {
-        if (theme === ('auto' || 'dark')) {
+        if (theme === 'auto' || 'dark') {
           return globalColor || '#1d6db8';
         }
         return globalColor || '#1890FF';
       } else {
-        return theme === ('auto' || 'dark') ? '#c7c7c8' : '#000000';
+        return theme === 'light' ? '#000000' : '#ffffffe6';
       }
     },
     [activedVal],

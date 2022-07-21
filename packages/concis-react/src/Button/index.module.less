@@ -3,7 +3,8 @@
 @concis-button-white-color: #ffffff;
 @concis-button-black-color: #000000;
 
-.concis-button {
+.concis-button,
+.concis-dark-button {
   display: inline-block;
   &-primary,
   &-danger,
@@ -81,5 +82,23 @@
     100% {
       transform: rotate(360deg);
     }
+  }
+}
+
+.concis-dark-button {
+  .concis-button-primary {
+    background-color: @concis-dark-primary-color;
+  }
+  .concis-button-danger {
+    background-color: @concis-dark-danger-color;
+  }
+  .concis-button-info {
+    background-color: @concis-dark-info-color;
+  }
+  .concis-button-warning {
+    background-color: @concis-dark-warning-color;
+  }
+  .concis-button-disabled {
+    background-color: @concis-dark-disabled-color;
   }
 }
