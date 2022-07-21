@@ -253,6 +253,11 @@
           "meta": {}
         },
         {
+          "path": "/guide/udark",
+          "title": "暗黑模式",
+          "meta": {}
+        },
+        {
           "path": "/guide/vcolor",
           "title": "色彩",
           "meta": {}

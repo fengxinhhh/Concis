@@ -737,7 +737,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/GlobalConfig/index.md",
-          "updatedTime": 1657752039000,
+          "updatedTime": 1658417553000,
           "componentName": "GlobalConfig",
           "title": "GlobalConfig 全局配置",
           "nav": {
@@ -2254,6 +2254,44 @@ export function getRoutes() {
         "title": "快速开始 - Concis"
       },
       {
+        "path": "/guide/udark",
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/udark.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/guide/udark.md",
+          "updatedTime": 1658419000651,
+          "nav": {
+            "title": "设计",
+            "path": "/guide"
+          },
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "暗黑模式",
+              "heading": "暗黑模式"
+            },
+            {
+              "depth": 2,
+              "value": "介绍",
+              "heading": "介绍"
+            },
+            {
+              "depth": 2,
+              "value": "使用",
+              "heading": "使用"
+            },
+            {
+              "depth": 2,
+              "value": "注入推荐样式",
+              "heading": "注入推荐样式"
+            }
+          ],
+          "title": "暗黑模式",
+          "hasPreviewer": true
+        },
+        "title": "暗黑模式 - Concis"
+      },
+      {
         "path": "/guide/vcolor",
         "component": require('/Users/apple/Desktop/Concis/docs/guide/vcolor.md').default,
         "exact": true,
@@ -2272,8 +2310,8 @@ export function getRoutes() {
             },
             {
               "depth": 2,
-              "value": "简介",
-              "heading": "简介"
+              "value": "介绍",
+              "heading": "介绍"
             },
             {
               "depth": 2,

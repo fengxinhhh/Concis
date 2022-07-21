@@ -41,4 +41,16 @@ export default () => (
 
 <code src="./demos/index2.tsx"/>
 
+我们推荐使用 Concis 自带的项目背景色和字体色，配置如下：
+
+```css pure
+@import 'concis/web-react/style/compiled-colors.less';
+@import 'concis/web-react/style/index.css';
+
+.App {
+  color: @dark-theme-text-color;
+  background: @dark-theme-background;
+}
+```
+
 <API />
