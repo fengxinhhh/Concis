@@ -12,8 +12,8 @@ export default function MenuDemos1() {
       <Popover
         type="hover"
         align="bottom"
-        propsVisiable={dialogStatus1}
-        onVisableChange={setDialogStatus1}
+        propsVisible={dialogStatus1}
+        onVisibleChange={setDialogStatus1}
         content={
           <>
             <p style={{ color: '#1d2129', fontSize: '16px' }}>Title</p>
@@ -35,8 +35,8 @@ export default function MenuDemos1() {
       <Popover
         type="click"
         align="bottom"
-        propsVisiable={dialogStatus2}
-        onVisableChange={setDialogStatus2}
+        propsVisible={dialogStatus2}
+        onVisibleChange={setDialogStatus2}
         content={
           <>
             <p style={{ color: '#1d2129', fontSize: '16px' }}>Title</p>

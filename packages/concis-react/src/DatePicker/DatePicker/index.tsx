@@ -15,7 +15,7 @@ import { ctx } from '../../Form';
 import './index.module.less';
 const dayjs = require('dayjs');
 
-interface DatePickerProps {
+export interface DatePickerProps {
   /**
    * @description 类名
    */
@@ -32,11 +32,6 @@ interface DatePickerProps {
   format?: string;
   /**
    * @description 设置日期区间选择器
-   * @default false
-   */
-  showRange?: Boolean;
-  /**
-   * @description 显示日期重置按钮
    * @default false
    */
   showClear?: boolean;
@@ -60,6 +55,11 @@ interface DateItemProps {
   value: string;
   date: Date;
   disable: boolean;
+}
+interface NowDateProps {
+  year: number;
+  month: number;
+  day: number;
 }
 const DatePicker: FC<DatePickerProps> = (props) => {
   const {
@@ -119,7 +119,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       formCtx.getChildVal(`${dayjs(nowDate).format(format)}`);
     }
   }, [formCtx.submitStatus]);
-  const classNames = cs(prefixCls, className, 'concis-range-picker');
+  const classNames = cs(prefixCls, className, 'concis-date-picker');
   const clearCallback = () => {
     setDateValue('');
     handleChange && handleChange(null);
@@ -144,33 +144,21 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     });
   };
   const setMonth = (month: number, type: string): void => {
+    let date = {} as NowDateProps;
     if (type === 'add') {
       if (month > 12) {
-        setNowDate({
-          ...nowDate,
-          month: 1,
-          year: nowDate.year + 1,
-        });
+        date = { ...nowDate, month: 1, year: nowDate.year + 1 };
       } else {
-        setNowDate({
-          ...nowDate,
-          month,
-        });
+        date = { ...nowDate, month };
       }
     } else {
       if (month < 0) {
-        setNowDate({
-          ...nowDate,
-          month: 12,
-          year: nowDate.year - 1,
-        });
+        date = { ...nowDate, month: 12, year: nowDate.year - 1 };
       } else {
-        setNowDate({
-          ...nowDate,
-          month,
-        });
+        date = { ...nowDate, month };
       }
     }
+    setNowDate(date);
   };
   const isSameDate = (date: Date) => {
     return (
@@ -185,7 +173,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       type="click"
       align={align}
       dialogWidth={'auto'}
-      propsVisiable={false}
+      propsVisible={false}
       content={
         <div className={classNames}>
           <div className="date-picker-select">

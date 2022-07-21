@@ -2,10 +2,10 @@
 
 @concis-white-color: #ffffff;
 
-.concis-date-picker {
+.concis-month-picker {
   //margin: @concis-transform-xs;
-  font-size: 15px;
-  .date-picker-select {
+  font-size: 12px;
+  .month-picker-select {
     display: flex;
     justify-content: space-around;
     padding: 6px 0 6px;
@@ -49,27 +49,31 @@
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
-        width: 32px;
+        width: 64px;
         height: 32px;
-        margin: 5px 0;
-        border-radius: 50%;
-        //transition: all 0.3s linear;
-        &:hover:not(th):not(.day-empty, .disable, .active) {
+        border-radius: 16px;
+        span {
+          padding: 3px;
+        }
+        &:hover:not(th):not(.day-empty, .disable, .active) span {
+          color: #fff0ec;
           background-image: linear-gradient(#e0e0e0, #e0e0e0);
           background-position: center;
+          border-radius: @concis-radius-xs;
           cursor: pointer;
         }
       }
-      .disable:not(.day-empty) {
+      .disable:not(.day-empty) span {
         color: #a8abb2;
         background-color: #f5f7fa;
-        border-radius: 0;
+        border-radius: @concis-radius-xs;
         cursor: not-allowed;
         opacity: 1;
       }
-      .active {
+      .active span {
+        color: #fff0ec;
         background-image: linear-gradient(@concis-primary-color, @concis-primary-color);
-        //border-radius: @concis-radius-xs;
+        border-radius: @concis-radius-xs;
       }
     }
   }

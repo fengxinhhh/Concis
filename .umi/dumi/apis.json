@@ -321,45 +321,7 @@
       }
     ]
   },
-  "DatePicker": {
-    "default": [
-      {
-        "identifier": "className",
-        "description": "类名",
-        "type": "string"
-      },
-      {
-        "identifier": "type",
-        "description": "日期选择器类型(primary/input)仅支持非range",
-        "type": "string",
-        "default": "primary"
-      },
-      {
-        "identifier": "showRange",
-        "description": "设置日期区间选择器",
-        "type": "Boolean",
-        "default": "false"
-      },
-      {
-        "identifier": "showClear",
-        "description": "显示日期重置按钮",
-        "type": "Boolean",
-        "default": "false"
-      },
-      {
-        "identifier": "align",
-        "description": "方向",
-        "type": "string",
-        "default": "false"
-      },
-      {
-        "identifier": "handleChange",
-        "description": "选择完毕后的回调函数",
-        "type": "Function",
-        "default": "Function"
-      }
-    ]
-  },
+  "DatePicker": {},
   "Divider": {
     "default": [
       {
@@ -482,12 +444,6 @@
         "description": "Input输入框组件聚焦、点击时的外发光颜色",
         "type": "string",
         "default": "#C6F7FF"
-      },
-      {
-        "identifier": "treeSelectTextColor",
-        "description": "Tree选择器组件选中时的字体颜色",
-        "type": "string",
-        "default": "#1890FF"
       },
       {
         "identifier": "menuSelectBgColor",
@@ -930,13 +886,13 @@
         "default": "false"
       },
       {
-        "identifier": "propsVisiable",
+        "identifier": "propsVisible",
         "description": "提供给调用层的卡片显示隐藏状态",
         "type": "boolean",
         "default": "false"
       },
       {
-        "identifier": "onVisableChange",
+        "identifier": "onVisibleChange",
         "description": "卡片显示隐藏回调",
         "type": "Function"
       }
