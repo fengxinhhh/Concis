@@ -780,7 +780,7 @@ export default {
   },
   'swiper-index3': {
     component: (require('/Users/apple/Desktop/Concis/packages/concis-react/src/Swiper/demos/index3.tsx')).default,
-    previewerProps: {"sources":{"_":{"tsx":rawCode233},"index.tsx":{"import":"./Swiper","content":rawCode138},"common_utils/classNames.ts":{"import":"../common_utils/classNames","content":rawCode17},"Swiper/cardSwiperIndex.ts":{"import":"./cardSwiperIndex","content":rawCode139},"Swiper/index.module.less":{"import":"./index.module.less","content":rawCode140}},"dependencies":{"react":{"version":">=16.0.0"},"@ant-design/icons":{"version":"4.7.0"},"react-dom":{"version":">=16.0.0"}},"componentName":"Swiper","identifier":"swiper-index3"},
+    previewerProps: {"sources":{"_":{"tsx":rawCode233}},"dependencies":{},"componentName":"Swiper","identifier":"swiper-index3"},
   },
   'swiper-index4': {
     component: (require('/Users/apple/Desktop/Concis/packages/concis-react/src/Swiper/demos/index4.tsx')).default,
