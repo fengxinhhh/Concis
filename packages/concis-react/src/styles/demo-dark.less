@@ -2,80 +2,6 @@
 
 @import './common.less';
 
-html[data-prefers-color='light'] {
-  //button
-  .concis-button {
-    &-primary {
-      background-color: @concis-primary-color;
-    }
-    &-danger {
-      background-color: @concis-danger-color;
-    }
-    &-info {
-      background-color: @concis-info-color;
-    }
-    &-warning {
-      background-color: @concis-warning-color;
-    }
-    &-disabled {
-      background-color: @concis-disabled-color;
-    }
-  }
-  //loading
-  .concis-loading .loading-container,
-  .concis-dot-loading,
-  .concis-strip-loading,
-  .concis-strip-loading {
-    color: @concis-primary-color;
-    .strip-list {
-      background-color: @concis-primary-color;
-    }
-  }
-  .concis-loading .text {
-    color: @concis-primary-color;
-  }
-  //message
-  .concis-message-container {
-    color: #000000;
-    background-color: #ffffff;
-    border: 1px solid rgb(240, 240, 240);
-  }
-  //notification
-  .concis-notifica-container {
-    color: #000000;
-    background-color: #ffffff;
-    border: 1px solid rgb(240, 240, 240);
-  }
-  //skeleton
-  .concis-skeleton-avatar,
-  .concis-skeleton-container-title,
-  .concis-skeleton-container-line {
-    &::after {
-      background: linear-gradient(
-        90deg,
-        hsla(0, 0%, 100%, 0),
-        hsla(0, 0%, 100%, 0.3),
-        hsla(0, 0%, 100%, 0)
-      );
-    }
-  }
-  //divider
-  .concis-divider {
-    .concis-divider-line {
-      .concis-divider-before-line-text,
-      .concis-divider-after-line-text {
-        color: #e5e6eb;
-      }
-      .concis-divider-line-text {
-        color: #000000;
-      }
-    }
-  }
-  //checkbox
-  .concis-checkbox .text {
-    color: #000000;
-  }
-}
 html[data-prefers-color='dark'] {
   //button
   .concis-button {
@@ -175,5 +101,103 @@ html[data-prefers-color='dark'] {
       background-color: #474749 !important;
     }
   }
-  //switch
+  //steps
+  .concis-steps .step-content .step-line .step-box {
+    background-color: transparent;
+    .sub-content .top .light-title {
+      color: #ffffff;
+    }
+  }
+  //treeSelect
+  .tree-select-dialog {
+    color: #c7c7c8;
+    background: #373739;
+  }
+  //collapse
+  .concis-collapse-box {
+    color: #d2d2d2;
+    background-color: transparent;
+    border: 1px solid #484849 !important;
+    .concis-collapse-item-content {
+      color: #dcdcdc;
+    }
+    .concis-collapse-item-header {
+      border-bottom: 1px solid #484849;
+    }
+  }
+  //list
+  .concis-list {
+    color: #8e8e8e;
+    border: 1px solid #484849;
+    .list-header {
+      color: #c6c6c6;
+    }
+    .concis-list-item {
+      border-top: 1px solid #484849;
+    }
+  }
+  //popover
+  .concis-popover-card .open-container .pop-dialog {
+    background-color: #373739;
+    border: 1px solid #484849 !important;
+    p,
+    div {
+      color: #ffffffe6 !important;
+    }
+  }
+  //treeView
+  .concis-tree-select .treeNode span {
+    color: #ffffffe6 !important;
+  }
+  //affax
+  .concis-affix {
+    background-color: @concis-dark-primary-color;
+  }
+  //menu
+  .concis-menu {
+    color: #ffffffe6;
+    background-color: transparent;
+    .concis-menu-activeMenuOptions {
+      color: #ffffffe6;
+    }
+    .concis-menu-activeFatherTitle:hover {
+      color: #ffffffe6 !important;
+    }
+  }
+  //pagination
+  .concis-pagination-numberBox,
+  .concis-pagination-next,
+  .concis-pagination-prev {
+    background-color: transparent;
+  }
+  .concis-pagination-jumpBox input {
+    color: #ffffffe6;
+    background-color: #343436;
+    outline: none;
+  }
+  //datepicker
+  .concis-range-picker .date-box {
+    background-color: #373739;
+  }
+  .concis-date-picker .result {
+    color: #ffffffe6;
+    &:hover {
+      color: @concis-dark-primary-color;
+    }
+  }
+  .concis-date-picker .check-box {
+    background-color: #373739;
+    .day-list .disable {
+      background: #515357;
+    }
+  }
+  .concis-date-picker .input {
+    color: #ffffffe6;
+    background-color: transparent;
+  }
+  //form
+  .concis-form .disabled,
+  .concis-form-item-disabled {
+    background-color: transparent;
+  }
 }

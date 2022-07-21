@@ -4,6 +4,8 @@ import { Select } from '..';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
+import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
+import { getRenderColor } from '../common_utils/getRenderColor';
 import './index.module.less';
 
 interface PaginationProps {
@@ -60,6 +62,8 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
   const [sizePage, setSizePage] = useState<number>(pageSizeOptions ? pageSizeOptions[0] : 10);
 
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+
+  const theme = getSiteTheme();
 
   const classFirstName = 'concis-pagination';
   const classNames = cs(prefixCls, className, classFirstName);
@@ -242,7 +246,12 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
   return (
     <div
       className={classNames}
-      style={{ ...style, '--global-color': globalColor || '#1890ff' } as any}
+      style={
+        {
+          ...style,
+          '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) as string,
+        } as any
+      }
     >
       <div
         className={

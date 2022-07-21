@@ -2,6 +2,11 @@
   "Button": {
     "default": [
       {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
         "identifier": "type",
         "description": "按钮主题",
         "type": "\"primary\" | \"danger\" | \"warning\" | \"info\" | \"text\"",
@@ -915,7 +920,7 @@
       {
         "identifier": "dialogWidth",
         "description": "卡片宽度",
-        "type": "number",
+        "type": "string | number",
         "default": "200px"
       },
       {

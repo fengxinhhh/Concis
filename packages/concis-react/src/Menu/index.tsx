@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect, memo, useCallback, useMemo, useContext 
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
+import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import './index.module.less';
 
@@ -66,6 +67,8 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
 
   const classFirstName = dark ? 'concis-dark-menu' : 'concis-menu';
   const classNames = cs(prefixCls, className, classFirstName);
+
+  const theme = getSiteTheme();
 
   useEffect(() => {
     const initList = initParentMenuHeight(items, {}, '');
@@ -296,7 +299,8 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
         {
           ...customWidth,
           '--global-color': globalColor || '#1890ff',
-          '--global-menu-option-bg': menuSelectBgColor || '#e6f7ff',
+          '--global-menu-option-bg':
+            menuSelectBgColor || (theme === ('dark' || 'auto') ? '#1d6db8' : '#e6f7ff'),
         } as any
       }
     >

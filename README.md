@@ -20,7 +20,7 @@ English | [简体中文](./README.zh-CN.md)
 </div>
 
 <div align="center">
-  <img src="http://react-view-ui.com:92/images/index-document.jpg" width="1200" />
+  <img src="http://react-view-ui.com:92/images/index-doc.jpg" width="1200" />
 </div>
 
 # Features
