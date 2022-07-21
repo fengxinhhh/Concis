@@ -19,13 +19,21 @@ group:
 
 <code src="./demos/index1.tsx" />
 
-## 输入式日期选择器
+## 年份选择器
 
 <code src="./demos/index2.tsx" />
 
-## 区间式日期选择器
+## 月份选择器
 
 <code src="./demos/index3.tsx" />
+
+[//]: # '## 输入式日期选择器'
+[//]: #
+[//]: # '[//]: # (<code src="./demos/index2.tsx" />)'
+
+## 区间式日期选择器
+
+<code src="./demos/index4.tsx" />
 
 ## 重置时间
 
@@ -33,6 +41,6 @@ group:
 
 ## 出现方向
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index6.tsx" />
 
-<API/>
+<API src="./DatePicker/index.tsx"/>
