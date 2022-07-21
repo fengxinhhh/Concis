@@ -335,15 +335,15 @@
         "default": "primary"
       },
       {
-        "identifier": "showRange",
-        "description": "设置日期区间选择器",
-        "type": "Boolean",
-        "default": "false"
+        "identifier": "format",
+        "description": "设置日期的格式化",
+        "type": "string",
+        "default": "YYYY-MM-DD"
       },
       {
         "identifier": "showClear",
-        "description": "显示日期重置按钮",
-        "type": "Boolean",
+        "description": "设置日期区间选择器",
+        "type": "boolean",
         "default": "false"
       },
       {
@@ -355,6 +355,12 @@
       {
         "identifier": "handleChange",
         "description": "选择完毕后的回调函数",
+        "type": "Function",
+        "default": "Function"
+      },
+      {
+        "identifier": "disableCheck",
+        "description": "验证是否禁用选项的函数",
         "type": "Function",
         "default": "Function"
       }
@@ -484,22 +490,16 @@
         "default": "#C6F7FF"
       },
       {
-        "identifier": "treeSelectTextColor",
-        "description": "Tree选择器组件选中时的字体颜色",
-        "type": "string",
-        "default": "#1890FF"
-      },
-      {
-        "identifier": "menuSelectBgColor",
-        "description": "Menu导航菜单组件选中时的背景颜色",
-        "type": "string",
-        "default": "#C6F7FF"
-      },
-      {
         "identifier": "prefixCls",
         "description": "全局组件类名前缀",
         "type": "any",
         "default": "concis"
+      },
+      {
+        "identifier": "darkTheme",
+        "description": "深色模式",
+        "type": "boolean",
+        "default": "false"
       }
     ]
   },
@@ -776,6 +776,12 @@
         "default": "{}"
       },
       {
+        "identifier": "dark",
+        "description": "暗黑模式",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
         "identifier": "messageBoxId",
         "type": "string"
       }
@@ -834,6 +840,12 @@
         "description": "自定义样式",
         "type": "CSSProperties",
         "default": "{}"
+      },
+      {
+        "identifier": "dark",
+        "description": "暗黑模式",
+        "type": "boolean",
+        "default": "false"
       },
       {
         "identifier": "messageBoxId",
@@ -930,13 +942,13 @@
         "default": "false"
       },
       {
-        "identifier": "propsVisiable",
+        "identifier": "propsVisible",
         "description": "提供给调用层的卡片显示隐藏状态",
         "type": "boolean",
         "default": "false"
       },
       {
-        "identifier": "onVisableChange",
+        "identifier": "onVisibleChange",
         "description": "卡片显示隐藏回调",
         "type": "Function"
       }

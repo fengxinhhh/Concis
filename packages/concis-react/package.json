@@ -1,7 +1,7 @@
 {
   "name": "concis",
   "license": "MIT",
-  "version": "1.2.0",
+  "version": "1.2.3",
   "description": "Concis Component library for PC",
   "authors": {
     "name": "fengxin",
@@ -9,10 +9,10 @@
   },
   "scripts": {
     "build": "rollup -c ./rollup.config.js",
-    "test:unit": "jest ./__tests__/unit",
+    "publish": "npm run upgrade && npm run build && npm publish",
     "test:e2e": "jest ./__tests__/e2e",
-    "upgrade": "node ../../scripts/replace-version-in-pc.ts",
-    "publish": "npm run upgrade && npm run build && npm publish"
+    "test:unit": "jest ./__tests__/unit",
+    "upgrade": "node ../../scripts/replace-version-in-pc.ts"
   },
   "module": "es/index.js",
   "typings": "es/index.d.ts",
@@ -22,13 +22,6 @@
     "README.zh-CN.md",
     "package.json"
   ],
-  "scripts": {
-    "build": "rollup -c ./rollup.config.js",
-    "publish": "npm run upgrade && npm run build && npm publish",
-    "test:e2e": "jest ./__tests__/e2e",
-    "test:unit": "jest ./__tests__/unit",
-    "upgrade": "node ../../scripts/replace-version-in-pc.ts"
-  },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-react": "^7.17.12",
@@ -52,10 +45,6 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  },
-  "authors": {
-    "name": "fengxin",
-    "email": "1244200081@qq.com"
   },
   "gitHead": "ce812c263bec669470e12af97e9c737cbc05d730",
   "gitHooks": {

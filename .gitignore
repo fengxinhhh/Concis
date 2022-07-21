@@ -1,6 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-/.umi
+
 /node_modules
 /packages/concis-react/node_modules
 /packages/concis-react/package-lock.json
@@ -21,6 +21,7 @@
 /coverage
 .umi-production
 .umi-test
+.umi
 .env.local
 /.vscode
 /.idea

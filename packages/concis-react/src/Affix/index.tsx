@@ -63,8 +63,8 @@ const Affix: FC<AffixProps> = (props) => {
     style,
   } = props;
 
-  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
-  const classNames = cs(prefixCls, className, 'concis-affix');
+  const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}affix`);
 
   const [affixElOffset, setAffixElOffset] = useState<offsetProps>({});
 

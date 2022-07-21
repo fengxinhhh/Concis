@@ -4,7 +4,8 @@
 @concis-mobile-step-size: 24px;
 @concis-after-step-bg: #999999;
 
-.concis-steps {
+.concis-steps,
+.concis-dark-steps {
   .step-content {
     position: relative;
     .line {
@@ -102,8 +103,15 @@
     }
   }
 }
+.concis-dark-steps .step-content .step-line .step-box {
+  background-color: transparent;
+  .sub-content .top .light-title {
+    color: @concis-dark-font-color;
+  }
+}
 @media screen and (max-width: 1068px) {
-  .concis-steps {
+  .concis-steps,
+  .concis-dark-steps {
     .step-content {
       .step-line {
         .step-box {
@@ -134,7 +142,8 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .concis-steps {
+  .concis-steps,
+  .concis-dark-steps {
     .step-content {
       height: 100%;
       .line {

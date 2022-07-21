@@ -56,9 +56,9 @@ const TreeView: FC<treeViewProps> = (props) => {
   const [stateTreeData, setStateTreeData] = useState<Array<treeData>>(treeData); //树结构
   const [hoverTreeNode, setHoverTreeNode] = useState(''); //当前覆盖的节点
 
-  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, 'concis-tree-select');
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}tree-select`);
 
   useEffect(() => {
     resolveTreeData(stateTreeData as Array<treeData>, 1, null);

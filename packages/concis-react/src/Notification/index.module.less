@@ -3,7 +3,8 @@
 @concis-pc-notifica-width: 300px;
 @concis-mobile-notifica-width: 220px;
 
-.concis-notifica-container {
+.concis-notifica-container,
+.concis-dark-notifica-container {
   position: fixed;
   z-index: 99999;
   min-width: @concis-pc-notifica-width;
@@ -41,8 +42,14 @@
     margin-top: @concis-transform-lg;
   }
 }
+.concis-dark-notifica-container {
+  color: @concis-dark-font-color;
+  background-color: #000000;
+  border: 1px solid #939393;
+}
 @media screen and (max-width: 400px) {
-  .concis-notifica-container {
+  .concis-notifica-container,
+  .concis-dark-notifica-container {
     min-width: @concis-mobile-notifica-width;
   }
 }

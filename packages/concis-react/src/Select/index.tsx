@@ -90,9 +90,9 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
 
   const optionRef = createRef() as any;
   const formCtx: any = useContext(ctx);
-  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, 'concis-select');
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}select`);
 
   const closeSelect = () => {
     if (optionRef.current && optionRef.current.style) {

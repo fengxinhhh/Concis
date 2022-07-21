@@ -23,9 +23,9 @@ interface dividerProps {
 const Divider: FC<dividerProps> = memo((props) => {
   const { children, className, fontSize, align } = props;
 
-  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classFirstName = 'concis-divider';
+  const classFirstName = darkTheme ? 'concis-dark-divider' : 'concis-divider';
   const classNames = cs(prefixCls, className, classFirstName);
 
   const lineAlign = useMemo(() => {

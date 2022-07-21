@@ -6,7 +6,6 @@ import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
-import { getRenderColor } from '../common_utils/getRenderColor';
 import './index.module.less';
 
 interface treeProps {
@@ -71,9 +70,9 @@ const Tree: FC<treeProps> = (props) => {
 
   const theme = getSiteTheme();
 
-  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, 'cocnis-tree-container');
+  const classNames = cs(prefixCls, className, `cocnis-${darkTheme ? 'dark-' : ''}tree-container`);
 
   useEffect(() => {
     resolveTreeData(treeData as Array<treeNode>, 1);
@@ -219,15 +218,14 @@ const Tree: FC<treeProps> = (props) => {
     //失去焦点回调
     setIsFocus(false);
   };
-  console.log(theme);
   const searchStyle = useCallback(
     (treeNode: treeNode): string => {
       if (avaChooseMore) {
         if (activedVal.split(',').includes(treeNode.title)) {
           if (theme === 'auto' || 'dark') {
-            return globalColor || '#1d6db8';
+            return globalColor || darkTheme ? '#1d6db8' : '#1890ff';
           }
-          return globalColor || '#1890FF';
+          return globalColor || darkTheme ? '#1890FF' : '#1d6db8';
         }
         return theme === 'light' ? '#000000' : '#ffffffe6';
       }
@@ -235,9 +233,9 @@ const Tree: FC<treeProps> = (props) => {
       //搜索高亮样式
       if (treeNode.title.includes(activedVal) && activedVal !== '') {
         if (theme === 'auto' || 'dark') {
-          return globalColor || '#1d6db8';
+          return globalColor || darkTheme ? '#1d6db8' : '#1890ff';
         }
-        return globalColor || '#1890FF';
+        return globalColor || darkTheme ? '#1890FF' : '#1d6db8';
       } else {
         return theme === 'light' ? '#000000' : '#ffffffe6';
       }

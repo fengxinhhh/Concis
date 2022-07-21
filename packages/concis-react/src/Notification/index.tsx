@@ -32,6 +32,7 @@ function addInstance(
     position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight' = 'topRight',
     clearable: boolean = false,
     showFooter: boolean = false,
+    dark: boolean = false,
     footerBtnVal: footerBtnVal = {
       enter: 'OK',
       exit: 'Cancel',
@@ -43,6 +44,7 @@ function addInstance(
     duration = props.duration || 3000;
     content = props.content as string;
     doneCallback = props.doneCallback;
+    dark = props.dark ? props.dark : false;
     if (!props.position) {
       position = 'topRight';
     } else {
@@ -96,6 +98,7 @@ function addInstance(
       footerBtnVal={footerBtnVal}
       doneCallback={doneCallback}
       messageBoxId={messageBoxId}
+      dark={dark}
     />,
     div,
   );
@@ -104,7 +107,7 @@ function addInstance(
 function remove(id: string, position: string, callback: Function) {
   const container = document.querySelector('.notification-container');
   const children = Array.prototype.slice.call(container?.childNodes);
-  console.log(children);
+
   for (let key in children) {
     if (children[key].getAttribute('class') === `${position}-${id}`) {
       const removeDom = children[key];
@@ -153,13 +156,17 @@ const Notification = (props: NotificationProps<string>) => {
     footerBtnVal,
     doneCallback,
     messageBoxId,
+    dark,
   } = props;
   const [opac, setOpac] = useState(1);
   const messageDom = useRef<any>(null);
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, 'concis-notifica-container');
+  const classNames = cs(
+    prefixCls,
+    dark ? 'concis-dark-notifica-container' : 'concis-notifica-container',
+  );
 
   useEffect(() => {
     if (position === 'topLeft') {

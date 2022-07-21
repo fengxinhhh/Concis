@@ -25,13 +25,15 @@ function addInstance(
     duration: number = 3000,
     content,
     position: 'top' | 'bottom' = 'top',
-    clearable = false;
+    clearable = false,
+    dark = false;
   if (typeof props === 'object') {
     style = props.style || {};
     duration = props.duration || 3000;
     content = props.content;
     position = props.position ? props.position : 'top';
     clearable = props.clearable ? props.clearable : false;
+    dark = props.dark ? props.dark : false;
   } else if (typeof props === 'string') {
     content = props;
   }
@@ -66,6 +68,7 @@ function addInstance(
       position={position}
       clearable={clearable}
       messageBoxId={messageBoxId}
+      dark={dark}
     />,
     div,
   );
@@ -96,13 +99,16 @@ function changeHeight(children: Array<HTMLElement>, position: any) {
   }
 }
 const Message = (props: MessageProps<string>) => {
-  const { style, content, type, duration, position, clearable, messageBoxId } = props;
+  const { style, content, type, duration, position, clearable, messageBoxId, dark } = props;
   const [opac, setOpac] = useState(1);
   const messageDom = useRef<any>(null);
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, 'concis-message-container');
+  const classNames = cs(
+    prefixCls,
+    dark ? 'concis-dark-message-container' : 'concis-message-container',
+  );
 
   useEffect(() => {
     if (position === 'top') {

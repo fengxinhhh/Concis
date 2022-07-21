@@ -63,9 +63,9 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
 
   const { items, className, width, dark, ableToggle, defaultOpen, handleRouteChange } = props;
 
-  const { globalColor, menuSelectBgColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classFirstName = dark ? 'concis-dark-menu' : 'concis-menu';
+  const classFirstName = darkTheme || dark ? 'concis-dark-menu' : 'concis-menu';
   const classNames = cs(prefixCls, className, classFirstName);
 
   const theme = getSiteTheme();
@@ -299,8 +299,11 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
         {
           ...customWidth,
           '--global-color': globalColor || '#1890ff',
-          '--global-menu-option-bg':
-            menuSelectBgColor || (theme === ('dark' || 'auto') ? '#1d6db8' : '#e6f7ff'),
+          '--global-menu-option-bg': darkTheme
+            ? '#1d6db8'
+            : theme === ('dark' || 'auto')
+            ? '#1d6db8'
+            : '#e6f7ff',
         } as any
       }
     >

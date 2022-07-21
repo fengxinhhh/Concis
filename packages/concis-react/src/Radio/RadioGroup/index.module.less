@@ -3,7 +3,8 @@
 @concis-radio-size: 15px;
 @concis-radioBox-height: 32px;
 
-.concis-radio-group {
+.concis-radio-group,
+.concis-dark-radio-group {
   display: flex;
   align-items: center;
   height: @concis-radioBox-height;
@@ -80,5 +81,17 @@
     &:hover {
       opacity: 0.8;
     }
+  }
+}
+.concis-dark-radio-group {
+  .groupDisabledStyle,
+  .disabledLabel {
+    color: #bbb8b8 !important;
+  }
+  .groupActive {
+    background: @concis-dark-primary-color;
+  }
+  .groupStyle:hover {
+    color: @concis-dark-primary-color;
   }
 }
