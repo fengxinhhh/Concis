@@ -737,7 +737,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/GlobalConfig/index.md",
-          "updatedTime": 1658417553000,
+          "updatedTime": 1658419034000,
           "componentName": "GlobalConfig",
           "title": "GlobalConfig 全局配置",
           "nav": {
@@ -2259,7 +2259,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/guide/udark.md",
-          "updatedTime": 1658419000651,
+          "updatedTime": 1658419034000,
           "nav": {
             "title": "设计",
             "path": "/guide"

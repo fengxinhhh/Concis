@@ -884,6 +884,6 @@ export default {
   },
   'globalconfig-index2': {
     component: (require('/Users/apple/Desktop/Concis/packages/concis-react/src/GlobalConfig/demos/index2.tsx')).default,
-    previewerProps: {"sources":{"_":{"tsx":rawCode259}},"dependencies":{},"identifier":"globalconfig-index2"},
+    previewerProps: {"sources":{"_":{"tsx":rawCode259}},"dependencies":{},"componentName":"GlobalConfig","identifier":"globalconfig-index2"},
   },
 };
