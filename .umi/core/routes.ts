@@ -762,8 +762,13 @@ export function getRoutes() {
             },
             {
               "depth": 2,
-              "value": "基本用法",
-              "heading": "基本用法"
+              "value": "自定义主题",
+              "heading": "自定义主题"
+            },
+            {
+              "depth": 2,
+              "value": "暗黑模式",
+              "heading": "暗黑模式"
             },
             {
               "depth": 2,

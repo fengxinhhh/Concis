@@ -3,7 +3,7 @@ import GlobalConfig from '..';
 import Button from '../../Button';
 import Loading from '../../Loading';
 import CheckBox from '../../CheckBox';
-import TimePicker from '../../DatePicker';
+import { RangeDatePicker } from '../../DatePicker';
 import Input from '../../Input';
 import RadioGroup from '../../Radio/RadioGroup';
 import Radio from '../../Radio';
@@ -20,22 +20,6 @@ import Step from '../../Steps/Step';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
-const checkGroup = [
-  {
-    label: 'Apple',
-    value: 1,
-  },
-  {
-    label: 'Peer',
-    value: 2,
-    checked: true,
-  },
-  {
-    label: 'Orange',
-    value: 3,
-    disabled: true,
-  },
-];
 const option = [
   {
     label: 'Mucy',
@@ -144,20 +128,32 @@ const stepsData = [
 export default function index1() {
   process.env.NODE_ENV === 'production' && usePageListener('GlobalConfig');
 
-  const [globalColor, setGlobalColor] = useState<Array<string>>(['#1890ff', 'orange', 'green']);
+  const [dark, setDark] = useState(document.documentElement.getAttribute('data-prefers-color'));
+  const [globalColor, setGlobalColor] = useState('');
 
   const toggle = () => {
-    setGlobalColor((oldColor) => {
-      oldColor.push(oldColor.shift() as string);
-      return [...oldColor];
-    });
+    document.documentElement.setAttribute(
+      'data-prefers-color',
+      dark === 'light' ? 'dark' : 'light',
+    );
+    setDark(dark === 'light' ? 'dark' : 'light');
+  };
+  const changeColor = () => {
+    setGlobalColor(!globalColor ? 'orange' : '');
   };
 
   return (
-    <GlobalConfig input="#c6e3fd" globalColor={globalColor[0]}>
+    <GlobalConfig
+      input="#c6e3fd"
+      globalColor={globalColor}
+      darkTheme={dark === 'dark' ? true : false}
+    >
       <div style={{ position: 'relative' }}>
         <Button type="primary" handleClick={toggle}>
-          Toggle Config Color
+          切换主题
+        </Button>
+        <Button type="danger" style={{ marginLeft: '20px' }} handleClick={changeColor}>
+          开启自定义主题
         </Button>
         <p></p>
         <Loading loadingText="正在加载中..." />
@@ -166,7 +162,7 @@ export default function index1() {
         <p></p>
         <Switch />
         <p></p>
-        <TimePicker type="primary" showRange />
+        <RangeDatePicker />
         <p></p>
         <Input placeholder="请输入" width="200" />
         <p></p>

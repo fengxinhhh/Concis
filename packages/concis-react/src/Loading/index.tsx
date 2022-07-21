@@ -62,9 +62,10 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
           style={
             {
               ...loadingStyle,
-              '--global-color': darkTheme
-                ? '#1d6db8'
-                : getRenderColor(theme === ('auto' || 'dark'), globalColor),
+              '--global-color': getRenderColor(
+                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+                globalColor,
+              ),
             } as any
           }
         >
@@ -93,9 +94,10 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
           className={classNames}
           style={
             {
-              '--global-color': darkTheme
-                ? '#1d6db8'
-                : getRenderColor(theme === ('auto' || 'dark'), globalColor),
+              '--global-color': getRenderColor(
+                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+                globalColor,
+              ),
             } as any
           }
         >
@@ -114,9 +116,10 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
           className={classNames}
           style={
             {
-              '--global-color': darkTheme
-                ? '#1d6db8'
-                : getRenderColor(theme === ('auto' || 'dark'), globalColor),
+              '--global-color': getRenderColor(
+                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+                globalColor,
+              ),
             } as any
           }
         >

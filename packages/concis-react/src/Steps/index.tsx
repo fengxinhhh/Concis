@@ -69,9 +69,10 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
       className={classNames}
       style={
         {
-          '--global-color': darkTheme
-            ? '#1d6dbf'
-            : getRenderColor(theme === ('auto' || 'dark'), globalColor),
+          '--global-color': getRenderColor(
+            (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+            globalColor,
+          ),
         } as any
       }
     >

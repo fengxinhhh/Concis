@@ -3,7 +3,7 @@ import GlobalConfig from '..';
 import Button from '../../Button';
 import Loading from '../../Loading';
 import CheckBox from '../../CheckBox';
-import TimePicker from '../../DatePicker';
+import { RangeDatePicker } from '../../DatePicker';
 import Input from '../../Input';
 import RadioGroup from '../../Radio/RadioGroup';
 import Radio from '../../Radio';
@@ -20,22 +20,6 @@ import Step from '../../Steps/Step';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
-const checkGroup = [
-  {
-    label: 'Apple',
-    value: 1,
-  },
-  {
-    label: 'Peer',
-    value: 2,
-    checked: true,
-  },
-  {
-    label: 'Orange',
-    value: 3,
-    disabled: true,
-  },
-];
 const option = [
   {
     label: 'Mucy',
@@ -166,7 +150,7 @@ export default function index1() {
         <p></p>
         <Switch />
         <p></p>
-        <TimePicker type="primary" showRange />
+        <RangeDatePicker />
         <p></p>
         <Input placeholder="请输入" width="200" />
         <p></p>
