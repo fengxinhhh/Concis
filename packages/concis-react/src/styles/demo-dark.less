@@ -156,14 +156,27 @@ html[data-prefers-color='dark'] {
     background-color: @concis-dark-primary-color;
   }
   //menu
-  .concis-menu {
-    color: @concis-dark-font-color;
-    background-color: transparent;
-    .concis-menu-activeMenuOptions {
-      color: @concis-dark-font-color;
+  .concis-menu,
+  .concis-dark-menu {
+    color: #fff;
+    background: #000000;
+    &-fatherTitle {
+      &:hover {
+        color: @concis-dark-primary-color;
+      }
     }
-    .concis-menu-activeFatherTitle:hover {
-      color: @concis-dark-font-color !important;
+    &-childMenuOptions {
+      color: #ffffff;
+      &:hover {
+        color: @concis-dark-primary-color;
+      }
+    }
+    .active {
+      color: #ffffff !important;
+      background-color: @concis-dark-primary-color;
+      .concis-menu-fatherTitle:hover {
+        color: #ffffff !important;
+      }
     }
   }
   //pagination

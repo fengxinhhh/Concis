@@ -1960,11 +1960,6 @@ export function getRoutes() {
               "depth": 2,
               "value": "拖拽",
               "heading": "拖拽"
-            },
-            {
-              "depth": 2,
-              "value": "API",
-              "heading": "api"
             }
           ],
           "hasPreviewer": true

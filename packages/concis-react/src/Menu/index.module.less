@@ -71,14 +71,17 @@
       color: var(--global-menu-option-bg);
     }
   }
-  .activeFatherTitle {
-    color: var(--global-menu-option-bg);
+  &-childMenuOptions {
+    color: #ffffff;
     &:hover {
       color: var(--global-menu-option-bg);
     }
   }
-  &-activeMenuOptions {
-    color: #ffffffe6;
-    background-color: var(--global-color);
+  .active {
+    color: #ffffff !important;
+    background-color: var(--global-menu-option-bg);
+    .concis-dark-menu-fatherTitle:hover {
+      color: #ffffff !important;
+    }
   }
 }

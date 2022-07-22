@@ -260,7 +260,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
             <div
               className={
                 nowActiveKey == m.key
-                  ? `${classFirstName}-activeMenuOptions`
+                  ? `${classFirstName}-activeMenuOptions active`
                   : `${classFirstName}-childMenuOptions`
               }
               style={{ ...childMenuHeight(m.key) }}
@@ -298,7 +298,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
       style={
         {
           ...customWidth,
-          '--global-color': globalColor || '#1890ff',
+          '--global-color': globalColor || darkTheme ? '#1d6db8' : '#1890ff',
           '--global-menu-option-bg': darkTheme
             ? '#1d6db8'
             : theme === ('dark' || 'auto')
