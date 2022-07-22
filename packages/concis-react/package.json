@@ -11,7 +11,7 @@
     "build": "rollup -c ./rollup.config.js",
     "publish": "npm run upgrade && npm run build && npm publish",
     "test:e2e": "jest ./__tests__/e2e",
-    "test:unit": "jest ./__tests__/unit",
+    "test:unit": "jest ./__tests__/unit/DatePicker",
     "upgrade": "node ../../scripts/replace-version-in-pc.ts"
   },
   "module": "es/index.js",

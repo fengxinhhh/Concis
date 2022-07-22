@@ -1,87 +1,108 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TimePicker from '../../../src/DatePicker/index';
+import DatePicker from '../../../src/DatePicker/DatePicker';
+import MonthPicker from '../../../src/DatePicker/MonthPicker';
+import YearPicker from '../../../src/DatePicker/YearPicker';
+import RangeDatePicker from '../../../src/DatePicker/rangeDatePicker';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
 import { act } from 'react-dom/test-utils';
 
 const { mount } = Enzyme;
 
-mountTest(TimePicker);
-
-let container: HTMLDivElement | null;
+mountTest(DatePicker);
 
 describe('DatePicker', () => {
-  beforeEach(() => {
-    container = document.createElement('div');
-    document.body.appendChild(container);
-  });
-  afterEach(() => {
-    document.body.removeChild(container as HTMLDivElement);
-    container = null;
-  });
-
-  it('test default datePicker correctly', () => {
-    //时间选择器交互和显示隐藏测试
+  it('test DatePicker correctly', async () => {
     const mockFn = jest.fn();
-    const component = mount(<TimePicker type="primary" handleChange={mockFn} />);
+    const component = mount(
+      <DatePicker
+        disableCheck={(date: Date) => date.getDate() > 13}
+        align="top"
+        showClear={true}
+        handleChange={mockFn}
+      />,
+    );
     expect(component.find('.concis-date-picker')).toHaveLength(1);
+    expect(
+      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0'),
+    ).toBe(true);
     act(() => {
-      component.find('.result').simulate('click');
+      component.find('input').simulate('focus');
     });
     component.update();
-    expect(component.find('.concis-date-picker .check-box')).toHaveLength(1);
-    act(() => {
-      component.find('.concis-date-picker .check-box .day-list .day').at(0).simulate('click');
-    });
-    component.update();
-    // expect(mockFn).toBeCalled();
+    setTimeout(async () => {
+      await expect(
+        component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 1'),
+      ).toBe(true);
+    }, 0);
+    component.find('.concis-date-picker table tr td:not(.day-empty)').at(0).simulate('click');
+    expect(mockFn).toBeCalled();
+    expect(
+      component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[2],
+    ).toBe('01');
   });
-
-  it('test input datePicker correctly', () => {
-    //输入式时间选择器测试
-    const component = mount(<TimePicker type="input" />);
-    const input = component.find('input');
-    expect(input).toHaveLength(1);
-    act(() => {
-      input.simulate('click');
-    });
-    input.update();
-    expect(component.find('.check-box')).toHaveLength(1);
-  });
-
-  it('test input datePicker change callback correctly', () => {
+  it('test MonthPicker correctly', () => {
     const mockFn = jest.fn();
-    const component = mount(<TimePicker type="input" handleChange={mockFn} />);
-    const input = component.find('input');
-    input.simulate('change', {
-      target: {
-        value: '2018-6-1',
-      },
-    });
-    input.simulate('keydown', {
-      keyCode: 13,
-    });
-    expect(mockFn).toBeCalled();
+    const component = mount(
+      <MonthPicker
+        disableCheck={(date: Date) => date.getMonth() > 5}
+        align="top"
+        showClear={true}
+        handleChange={mockFn}
+      />,
+    );
+    expect(component.find('.concis-month-picker')).toHaveLength(1);
+    expect(
+      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0'),
+    ).toBe(true);
     act(() => {
-      input.simulate('click');
+      component.find('input').simulate('focus');
     });
     component.update();
-    //测试月份选择框正常
-    component.find('.top-bar .month').simulate('click');
-    expect(component.find('.month-toggle-box')).toHaveLength(1);
-    component.find('.month-toggle-box .month').at(0).simulate('click');
-    expect(component.find('.top-bar .month').text()).toBe('1');
-    //测试选择日期正常
-    const firstDay = component.find('.day-list .day').at(0);
-    firstDay.simulate('click');
+    setTimeout(async () => {
+      await expect(
+        component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 1'),
+      ).toBe(true);
+    }, 0);
+    component.find('.concis-month-picker table tr').at(0).find('td').at(0).simulate('click');
     expect(mockFn).toBeCalled();
+    expect(
+      component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[1],
+    ).toBe('01');
   });
-
+  it('test YearPicker correctly', () => {
+    const mockFn = jest.fn();
+    const component = mount(
+      <YearPicker
+        disableCheck={(date: Date) => date.getFullYear() > 2022}
+        align="top"
+        showClear={true}
+        handleChange={mockFn}
+      />,
+    );
+    expect(component.find('.concis-year-picker')).toHaveLength(1);
+    expect(
+      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0'),
+    ).toBe(true);
+    act(() => {
+      component.find('input').simulate('focus');
+    });
+    component.update();
+    setTimeout(async () => {
+      await expect(
+        component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 1'),
+      ).toBe(true);
+    }, 0);
+    component.find('.concis-year-picker table tr').at(0).find('td').at(0).simulate('click');
+    expect(mockFn).toBeCalled();
+    expect(component.find('.concis-input input').getDOMNode()?.getAttribute('value')).toBe(
+      String(new Date().getFullYear()),
+    );
+  });
   it('test range DatePicker show correctly', () => {
     //测试区间式选择器的正确性
     const mockFn = jest.fn();
-    const component = mount(<TimePicker type="primary" showRange handleChange={mockFn} />);
+    const component = mount(<RangeDatePicker handleChange={mockFn} />);
     component.find('.concis-range-picker .rangePicker .concis-input input').at(0).simulate('focus');
 
     expect(component.find('.concis-range-picker .date-box')).toHaveLength(1);
@@ -91,14 +112,5 @@ describe('DatePicker', () => {
     startPickerDom.at(0).simulate('click');
     endPickerDom.at(0).simulate('click');
     expect(mockFn).toBeCalled();
-  });
-
-  it('test range clearly DatePicker show correctly', () => {
-    //测试可清除式选择器显示icon
-    const component = <TimePicker type="primary" showRange showClear />;
-    ReactDOM.render(component, container);
-    expect(container?.querySelector('.concis-range-picker .rangePicker')?.childNodes.length).toBe(
-      4,
-    );
   });
 });
