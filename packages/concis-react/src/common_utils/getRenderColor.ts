@@ -4,7 +4,6 @@ const getRenderColor = (isDark: boolean, globalColor: string | undefined): strin
   if (globalColor) {
     return globalColor;
   }
-  console.log(7, isDark);
   return isDark ? '#1d6db8' : '#1890ff';
 };
 
