@@ -806,7 +806,7 @@ const Table: FC<tableProps> = (props: tableProps) => {
         onScroll={(e) => scrollTable(e)}
         ref={scrollDom as any}
       >
-        <table border={1} cellSpacing="1">
+        <table>
           {
             //常规表格
             !virtualized && (

@@ -12,6 +12,14 @@ Concis 内置提供了暗黑模式的主题，暗黑模式的优势在于在弱�
 
 <code src="../../packages/concis-react/src/GlobalConfig/demos/index2.tsx" />
 
+## 案例
+
+基于 Concis 全家桶默认主题和暗黑主题的素材。
+
+<img src="http://react-view-ui.com:92/images/concis-light-template.png" />
+
+<img src="http://react-view-ui.com:92/images/concis-dark-template.png" />
+
 ## 使用
 
 通过 `GlobalConfig` 组件，配置 `darkTheme` 属性即可生效。

@@ -2277,6 +2277,11 @@ export function getRoutes() {
             },
             {
               "depth": 2,
+              "value": "案例",
+              "heading": "案例"
+            },
+            {
+              "depth": 2,
               "value": "使用",
               "heading": "使用"
             },
