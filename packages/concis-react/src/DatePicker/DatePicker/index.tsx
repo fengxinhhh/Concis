@@ -81,7 +81,6 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   const titleList = ['日', '一', '二', '三', '四', '五', '六'];
   const [nowDayList, setNowDayList] = useState<DateItemProps[][]>([]);
   const [dateValue, setDateValue] = useState('');
-  const [visable, setVisable] = useState(false);
 
   const formCtx = useContext(ctx);
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
@@ -174,10 +173,6 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       date.getDate() === clickDate.getDate()
     );
   };
-  const changeDay = (day) => {
-    setInputVal(day);
-    setVisable(false);
-  };
 
   return (
     <Popover
@@ -185,7 +180,6 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       align={align}
       dialogWidth={'auto'}
       closeDeps={[nowDate]}
-      onVisibleChange={(a) => console.log(111, a)}
       content={
         <div
           className={classNames}
@@ -225,7 +219,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
                   {row.map((day, idx) => (
                     <td
                       key={idx}
-                      onClick={() => changeDay(day)}
+                      onClick={() => setInputVal(day)}
                       className={`${day.value === '' ? 'day-empty' : ''} ${
                         day.disable ? 'disable' : ''
                       } ${isSameDate(day.date) ? 'active' : ''}`}
