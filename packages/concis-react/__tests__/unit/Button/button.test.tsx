@@ -34,6 +34,7 @@ describe(`button`, () => {
 
     button.simulate('click');
     expect(mockFn.mock.calls.length).toBe(mockFnCallLength);
+    expect(mockFn).toBeCalled();
   });
 
   it('button type set show correctly color', () => {

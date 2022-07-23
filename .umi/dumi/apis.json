@@ -321,51 +321,7 @@
       }
     ]
   },
-  "DatePicker": {
-    "default": [
-      {
-        "identifier": "className",
-        "description": "类名",
-        "type": "string"
-      },
-      {
-        "identifier": "type",
-        "description": "日期选择器类型(primary/input)仅支持非range",
-        "type": "string",
-        "default": "primary"
-      },
-      {
-        "identifier": "format",
-        "description": "设置日期的格式化",
-        "type": "string",
-        "default": "YYYY-MM-DD"
-      },
-      {
-        "identifier": "showClear",
-        "description": "设置日期区间选择器",
-        "type": "boolean",
-        "default": "false"
-      },
-      {
-        "identifier": "align",
-        "description": "方向",
-        "type": "string",
-        "default": "false"
-      },
-      {
-        "identifier": "handleChange",
-        "description": "选择完毕后的回调函数",
-        "type": "Function",
-        "default": "Function"
-      },
-      {
-        "identifier": "disableCheck",
-        "description": "验证是否禁用选项的函数",
-        "type": "Function",
-        "default": "Function"
-      }
-    ]
-  },
+  "DatePicker": {},
   "Divider": {
     "default": [
       {
