@@ -1,0 +1,37 @@
+@import '../../styles/common.less';
+@concis-gray-color: #c5c5c5;
+.textarea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 56px;
+  min-height: 56px;
+  padding: 5px 8px;
+
+  font-size: 14px;
+  font-family: PingFangSC-Regular;
+  line-height: 22px;
+  border: 1px solid #d9d9d9;
+  border-radius: @concis-radius-xs;
+  outline: none;
+  -webkit-transition: all 0.3s cubic-bezier(0.38, 0, 0.24, 1), height 0s;
+  transition: all 0.3s cubic-bezier(0.38, 0, 0.24, 1), height 0s;
+  resize: vertical;
+  &:hover {
+    border-color: var(--global-color);
+  }
+  &:focus {
+    border-color: var(--global-color);
+    box-shadow: 0 0 5px 1px var(--global-color);
+  }
+}
+.textarea-limit {
+  position: absolute;
+  right: 16px;
+  bottom: 8px;
+  color: @concis-gray-color;
+  font-size: 14px;
+}

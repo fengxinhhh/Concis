@@ -1,0 +1,1412 @@
+{
+  "Button": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "type",
+        "description": "按钮主题",
+        "type": "\"primary\" | \"danger\" | \"warning\" | \"info\" | \"text\"",
+        "default": "primary"
+      },
+      {
+        "identifier": "width",
+        "description": "宽度",
+        "type": "Number"
+      },
+      {
+        "identifier": "height",
+        "description": "高度",
+        "type": "Number"
+      },
+      {
+        "identifier": "disabled",
+        "description": "禁用状态",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "circle",
+        "description": "字体按钮",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "dashed",
+        "description": "按钮边框为虚线",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "loading",
+        "description": "加载状态",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "style",
+        "description": "自定义样式",
+        "type": "Object"
+      },
+      {
+        "identifier": "handleClick",
+        "description": "按钮点击回调事件",
+        "type": "Function"
+      }
+    ]
+  },
+  "Affix": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "affixType",
+        "description": "类型 scroll表示滚动容器",
+        "type": "string",
+        "default": "''"
+      },
+      {
+        "identifier": "children",
+        "description": "插槽",
+        "type": "any"
+      },
+      {
+        "identifier": "offsetTop",
+        "description": "顶部距离",
+        "type": "string | number",
+        "default": "0"
+      },
+      {
+        "identifier": "offsetLeft",
+        "description": "左侧距离",
+        "type": "string | number",
+        "default": "0"
+      },
+      {
+        "identifier": "offsetBottom",
+        "description": "底部距离",
+        "type": "string | number",
+        "default": "0"
+      },
+      {
+        "identifier": "offsetRight",
+        "description": "右侧距离",
+        "type": "string | number",
+        "default": "0"
+      },
+      {
+        "identifier": "style",
+        "description": "插槽样式",
+        "type": "Object",
+        "default": "{}"
+      }
+    ]
+  },
+  "Avatar": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "style",
+        "description": "头像自定义样式",
+        "type": "CSSProperties",
+        "default": "{}"
+      },
+      {
+        "identifier": "size",
+        "description": "头像大小",
+        "type": "number",
+        "default": "40px"
+      },
+      {
+        "identifier": "shape",
+        "description": "头像形状",
+        "type": "string",
+        "default": "circle"
+      },
+      {
+        "identifier": "autoFixFontSize",
+        "description": "文本自适应",
+        "type": "boolean",
+        "default": "true"
+      },
+      {
+        "identifier": "triggerType",
+        "description": "交互类型",
+        "type": "\"mask\" | \"button\"",
+        "default": "button"
+      },
+      {
+        "identifier": "triggerIcon",
+        "description": "交互按钮图标",
+        "type": "ReactNode",
+        "default": "<></>"
+      },
+      {
+        "identifier": "triggerClick",
+        "description": "交互点击回调",
+        "type": "Function"
+      },
+      {
+        "identifier": "groupStyle",
+        "description": "按钮组样式",
+        "type": "CSSProperties",
+        "default": "{}"
+      }
+    ]
+  },
+  "Badge": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "徽标样式",
+        "type": "string",
+        "default": "{}"
+      },
+      {
+        "identifier": "style",
+        "description": "徽标样式",
+        "type": "CSSProperties",
+        "default": "{}"
+      },
+      {
+        "identifier": "count",
+        "description": "徽标数字值",
+        "type": "ReactNode",
+        "default": "'''"
+      },
+      {
+        "identifier": "maxCount",
+        "description": "徽标最大值",
+        "type": "number",
+        "default": "99"
+      },
+      {
+        "identifier": "dotStyle",
+        "description": "小圆点样式",
+        "type": "CSSProperties",
+        "default": "{}"
+      },
+      {
+        "identifier": "dot",
+        "description": "使用小圆点",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "offset",
+        "description": "小圆点位置值",
+        "type": "number[]",
+        "default": "[2, 2]"
+      },
+      {
+        "identifier": "text",
+        "description": "小圆点文本值",
+        "type": "string",
+        "default": "'''"
+      }
+    ]
+  },
+  "CheckBox": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "checked",
+        "description": "默认选中状态",
+        "type": "boolean",
+        "default": "boolean"
+      },
+      {
+        "identifier": "disabled",
+        "description": "禁用",
+        "type": "boolean",
+        "default": "boolean"
+      },
+      {
+        "identifier": "group",
+        "description": "多选组配置",
+        "type": "checkGroup[]",
+        "default": "Array"
+      },
+      {
+        "identifier": "checkCallback",
+        "description": "多选框选中回调函数",
+        "type": "Function"
+      },
+      {
+        "identifier": "checkGroupCallback",
+        "description": "多选组改变回调函数",
+        "type": "Function"
+      }
+    ]
+  },
+  "Collapse": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "defaultActive",
+        "description": "默认展开列表",
+        "type": "(string | number)[]",
+        "default": "[]"
+      },
+      {
+        "identifier": "header",
+        "description": "头部内容",
+        "type": "string",
+        "default": "<></>"
+      },
+      {
+        "identifier": "listKey",
+        "description": "层级下标",
+        "type": "string | number",
+        "default": "1"
+      },
+      {
+        "identifier": "disabled",
+        "description": "禁止展开",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "extra",
+        "description": "头部右侧内容",
+        "type": "ReactNode",
+        "default": "<></>"
+      },
+      {
+        "identifier": "accordion",
+        "description": "手风琴",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "noBorder",
+        "description": "无边框",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "headerAlign",
+        "description": "头部对齐方式",
+        "type": "string",
+        "default": "left"
+      },
+      {
+        "identifier": "lazyLoad",
+        "description": "懒加载",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "toggleCallback",
+        "description": "切换回调函数，返回打开列表的listKey",
+        "type": "Function"
+      }
+    ]
+  },
+  "DatePicker": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string",
+        "default": "''"
+      },
+      {
+        "identifier": "type",
+        "description": "日期选择器类型(primary/input)仅支持非range",
+        "type": "string",
+        "default": "primary"
+      },
+      {
+        "identifier": "format",
+        "description": "设置日期的格式化",
+        "type": "string",
+        "default": "YYYY-MM-DD"
+      },
+      {
+        "identifier": "showClear",
+        "description": "设置日期区间选择器",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "align",
+        "description": "方向",
+        "type": "string",
+        "default": "false"
+      },
+      {
+        "identifier": "handleChange",
+        "description": "选择完毕后的回调函数",
+        "type": "Function",
+        "default": "Function"
+      },
+      {
+        "identifier": "disableCheck",
+        "description": "验证是否禁用选项的函数",
+        "type": "Function",
+        "default": "Function"
+      }
+    ]
+  },
+  "Divider": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "fontSize",
+        "description": "字体大小",
+        "type": "Number"
+      },
+      {
+        "identifier": "align",
+        "description": "对齐方式",
+        "type": "String",
+        "default": "center"
+      }
+    ]
+  },
+  "Form": {
+    "default": [
+      {
+        "identifier": "style",
+        "description": "自定义样式（不包含Form.Item中其他Concis内置样式）",
+        "type": "CSSProperties",
+        "default": "{}"
+      },
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string",
+        "default": "null"
+      },
+      {
+        "identifier": "layout",
+        "description": "布局方式",
+        "type": "\"horizontal\" | \"vertical\"",
+        "default": "horizontal"
+      },
+      {
+        "identifier": "formField",
+        "description": "表单唯一ref，受控表单必传，通过useRef声明",
+        "type": "any",
+        "default": "null"
+      },
+      {
+        "identifier": "disabled",
+        "description": "全局禁用",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "label",
+        "description": "Form.Item标签",
+        "type": "T",
+        "default": "null"
+      },
+      {
+        "identifier": "wrapperCol",
+        "description": "Form.Item当行底部距离",
+        "type": "number",
+        "default": "20px"
+      },
+      {
+        "identifier": "wrapperTol",
+        "description": "Form.Item当行顶部距离",
+        "type": "number",
+        "default": "20px"
+      },
+      {
+        "identifier": "field",
+        "description": "Form.Item受控项名称",
+        "type": "T",
+        "default": "null"
+      },
+      {
+        "identifier": "rules",
+        "description": "Form.Item当行校验规则",
+        "type": "ruleType[]",
+        "default": "20px"
+      },
+      {
+        "identifier": "useForm",
+        "description": "受控表单向外暴露的hook",
+        "type": "Function"
+      },
+      {
+        "identifier": "onSubmit",
+        "description": "useForm.onSubmit，提交事件",
+        "type": "Function"
+      },
+      {
+        "identifier": "resetFields",
+        "description": "useForm.resetFields，重置表单事件",
+        "type": "Function"
+      },
+      {
+        "identifier": "validateFields",
+        "description": "useForm.validateFields，手动校验事件",
+        "type": "Function"
+      },
+      {
+        "identifier": "useFormContext",
+        "description": "useForm.useFormContext，获取表单当前受控状态事件",
+        "type": "Function"
+      }
+    ]
+  },
+  "GlobalConfig": {
+    "default": [
+      {
+        "identifier": "globalColor",
+        "description": "主题颜色",
+        "type": "string",
+        "default": "#1890FF"
+      },
+      {
+        "identifier": "input",
+        "description": "Input输入框组件聚焦、点击时的外发光颜色",
+        "type": "string",
+        "default": "#C6F7FF"
+      },
+      {
+        "identifier": "prefixCls",
+        "description": "全局组件类名前缀",
+        "type": "any",
+        "default": "concis"
+      },
+      {
+        "identifier": "darkTheme",
+        "description": "深色模式",
+        "type": "boolean",
+        "default": "false"
+      }
+    ]
+  },
+  "Input": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "width",
+        "description": "自定义宽度",
+        "type": "string",
+        "default": "170px"
+      },
+      {
+        "identifier": "moreStyle",
+        "description": "自定义样式",
+        "type": "object",
+        "default": "{}"
+      },
+      {
+        "identifier": "type",
+        "description": "输入框类型",
+        "type": "string",
+        "default": "text"
+      },
+      {
+        "identifier": "placeholder",
+        "description": "提示",
+        "type": "string",
+        "default": "''"
+      },
+      {
+        "identifier": "showClear",
+        "description": "显示清空按钮",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "showTogglePwd",
+        "description": "显示密码切换按钮(需同时设置type=\"password\")",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "min",
+        "description": "数字框最小值",
+        "type": "number",
+        "default": "''"
+      },
+      {
+        "identifier": "max",
+        "description": "数字框最大值",
+        "type": "number",
+        "default": "''"
+      },
+      {
+        "identifier": "step",
+        "description": "数字框递增/减值",
+        "type": "number",
+        "default": "1"
+      },
+      {
+        "identifier": "maxLength",
+        "description": "文本域内容最大长度",
+        "type": "number"
+      },
+      {
+        "identifier": "showCount",
+        "description": "是否展示字数",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "handleIptChange",
+        "description": "输入框内容改变回调",
+        "type": "Function"
+      },
+      {
+        "identifier": "handleIptFocus",
+        "description": "输入框聚焦回调",
+        "type": "Function"
+      },
+      {
+        "identifier": "handleClick",
+        "description": "输入框点击回调",
+        "type": "Function"
+      },
+      {
+        "identifier": "handleIptBlur",
+        "description": "输入框失去焦点回调",
+        "type": "Function"
+      },
+      {
+        "identifier": "handleKeyDown",
+        "description": "输入框键盘监听",
+        "type": "Function"
+      },
+      {
+        "identifier": "handleNumChange",
+        "description": "数字框内容改变回调",
+        "type": "Function"
+      },
+      {
+        "identifier": "clearCallback",
+        "description": "清空回调",
+        "type": "Function"
+      },
+      {
+        "identifier": "defaultValue",
+        "description": "默认内容",
+        "type": "string & (string | number | readonly string[])",
+        "default": "''"
+      },
+      {
+        "identifier": "isFather",
+        "type": "boolean"
+      }
+    ]
+  },
+  "Layout": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "extraStyle",
+        "description": "自定义样式",
+        "type": "Object",
+        "default": "{}"
+      },
+      {
+        "identifier": "row",
+        "description": "Slider/Content横向栅格比例",
+        "type": "Number",
+        "default": "Slider-3,Content-7"
+      }
+    ]
+  },
+  "LazyLoad": {
+    "default": [
+      {
+        "identifier": "delay",
+        "description": "延迟加载",
+        "type": "number",
+        "default": "0ms"
+      }
+    ]
+  },
+  "List": {},
+  "Loading": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "type",
+        "description": "加载Icon类型",
+        "type": "\"default\" | \"dot\" | \"strip\"",
+        "default": "default"
+      },
+      {
+        "identifier": "mask",
+        "description": "配置蒙层",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "loadingText",
+        "description": "加载文字",
+        "type": "string",
+        "default": "'''"
+      },
+      {
+        "identifier": "icon",
+        "description": "自定义图标",
+        "type": "ReactNode",
+        "default": "''"
+      },
+      {
+        "identifier": "width",
+        "description": "自定义宽度",
+        "type": "string",
+        "default": "2em"
+      },
+      {
+        "identifier": "height",
+        "description": "自定义高度",
+        "type": "string",
+        "default": "2em"
+      },
+      {
+        "identifier": "style",
+        "description": "自定义样式",
+        "type": "CSSProperties",
+        "default": "{}"
+      }
+    ]
+  },
+  "Menu": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "items",
+        "description": "配置对象",
+        "type": "RenderOptions[]",
+        "default": "{}",
+        "required": true
+      },
+      {
+        "identifier": "width",
+        "description": "自定义宽度",
+        "type": "string | number",
+        "default": "220px"
+      },
+      {
+        "identifier": "dark",
+        "description": "深度模式",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "ableToggle",
+        "description": "手风琴",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "defaultOpen",
+        "description": "默认展开",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "handleRouteChange",
+        "description": "切换菜单回调函数",
+        "type": "Function"
+      }
+    ]
+  },
+  "Message": {
+    "default": [
+      {
+        "identifier": "content",
+        "description": "对象类型传参时的内容",
+        "type": "string"
+      },
+      {
+        "identifier": "type",
+        "description": "Message类型",
+        "type": "\"info\" | \"success\" | \"warning\" | \"error\" | \"normal\" | \"loading\""
+      },
+      {
+        "identifier": "duration",
+        "description": "显示时间",
+        "type": "number",
+        "default": "3000ms"
+      },
+      {
+        "identifier": "position",
+        "description": "显示位置",
+        "type": "\"top\" | \"bottom\"",
+        "default": "top"
+      },
+      {
+        "identifier": "clearable",
+        "description": "出现可清除按钮",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "style",
+        "description": "自定义样式",
+        "type": "CSSProperties",
+        "default": "{}"
+      },
+      {
+        "identifier": "dark",
+        "description": "暗黑模式",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "messageBoxId",
+        "type": "string"
+      }
+    ]
+  },
+  "Notification": {
+    "default": [
+      {
+        "identifier": "content",
+        "description": "正文",
+        "type": "string"
+      },
+      {
+        "identifier": "type",
+        "description": "提醒框类型类型",
+        "type": "\"info\" | \"success\" | \"warning\" | \"error\" | \"normal\" | \"loading\""
+      },
+      {
+        "identifier": "duration",
+        "description": "显示时间",
+        "type": "number",
+        "default": "3000ms"
+      },
+      {
+        "identifier": "position",
+        "description": "显示位置",
+        "type": "\"topLeft\" | \"topRight\" | \"bottomLeft\" | \"bottomRight\"",
+        "default": "top"
+      },
+      {
+        "identifier": "clearable",
+        "description": "出现可清除按钮",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "showFooter",
+        "description": "出现底部菜单",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "footerBtnVal",
+        "description": "底部按钮名称",
+        "type": "footerBtnVal",
+        "default": "{Cancel、OK}"
+      },
+      {
+        "identifier": "doneCallback",
+        "description": "关闭/确认回调函数，根据返回参数判断事件触发类型",
+        "type": "Function",
+        "default": "{1 -> 确认 2 -> 取消 3 -> 关闭}"
+      },
+      {
+        "identifier": "style",
+        "description": "自定义样式",
+        "type": "CSSProperties",
+        "default": "{}"
+      },
+      {
+        "identifier": "dark",
+        "description": "暗黑模式",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "messageBoxId",
+        "type": "string"
+      }
+    ]
+  },
+  "Pagination": {
+    "default": [
+      {
+        "identifier": "style",
+        "type": "object"
+      },
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "total",
+        "description": "总数据条数",
+        "type": "number",
+        "default": "0",
+        "required": true
+      },
+      {
+        "identifier": "showSizeChanger",
+        "description": "显示每页条数Select",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "pageSizeOptions",
+        "description": "每页条数配置",
+        "type": "number[]",
+        "default": "每页10条数据"
+      },
+      {
+        "identifier": "showJumpInput",
+        "description": "显示跳转页面输入框",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "changePageCallback",
+        "description": "改变页码后的回调",
+        "type": "Function",
+        "default": "{}"
+      },
+      {
+        "identifier": "changePageSizeCallback",
+        "description": "改变每页显示后的回调",
+        "type": "Function",
+        "default": "{}"
+      }
+    ]
+  },
+  "Popover": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "type",
+        "description": "触发形式 hover/click",
+        "type": "string",
+        "default": "hover"
+      },
+      {
+        "identifier": "align",
+        "description": "对齐方式 left/right/top/bottom",
+        "type": "string",
+        "default": "bottom"
+      },
+      {
+        "identifier": "content",
+        "description": "卡片内容",
+        "type": "ReactNode",
+        "default": "<></>",
+        "required": true
+      },
+      {
+        "identifier": "dialogWidth",
+        "description": "卡片宽度",
+        "type": "string | number",
+        "default": "200px"
+      },
+      {
+        "identifier": "noBorder",
+        "description": "无边框",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "defaultShow",
+        "description": "默认显示气泡卡片",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "closeDeps",
+        "description": "气泡卡片关闭依赖项",
+        "type": "any[]",
+        "default": "[]"
+      },
+      {
+        "identifier": "onVisibleChange",
+        "description": "卡片显示隐藏回调",
+        "type": "Function"
+      }
+    ]
+  },
+  "Radio": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "value",
+        "description": "默认选中索引",
+        "type": "Number",
+        "default": "0"
+      },
+      {
+        "identifier": "disabled",
+        "description": "禁用",
+        "type": "Boolean",
+        "default": "0"
+      },
+      {
+        "identifier": "canAddOption",
+        "description": "支持手动扩展",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "boxStyle",
+        "description": "方形样式",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "onChange",
+        "description": "选项改变回调函数",
+        "type": "Function"
+      }
+    ]
+  },
+  "Rate": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "num",
+        "description": "星星个数",
+        "type": "number",
+        "default": "5"
+      },
+      {
+        "identifier": "starColor",
+        "description": "颜色",
+        "type": "string",
+        "default": "5"
+      },
+      {
+        "identifier": "defaultShow",
+        "description": "默认显示个数",
+        "type": "number",
+        "default": "num || 0"
+      },
+      {
+        "identifier": "avaClear",
+        "description": "双击清除",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "avaHalf",
+        "description": "半星",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "chooseCallback",
+        "description": "选择回调函数",
+        "type": "Function"
+      }
+    ]
+  },
+  "Select": {
+    "default": [
+      {
+        "identifier": "option",
+        "description": "选择器数据",
+        "type": "Options[]",
+        "default": "[]",
+        "required": true
+      },
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "width",
+        "description": "宽度",
+        "type": "Number",
+        "default": "80px"
+      },
+      {
+        "identifier": "placeholder",
+        "description": "提示",
+        "type": "String",
+        "default": "false"
+      },
+      {
+        "identifier": "disabled",
+        "description": "禁用状态",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "loading",
+        "description": "加载状态",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "showSearch",
+        "description": "可输入状态",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "clearable",
+        "description": "可输入状态下清除",
+        "type": "Boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "handleSelectCallback",
+        "description": "选择后的回调",
+        "type": "Function",
+        "default": "{}"
+      },
+      {
+        "identifier": "handleTextChange",
+        "description": "输入后的回调",
+        "type": "Function",
+        "default": "{}"
+      }
+    ]
+  },
+  "Skeleton": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "T"
+      },
+      {
+        "identifier": "loading",
+        "description": "加载状态",
+        "type": "boolean",
+        "default": "true"
+      },
+      {
+        "identifier": "avatar",
+        "description": "显示头像",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "row",
+        "description": "自定义行数",
+        "type": "number",
+        "default": "3"
+      },
+      {
+        "identifier": "width",
+        "description": "自定义宽度",
+        "type": "(string | number)[]",
+        "default": "100%"
+      },
+      {
+        "identifier": "size",
+        "description": "头像尺寸",
+        "type": "number",
+        "default": "40"
+      }
+    ]
+  },
+  "Space": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "direction",
+        "description": "方向",
+        "type": "\"horizontal\" | \"vertical\"",
+        "default": "horizontal"
+      },
+      {
+        "identifier": "size",
+        "description": "间距大小",
+        "type": "sizeType | sizeType[]",
+        "default": "smail"
+      },
+      {
+        "identifier": "align",
+        "description": "垂直对齐方式",
+        "type": "alignType",
+        "default": "center"
+      },
+      {
+        "identifier": "wrap",
+        "description": "环绕间距",
+        "type": "T",
+        "default": "false"
+      }
+    ]
+  },
+  "Steps": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "current",
+        "description": "当前步骤下标",
+        "type": "number",
+        "default": "1",
+        "required": true
+      },
+      {
+        "identifier": "subTitle",
+        "description": "步骤子标题",
+        "type": "string"
+      },
+      {
+        "identifier": "description",
+        "description": "步骤描述",
+        "type": "string"
+      },
+      {
+        "identifier": "onChange",
+        "description": "点击步骤条回调函数",
+        "type": "(value: number) => void"
+      }
+    ]
+  },
+  "Swiper": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "imgList",
+        "description": "图片列表",
+        "type": "string[]",
+        "default": "[]",
+        "required": true
+      },
+      {
+        "identifier": "pictureSize",
+        "description": "轮播图宽度",
+        "type": "number",
+        "default": "400px"
+      },
+      {
+        "identifier": "height",
+        "description": "轮播图高度",
+        "type": "number",
+        "default": "240px"
+      },
+      {
+        "identifier": "autoPlayer",
+        "description": "自动播放",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "showTrigger",
+        "description": "展示小圆点",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "deply",
+        "description": "自动播放间隔",
+        "type": "number",
+        "default": "3000ms"
+      },
+      {
+        "identifier": "card",
+        "description": "卡片式轮播图",
+        "type": "boolean",
+        "default": "false"
+      }
+    ]
+  },
+  "Switch": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "T"
+      },
+      {
+        "identifier": "disabled",
+        "description": "禁用",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "small",
+        "description": "小型按钮",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "defaultChecked",
+        "description": "默认选中",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "checkedChildren",
+        "description": "选中文字",
+        "type": "ReactNode"
+      },
+      {
+        "identifier": "unCheckedChildren",
+        "description": "未选中文字",
+        "type": "ReactNode"
+      },
+      {
+        "identifier": "loading",
+        "description": "加载状态",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "handleChange",
+        "description": "改变回调函数",
+        "type": "Function"
+      }
+    ]
+  },
+  "Table": {},
+  "Tree": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "treeData",
+        "description": "Tree配置参数",
+        "type": "treeNode[]",
+        "required": true
+      },
+      {
+        "identifier": "width",
+        "description": "宽度",
+        "type": "string",
+        "default": "200px"
+      },
+      {
+        "identifier": "avaSearch",
+        "description": "支持搜索",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "avaChooseMore",
+        "description": "支持多选",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "defaultOpen",
+        "description": "全展开",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "chooseCallback",
+        "description": "选择回调函数",
+        "type": "Function"
+      }
+    ]
+  },
+  "TreeView": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "Tree配置参数",
+        "type": "string"
+      },
+      {
+        "identifier": "treeData",
+        "description": "Tree配置参数",
+        "type": "treeData[]",
+        "required": true
+      },
+      {
+        "identifier": "defaultOpen",
+        "description": "默认展开",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "disabled",
+        "description": "禁用",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "avaDrop",
+        "description": "可拖拽",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "checkCallback",
+        "description": "选中回调函数",
+        "type": "Function"
+      },
+      {
+        "identifier": "dropCallback",
+        "description": "拖拽回调函数",
+        "type": "Function"
+      }
+    ]
+  }
+}

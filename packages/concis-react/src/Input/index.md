@@ -36,4 +36,16 @@ group:
 
 <code src="./demos/index5.tsx" />
 
+## 基础文本域
+
+<code src="./demos/index6.tsx"/>
+
+## 限制最大字符数
+
+<code src="./demos/index7.tsx"/>
+
+## 可移除文本域
+
+<code src="./demos/index8.tsx"/>
+
 <API></API>
