@@ -51,10 +51,10 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
         mountOnEnter={true}
         classNames="fadeModal"
         unmountOnExit={true}
-        onEnter={(e) => {
+        onEnter={(e: HTMLDivElement) => {
           e.style.display = 'block';
         }}
-        onExited={(e) => {
+        onExited={(e: HTMLDivElement) => {
           e.style.display = 'none';
         }}
       >
@@ -66,14 +66,14 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
             mountOnEnter={true}
             classNames="fadeContent"
             unmountOnExit={true}
-            onEnter={(e) => {
+            onEnter={(e: HTMLDivElement) => {
               e.style.display = 'block';
             }}
-            onExited={(e) => {
+            onExited={(e: HTMLDivElement) => {
               e.style.display = 'none';
             }}
           >
-            <div className="concis-modal-content" onClick={(e) => e.nativeEvent.stopPropagation()}>
+            <div className="concis-modal-content" onClick={(e: any) => e.stopPropagation()}>
               <div className="concis-modal-content-header">
                 <div className="concis-title">
                   <i></i>

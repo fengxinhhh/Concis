@@ -111,7 +111,7 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
     if (
       Array.isArray(prevCloseDeps) &&
       !(
-        prevCloseDeps.length === closeDeps.length &&
+        prevCloseDeps?.length === closeDeps?.length &&
         prevCloseDeps.every((p, i) => p === closeDeps[i])
       )
     ) {

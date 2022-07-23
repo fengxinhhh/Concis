@@ -38,3 +38,4 @@ export { default as GlobalConfig } from './GlobalConfig';
 export { default as Switch } from './Switch';
 export { default as Space } from './Space';
 export { default as Skeleton } from './Skeleton';
+export { default as Modal } from './Modal';
