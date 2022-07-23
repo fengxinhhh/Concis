@@ -63,8 +63,6 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
 
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const theme = getSiteTheme();
-
   const classFirstName = darkTheme ? 'concis-dark-pagination' : 'concis-pagination';
   const classNames = cs(prefixCls, className, classFirstName);
 

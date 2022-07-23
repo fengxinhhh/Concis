@@ -108,12 +108,8 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
   }, []);
   useEffect(() => {
     //依赖于父组件的状态改变，关闭popover
-    console.log(
-      'popover',
-      prevCloseDeps.length === closeDeps.length &&
-        prevCloseDeps.every((p, i) => p === closeDeps[i]),
-    );
     if (
+      Array.isArray(prevCloseDeps) &&
       !(
         prevCloseDeps.length === closeDeps.length &&
         prevCloseDeps.every((p, i) => p === closeDeps[i])
