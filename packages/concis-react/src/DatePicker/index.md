@@ -27,10 +27,6 @@ group:
 
 <code src="./demos/index3.tsx" />
 
-[//]: # '## 输入式日期选择器'
-[//]: #
-[//]: # '[//]: # (<code src="./demos/index2.tsx" />)'
-
 ## 区间式日期选择器
 
 <code src="./demos/index4.tsx" />

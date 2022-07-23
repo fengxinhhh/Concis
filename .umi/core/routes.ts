@@ -1967,6 +1967,45 @@ export function getRoutes() {
         "title": "Table 表格 - Concis"
       },
       {
+        "path": "/common/time-picker",
+        "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/TimePicker/index.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "packages/concis-react/src/TimePicker/index.md",
+          "updatedTime": 1658573317660,
+          "componentName": "TimePicker",
+          "title": "TimePicker 时间选择器",
+          "nav": {
+            "title": "组件",
+            "path": "/common"
+          },
+          "group": {
+            "title": "数据录入",
+            "__fallback": true,
+            "path": "/common/time-picker"
+          },
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "TimePicker 时间选择器",
+              "heading": "timepicker-时间选择器"
+            },
+            {
+              "depth": 2,
+              "value": "何时使用",
+              "heading": "何时使用"
+            },
+            {
+              "depth": 2,
+              "value": "基本使用",
+              "heading": "基本使用"
+            }
+          ],
+          "hasPreviewer": true
+        },
+        "title": "TimePicker 时间选择器 - Concis"
+      },
+      {
         "path": "/common/tree",
         "component": require('/Users/apple/Desktop/Concis/packages/concis-react/src/Tree/index.md').default,
         "exact": true,

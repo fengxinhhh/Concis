@@ -66,6 +66,7 @@ type alignStyle = {
   top?: string;
   bottom?: string;
   border?: string;
+  opacity: number;
 };
 const Popover: FC<popoverProps> = (props: popoverProps) => {
   const {
@@ -88,6 +89,7 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
     width: '',
     height: '',
   });
+  const [prevCloseDeps, setPrevCloseDeps] = useState(closeDeps);
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -106,7 +108,20 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
   }, []);
   useEffect(() => {
     //依赖于父组件的状态改变，关闭popover
-    setShowDialog(false);
+    console.log(
+      'popover',
+      prevCloseDeps.length === closeDeps.length &&
+        prevCloseDeps.every((p, i) => p === closeDeps[i]),
+    );
+    if (
+      !(
+        prevCloseDeps.length === closeDeps.length &&
+        prevCloseDeps.every((p, i) => p === closeDeps[i])
+      )
+    ) {
+      setShowDialog(false);
+    }
+    setPrevCloseDeps(closeDeps);
   }, [closeDeps]);
 
   useEffect(() => {
@@ -159,7 +174,9 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
     }
   }, 200);
   const dialogStyle = useMemo(() => {
-    let alignStyle: alignStyle = {};
+    let alignStyle: alignStyle = {
+      opacity: 0,
+    };
     if (align == 'bottom') {
     } else if (align == 'top') {
       alignStyle.bottom = showBtnSize.height + 'px';

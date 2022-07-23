@@ -260,6 +260,9 @@ import rawCode256 from '!!dumi-raw-code-loader!/Users/apple/Desktop/Concis/packa
 import rawCode257 from '!!dumi-raw-code-loader!/Users/apple/Desktop/Concis/packages/concis-react/src/TreeView/demos/index3.tsx?dumi-raw-code';
 import rawCode258 from '!!dumi-raw-code-loader!/Users/apple/Desktop/Concis/packages/concis-react/src/TreeView/demos/index4.tsx?dumi-raw-code';
 import rawCode259 from '!!dumi-raw-code-loader!/Users/apple/Desktop/Concis/packages/concis-react/src/GlobalConfig/demos/index2.tsx?dumi-raw-code';
+import rawCode260 from '!!dumi-raw-code-loader!/Users/apple/Desktop/Concis/packages/concis-react/src/TimePicker/demos/index1.tsx?dumi-raw-code';
+import rawCode261 from '!!dumi-raw-code-loader!/Users/apple/Desktop/Concis/packages/concis-react/src/TimePicker/index.tsx?dumi-raw-code';
+import rawCode262 from '!!dumi-raw-code-loader!/Users/apple/Desktop/Concis/packages/concis-react/src/TimePicker/index.module.less?dumi-raw-code';
 
 export default {
   'button-index1': {
@@ -885,5 +888,9 @@ export default {
   'globalconfig-index2': {
     component: (require('/Users/apple/Desktop/Concis/packages/concis-react/src/GlobalConfig/demos/index2.tsx')).default,
     previewerProps: {"sources":{"_":{"tsx":rawCode259}},"dependencies":{},"identifier":"globalconfig-index2"},
+  },
+  'timepicker-index1': {
+    component: (require('/Users/apple/Desktop/Concis/packages/concis-react/src/TimePicker/demos/index1.tsx')).default,
+    previewerProps: {"sources":{"_":{"tsx":rawCode260},"index.tsx":{"import":"..","content":rawCode261},"Input/index.tsx":{"import":"../../Input","content":rawCode71},"Form/index.tsx":{"import":"../Form","content":rawCode49},"common_utils/classNames.ts":{"import":"../common_utils/classNames","content":rawCode17},"GlobalConfig/index.tsx":{"import":"../GlobalConfig","content":rawCode18},"Form/form-item.tsx":{"import":"./form-item","content":rawCode50},"Form/classes.ts":{"import":"./classes","content":rawCode51},"Form/styles/form-item.module.less":{"import":"./styles/form-item.module.less","content":rawCode52},"Form/styles/index.module.less":{"import":"./styles/index.module.less","content":rawCode53},"Input/index.module.less":{"import":"./index.module.less","content":rawCode72},"Popover/index.tsx":{"import":"../Popover","content":rawCode73},"Popover/index.module.less":{"import":"./index.module.less","content":rawCode74},"Button/index.tsx":{"import":"../../Button","content":rawCode20},"Button/index.module.less":{"import":"./index.module.less","content":rawCode21},"index.module.less":{"import":"./index.module.less","content":rawCode262},"common_utils/getRenderColor.ts":{"import":"../../common_utils/getRenderColor","content":rawCode76},"common_utils/storage/getSiteTheme.ts":{"import":"../../common_utils/storage/getSiteTheme","content":rawCode75},"common_utils/hooks/usePageListener.ts":{"import":"../../../../concis-react/src/common_utils/hooks/usePageListener","content":rawCode4},"concis-react/src/common_utils/track/getUserIp.ts":{"import":"../track/getUserIp","content":rawCode5},"concis-react/src/common_utils/track/getNativeBrowserInfo.ts":{"import":"../track/getNativeBrowserInfo","content":rawCode6},"concis-react/src/common_utils/getNowTime.ts":{"import":"../getNowTime","content":rawCode7},"concis-react/src/common_utils/track/getErrorInfo.ts":{"import":"../track/getErrorInfo","content":rawCode8},"concis-react/src/common_utils/track/sendData.ts":{"import":"../track/sendData","content":rawCode9}},"dependencies":{"react":{"version":"16.14.0"},"@ant-design/icons":{"version":"4.7.0"},"react-dom":{"version":">=16.0.0"},"lodash":{"version":"4.17.21"}},"componentName":"TimePicker","identifier":"timepicker-index1"},
   },
 };

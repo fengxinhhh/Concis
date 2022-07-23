@@ -104,6 +104,9 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
       date.getMonth() + 1 === clickDate.getMonth() + 1
     );
   };
+  useEffect(() => {
+    console.log(108, dateValue);
+  }, [dateValue]);
 
   return (
     <Popover
