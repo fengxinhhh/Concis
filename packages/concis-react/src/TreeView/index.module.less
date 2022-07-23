@@ -2,7 +2,8 @@
 
 @concis-treeView-border-color: #d9d9d9;
 
-.concis-tree-select {
+.concis-tree-select,
+.concis-dark-tree-select {
   display: inline-block;
   box-sizing: border-box;
   padding: 0 @concis-transform-ms 0 @concis-transform-ms;
@@ -55,4 +56,8 @@
       user-select: none;
     }
   }
+}
+
+.concis-dark-tree-select .treeNode span {
+  color: @concis-dark-font-color !important;
 }

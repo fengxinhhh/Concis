@@ -1,6 +1,7 @@
 @import '../styles/common.less';
 
-.concis-message-container {
+.concis-message-container,
+.concis-dark-message-container {
   position: fixed;
   left: 50%;
   display: flex;
@@ -27,4 +28,10 @@
   100% {
     opacity: 1;
   }
+}
+
+.concis-dark-message-container {
+  color: @concis-dark-font-color;
+  background-color: #000000;
+  border: 1px solid #939393;
 }

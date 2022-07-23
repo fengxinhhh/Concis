@@ -61,11 +61,11 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
   const [pageRenderArray, setPageRenderArray] = useState<Array<number>>([]);
   const [sizePage, setSizePage] = useState<number>(pageSizeOptions ? pageSizeOptions[0] : 10);
 
-  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
   const theme = getSiteTheme();
 
-  const classFirstName = 'concis-pagination';
+  const classFirstName = darkTheme ? 'concis-dark-pagination' : 'concis-pagination';
   const classNames = cs(prefixCls, className, classFirstName);
 
   const totalPage = useMemo(() => {
@@ -249,7 +249,10 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
       style={
         {
           ...style,
-          '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) as string,
+          '--global-color': getRenderColor(
+            (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+            globalColor,
+          ),
         } as any
       }
     >

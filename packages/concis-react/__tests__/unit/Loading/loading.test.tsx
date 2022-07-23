@@ -35,10 +35,10 @@ describe('loading', () => {
   it('test mask loading has dialog', () => {
     //测试加载蒙层
     const loading = mount(<Loading mask />);
-    expect(loading.find('.dialog')).toHaveLength(1);
+    expect(loading.find('.concis-loading-dialog')).toHaveLength(1);
   });
 
-  it('test mask loading has dialog', () => {
+  it('test loading text correctly', () => {
     //测试加载蒙层
     const loading = mount(<Loading loadingText="test loading" />);
     expect(loading.find('.concis-loading .text').text()).toBe('test loading');

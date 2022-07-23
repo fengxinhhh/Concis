@@ -41,9 +41,9 @@ const collectFormFns: FromRefFunctions = {
 const Form = <T,>(props: FormProps<T>) => {
   const { children, className, layout = 'horizontal', style, formField = null, disabled } = props;
 
-  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, 'concis-form');
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}form`);
 
   const [fieldList, setFieldList] = useState<any>({});
   const [reset, setReset] = useState(false);

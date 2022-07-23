@@ -52,6 +52,11 @@ interface NotificationProps<T> {
    * @default {}
    */
   style?: CSSProperties;
+  /**
+   * @description 暗黑模式
+   * @default false
+   */
+  dark?: boolean;
   messageBoxId?: string;
 }
 

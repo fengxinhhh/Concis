@@ -20,9 +20,9 @@ const Collapse: FC<CollapseProps> = (props) => {
   } = props;
   const [activeKeyList, setActiveKeyList] = useState<Array<number | string>>(defaultActive || []); //父组件管理选中列表
 
-  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, 'concis-collapse-box');
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}collapse-box`);
   const providerList = {
     //父组件状态管理store
     activeKeyList,

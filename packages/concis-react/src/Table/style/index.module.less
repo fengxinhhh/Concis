@@ -3,15 +3,21 @@
 @concis-table-searchBtn-size: 32px;
 @concis-table-searchBtn-th-height: 40px;
 
-.concis-table-container {
+.concis-table-container,
+.concis-dark-table-container {
   position: relative;
   .table {
     display: flex;
     font-size: @concis-font-md;
     table {
+      border: none;
+      border-collapse: collapse;
+      tr:first-of-type {
+        border-top: 1px solid #e5e5e6;
+      }
       tr {
         height: @concis-table-searchBtn-th-height;
-        border: 1px solid #e6e5e7;
+        border: 1px solid #e5e5e6;
         .tableHead {
           span {
           }
@@ -68,5 +74,17 @@
     color: #fff;
     background: @concis-primary-color;
     cursor: pointer;
+  }
+}
+
+.concis-dark-table-container {
+  table {
+    tr:first-of-type {
+      border-top: 1px solid #484849;
+    }
+    tr {
+      height: @concis-table-searchBtn-th-height;
+      border: 1px solid #484849;
+    }
   }
 }

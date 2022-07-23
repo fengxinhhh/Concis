@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Divider from '../../../src/Divider/index';
 import Enzyme from '../setup';
 import mountTest from '../mountTest';
@@ -8,18 +7,7 @@ const { mount } = Enzyme;
 
 mountTest(Divider);
 
-let container: HTMLDivElement | null;
-
 describe('divider', () => {
-  beforeEach(() => {
-    container = document.createElement('div');
-    document.body.appendChild(container);
-  });
-  afterEach(() => {
-    document.body.removeChild(container as HTMLDivElement);
-    container = null;
-  });
-
   it('test divider text show correctly', () => {
     //测试显示正常
     const divider = mount(<Divider>test</Divider>);
@@ -29,31 +17,35 @@ describe('divider', () => {
 
   it('test divider text set font size correctly', () => {
     //测试设置文字大号显示正常
-    const component = <Divider fontSize={16}>React View UI</Divider>;
-    ReactDOM.render(component, container);
-    const lineDom = container?.querySelector('.concis-divider-line-text');
-    expect(lineDom?.getAttribute('style')?.includes('font-size: 16px')).toBe(true);
-  });
-
-  it('test divider text set border color correctly', () => {
-    //测试分割线颜色显示正常
-    const component = <Divider borderColor={'lightblue'}>React View UI</Divider>;
-    ReactDOM.render(component, container);
-    const lineDom = container?.querySelector('.concis-divider-line');
-    expect(lineDom?.getAttribute('style')?.includes('border-color: lightblue')).toBe(true);
+    const divider = mount(<Divider fontSize={18}>test</Divider>);
+    expect(
+      divider
+        .find('.concis-divider-line-text')
+        .getDOMNode()
+        .getAttribute('style')
+        ?.includes('font-size: 18px'),
+    );
   });
 
   it('test divider text align correctly', () => {
     //测试分割线文字对齐正常
-    const component = <Divider align={'left'}>React View UI</Divider>;
-    ReactDOM.render(component, container);
-    const lineDom = container?.querySelector('.concis-divider-line');
-    expect(lineDom?.getAttribute('style')?.includes('justify-content: left')).toBe(true);
-  });
-
-  it('test divider dashed line show correctly', () => {
-    //测试显示正常
-    const divider = mount(<Divider dashed>test</Divider>);
-    expect(divider.find('.concis-divider-dashed').length).toBe(1);
+    const component = mount(<Divider align={'left'}>test</Divider>);
+    expect(
+      component
+        .find('.concis-divider-before-line-text')
+        .getDOMNode()
+        .getAttribute('style')
+        ?.includes('flex-basis: 24px; flex-grow: 0;'),
+    ).toBe(true);
+    component.setProps({
+      align: 'right',
+    });
+    expect(
+      component
+        .find('.concis-divider-after-line-text')
+        .getDOMNode()
+        .getAttribute('style')
+        ?.includes('flex-basis: 24px; flex-grow: 0;'),
+    ).toBe(true);
   });
 });

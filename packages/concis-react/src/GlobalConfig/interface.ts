@@ -13,15 +13,15 @@ interface GlobalConfigProps {
    */
   input?: string;
   /**
-   * @description Menu导航菜单组件选中时的背景颜色
-   * @default #C6F7FF
-   */
-  menuSelectBgColor?: string;
-  /**
    * @description 全局组件类名前缀
    * @default concis
    */
   prefixCls?: any;
+  /**
+   * @description 深色模式
+   * @default false
+   */
+  darkTheme?: boolean;
 }
 
 export type { GlobalConfigProps };

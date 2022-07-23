@@ -62,11 +62,13 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
 
   const formCtx: any = useContext(ctx);
 
-  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const classNames = cs(
     prefixCls,
     className,
-    group && group.length ? 'concis-checkGroup' : 'concis-checkbox',
+    group && group.length
+      ? `concis-${darkTheme ? 'dark-' : ''}checkGroup`
+      : `concis-${darkTheme ? 'dark-' : ''}checkbox`,
   );
 
   useEffect(() => {

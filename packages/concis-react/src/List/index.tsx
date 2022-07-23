@@ -32,9 +32,9 @@ const List = (props: listProps) => {
   const listContentRef = useRef<any>(null);
   const victurlListContentRef = useRef<any>(null);
 
-  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, 'concis-list');
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}list`);
 
   useEffect(() => {
     if (lazyLoad && defaultShowNum) {

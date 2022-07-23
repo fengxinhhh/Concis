@@ -11,11 +11,13 @@ import Popover from '../../Popover';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
+import { getSiteTheme } from '../../common_utils/storage/getSiteTheme';
+import { getRenderColor } from '../../common_utils/getRenderColor';
 import { ctx } from '../../Form';
 import './index.module.less';
 const dayjs = require('dayjs');
 
-interface DatePickerProps {
+export interface DatePickerProps {
   /**
    * @description 类名
    */
@@ -32,11 +34,6 @@ interface DatePickerProps {
   format?: string;
   /**
    * @description 设置日期区间选择器
-   * @default false
-   */
-  showRange?: Boolean;
-  /**
-   * @description 显示日期重置按钮
    * @default false
    */
   showClear?: boolean;
@@ -61,6 +58,11 @@ interface DateItemProps {
   date: Date;
   disable: boolean;
 }
+interface NowDateProps {
+  year: number;
+  month: number;
+  day: number;
+}
 const DatePicker: FC<DatePickerProps> = (props) => {
   const {
     className,
@@ -80,7 +82,10 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   const [nowDayList, setNowDayList] = useState<DateItemProps[][]>([]);
   const [dateValue, setDateValue] = useState('');
   const formCtx = useContext(ctx);
-  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}date-picker`);
+
   const [clickDate, setClickDate] = useState(new Date());
   useEffect(() => {
     const { year, month } = nowDate;
@@ -119,7 +124,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       formCtx.getChildVal(`${dayjs(nowDate).format(format)}`);
     }
   }, [formCtx.submitStatus]);
-  const classNames = cs(prefixCls, className, 'concis-range-picker');
+
   const clearCallback = () => {
     setDateValue('');
     handleChange && handleChange(null);
@@ -144,33 +149,21 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     });
   };
   const setMonth = (month: number, type: string): void => {
+    let date = {} as NowDateProps;
     if (type === 'add') {
       if (month > 12) {
-        setNowDate({
-          ...nowDate,
-          month: 1,
-          year: nowDate.year + 1,
-        });
+        date = { ...nowDate, month: 1, year: nowDate.year + 1 };
       } else {
-        setNowDate({
-          ...nowDate,
-          month,
-        });
+        date = { ...nowDate, month };
       }
     } else {
       if (month < 0) {
-        setNowDate({
-          ...nowDate,
-          month: 12,
-          year: nowDate.year - 1,
-        });
+        date = { ...nowDate, month: 12, year: nowDate.year - 1 };
       } else {
-        setNowDate({
-          ...nowDate,
-          month,
-        });
+        date = { ...nowDate, month };
       }
     }
+    setNowDate(date);
   };
   const isSameDate = (date: Date) => {
     return (
@@ -185,9 +178,19 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       type="click"
       align={align}
       dialogWidth={'auto'}
-      propsVisiable={false}
+      propsVisible={false}
       content={
-        <div className={classNames}>
+        <div
+          className={classNames}
+          style={
+            {
+              '--checked-color': getRenderColor(
+                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+                globalColor,
+              ),
+            } as any
+          }
+        >
           <div className="date-picker-select">
             <div className="left-select">
               <DoubleLeftOutlined onClick={() => setYear(nowDate.year - 1)} />

@@ -530,7 +530,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/DatePicker/index.md",
-          "updatedTime": 1657640436000,
+          "updatedTime": 1658398625000,
           "componentName": "DatePicker",
           "title": "DatePicker 日期选择器",
           "nav": {
@@ -560,8 +560,13 @@ export function getRoutes() {
             },
             {
               "depth": 2,
-              "value": "输入式日期选择器",
-              "heading": "输入式日期选择器"
+              "value": "年份选择器",
+              "heading": "年份选择器"
+            },
+            {
+              "depth": 2,
+              "value": "月份选择器",
+              "heading": "月份选择器"
             },
             {
               "depth": 2,
@@ -732,7 +737,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/GlobalConfig/index.md",
-          "updatedTime": 1657752039000,
+          "updatedTime": 1658419034000,
           "componentName": "GlobalConfig",
           "title": "GlobalConfig 全局配置",
           "nav": {
@@ -757,8 +762,13 @@ export function getRoutes() {
             },
             {
               "depth": 2,
-              "value": "基本用法",
-              "heading": "基本用法"
+              "value": "自定义主题",
+              "heading": "自定义主题"
+            },
+            {
+              "depth": 2,
+              "value": "暗黑模式",
+              "heading": "暗黑模式"
             },
             {
               "depth": 2,
@@ -1965,11 +1975,6 @@ export function getRoutes() {
               "depth": 2,
               "value": "拖拽",
               "heading": "拖拽"
-            },
-            {
-              "depth": 2,
-              "value": "API",
-              "heading": "api"
             }
           ],
           "hasPreviewer": true
@@ -2259,6 +2264,49 @@ export function getRoutes() {
         "title": "快速开始 - Concis"
       },
       {
+        "path": "/guide/udark",
+        "component": require('/Users/apple/Desktop/Concis/docs/guide/udark.md').default,
+        "exact": true,
+        "meta": {
+          "filePath": "docs/guide/udark.md",
+          "updatedTime": 1658419034000,
+          "nav": {
+            "title": "设计",
+            "path": "/guide"
+          },
+          "slugs": [
+            {
+              "depth": 1,
+              "value": "暗黑模式",
+              "heading": "暗黑模式"
+            },
+            {
+              "depth": 2,
+              "value": "介绍",
+              "heading": "介绍"
+            },
+            {
+              "depth": 2,
+              "value": "案例",
+              "heading": "案例"
+            },
+            {
+              "depth": 2,
+              "value": "使用",
+              "heading": "使用"
+            },
+            {
+              "depth": 2,
+              "value": "注入推荐样式",
+              "heading": "注入推荐样式"
+            }
+          ],
+          "title": "暗黑模式",
+          "hasPreviewer": true
+        },
+        "title": "暗黑模式 - Concis"
+      },
+      {
         "path": "/guide/vcolor",
         "component": require('D:/Code/openScource/Concis/docs/guide/vcolor.md').default,
         "exact": true,
@@ -2277,8 +2325,8 @@ export function getRoutes() {
             },
             {
               "depth": 2,
-              "value": "简介",
-              "heading": "简介"
+              "value": "介绍",
+              "heading": "介绍"
             },
             {
               "depth": 2,

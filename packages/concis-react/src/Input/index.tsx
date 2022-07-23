@@ -127,9 +127,9 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
   const [iptValue, setIptValue] = useState<string | number>(defaultValue || '');
   const [pwdIptState, setPwdIptState] = useState(true); //密码框切换状态
 
-  const { input, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { input, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, 'concis-input');
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}input`);
 
   const formCtx: any = useContext(ctx);
   const iptRef = useRef(null);

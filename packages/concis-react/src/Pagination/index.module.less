@@ -4,7 +4,8 @@
 @concis-pagination-numbox-height: 30px;
 @concis-pagination-select-width: 80px;
 
-.concis-pagination {
+.concis-pagination,
+.concis-dark-pagination {
   display: flex;
   &-prev,
   &-next,
@@ -85,4 +86,15 @@
       }
     }
   }
+}
+
+.concis-dark-pagination-numberBox,
+.concis-dark-pagination-next,
+.concis-dark-pagination-prev {
+  background-color: transparent;
+}
+.concis-dark-pagination-jumpBox input {
+  color: @concis-dark-font-color;
+  background-color: #343436;
+  outline: none;
 }

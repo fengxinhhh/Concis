@@ -40,10 +40,10 @@ interface stepsProps {
 const Steps: FC<stepsProps> = (props: stepsProps) => {
   const { current, className, onChange, children } = props;
 
-  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const theme = getSiteTheme();
 
-  const classNames = cs(prefixCls, className, 'concis-steps');
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}steps`);
 
   const indexClassName = useCallback(
     (index: number): string => {
@@ -67,7 +67,14 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
   return (
     <div
       className={classNames}
-      style={{ '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) } as any}
+      style={
+        {
+          '--global-color': getRenderColor(
+            (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+            globalColor,
+          ),
+        } as any
+      }
     >
       <div className="step-content">
         <div className="step-line">

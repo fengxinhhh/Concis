@@ -1,6 +1,7 @@
 @import '../styles/common.less';
 
-.cocnis-tree-container {
+.cocnis-tree-container,
+.cocnis-dark-tree-container {
   display: inline-block;
   height: 100%;
   .tree-select-dialog {
@@ -25,4 +26,15 @@
       }
     }
   }
+}
+
+.cocnis-dark-tree-container .tree-select-dialog {
+  box-sizing: border-box;
+  padding: 0 @concis-transform-ms 0 @concis-transform-ms;
+  overflow: hidden;
+  color: #c7c7c8;
+  background: #373739;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0px 2px 1px #d4d4d4;
+  transition: 0.1s linear;
 }

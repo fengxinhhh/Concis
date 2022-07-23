@@ -27,7 +27,7 @@ import './style/index.module.less';
 let sTop = 0;
 const options = [10, 20, 30, 50];
 
-const Table: FC<tableProps> = (props) => {
+const Table: FC<tableProps> = (props: tableProps) => {
   const {
     className,
     titleParams,
@@ -62,9 +62,9 @@ const Table: FC<tableProps> = (props) => {
 
   const scrollDom = createRef();
 
-  const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, 'concis-table-container');
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}table-container`);
 
   useEffect(() => {
     let newDoTableData = [...doTableData];

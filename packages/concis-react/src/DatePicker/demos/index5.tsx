@@ -1,11 +1,9 @@
 import React from 'react';
-import DatePicker from '..';
+import { RangeDatePicker } from '..';
 
-export default function TimePickerDemo5() {
+export default function TimePickerDemo3() {
   const handleChange = (start: string, end: string) => {
     console.log(start, end);
   };
-  return (
-    <DatePicker type="primary" showRange showClear align="right" handleChange={handleChange} />
-  );
+  return <RangeDatePicker showClear={true} handleChange={handleChange} />;
 }
