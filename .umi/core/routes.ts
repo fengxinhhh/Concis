@@ -582,6 +582,11 @@ export function getRoutes() {
               "depth": 2,
               "value": "出现方向",
               "heading": "出现方向"
+            },
+            {
+              "depth": 2,
+              "value": "API",
+              "heading": "api"
             }
           ],
           "hasPreviewer": true
@@ -1972,7 +1977,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "packages/concis-react/src/TimePicker/index.md",
-          "updatedTime": 1658552568385,
+          "updatedTime": 1658568395330,
           "componentName": "TimePicker",
           "title": "TimePicker 时间选择器",
           "nav": {
