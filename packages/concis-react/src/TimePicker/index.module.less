@@ -23,7 +23,8 @@
         justify-content: center;
         margin: 2px;
         &:hover:not(.disable) {
-          background-image: linear-gradient(#f2f3f5, #f2f3f5);
+          color: #ffffff;
+          background-image: linear-gradient(var(--checked-color), var(--checked-color));
           background-position: center;
           border-radius: @concis-radius-xs;
           cursor: pointer;
@@ -31,7 +32,6 @@
       }
       .active {
         color: #ffffff;
-        //background-image: linear-gradient(#f2f3f5, #f2f3f5);
         background-image: linear-gradient(var(--checked-color), var(--checked-color));
         background-position: center;
         border-radius: @concis-radius-xs;
@@ -61,8 +61,9 @@
   }
 }
 .concis-dark-time-picker {
-  .time-panel span:hover:not(.disable) {
-    color: #373739;
+  .time-panel div span:hover:not(.disable) {
+    color: @concis-dark-font-color;
+    background-image: linear-gradient(var(--checked-color), var(--checked-color));
   }
   .disable {
     background-image: linear-gradient(#515357, #515357);

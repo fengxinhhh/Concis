@@ -43,7 +43,6 @@ const TimePicker = (props: TimePickerProps) => {
   const HOUR_LIST = getIdxArr(24);
   const MIN_AND_SEC_LIST = getIdxArr(60);
   const NOW_TIME = new Date();
-  const [visible, setVisible] = useState(false);
   const [hour, setHour] = useState(NOW_TIME.getHours());
   const [min, setMin] = useState(NOW_TIME.getMinutes());
   const [second, setSecond] = useState(NOW_TIME.getSeconds());
@@ -57,7 +56,6 @@ const TimePicker = (props: TimePickerProps) => {
     }:${newSecond < 10 ? '0' + newSecond : String(newSecond)}`;
     changeCallback && changeCallback(time);
     setTimeValue(time);
-    setVisible(false);
   };
   useEffect(() => {
     //用于监听Form组件的重置任务
@@ -88,8 +86,7 @@ const TimePicker = (props: TimePickerProps) => {
       type="click"
       align={align}
       dialogWidth={'auto'}
-      propsVisible={visible}
-      onVisibleChange={(visible: any) => setVisible(visible)}
+      closeDeps={[timeValue]}
       content={
         <div className={classNames}>
           <div
