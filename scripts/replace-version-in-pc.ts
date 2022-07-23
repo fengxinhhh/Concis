@@ -37,5 +37,5 @@ fs.outputFile(
   path.resolve(__dirname, '../packages/concis-react/package.json'),
   replacedVersion.join('\n'),
 ).then(() => {
-  console.log('替换 package.json 中的 version 成功！'); // eslint-disable-line
+  console.log('替换package.json 中的 version 成功！'); // eslint-disable-line
 });
