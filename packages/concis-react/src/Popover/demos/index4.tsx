@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import Popover from '..';
 import Button from '../../Button';
 import Space from '../../Space';
 
 export default function MenuDemos1() {
-  const [dialogStatus1, setDialogStatus1] = useState(false);
-  const [dialogStatus2, setDialogStatus2] = useState(false);
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
 
   return (
     <Space>
       <Popover
         type="hover"
         align="bottom"
-        propsVisible={dialogStatus1}
-        onVisibleChange={setDialogStatus1}
+        popRef={ref1}
         content={
           <>
             <p style={{ color: '#1d2129', fontSize: '16px' }}>Title</p>
@@ -21,7 +20,7 @@ export default function MenuDemos1() {
             <div style={{ color: '#4e5969', fontSize: '14px' }}>This is content</div>
             <span
               style={{ color: '#1890ff', cursor: 'pointer' }}
-              onClick={() => setDialogStatus1(false)}
+              onClick={() => ref1.current.setShowDialog(false)}
             >
               close
             </span>
@@ -35,8 +34,7 @@ export default function MenuDemos1() {
       <Popover
         type="click"
         align="bottom"
-        propsVisible={dialogStatus2}
-        onVisibleChange={setDialogStatus2}
+        popRef={ref2}
         content={
           <>
             <p style={{ color: '#1d2129', fontSize: '16px' }}>Title</p>
@@ -44,7 +42,7 @@ export default function MenuDemos1() {
             <div style={{ color: '#4e5969', fontSize: '14px' }}>This is content</div>
             <span
               style={{ color: '#1890ff', cursor: 'pointer' }}
-              onClick={() => setDialogStatus2(false)}
+              onClick={() => ref2.current.setShowDialog(false)}
             >
               close
             </span>

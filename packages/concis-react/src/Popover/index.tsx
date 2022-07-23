@@ -7,6 +7,8 @@ import React, {
   useMemo,
   useRef,
   useContext,
+  forwardRef,
+  useImperativeHandle,
 } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -56,6 +58,10 @@ interface popoverProps {
    */
   closeDeps?: Array<any>;
   /**
+   * @description 传递给组件的ref，可用于手动关闭popover，调用popRef.setShowDialog方法
+   */
+  popRef?: any;
+  /**
    * @description 卡片显示隐藏回调
    */
   onVisibleChange?: Function;
@@ -68,7 +74,7 @@ type alignStyle = {
   border?: string;
   opacity: number;
 };
-const Popover: FC<popoverProps> = (props: popoverProps) => {
+const Popover: FC<popoverProps> = forwardRef((props: popoverProps) => {
   const {
     children,
     className,
@@ -80,6 +86,7 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
     defaultShow = false,
     closeDeps,
     onVisibleChange,
+    popRef,
   } = props;
   const showBtnRef = useRef();
   const dialogRef = useRef();
@@ -94,6 +101,9 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}popover-card`);
+  useImperativeHandle(popRef, () => ({
+    setShowDialog,
+  }));
 
   useEffect(() => {
     setShowBtnSize({
@@ -213,6 +223,6 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
       </div>
     </div>
   );
-};
+});
 
 export default memo(Popover);
