@@ -11,7 +11,8 @@
 @skeleton-container-margin-bottom: 14px;
 @skeleton-container-margin-left: 12px;
 
-.concis-skeleton {
+.concis-skeleton,
+.concis-skeleton-dark {
   display: flex;
   width: 100%;
   padding: 15px;
@@ -64,6 +65,21 @@
       background: @skeleton-card-background;
       animation: 1.2s concis-skeleton-transform linear infinite normal;
       content: '';
+    }
+  }
+}
+.concis-skeleton-dark {
+  &-avatar,
+  &-container-title,
+  &-container-line {
+    background: #ffffff1f;
+    &::after {
+      background: linear-gradient(
+        90deg,
+        hsla(0, 0%, 100%, 0),
+        hsla(0, 0%, 100%, 0.3),
+        hsla(0, 0%, 100%, 0)
+      );
     }
   }
 }

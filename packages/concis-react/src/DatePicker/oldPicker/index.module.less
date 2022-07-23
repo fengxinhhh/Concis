@@ -1,0 +1,189 @@
+@import '../../styles/common.less';
+
+@concis-hover-color: #8fb6d8;
+@concis-white-color: #ffffff;
+
+.concis-date-picker {
+  position: relative;
+  .result {
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    color: #000000;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s linear;
+    &:hover {
+      width: 120px;
+      color: var(--hover-color);
+      letter-spacing: normal;
+      .icon {
+        margin-left: @concis-radius-xs;
+        opacity: 1;
+      }
+    }
+    &:active {
+      color: @concis-primary-color;
+      letter-spacing: normal;
+      .icon {
+        margin-left: @concis-radius-xs;
+        opacity: 1;
+      }
+    }
+    .icon {
+      opacity: 0;
+      transition: 0.2s linear;
+    }
+  }
+  .input {
+    padding: 4px 11px;
+    color: #000000d9;
+    font-size: @concis-font-md;
+    line-height: 1.5715;
+    background-color: @concis-white-color;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    outline: none;
+    transition: all 0.3s;
+    &:hover {
+      border-color: @concis-hover-color;
+    }
+    &:focus {
+      border-color: @concis-hover-color;
+      box-shadow: 0 0 10px 1px #aed7ec;
+    }
+  }
+  .check-box {
+    position: absolute;
+    z-index: 999;
+    width: 220px;
+    height: 300px;
+    background-color: @concis-white-color;
+    border-radius: @concis-radius-xs;
+    opacity: 0;
+    transition: 0.2s linear;
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0 0 @concis-transform-xs;
+      .month,
+      .year {
+        cursor: pointer;
+      }
+    }
+    .close-icon {
+      color: var(--hover-color);
+      font-size: 22px;
+      cursor: pointer;
+    }
+    .date-content {
+      .week {
+        display: flex;
+        justify-content: space-between;
+        margin-top: @concis-transform-xs;
+        padding: 0 @concis-transform-xs;
+        font-weight: 500;
+      }
+      .day-list {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 13px;
+        line-height: 35px;
+        .day {
+          width: 31.4px;
+          text-align: center;
+          cursor: pointer;
+          transition: 0.3s linear;
+          &:hover:not(.disable) {
+            color: @concis-white-color;
+            font-weight: bold;
+            background-color: var(--hover-color);
+            border-radius: @concis-radius-xs;
+          }
+        }
+        .white {
+          width: 31.4px;
+          text-align: center;
+          cursor: pointer;
+          transition: 0.3s linear;
+        }
+        .disable {
+          color: #a8abb2;
+          background-color: #f5f7fa;
+          cursor: not-allowed;
+          opacity: 1;
+        }
+      }
+      .month-toggle-box {
+        display: flex;
+        flex-wrap: wrap;
+        .month {
+          width: 33%;
+          height: 55px;
+          line-height: 55px;
+          text-align: center;
+          cursor: pointer;
+          transition: 0.3s linear;
+          &:hover {
+            color: @concis-white-color;
+            background-color: var(--hover-color);
+            border-radius: @concis-radius-xs;
+          }
+        }
+      }
+      .year-toggle-box {
+        font-size: @concis-font-md;
+        .toggle-bar {
+          display: flex;
+          justify-content: space-between;
+          margin-top: @concis-transform-ms;
+        }
+        .list {
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 10px;
+          .year {
+            width: 33%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s linear;
+            &:hover {
+              color: @concis-white-color;
+              background-color: var(--hover-color);
+              border-radius: @concis-radius-xs;
+            }
+          }
+        }
+      }
+    }
+    .time-footer {
+      position: absolute;
+      bottom: @concis-transform-lg;
+      left: @concis-transform-ms;
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      padding-right: @concis-transform-ms;
+      .today {
+        color: var(--hover-color);
+        font-size: 15px;
+        cursor: pointer;
+        span {
+          margin-right: @concis-transform-xs;
+        }
+      }
+      .toggle-month {
+        color: var(--hover-color);
+        font-size: 15px;
+        cursor: pointer;
+      }
+      .go-back-icon {
+        cursor: pointer;
+      }
+    }
+  }
+}

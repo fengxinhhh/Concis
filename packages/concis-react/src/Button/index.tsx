@@ -3,7 +3,6 @@ import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
-import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 
 interface ButtonProps {
   //自定义button接口
@@ -81,15 +80,13 @@ const Button = (props: ButtonProps) => {
     style = {},
   } = props;
 
-  const theme = getSiteTheme();
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
-
-  const classNames = cs(prefixCls, className, 'concis-button');
+  const classNames = cs(prefixCls, className, darkTheme ? 'concis-dark-button' : 'concis-button');
 
   const buttonStyle = useMemo(() => {
     if (!type && type !== 'danger' && type !== 'warning' && type !== 'info' && type !== 'text') {
-      return 'concis-button-primary';
+      return `concis-button-primary`;
     }
     if (type === 'text' && disabled) {
       return 'concis-button-disabled';
@@ -124,7 +121,7 @@ const Button = (props: ButtonProps) => {
       size = { ...size, background: globalColor };
     }
     return size;
-  }, [width, height, circle, dashed]);
+  }, [width, height, circle, dashed, globalColor]);
   return (
     <div
       className={classNames}

@@ -3,7 +3,8 @@
 @concis-gray-color: #c5c5c5;
 @concis-tag-color: #bebdbd;
 
-.concis-input {
+.concis-input,
+.concis-dark-input {
   position: relative;
   display: flex;
   align-items: center;
@@ -50,4 +51,9 @@
     flex-direction: column;
     color: @concis-tag-color;
   }
+}
+
+.concis-dark-input .input {
+  color: @concis-dark-font-color !important;
+  background: black;
 }

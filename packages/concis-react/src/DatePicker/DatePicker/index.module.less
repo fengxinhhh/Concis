@@ -2,7 +2,8 @@
 
 @concis-white-color: #ffffff;
 
-.concis-data-picker {
+.concis-date-picker,
+.concis-dark-date-picker {
   //margin: @concis-transform-xs;
   font-size: 15px;
   .date-picker-select {
@@ -51,10 +52,12 @@
         box-sizing: border-box;
         width: 32px;
         height: 32px;
+        margin: 5px 0;
         border-radius: 50%;
-        transition: all 0.3s linear;
+        //transition: all 0.3s linear;
         &:hover:not(th):not(.day-empty, .disable, .active) {
-          background-image: linear-gradient(#e0e0e0, #e0e0e0);
+          color: #ffffff;
+          background-image: linear-gradient(var(--checked-color), var(--checked-color));
           background-position: center;
           cursor: pointer;
         }
@@ -67,12 +70,22 @@
         opacity: 1;
       }
       .active {
-        background-image: linear-gradient(@concis-primary-color, @concis-primary-color);
-        //border-radius: @concis-radius-xs;
+        color: #ffffff;
+        background-image: linear-gradient(var(--checked-color), var(--checked-color));
       }
     }
   }
 }
 .pop-dialog {
   padding: 0 !important;
+}
+
+.concis-dark-date-picker {
+  .input {
+    color: @concis-dark-font-color;
+    background-color: transparent;
+  }
+  .disable:not(.day-empty) {
+    background: #5c5c5c !important;
+  }
 }

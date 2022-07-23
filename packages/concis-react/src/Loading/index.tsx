@@ -20,7 +20,7 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
   } = props;
 
   const [activeDotIndex, setActiveDotIndex] = useState(0);
-  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const theme = getSiteTheme();
 
   function getLoadingClass() {
@@ -62,7 +62,10 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
           style={
             {
               ...loadingStyle,
-              '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor),
+              '--global-color': getRenderColor(
+                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+                globalColor,
+              ),
             } as any
           }
         >
@@ -90,7 +93,12 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
         <div
           className={classNames}
           style={
-            { '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) } as any
+            {
+              '--global-color': getRenderColor(
+                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+                globalColor,
+              ),
+            } as any
           }
         >
           {new Array(3).fill('').map((item, index) => {
@@ -107,7 +115,12 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
         <div
           className={classNames}
           style={
-            { '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) } as any
+            {
+              '--global-color': getRenderColor(
+                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+                globalColor,
+              ),
+            } as any
           }
         >
           {new Array(6).fill('').map((item, index) => {
@@ -122,7 +135,9 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
 
   return (
     <Fragment>
-      {mask && <div className="concis-loading-dialog" />}
+      {mask && (
+        <div className="concis-loading-dialog" style={darkTheme ? { background: '#2b2b2b' } : {}} />
+      )}
       {renderLoadingContainer}
     </Fragment>
   );

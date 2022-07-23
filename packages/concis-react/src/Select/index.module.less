@@ -5,7 +5,8 @@
 @concis-select-placeholder-border-color: #cccccc;
 @concis-select-background: #ffffff;
 
-.concis-select {
+.concis-select,
+.concis-dark-select {
   position: relative;
   width: @concis-select-width;
   height: @concis-select-height;
@@ -70,5 +71,16 @@
     .select-option {
       font-weight: 500;
     }
+  }
+}
+.concis-dark-select {
+  .selected,
+  .selectOptions,
+  .option {
+    color: #b0b0b0;
+    background: #343436 !important;
+  }
+  .select-option {
+    background-color: #474749 !important;
   }
 }

@@ -1,4 +1,6 @@
 //concis文档中基于dumi html标签data-prefers-color属性展示两套主题色。
+//***!!!这里的样式仅在文档中生效，具体用户根据GlobalConfig配置的dark需要在各个组件内部设定。
+//一些设定的api ———— getRenderColor、getSiteTheme
 
 @import './common.less';
 
@@ -27,13 +29,13 @@ html[data-prefers-color='dark'] {
   }
   //message
   .concis-message-container {
-    color: #ffffff;
+    color: @concis-dark-font-color;
     background-color: #000000;
     border: 1px solid #939393;
   }
   //notification
   .concis-notifica-container {
-    color: #ffffff;
+    color: @concis-dark-font-color;
     background-color: #000000;
     border: 1px solid #939393;
   }
@@ -59,28 +61,28 @@ html[data-prefers-color='dark'] {
         color: #484849;
       }
       .concis-divider-line-text {
-        color: #ffffffe6;
+        color: @concis-dark-font-color;
       }
     }
   }
   //checkbox
   .concis-checkbox .text {
-    color: #ffffffe6;
+    color: @concis-dark-font-color;
   }
   //input
-  .concis-input input {
-    color: #ffffffe6 !important;
+  .concis-input .input {
+    color: @concis-dark-font-color !important;
     background: black;
   }
   //form
   .concis-form .concis-form-item-label {
-    color: #ffffffb3;
+    color: @concis-dark-font-color;
   }
   //radio
   .concis-radio-group {
     .groupDisabledStyle,
     .disabledLabel {
-      color: #ffffff;
+      color: #bbb8b8;
     }
     .groupActive {
       background: @concis-dark-primary-color;
@@ -105,7 +107,7 @@ html[data-prefers-color='dark'] {
   .concis-steps .step-content .step-line .step-box {
     background-color: transparent;
     .sub-content .top .light-title {
-      color: #ffffff;
+      color: @concis-dark-font-color;
     }
   }
   //treeSelect
@@ -119,7 +121,7 @@ html[data-prefers-color='dark'] {
     background-color: transparent;
     border: 1px solid #484849 !important;
     .concis-collapse-item-content {
-      color: #dcdcdc;
+      color: #8b8b8b;
     }
     .concis-collapse-item-header {
       border-bottom: 1px solid #484849;
@@ -127,7 +129,7 @@ html[data-prefers-color='dark'] {
   }
   //list
   .concis-list {
-    color: #8e8e8e;
+    color: #8b8b8b;
     border: 1px solid #484849;
     .list-header {
       color: #c6c6c6;
@@ -142,26 +144,39 @@ html[data-prefers-color='dark'] {
     border: 1px solid #484849 !important;
     p,
     div {
-      color: #ffffffe6 !important;
+      color: @concis-dark-font-color !important;
     }
   }
   //treeView
   .concis-tree-select .treeNode span {
-    color: #ffffffe6 !important;
+    color: @concis-dark-font-color !important;
   }
   //affax
   .concis-affix {
     background-color: @concis-dark-primary-color;
   }
   //menu
-  .concis-menu {
-    color: #ffffffe6;
-    background-color: transparent;
-    .concis-menu-activeMenuOptions {
-      color: #ffffffe6;
+  .concis-menu,
+  .concis-dark-menu {
+    color: #fff;
+    background: #000000;
+    &-fatherTitle {
+      &:hover {
+        color: @concis-dark-primary-color;
+      }
     }
-    .concis-menu-activeFatherTitle:hover {
-      color: #ffffffe6 !important;
+    &-childMenuOptions {
+      color: #ffffff;
+      &:hover {
+        color: @concis-dark-primary-color;
+      }
+    }
+    .active {
+      color: #ffffff !important;
+      background-color: @concis-dark-primary-color;
+      .concis-menu-fatherTitle:hover {
+        color: #ffffff !important;
+      }
     }
   }
   //pagination
@@ -171,7 +186,7 @@ html[data-prefers-color='dark'] {
     background-color: transparent;
   }
   .concis-pagination-jumpBox input {
-    color: #ffffffe6;
+    color: @concis-dark-font-color;
     background-color: #343436;
     outline: none;
   }
@@ -180,7 +195,7 @@ html[data-prefers-color='dark'] {
     background-color: #373739;
   }
   .concis-date-picker .result {
-    color: #ffffffe6;
+    color: @concis-dark-font-color;
     &:hover {
       color: @concis-dark-primary-color;
     }
@@ -191,13 +206,35 @@ html[data-prefers-color='dark'] {
       background: #515357;
     }
   }
+  .concis-year-picker table tr .disable:not(.day-empty),
+  .concis-month-picker table tr .disable:not(.day-empty) {
+    span {
+      background: #515357;
+    }
+  }
   .concis-date-picker .input {
-    color: #ffffffe6;
+    color: @concis-dark-font-color;
     background-color: transparent;
+  }
+  .concis-date-picker {
+    .disable:not(.day-empty) {
+      background: #5c5c5c !important;
+    }
   }
   //form
   .concis-form .disabled,
   .concis-form-item-disabled {
     background-color: transparent;
+  }
+  //table
+  .concis-table-container {
+    table {
+      tr:first-of-type {
+        border-top: 1px solid #484849;
+      }
+      tr {
+        border: 1px solid #484849;
+      }
+    }
   }
 }

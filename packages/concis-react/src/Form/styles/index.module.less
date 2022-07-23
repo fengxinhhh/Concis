@@ -1,4 +1,7 @@
-.concis-form {
+@import '../../styles/common.less';
+
+.concis-form,
+.concis-dark-form {
   position: relative;
   .disabled {
     position: absolute;
@@ -11,4 +14,11 @@
     cursor: not-allowed;
     opacity: 0.5;
   }
+}
+.concis-dark-form .concis-form-item-label {
+  color: @concis-dark-font-color;
+}
+.concis-dark-form .disabled,
+.concis-dark-form-item-disabled {
+  background-color: transparent;
 }

@@ -32,10 +32,10 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
   const [addOptionVal, setAddOptionVal] = useState('');
   const [showAddOption, setShowAddOption] = useState(canAddOption && false);
 
-  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const theme = getSiteTheme();
 
-  const classNames = cs(prefixCls, className, 'concis-radio-group');
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}radio-group`);
 
   const changeOptions = (item: RadioProps, i: number, e: any) => {
     if (item.disabled) return;
