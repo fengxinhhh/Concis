@@ -321,51 +321,6 @@
       }
     ]
   },
-  "DatePicker": {
-    "default": [
-      {
-        "identifier": "className",
-        "description": "类名",
-        "type": "string"
-      },
-      {
-        "identifier": "type",
-        "description": "日期选择器类型(primary/input)仅支持非range",
-        "type": "string",
-        "default": "primary"
-      },
-      {
-        "identifier": "format",
-        "description": "设置日期的格式化",
-        "type": "string",
-        "default": "YYYY-MM-DD"
-      },
-      {
-        "identifier": "showClear",
-        "description": "设置日期区间选择器",
-        "type": "boolean",
-        "default": "false"
-      },
-      {
-        "identifier": "align",
-        "description": "方向",
-        "type": "string",
-        "default": "false"
-      },
-      {
-        "identifier": "handleChange",
-        "description": "选择完毕后的回调函数",
-        "type": "Function",
-        "default": "Function"
-      },
-      {
-        "identifier": "disableCheck",
-        "description": "验证是否禁用选项的函数",
-        "type": "Function",
-        "default": "Function"
-      }
-    ]
-  },
   "Divider": {
     "default": [
       {
@@ -1309,7 +1264,144 @@
       }
     ]
   },
-  "Table": {},
+  "Table": {
+    "default": [
+      {
+        "identifier": "className",
+        "description": "类名",
+        "type": "string"
+      },
+      {
+        "identifier": "titleParams",
+        "description": "表头配置项",
+        "type": "tableThType[]",
+        "default": "[]",
+        "required": true
+      },
+      {
+        "identifier": "tableData",
+        "description": "表内容配置项",
+        "type": "any[]",
+        "default": "[]",
+        "required": true
+      },
+      {
+        "identifier": "align",
+        "description": "表格对齐方式",
+        "type": "string",
+        "default": "left"
+      },
+      {
+        "identifier": "width",
+        "description": "列宽",
+        "type": "string",
+        "default": "配置在titleParams中，添加参数，如 width: \"400\""
+      },
+      {
+        "identifier": "expandedRowRender",
+        "description": "展开行",
+        "type": "Function",
+        "default": "接受自定义参数，回调函数传入展开行内容"
+      },
+      {
+        "identifier": "radio",
+        "description": "单选",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "checked",
+        "description": "多选",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "radioSelectCallback",
+        "description": "单选回调",
+        "type": "Function"
+      },
+      {
+        "identifier": "checkedSelectCallback",
+        "description": "多选回调",
+        "type": "Function"
+      },
+      {
+        "identifier": "avableSort",
+        "description": "支持排序",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "filter",
+        "description": "支持筛选",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "sorter",
+        "description": "表头中的排序规则，true采用列默认排序，Array采用自定义排序",
+        "type": "boolean | Function[]",
+        "default": "''"
+      },
+      {
+        "identifier": "virtualized",
+        "description": "虚拟列表，大数据量的解决方案之一，无法与lazyLoad、pagination并用",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "largeDateShowNum",
+        "description": "懒加载、虚拟列表默认展示数据条数",
+        "type": "number",
+        "default": "10"
+      },
+      {
+        "identifier": "lazyLoad",
+        "description": "懒加载，大数据量的解决方案之一，无法与virtualized、pagination并用",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "pagination",
+        "description": "分页，大数据量的解决方案之一，无法与virtualized、lazyLoad并用",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "paginationAlign",
+        "description": "分页器对齐方式",
+        "type": "string",
+        "default": "left"
+      },
+      {
+        "identifier": "pageSizeOption",
+        "description": "分页器每页展示配置",
+        "type": "number[]",
+        "default": "[10, 20, 30, 50]"
+      },
+      {
+        "identifier": "changePNumCallback",
+        "description": "分页器改变页码回调函数",
+        "type": "Function"
+      },
+      {
+        "identifier": "changePSizeCallback",
+        "description": "分页器改变页码回调函数",
+        "type": "Function"
+      },
+      {
+        "identifier": "dropabled",
+        "description": "配置拖拽",
+        "type": "boolean",
+        "default": "false"
+      },
+      {
+        "identifier": "dropCallback",
+        "description": "拖拽成功回调",
+        "type": "Function"
+      }
+    ]
+  },
   "Tree": {
     "default": [
       {

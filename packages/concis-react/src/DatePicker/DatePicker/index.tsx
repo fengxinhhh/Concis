@@ -20,6 +20,7 @@ const dayjs = require('dayjs');
 export interface DatePickerProps {
   /**
    * @description 类名
+   * @default ''
    */
   className?: string;
   /**
@@ -95,7 +96,6 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     //最后一天几号
     const lastDay = new Date(year, month, 0).getDate();
     const daysArr = new Array(Math.ceil((firstWeekDay + lastDay) / 7) * 7).fill('');
-    // console.log(firstWeekDay, lastDay);
     setNowDayList(
       chunk(
         daysArr.map((_, i) => {
@@ -144,10 +144,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     handleChange && handleChange(data.date);
   };
   const setYear = (year: number): void => {
-    setNowDate({
-      ...nowDate,
-      year,
-    });
+    setNowDate({ ...nowDate, year });
   };
   const setMonth = (month: number, type: string): void => {
     let date = {} as NowDateProps;

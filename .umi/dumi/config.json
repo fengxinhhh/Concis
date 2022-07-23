@@ -115,6 +115,11 @@
               "meta": {}
             },
             {
+              "path": "/common/time-picker",
+              "title": "TimePicker 时间选择器",
+              "meta": {}
+            },
+            {
               "path": "/common/tree",
               "title": "Tree 树选择器",
               "meta": {}

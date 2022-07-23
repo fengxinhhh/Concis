@@ -66,6 +66,7 @@ type alignStyle = {
   top?: string;
   bottom?: string;
   border?: string;
+  opacity: number;
 };
 const Popover: FC<popoverProps> = (props: popoverProps) => {
   const {
@@ -159,7 +160,9 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
     }
   }, 200);
   const dialogStyle = useMemo(() => {
-    let alignStyle: alignStyle = {};
+    let alignStyle: alignStyle = {
+      opacity: 0,
+    };
     if (align == 'bottom') {
     } else if (align == 'top') {
       alignStyle.bottom = showBtnSize.height + 'px';
