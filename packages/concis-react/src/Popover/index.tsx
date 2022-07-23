@@ -46,10 +46,15 @@ interface popoverProps {
    */
   noBorder?: boolean;
   /**
-   * @description 提供给调用层的卡片显示隐藏状态
+   * @description 默认显示气泡卡片
    * @default false
    */
-  propsVisible?: boolean;
+  defaultShow?: boolean;
+  /**
+   * @description 气泡卡片关闭依赖项
+   * @default []
+   */
+  closeDeps?: Array<any>;
   /**
    * @description 卡片显示隐藏回调
    */
@@ -71,13 +76,14 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
     content,
     noBorder,
     dialogWidth = 200,
-    propsVisible,
+    defaultShow = false,
+    closeDeps,
     onVisibleChange,
   } = props;
   const showBtnRef = useRef();
   const dialogRef = useRef();
 
-  const [showDialog, setShowDialog] = useState<boolean>(propsVisible || false); //是否显示
+  const [showDialog, setShowDialog] = useState<boolean>(defaultShow || false); //是否显示
   const [showBtnSize, setShowBtnSize] = useState({
     width: '',
     height: '',
@@ -95,18 +101,17 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
     if (type == 'click') {
       window.addEventListener('click', () => {
         setShowDialog(false);
-        if (propsVisible) {
-          setShowDialog(false);
-        }
       });
     }
   }, []);
+  useEffect(() => {
+    //依赖于父组件的状态改变，关闭popover
+    setShowDialog(false);
+  }, [closeDeps]);
 
   useEffect(() => {
-    if (propsVisible != undefined) {
-      setShowDialog(propsVisible as boolean);
-    }
-  }, [propsVisible]);
+    onVisibleChange && onVisibleChange(showDialog);
+  }, [showDialog]);
 
   useEffect(() => {
     let isUnMounted = true;
@@ -117,7 +122,6 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
       }`;
       (dialogDom as any).style.height = showDialog ? '' : '0px';
       setTimeout(() => {
-        // console.log(2, isUnMounted);
         if (isUnMounted) {
           (dialogDom as any).style.opacity = showDialog ? 1 : 0;
         }
@@ -125,7 +129,6 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
     } else {
       (dialogDom as any).style.opacity = showDialog ? 1 : 0;
       setTimeout(() => {
-        // console.log(1, isUnMounted);
         if (isUnMounted) {
           (dialogDom as any).style.width = showDialog ? `${dialogWidth}px` : '0px';
           (dialogDom as any).style.height = showDialog ? '' : '0px';
@@ -141,22 +144,18 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
     e.stopPropagation();
     if (type == 'click') {
       setShowDialog(!showDialog);
-      onVisibleChange && onVisibleChange(!showDialog);
     }
   };
   const hoverOpenDialog = lodash.debounce(() => {
     //移入打开dialog
     if (type == 'hover' && showDialog == false) {
       setShowDialog(true);
-
-      onVisibleChange && onVisibleChange(true);
     }
   }, 200);
   const hoverCloseDialog = lodash.debounce(() => {
     //移开关闭dialog
     if (type == 'hover' && showDialog == true) {
       setShowDialog(false);
-      onVisibleChange && onVisibleChange(false);
     }
   }, 200);
   const dialogStyle = useMemo(() => {
@@ -177,7 +176,7 @@ const Popover: FC<popoverProps> = (props: popoverProps) => {
     return {
       ...alignStyle,
     };
-  }, [content, showDialog, propsVisible, showBtnSize]);
+  }, [content, showDialog, defaultShow, showBtnSize]);
   return (
     <div className={classNames}>
       <div

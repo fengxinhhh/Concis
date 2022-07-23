@@ -81,7 +81,6 @@ const YearPicker: FC<YearPickerProps> = (props) => {
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}year-picker`);
   const [clickDate, setClickDate] = useState(new Date());
   useEffect(() => {
-    // console.log(firstWeekDay, lastDay);
     const length12 = new Array(12).fill('');
     setYearList(
       chunk(
@@ -131,7 +130,7 @@ const YearPicker: FC<YearPickerProps> = (props) => {
       type="click"
       align={align}
       dialogWidth={'auto'}
-      propsVisible={false}
+      closeDeps={[dateValue]}
       content={
         <div
           className={classNames}

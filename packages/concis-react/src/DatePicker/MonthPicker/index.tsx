@@ -110,7 +110,7 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
       type="click"
       align={align}
       dialogWidth={'auto'}
-      propsVisible={false}
+      closeDeps={[dateValue]}
       content={
         <div
           className={classNames}

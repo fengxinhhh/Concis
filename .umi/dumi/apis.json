@@ -942,10 +942,16 @@
         "default": "false"
       },
       {
-        "identifier": "propsVisible",
-        "description": "提供给调用层的卡片显示隐藏状态",
+        "identifier": "defaultShow",
+        "description": "默认显示气泡卡片",
         "type": "boolean",
         "default": "false"
+      },
+      {
+        "identifier": "closeDeps",
+        "description": "气泡卡片关闭依赖项",
+        "type": "any[]",
+        "default": "[]"
       },
       {
         "identifier": "onVisibleChange",
