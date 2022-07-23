@@ -484,12 +484,6 @@
         "default": "#C6F7FF"
       },
       {
-        "identifier": "treeSelectTextColor",
-        "description": "Tree选择器组件选中时的字体颜色",
-        "type": "string",
-        "default": "#1890FF"
-      },
-      {
         "identifier": "menuSelectBgColor",
         "description": "Menu导航菜单组件选中时的背景颜色",
         "type": "string",
@@ -563,6 +557,17 @@
         "description": "数字框递增/减值",
         "type": "number",
         "default": "1"
+      },
+      {
+        "identifier": "maxLength",
+        "description": "文本域内容最大长度",
+        "type": "number"
+      },
+      {
+        "identifier": "showCount",
+        "description": "是否展示字数",
+        "type": "boolean",
+        "default": "false"
       },
       {
         "identifier": "handleIptChange",
