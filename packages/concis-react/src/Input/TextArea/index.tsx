@@ -1,4 +1,4 @@
-import React, { FC, useContext, useMemo, useState } from 'react';
+import React, { FC, memo, useContext, useEffect, useState } from 'react';
 import { globalCtx } from '../../GlobalConfig';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
@@ -84,17 +84,28 @@ const TextArea: FC<TextareaProps & NativeTextareaProps> = (props) => {
   const classNames = cs(prefixCls, className, 'concis-textarea');
 
   const [txaValue, setTxaValue] = useState<string>(defaultValue || '');
+  const [isComposition, setComposition] = useState<boolean>(false);
 
+  useEffect(() => {
+    handleIptChange && handleIptChange(txaValue);
+  }, [txaValue]);
   const onChangeTxa = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (
-      (maxLength && maxLength > txaValue.length) ||
-      e.target.value.length < txaValue.length ||
-      !maxLength
-    ) {
+    if (maxLength && !isComposition && maxLength < e.target.value.length) {
+      setTxaValue(e.target.value.slice(0, maxLength));
+    } else {
       setTxaValue(e.target.value);
     }
-    handleIptChange && handleIptChange(e.target.value);
   };
+  const onCompositionStartTxa = (e: React.CompositionEvent<HTMLTextAreaElement>) => {
+    setComposition(true);
+  };
+  const onCompositionEndTxa = (e: React.CompositionEvent<HTMLTextAreaElement>) => {
+    setComposition(false);
+    if (maxLength) {
+      setTxaValue(txaValue.slice(0, maxLength));
+    }
+  };
+
   const blurTxa = (e: React.FocusEvent<HTMLTextAreaElement>) => {
     handleIptBlur && handleIptBlur(e);
   };
@@ -124,18 +135,12 @@ const TextArea: FC<TextareaProps & NativeTextareaProps> = (props) => {
         onFocus={focusTxa}
         onKeyUp={(e) => handleKeyDown && handleKeyDown(e)}
         onClick={txaHandleClick}
+        onCompositionStart={onCompositionStartTxa}
+        onCompositionEnd={onCompositionEndTxa}
       ></textarea>
       {showClear && (
         <span
-          style={{
-            color: '#00000040',
-            position: 'absolute',
-            right: '0',
-            top: '5px',
-            fontSize: '12px',
-            cursor: 'pointer',
-            padding: '0 5px',
-          }}
+          className="clear-svg"
           onClick={(e) => {
             e.stopPropagation();
             setTxaValue('');
@@ -165,4 +170,4 @@ const TextArea: FC<TextareaProps & NativeTextareaProps> = (props) => {
     </div>
   );
 };
-export default TextArea;
+export default memo(TextArea);

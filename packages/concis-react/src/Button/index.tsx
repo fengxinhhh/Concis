@@ -70,7 +70,7 @@ const Button = (props: ButtonProps) => {
     type,
     className,
     width = '100%',
-    height = '40',
+    height,
     disabled,
     circle,
     dashed,
@@ -95,9 +95,9 @@ const Button = (props: ButtonProps) => {
   }, [type]);
   const buttonSize = useMemo(() => {
     var size: ButtonStyle<string> = {
-      ...style,
       width: '100%',
       height: '40px',
+      ...style,
     };
     if (width) {
       size.width = width + 'px';
