@@ -15,9 +15,9 @@ const useOverFlowScroll = (container: string, hidden: boolean) => {
   };
   const setContainerHidden = () => {
     //设置滚动条隐藏
+
     const dom = document.querySelector(`${container}`) as HTMLElement;
     if (dom && dom.style.overflow !== 'hidden') {
-      console.log(dom);
       dom.style.width = `calc(100% - ${getScrollBarWidth(dom)}px)`;
       dom.style.overflow = 'hidden';
       isHidden.current = true;
@@ -26,7 +26,6 @@ const useOverFlowScroll = (container: string, hidden: boolean) => {
 
   const resetContainer = () => {
     //恢复
-    console.log('恢复');
     if (isHidden.current && document.querySelector(`${container}`)) {
       isHidden.current = false;
       const dom = document.querySelector(`${container}`) as HTMLElement;

@@ -36,7 +36,7 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
     });
   }, []);
 
-  useOverFlowScroll('body', visible);
+  useOverFlowScroll('body', visible as boolean);
 
   const finish = () => {
     onOk && onOk();
