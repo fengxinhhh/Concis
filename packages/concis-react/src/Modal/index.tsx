@@ -17,6 +17,7 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../common_utils/getRenderColor';
+import useOverFlowScroll from '../common_utils/hooks/useOverFlowScroll';
 import './index.module.less';
 
 const Modal: FC<ModalProps> = (props: ModalProps) => {
@@ -34,6 +35,9 @@ const Modal: FC<ModalProps> = (props: ModalProps) => {
       }
     });
   }, []);
+
+  useOverFlowScroll('body', visible);
+
   const finish = () => {
     onOk && onOk();
   };
