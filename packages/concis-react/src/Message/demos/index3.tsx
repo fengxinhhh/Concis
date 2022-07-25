@@ -6,7 +6,7 @@ export default function index1() {
   const message = (val: string) => {
     Message.loading({
       content: val,
-      duration: 100000,
+      duration: 3000,
     });
     //调用时请留给message结尾动画0.2s的空档时间
     setTimeout(() => {

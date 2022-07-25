@@ -30,6 +30,7 @@ export default function index1() {
         <img src="http://react-view-ui.com:92/images/swiper-img1.webp"></img>
       </Avatar>
     ),
+    align: 'right' as 'left' | 'right',
     content: 'Hello Concis,coding is life,comment body content.',
     datetime: '2022-7-24',
     actions,

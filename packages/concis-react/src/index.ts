@@ -39,3 +39,4 @@ export { default as Switch } from './Switch';
 export { default as Space } from './Space';
 export { default as Skeleton } from './Skeleton';
 export { default as Modal } from './Modal';
+export { default as Comment } from './Comment';

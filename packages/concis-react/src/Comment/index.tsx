@@ -1,13 +1,11 @@
-import React, { Children, memo, ReactNode, useContext, useState } from 'react';
+import React, { memo, ReactNode, useContext, FC } from 'react';
 import './index.module.less';
-import Avatar from '../Avatar';
-import TextArea from '../Input/TextArea';
-import Button from '../Button';
 import { globalCtx } from '../GlobalConfig';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../common_utils/getRenderColor';
 import cs from '../common_utils/classNames';
+
 type CommentProps = {
   children?: ReactNode;
   /**
@@ -19,52 +17,47 @@ type CommentProps = {
    */
   author?: string;
   /**
+   * @description 作者名后的额外内容
+   */
+  afterAuthor?: ReactNode;
+  /**
    * @description 头像
    */
   avatar?: JSX.Element;
   /**
    * @description 评论内容
    */
-  content?: string;
+  content?: ReactNode;
   /**
    * @description 时间描述
    */
   datetime?: string;
   /**
-   * @description 显示回复输入框
-   * @default false
+   * @description 底部配置项
    */
-  showReplay?: boolean;
+  actions?: ReactNode;
   /**
-   * @description 输入框改变时的回调
+   * @description 标题栏对齐方式
+   * @default left
    */
-  handleChange?: (value: string) => void;
-  /**
-   * @description 点击回复的回调
-   */
-  handleClick?: (e: React.Dispatch<React.SetStateAction<boolean>>) => void;
+  align?: 'left' | 'right';
 };
-const Comment = (props: CommentProps) => {
-  const { className, author, avatar, content, datetime, showReplay, handleClick, handleChange } =
-    props;
+const Comment: FC<CommentProps> = (props: CommentProps) => {
+  const {
+    className,
+    author,
+    afterAuthor,
+    avatar,
+    content,
+    datetime,
+    actions,
+    align = 'left',
+    children,
+  } = props;
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const classFirstName = darkTheme ? 'concis-dark-comment' : 'concis-comment';
   const classNames = cs(prefixCls, className, classFirstName);
 
-  const [replyVisible, setReplyVisible] = useState<boolean>(false);
-  const [textValue, setTextValue] = useState<string>('');
-  const handelOnClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-    if (showReplay) {
-      setReplyVisible(!replyVisible);
-    }
-    handleClick && handleClick(setReplyVisible);
-  };
-  const handelOnBlur = (e: React.FocusEvent<HTMLElement>) => {
-    setReplyVisible(false);
-  };
-  const handelOnChange = (value: string) => {
-    handleChange && handleChange(value);
-  };
   return (
     <div
       className={classNames}
@@ -74,35 +67,25 @@ const Comment = (props: CommentProps) => {
             (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
             globalColor,
           ),
+          '--header-align': align === 'left' ? 'flex-start' : 'space-between',
         } as any
       }
     >
       <div className="avatar">{avatar}</div>
       <div className="comment-content">
-        <h4 className="author">{author}</h4>
-        <p className="content">{content}</p>
-        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-          <span className="date-time">{datetime}</span>
-          <span className="replay-text" onClick={handelOnClick}>
-            {replyVisible ? '取消回复' : '回复'}
-          </span>
-        </div>
-        {showReplay && replyVisible && (
-          <div className="reply-label">
-            <TextArea
-              moreStyle={{ margin: '5px 0' }}
-              onBlur={handelOnBlur}
-              // value={textValue}
-              handleIptChange={handelOnChange}
-            />
-            <Button type="primary" style={{ height: '30px' }}>
-              发 送
-            </Button>
+        <div className="comment-content-header">
+          <div className="author">
+            <span>{author}</span>
+            <div className="extra-header">{afterAuthor}</div>
           </div>
-        )}
-        {props.children}
+          <span className="date-time">{datetime}</span>
+        </div>
+        <div className="content">{content}</div>
+        <div className="comment-content-actions">{actions}</div>
+        {children}
       </div>
     </div>
   );
 };
+
 export default memo(Comment);
