@@ -26,8 +26,11 @@
         padding: 20px;
         font-weight: 500;
         border-bottom: 1px solid #e5e6eb;
-        span {
-          font-size: 16px;
+        .title {
+          span {
+            margin-left: 10px;
+            font-size: 16px;
+          }
         }
         .close-icon {
           font-size: 12px;
@@ -65,7 +68,7 @@
 .fadeModal-enter-active,
 .fadeModal-appear-active {
   opacity: 1;
-  transition: opacity 100ms;
+  transition: opacity 200ms;
 }
 
 .fadeModal-exit {
@@ -74,7 +77,7 @@
 
 .fadeModal-exit-active {
   opacity: 0;
-  transition: opacity 100ms;
+  transition: opacity 200ms;
 }
 
 .fadeContent-enter,
@@ -91,7 +94,7 @@
   left: 50%;
   width: 30%;
   opacity: 1;
-  transition: top 100ms, width 100ms, left 100ms, opacity 100ms;
+  transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
 }
 
 .fadeContent-exit {
@@ -106,5 +109,5 @@
   left: 40%;
   width: 20%;
   opacity: 0;
-  transition: top 100ms, width 100ms, left 100ms, opacity 100ms;
+  transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
 }

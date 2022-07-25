@@ -19,24 +19,4 @@ group:
 
 <code src="./demos/index1.tsx" />
 
-[//]: #
-[//]: # '## 年份选择器'
-[//]: #
-[//]: # '<code src="./demos/index2.tsx" />'
-[//]: #
-[//]: # '## 月份选择器'
-[//]: #
-[//]: # '<code src="./demos/index3.tsx" />'
-[//]: #
-[//]: # '## 区间式日期选择器'
-[//]: #
-[//]: # '<code src="./demos/index4.tsx" />'
-[//]: #
-[//]: # '## 重置时间'
-[//]: #
-[//]: # '<code src="./demos/index4.tsx" />'
-[//]: #
-[//]: # '## 出现方向'
-[//]: #
-[//]: # '<code src="./demos/index6.tsx" />'
-[//]: # '<API src="./DatePicker/index.tsx"/>'
+<API />
