@@ -21,7 +21,7 @@
 /coverage
 .umi-production
 .umi-test
-.umi
+/.umi
 .env.local
 /.vscode
 /.idea

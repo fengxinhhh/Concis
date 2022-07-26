@@ -19,4 +19,16 @@ group:
 
 <code src="./demos/index1.tsx" />
 
+## 展示清除按钮
+
+<code src="./demos/index2.tsx" />
+
+## 确认回调
+
+<code src="./demos/index3.tsx" />
+
+## 禁用时分秒选项
+
+<code src="./demos/index4.tsx" />
+
 <API />
