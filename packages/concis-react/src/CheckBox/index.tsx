@@ -66,6 +66,7 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
   const classNames = cs(
     prefixCls,
     className,
+    disabled ? 'disabled-checkbox' : '',
     group && group.length
       ? `concis-${darkTheme ? 'dark-' : ''}checkGroup`
       : `concis-${darkTheme ? 'dark-' : ''}checkbox`,
@@ -140,7 +141,7 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
           {group.map((c: checkGroup, i: number) => {
             return (
               <div
-                className="checkbox groupBox"
+                className={`checkbox groupBox ${c.disabled ? 'disabled' : ''}`}
                 key={i}
                 onClick={() => toggleGroupCheckedStatus(i)}
               >
@@ -157,7 +158,7 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
           style={{ '--global-color': globalColor || '#1890ff' } as any}
         >
           {renderCheckBoxDom}
-          <div className="text">{children}</div>
+          <div className={disabled ? `text disabled` : `text`}>{children}</div>
         </div>
       )}
     </Fragment>
