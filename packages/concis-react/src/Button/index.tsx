@@ -1,58 +1,12 @@
-import React, { useMemo, useContext, memo, ReactNode, useEffect } from 'react';
+import React, { useMemo, useContext, memo } from 'react';
+import { ButtonProps, ButtonGroupProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
+import Group from './group';
 import './index.module.less';
 
-interface ButtonProps {
-  //自定义button接口
-  children?: ReactNode;
-  /**
-   * @description 类名
-   */
-  className?: string;
-  /**
-   * @description 按钮主题
-   * @default primary
-   */
-  type?: 'primary' | 'danger' | 'warning' | 'info' | 'text';
-  /**
-   * @description 宽度
-   */
-  width?: Number;
-  /**
-   * @description 高度
-   */
-  height?: Number;
-  /**
-   * @description 禁用状态
-   * @default false
-   */
-  disabled?: Boolean;
-  /**
-   * @description 字体按钮
-   * @default false
-   */
-  circle?: Boolean;
-  /**
-   * @description 按钮边框为虚线
-   * @default false
-   */
-  dashed?: Boolean;
-  /**
-   * @description 加载状态
-   * @default false
-   */
-  loading?: Boolean;
-  /**
-   * @description 自定义样式
-   */
-  style?: Object;
-  /**
-   * @description 按钮点击回调事件
-   */
-  handleClick?: Function | undefined;
-}
+
 interface ButtonStyle<T> {
   //button样式接口
   width?: T;
@@ -63,7 +17,6 @@ interface ButtonStyle<T> {
   background?: T;
   color?: T;
 }
-type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; //原生button接口
 
 const Button = (props: ButtonProps) => {
   const {
@@ -75,10 +28,11 @@ const Button = (props: ButtonProps) => {
     circle,
     dashed,
     loading,
+    icon,
     handleClick,
     children,
     style = {},
-  } = props;
+  } = props
 
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -86,12 +40,9 @@ const Button = (props: ButtonProps) => {
 
   const buttonStyle = useMemo(() => {
     if (!type && type !== 'danger' && type !== 'warning' && type !== 'info' && type !== 'text') {
-      return `concis-button-primary`;
+      return `concis-button-primary ${disabled ? 'disabled' : ''}`;
     }
-    if (type === 'text' && disabled) {
-      return 'concis-button-disabled';
-    }
-    return `concis-button-${type}` as any;
+    return `concis-button-${type} ${disabled ? 'disabled' : ''}` as any;
   }, [type]);
   const buttonSize = useMemo(() => {
     var size: ButtonStyle<string> = {
@@ -122,6 +73,10 @@ const Button = (props: ButtonProps) => {
     }
     return size;
   }, [width, height, circle, dashed, globalColor]);
+  const clickButton: React.MouseEventHandler<HTMLElement> = (event: any): void => {
+    handleClick && handleClick(event);
+  }
+
   return (
     <div
       className={classNames}
@@ -134,17 +89,28 @@ const Button = (props: ButtonProps) => {
             width: width + 'px',
             height: height + 'px',
             ...buttonSize,
-            '--isDisabled': disabled ? 0.7 : 1,
+            '--isDisabled': disabled ? 0.5 : 1
           } as any
         }
         disabled={disabled ? true : false}
-        onClick={handleClick as undefined}
+        onClick={clickButton}
       >
         {loading && <div className="concis-button-loading" />}
+        {
+          icon
+          &&
+          <div className="button-icon" style={{ '--right-transform': children ? '10px' : '0' } as any}>
+            {icon}
+          </div>
+        }
         {children}
       </button>
     </div>
   );
 };
 
-export default memo(Button);
+const GroupComponent = React.forwardRef<unknown, ButtonGroupProps>(Group);
+GroupComponent.displayName = 'ButtonGroup';
+Button.Group = GroupComponent;
+
+export default Button;
