@@ -23,23 +23,23 @@ describe('DatePicker', () => {
       />,
     );
     expect(component.find('.concis-date-picker')).toHaveLength(1);
-    // expect(
-    //   component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0'),
-    // ).toBe(true);
-    // act(() => {
-    //   component.find('input').simulate('focus');
-    // });
-    // component.update();
-    // setTimeout(async () => {
-    //   await expect(
-    //     component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 1'),
-    //   ).toBe(true);
-    // }, 0);
-    // component.find('.concis-date-picker table tr td:not(.day-empty)').at(0).simulate('click');
-    // expect(mockFn).toBeCalled();
-    // expect(
-    //   component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[2],
-    // ).toBe('01');
+    expect(
+      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0'),
+    ).toBe(true);
+    act(() => {
+      component.find('input').simulate('focus');
+    });
+    component.update();
+    setTimeout(async () => {
+      await expect(
+        component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 1'),
+      ).toBe(true);
+    }, 0);
+    component.find('.concis-date-picker table tr td:not(.day-empty)').at(0).simulate('click');
+    expect(mockFn).toBeCalled();
+    expect(
+      component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[2],
+    ).toBe('01');
   });
   it('test MonthPicker correctly', () => {
     const mockFn = jest.fn();
