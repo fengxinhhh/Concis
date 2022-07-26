@@ -137,7 +137,7 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
   return (
     <Fragment>
       {group && group.length ? (
-        <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
+        <div className={classNames} style={{ '--global-color': globalColor || '#325DFF' } as any}>
           {group.map((c: checkGroup, i: number) => {
             return (
               <div
@@ -155,7 +155,7 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
         <div
           className={classNames}
           onClick={toggleCheckedStatus}
-          style={{ '--global-color': globalColor || '#1890ff' } as any}
+          style={{ '--global-color': globalColor || '#325DFF' } as any}
         >
           {renderCheckBoxDom}
           <div className={disabled ? `text disabled` : `text`}>{children}</div>

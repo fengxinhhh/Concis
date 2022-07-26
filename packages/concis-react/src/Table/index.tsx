@@ -233,12 +233,12 @@ const Table: FC<tableProps> = (props: tableProps) => {
         if (iconType == 0) {
           //升序箭头
           return {
-            color: thRow.sorter == 2 ? '#1890ff' : '#a9adb2',
+            color: thRow.sorter == 2 ? '#325DFF' : '#a9adb2',
           };
         } else {
           //降序箭头
           return {
-            color: thRow.sorter == 3 ? '#1890ff' : '#a9adb2',
+            color: thRow.sorter == 3 ? '#325DFF' : '#a9adb2',
           };
         }
       } else {
@@ -246,12 +246,12 @@ const Table: FC<tableProps> = (props: tableProps) => {
         if (iconType == 0) {
           //升序箭头
           return {
-            color: thRow.sorter[0].sorted ? '#1890ff' : '#a9adb2',
+            color: thRow.sorter[0].sorted ? '#325DFF' : '#a9adb2',
           };
         } else {
           //降序箭头
           return {
-            color: thRow.sorter[1].sorted ? '#1890ff' : '#a9adb2',
+            color: thRow.sorter[1].sorted ? '#325DFF' : '#a9adb2',
           };
         }
       }
@@ -265,10 +265,10 @@ const Table: FC<tableProps> = (props: tableProps) => {
       //滚到底，不继续滚
       if (
         (tableData.length + 2) *
-          (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight -
-          sTop <
-          (largeDateShowNum + 2) *
-            (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight &&
+        (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight -
+        sTop <
+        (largeDateShowNum + 2) *
+        (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight &&
         top > sTop
       ) {
         return;
@@ -285,8 +285,8 @@ const Table: FC<tableProps> = (props: tableProps) => {
       //懒加载
       if (
         e.nativeEvent.target.scrollHeight -
-          e.nativeEvent.target.clientHeight -
-          e.nativeEvent.target.scrollTop <=
+        e.nativeEvent.target.clientHeight -
+        e.nativeEvent.target.scrollTop <=
         10
       ) {
         setTimeout(() => {
@@ -405,7 +405,7 @@ const Table: FC<tableProps> = (props: tableProps) => {
           style={{
             height:
               (tableData.length + 2) *
-                (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight -
+              (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight -
               sTop +
               'px',
             transform: `translateY(${sTop}px)`,
@@ -779,11 +779,10 @@ const Table: FC<tableProps> = (props: tableProps) => {
       style={
         virtualized || lazyLoad
           ? {
-              height: `${
-                (largeDateShowNum + 2) *
-                (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight
+            height: `${(largeDateShowNum + 2) *
+              (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight
               }px`,
-            }
+          }
           : {}
       }
     >
@@ -792,15 +791,14 @@ const Table: FC<tableProps> = (props: tableProps) => {
         style={
           virtualized || lazyLoad
             ? {
-                maxHeight: `${
-                  (largeDateShowNum + 2) *
-                  (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight
+              maxHeight: `${(largeDateShowNum + 2) *
+                (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight
                 }px`,
-                overflow: 'scroll',
-                position: 'absolute',
-                top: '40px',
-                left: '0',
-              }
+              overflow: 'scroll',
+              position: 'absolute',
+              top: '40px',
+              left: '0',
+            }
             : {}
         }
         onScroll={(e) => scrollTable(e)}

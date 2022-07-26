@@ -92,7 +92,7 @@ export default () => (
     scale={1.2}
   >
     <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://react-view-ui.com:92/images/wechat-code.jpg" style={{ width: '400px' }} />
+      <img src="http://react-view-ui.com:92/images/wechat-group.jpeg" style={{ width: '400px' }} />
     </a>
   </Section>
 );

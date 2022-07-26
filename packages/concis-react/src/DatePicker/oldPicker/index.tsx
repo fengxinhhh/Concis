@@ -85,7 +85,7 @@ const DatePicker: FC<DatePickerProps> = (props: DatePickerProps) => {
     2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026,
   ]);
 
-  const { globalColor = '#1890FF', prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor = '#325DFF', prefixCls } = useContext(globalCtx) as GlobalConfigProps;
   // console.log(globalColor)
   const classNames = cs(prefixCls, className, 'concis-date-picker');
   const formCtx: any = useContext(ctx);

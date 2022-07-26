@@ -12,7 +12,7 @@ export default function LayoutDemo1() {
   process.env.NODE_ENV === 'production' && usePageListener('Layout');
 
   const headerBg = { background: '#7DBCEA', color: '#fff' };
-  const contentBg = { background: '#1890ff', color: '#fff' };
+  const contentBg = { background: '#325DFF', color: '#fff' };
   const sliderBg = { background: '#3ba0e9', color: '#fff' };
 
   return (

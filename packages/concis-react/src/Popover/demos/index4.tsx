@@ -19,7 +19,7 @@ export default function MenuDemos1() {
             <div style={{ color: '#4e5969', fontSize: '14px' }}>This is content</div>
             <div style={{ color: '#4e5969', fontSize: '14px' }}>This is content</div>
             <span
-              style={{ color: '#1890ff', cursor: 'pointer' }}
+              style={{ color: '#325DFF', cursor: 'pointer' }}
               onClick={() => ref1.current.setShowDialog(false)}
             >
               close
@@ -41,7 +41,7 @@ export default function MenuDemos1() {
             <div style={{ color: '#4e5969', fontSize: '14px' }}>This is content</div>
             <div style={{ color: '#4e5969', fontSize: '14px' }}>This is content</div>
             <span
-              style={{ color: '#1890ff', cursor: 'pointer' }}
+              style={{ color: '#325DFF', cursor: 'pointer' }}
               onClick={() => ref2.current.setShowDialog(false)}
             >
               close

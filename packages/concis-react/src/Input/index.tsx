@@ -146,7 +146,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     }
   }, [formCtx.submitStatus]);
 
-  const changeIpt = (e: any) => {
+  const changeIpt = (e: React.ChangeEvent<HTMLInputElement>) => {
     //改变文本框
     if (moreStyle && Object.keys(moreStyle).includes('caretColor')) {
       return;
@@ -156,7 +156,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
       handleIptChange(e.target.value);
     }
   };
-  const blurIpt = (e: any) => {
+  const blurIpt = () => {
     //失去焦点
     if (type === 'num' && Number(iptValue) == NaN) {
       setIptValue('');
@@ -248,20 +248,20 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
             }}
           />
         )) ||
-          //密码框
-          (type === 'password' && showTogglePwd && (
-            <EyeOutlined
-              style={{ position: 'absolute', right: '5px', fontSize: '12px', cursor: 'pointer' }}
-              onClick={() => setPwdIptState(!pwdIptState)}
-            />
-          )) ||
-          //数字框
-          (type === 'num' && (
-            <div className="numTags">
-              <UpOutlined style={{ cursor: 'pointer', fontSize: '10px' }} onClick={addNum} />
-              <DownOutlined style={{ cursor: 'pointer', fontSize: '10px' }} onClick={lowNum} />
-            </div>
-          ))
+        //密码框
+        (type === 'password' && showTogglePwd && (
+          <EyeOutlined
+            style={{ position: 'absolute', right: '5px', fontSize: '12px', cursor: 'pointer' }}
+            onClick={() => setPwdIptState(!pwdIptState)}
+          />
+        )) ||
+        //数字框
+        (type === 'num' && (
+          <div className="numTags">
+            <UpOutlined style={{ cursor: 'pointer', fontSize: '10px' }} onClick={addNum} />
+            <DownOutlined style={{ cursor: 'pointer', fontSize: '10px' }} onClick={lowNum} />
+          </div>
+        ))
       }
     </div>
   );

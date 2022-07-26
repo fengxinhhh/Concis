@@ -176,7 +176,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
         option.filter((item) => {
           return (item.label as string).includes(e.target.value);
         }).length *
-          100 +
+        100 +
         '%';
       if (handleTextChange) {
         handleTextChange(e.target.value);
@@ -193,7 +193,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
       <div
         className={classNames}
         style={
-          { ...ownsWidth, '--global-color': disabled ? '#ccc' : globalColor || '#1890ff' } as any
+          { ...ownsWidth, '--global-color': disabled ? '#ccc' : globalColor || '#325DFF' } as any
         }
       >
         <div className="selected" style={disabledStyle}>
@@ -220,11 +220,11 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
                 style={
                   s.disabled
                     ? ({
-                        cursor: 'not-allowed',
-                        background: '#F2F3F5',
-                        '--line-disabled': '#000000',
-                      } as any)
-                    : ({ '--line-disabled': globalColor || '#1890ff' } as any)
+                      cursor: 'not-allowed',
+                      background: '#F2F3F5',
+                      '--line-disabled': '#000000',
+                    } as any)
+                    : ({ '--line-disabled': globalColor || '#325DFF' } as any)
                 }
                 onClick={(e) => changeOptions(s as Options, e)}
               >
@@ -242,7 +242,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
         {
           ...ownsWidth,
           ...disabledStyle,
-          '--global-color': disabled ? '#ccc' : globalColor || '#1890ff',
+          '--global-color': disabled ? '#ccc' : globalColor || '#325DFF',
         } as any
       }
     >
@@ -269,11 +269,11 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
               style={
                 s.disabled
                   ? ({
-                      cursor: 'not-allowed',
-                      background: '#F2F3F5',
-                      '--line-disabled': '#000000',
-                    } as any)
-                  : ({ '--line-disabled': globalColor || '#1890ff' } as any)
+                    cursor: 'not-allowed',
+                    background: '#F2F3F5',
+                    '--line-disabled': '#000000',
+                  } as any)
+                  : ({ '--line-disabled': globalColor || '#325DFF' } as any)
               }
               onClick={(e) => changeOptions(s as Options, e)}
             >

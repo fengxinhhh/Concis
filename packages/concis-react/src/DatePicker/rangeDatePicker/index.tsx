@@ -345,7 +345,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     return {
       activeDay: {
         color: '#fff',
-        background: globalColor || '#1890FF',
+        background: globalColor || '#325DFF',
         fontWeight: 'bold',
         borderRadius: '5px',
       },
@@ -398,7 +398,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     <div
       className={classNames}
       onClick={(e) => e.stopPropagation()}
-      style={{ '--hover-color': globalColor || '#1890ff' } as any}
+      style={{ '--hover-color': globalColor || '#325DFF' } as any}
     >
       <div className="rangePicker" onClick={(e) => e.stopPropagation()}>
         <Input

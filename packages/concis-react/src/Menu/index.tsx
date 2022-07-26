@@ -204,7 +204,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
       }
     }
   };
-  const firstMenuHeight = (key: any) => {
+  const firstMenuHeight = (key: number) => {
     //第一级菜单高度
     if (parentMenuHeightList[key]) {
       return {
@@ -216,7 +216,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
     };
   };
   const childMenuHeight = useCallback(
-    (key: any) => {
+    (key: number) => {
       //第二级菜单高度
       for (var i in parentMenuHeightList) {
         const childIndex = parentMenuHeightList[i].children?.findIndex(
@@ -268,7 +268,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
               <div
                 className={
                   m.children &&
-                  m.children.findIndex((i: RenderOptions) => i.key == nowActiveKey) !== -1
+                    m.children.findIndex((i: RenderOptions) => i.key == nowActiveKey) !== -1
                     ? `${classFirstName}-activeFatherTitle`
                     : `${classFirstName}-fatherTitle`
                 }
@@ -298,12 +298,12 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
       style={
         {
           ...customWidth,
-          '--global-color': globalColor || darkTheme ? '#1d6db8' : '#1890ff',
+          '--global-color': globalColor || darkTheme ? '#3C7EFF' : '#325DFF',
           '--global-menu-option-bg': darkTheme
-            ? '#1d6db8'
+            ? '#3C7EFF'
             : theme === ('dark' || 'auto')
-            ? '#1d6db8'
-            : '#e6f7ff',
+              ? '#3C7EFF'
+              : '#e6f7ff',
         } as any
       }
     >

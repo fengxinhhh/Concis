@@ -223,9 +223,9 @@ const Tree: FC<treeProps> = (props) => {
       if (avaChooseMore) {
         if (activedVal.split(',').includes(treeNode.title)) {
           if (theme === 'auto' || 'dark') {
-            return globalColor || darkTheme ? '#1d6db8' : '#1890ff';
+            return globalColor || darkTheme ? '#3C7EFF' : '#325DFF';
           }
-          return globalColor || darkTheme ? '#1890FF' : '#1d6db8';
+          return globalColor || darkTheme ? '#325DFF' : '#3C7EFF';
         }
         return theme === 'light' ? '#000000' : '#ffffffe6';
       }
@@ -233,9 +233,9 @@ const Tree: FC<treeProps> = (props) => {
       //搜索高亮样式
       if (treeNode.title.includes(activedVal) && activedVal !== '') {
         if (theme === 'auto' || 'dark') {
-          return globalColor || darkTheme ? '#1d6db8' : '#1890ff';
+          return globalColor || darkTheme ? '#3C7EFF' : '#325DFF';
         }
-        return globalColor || darkTheme ? '#1890FF' : '#1d6db8';
+        return globalColor || darkTheme ? '#325DFF' : '#3C7EFF';
       } else {
         return theme === 'light' ? '#000000' : '#ffffffe6';
       }

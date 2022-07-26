@@ -10,10 +10,7 @@ import dayjs from 'dayjs';
 import { ctx } from '../Form';
 import { getRenderColor } from '../common_utils/getRenderColor';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
-const getIdxArr = (length: number) => {
-  const arr = new Array(length).fill('');
-  return arr.map((_, i) => (i < 10 ? '0' + i : String(i)));
-};
+
 export interface TimePickerProps {
   /**
    * @description 出现方位
@@ -71,6 +68,12 @@ export interface TimePickerProps {
    */
   disableSecond?: Function;
 }
+
+const getIdxArr = (length: number) => {
+  const arr = new Array(length).fill('');
+  return arr.map((_, i) => (i < 10 ? '0' + i : String(i)));
+};
+
 const TimePicker = (props: TimePickerProps) => {
   const {
     align,

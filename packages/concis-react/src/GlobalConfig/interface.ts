@@ -4,7 +4,7 @@ interface GlobalConfigProps {
   children?: ReactNode;
   /**
    * @description 主题颜色
-   * @default #1890FF
+   * @default #325DFF
    */
   globalColor?: string;
   /**

@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  background-color: #1890ff;
+  background-color: #325dff;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -53,8 +53,8 @@
   transition: 0.2s linear;
 }
 .button .text:hover {
-  color: #1890ff;
-  border-color: #1890ff !important;
+  color: #325dff;
+  border-color: #325dff !important;
 }
 .button .loading1 {
   width: 10px;
@@ -81,30 +81,30 @@
 }
 .content {
   width: 70%;
-  background-color: #108EE9;
+  padding: 50px 0;
   color: #fff;
   text-align: center;
-  padding: 50px 0;
+  background-color: #108ee9;
 }
 .slider {
   width: 30%;
-  background-color: #3ba0e9;
+  padding: 50px 0;
   color: #fff;
   text-align: center;
-  padding: 50px 0;
+  background-color: #3ba0e9;
 }
 .layout {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
 }
 .header {
   width: 100%;
-  background-color: #7dbcea;
+  padding: 50px 0;
   color: #fff;
   text-align: center;
-  padding: 50px 0;
+  background-color: #7dbcea;
 }
 .divider .line {
   position: relative;
@@ -136,10 +136,10 @@
 }
 .footer {
   width: 100%;
-  background-color: #7dbcea;
+  padding: 50px 0;
   color: #fff;
   text-align: center;
-  padding: 50px 0;
+  background-color: #7dbcea;
 }
 .select {
   position: relative;
@@ -175,10 +175,10 @@
   color: #ccc;
 }
 .select .selected:focus {
-  border-color: #1890ff;
+  border-color: #325dff;
 }
 .select:hover {
-  border-color: #1890ff;
+  border-color: #325dff;
 }
 .select input {
   border: none;
@@ -203,7 +203,7 @@
   cursor: pointer;
 }
 .select .selectOptions .option:hover {
-  color: #1890ff;
+  color: #325dff;
 }
 .selectOptions {
   position: absolute;
@@ -224,7 +224,7 @@
   cursor: pointer;
 }
 .selectOptions .option:hover {
-  color: #1890ff;
+  color: #325dff;
 }
 .box {
   position: relative;
@@ -284,17 +284,17 @@
   height: 50px;
 }
 .menu .menuOptions .fatherTitle:hover {
-  color: #1890ff;
+  color: #325dff;
 }
 .menu .menuOptions .activeFatherTitle {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 50px;
-  color: #1890ff;
+  color: #325dff;
 }
 .menu .menuOptions .activeFatherTitle:hover {
-  color: #1890ff;
+  color: #325dff;
 }
 .menu .menuOptions .left i {
   margin-right: 10px;
@@ -305,7 +305,7 @@
   box-sizing: border-box;
   padding-left: 5px;
   overflow: hidden;
-  color: #1890ff;
+  color: #325dff;
   font-size: 14px;
   line-height: 50px;
   background-color: #e6f7ff;
@@ -315,7 +315,7 @@
 .menu .activeMenuOptions :after {
   width: 3px;
   height: 50px;
-  background-color: #1890ff;
+  background-color: #325dff;
   content: '';
 }
 .menu .childMenuOptions {
@@ -380,7 +380,7 @@
   color: #fff;
   font-size: 14px;
   line-height: 50px;
-  background-color: #1890ff;
+  background-color: #325dff;
   cursor: pointer;
   transition: 0.2s linear;
 }
@@ -419,16 +419,16 @@
   user-select: none;
 }
 .numberBox:hover {
-  color: #1890ff;
-  border: 1px solid #1890ff;
+  color: #325dff;
+  border: 1px solid #325dff;
   cursor: pointer;
 }
 .disabled {
   color: #c0c4cc;
 }
 .actived {
-  color: #1890ff;
-  border-color: #1890ff;
+  color: #325dff;
+  border-color: #325dff;
 }
 .pageSizeSelect {
   width: 80px;
@@ -466,10 +466,10 @@
   text-align: center;
 }
 .pageSizeSelect .options .option:hover {
-  color: #1890ff;
+  color: #325dff;
 }
 .pageSizeSelect:hover {
-  border: 1px solid #1890ff;
+  border: 1px solid #325dff;
 }
 .jumpBox {
   margin-left: 10px;
@@ -480,14 +480,14 @@
   margin: 0 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  outline-color: #1890ff;
+  outline-color: #325dff;
   transition: 0.2s linear;
 }
 .jumpBox .jump:hover {
-  border-color: #1890ff;
+  border-color: #325dff;
 }
 .jumpBox .jump:active {
-  border-color: #1890ff;
+  border-color: #325dff;
 }
 .radioGroup {
   display: flex;
@@ -544,7 +544,7 @@
   transition: 0.4s linear;
 }
 .radioGroup .groupStyle:hover {
-  color: #1890ff;
+  color: #325dff;
 }
 .radioGroup .groupActive {
   display: inline-block;
@@ -554,7 +554,7 @@
   color: #fff;
   font-size: 14px;
   line-height: 30px;
-  background: #1890ff;
+  background: #325dff;
   border: 1px solid #d9d9d9;
   cursor: pointer;
   transition: 0.4s linear;

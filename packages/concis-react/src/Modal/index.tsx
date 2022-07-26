@@ -145,7 +145,7 @@ const Modal = (props: ModalProps) => {
   const titleIcon = useMemo(() => {
     switch (type) {
       case 'info':
-        return <ExclamationCircleFilled style={{ color: '#1890ff' }} />;
+        return <ExclamationCircleFilled style={{ color: '#325DFF' }} />;
       case 'success':
         return <CheckCircleFilled style={{ color: '#00b42a' }} />;
       case 'warning':

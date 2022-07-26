@@ -215,7 +215,7 @@ const Notification = (props: NotificationProps<string>) => {
 
   const messageIcon = useMemo(() => {
     if (type === 'info') {
-      return <ExclamationCircleFilled style={{ color: '#1890ff', fontSize: '24px' }} />;
+      return <ExclamationCircleFilled style={{ color: '#325DFF', fontSize: '24px' }} />;
     } else if (type === 'error') {
       return <CloseCircleFilled style={{ color: '#f53f3f', fontSize: '24px' }} />;
     } else if (type === 'normal') {
@@ -225,7 +225,7 @@ const Notification = (props: NotificationProps<string>) => {
     } else if (type === 'warning') {
       return <ExclamationCircleFilled style={{ color: '#fa7d00', fontSize: '24px' }} />;
     } else if (type === 'loading') {
-      return <LoadingOutlined style={{ color: '#1890ff', fontSize: '24px' }} />;
+      return <LoadingOutlined style={{ color: '#325DFF', fontSize: '24px' }} />;
     }
   }, [type]);
 

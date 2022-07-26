@@ -447,7 +447,7 @@ const TreeView: FC<treeViewProps> = (props) => {
 
   return (
     <Fragment>
-      <div className={classNames} style={{ '--global-color': globalColor || '#1890ff' } as any}>
+      <div className={classNames} style={{ '--global-color': globalColor || '#325DFF' } as any}>
         {render(stateTreeData)}
       </div>
     </Fragment>

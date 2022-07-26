@@ -128,7 +128,7 @@ const stepsData = [
 export default function index1() {
   process.env.NODE_ENV === 'production' && usePageListener('GlobalConfig');
 
-  const [globalColor, setGlobalColor] = useState<Array<string>>(['#1890ff', 'orange', 'green']);
+  const [globalColor, setGlobalColor] = useState<Array<string>>(['#325DFF', 'orange', 'green']);
 
   const toggle = () => {
     setGlobalColor((oldColor) => {

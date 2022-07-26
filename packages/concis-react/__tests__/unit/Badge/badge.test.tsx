@@ -41,7 +41,7 @@ describe(`badge`, () => {
   test('test small red dot badge show correctly', () => {
     const component = mount(
       <Badge count={9} dot offset={[-2, 0]} style={{ marginRight: '25px' }}>
-        <span style={{ color: '#1890ff' }}>Link</span>
+        <span style={{ color: '#325DFF' }}>Link</span>
       </Badge>,
     );
     expect(component.find('.concis-badge span').at(0).text()).toBe('Link');

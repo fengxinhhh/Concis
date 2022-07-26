@@ -47,7 +47,7 @@ export default function index1() {
             ) : (
               <List.Item style={{ fontSize: '14px' }}>
                 <div className="list">
-                  <Avatar shape="square" style={{ background: '#1890ff' }}>
+                  <Avatar shape="square" style={{ background: '#325DFF' }}>
                     A
                   </Avatar>
                   <div className="text">
