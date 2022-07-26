@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '..';
 import Button from '../../Button';
 
 export default function index1() {
   const [visible, setVisible] = useState(false);
 
+  useEffect(() => {
+    console.log('------', visible);
+  }, [visible]);
   return (
     <div>
-      <Button handleClick={() => setVisible(true)}>打开</Button>
+      <Button
+        handleClick={() => {
+          console.log(1);
+          setVisible(true);
+        }}
+      >
+        打开
+      </Button>
       <Modal
         title="Modal Title"
         visible={visible}

@@ -58,12 +58,16 @@
     &:hover {
       color: @concis-primary-color;
       border-color: @concis-primary-color !important;
+      .concis-button-loading {
+        border-color: transparent @concis-primary-color @concis-primary-color;
+      }
     }
   }
   &-loading {
     width: @concis-font-xs;
     height: @concis-font-xs;
     margin-right: 10px;
+    color: red;
     border: 2px solid var(--loading-icon-color);
     border-color: transparent var(--loading-icon-color) var(--loading-icon-color);
     border-radius: @concis-radius-lg;

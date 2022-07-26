@@ -59,13 +59,14 @@ const Modal = (props: ModalProps) => {
     const clickDom = e.target as HTMLElement;
     e.stopPropagation();
     if (clickDom.getAttribute('class').includes('concis-modal-dialog')) {
-      setWrapperVisible(false);
+      cancel();
     }
   }, 0);
 
   useEffect(() => {
     setWrapperVisible(visible);
   }, [visible]);
+
   useEffect(() => {
     wrapperVisible && window.addEventListener('click', clickDocumentCancel);
     return () => {
@@ -75,7 +76,6 @@ const Modal = (props: ModalProps) => {
 
   //禁止滚动
   useOverFlowScroll('body', wrapperVisible as boolean);
-
   const removeConfirmContainer = () => {
     const dom = document.querySelector('.concis-modal-confirm');
     dom &&
@@ -111,11 +111,16 @@ const Modal = (props: ModalProps) => {
         setWrapperVisible(false);
         confirm && removeConfirmContainer();
       }
+    } else {
+      onOk && onOk();
     }
   };
 
   //取消
   const cancel = () => {
+    if (!onCancel) {
+      setWrapperVisible(false);
+    }
     if (!isCloseWorking.current) {
       isCloseWorking.current = true;
       if ((confirm && isPromiseCancel) || isPromiseFn(onCancel)) {
@@ -133,6 +138,8 @@ const Modal = (props: ModalProps) => {
         setWrapperVisible(false);
         confirm && removeConfirmContainer();
       }
+    } else {
+      onCancel && onCancel();
     }
   };
   const titleIcon = useMemo(() => {
@@ -190,7 +197,7 @@ const Modal = (props: ModalProps) => {
                   <CloseOutlined
                     className="close-icon"
                     style={{ fontSize: '12px' }}
-                    onClick={() => setWrapperVisible(false)}
+                    onClick={cancel}
                   />
                 </div>
               </div>
