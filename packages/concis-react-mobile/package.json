@@ -1,0 +1,40 @@
+{
+  "name": "concis-mobile",
+  "version": "0.0.1",
+  "description": "Concis Component library for Mobile",
+  "authors": {
+    "name": "fengxin",
+    "email": "1244200081@qq.com"
+  },
+  "scripts": {
+    "build": "rollup -c ./rollup.config.js"
+  },
+  "module": "es/index.js",
+  "typings": "es/index.d.ts",
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "files": [
+    "web-react-mobile",
+    "README.md",
+    "README.zh-CN.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-react": "^7.17.12",
+    "core-js": "^3.22.2",
+    "lodash": "^4.17.21"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^4.7.0"
+  },
+  "license": "MIT",
+  "gitHead": "ce812c263bec669470e12af97e9c737cbc05d730"
+}

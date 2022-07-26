@@ -1,0 +1,71 @@
+@import '../styles/common.less';
+* {
+  box-sizing: border-box;
+}
+.concis-time-picker,
+.concis-dark-time-picker {
+  width: 150px;
+  height: 220px;
+  overflow: hidden;
+  .time-panel {
+    display: flex;
+    height: 180px;
+    div {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      max-height: 200px;
+      padding: 5px 0;
+      overflow: auto;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px;
+        &:hover:not(.disable) {
+          color: #ffffff;
+          background-image: linear-gradient(var(--checked-color), var(--checked-color));
+          background-position: center;
+          border-radius: @concis-radius-xs;
+          cursor: pointer;
+        }
+      }
+      .active {
+        color: #ffffff;
+        background-image: linear-gradient(var(--checked-color), var(--checked-color));
+        background-position: center;
+        border-radius: @concis-radius-xs;
+        cursor: pointer;
+      }
+      .disable {
+        color: #a8abb2;
+        background-color: #f5f7fa;
+        border-radius: @concis-radius-xs;
+        cursor: not-allowed;
+        opacity: 1;
+      }
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+  .time-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding: 0 5px;
+    border-top: 1px solid #cccccc;
+  }
+}
+.concis-dark-time-picker {
+  .time-panel div span:hover:not(.disable) {
+    color: @concis-dark-font-color;
+    background-image: linear-gradient(var(--checked-color), var(--checked-color));
+  }
+  .disable {
+    background-image: linear-gradient(#515357, #515357);
+  }
+}

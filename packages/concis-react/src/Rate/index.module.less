@@ -1,0 +1,33 @@
+@import '../styles/common.less';
+
+@concis-rate-default-size: 20px;
+
+.concis-rate {
+  cursor: pointer;
+  .rate-container {
+    display: flex;
+    width: 100%;
+    .rate-box {
+      position: relative;
+      width: @concis-rate-default-size;
+      height: @concis-rate-default-size;
+      margin-right: 8px;
+      .half-dialog {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: @concis-rate-default-size;
+        background-color: #fff;
+        transition: 0.2s linear;
+      }
+      .rate-row {
+        color: #f6dd06;
+      }
+      &:last-of-type {
+        position: relative;
+        padding-right: @concis-transform-ms;
+      }
+    }
+  }
+}

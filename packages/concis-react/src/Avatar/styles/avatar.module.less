@@ -1,0 +1,62 @@
+@import '../../styles/common.less';
+
+@concis-avatar-size: 40px;
+@concis-avatar-dialog-size: 20px;
+
+.concis-avatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: @concis-avatar-size;
+  height: @concis-avatar-size;
+  overflow: hidden;
+  color: #fff;
+  font-size: @concis-font-sm;
+  background-color: #c9cdd4;
+  border-radius: @concis-radius-lg;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  .button-dialog {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: @concis-avatar-dialog-size;
+    height: @concis-avatar-dialog-size;
+    background-color: #fff;
+    border-radius: @concis-radius-lg;
+    cursor: pointer;
+    transition: 0.2s linear;
+    &:hover {
+      background-color: #e4e6ed;
+    }
+  }
+  .dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(94, 91, 91, 0);
+    cursor: pointer;
+    transition: 0.2s linear;
+    .icon {
+      opacity: 0;
+      transition: 0.2s linear;
+    }
+    &:hover {
+      background-color: rgba(94, 91, 91, 0.7);
+      .icon {
+        opacity: 0.8;
+      }
+    }
+  }
+}

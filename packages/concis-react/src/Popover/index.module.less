@@ -1,0 +1,36 @@
+@import '../styles/common.less';
+
+@concis-popover-dialog-radius: 4px;
+
+.concis-popover-card,
+.concis-dark-popover-card {
+  display: inline-block;
+  width: auto;
+  .open-container {
+    position: relative;
+    width: auto;
+    .pop-dialog {
+      position: absolute;
+      z-index: 9999;
+      // padding: @concis-transform-xs @concis-transform-md @concis-transform-md @concis-transform-md;
+      overflow: hidden;
+      background-color: #fff;
+      border-radius: @concis-popover-dialog-radius;
+      transition: 0.1s linear;
+    }
+  }
+}
+.concis-dark-popover-card .open-container .pop-dialog {
+  position: absolute;
+  z-index: 9999;
+  // padding: @concis-transform-xs @concis-transform-md @concis-transform-md @concis-transform-md;
+  overflow: hidden;
+  background-color: #373739;
+  border: 1px solid #484849 !important;
+  border-radius: @concis-popover-dialog-radius;
+  transition: 0.1s linear;
+  p,
+  div {
+    color: @concis-dark-font-color !important;
+  }
+}

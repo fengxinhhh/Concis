@@ -1,0 +1,285 @@
+//concis文档中基于dumi html标签data-prefers-color属性展示两套主题色。
+//***!!!这里的样式仅在文档中生效，具体用户根据GlobalConfig配置的dark需要在各个组件内部设定。
+//一些设定的api ———— getRenderColor、getSiteTheme
+
+@import './common.less';
+
+html[data-prefers-color='dark'] {
+  //button
+  .concis-button {
+    &-primary {
+      background-color: @concis-dark-primary-color;
+    }
+    &-danger {
+      background-color: @concis-dark-danger-color;
+    }
+    &-info {
+      background-color: @concis-dark-info-color;
+    }
+    &-warning {
+      background-color: @concis-dark-warning-color;
+    }
+    &-disabled {
+      background-color: @concis-dark-disabled-color;
+    }
+  }
+  //loading
+  .concis-loading-dialog {
+    background-color: #2b2b2b;
+  }
+  //message
+  .concis-message-container {
+    color: @concis-dark-font-color;
+    background-color: #000000;
+    border: 1px solid #939393;
+  }
+  //notification
+  .concis-notifica-container {
+    color: @concis-dark-font-color;
+    background-color: #000000;
+    border: 1px solid #939393;
+  }
+  //skeleton
+  .concis-skeleton-avatar,
+  .concis-skeleton-container-title,
+  .concis-skeleton-container-line {
+    background: #ffffff1f;
+    &::after {
+      background: linear-gradient(
+        90deg,
+        hsla(0, 0%, 100%, 0),
+        hsla(0, 0%, 100%, 0.3),
+        hsla(0, 0%, 100%, 0)
+      );
+    }
+  }
+  //divider
+  .concis-divider {
+    .concis-divider-line {
+      .concis-divider-before-line-text,
+      .concis-divider-after-line-text {
+        color: #484849;
+      }
+      .concis-divider-line-text {
+        color: @concis-dark-font-color;
+      }
+    }
+  }
+  //checkbox
+  .concis-checkbox .text {
+    color: @concis-dark-font-color;
+  }
+  //input
+  .concis-input .input {
+    color: @concis-dark-font-color !important;
+    background: black;
+  }
+  //textArea
+  .concis-textarea {
+    & > textarea {
+      color: #ffffffe6 !important;
+      background: black;
+    }
+    & > .clear-svg {
+      color: #c5c5c5;
+    }
+  }
+  //form
+  .concis-form .concis-form-item-label {
+    color: @concis-dark-font-color;
+  }
+  //radio
+  .concis-radio-group {
+    .groupDisabledStyle,
+    .disabledLabel {
+      color: #bbb8b8;
+    }
+    .groupActive {
+      background: @concis-dark-primary-color;
+    }
+    .groupStyle:hover {
+      color: @concis-dark-primary-color;
+    }
+  }
+  //select
+  .concis-select {
+    .selected,
+    .selectOptions,
+    .option {
+      color: #b0b0b0;
+      background: #343436 !important;
+    }
+    .select-option {
+      background-color: #474749 !important;
+    }
+  }
+  //steps
+  .concis-steps .step-content .step-line .step-box {
+    background-color: transparent;
+    .sub-content .top .light-title {
+      color: @concis-dark-font-color;
+    }
+  }
+  //treeSelect
+  .tree-select-dialog {
+    color: #c7c7c8;
+    background: #373739;
+  }
+  //collapse
+  .concis-collapse-box {
+    color: #d2d2d2;
+    background-color: transparent;
+    border: 1px solid #484849 !important;
+    .concis-collapse-item-content {
+      color: #8b8b8b;
+    }
+    .concis-collapse-item-header {
+      border-bottom: 1px solid #484849;
+    }
+  }
+  //Comment
+  .comment-content {
+    border-top: 1px solid #484849;
+  }
+  .comment-content-actions .item {
+    color: #ffffffee;
+  }
+  //list
+  .concis-list {
+    color: #8b8b8b;
+    border: 1px solid #484849;
+    .list-header {
+      color: #c6c6c6;
+    }
+    .concis-list-item {
+      border-top: 1px solid #484849;
+    }
+  }
+  //popover
+  .concis-popover-card .open-container .pop-dialog {
+    background-color: #373739;
+    border: 1px solid #484849 !important;
+    p,
+    div {
+      color: @concis-dark-font-color !important;
+    }
+  }
+  //treeView
+  .concis-tree-select .treeNode span {
+    color: @concis-dark-font-color !important;
+  }
+  //affax
+  .concis-affix {
+    background-color: @concis-dark-primary-color;
+  }
+  //menu
+  .concis-menu,
+  .concis-dark-menu {
+    color: #fff;
+    background: #000000;
+    &-fatherTitle {
+      &:hover {
+        color: @concis-dark-primary-color;
+      }
+    }
+    &-childMenuOptions {
+      color: #ffffff;
+      &:hover {
+        color: @concis-dark-primary-color;
+      }
+    }
+    .active {
+      color: #ffffff !important;
+      background-color: @concis-dark-primary-color;
+      .concis-menu-fatherTitle:hover {
+        color: #ffffff !important;
+      }
+    }
+  }
+  //pagination
+  .concis-pagination-numberBox,
+  .concis-pagination-next,
+  .concis-pagination-prev {
+    background-color: transparent;
+  }
+  .concis-pagination-jumpBox input {
+    color: @concis-dark-font-color;
+    background-color: #343436;
+    outline: none;
+  }
+  //datepicker
+  .concis-range-picker .date-box {
+    background-color: #373739;
+  }
+  .concis-date-picker .result {
+    color: @concis-dark-font-color;
+    &:hover {
+      color: @concis-dark-primary-color;
+    }
+  }
+  .concis-date-picker .check-box {
+    background-color: #373739;
+    .day-list .disable {
+      background: #515357;
+    }
+  }
+  .concis-year-picker table tr .disable:not(.day-empty),
+  .concis-month-picker table tr .disable:not(.day-empty) {
+    span {
+      background: #515357;
+    }
+  }
+  .concis-date-picker .input {
+    color: @concis-dark-font-color;
+    background-color: transparent;
+  }
+  .concis-date-picker {
+    .disable:not(.day-empty) {
+      background: #5c5c5c !important;
+    }
+  }
+  //form
+  .concis-form .disabled,
+  .concis-form-item-disabled {
+    background-color: transparent;
+  }
+  //table
+  .concis-table-container {
+    table {
+      tr:first-of-type {
+        border-top: 1px solid #484849;
+      }
+      tr {
+        border: 1px solid #484849;
+      }
+    }
+  }
+  //timerPicker
+  .concis-time-picker {
+    .time-panel div span:hover:not(.disable) {
+      color: @concis-dark-font-color;
+      background-image: linear-gradient(var(--checked-color), var(--checked-color));
+    }
+    .disable {
+      background-image: linear-gradient(#515357, #515357);
+    }
+  }
+  //modal
+  .concis-modal {
+    &-dialog {
+      background: rgba(23, 23, 26, 0.6);
+    }
+    &-content {
+      color: #c4c4c5;
+      background: #2a2a2b;
+      &-header {
+        .concis-title {
+          border-bottom: 1px solid #484849;
+        }
+      }
+      &-view {
+        border-bottom: 1px solid #484849;
+      }
+    }
+  }
+}

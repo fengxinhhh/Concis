@@ -1,0 +1,45 @@
+@import '../styles/common.less';
+
+.concis-divider {
+  &-line {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 @concis-radius-sm;
+  }
+  &-before-line-text,
+  &-after-line-text {
+    flex: 1;
+    height: 1px;
+    color: #dcdcdc;
+    border-color: inherit;
+    border-bottom: 1px solid;
+  }
+  &-line-text {
+    padding: 0 20px;
+    color: #000000;
+    font-size: 14px;
+  }
+}
+
+.concis-dark-divider {
+  &-line {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 @concis-radius-sm;
+  }
+  &-before-line-text,
+  &-after-line-text {
+    flex: 1;
+    height: 1px;
+    color: #484849;
+    border-color: inherit;
+    border-bottom: 1px solid;
+  }
+  &-line-text {
+    padding: 0 20px;
+    color: @concis-dark-font-color;
+    font-size: 14px;
+  }
+}

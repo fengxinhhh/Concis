@@ -1,0 +1,90 @@
+@import '../../styles/common.less';
+
+@concis-table-searchBtn-size: 32px;
+@concis-table-searchBtn-th-height: 40px;
+
+.concis-table-container,
+.concis-dark-table-container {
+  position: relative;
+  .table {
+    display: flex;
+    font-size: @concis-font-md;
+    table {
+      border: none;
+      border-collapse: collapse;
+      tr:first-of-type {
+        border-top: 1px solid #e5e5e6;
+      }
+      tr {
+        height: @concis-table-searchBtn-th-height;
+        border: 1px solid #e5e5e6;
+        .tableHead {
+          span {
+          }
+          .sort-icon {
+            display: flex;
+            flex-direction: column;
+            float: left;
+            margin-left: @concis-transform-ms;
+            color: #a9adb2;
+            font-size: @concis-font-sm;
+            cursor: pointer;
+          }
+        }
+        td,
+        th {
+          padding: @concis-transform-ms 30px;
+          text-align: left;
+          .radioBox {
+            cursor: pointer;
+          }
+        }
+      }
+      .search-th-btn {
+        width: 24px;
+        height: @concis-table-searchBtn-th-height;
+        margin-left: @concis-transform-ms;
+        font-size: 17px;
+        line-height: @concis-table-searchBtn-th-height;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.2s linear;
+        &:hover,
+        &:active {
+          background-color: #c9cdd4;
+        }
+      }
+    }
+  }
+  .pagination {
+    display: flex;
+    width: 100%;
+    margin-top: 30px;
+  }
+}
+.filter-dialog {
+  display: flex;
+  .search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: @concis-table-searchBtn-size;
+    height: @concis-table-searchBtn-size;
+    margin-left: 24px;
+    color: #fff;
+    background: @concis-primary-color;
+    cursor: pointer;
+  }
+}
+
+.concis-dark-table-container {
+  table {
+    tr:first-of-type {
+      border-top: 1px solid #484849;
+    }
+    tr {
+      height: @concis-table-searchBtn-th-height;
+      border: 1px solid #484849;
+    }
+  }
+}

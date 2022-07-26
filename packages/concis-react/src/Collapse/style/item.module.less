@@ -1,0 +1,42 @@
+@import '../../styles/common.less';
+
+.concis-collapse-item {
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: @concis-transform-md;
+    padding: @concis-transform-ms 0;
+    font-size: @concis-font-md;
+    border-bottom: 1px solid rgba(229, 230, 235, 1);
+    cursor: pointer;
+    .left {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .header-icon {
+        font-size: @concis-font-sm;
+      }
+      .header-text {
+        margin-left: @concis-transform-ms;
+      }
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      .header-icon {
+        margin-left: @concis-transform-ms;
+        font-size: @concis-font-sm;
+      }
+    }
+  }
+  &-content {
+    box-sizing: border-box;
+    max-height: 0;
+    padding: 0 @concis-transform-ms;
+    overflow: hidden;
+    line-height: 30px;
+    transition: max-height 0.2s;
+  }
+}

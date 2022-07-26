@@ -1,0 +1,59 @@
+@import '../styles/common.less';
+
+@concis-gray-color: #c5c5c5;
+@concis-tag-color: #bebdbd;
+
+.concis-input,
+.concis-dark-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  .input {
+    box-sizing: border-box;
+    padding: 4px 18px 4px 11px;
+    color: #000000d9;
+    font-size: @concis-font-md;
+    line-height: 1.5715;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    outline: none;
+    transition: all 0.3s;
+    &:hover {
+      border-color: var(--global-color);
+    }
+    &:focus {
+      border-color: var(--global-color);
+      box-shadow: 0 0 5px 1px var(--global-color);
+    }
+    .closeIcon {
+      position: absolute;
+    }
+  }
+  .input::-webkit-input-placeholder {
+    color: @concis-gray-color;
+  }
+  .input::-moz-placeholder {
+    color: @concis-gray-color;
+  }
+  .input:-moz-placeholder {
+    color: @concis-gray-color;
+  }
+  .input:-ms-input-placeholder {
+    color: @concis-gray-color;
+  }
+  .numTags {
+    position: absolute;
+    right: @concis-transform-xs;
+    display: flex;
+    flex-direction: column;
+    color: @concis-tag-color;
+  }
+}
+
+.concis-dark-input .input {
+  color: @concis-dark-font-color !important;
+  background: black;
+}

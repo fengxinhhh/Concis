@@ -1,0 +1,60 @@
+@import '../styles/common.less';
+
+@concis-badge-absolute: absolute;
+@concis-badge-relative: relative;
+@concis-badge-transform: translate(50%, -50%);
+@concis-badge-white-color: #ffffff;
+
+.concis-badge {
+  position: @concis-badge-relative;
+  display: inline-block;
+  &-count,
+  &-text {
+    position: @concis-badge-absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 3;
+    color: @concis-badge-white-color;
+    font-size: @concis-font-sm;
+    background-color: var(--global-color);
+    border: 2px solid @concis-badge-white-color;
+    transform: @concis-badge-transform;
+  }
+
+  &-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    padding: 0 6px;
+    font-weight: 500;
+    border-radius: @concis-radius-lg;
+  }
+  &-text {
+    padding: 2px 6px;
+    border-radius: @concis-radius-md;
+  }
+  &-dot {
+    position: @concis-badge-absolute;
+    z-index: 3;
+    width: 6px;
+    height: 6px;
+    background-color: var(--global-color);
+    border: 2px solid @concis-badge-white-color;
+    border-radius: @concis-radius-lg;
+    transform: @concis-badge-transform;
+  }
+}
+.concis-no-child-badge {
+  position: @concis-badge-relative;
+  display: inline-block;
+  min-width: 20px;
+  height: 20px;
+  color: @concis-badge-white-color;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  background-color: var(--global-color);
+  border-radius: @concis-radius-md;
+}

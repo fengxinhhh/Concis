@@ -1,0 +1,37 @@
+@import '../styles/common.less';
+
+.concis-message-container,
+.concis-dark-message-container {
+  position: fixed;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 @concis-transform-lg;
+  color: #000000;
+  font-size: @concis-font-md;
+  background-color: #fff;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: @concis-radius-xs;
+  transform: translate(-50%, 0);
+  opacity: 1;
+  animation: concis-show-message 0.3s;
+  .toast-content {
+    margin: 0 @concis-transform-ms;
+  }
+}
+@keyframes concis-show-message {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.concis-dark-message-container {
+  color: @concis-dark-font-color;
+  background-color: #000000;
+  border: 1px solid #939393;
+}

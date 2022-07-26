@@ -1,0 +1,113 @@
+.concis-modal {
+  &-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(29, 33, 41, 0.6);
+    transition: 0.1s linear;
+  }
+  &-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1002;
+    width: 30%;
+    background: #ffffff;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+    &-header {
+      .concis-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        font-weight: 500;
+        border-bottom: 1px solid #e5e6eb;
+        .title {
+          span {
+            margin-left: 10px;
+            font-size: 16px;
+          }
+        }
+        .close-icon {
+          font-size: 12px;
+          cursor: pointer;
+        }
+      }
+    }
+    &-view {
+      padding: 20px 24px;
+      font-size: 14px;
+      border-bottom: 1px solid #e5e6eb;
+    }
+    &-footer {
+      width: 100%;
+      padding: 16px 20px;
+      text-align: right;
+      .button {
+        .concis-button-text,
+        .concis-button-primary {
+          height: 30px !important;
+        }
+      }
+      .cancel-btn {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.fadeModal-enter,
+.fadeModal-appear {
+  opacity: 0;
+}
+
+.fadeModal-enter-active,
+.fadeModal-appear-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.fadeModal-exit {
+  opacity: 1;
+}
+
+.fadeModal-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.fadeContent-enter,
+.fadeContent-appear {
+  top: 40%;
+  left: 40%;
+  width: 20%;
+  opacity: 0;
+}
+
+.fadeContent-enter-active,
+.fadeContent-appear-active {
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  opacity: 1;
+  transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
+}
+
+.fadeContent-exit {
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  opacity: 1;
+}
+
+.fadeContent-exit-active {
+  top: 40%;
+  left: 40%;
+  width: 20%;
+  opacity: 0;
+  transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
+}
