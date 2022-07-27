@@ -66,6 +66,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.31.2",
     "rollup-plugin-uglify": "^6.0.4",
+    "umi": "^3.5.30",
     "yorkie": "^2.0.0"
   }
 }

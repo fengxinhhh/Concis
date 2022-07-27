@@ -100,8 +100,9 @@ const TimePicker = (props: TimePickerProps) => {
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}time-picker`);
   const changeTime = (newHour: number = hour, newMin: number = min, newSecond: number = second) => {
-    const time = `${newHour < 10 ? '0' + newHour : String(newHour)}:${newMin < 10 ? '0' + newMin : String(newMin)
-      }:${newSecond < 10 ? '0' + newSecond : String(newSecond)}`;
+    const time = `${newHour < 10 ? '0' + newHour : String(newHour)}:${
+      newMin < 10 ? '0' + newMin : String(newMin)
+    }:${newSecond < 10 ? '0' + newSecond : String(newSecond)}`;
     changeCallback && changeCallback(time);
     handleConfirm && handleConfirm(time);
     setTimeValue(time);
@@ -131,7 +132,7 @@ const TimePicker = (props: TimePickerProps) => {
     clearCallback && clearCallback();
   };
   const scrollTo = (eventIdx: number, idx: number): boolean => {
-    const divDom = parentRef.current.querySelectorAll('.time-panel div')[idx];
+    const divDom = (parentRef.current as any).querySelectorAll('.time-panel div')[idx];
     // @ts-ignore
     divDom.scrollTo(0, divDom.querySelector(`.active`).offsetTop - 7);
     return true;
@@ -168,8 +169,9 @@ const TimePicker = (props: TimePickerProps) => {
             <div>
               {HOUR_LIST.map((_) => (
                 <span
-                  className={`${Number(_) === hour ? 'active' : ''} ${disableHour !== undefined && disableHour(_) ? 'disable' : ''
-                    }`}
+                  className={`${Number(_) === hour ? 'active' : ''} ${
+                    disableHour !== undefined && disableHour(_) ? 'disable' : ''
+                  }`}
                   onClick={(e) => {
                     if (disableHour === undefined || !disableHour(_)) {
                       setHour(Number(_));
@@ -184,8 +186,9 @@ const TimePicker = (props: TimePickerProps) => {
             <div>
               {MIN_AND_SEC_LIST.map((_) => (
                 <span
-                  className={`${Number(_) === min ? 'active' : ''} ${disableMin !== undefined && disableMin(_) ? 'disable' : ''
-                    }`}
+                  className={`${Number(_) === min ? 'active' : ''} ${
+                    disableMin !== undefined && disableMin(_) ? 'disable' : ''
+                  }`}
                   onClick={(e) => {
                     if (disableMin === undefined || !disableMin(_)) {
                       setMin(Number(_));
@@ -200,8 +203,9 @@ const TimePicker = (props: TimePickerProps) => {
             <div>
               {MIN_AND_SEC_LIST.map((_) => (
                 <span
-                  className={`${Number(_) === second ? 'active' : ''} ${disableSecond !== undefined && disableSecond(_) ? 'disable' : ''
-                    }`}
+                  className={`${Number(_) === second ? 'active' : ''} ${
+                    disableSecond !== undefined && disableSecond(_) ? 'disable' : ''
+                  }`}
                   onClick={(e) => {
                     if (disableSecond === undefined || !disableSecond(_)) {
                       setSecond(Number(_));

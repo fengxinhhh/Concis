@@ -1,24 +1,6 @@
-import React, {
-  FC,
-  memo,
-  useState,
-  useEffect,
-  useMemo,
-  useContext,
-  useCallback,
-  createRef,
-} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { CSSTransition } from 'react-transition-group';
-import { CloseOutlined } from '@ant-design/icons';
-import Button from '../Button';
 import { ModalProps, ConfirmType } from './interface';
-import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../common_utils/classNames';
-import { globalCtx } from '../GlobalConfig';
-import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
-import { getRenderColor } from '../common_utils/getRenderColor';
-import useOverFlowScroll from '../common_utils/hooks/useOverFlowScroll';
 import Modal from './index';
 import './index.module.less';
 
@@ -26,8 +8,8 @@ function confirm(props: ModalProps, type: ConfirmType) {
   const div = document.createElement('div');
   div.setAttribute('class', 'concis-modal-confirm');
   document.body.appendChild(div);
-  const isPromiseOk = isPromiseFn(props.onOk);
-  const isPromiseCancel = isPromiseFn(props.onCancel);
+  const isPromiseOk = props.onOk && isPromiseFn(props.onOk);
+  const isPromiseCancel = props.onCancel && isPromiseFn(props.onCancel);
 
   ReactDOM.render(
     <Modal

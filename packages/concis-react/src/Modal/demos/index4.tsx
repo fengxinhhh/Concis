@@ -5,7 +5,7 @@ import Message from '../../Message';
 
 export default function index1() {
   const confirm = () => {
-    Modal.info({
+    Modal.confirm({
       title: 'Modal Title',
       content: (
         <p>

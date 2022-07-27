@@ -1,12 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useContext,
-  useMemo,
-  useCallback,
-  createRef,
-} from 'react';
+import React, { useState, useEffect, useRef, useContext, useMemo } from 'react';
 import lodash from 'lodash';
 import { CSSTransition } from 'react-transition-group';
 import {
@@ -63,7 +55,7 @@ const Modal = (props: ModalProps) => {
   const clickDocumentCancel = lodash.throttle((e) => {
     const clickDom = e.target as HTMLElement;
     e.stopPropagation();
-    if (clickDom.getAttribute('class').includes('concis-modal-dialog')) {
+    if (clickDom.getAttribute('class')?.includes('concis-modal-dialog')) {
       cancel();
     }
   }, 0);
@@ -85,7 +77,7 @@ const Modal = (props: ModalProps) => {
     const dom = document.querySelector('.concis-modal-confirm');
     dom &&
       setTimeout(() => {
-        document.body.removeChild(document.querySelector('.concis-modal-confirm'));
+        document.body.removeChild(document.querySelector('.concis-modal-confirm') as HTMLElement);
       }, 400);
   };
 
@@ -105,7 +97,7 @@ const Modal = (props: ModalProps) => {
     }
     if (!isCloseWorking.current) {
       isCloseWorking.current = true;
-      if ((confirm && isPromiseOk) || isPromiseFn(onOk)) {
+      if ((confirm && isPromiseOk) || (typeof onOk === 'function' && isPromiseFn(onOk))) {
         setOkLoading(true);
         onOk &&
           onOk()
@@ -131,7 +123,10 @@ const Modal = (props: ModalProps) => {
     }
     if (!isCloseWorking.current) {
       isCloseWorking.current = true;
-      if ((confirm && isPromiseCancel) || isPromiseFn(onCancel)) {
+      if (
+        (confirm && isPromiseCancel) ||
+        (typeof onCancel === 'function' && isPromiseFn(onCancel))
+      ) {
         setCancelLoading(true);
         onCancel &&
           onCancel()
@@ -241,6 +236,9 @@ const Modal = (props: ModalProps) => {
   );
 };
 
+Modal.confirm = (props: ModalProps) => {
+  return addInstance(props, 'info');
+};
 Modal.info = (props: ModalProps) => {
   return addInstance(props, 'info');
 };
