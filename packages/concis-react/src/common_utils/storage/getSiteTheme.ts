@@ -2,7 +2,7 @@
 
 const getSiteTheme = () => {
   const theme = window.localStorage.getItem('dumi:prefers-color');
-  return theme;
+  return theme || 'light';
 };
 
 export { getSiteTheme };

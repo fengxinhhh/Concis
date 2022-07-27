@@ -221,6 +221,7 @@ const Tree: FC<treeProps> = (props) => {
   const searchStyle = useCallback(
     (treeNode: treeNode): string => {
       if (avaChooseMore) {
+        console.log(theme);
         if (activedVal.split(',').includes(treeNode.title)) {
           if (theme === 'auto' || 'dark') {
             return globalColor || darkTheme ? '#3C7EFF' : '#325DFF';
