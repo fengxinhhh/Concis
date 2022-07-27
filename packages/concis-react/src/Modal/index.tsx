@@ -34,7 +34,7 @@ const Modal = (props: ModalProps) => {
     footer,
     okText,
     cancelText,
-    width = 30,
+    width = '520px',
     onCancel,
     onOk,
     confirm = false,
@@ -158,7 +158,10 @@ const Modal = (props: ModalProps) => {
   }, [type]);
 
   return (
-    <div className={classNames} style={{ '--modal-width': `${width}%` } as any}>
+    <div
+      className={classNames}
+      style={{ '--modal-width': `${typeof width === 'string' ? width : width + '%'}` } as any}
+    >
       <CSSTransition
         in={wrapperVisible}
         timeout={200}

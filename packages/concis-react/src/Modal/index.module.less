@@ -111,3 +111,49 @@
   opacity: 0;
   transition: top 200ms, width 200ms, left 200ms, opacity 100ms;
 }
+
+@media screen and (max-width: 767px) {
+  .concis-modal {
+    &-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1002;
+      width: 90vw;
+      background: #ffffff;
+      border-radius: 5px;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .fadeContent-enter,
+  .fadeContent-appear {
+    top: 40%;
+    left: 40%;
+    width: 80vw;
+    opacity: 0;
+  }
+
+  .fadeContent-enter-active,
+  .fadeContent-appear-active {
+    top: 50%;
+    left: 50%;
+    width: 90vw;
+    opacity: 1;
+    transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
+  }
+
+  .fadeContent-exit {
+    top: 50%;
+    left: 50%;
+    width: 90vw;
+    opacity: 1;
+  }
+
+  .fadeContent-exit-active {
+    top: 40%;
+    left: 40%;
+    width: 80vw;
+    opacity: 0;
+    transition: top 200ms, width 200ms, left 200ms, opacity 100ms;
+  }
+}

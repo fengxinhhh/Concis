@@ -49,6 +49,8 @@ group:
 
 通过 `width` 配置对话框百分比宽度。
 
+设置 string 代表 px 值，设置 number 代表百分比值。
+
 <code src="./demos/index9.tsx" />
 
 ## 定制按钮文字

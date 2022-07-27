@@ -17,7 +17,7 @@ export default function index1() {
       <Modal
         title="Modal Title"
         visible={visible}
-        width={50}
+        width={90}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
       >

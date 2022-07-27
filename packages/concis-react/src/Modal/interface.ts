@@ -44,9 +44,9 @@ interface ModalProps {
   cancelText?: string;
   /**
    * @description 对话框宽度百分比
-   * @default 30%
+   * @default 520px
    */
-  width?: number;
+  width?: number | string;
   /**
    * @description 确认回调函数
    * @default () =>

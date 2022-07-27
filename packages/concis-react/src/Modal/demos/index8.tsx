@@ -61,7 +61,7 @@ export default function index1() {
         visible={visible}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
-        width={35}
+        width={'620px'}
       >
         <div>
           {

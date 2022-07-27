@@ -13,22 +13,8 @@ export default function index1() {
           immediately once you press the OK button.
         </p>
       ),
-      onOk: () => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            Message.success('success');
-            resolve('');
-          }, 3000);
-        });
-      },
-      onCancel: () => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            Message.error('cancel');
-            resolve('');
-          }, 3000);
-        });
-      },
+      onOk: () => Message.success('success'),
+      onCancel: () => Message.error('cancel'),
     });
   };
 
