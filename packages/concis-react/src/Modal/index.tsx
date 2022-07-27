@@ -91,9 +91,13 @@ const Modal = (props: ModalProps) => {
     isCloseWorking.current = false;
     setOkLoading(false);
     setCancelLoading(false);
+    isCloseWorking.current = false;
   };
   //确认
   const finish = () => {
+    if (!onOk) {
+      setWrapperVisible(false);
+    }
     if (!isCloseWorking.current) {
       isCloseWorking.current = true;
       if ((confirm && isPromiseOk) || isPromiseFn(onOk)) {
@@ -109,10 +113,9 @@ const Modal = (props: ModalProps) => {
       } else {
         onOk && onOk();
         setWrapperVisible(false);
+        isCloseWorking.current = false;
         confirm && removeConfirmContainer();
       }
-    } else {
-      onOk && onOk();
     }
   };
 
@@ -136,10 +139,9 @@ const Modal = (props: ModalProps) => {
       } else {
         onCancel && onCancel();
         setWrapperVisible(false);
+        isCloseWorking.current = false;
         confirm && removeConfirmContainer();
       }
-    } else {
-      onCancel && onCancel();
     }
   };
   const titleIcon = useMemo(() => {

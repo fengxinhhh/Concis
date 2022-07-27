@@ -6,7 +6,6 @@ import { globalCtx } from '../GlobalConfig';
 import Group from './group';
 import './index.module.less';
 
-
 interface ButtonStyle<T> {
   //button样式接口
   width?: T;
@@ -32,7 +31,7 @@ const Button = (props: ButtonProps) => {
     handleClick,
     children,
     style = {},
-  } = props
+  } = props;
 
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -40,10 +39,10 @@ const Button = (props: ButtonProps) => {
 
   const buttonStyle = useMemo(() => {
     if (!type && type !== 'danger' && type !== 'warning' && type !== 'info' && type !== 'text') {
-      return `concis-button-primary ${disabled ? 'disabled' : ''}`;
+      return `concis-button-primary ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''}`;
     }
-    return `concis-button-${type} ${disabled ? 'disabled' : ''}` as any;
-  }, [type]);
+    return `concis-button-${type} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''}` as any;
+  }, [type, loading, disabled]);
   const buttonSize = useMemo(() => {
     var size: ButtonStyle<string> = {
       width: '100%',
@@ -75,7 +74,7 @@ const Button = (props: ButtonProps) => {
   }, [width, height, circle, dashed, globalColor]);
   const clickButton: React.MouseEventHandler<HTMLElement> = (event: any): void => {
     handleClick && handleClick(event);
-  }
+  };
 
   return (
     <div
@@ -89,20 +88,21 @@ const Button = (props: ButtonProps) => {
             width: width + 'px',
             height: height + 'px',
             ...buttonSize,
-            '--isDisabled': disabled ? 0.5 : 1
+            '--isDisabled': disabled ? 0.5 : 1,
           } as any
         }
         disabled={disabled ? true : false}
         onClick={clickButton}
       >
         {loading && <div className="concis-button-loading" />}
-        {
-          icon
-          &&
-          <div className="button-icon" style={{ '--right-transform': children ? '10px' : '0' } as any}>
+        {icon && (
+          <div
+            className="button-icon"
+            style={{ '--right-transform': children ? '10px' : '0' } as any}
+          >
             {icon}
           </div>
-        }
+        )}
         {children}
       </button>
     </div>
