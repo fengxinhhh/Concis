@@ -1,21 +1,52 @@
-import { ReactNode } from 'react';
+import { ReactNode, CSSProperties } from 'react';
 
 interface ModalProps {
   /**
    * @description 类名
    */
   className?: string;
+  style?: CSSProperties;
   children?: ReactNode;
   /**
    * @description 标题
    * @default ''
    */
-  title?: string;
+  title?: string | ReactNode;
   /**
    * @description 显示状态
    * @default false
    */
   visible?: boolean;
+  /**
+   * @description 确认按钮props
+   * @default type -> primary
+   */
+  okButtonProps?: object;
+  /**
+   * @description 取消按钮props
+   * @default type -> text
+   */
+  cancelButtonProps?: object;
+  /**
+   * @description 自定义页脚
+   * @default 确定、取消按钮
+   */
+  footer?: ReactNode;
+  /**
+   * @description 确认按钮文字
+   * @default 确定
+   */
+  okText?: string;
+  /**
+   * @description 取消按钮文字
+   * @default 取消
+   */
+  cancelText?: string;
+  /**
+   * @description 对话框宽度百分比
+   * @default 30%
+   */
+  width?: number;
   /**
    * @description 确认回调函数
    * @default () =>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '..';
 import Button from '../../Button';
 
@@ -17,6 +17,7 @@ export default function index1() {
       <Modal
         title="Modal Title"
         visible={visible}
+        width={50}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
       >

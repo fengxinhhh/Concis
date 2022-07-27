@@ -34,7 +34,7 @@ export default function index1() {
 
   return (
     <div>
-      <Button handleClick={confirm}>打开</Button>
+      <Button handleClick={confirm}>Open Modal</Button>
     </div>
   );
 }

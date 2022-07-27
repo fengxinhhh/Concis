@@ -7,7 +7,6 @@ import React, {
   useCallback,
   createRef,
 } from 'react';
-import ReactDOM from 'react-dom';
 import lodash from 'lodash';
 import { CSSTransition } from 'react-transition-group';
 import {
@@ -38,6 +37,12 @@ const Modal = (props: ModalProps) => {
     children,
     title,
     visible,
+    okButtonProps = {},
+    cancelButtonProps = {},
+    footer,
+    okText,
+    cancelText,
+    width = 30,
     onCancel,
     onOk,
     confirm = false,
@@ -158,7 +163,7 @@ const Modal = (props: ModalProps) => {
   }, [type]);
 
   return (
-    <div className={classNames}>
+    <div className={classNames} style={{ '--modal-width': `${width}%` } as any}>
       <CSSTransition
         in={wrapperVisible}
         timeout={200}
@@ -205,22 +210,28 @@ const Modal = (props: ModalProps) => {
               </div>
               <div className="concis-modal-content-view">{children}</div>
               <div className="concis-modal-content-footer">
-                <Button
-                  type="text"
-                  loading={cancelLoading}
-                  className="cancel-btn button"
-                  handleClick={cancel}
-                >
-                  取消
-                </Button>
-                <Button
-                  type="primary"
-                  loading={okLoading}
-                  className="enter-btn button"
-                  handleClick={finish}
-                >
-                  确定
-                </Button>
+                {footer || (
+                  <>
+                    <Button
+                      type="text"
+                      loading={cancelLoading}
+                      className="cancel-btn button"
+                      handleClick={cancel}
+                      {...(Object.keys(cancelButtonProps).length && { ...cancelButtonProps })}
+                    >
+                      {cancelText || '取消'}
+                    </Button>
+                    <Button
+                      type="primary"
+                      loading={okLoading}
+                      className="enter-btn button"
+                      handleClick={finish}
+                      {...(Object.keys(okButtonProps).length && { ...okButtonProps })}
+                    >
+                      {okText || '确定'}
+                    </Button>
+                  </>
+                )}
               </div>
             </div>
           </CSSTransition>

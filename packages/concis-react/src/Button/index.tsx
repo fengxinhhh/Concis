@@ -72,7 +72,7 @@ const Button = (props: ButtonProps) => {
     }
     return size;
   }, [width, height, circle, dashed, globalColor]);
-  const clickButton: React.MouseEventHandler<HTMLElement> = (event: any): void => {
+  const clickButton: React.MouseEventHandler<HTMLElement> = (event: any) => {
     handleClick && handleClick(event);
   };
 

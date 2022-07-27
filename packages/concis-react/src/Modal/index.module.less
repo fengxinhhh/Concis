@@ -14,7 +14,7 @@
     top: 50%;
     left: 50%;
     z-index: 1002;
-    width: 30%;
+    width: var(--modal-width);
     background: #ffffff;
     border-radius: 5px;
     transform: translate(-50%, -50%);
@@ -84,7 +84,8 @@
 .fadeContent-appear {
   top: 40%;
   left: 40%;
-  width: 20%;
+  width: calc(var(--modal-width) - 10%);
+  height: calc(auto - 10%);
   opacity: 0;
 }
 
@@ -92,7 +93,8 @@
 .fadeContent-appear-active {
   top: 50%;
   left: 50%;
-  width: 30%;
+  width: var(--modal-width);
+  height: auto;
   opacity: 1;
   transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
 }
@@ -100,14 +102,16 @@
 .fadeContent-exit {
   top: 50%;
   left: 50%;
-  width: 30%;
+  width: var(--modal-width);
+  height: auto;
   opacity: 1;
 }
 
 .fadeContent-exit-active {
   top: 40%;
   left: 40%;
-  width: 20%;
+  width: calc(var(--modal-width) - 10%);
+  height: calc(auto - 10%);
   opacity: 0;
-  transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
+  transition: top 200ms, width 200ms, height 200ms, left 200ms, opacity 100ms;
 }

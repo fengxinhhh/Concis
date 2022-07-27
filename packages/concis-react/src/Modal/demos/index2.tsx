@@ -18,7 +18,7 @@ export default function index1() {
 
   return (
     <div>
-      <Button handleClick={() => setVisible(true)}>打开</Button>
+      <Button handleClick={() => setVisible(true)}>Open Modal</Button>
       <Modal title="Modal Title" visible={visible} onOk={close} onCancel={close}>
         <p>
           You can customize modal body text by the current situation. This modal will be closed

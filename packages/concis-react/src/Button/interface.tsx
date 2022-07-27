@@ -51,7 +51,7 @@ interface ButtonProps {
   /**
    * @description 按钮点击回调事件
    */
-  handleClick?: (e: Event) => {};
+  handleClick?: Function;
 }
 interface ButtonGroupProps {
   /**
@@ -59,13 +59,10 @@ interface ButtonGroupProps {
    */
   className?: string;
   /**
-  * @description 样式
-  */
+   * @description 样式
+   */
   style?: CSSProperties;
   children?: ReactNode;
 }
 
-export type {
-  ButtonProps,
-  ButtonGroupProps
-}
+export type { ButtonProps, ButtonGroupProps };
