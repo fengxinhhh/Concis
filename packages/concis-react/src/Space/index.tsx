@@ -10,7 +10,7 @@ const Space = <T,>(props: SpaceProps<T>) => {
     children,
     className,
     direction = 'horizontal',
-    size = 'smail',
+    size = 'small',
     align = 'center',
     wrap = false,
   } = props;
@@ -27,7 +27,7 @@ const Space = <T,>(props: SpaceProps<T>) => {
     switch (size) {
       case 'mini':
         return 4;
-      case 'smail':
+      case 'small':
         return 8;
       case 'medium':
         return 16;
