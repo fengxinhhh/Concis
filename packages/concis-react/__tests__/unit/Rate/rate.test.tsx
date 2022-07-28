@@ -32,9 +32,4 @@ describe('Rate', () => {
     const component = mount(<Rate num={4} defaultShow={3} />);
     expect(component.find('.concis-rate .rate-container .rate-box')).toHaveLength(4);
   });
-
-  it('test half star show correctly', () => {
-    const component = mount(<Rate avaHalf></Rate>);
-    expect(component.find('.rate-container .rate-box .half-dialog')).toHaveLength(5);
-  });
 });

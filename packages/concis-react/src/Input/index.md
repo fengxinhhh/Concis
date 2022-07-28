@@ -28,10 +28,6 @@ group:
 
 <code src="./demos/index3.tsx" />
 
-## 密码框
-
-<code src="./demos/index4.tsx" />
-
 ## 数字框
 
 <code src="./demos/index5.tsx" />

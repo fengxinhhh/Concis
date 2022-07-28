@@ -138,7 +138,7 @@ export default function index1() {
   };
 
   return (
-    <GlobalConfig input="#c6e3fd" globalColor={globalColor[0]}>
+    <GlobalConfig globalColor={globalColor[0]}>
       <div style={{ position: 'relative' }}>
         <Button type="primary" handleClick={toggle}>
           Toggle Config Color

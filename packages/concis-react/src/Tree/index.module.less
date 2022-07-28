@@ -2,9 +2,13 @@
 
 .cocnis-tree-container,
 .cocnis-dark-tree-container {
+  position: relative;
   display: inline-block;
   height: 100%;
   .tree-select-dialog {
+    position: absolute;
+    top: 35px;
+    z-index: 10;
     box-sizing: border-box;
     padding: 0 @concis-transform-ms 0 @concis-transform-ms;
     overflow: hidden;
@@ -37,4 +41,24 @@
   border-radius: 0 2px 2px 0;
   box-shadow: 0 0px 2px 1px #d4d4d4;
   transition: 0.1s linear;
+}
+
+.treeDialog-enter,
+.treeDialog-appear {
+  opacity: 0;
+}
+
+.treeDialog-enter-active,
+.treeDialog-appear-active {
+  opacity: 1;
+  transition: opacity 100ms;
+}
+
+.treeDialog-exit {
+  opacity: 1;
+}
+
+.treeDialog-exit-active {
+  opacity: 0;
+  transition: opacity 100ms;
 }

@@ -4,6 +4,7 @@
 @concis-select-height: 30px;
 @concis-select-placeholder-border-color: #cccccc;
 @concis-select-background: #ffffff;
+@concis-select-disabled-color: #c9cdd4;
 
 .concis-select,
 .concis-dark-select {
@@ -15,13 +16,16 @@
   text-align: center;
   border: 1px solid @concis-select-placeholder-border-color;
   cursor: pointer;
-  transition: 0.2s linear;
+  transition: 0.1s linear;
   -moz-user-select: none;
   -o-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  .disabled-selected {
+    color: @concis-select-disabled-color;
+  }
   .selected {
     display: flex;
     align-items: center;
@@ -54,22 +58,28 @@
     display: flex;
     flex-direction: column;
     width: @concis-select-width;
-    height: 0px;
     overflow: hidden;
     background-color: @concis-select-background;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px 4px #9aa1b126, 0 4px 80px -8px #24282f40, 0 4px 4px -2px #5b5e6926;
     transition: 0.1s linear;
     .option {
+      padding: 5px 0 5px 15px;
       font-size: @concis-font-md;
       line-height: 2em;
-      text-align: center;
+      text-align: left;
       cursor: pointer;
-      &:hover {
-        color: var(--line-disabled);
+      &:hover:not(.disabled-option) {
+        font-weight: 600;
       }
     }
+    .disabled-option {
+      color: @concis-select-disabled-color;
+    }
     .select-option {
-      font-weight: 500;
+      padding: 5px 0 5px 15px;
+      color: var(--global-color);
+      text-align: left;
     }
   }
 }
@@ -80,7 +90,39 @@
     color: #b0b0b0;
     background: #343436 !important;
   }
+  .selectOptions {
+    .disabled-option {
+      color: #606060;
+    }
+  }
+  .disabled-selected {
+    color: #606060;
+  }
   .select-option {
     background-color: #474749 !important;
   }
+}
+
+.selectOption-enter,
+.selectOption-appear {
+  height: 0px;
+  opacity: 0;
+}
+
+.selectOption-enter-active,
+.selectOption-appear-active {
+  height: 100%;
+  opacity: 1;
+  transition: height 200ms, opacity 100ms;
+}
+
+.selectOption-exit {
+  height: 100%;
+  opacity: 1;
+}
+
+.selectOption-exit-active {
+  height: 0px;
+  opacity: 0;
+  transition: height 200ms, opacity 100ms;
 }

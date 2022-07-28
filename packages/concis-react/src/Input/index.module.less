@@ -22,15 +22,18 @@
     outline: none;
     transition: all 0.3s;
     &:hover {
-      border-color: var(--global-color);
+      background: #e4e4e4;
     }
     &:focus {
-      border-color: var(--global-color);
-      box-shadow: 0 0 5px 1px var(--global-color);
+      background: #ffffff;
+      border-color: var(--focus-color);
     }
     .closeIcon {
       position: absolute;
     }
+  }
+  .input-clear {
+    top: 9px;
   }
   .input::-webkit-input-placeholder {
     color: @concis-gray-color;
@@ -53,7 +56,19 @@
   }
 }
 
-.concis-dark-input .input {
-  color: @concis-dark-font-color !important;
-  background: black;
+.concis-dark-input {
+  .input {
+    color: @concis-dark-font-color !important;
+    background: #232323;
+    &:hover {
+      background: #282828;
+    }
+    &:focus {
+      background: #232323;
+      border-color: @concis-dark-primary-color;
+    }
+  }
+  .input-clear {
+    color: #c5c5c5;
+  }
 }

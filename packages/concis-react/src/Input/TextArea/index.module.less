@@ -21,11 +21,11 @@
   transition: all 0.3s cubic-bezier(0.38, 0, 0.24, 1), height 0s;
   resize: vertical;
   &:hover {
-    border-color: var(--global-color);
+    background: #e4e4e4;
   }
   &:focus {
-    border-color: var(--global-color);
-    box-shadow: 0 0 5px 1px var(--global-color);
+    background: #ffffff;
+    border-color: var(--focus-color);
   }
 }
 .textarea-limit {
@@ -43,4 +43,21 @@
   color: #00000040;
   font-size: 12px;
   cursor: pointer;
+}
+
+.concis-dark-textarea {
+  .textarea {
+    color: @concis-dark-font-color !important;
+    background: #232323;
+    &:hover {
+      background: #282828;
+    }
+    &:focus {
+      background: #232323;
+      border-color: @concis-dark-primary-color;
+    }
+  }
+  & > .clear-svg {
+    color: #c5c5c5;
+  }
 }

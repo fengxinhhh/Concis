@@ -80,8 +80,9 @@ const TextArea: FC<TextareaProps & NativeTextareaProps> = (props) => {
     clearCallback,
     defaultValue,
   } = props;
-  const { input, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
-  const classNames = cs(prefixCls, className, 'concis-textarea');
+  const { prefixCls, globalColor, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}textarea`);
 
   const [txaValue, setTxaValue] = useState<string>(defaultValue || '');
   const [isComposition, setComposition] = useState<boolean>(false);
@@ -118,16 +119,13 @@ const TextArea: FC<TextareaProps & NativeTextareaProps> = (props) => {
   return (
     <div
       className={classNames}
-      style={
-        {
-          '--global-color': input || '#8fb6d8',
-          position: 'relative',
-        } as any
-      }
+      style={{
+        position: 'relative',
+      }}
     >
       <textarea
         className="textarea"
-        style={moreStyle}
+        style={{ ...moreStyle, '--focus-color': globalColor ? globalColor : '#325dff' } as any}
         placeholder={placeholder}
         value={defaultValue || txaValue}
         onChange={onChangeTxa}

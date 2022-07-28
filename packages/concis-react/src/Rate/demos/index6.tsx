@@ -13,14 +13,7 @@ export default function RateDemo6() {
   };
   return (
     <div style={{ display: 'flex' }}>
-      <Rate
-        starColor="red"
-        num={5}
-        defaultShow={3}
-        avaClear
-        avaHalf
-        chooseCallback={chooseCallback}
-      />
+      <Rate num={5} defaultShow={3} avaClear chooseCallback={chooseCallback} />
       <div className="result">{result}分</div>
     </div>
   );

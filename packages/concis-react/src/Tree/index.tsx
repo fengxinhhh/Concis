@@ -1,5 +1,6 @@
 import React, { FC, memo, Fragment, useState, useEffect, useCallback, useContext } from 'react';
 import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
+import { CSSTransition } from 'react-transition-group';
 import Input from '../Input';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -63,7 +64,7 @@ const Tree: FC<treeProps> = (props) => {
 
   const [stateTreeData, setStateTreeData] = useState<Array<treeNode>>(treeData); //树结构
   const [activedVal, setActivedVal] = useState<string>(''); //选中的节点值
-  const [containerHeight, setContainerHeight] = useState<string>('0px'); //容器高度
+  const [visible, setVisible] = useState<boolean>(false); //容器状态
   const [isFocus, setIsFocus] = useState(false); //聚焦状态
 
   const formCtx: any = useContext(ctx);
@@ -76,7 +77,7 @@ const Tree: FC<treeProps> = (props) => {
 
   useEffect(() => {
     resolveTreeData(treeData as Array<treeNode>, 1);
-    window.addEventListener('click', () => setContainerHeight('0px'));
+    window.addEventListener('click', () => setVisible(false));
   }, []);
   useEffect(() => {
     //用于监听Form组件的重置任务
@@ -181,6 +182,7 @@ const Tree: FC<treeProps> = (props) => {
       } else {
         //单选
         setActivedVal(clickTreeNode.title);
+        setVisible(false);
         chooseCallback && chooseCallback(clickTreeNode.title);
       }
     }
@@ -195,15 +197,7 @@ const Tree: FC<treeProps> = (props) => {
   };
   const handleClick = () => {
     //点击回调
-    if (avaSearch) {
-      if (isFocus && containerHeight == '100%') {
-        setContainerHeight('0px');
-      } else {
-        setContainerHeight('100%');
-      }
-    } else {
-      setContainerHeight(containerHeight == '0px' ? '100%' : '0px');
-    }
+    setVisible(!visible);
   };
   const handleIptFocus = () => {
     //聚焦回调
@@ -221,12 +215,11 @@ const Tree: FC<treeProps> = (props) => {
   const searchStyle = useCallback(
     (treeNode: treeNode): string => {
       if (avaChooseMore) {
-        console.log(theme);
         if (activedVal.split(',').includes(treeNode.title)) {
           if (theme === 'auto' || 'dark') {
-            return globalColor || darkTheme ? '#3C7EFF' : '#325DFF';
+            return globalColor ? globalColor : darkTheme ? '#3C7EFF' : '#325DFF';
           }
-          return globalColor || darkTheme ? '#325DFF' : '#3C7EFF';
+          return globalColor ? globalColor : darkTheme ? '#325DFF' : '#3C7EFF';
         }
         return theme === 'light' ? '#000000' : '#ffffffe6';
       }
@@ -234,9 +227,9 @@ const Tree: FC<treeProps> = (props) => {
       //搜索高亮样式
       if (treeNode.title.includes(activedVal) && activedVal !== '') {
         if (theme === 'auto' || 'dark') {
-          return globalColor || darkTheme ? '#3C7EFF' : '#325DFF';
+          return globalColor ? globalColor : darkTheme ? '#3C7EFF' : '#325DFF';
         }
-        return globalColor || darkTheme ? '#325DFF' : '#3C7EFF';
+        return globalColor ? globalColor : darkTheme ? '#325DFF' : '#3C7EFF';
       } else {
         return theme === 'light' ? '#000000' : '#ffffffe6';
       }
@@ -300,18 +293,29 @@ const Tree: FC<treeProps> = (props) => {
           showClear
           isFather
         />
-
-        <div
-          className="tree-select-dialog"
-          style={{
-            width: `${width}px`,
-            maxHeight: containerHeight == '0px' ? '0px' : '100%',
-            opacity: containerHeight == '0px' ? '0' : '1',
-            padding: containerHeight == '0px' ? '0 10px 0 10px' : '10px',
+        <CSSTransition
+          in={visible}
+          timeout={200}
+          appear
+          mountOnEnter={true}
+          classNames="treeDialog"
+          unmountOnExit={true}
+          onEnter={(e: HTMLDivElement) => {
+            e.style.display = 'block';
+          }}
+          onExited={(e: HTMLDivElement) => {
+            e.style.display = 'none';
           }}
         >
-          {render()}
-        </div>
+          <div
+            className="tree-select-dialog"
+            style={{
+              width: `${width}px`,
+            }}
+          >
+            {render()}
+          </div>
+        </CSSTransition>
       </div>
     </Fragment>
   );

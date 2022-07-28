@@ -7,5 +7,5 @@ export default function RateDemo3() {
   const chooseCallback = (val: number) => {
     console.log(val);
   };
-  return <Rate avaHalf chooseCallback={chooseCallback} />;
+  return <Rate readonly chooseCallback={chooseCallback} />;
 }
