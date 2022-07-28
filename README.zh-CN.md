@@ -20,7 +20,7 @@
 </div>
 
 <div align="center">
-  <img src="http://react-view-ui.com:92/images/index-doc.jpg" width="1200" />
+  <img src="http://react-view-ui.com:92/images/index.bg.jpg" width="1200" />
 </div>
 
 # 特征
