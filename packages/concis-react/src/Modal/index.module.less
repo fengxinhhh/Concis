@@ -1,4 +1,12 @@
-.concis-modal {
+@import '../styles/common.less';
+
+@concis-modal-light-border: #e5e6eb;
+@concis-modal-dark-border: #484849;
+@concis-modal-transform: 50%;
+@concis-modal-fadeExit-transform: 40%;
+
+.concis-modal,
+.concis-dark-modal {
   &-dialog {
     position: fixed;
     top: 0;
@@ -11,42 +19,42 @@
   }
   &-content {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: @concis-modal-transform;
+    left: @concis-modal-transform;
     z-index: 1002;
     width: var(--modal-width);
     overflow-x: auto;
     background: #ffffff;
-    border-radius: 5px;
+    border-radius: @concis-radius-xs;
     transform: translate(-50%, -50%);
     &-header {
       .concis-title {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 20px;
+        padding: @concis-transform-lg;
         font-weight: 500;
-        border-bottom: 1px solid #e5e6eb;
+        border-bottom: 1px solid @concis-modal-light-border;
         .title {
           span {
-            margin-left: 10px;
-            font-size: 16px;
+            margin-left: @concis-transform-ms;
+            font-size: @concis-font-lg;
           }
         }
         .close-icon {
-          font-size: 12px;
+          font-size: @concis-font-sm;
           cursor: pointer;
         }
       }
     }
     &-view {
-      padding: 20px 24px;
-      font-size: 14px;
-      border-bottom: 1px solid #e5e6eb;
+      padding: @concis-transform-lg 24px;
+      font-size: @concis-font-md;
+      border-bottom: 1px solid @concis-modal-light-border;
     }
     &-footer {
       width: 100%;
-      padding: 16px 20px;
+      padding: 16px @concis-transform-lg;
       text-align: right;
       .button {
         .concis-button-text,
@@ -55,8 +63,25 @@
         }
       }
       .cancel-btn {
-        margin-right: 10px;
+        margin-right: @concis-transform-ms;
       }
+    }
+  }
+}
+.concis-dark-modal {
+  &-dialog {
+    background: rgba(23, 23, 26, 0.6);
+  }
+  &-content {
+    color: #c4c4c5;
+    background: #2a2a2b;
+    &-header {
+      .concis-title {
+        border-bottom: 1px solid @concis-modal-dark-border;
+      }
+    }
+    &-view {
+      border-bottom: 1px solid @concis-modal-dark-border;
     }
   }
 }
@@ -83,31 +108,31 @@
 
 .fadeContent-enter,
 .fadeContent-appear {
-  top: 40%;
-  left: 40%;
+  top: @concis-modal-fadeExit-transform;
+  left: @concis-modal-fadeExit-transform;
   width: calc(var(--modal-width) - 10%);
   opacity: 0;
 }
 
 .fadeContent-enter-active,
 .fadeContent-appear-active {
-  top: 50%;
-  left: 50%;
+  top: @concis-modal-transform;
+  left: @concis-modal-transform;
   width: var(--modal-width);
   opacity: 1;
   transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
 }
 
 .fadeContent-exit {
-  top: 50%;
-  left: 50%;
+  top: @concis-modal-transform;
+  left: @concis-modal-transform;
   width: var(--modal-width);
   opacity: 1;
 }
 
 .fadeContent-exit-active {
-  top: 40%;
-  left: 40%;
+  top: @concis-modal-fadeExit-transform;
+  left: @concis-modal-fadeExit-transform;
   width: calc(var(--modal-width) - 10%);
   opacity: 0;
   transition: top 200ms, width 200ms, left 200ms, opacity 100ms;
@@ -116,43 +141,36 @@
 @media screen and (max-width: 767px) {
   .concis-modal {
     &-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 1002;
       width: 90vw;
-      background: #ffffff;
-      border-radius: 5px;
-      transform: translate(-50%, -50%);
     }
   }
   .fadeContent-enter,
   .fadeContent-appear {
-    top: 40%;
-    left: 40%;
+    top: @concis-modal-fadeExit-transform;
+    left: @concis-modal-fadeExit-transform;
     width: 80vw;
     opacity: 0;
   }
 
   .fadeContent-enter-active,
   .fadeContent-appear-active {
-    top: 50%;
-    left: 50%;
+    top: @concis-modal-transform;
+    left: @concis-modal-transform;
     width: 90vw;
     opacity: 1;
     transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
   }
 
   .fadeContent-exit {
-    top: 50%;
-    left: 50%;
+    top: @concis-modal-transform;
+    left: @concis-modal-transform;
     width: 90vw;
     opacity: 1;
   }
 
   .fadeContent-exit-active {
-    top: 40%;
-    left: 40%;
+    top: @concis-modal-fadeExit-transform;
+    left: @concis-modal-fadeExit-transform;
     width: 80vw;
     opacity: 0;
     transition: top 200ms, width 200ms, left 200ms, opacity 100ms;

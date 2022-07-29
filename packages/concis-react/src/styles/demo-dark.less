@@ -310,4 +310,25 @@ html[data-prefers-color='dark'] {
       }
     }
   }
+  //inputPro
+  .concis-input-pro {
+    &-tragger {
+      background: #333333;
+      .option,
+      .selected-option,
+      .disabled-option {
+        color: #9b9b9b;
+        &:hover:not(.disabled-option) {
+          color: @concis-dark-font-color;
+          background: #292929;
+        }
+      }
+      .disabled-option {
+        color: #59595a;
+      }
+      .selected-option {
+        color: @concis-dark-font-color;
+      }
+    }
+  }
 }

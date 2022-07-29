@@ -13,8 +13,6 @@ import { ModalProps, ConfirmType } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
-import { getRenderColor } from '../common_utils/getRenderColor';
 import useOverFlowScroll from '../common_utils/hooks/useOverFlowScroll';
 import confirm, { isPromiseFn } from './confirm';
 import './index.module.less';
@@ -48,7 +46,7 @@ const Modal = (props: ModalProps) => {
   const [cancelLoading, setCancelLoading] = useState(false);
   const isCloseWorking = useRef<boolean>(false); //正在关闭
 
-  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
+  const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const classFirstName = darkTheme ? 'concis-dark-modal' : 'concis-modal';
   const classNames = cs(prefixCls, className, classFirstName);
 
@@ -239,20 +237,16 @@ const Modal = (props: ModalProps) => {
   );
 };
 
-Modal.confirm = (props: ModalProps) => {
-  return addInstance(props, 'info');
-};
-Modal.info = (props: ModalProps) => {
-  return addInstance(props, 'info');
-};
-Modal.success = (props: ModalProps) => {
-  return addInstance(props, 'success');
-};
-Modal.error = (props: ModalProps) => {
-  return addInstance(props, 'error');
-};
-Modal.warning = (props: ModalProps) => {
-  return addInstance(props, 'warning');
-};
+['confirm', 'info', 'success', 'error', 'warning'].forEach((_) => {
+  if (_ === 'confirm') {
+    Modal[_] = (props: ModalProps) => {
+      return addInstance(props, 'info');
+    };
+  } else {
+    Modal[_] = (props: ModalProps) => {
+      return addInstance(props, _ as ConfirmType);
+    };
+  }
+});
 
 export default Modal;
