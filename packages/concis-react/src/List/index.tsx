@@ -60,8 +60,10 @@ const List = (props: listProps) => {
         old = dataSource.slice(0, virtualShowNum + 2);
         return [...old];
       });
+    } else {
+      setFormatDataSource(dataSource);
     }
-  }, []);
+  }, [dataSource]);
 
   const listHeaderStyle = useMemo(() => {
     //头部样式
