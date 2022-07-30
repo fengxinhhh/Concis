@@ -159,7 +159,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
     },
     [selected],
   );
-  const clearSearchSelect = (e) => {
+  const clearSearchSelect = (e: React.SyntheticEvent) => {
     e.stopPropagation();
     setSelectedValue('');
     setSelected('');

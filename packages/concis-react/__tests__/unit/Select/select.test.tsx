@@ -43,23 +43,16 @@ describe('Select', () => {
     const component = mount(
       <Select option={option} width={200} handleSelectCallback={mockFn} placeholder={'请选择'} />,
     );
-    expect(
-      component
-        .find('.selectOptions')
-        .getDOMNode()
-        .getAttribute('style')
-        ?.includes('width: 200px; height: 0px;'),
-    );
+    expect(component.find('.concis-select').length).toBe(1);
     component.find('.selected').simulate('click');
     expect(
       component
         .find('.selectOptions')
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('width: 200px; height: 300%;'),
+        ?.includes('display: block'),
     );
     component.find('.selectOptions .option').at(0).simulate('click');
-    expect(component.find('.selectOptions .option')).toHaveLength(2);
     expect(mockFn).toBeCalled();
   });
 
@@ -85,6 +78,7 @@ describe('Select', () => {
 
   it('test Select with disabled options correctly', () => {
     const component = mount(<Select option={disabledOption} width={200} placeholder={'请选择'} />);
+    component.find('.selected').simulate('click');
     expect(
       component
         .find('.selectOptions .option')
@@ -109,7 +103,7 @@ describe('Select', () => {
         clearable
       />,
     );
-    component.find('.selected input').simulate('focus');
+    component.find('.selected input').simulate('click');
     component.find('.selected input').simulate('change', {
       target: {
         value: 'Mi',

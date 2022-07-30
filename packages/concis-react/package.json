@@ -12,7 +12,8 @@
     "publish": "npm run upgrade && npm run build && npm publish",
     "test:e2e": "jest ./__tests__/e2e",
     "test:unit": "jest ./__tests__/unit",
-    "upgrade": "node ../../scripts/replace-version-in-pc.ts"
+    "upgrade": "node ../../scripts/replace-version-in-pc.ts",
+    "preinstall": "npx only-allow pnpm"
   },
   "module": "es/index.js",
   "typings": "es/index.d.ts",
@@ -53,5 +54,10 @@
   "gitHead": "ce812c263bec669470e12af97e9c737cbc05d730",
   "gitHooks": {
     "pre-commit": "lint-staged"
+  },
+  "packageManager": "pnpm@7.3.0",
+  "engines": {
+    "node": ">=14",
+    "pnpm": ">=6.20.0"
   }
 }

@@ -237,16 +237,20 @@ const Modal = (props: ModalProps) => {
   );
 };
 
-['confirm', 'info', 'success', 'error', 'warning'].forEach((_) => {
-  if (_ === 'confirm') {
-    Modal[_] = (props: ModalProps) => {
-      return addInstance(props, 'info');
-    };
-  } else {
-    Modal[_] = (props: ModalProps) => {
-      return addInstance(props, _ as ConfirmType);
-    };
-  }
-});
+Modal.confirm = (props: ModalProps) => {
+  return addInstance(props, 'info');
+};
+Modal.info = (props: ModalProps) => {
+  return addInstance(props, 'info');
+};
+Modal.success = (props: ModalProps) => {
+  return addInstance(props, 'success');
+};
+Modal.warning = (props: ModalProps) => {
+  return addInstance(props, 'warning');
+};
+Modal.error = (props: ModalProps) => {
+  return addInstance(props, 'error');
+};
 
 export default Modal;
