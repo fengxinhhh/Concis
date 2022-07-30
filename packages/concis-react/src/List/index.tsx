@@ -7,6 +7,7 @@ import Item from './item';
 import './style/list.module.less';
 
 export const ctx = createContext<any>({} as any); //顶层通信装置
+
 const List = (props: listProps) => {
   const {
     style = {},
