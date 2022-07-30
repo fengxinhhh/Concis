@@ -1,4 +1,4 @@
-import React, { FC, memo, useMemo, useEffect, useContext } from 'react';
+import React, { FC, memo, useMemo, useEffect, useContext, useState } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -11,7 +11,7 @@ import { ctx } from './index';
 const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
   const { children, className, header, disabled = false, listKey, extra } = props;
 
-  const [contentDomHeight, setContentDomHeight] = useStateCallback(0);
+  const [contentDomHeight, setContentDomHeight] = useState(0);
   const [hasOpen, setHasOpen] = useStateCallback(false);
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
@@ -25,9 +25,11 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
     if (activeKeyList.indexOf(Number(listKey)) == -1) {
       setContentDomHeight(0);
     } else {
-      setContentDomHeight(
-        (document.querySelector('.concis-collapse-item-content') as HTMLElement).scrollHeight + 30,
-      );
+      (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight &&
+        setContentDomHeight(
+          (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight +
+            30,
+        );
     }
   }, [activeKeyList]);
 
@@ -40,7 +42,7 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
         //首次展开懒加载
         setHasOpen(true, (state: boolean) => {
           newHeight =
-            (document.querySelector('.concis-collapse-item-content') as HTMLElement).scrollHeight +
+            (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight +
             30;
           if (accordion) {
             //手风琴，全部清除再加入
@@ -56,7 +58,7 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
         });
       } else {
         newHeight =
-          (document.querySelector('.concis-collapse-item-content') as HTMLElement).scrollHeight +
+          (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight +
           30;
         if (accordion) {
           //手风琴，全部清除再加入

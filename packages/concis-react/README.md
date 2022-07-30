@@ -27,7 +27,7 @@ English | [简体中文](./README.zh-CN.md)
 
 ## Comprehensive
 
-With more than 30 crafted components that you can use out of the box.
+With more than 40 crafted components that you can use out of the box.
 
 ## Customizable theme
 
