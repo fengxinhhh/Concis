@@ -110,7 +110,7 @@ describe('Modal', () => {
     expect(wrapper.find('.concis-modal-dialog')).toHaveLength(0);
     wrapper
       .find('.concis-button-primary')
-      .filterWhere((n) => n.text() === 'Open')
+      .filterWhere((n: any) => n.text() === 'Open')
       .simulate('click');
     expect(wrapper.find('.concis-modal-dialog')).toHaveLength(1);
     expect(wrapper.find(Modal).props().visible).toBe(true);
@@ -123,7 +123,7 @@ describe('Modal', () => {
     function open() {
       wrapper
         .find('.concis-button-primary')
-        .filterWhere((n) => n.text() === 'Open')
+        .filterWhere((n: any) => n.text() === 'Open')
         .simulate('click');
     }
     open();
@@ -155,7 +155,7 @@ describe('Modal', () => {
     const wrapper = mount(<FooterDemoTest />);
     wrapper
       .find('.concis-button-primary')
-      .filterWhere((n) => n.text() === 'Open')
+      .filterWhere((n: any) => n.text() === 'Open')
       .simulate('click');
     expect(
       wrapper
@@ -179,7 +179,7 @@ describe('Modal', () => {
     const wrapper = mount(<NoFooterDemoTest />);
     wrapper
       .find('.concis-button-primary')
-      .filterWhere((n) => n.text() === 'Open')
+      .filterWhere((n: any) => n.text() === 'Open')
       .simulate('click');
     expect(
       wrapper.find('.concis-modal .concis-modal-content-footer').getDOMNode().childNodes.length,
