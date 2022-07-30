@@ -45,7 +45,6 @@
     "concis": "^1.0.8",
     "crypto-js": "^4.1.1",
     "dumi": "^1.1.40",
-    "lerna": "^5.1.8",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
     "react": "^16.13.0",

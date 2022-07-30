@@ -139,7 +139,9 @@ const List = (props: listProps) => {
                 transform: `translate(0, ${scrollTop}px)`,
               }}
             >
-              {formatDataSrouce.length !== 0 && formatDataSrouce.map(render)}
+              {Array.isArray(formatDataSrouce) &&
+                formatDataSrouce.length !== 0 &&
+                formatDataSrouce.map(render)}
             </div>
           </div>
         ) : (
@@ -149,7 +151,9 @@ const List = (props: listProps) => {
             ref={listContentRef}
             onScroll={scrollList}
           >
-            {formatDataSrouce.length !== 0 && formatDataSrouce.map(render)}
+            {Array.isArray(formatDataSrouce) &&
+              formatDataSrouce.length !== 0 &&
+              formatDataSrouce.map(render)}
           </div>
         )}
       </div>

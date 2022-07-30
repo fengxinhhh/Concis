@@ -1,0 +1,22 @@
+name: pr_check
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  jest-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: install
+        run: pnpm install
+
+      - name: setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: test:unit
+        run: cd packages/concis-react && pnpm run test:unit
