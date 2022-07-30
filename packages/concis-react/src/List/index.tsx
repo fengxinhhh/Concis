@@ -35,7 +35,6 @@ const List = (props: listProps) => {
   const victurlListContentRef = useRef<any>(null);
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
-
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}list`);
 
   useEffect(() => {
