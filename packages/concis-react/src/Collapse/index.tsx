@@ -2,6 +2,7 @@ import React, { FC, memo, useState, createContext, useContext } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
+import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { CollapseProps } from './interfase';
 import './style/index.module.less';
 
@@ -37,7 +38,7 @@ const Collapse: FC<CollapseProps> = (props) => {
     <ctx.Provider value={providerList}>
       <div
         className={classNames}
-        style={noBorder ? {} : { border: '1px solid rgba(229, 230, 235, 1)' }}
+        style={noBorder ? {} : { border: (getSiteTheme() === ('dark' || 'auto') || darkTheme) ? '1px solid#484849' : '1px solid rgba(229, 230,235,1)' }}
       >
         {children}
       </div>
