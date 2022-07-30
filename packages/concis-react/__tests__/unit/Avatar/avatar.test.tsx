@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import Avatar from '../../../src/Avatar';
 import AvatarGroup from '../../../src/Avatar/group';
 import { CameraOutlined } from '@ant-design/icons';
-import Enzyme from '../setup';
-import mountTest from '../mountTest';
+import Enzyme from '../../setup';
+import mountTest from '../../mountTest';
 import { act } from 'react-dom/test-utils';
 
 const { mount } = Enzyme;

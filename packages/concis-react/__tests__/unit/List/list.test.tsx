@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import List from '../../../src/List/index';
-import Enzyme from '../setup';
-import mountTest from '../mountTest';
+import Enzyme from '../../setup';
+import mountTest from '../../mountTest';
 import { act } from 'react-dom/test-utils';
 
 const { render, mount } = Enzyme;

@@ -1,8 +1,8 @@
 import React from 'react';
 import Badge from '../../../src/Badge';
 import Avatar from '../../../src/Avatar';
-import Enzyme from '../setup';
-import mountTest from '../mountTest';
+import Enzyme from '../../setup';
+import mountTest from '../../mountTest';
 import { ClockCircleOutlined } from '@ant-design/icons';
 
 const { mount } = Enzyme;

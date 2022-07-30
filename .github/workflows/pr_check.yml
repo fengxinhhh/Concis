@@ -9,19 +9,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
-
-      - name: Set node version to 14
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
-          cache: 'pnpm'
-
       - name: install
-        run: pnpm install --no-frozen-lockfile && pnpm install
+        run: yarn install
 
       - name: test:unit
-        run: cd packages/concis-react && pnpm run test:unit
+        run: cd packages/concis-react && yarn install && yarn test:unit

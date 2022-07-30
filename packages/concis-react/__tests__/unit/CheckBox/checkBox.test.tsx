@@ -1,7 +1,7 @@
 import React from 'react';
 import CheckBox from '../../../src/CheckBox/index';
-import Enzyme from '../setup';
-import mountTest from '../mountTest';
+import Enzyme from '../../setup';
+import mountTest from '../../mountTest';
 import { act } from 'react-dom/test-utils';
 
 const { mount } = Enzyme;

@@ -6,7 +6,8 @@ import { listProps, listHeaderStyle, listContentStyle } from './interface';
 import Item from './item';
 import './style/list.module.less';
 
-export const ctx = createContext<any>({} as any); //顶层通信装置
+export const ctx = createContext<any>({}); //顶层通信装置
+
 const List = (props: listProps) => {
   const {
     style = {},
@@ -27,10 +28,10 @@ const List = (props: listProps) => {
   };
   const [formatDataSrouce, setFormatDataSource] = useState(dataSource ? [...dataSource] : []); //处理过的数据源
   const [scrollTop, setScrollTop] = useState(0);
-  const listItemHeight = useRef<any>(null);
+  const listItemHeight = useRef<number>(0);
 
-  const listContentRef = useRef<any>(null);
-  const victurlListContentRef = useRef<any>(null);
+  const listContentRef = useRef<HTMLDivElement>(null);
+  const victurlListContentRef = useRef<HTMLDivElement>(null);
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -111,8 +112,10 @@ const List = (props: listProps) => {
     }
   };
   const victurlScroll = () => {
-    const startIndex = Math.floor(victurlListContentRef.current.scrollTop / listItemHeight.current);
-    setScrollTop(victurlListContentRef.current.scrollTop);
+    const startIndex = Math.floor(
+      ((victurlListContentRef.current as HTMLElement).scrollTop / listItemHeight.current) as number,
+    );
+    setScrollTop((victurlListContentRef.current as HTMLDivElement).scrollTop);
     setFormatDataSource((old: Array<any>) => {
       old = dataSource.slice(startIndex, startIndex + virtualShowNum + 2);
       return [...old];
@@ -128,14 +131,14 @@ const List = (props: listProps) => {
         {virtualListProps ? (
           <div
             className="victurl-list-content"
-            style={{ height: virtualShowNum * listItemHeight.current + 'px' }}
+            style={{ height: ((virtualShowNum * listItemHeight.current) as number) + 'px' }}
             ref={victurlListContentRef}
             onScroll={victurlScroll}
           >
             <div
               className="victurl-relly-content"
               style={{
-                height: dataSource.length * listItemHeight.current - scrollTop + 'px',
+                height: ((dataSource.length * listItemHeight.current) as number) - scrollTop + 'px',
                 transform: `translate(0, ${scrollTop}px)`,
               }}
             >
@@ -171,6 +174,7 @@ interface ForwardRefListType
     },
   ): React.ReactElement;
   Item: typeof Item;
+  displayName: string;
 }
 
 const ListComponent = React.forwardRef<HTMLDivElement, listProps>(List) as ForwardRefListType;

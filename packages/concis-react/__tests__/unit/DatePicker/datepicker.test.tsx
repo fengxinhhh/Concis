@@ -3,13 +3,16 @@ import DatePicker from '../../../src/DatePicker/DatePicker';
 import MonthPicker from '../../../src/DatePicker/MonthPicker';
 import YearPicker from '../../../src/DatePicker/YearPicker';
 import RangeDatePicker from '../../../src/DatePicker/rangeDatePicker';
-import Enzyme from '../setup';
-import mountTest from '../mountTest';
+import Enzyme from '../../setup';
+import mountTest from '../../mountTest';
 import { act } from 'react-dom/test-utils';
 
 const { mount } = Enzyme;
 
 mountTest(DatePicker);
+mountTest(MonthPicker);
+mountTest(YearPicker);
+mountTest(RangeDatePicker);
 
 describe('DatePicker', () => {
   it('test DatePicker correctly', async () => {
@@ -30,11 +33,6 @@ describe('DatePicker', () => {
       component.find('input').simulate('focus');
     });
     component.update();
-    setTimeout(async () => {
-      await expect(
-        component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 1'),
-      ).toBe(true);
-    }, 0);
     component.find('.concis-date-picker table tr td:not(.day-empty)').at(0).simulate('click');
     expect(mockFn).toBeCalled();
     expect(
@@ -59,11 +57,6 @@ describe('DatePicker', () => {
       component.find('input').simulate('focus');
     });
     component.update();
-    setTimeout(async () => {
-      await expect(
-        component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 1'),
-      ).toBe(true);
-    }, 0);
     component.find('.concis-month-picker table tr').at(0).find('td').at(0).simulate('click');
     expect(mockFn).toBeCalled();
     expect(
@@ -88,11 +81,6 @@ describe('DatePicker', () => {
       component.find('input').simulate('focus');
     });
     component.update();
-    setTimeout(async () => {
-      await expect(
-        component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 1'),
-      ).toBe(true);
-    }, 0);
     component.find('.concis-year-picker table tr').at(0).find('td').at(0).simulate('click');
     expect(mockFn).toBeCalled();
     expect(component.find('.concis-input input').getDOMNode()?.getAttribute('value')).toBe(

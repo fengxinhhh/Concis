@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../src/Button/index';
-import Enzyme from '../setup';
-import mountTest from '../mountTest';
+import Enzyme from '../../setup';
+import mountTest from '../../mountTest';
 import { act } from 'react-dom/test-utils';
 
 const { shallow, mount } = Enzyme;
