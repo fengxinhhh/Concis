@@ -26,6 +26,7 @@ const List = (props: listProps) => {
   const contextProps = {
     size,
   };
+
   const [formatDataSrouce, setFormatDataSource] = useState(dataSource ? [...dataSource] : []); //处理过的数据源
   const [scrollTop, setScrollTop] = useState(0);
   const listItemHeight = useRef<any>(null);
