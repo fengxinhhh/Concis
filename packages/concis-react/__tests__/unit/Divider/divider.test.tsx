@@ -1,7 +1,7 @@
 import React from 'react';
 import Divider from '../../../src/Divider/index';
-import Enzyme from '../setup';
-import mountTest from '../mountTest';
+import Enzyme from '../../setup';
+import mountTest from '../../mountTest';
 
 const { mount } = Enzyme;
 

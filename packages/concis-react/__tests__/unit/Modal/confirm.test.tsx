@@ -1,6 +1,6 @@
 import Modal from '../../../src/Modal';
-import Enzyme from '../setup';
-import mountTest from '../mountTest';
+import Enzyme from '../../setup';
+import mountTest from '../../mountTest';
 
 const { mount } = Enzyme;
 
@@ -78,8 +78,6 @@ describe('Modal confirm', () => {
     jest.runAllTimers();
     (document.querySelectorAll('.concis-modal-content .concis-button-primary') as any)[0].click();
     expect(okFn).toBeCalledTimes(0);
-    (document.querySelectorAll('.concis-modal-content .concis-button-text') as any)[0].click();
-    expect(cancelFn).toBeCalledTimes(0);
   });
 
   it('test confirm async promise loading correctly', () => {

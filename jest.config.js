@@ -6,4 +6,5 @@ module.exports = {
   },
   testRegex: '(/packages/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  testEnvironment: 'jsdom',
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import Loading from '../../../src/Loading/index';
-import Enzyme from '../setup';
-import renderTest from '../mountTest';
+import Enzyme from '../../setup';
+import renderTest from '../../mountTest';
 import ReactDOM from 'react-dom';
 
 const { mount } = Enzyme;

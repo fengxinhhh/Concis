@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from '../../../src/Select';
-import Enzyme from '../setup';
-import mountTest from '../mountTest';
+import Enzyme from '../../setup';
+import mountTest from '../../mountTest';
 
 const { mount } = Enzyme;
 

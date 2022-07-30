@@ -4,8 +4,8 @@ import Input from '../../../src/Input';
 import CheckBox from '../../../src/CheckBox';
 import Button from '../../../src/Button';
 import Select from '../../../src/Select';
-import Enzyme from '../setup';
-import mountTest from '../mountTest';
+import Enzyme from '../../setup';
+import mountTest from '../../mountTest';
 
 const option = [
   {

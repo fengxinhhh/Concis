@@ -1,6 +1,6 @@
 import React from 'react';
 import Notification from '../../../src/Notification/index';
-import Enzyme from '../setup';
+import Enzyme from '../../setup';
 
 const { mount } = Enzyme;
 

@@ -5,8 +5,7 @@
     "start": "dumi dev",
     "docs:build": "dumi build",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
-    "test:jest": "jest --detectOpenHandles",
-    "preinstall": "npx only-allow pnpm"
+    "test": "cd packages/concis-react && pnpm run test:unit"
   },
   "module": "es/index.js",
   "typings": "es/index.d.ts",
@@ -20,6 +19,11 @@
     "*.ts?(x)": [
       "prettier --parser=typescript --write"
     ]
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16",
+    "react-dom": ">=16"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -49,6 +53,8 @@
     "prettier": "^2.2.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "@types/react": "^16.7.20",
+    "@types/react-dom": "^16.0.11",
     "rollup": "^2.76.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-clear": "^2.0.7",
