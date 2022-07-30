@@ -1,7 +1,6 @@
 name: pr_check
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+
+on: [push, pull_request]
 
 jobs:
   jest-test:
@@ -11,10 +10,10 @@ jobs:
         uses: actions/checkout@master
 
       - name: Install pnpm
-      uses: pnpm/action-setup@v2
-      with:
-        version: 7
-      
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
       - name: Set node version to 14
         uses: actions/setup-node@v2
         with:
@@ -22,7 +21,7 @@ jobs:
           cache: 'pnpm'
 
       - name: install
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile && pnpm install
 
       - name: test:unit
         run: cd packages/concis-react && pnpm run test:unit
