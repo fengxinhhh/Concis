@@ -86,7 +86,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
 
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}select`);
 
-  const closeSelect = (e) => {
+  const closeSelect = (e: any) => {
     if (!e.target?.getAttribute('class')?.includes('selected')) {
       setVisible(false);
     }
