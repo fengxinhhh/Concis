@@ -4,9 +4,10 @@ import Input from '../../Input';
 import CheckBox from '../../CheckBox';
 import Button from '../../Button';
 import Select from '../../Select';
-import TimePicker from '../../DatePicker';
+import DatePicker, { RangeDatePicker, MonthPicker, YearPicker } from '../../DatePicker';
 import Rate from '../../Rate';
 import Tree from '../../Tree';
+import InputPro from '../../InputPro';
 import Message from '../../Message';
 
 const option = [
@@ -55,6 +56,20 @@ const treeData = [
     ],
   },
 ];
+const hobby = [
+  {
+    label: 'JavaScript',
+  },
+  {
+    label: 'TypeScript',
+  },
+  {
+    label: 'VueJS',
+  },
+  {
+    label: 'ReactJS',
+  },
+];
 
 export default function index1() {
   const form = Form.useForm(); //使用Form组件回传的hooks，调用组件内链方法
@@ -87,15 +102,39 @@ export default function index1() {
         <Form.Item label="Post" field="post">
           <Input placeholder="Please enter your post" width="200"></Input>
         </Form.Item>
+        <Form.Item label="Hobby" field="hobby" rules={[{ required: true, message: '请输入爱好' }]}>
+          <InputPro option={hobby} />
+        </Form.Item>
         <Form.Item label="Name" field="name" rules={[{ required: true, message: '请输入名字' }]}>
           <Select option={option} width={200} placeholder={'请选择'} />
         </Form.Item>
         <Form.Item
           label="CreateTime"
-          field="CreateTime"
-          rules={[{ required: true, message: '请输入名字' }]}
+          field="createTime"
+          rules={[{ required: true, message: '请输入日期区间' }]}
         >
-          <TimePicker type="primary" showRange showClear />
+          <RangeDatePicker />
+        </Form.Item>
+        <Form.Item
+          label="Date"
+          field="dateTime"
+          rules={[{ required: true, message: '请输入日期' }]}
+        >
+          <DatePicker />
+        </Form.Item>
+        <Form.Item
+          label="Year"
+          field="year"
+          rules={[{ required: true, message: '请输入年' }]}
+        >
+          <YearPicker />
+        </Form.Item>
+        <Form.Item
+          label="Month"
+          field="month"
+          rules={[{ required: true, message: '请输入月' }]}
+        >
+          <MonthPicker />
         </Form.Item>
         <Form.Item label="Rate" field="Rate" rules={[{ required: true, message: '请选择分数' }]}>
           <Rate num={4} defaultShow={3} />

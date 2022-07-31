@@ -96,18 +96,17 @@ const YearPicker: FC<YearPickerProps> = (props) => {
       ),
     );
   }, [year]);
-  // useEffect(() => {
-  //   //用于监听Form组件的重置任务
-  //   if (formCtx.reset) {
-  //     setNowDate(today);
-  //     setDateValue('');
-  //   }
-  // }, [formCtx.reset]);
-  // useEffect(() => {
-  //   if (formCtx.submitStatus) {
-  //     formCtx.getChildVal(`${dayjs(nowDate).format(format)}`);
-  //   }
-  // }, [formCtx.submitStatus]);
+  useEffect(() => {
+    //用于监听Form组件的重置任务
+    if (formCtx.reset) {
+      setDateValue('');
+    }
+  }, [formCtx.reset]);
+  useEffect(() => {
+    if (formCtx.submitStatus) {
+      formCtx.getChildVal(dateValue);
+    }
+  }, [formCtx.submitStatus]);
   const clearCallback = () => {
     setDateValue('');
     handleChange && handleChange(null);
@@ -162,9 +161,8 @@ const YearPicker: FC<YearPickerProps> = (props) => {
                     <td
                       key={i}
                       onClick={() => setInputVal(date)}
-                      className={`${date.disable ? 'disable' : ''}  ${
-                        isSameDate(date.date) ? 'active' : ''
-                      }`}
+                      className={`${date.disable ? 'disable' : ''}  ${isSameDate(date.date) ? 'active' : ''
+                        }`}
                     >
                       <span>{date.value}</span>
                     </td>
@@ -182,6 +180,7 @@ const YearPicker: FC<YearPickerProps> = (props) => {
         type="primary"
         showClear={showClear}
         clearCallback={clearCallback}
+        isFather
       />
     </Popover>
   );

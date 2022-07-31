@@ -1,9 +1,10 @@
-import React, { memo, FC, useState, useContext, useMemo } from 'react';
+import React, { memo, FC, useState, useEffect, useContext, useMemo } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { InputProProps } from './interface';
+import { ctx } from '../Form';
 import Input from '../Input';
 import './index.module.less';
 
@@ -24,6 +25,18 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
   const { prefixCls, darkTheme, globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}input-pro`);
+  const formCtx = useContext(ctx);
+
+  useEffect(() => {
+    if (formCtx.reset) {
+      setValue('');
+    }
+  }, [formCtx.reset])
+  useEffect(() => {
+    if (formCtx.submitStatus) {
+      formCtx.getChildVal(value);
+    }
+  }, [formCtx.submitStatus])
 
   const handleIptChange = (val) => {
     setValue(val);
@@ -90,6 +103,7 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
           setValue('');
           handleClear && handleClear('');
         }}
+        isFather
       />
       <CSSTransition
         in={isFocus}
