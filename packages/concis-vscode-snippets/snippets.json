@@ -269,5 +269,54 @@
       "</Steps>"
     ],
     "description": "Concis Steps Component"
+  },
+  "Concis TimerPicker Component": {
+    "prefix": "ctimerpicker",
+    "body": [
+      "<TimePicker",
+      "  showClear={true}",
+      "  handleConfirm={}",
+      "/>"
+    ],
+    "description": "Concis TimerPicker Component"
+  },
+  "Concis Modal Component": {
+    "prefix": "cmodal",
+    "body": [
+      "<Modal",
+      "  title=\"Modal Title\"",
+      "  visible={visible}",
+      "  onOk={() => setVisible(false)}",
+      "  onCancel={() => setVisible(false)}",
+      ">",
+      "  <p>",
+      "    Modal content",
+      "  </p>",
+      "</Modal>"
+    ],
+    "description": "Concis Modal Component"
+  },
+  "Concis InputPro Component": {
+    "prefix": "cinputpro",
+    "body": [
+      "<InputPro option={option} />"
+    ],
+    "description": "Concis InputPro Component"
+  },
+  "Concis Comment Component": {
+    "prefix": "ccomment",
+    "body": [
+      "<Comment",
+      "  author=\"Concis\"",
+      "  avatar={",
+      "    <Avatar>",
+      "    </Avatar>",
+      "  }",
+      "  content=\"Hello Concis,coding is life,comment body content.\"",
+      "  datetime=\"2022-7-24\"",
+      "  actions={actions}",
+      "/>"
+    ],
+    "description": "Concis Comment Component"
   }
 }
