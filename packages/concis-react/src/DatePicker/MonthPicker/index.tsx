@@ -83,7 +83,7 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
   }, [formCtx.reset]);
   useEffect(() => {
     if (formCtx.submitStatus) {
-      formCtx.getChildVal(`${dayjs(dateValue).format(format)}`);
+      formCtx.getChildVal(dateValue);
     }
   }, [formCtx.submitStatus]);
   const clearCallback = () => {
@@ -104,9 +104,6 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
       date.getMonth() + 1 === clickDate.getMonth() + 1
     );
   };
-  useEffect(() => {
-    console.log(108, dateValue);
-  }, [dateValue]);
 
   return (
     <Popover
@@ -145,9 +142,8 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
                     <td
                       key={i}
                       onClick={() => setInputVal(new Date(startYear, idx * 3 + i))}
-                      className={`${
-                        disableCheck(new Date(startYear, idx * 3 + i)) ? 'disable' : ''
-                      }  ${isSameDate(new Date(startYear, idx * 3 + i)) ? 'active' : ''}`}
+                      className={`${disableCheck(new Date(startYear, idx * 3 + i)) ? 'disable' : ''
+                        }  ${isSameDate(new Date(startYear, idx * 3 + i)) ? 'active' : ''}`}
                     >
                       <span>{month}</span>
                     </td>
@@ -165,6 +161,7 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
         type="primary"
         showClear={showClear}
         clearCallback={clearCallback}
+        isFather
       />
     </Popover>
   );

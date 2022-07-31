@@ -138,9 +138,8 @@ const Popover: FC<popoverProps> = forwardRef((props: popoverProps) => {
     let isUnMounted = true;
     const dialogDom = dialogRef.current;
     if (showDialog) {
-      (dialogDom as any).style.width = `${
-        showDialog ? (dialogWidth === 'auto' ? 'auto' : dialogWidth + 'px') : '0px'
-      }`;
+      (dialogDom as any).style.width = `${showDialog ? (dialogWidth === 'auto' ? 'auto' : dialogWidth + 'px') : '0px'
+        }`;
       (dialogDom as any).style.height = showDialog ? '' : '0px';
       setTimeout(() => {
         if (isUnMounted) {
