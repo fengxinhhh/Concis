@@ -41,3 +41,4 @@ export { default as Skeleton } from './Skeleton';
 export { default as Modal } from './Modal';
 export { default as Comment } from './Comment';
 export { default as InputPro } from './InputPro';
+export { default as Drawer } from './Drawer';
