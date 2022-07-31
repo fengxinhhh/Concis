@@ -38,7 +38,7 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
     }
   }, [formCtx.submitStatus])
 
-  const handleIptChange = (val) => {
+  const handleIptChange = (val: string) => {
     setValue(val);
     handleChange && handleChange(val);
   };
@@ -49,7 +49,7 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
     setIsFocus(false);
   };
   const chooseVal = <T extends string, U>(val: T, disabled: U): void => {
-    event.stopPropagation();
+    (event as any).stopPropagation();
     if (disabled) return;
     setValue(val);
     handleClick && handleClick(val);
@@ -124,9 +124,9 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
           {option.map(({ label, disabled }, i) => {
             return (
               <span
-                className={traggerOptionClass<string, boolean>(label, disabled)}
+                className={traggerOptionClass<string, boolean | undefined>(label, disabled)}
                 key={i}
-                onClick={() => chooseVal<string, boolean>(label, disabled)}
+                onClick={() => chooseVal<string, boolean | undefined>(label, disabled)}
               >
                 {label}
               </span>
