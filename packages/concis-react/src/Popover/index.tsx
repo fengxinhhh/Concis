@@ -58,9 +58,9 @@ interface popoverProps {
    */
   closeDeps?: Array<any>;
   /**
-   * @description 传递给组件的ref，可用于手动关闭popover，调用popRef.setShowDialog方法
+   * @description 传递给组件的ref，可用于手动关闭popover，调用ref.setShowDialog方法
    */
-  popRef?: any;
+  ref?: any;
   /**
    * @description 卡片显示隐藏回调
    */
@@ -74,7 +74,11 @@ type alignStyle = {
   border?: string;
   opacity: number;
 };
-const Popover: FC<popoverProps> = forwardRef((props: popoverProps) => {
+type PopoverRef = {
+  setShowDialog: unknown;
+}
+
+const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>((props: popoverProps, ref) => {
   const {
     children,
     className,
@@ -86,7 +90,6 @@ const Popover: FC<popoverProps> = forwardRef((props: popoverProps) => {
     defaultShow = false,
     closeDeps,
     onVisibleChange,
-    popRef,
   } = props;
   const showBtnRef = useRef();
   const dialogRef = useRef();
@@ -101,7 +104,7 @@ const Popover: FC<popoverProps> = forwardRef((props: popoverProps) => {
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}popover-card`);
-  useImperativeHandle(popRef, () => ({
+  useImperativeHandle(ref, () => ({
     setShowDialog,
   }));
 
@@ -138,9 +141,8 @@ const Popover: FC<popoverProps> = forwardRef((props: popoverProps) => {
     let isUnMounted = true;
     const dialogDom = dialogRef.current;
     if (showDialog) {
-      (dialogDom as any).style.width = `${
-        showDialog ? (dialogWidth === 'auto' ? 'auto' : dialogWidth + 'px') : '0px'
-      }`;
+      (dialogDom as any).style.width = `${showDialog ? (dialogWidth === 'auto' ? 'auto' : dialogWidth + 'px') : '0px'
+        }`;
       (dialogDom as any).style.height = showDialog ? '' : '0px';
       setTimeout(() => {
         if (isUnMounted) {
@@ -225,4 +227,4 @@ const Popover: FC<popoverProps> = forwardRef((props: popoverProps) => {
   );
 });
 
-export default memo(Popover);
+export default Popover;

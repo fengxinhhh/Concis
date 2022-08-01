@@ -99,9 +99,8 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     setNowDayList(
       chunk(
         daysArr.map((_, i) => {
-          const day = `${
-            i - firstWeekDay <= -1 || i - firstWeekDay + 1 > lastDay ? '' : i - firstWeekDay + 1
-          }`;
+          const day = `${i - firstWeekDay <= -1 || i - firstWeekDay + 1 > lastDay ? '' : i - firstWeekDay + 1
+            }`;
           const date = new Date(year, month - 1, Number(day));
           return {
             date,
@@ -122,7 +121,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   }, [formCtx.reset]);
   useEffect(() => {
     if (formCtx.submitStatus) {
-      formCtx.getChildVal(`${dayjs(nowDate).format(format)}`);
+      formCtx.getChildVal(dateValue);
     }
   }, [formCtx.submitStatus]);
 
@@ -134,7 +133,6 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     if (data.disable) {
       return;
     }
-    console.log(nowDayList);
     setClickDate(data.date);
     setDateValue(dayjs(data.date).format(format));
     setNowDate({
@@ -218,9 +216,8 @@ const DatePicker: FC<DatePickerProps> = (props) => {
                     <td
                       key={idx}
                       onClick={() => setInputVal(day)}
-                      className={`${day.value === '' ? 'day-empty' : ''} ${
-                        day.disable ? 'disable' : ''
-                      } ${isSameDate(day.date) ? 'active' : ''}`}
+                      className={`${day.value === '' ? 'day-empty' : ''} ${day.disable ? 'disable' : ''
+                        } ${isSameDate(day.date) ? 'active' : ''}`}
                     >
                       {day.value}
                     </td>
@@ -239,6 +236,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
         type="primary"
         showClear={showClear}
         clearCallback={clearCallback}
+        isFather
       />
     </Popover>
   );

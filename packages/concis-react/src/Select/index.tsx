@@ -86,13 +86,19 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
 
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}select`);
 
-  const closeSelect = () => {
-    setVisible(false);
+  const closeSelect = (e: any) => {
+    if (!e.target?.getAttribute('class')?.includes('selected')) {
+      setVisible(false);
+    }
   };
   useEffect(() => {
-    window.addEventListener('click', closeSelect);
+    document.body.addEventListener('click', (e) => {
+      closeSelect(e);
+    });
     return () => {
-      window.removeEventListener('click', closeSelect);
+      document.body.removeEventListener('click', (e) => {
+        closeSelect(e);
+      });
     };
   }, []);
   useEffect(() => {
@@ -220,10 +226,10 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
                   style={
                     s.disabled
                       ? ({
-                          cursor: 'not-allowed',
-                          background: '#F2F3F5',
-                          '--line-disabled': '#000000',
-                        } as any)
+                        cursor: 'not-allowed',
+                        background: '#F2F3F5',
+                        '--line-disabled': '#000000',
+                      } as any)
                       : ({ '--line-disabled': globalColor || '#325DFF' } as any)
                   }
                   onClick={(e) => changeOptions(s as Options, e)}
@@ -288,10 +294,10 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
                 style={
                   s.disabled
                     ? ({
-                        cursor: 'not-allowed',
-                        background: '#F2F3F5',
-                        '--line-disabled': '#000000',
-                      } as any)
+                      cursor: 'not-allowed',
+                      background: '#F2F3F5',
+                      '--line-disabled': '#000000',
+                    } as any)
                     : ({ '--line-disabled': globalColor || '#325DFF' } as any)
                 }
                 onClick={(e) => changeOptions(s as Options, e)}

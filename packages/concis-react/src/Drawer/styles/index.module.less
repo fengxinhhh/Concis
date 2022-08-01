@@ -1,0 +1,88 @@
+@import '../../styles/common.less';
+@import './animation.less';
+
+@concis-drawer-light-border: #e5e6eb;
+@concis-drawer-dark-border: #484849;
+@concis-drawer-transform: 50%;
+@concis-drawer-fadeExit-transform: 40%;
+
+.concis-drawer,
+.concis-dark-drawer {
+  &-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(29, 33, 41, 0.6);
+    transition: 0.1s linear;
+  }
+  &-content {
+    position: absolute;
+    z-index: 1002;
+    background: #ffffff;
+    border-radius: @concis-radius-xs;
+    display: flex;
+    flex-direction: column;
+    &-header {
+      .concis-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: @concis-transform-lg;
+        font-weight: 500;
+        border-bottom: 1px solid @concis-drawer-light-border;
+        color: #1d2129;
+        .title {
+          span {
+            margin-left: @concis-transform-ms;
+            font-size: @concis-font-lg;
+          }
+        }
+        .close-icon {
+          font-size: @concis-font-sm;
+          cursor: pointer;
+        }
+      }
+    }
+    &-view {
+      padding: @concis-transform-lg 24px;
+      font-size: @concis-font-md;
+      border-bottom: 1px solid @concis-drawer-light-border;
+      color: #1d2129;
+      flex: 1;
+    }
+    &-footer {
+      width: 100%;
+      padding: 16px @concis-transform-lg;
+      text-align: right;
+      .button {
+        .concis-button-text,
+        .concis-button-primary {
+          height: 30px !important;
+        }
+      }
+      .cancel-btn {
+        margin-right: @concis-transform-ms;
+      }
+    }
+  }
+}
+.concis-dark-drawer {
+  &-dialog {
+    background: rgba(23, 23, 26, 0.6);
+  }
+  &-content {
+    color: #c4c4c5;
+    background: #2a2a2b;
+    &-header {
+      .concis-title {
+        border-bottom: 1px solid @concis-drawer-dark-border;
+      }
+    }
+    &-view {
+      border-bottom: 1px solid @concis-drawer-dark-border;
+    }
+  }
+}

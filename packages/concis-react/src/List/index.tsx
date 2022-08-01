@@ -8,7 +8,7 @@ import './style/list.module.less';
 
 export const ctx = createContext<any>({}); //顶层通信装置
 
-const List = (props: listProps) => {
+const List = (props: listProps, ref: unknown) => {
   const {
     style = {},
     className,
@@ -166,7 +166,7 @@ const List = (props: listProps) => {
 
 interface ForwardRefListType
   extends React.ForwardRefExoticComponent<
-    React.PropsWithoutRef<listProps> & React.RefAttributes<HTMLDivElement>
+  React.PropsWithoutRef<listProps> & React.RefAttributes<HTMLDivElement>
   > {
   <T = any>(
     props: React.PropsWithChildren<listProps<T>> & {

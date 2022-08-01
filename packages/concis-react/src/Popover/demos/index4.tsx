@@ -1,18 +1,18 @@
-import React, { useRef } from 'react';
+import React, { createRef } from 'react';
 import Popover from '..';
 import Button from '../../Button';
 import Space from '../../Space';
 
 export default function MenuDemos1() {
-  const ref1 = useRef(null);
-  const ref2 = useRef(null);
+  const ref1 = createRef<any>();
+  const ref2 = createRef<any>();
 
   return (
     <Space>
       <Popover
         type="hover"
         align="bottom"
-        popRef={ref1}
+        ref={ref1}
         content={
           <>
             <p style={{ color: '#1d2129', fontSize: '16px' }}>Title</p>
@@ -20,7 +20,7 @@ export default function MenuDemos1() {
             <div style={{ color: '#4e5969', fontSize: '14px' }}>This is content</div>
             <span
               style={{ color: '#325DFF', cursor: 'pointer' }}
-              onClick={() => ref1.current.setShowDialog(false)}
+              onClick={() => ref1.current?.setShowDialog(false)}
             >
               close
             </span>
@@ -34,7 +34,7 @@ export default function MenuDemos1() {
       <Popover
         type="click"
         align="bottom"
-        popRef={ref2}
+        ref={ref2}
         content={
           <>
             <p style={{ color: '#1d2129', fontSize: '16px' }}>Title</p>

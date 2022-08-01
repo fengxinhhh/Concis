@@ -32,10 +32,10 @@ export type fieldListType = {
 };
 const collectFormFns: FromRefFunctions = {
   formRef: '',
-  onSubmit: () => {},
-  resetFields: () => {},
-  validateFields: () => {},
-  useFormContext: () => {},
+  onSubmit: () => { },
+  resetFields: () => { },
+  validateFields: () => { },
+  useFormContext: () => { },
 };
 
 const Form = <T,>(props: FormProps<T>) => {
@@ -54,6 +54,7 @@ const Form = <T,>(props: FormProps<T>) => {
   const getChildVal = (depVal: string) => {
     //提交时获取Form.Item中控件的值
     depsValList.current.push(depVal);
+    console.log(depsValList.current)
   };
   //根组件状态管理，向下传入
   const providerList = {
@@ -97,6 +98,7 @@ const Form = <T,>(props: FormProps<T>) => {
       resultField = outputFormData();
     }
     const resultRules: any = {};
+    console.log(resultField, 100)
     for (var key in resultField) {
       const field = fieldList[key];
       const value = resultField[key].val;
