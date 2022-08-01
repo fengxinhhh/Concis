@@ -15,7 +15,7 @@ export default defineConfig({
       // 需要忽略的属性名列表，默认为空数组
       skipPropsWithName: ['autoFocus', 'form', 'formAction', 'formEncType', 'title'],
       // 是否忽略没有文档说明的属性，默认值为 false
-      skipPropsWithoutDoc: false,
+      skipPropsWithoutDoc: true,
     },
   },
   history: {
