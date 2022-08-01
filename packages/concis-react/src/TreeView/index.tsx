@@ -42,11 +42,11 @@ interface treeData {
   title: string;
   value: string;
   group: number;
-  level: number;
-  prev: treeData | null;
+  level?: number;
+  prev?: treeData | null;
   height?: string;
   disabled?: boolean;
-  checked: boolean;
+  checked?: boolean;
   children?: Array<treeData>;
 }
 
@@ -354,7 +354,7 @@ const TreeView: FC<treeViewProps> = (props) => {
     const mapFn = (treeList: treeData) => {
       //寻找放置节点在链表中的位置
       if (treeList.title == treeNode.title) {
-        dragTreeNode.level = treeList.level + 1;
+        dragTreeNode.level = (treeList.level || 0) + 1;
         dragTreeNode.prev = treeList;
         if (treeList.children) {
           treeList.children.splice(0, 0, dragTreeNode);
@@ -375,7 +375,7 @@ const TreeView: FC<treeViewProps> = (props) => {
                 ).map((c) => {
                   return {
                     ...c,
-                    level: (treeList?.children as Array<treeData>)[index + 1].level + 1,
+                    level: ((treeList?.children as Array<treeData>)[index + 1].level || 0) + 1,
                   };
                 });
               }
@@ -392,7 +392,7 @@ const TreeView: FC<treeViewProps> = (props) => {
       oldStateTree.forEach((c) => {
         mapFn(c);
       });
-    if (dragTreeNode.group == treeNode.group && dragTreeNode.level < treeNode.level) {
+    if (dragTreeNode.group == treeNode.group && dragTreeNode.level < (treeNode.level || 0)) {
       //如果拖拽的层级比落地的层级小，不做更新
       return;
     }
@@ -409,7 +409,7 @@ const TreeView: FC<treeViewProps> = (props) => {
             <div
               className="treeNode"
               style={{
-                marginLeft: `${treeNode.level * 10}px`,
+                marginLeft: `${(treeNode.level || 0) * 10}px`,
                 height: `${treeNode.height}`,
               }}
               draggable={avaDrop}
