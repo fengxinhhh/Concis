@@ -1,4 +1,5 @@
 ---
+title: 轻量级组件库
 hero:
   title: Concis
   desc: 一套易用的轻量级的React UI 组件库
@@ -28,8 +29,6 @@ features:
     desc: 在 Ant Design 上进行了自己的封装，更加易用
 footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [Xin Feng](https://github.com/fengxinhhh/Concis)
 ---
-
-## 快速网站成型工具
 
 ```tsx
 /**
@@ -70,7 +69,7 @@ export default () => (
     scale={1.2}
   >
     <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://react-view-ui.com:92/images/index-demo.jpg" />
+      <img src="http://react-view-ui.com:92/images/index.demo.jpg" />
     </a>
   </Section>
 );

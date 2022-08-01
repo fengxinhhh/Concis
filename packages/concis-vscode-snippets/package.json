@@ -2,7 +2,7 @@
   "name": "concis-snippets",
 	"displayName": "concis-snippets",
 	"description": "concis snippets for vscode",
-  "version": "0.1.4",
+  "version": "0.1.5",
 	"publisher": "fengxin",
 	"icon": "src/logo.png",
 	"engines": {

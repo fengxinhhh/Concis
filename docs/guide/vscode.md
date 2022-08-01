@@ -10,7 +10,7 @@ nav:
 
 Concis 针对 vscode 开发工具提供了代码自动补全、语法高亮、提示信息的功能，可以在插件市场中下载：
 
-<img src="http://react-view-ui.com:92/images/vscode-plugin.jpg" height="600" />
+<img src="http://react-view-ui.com:92/images/vscode.plugin.jpg" height="600" />
 
 ## 使用
 
