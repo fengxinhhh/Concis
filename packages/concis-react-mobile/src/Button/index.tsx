@@ -59,7 +59,7 @@ interface ButtonStyle<T> {
 }
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; //原生button接口
 
-const Button = (props: ButtonProps) => {
+const Button = (props: ButtonProps, ref) => {
   const {
     type,
     width = '100%',
