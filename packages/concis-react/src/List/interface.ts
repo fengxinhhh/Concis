@@ -4,7 +4,7 @@ interface listProps<T = any> {
   /**
    * @description 类名
    */
-  className?: CSSProperties;
+  className?: string;
   /**
    * @description 列表自定义样式
    * @default {}

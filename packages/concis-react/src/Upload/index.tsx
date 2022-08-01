@@ -1,9 +1,12 @@
-import React, { memo, useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState, useMemo } from 'react';
 import Button from '../Button';
+import { CSSTransition } from 'react-transition-group';
 import { UploadOutlined, CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons';
 import { FileItem, UploadProps } from './interface';
 import List from '../List';
 import { isNumber } from 'util';
+import './styles/index.module.less';
+
 const Upload = (props: UploadProps) => {
   const {
     accept,
@@ -23,11 +26,13 @@ const Upload = (props: UploadProps) => {
     onRemove,
     onChange,
   } = props;
+
   const inputRef = useRef<any>(null);
   const [fileList, setFileList] = useState<FileItem[]>(defaultFileList || []);
   useEffect(() => {
     onChange && onChange(fileList);
   }, [fileList.length]);
+
   const uploadClick = () => {
     if (disable) return;
     inputRef.current.click();
@@ -94,7 +99,7 @@ const Upload = (props: UploadProps) => {
         uid: crypto.randomUUID(),
         status: 'unUpload',
         name: files[i].name,
-        file: files[i],
+        file: files[i]
       });
       autoUpload && (await uploadFile(files[i], list[list.length - 1]));
     }
@@ -102,9 +107,56 @@ const Upload = (props: UploadProps) => {
     setFileList([...fileList, ...list]);
   };
   const deleteFile = (fileItem: FileItem) => {
-    setFileList((fileList) => fileList.filter((_) => _.uid !== fileItem.uid));
-    onRemove && onRemove(fileItem, fileList);
+    setFileList((fileList) => [...fileList.filter((_) => _.uid !== fileItem.uid)]);
+    onRemove && onRemove(fileItem, fileList)
   };
+  const domNode = useMemo(() => {
+    return <List
+      className="concis-upload-container"
+      header="文件列表"
+      size="small"
+      dataSource={fileList}
+      render={(_: FileItem, idx: number) => {
+        return (
+          <CSSTransition
+            key={_.uid}
+            appear
+            timeout={300}
+            classNames="fadeIn"
+          >
+            <List.Item
+              key={idx}
+              className="file-list"
+            >
+              <span style={{ color: _.status === 'success' ? '#00b42a' : '#d81f27' }}>
+                {_.name}
+              </span>
+              <span>
+                {_.status === 'unUpload' ? (
+                  <Button
+                    height={30}
+                    handleClick={() => uploadFile(_.file, _)}
+                    className="file-list-upload-button"
+                  >
+                    上传
+                  </Button>
+                ) : (
+                  <CheckCircleFilled style={{ color: '#00b42a' }} />
+                )}
+                <CloseCircleFilled
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteFile(_);
+                  }}
+                  style={{ color: '#d81f27', marginLeft: '5px' }}
+                />
+              </span>
+            </List.Item>
+          </CSSTransition>
+        );
+      }}
+    ></List>
+  }, [fileList])
   return (
     <div>
       <input
@@ -115,51 +167,11 @@ const Upload = (props: UploadProps) => {
         ref={inputRef}
         style={{ display: 'none' }}
       ></input>
-      <Button handleClick={uploadClick} style={{ margin: '8px' }} type="primary">
-        <UploadOutlined />
+      <Button handleClick={uploadClick} icon={<UploadOutlined />} style={{ margin: '8px' }} type="primary">
         上传
       </Button>
       {fileList.length !== 0 && (
-        <List
-          style={{ fontSize: '14px', width: '100%', marginTop: '10px' }}
-          header="文件列表"
-          size="small"
-          dataSource={fileList}
-          render={(_: FileItem, idx: number) => {
-            return (
-              <List.Item
-                key={idx}
-                style={{ fontSize: '14px', display: 'flex', justifyContent: 'space-between' }}
-              >
-                <span style={{ color: _.status === 'success' ? '#00b42a' : '#d81f27' }}>
-                  {_.name}
-                </span>
-                <span>
-                  {_.status === 'unUpload' ? (
-                    <Button
-                      handleClick={() => uploadFile(_.file, _)}
-                      style={{
-                        height: '100%',
-                        fontSize: '12px',
-                      }}
-                    >
-                      上传
-                    </Button>
-                  ) : (
-                    <CheckCircleFilled style={{ color: '#00b42a' }} />
-                  )}
-                  <CloseCircleFilled
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      deleteFile(_);
-                    }}
-                    style={{ color: '#d81f27', marginLeft: '5px' }}
-                  />
-                </span>
-              </List.Item>
-            );
-          }}
-        ></List>
+        domNode
       )}
     </div>
   );
