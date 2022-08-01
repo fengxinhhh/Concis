@@ -67,8 +67,7 @@ type listContentStyle = {
   overflow?: string;
 };
 interface renderFnParams {
-  (item: any): any;
-  (index: any): any;
+  (item: any, index: any): any;
 }
 
 export type { listProps, listItemProps, listHeaderStyle, listContentStyle };
