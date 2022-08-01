@@ -1,5 +1,6 @@
 import React, { createContext, useMemo, useState, useEffect, useRef, useContext } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { TransitionGroup } from 'react-transition-group';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { listProps, listHeaderStyle, listContentStyle } from './interface';
@@ -122,6 +123,7 @@ const List = (props: listProps, ref: unknown) => {
     });
   };
 
+  //这里懒加载、虚拟列表使用React动画会破坏效果，渲染全部元素，待定
   return (
     <ctx.Provider value={contextProps}>
       <div className={classNames} style={listStyle}>
@@ -142,9 +144,11 @@ const List = (props: listProps, ref: unknown) => {
                 transform: `translate(0, ${scrollTop}px)`,
               }}
             >
+              {/* <TransitionGroup> */}
               {Array.isArray(formatDataSrouce) &&
                 formatDataSrouce.length !== 0 &&
                 formatDataSrouce.map(render)}
+              {/* </TransitionGroup> */}
             </div>
           </div>
         ) : (
@@ -154,9 +158,20 @@ const List = (props: listProps, ref: unknown) => {
             ref={listContentRef}
             onScroll={scrollList}
           >
-            {Array.isArray(formatDataSrouce) &&
-              formatDataSrouce.length !== 0 &&
-              formatDataSrouce.map(render)}
+            {
+              lazyLoad
+                ?
+                Array.isArray(formatDataSrouce) &&
+                formatDataSrouce.length !== 0 &&
+                formatDataSrouce.map(render)
+                :
+                <TransitionGroup>
+                  {Array.isArray(formatDataSrouce) &&
+                    formatDataSrouce.length !== 0 &&
+                    formatDataSrouce.map(render)}
+                </TransitionGroup>
+            }
+
           </div>
         )}
       </div>

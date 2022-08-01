@@ -22,7 +22,7 @@ export default function listDemo1() {
       dataSource={dataSource}
       render={(item: string) => {
         return (
-          <List.Item style={{ fontSize: '14px' }}>
+          <List.Item style={{ fontSize: '14px' }} key={item}>
             <div className="list">{item}</div>
           </List.Item>
         );

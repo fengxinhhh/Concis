@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Drawer from '..';
 import Button from '../../Button';
+import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index1() {
+  process.env.NODE_ENV === 'production' && usePageListener('Drawer');
   const [visible, setVisible] = useState(false);
 
   return (

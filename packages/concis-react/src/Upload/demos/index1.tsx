@@ -1,9 +1,10 @@
 import React from 'react';
 import Upload from '..';
+import Message from '../../Message';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index1() {
-  process.env.NODE_ENV === 'production' && usePageListener('Switch');
+  process.env.NODE_ENV === 'production' && usePageListener('Upload');
 
   return (
     <Upload
@@ -17,6 +18,7 @@ export default function index1() {
         console.log('e', e);
       }}
       onSuccess={(res: any) => {
+        Message.success('上传成功');
         console.log('res', res);
       }}
       onExceedLimit={() => {
