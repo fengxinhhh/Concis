@@ -1,10 +1,18 @@
-import React, { FC, memo, useEffect, useState, createRef, useContext } from 'react';
+import React, { FC, memo, useEffect, useState, createRef, useContext, ReactNode, CSSProperties } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 
 interface LazyLoadProps {
-  children?: any;
+  children?: ReactNode;
+  /**
+   * @description 类名
+   */
+  className?: string;
+  /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
   /**
    * @description 延迟加载
    * @default 0ms
@@ -13,13 +21,13 @@ interface LazyLoadProps {
 }
 
 const LazyLoad: FC<LazyLoadProps> = (props: LazyLoadProps) => {
-  const { children, delay } = props;
+  const { children, style, className, delay } = props;
   const [showEl, setShowEl] = useState(false);
   const lazyRef = createRef();
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, 'concis-lazyLoad');
+  const classNames = cs(prefixCls, className, 'concis-lazyLoad');
 
   let io: IntersectionObserver; //观察者
 
@@ -44,7 +52,7 @@ const LazyLoad: FC<LazyLoadProps> = (props: LazyLoadProps) => {
   };
 
   return (
-    <div className={classNames} ref={lazyRef as any}>
+    <div className={classNames} style={style} ref={lazyRef as any}>
       {showEl && children}
     </div>
   );

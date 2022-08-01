@@ -57,6 +57,13 @@ html[data-perfers-color="dark"] .__dumi-default-previewer .__dumi-default-previe
 .__dumi-default-menu-list li {
   font-size: 14px;
 }
+.__dumi-default-navbar-logo {
+  height: 60px !important;
+  line-height: 60px !important;
+}
+.__dumi-default-navbar-logo:not([data-plaintext]) {
+  padding-left: 66px !important;
+}
 `;
 
 export default style;

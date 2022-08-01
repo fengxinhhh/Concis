@@ -1,6 +1,6 @@
 <div align="center">
   <a href="http://react-view-ui.com:92/#/" target="_blank">
-    <img alt="Concis Logo" width="200" src="http://react-view-ui.com:92/images/logo.png"/>
+    <img alt="Concis Logo" width="200" src="http://react-view-ui.com:92/images/concis-logo.png"/>
   </a>
 </div>
 <div align="center">
@@ -20,7 +20,7 @@ English | [简体中文](./README.zh-CN.md)
 </div>
 
 <div align="center">
-  <img src="http://react-view-ui.com:92/images/index.bg.jpg" width="1200" />
+  <img src="http://react-view-ui.com:92/images/index-bg.jpg" width="1200" />
 </div>
 
 # Features
