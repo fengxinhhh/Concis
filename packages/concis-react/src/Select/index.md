@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 数据录入
+mobile: false
 ---
 
 # Select 下拉菜单

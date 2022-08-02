@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 导航
+mobile: false
 ---
 
 # Steps 步骤条

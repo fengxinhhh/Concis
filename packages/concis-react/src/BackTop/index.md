@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 其他
+mobile: false
 ---
 
 # BackTop 回到顶部

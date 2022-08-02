@@ -42,4 +42,13 @@ export default defineConfig({
     },
   ],
   styles: [style],
+  themeConfig: {
+    carrier: 'dumi', // 设备状态栏左侧的文本内容
+    hd: {
+      rules: [
+        { maxWidth: 375, mode: 'vw', options: [100, 750] },
+        { minWidth: 376, maxWidth: 750, mode: 'vw', options: [100, 1500] },
+      ],
+    },
+  },
 });

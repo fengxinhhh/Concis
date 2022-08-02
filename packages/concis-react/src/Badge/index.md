@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 数据展示
+mobile: false
 ---
 
 # Badge 徽标

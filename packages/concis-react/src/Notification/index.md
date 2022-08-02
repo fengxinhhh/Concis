@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 反馈
+mobile: false
 ---
 
 # Notification 通知提醒框

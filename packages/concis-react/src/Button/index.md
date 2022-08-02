@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 通用
+mobile: false
 ---
 
 # Button 按钮

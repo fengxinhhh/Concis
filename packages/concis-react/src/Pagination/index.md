@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 导航
+mobile: false
 ---
 
 # Pagination 分页器
