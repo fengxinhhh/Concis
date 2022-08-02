@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 导航
+mobile: false
 ---
 
 # Affix 固钉

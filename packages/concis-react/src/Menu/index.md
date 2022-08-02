@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 导航
+mobile: false
 ---
 
 # Menu 导航菜单
