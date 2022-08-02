@@ -73,7 +73,7 @@ describe('TimePicker', () => {
       component.find('input').simulate('focus');
     });
     component.update();
-    component.find('button.concis-button-primary').at(0).simulate('click');
+    component.find('.concis-button-primary span').at(0).simulate('click');
     expect(mockFnConfirm).toBeCalled();
     expect(mockFnChange).toBeCalled();
     expect(component.find('input.input').at(0).getDOMNode().getAttribute('value')).toBe('05:12:10');
