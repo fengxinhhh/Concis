@@ -133,6 +133,9 @@ const TimePicker = (props: TimePickerProps) => {
   };
   const scrollTo = (eventIdx: number, idx: number): boolean => {
     const divDom = (parentRef.current as any).querySelectorAll('.time-panel div')[idx];
+    if (!divDom || !divDom.scrollTo) {
+      return false;
+    }
     // @ts-ignore
     divDom.scrollTo(0, divDom.querySelector(`.active`).offsetTop - 7);
     return true;

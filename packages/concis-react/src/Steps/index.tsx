@@ -78,49 +78,51 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
     >
       <div className="step-content">
         <div className="step-line">
-          {children.map((step: any, index: number) => {
-            return (
-              <div
-                className="step-box"
-                key={index}
-                onClick={() => {
-                  onChange && onChange(index + 1);
-                }}
-              >
-                {index + 1 < current ? (
-                  <div className={indexClassName(index + 1)}>
-                    <CheckOutlined />
-                  </div>
-                ) : (
-                  <span className={indexClassName(index + 1)}>{index + 1}</span>
-                )}
-
-                <div className="sub-content">
-                  <div className="top">
-                    <span
-                      className={
-                        index + 1 > current
-                          ? indexTitleClassName('grey-title')
-                          : indexTitleClassName('light-title')
-                      }
-                    >
-                      {step.props.title}
-                    </span>
-                    <span className="sub-title">{step.props.subTitle}</span>
-                  </div>
+          {!children
+            ? null
+            : children.map((step: any, index: number) => {
+                return (
                   <div
-                    className={
-                      index + 1 !== current
-                        ? indexTitleClassName('bottom grey-title')
-                        : indexTitleClassName('bottom light-title')
-                    }
+                    className="step-box"
+                    key={index}
+                    onClick={() => {
+                      onChange && onChange(index + 1);
+                    }}
                   >
-                    {step.props.description}
+                    {index + 1 < current ? (
+                      <div className={indexClassName(index + 1)}>
+                        <CheckOutlined />
+                      </div>
+                    ) : (
+                      <span className={indexClassName(index + 1)}>{index + 1}</span>
+                    )}
+
+                    <div className="sub-content">
+                      <div className="top">
+                        <span
+                          className={
+                            index + 1 > current
+                              ? indexTitleClassName('grey-title')
+                              : indexTitleClassName('light-title')
+                          }
+                        >
+                          {step.props.title}
+                        </span>
+                        <span className="sub-title">{step.props.subTitle}</span>
+                      </div>
+                      <div
+                        className={
+                          index + 1 !== current
+                            ? indexTitleClassName('bottom grey-title')
+                            : indexTitleClassName('bottom light-title')
+                        }
+                      >
+                        {step.props.description}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
         </div>
       </div>
     </div>

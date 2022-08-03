@@ -120,6 +120,7 @@ importers:
       '@babel/preset-react': ^7.17.12
       '@types/jest': ^28.1.5
       '@types/node': ^18.6.1
+      '@types/react': ^18.0.15
       core-js: ^3.22.2
       dayjs: ^1.11.4
       enzyme: ^3.11.0
@@ -131,6 +132,7 @@ importers:
       jsdom: ^20.0.0
       lodash: ^4.17.21
       puppeteer: ^15.4.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-transition-group: ^4.3.0
       ts-jest: 28.0.5
     dependencies:
@@ -139,10 +141,12 @@ importers:
       core-js: 3.24.1
       dayjs: 1.11.4
       lodash: 4.17.21
+      react: 16.14.0
     devDependencies:
       '@ant-design/icons': 4.7.0_wcqkhtmu7mswc6yz4uyexck3ty
       '@types/jest': 28.1.6
       '@types/node': 18.6.2
+      '@types/react': 18.0.15
       enzyme: 3.11.0
       enzyme-adapter-react-16: 1.15.6_j6bpv5pizkyfppcg2tmva6pmii
       enzyme-to-json: 3.6.2_enzyme@3.11.0
@@ -161,11 +165,13 @@ importers:
       '@babel/preset-react': ^7.17.12
       core-js: ^3.22.2
       lodash: ^4.17.21
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@babel/plugin-transform-runtime': 7.18.9_@babel+core@7.18.9
       '@babel/preset-react': 7.18.6_@babel+core@7.18.9
       core-js: 3.24.1
       lodash: 4.17.21
+      react: 18.2.0
     devDependencies:
       '@ant-design/icons': 4.7.0_biqbaboplfbrettd7655fr4n2y
 
@@ -5168,6 +5174,7 @@ packages:
   /errno/0.1.8:
     resolution: {integrity: sha512-dJ6oBr5SQ1VSd9qkk7ByRgb/1SH4JZjCHSW/mr63/QcXO9zLVxvJ6Oy13nio03rxpSnVDDjFor75SjVeZWPW/A==}
     hasBin: true
+    requiresBuild: true
     dependencies:
       prr: 1.0.1
 
@@ -10748,7 +10755,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
 
   /read-pkg-up/7.0.1:
     resolution: {integrity: sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg==}
