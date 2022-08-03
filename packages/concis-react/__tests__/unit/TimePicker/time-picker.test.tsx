@@ -92,6 +92,6 @@ describe('TimePicker', () => {
     const hourDisableElement = component.find('.time-panel div').at(0).find('span.disable');
     expect(hourDisableElement).toHaveLength(5);
     expect(hourDisableElement.at(0).getDOMNode().getAttribute('class')).toBe(' disable');
-    expect(hourDisableElement.at(4).getDOMNode().getAttribute('class')).toBe(' disable');
+    expect(component.find('.time-panel div').at(0).getDOMNode().getAttribute('class')).toBe(null);
   });
 });

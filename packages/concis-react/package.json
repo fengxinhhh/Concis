@@ -12,7 +12,7 @@
     "publish": "npm run upgrade && npm run build && npm publish",
     "test:e2e": "jest ./__tests__/e2e",
     "test:jest": "jest",
-    "test:unit": "jest ./__tests__/unit --maxWorkers 2",
+    "test:unit": "jest ./__tests__/unit/TimePicker --maxWorkers 2",
     "upgrade": "node ../../scripts/replace-version-in-pc.ts"
   },
   "module": "es/index.js",
