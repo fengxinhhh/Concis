@@ -42,7 +42,9 @@ export default {
     terser(),
     uglify(),
     copy({
-      targets: [{ src: '../../scripts/globalStyle/compiled-colors.less', dest: 'web-react/style' }],
+      targets: [
+        { src: '../../scripts/globalStyle/compiled-colors.less', dest: 'web-react/style' }
+      ],
     }),
   ],
   external: ['react', 'react-dom'],

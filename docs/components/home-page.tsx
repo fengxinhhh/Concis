@@ -55,16 +55,20 @@ export default () => {
               </a>
             </p>
           </div>
-          <img
-            className={styles.headerImage}
-            alt='header-image'
-            src='http://www.react-view-ui.com:92/images/concis-logo.png'
-          />
-          <img
-            className={styles.headerImage}
-            alt='header-image'
-            src='http://www.react-view-ui.com:92/images/react-icon.svg'
-          />
+          <div className={styles.headerRight}>
+            <img
+              className={styles.headerImage}
+              alt='header-image'
+              src='http://www.react-view-ui.com:92/images/concis-logo.png'
+            />
+            <span className={styles.plus}>+</span>
+            <img
+              className={styles.headerImage}
+              alt='header-image'
+              src='http://www.react-view-ui.com:92/images/react-icon.svg'
+            />
+          </div>
+
         </div>
         {/* 功能特性 */}
         <div className={styles.group}>
