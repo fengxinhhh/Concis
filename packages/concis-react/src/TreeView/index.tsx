@@ -420,9 +420,9 @@ const TreeView: FC<treeViewProps> = (props) => {
               {
                 treeNode?.children?.length ? (
                   treeNode.children[0].height == '0' ? (
-                    <CaretDownOutlined onClick={() => toggleTreeMenu(treeNode)} />
-                  ) : (
                     <CaretRightOutlined onClick={() => toggleTreeMenu(treeNode)} />
+                  ) : (
+                    <CaretDownOutlined onClick={() => toggleTreeMenu(treeNode)} />
                   )
                 ) : (
                   <div style={{ width: '14px', height: '14px' }}></div>
