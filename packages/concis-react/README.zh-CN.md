@@ -34,6 +34,7 @@
 海量色彩，支持全局引入使用：
 
 - [色彩系统-内置主题色](http://concis.org.cn/#/guide/xcolor)
+- [暗黑模式&主题色双支持](http://concis.org.cn/#/guide/udark)
 
 ## 基于 TypeScript
 
