@@ -9,7 +9,7 @@
 
 <div align="center">
 
-一套轻量的 React UI 组件库。
+一套轻量级 React UI 组件库。
 
 </div>
 
