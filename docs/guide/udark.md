@@ -2,6 +2,7 @@
 nav:
   title: 设计
   path: /guide
+mobile: false
 ---
 
 # 暗黑模式
