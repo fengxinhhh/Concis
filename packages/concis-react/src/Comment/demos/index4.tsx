@@ -27,7 +27,7 @@ export default function index1() {
     author: 'Concis',
     avatar: (
       <Avatar>
-        <img src="http://react-view-ui.com:92/images/swiper-img1.webp"></img>
+        <img src="http://concis.org.cn/images/swiper-img1.webp"></img>
       </Avatar>
     ),
     afterAuthor: <span>钻石用户</span>,

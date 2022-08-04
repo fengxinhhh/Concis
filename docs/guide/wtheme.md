@@ -15,7 +15,7 @@ Concis 设计规范和技术上支持灵活的样式定制，以满足业务和�
 
 Concis 的样式使用了 Less 作为开发语言，并定义了一系列全局/组件的样式变量，你可以根据需求进行相应调整。
 
-你可以在<a href="http://react-view-ui.com:92/#/guide/xcolor">色彩</a>中了解 Concis 内置 less 变量的使用和配置方法。
+你可以在<a href="http://concis.org.cn/#/guide/xcolor">色彩</a>中了解 Concis 内置 less 变量的使用和配置方法。
 
 如果你有建议的内置 less 变量（不限于色彩变量），可以在<a href="https://github.com/fengxinhhh/Concis">https://github.com/fengxinhhh/Concis</a>提出 issue。
 
@@ -35,4 +35,4 @@ export default () => (
 );
 ```
 
-你可以在安装、引入 Concis 的基础上对 React 中的根组件进行包裹，更多的主题定制 API 可在<a href="http://react-view-ui.com:92/#/common/global-config">GlobalConfig 组件</a>中了解。
+你可以在安装、引入 Concis 的基础上对 React 中的根组件进行包裹，更多的主题定制 API 可在<a href="http://concis.org.cn/#/common/global-config">GlobalConfig 组件</a>中了解。
