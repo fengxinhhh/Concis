@@ -5,7 +5,7 @@ export default function ButtonDemo6() {
   const buttonStyle = { margin: '8px' };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       <Button type="primary" style={buttonStyle} loading>
         加载按钮
       </Button>
