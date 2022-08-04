@@ -30,7 +30,7 @@ function provideHover(document: vscode.TextDocument, position: vscode.Position) 
         ? `查看 ${matchComponent} 组件官方文档`
         : `View the official documentation of the Button component`) +
       `\n
-Concis -> http://react-view-ui.com:92/#/common/${componentDocPath.toLowerCase()}`;
+Concis -> http://concis.org.cn/#/common/${componentDocPath.toLowerCase()}`;
 
     return new vscode.Hover(text);
   }
