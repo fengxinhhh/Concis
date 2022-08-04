@@ -9,7 +9,7 @@
 
 <div align="center">
 
-一套轻量的 React UI 组件库。
+一套轻量级 React UI 组件库。
 
 </div>
 
@@ -34,6 +34,7 @@
 海量色彩，支持全局引入使用：
 
 - [色彩系统-内置主题色](http://concis.org.cn/#/guide/xcolor)
+- [暗黑模式&主题色双支持](http://concis.org.cn/#/guide/udark)
 
 ## 基于 TypeScript
 

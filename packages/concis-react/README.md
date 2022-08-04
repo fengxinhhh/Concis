@@ -34,6 +34,7 @@ With more than 40 crafted components that you can use out of the box.
 Extensive design tokens can be customized to build your own theme. the way of customization are supported:
 
 - [With colors-system](http://concis.org.cn/#/guide/xcolor)
+- [Dark mode & theme color dual support](http://concis.org.cn/#/guide/udark)
 
 ## TypeScript friendly
 
