@@ -188,12 +188,10 @@ const Rate: FC<rateProps> = (props: rateProps) => {
   const leaveRate = () => {
     //离开整个容器
     if (readonly) return;
-    if (!hasClick) {
-      setStarShowStatus((oldArr: any): Array<boolean | string> => {
-        oldArr = logStarShowStatus;
-        return JSON.parse(JSON.stringify(oldArr));
-      });
-    }
+    setStarShowStatus((oldArr: any): Array<boolean | string> => {
+      oldArr = logStarShowStatus;
+      return JSON.parse(JSON.stringify(oldArr));
+    });
     setHasClick(false);
   };
   const starBg = useCallback(
