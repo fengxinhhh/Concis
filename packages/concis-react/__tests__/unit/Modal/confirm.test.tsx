@@ -85,7 +85,7 @@ describe('Modal confirm', () => {
     Modal.confirm({
       title: 'confirm',
       content: 'test',
-      onOk: () => {
+      onOk: (): Promise<string> => {
         return new Promise((resolve) => {
           setTimeout(() => {
             resolve('');
