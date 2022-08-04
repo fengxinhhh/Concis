@@ -24,7 +24,7 @@ const formatTimeToSecord = (val: number) => {
   //转换为秒
   return val / 1000 + 's';
 };
-const getNativeBrowserInfo = () => {
+const getNativeBrowserInfo = (): Promise<nativeBrowserInfoType> => {
   //获取浏览器原生数据
   return new Promise((resolve) => {
     const params: nativeBrowserInfoType = {};
