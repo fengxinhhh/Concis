@@ -1,17 +1,17 @@
 import React from 'react';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import Switch from '..';
-import Space from '../../Space';
 
 export default function index1() {
   return (
-    <Space>
+    <div>
       <Switch defaultChecked={true} checkedChildren="开启" unCheckedChildren="关闭" />
       <Switch
+        style={{ marginLeft: '10px' }}
         defaultChecked={true}
         checkedChildren={<CheckOutlined />}
         unCheckedChildren={<CloseOutlined />}
       />
-    </Space>
+    </div>
   );
 }

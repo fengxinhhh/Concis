@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useEffect, useState, useCallback, memo, useContext } from 'react';
+import React, { FC, useMemo, useEffect, useState, useCallback, memo, useContext, CSSProperties } from 'react';
 import { DownOutlined, UpOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
 import { ctx } from '../Form';
@@ -22,6 +22,10 @@ interface SelectProps {
    * @description 类名
    */
   className?: string;
+  /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
   /**
    * @description 宽度
    * @default 80px
@@ -68,6 +72,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
   const {
     option,
     className,
+    style,
     width,
     placeholder,
     disabled,
@@ -179,7 +184,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
       <div
         className={classNames}
         style={
-          { ...ownsWidth, '--global-color': disabled ? '#ccc' : globalColor || '#325DFF' } as any
+          { ...style, ...ownsWidth, '--global-color': disabled ? '#ccc' : globalColor || '#325DFF' } as any
         }
       >
         <div className={`selected ${disabled ? 'disabled-selected' : ''}`} style={disabledStyle}>
@@ -247,6 +252,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
       className={classNames}
       style={
         {
+          ...style,
           ...ownsWidth,
           ...disabledStyle,
           '--global-color': disabled ? '#ccc' : globalColor || '#325DFF',

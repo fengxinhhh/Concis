@@ -91,7 +91,9 @@ describe('TimePicker', () => {
     const component = mount(<TimePicker disableHour={disableHour} />);
     const hourDisableElement = component.find('.time-panel div').at(0).find('span.disable');
     expect(hourDisableElement).toHaveLength(5);
-    expect(hourDisableElement.at(0).getDOMNode().getAttribute('class')).toBe(' disable');
+    const nowHour = new Date().getHours();
+    //测试凌晨三点的active
+    expect(hourDisableElement.at(3).getDOMNode().getAttribute('class').trim()).toBe(nowHour === 3 ? 'active disable' : 'disable');
     expect(component.find('.time-panel div').at(0).getDOMNode().getAttribute('class')).toBe(null);
   });
 });
