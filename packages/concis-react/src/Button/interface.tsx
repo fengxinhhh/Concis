@@ -1,6 +1,6 @@
 import { ReactNode, CSSProperties } from 'react';
 
-interface ButtonProps {
+type ButtonProps = {
   //自定义button接口
   children?: ReactNode;
   /**

@@ -1,17 +1,18 @@
 import React from 'react';
 import Button from '..';
-import Space from '../../Space';
-import { SettingOutlined, StarOutlined, LeftOutlined, RightOutlined, DeleteOutlined, DownOutlined } from '@ant-design/icons'
+import { SettingOutlined, StarOutlined, DeleteOutlined, DownOutlined } from '@ant-design/icons'
 
 export default function ButtonDemo6() {
+  const buttonStyle = { margin: '8px' };
+
   return (
-    <Space size="large">
-      <Button type="primary" icon={<StarOutlined />} circle>
+    <div style={{ display: 'flex' }}>
+      <Button type="primary" style={buttonStyle} icon={<StarOutlined />} circle>
       </Button>
-      <Button type="primary" icon={<SettingOutlined />}>
+      <Button type="primary" style={buttonStyle} icon={<SettingOutlined />}>
       </Button>
-      <Button type="danger" icon={<DeleteOutlined />}>
+      <Button type="danger" style={buttonStyle} icon={<DeleteOutlined />}>
       </Button>
-    </Space>
+    </div>
   );
 }

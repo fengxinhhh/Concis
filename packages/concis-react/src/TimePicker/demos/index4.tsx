@@ -1,9 +1,7 @@
 import React from 'react';
 import TimePicker from '..';
-import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index4() {
-  process.env.NODE_ENV === 'production' && usePageListener('TimePicker');
   const disableHour = (hour: string) => {
     return Number(hour) < 5;
   };
