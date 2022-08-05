@@ -9,7 +9,7 @@ import './demos.less';
 export default function index1() {
   const [showReply, setShowReply] = useState(true);
   const [replyContent, setReplyContent] = useState('');
-  const [replyList, setReplyList] = useState([]);
+  const [replyList, setReplyList] = useState<{ content?: string }[]>([]);
 
   const reply = () => {
     if (replyContent) {
