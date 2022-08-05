@@ -10,7 +10,7 @@ export default function index1() {
 
   return (
     <div>
-      <RadioGroup value={0} onChange={(val: { children?: string }) => setAlign(val.children)}>
+      <RadioGroup value={0} onChange={(val: { children?: 'left' | 'right' | 'top' | 'bottom' }) => setAlign(val.children)}>
         <Radio>right</Radio>
         <Radio>left</Radio>
         <Radio>top</Radio>

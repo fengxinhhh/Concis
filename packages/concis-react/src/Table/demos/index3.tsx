@@ -59,7 +59,7 @@ export default function MenuDemos1() {
       <Table
         titleParams={columns}
         tableData={defaultData}
-        expandedRowRender={(reacord) => `Th is No.${reacord.name} description.`}
+        expandedRowRender={(reacord: { name: string }) => `Th is No.${reacord.name} description.`}
       />
     </>
   );

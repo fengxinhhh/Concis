@@ -8,7 +8,7 @@ export default function index1() {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const timer = useRef(null);
+  const timer = useRef<any>(null);
 
   const columns = [
     {
