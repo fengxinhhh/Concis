@@ -39,6 +39,10 @@ const setupPuppeteer = () => {
     //点击元素
     await page.click(dom, options);
   };
+  //获取元素
+  const $ = async (dom: string) => {
+    return await page.$(dom);
+  };
   const getCount = async (dom: string) => {
     //获取元素数量
     return (await page.$$(dom)).length;
@@ -112,6 +116,7 @@ const setupPuppeteer = () => {
   return {
     page: () => page,
     click,
+    $,
     getCount,
     getText,
     getValue,
