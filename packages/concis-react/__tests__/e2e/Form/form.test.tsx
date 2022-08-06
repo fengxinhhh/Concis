@@ -1,4 +1,4 @@
-import { getExampleUrl, setupPuppeteer, e2eTestTimeout } from '../e2eUtils';
+import { getExampleUrl, setupPuppeteer, e2eTestTimeout } from '../../e2eUtils';
 
 describe('form e2e test', () => {
   const { click, page, getCount, getText, getChildrenCount, setValue, getValue } = setupPuppeteer();
@@ -61,7 +61,7 @@ describe('form e2e test', () => {
       '123',
     );
     await click(
-      '#form-index6 .concis-form .concis-form-item:nth-child(8) .concis-form-item-content .concis-button:nth-child(2)',
+      '#form-index6 .concis-form .concis-form-item:nth-child(12) .concis-form-item-content .concis-button:nth-child(2)',
     );
     //测试重置后所有form-item都为空
     expect(await getValue('#form-index6 .concis-form .concis-form-item:nth-child(1) input')).toBe(
