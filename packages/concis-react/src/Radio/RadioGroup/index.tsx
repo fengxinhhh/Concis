@@ -1,4 +1,4 @@
-import React, { FC, useState, memo, useCallback, useContext } from 'react';
+import React, { FC, useState, memo, useCallback, useContext, CSSProperties } from 'react';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
@@ -9,10 +9,7 @@ import './index.module.less';
 
 interface RadioGroupProps {
   children: Array<Object>;
-  /**
-   * @description 默认值
-   * @default 0
-   */
+  style?: CSSProperties;
   className?: string;
   value?: Number;
   canAddOption?: Boolean;
@@ -25,7 +22,7 @@ interface RadioProps {
 }
 
 const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
-  const { children, className, value, canAddOption, boxStyle, onChange } = props;
+  const { children, style, className, value, canAddOption, boxStyle, onChange } = props;
 
   const [selectIndex, setSelectIndex] = useState(value || 0); //选中索引
   const [renderOptions, setRenderOptions] = useState(children);
@@ -83,7 +80,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
   return (
     <div
       className={classNames}
-      style={{ '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) } as any}
+      style={{ ...style, '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) } as any}
     >
       {renderOptions.map((item: any, index: number) => {
         return boxStyle ? (
