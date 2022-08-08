@@ -40,4 +40,18 @@ mobile: false
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name               | Description          | Type                      | Default   |
+| ------------------ | -------------------- | ------------------------- | --------- |
+| className          | 类名                 | string                    | `--`      |
+| style              | 自定义样式           | CSSProperties             | `--`      |
+| dataSource         | List 数据            | string[] object[]         | `[]`      |
+| render             | 渲染函数             | function                  | `--`      |
+| header             | 列表头部内容         | ReactNode                 | `<></>`   |
+| size               | 列表尺寸             | 'default' 'small' 'large' | `default` |
+| lazyLoad           | 懒加载               | boolean                   | `false`   |
+| defaultShowNum     | 懒加载默认展示行数   | number                    | `5`       |
+| virtualListProps   | 虚拟列表             | boolean                   | `false`   |
+| virtualShowNum     | 虚拟列表默认展示行数 | number                    | `5`       |
+| lazyScrollToBottom | 懒加载滚动到底部监听 | function                  | ``        |
