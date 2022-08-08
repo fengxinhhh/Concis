@@ -18,6 +18,12 @@ mobile: false
 
 <code src="./demos/index1.tsx"/>
 
+## 禁用
+
+禁用某一项标签页。
+
+<code src="./demos/index6.tsx"/>
+
 ## 位置
 
 配置`tabPosition`使用不同的布局，共有`left`、`right`、`top`、`bottom` 4 种方式，默认`top`。
@@ -26,6 +32,47 @@ mobile: false
 
 ## 不同类型
 
-配置`type`使用不同的布局，共有`line`、`text`、`round` 3 种方式，默认`line`。
+配置`type`使用不同的布局，共有`line`、`text`、`round`、`card` 4 种方式，默认`line`。
 
 <code src="./demos/index3.tsx"/>
+
+## 额外内容
+
+通过`extra`设置右侧额外页签，仅支持水平排列。
+
+<code src="./demos/index4.tsx"/>
+
+## 动态增减页签
+
+配置`editable`开启编辑模式，通过`onAddTab`获取监听新增事件、`onDeleteTab`获取删除事件，修改传参数据。
+
+仅在`type`=`card`时生效。
+
+<code src="./demos/index5.tsx" />
+
+## 嵌套
+
+组件支持嵌套使用。
+
+<code src="./demos/index7.tsx" />
+
+## 不同尺寸
+
+配置`size`定制不同的尺寸，共有`mini`、`small`、`default`、`large` 4 种尺寸，默认`default`。
+
+<code src="./demos/index8.tsx" />
+
+## 滚动
+
+导航栏撑开一定距离后自动开启滚动。
+
+<code src="./demos/index9.tsx" />
+
+<API />
+
+## TabPane
+
+| Name  | Description | Type     | Default |
+| ----- | ----------- | -------- | ------- |
+| key   | 唯一标识    | `string` | `--`    |
+| title | 标题        | `string` | `--`    |
