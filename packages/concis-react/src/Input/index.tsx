@@ -58,15 +58,24 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     if (moreStyle && Object.keys(moreStyle).includes('caretColor')) {
       return;
     }
-    setIptValue(e.target.value);
-    if (handleIptChange) {
-      handleIptChange(e.target.value);
-    }
+    const val = e.target.value;
+    setIptValue(val);
+    handleIptChange && handleIptChange(val);
   };
   const blurIpt = () => {
     //失去焦点
-    if (type === 'num' && Number(iptValue) == NaN) {
-      setIptValue('');
+    if (type === 'num') {
+      const val = Number(iptValue);
+      if (isNaN(val)) {
+        setIptValue('');
+        handleIptChange && handleIptChange('');
+      } else {
+      const num = getNum(val);
+        if (val !== num) {
+          setIptValue(num);
+          handleIptChange && handleIptChange(num);
+        }
+      }
     }
     handleIptBlur && handleIptBlur();
   };
@@ -82,16 +91,9 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
       return setIptValue('');
     }
     const stepNum = step || 1;
-    if (step && max && Number(iptValue) + stepNum > max) {
-      handleNumChange && handleNumChange(max);
-      return setIptValue(max);
-    }
-    if (step && min && Number(iptValue) + stepNum < min) {
-      handleNumChange && handleNumChange(min);
-      return setIptValue(min);
-    }
-    handleNumChange && handleNumChange(Number(iptValue) + stepNum);
-    setIptValue(Number(iptValue) + stepNum);
+    const res = getNum(Number(iptValue) + stepNum);
+    handleNumChange && handleNumChange(res);
+    setIptValue(res);
   };
   const lowNum = () => {
     //减
@@ -99,13 +101,20 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
       return setIptValue('');
     }
     const stepNum = step || 1;
-    if (step && min && Number(iptValue) - stepNum < min) {
-      handleNumChange && handleNumChange(min);
-      return setIptValue(min);
-    }
-    handleNumChange && handleNumChange(Number(iptValue) - stepNum);
-    setIptValue(Number(iptValue) - stepNum);
+    const res = getNum(Number(iptValue) - stepNum);
+    handleNumChange && handleNumChange(res);
+    setIptValue(res);
   };
+  // 获取数字框范围内的值
+  const getNum = (num: number) => {
+    if (step && (typeof max === 'number') && num > max) {
+      return max;
+    }
+    if (step && (typeof min === 'number') && num < min) {
+      return min;
+    }
+    return num;
+  }
   const iptType = useMemo(() => {
     if (showTogglePwd && type === 'password') {
       return pwdIptState ? 'password' : 'text';
