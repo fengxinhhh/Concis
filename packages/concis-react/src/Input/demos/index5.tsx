@@ -12,7 +12,7 @@ export default function InputDemo5() {
     <Input
       type="num"
       placeholder="请输入"
-      min={5}
+      min={0}
       max={10}
       step={1.5}
       handleIptChange={handleIptChange}
