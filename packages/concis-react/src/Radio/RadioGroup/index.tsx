@@ -13,6 +13,7 @@ interface RadioGroupProps {
   className?: string;
   value?: Number;
   canAddOption?: Boolean;
+  addOptionText?: String;
   boxStyle?: Boolean;
   onChange?: Function;
 }
@@ -22,7 +23,7 @@ interface RadioProps {
 }
 
 const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
-  const { children, style, className, value, canAddOption, boxStyle, onChange } = props;
+  const { children, style, className, value, canAddOption, addOptionText = 'More...', boxStyle, onChange } = props;
 
   const [selectIndex, setSelectIndex] = useState(value || 0); //选中索引
   const [renderOptions, setRenderOptions] = useState(children);
@@ -118,7 +119,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
                 className={selectIndex === renderOptions.length ? 'groupActive' : 'groupStyle'}
                 onClick={addOptions}
               >
-                More...
+                {addOptionText}
               </div>
               {showAddOption && (
                 <Input handleKeyDown={handleKeyDown} handleIptChange={handleIptChange} />
@@ -128,7 +129,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
             <div className="addOption">
               <div className="radioBox" onClick={addOptions}>
                 <div className={selectIndex === renderOptions.length ? 'radio-checked' : 'radio'} />
-                <span className="radioLabel">More...</span>
+                <span className="radioLabel">{addOptionText}</span>
               </div>
               {showAddOption && (
                 <Input handleKeyDown={handleKeyDown} handleIptChange={handleIptChange} />
