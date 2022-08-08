@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import Radio from '../../Radio';
-import RadioGroup from '../../Radio/RadioGroup';
 import Tabs from '..';
 
 const TabPane = Tabs.TabPane;
 
 export default function index1() {
-  const [position, setPosition] = useState<'top' | 'bottom' | 'left' | 'right'>('top');
   const style = {
     display: 'flex',
     justifyContent: 'center',
@@ -16,14 +13,7 @@ export default function index1() {
   }
   return (
     <div>
-      <RadioGroup value={0} onChange={(val: { children: 'top' | 'bottom' | 'left' | 'right' }) => setPosition(val.children)} style={{ marginBottom: '100px' }}>
-        <Radio>top</Radio>
-        <Radio>bottom</Radio>
-        <Radio>left</Radio>
-        <Radio>right</Radio>
-      </RadioGroup>
-
-      <Tabs defaultActiveTab="1" tabPosition={position}>
+      <Tabs defaultActiveTab="1">
         <TabPane key='1' title='Tab 1'>
           <div style={style}>Hello Concis!This is thie content of Tab Panel 1</div>
         </TabPane>

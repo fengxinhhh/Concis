@@ -1,8 +1,11 @@
-import React, { ReactNode, useState, useMemo } from 'react';
+import React, { ReactNode, useState, useMemo, createContext, useContext } from 'react';
 import TabPane from './tab-pane';
 import TabHeader from './tab-header';
 import TabContent from './tab-content';
 import { TabsProps } from './interface';
+import cs from '../common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
 import './styles/index.less';
 
 function getPaneChild(props: TabsProps) {
@@ -15,15 +18,58 @@ function getPaneChild(props: TabsProps) {
   })
   return paneChildren as ReactNode[];
 }
-function Tabs(props: TabsProps) {
-  const { children, defaultActiveTab, tabPosition = 'top', type = 'line' } = props;
 
-  const [activeKey, setActiveKey] = useState<string>(defaultActiveTab || "1");
+export const ctx = createContext<TabsProps>({ defaultActiveTab: '' }); //顶层通信装置
+
+function Tabs(props: TabsProps) {
+  const {
+    defaultActiveTab,
+    className,
+    style,
+    tabPosition = 'top',
+    type = 'line',
+    size = 'default',
+    extra,
+    editable,
+    onAddTab,
+    onDeleteTab,
+    onChange
+  } = props;
 
   const paneChildren = getPaneChild(props);
+
+  const [activeKey, setActiveKey] = useState<string>(defaultActiveTab);
+
+  const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
+  const classNames = cs(prefixCls, className, darkTheme ? 'concis-dark-tabs' : 'concis-tabs');
+
   //header改变回调
   const changeHeaderActiveCallback = (active: string) => {
-    setActiveKey(active)
+    setActiveKey(active);
+    onChange && onChange(active);
+  }
+  const addHeaderCallback = () => {
+    onAddTab && onAddTab();
+  }
+  const delHeaderCallback = (key: string) => {
+    //自动更新content
+    const length = paneChildren.length;
+    if (key === activeKey && length > 1) {
+      setActiveKey((paneChildren[length - 2] as any).key);
+    }
+    onDeleteTab && onDeleteTab(key)
+  }
+  //context
+  const tabsContext = {
+    paneChildren,
+    defaultActiveTab: activeKey,
+    type,
+    extra,
+    tabPosition,
+    changeHeaderActiveCallback,
+    editable,
+    addHeaderCallback,
+    delHeaderCallback
   }
   const domLayout = useMemo(() => {
     //tabs布局
@@ -33,16 +79,16 @@ function Tabs(props: TabsProps) {
           <div className="concis-tabs-content">
             <TabContent paneChildren={paneChildren} defaultActiveTab={activeKey} />
           </div>
-          <div className={tabPosition === 'bottom' ? `concis-tabs-bottom-header-${type}` : `concis-tabs-header-position-vertical-${type}`}>
-            <TabHeader paneChildren={paneChildren} defaultActiveTab={activeKey} changeHeaderActiveCallback={changeHeaderActiveCallback} />
+          <div className={cs(tabPosition === 'bottom' ? `concis-tabs-bottom-header-${type}` : `concis-tabs-header-position-vertical-${type}`, `concis-tabs-header-${size}`)}>
+            <TabHeader />
           </div>
         </>
       )
     } else {
       return (
         <>
-          <div className={tabPosition === 'top' ? `concis-tabs-header-${type}` : `concis-tabs-header-position-vertical-${type}`}>
-            <TabHeader paneChildren={paneChildren} defaultActiveTab={activeKey} changeHeaderActiveCallback={changeHeaderActiveCallback} />
+          <div className={cs(tabPosition === 'top' ? `concis-tabs-header-${type}` : `concis-tabs-header-position-vertical-${type}`, `concis-tabs-header-${size}`)}>
+            <TabHeader />
           </div>
           <div className="concis-tabs-content">
             <TabContent paneChildren={paneChildren} defaultActiveTab={activeKey} />
@@ -50,12 +96,17 @@ function Tabs(props: TabsProps) {
         </>
       )
     }
-  }, [tabPosition, activeKey, type])
+  }, [tabPosition, activeKey, type, size])
 
   return (
-    <div className="concis-tabs" style={{ '--align-way': tabPosition === 'top' || tabPosition === 'bottom' ? 'block' : 'flex' } as any}>
-      {domLayout}
-    </div>
+    <ctx.Provider value={tabsContext}>
+      <div
+        className={classNames}
+        style={{ ...style, '--align-way': tabPosition === 'top' || tabPosition === 'bottom' ? 'block' : 'flex' } as any}
+      >
+        {domLayout}
+      </div>
+    </ctx.Provider>
   )
 }
 

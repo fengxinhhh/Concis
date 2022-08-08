@@ -22,17 +22,16 @@ export default function index1() {
         <Radio>left</Radio>
         <Radio>right</Radio>
       </RadioGroup>
-
-      <Tabs defaultActiveTab="1" tabPosition={position}>
-        <TabPane key='1' title='Tab 1'>
-          <div style={style}>Hello Concis!This is thie content of Tab Panel 1</div>
-        </TabPane>
-        <TabPane key='2' title='Tab 2' disabled>
-          <div style={style}>Hello Concis!This is thie content of Tab Panel 2</div>
-        </TabPane>
-        <TabPane key='3' title='Tab 3'>
-          <div style={style}>Hello Concis!This is thie content of Tab Panel 3</div>
-        </TabPane>
+      <Tabs defaultActiveTab="0" tabPosition={position}>
+        {
+          new Array(25).fill('').map((item, i) => {
+            return (
+              <TabPane key={String(i)} title={`Tab ${i + 1}`}>
+                <div style={style}>Hello Concis!This is thie content of Tab Panel {i + 1}</div>
+              </TabPane>
+            )
+          })
+        }
       </Tabs>
     </div>
   )

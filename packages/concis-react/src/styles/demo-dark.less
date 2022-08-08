@@ -382,14 +382,30 @@ html[data-prefers-color='dark'] {
             background-color: #343436;
           }
         }
-
+        .header-option-active {
+          background-color: #343436;
+        }
+      }
+      &-card {
+        .header-option {
+          padding: 8px 16px;
+          margin: 0;
+          border: 1px solid #484849;
+          &:not(:last-of-type) {
+            border-right: none;
+          }
+          &:not(.header-option-disabled):hover {
+            background-color: #343436;
+          }
+        }
         .header-option-active {
           background-color: #343436;
         }
       }
       &-line,
       &-text,
-      &-round {
+      &-round,
+      &-card {
         .header-option-disabled {
           color: #ffffff4d;
           cursor: not-allowed;
@@ -431,9 +447,26 @@ html[data-prefers-color='dark'] {
           background-color: #343436;
         }
       }
+      &-card {
+        .header-option {
+          padding: 8px 16px;
+          margin: 0;
+          border: 1px solid #484849;
+          &:not(:last-of-type) {
+            border-right: none;
+          }
+          &:not(.header-option-disabled):hover {
+            background-color: #343436;
+          }
+        }
+        .header-option-active {
+          background-color: #343436;
+        }
+      }
       &-line,
       &-text,
-      &-round {
+      &-round,
+      &-card {
         .header-option-disabled {
           color: #ffffff4d;
           cursor: not-allowed;
@@ -477,9 +510,26 @@ html[data-prefers-color='dark'] {
           background-color: #343436;
         }
       }
+      &-card {
+        .header-option {
+          padding: 8px;
+          margin: 0;
+          border: 1px solid #484849;
+          &:not(:last-of-type) {
+            border-bottom: none;
+          }
+          &:not(.header-option-disabled):hover {
+            background-color: #343436;
+          }
+        }
+        .header-option-active {
+          background-color: #343436;
+        }
+      }
       &-line,
       &-text,
-      &-round {
+      &-round,
+      &-card {
         .header-option-disabled {
           color: #ffffff4d;
           cursor: not-allowed;

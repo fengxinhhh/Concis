@@ -6,7 +6,9 @@ import Tabs from '..';
 const TabPane = Tabs.TabPane;
 
 export default function index1() {
-  const [position, setPosition] = useState<'top' | 'bottom' | 'left' | 'right'>('top');
+  const [type, setType] = useState<'line' | 'text' | 'round' | 'card'>('line');
+  const [size, setSize] = useState<'mini' | 'small' | 'default' | 'large'>('default');
+
   const style = {
     display: 'flex',
     justifyContent: 'center',
@@ -15,15 +17,21 @@ export default function index1() {
     padding: '100px 0'
   }
   return (
-    <div>
-      <RadioGroup value={0} onChange={(val: { children: 'top' | 'bottom' | 'left' | 'right' }) => setPosition(val.children)} style={{ marginBottom: '100px' }}>
-        <Radio>top</Radio>
-        <Radio>bottom</Radio>
-        <Radio>left</Radio>
-        <Radio>right</Radio>
+    <div >
+      <RadioGroup value={0} onChange={(val: { children: 'line' | 'text' | 'round' | 'card' }) => setType(val.children)} >
+        <Radio>line</Radio>
+        <Radio>text</Radio>
+        <Radio>round</Radio>
+        <Radio>card</Radio>
+      </RadioGroup>
+      <RadioGroup value={2} onChange={(val: { children: 'mini' | 'small' | 'default' | 'large' }) => setSize(val.children)} style={{ marginBottom: '100px' }}>
+        <Radio>mini</Radio>
+        <Radio>small</Radio>
+        <Radio>default</Radio>
+        <Radio>large</Radio>
       </RadioGroup>
 
-      <Tabs defaultActiveTab="1" tabPosition={position}>
+      <Tabs defaultActiveTab="1" type={type} size={size} >
         <TabPane key='1' title='Tab 1'>
           <div style={style}>Hello Concis!This is thie content of Tab Panel 1</div>
         </TabPane>

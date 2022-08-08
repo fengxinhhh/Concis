@@ -3,7 +3,7 @@ import { TabsContentProps } from './interface';
 
 export default function TabContent(props: TabsContentProps) {
   const { paneChildren, defaultActiveTab } = props;
-  console.log(paneChildren)
+
   return (
     <>
       {

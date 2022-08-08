@@ -9,7 +9,7 @@ export default function index1() {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
-    margin: '50px 0'
+    padding: '80px 0'
   }
   return (
     <div>
@@ -17,7 +17,7 @@ export default function index1() {
         <TabPane key='1' title='Tab 1'>
           <div style={style}>Hello Concis!This is thie content of Tab Panel 1</div>
         </TabPane>
-        <TabPane key='2' title='Tab 2' disabled>
+        <TabPane key='2' title='Tab 2'>
           <div style={style}>Hello Concis!This is thie content of Tab Panel 2</div>
         </TabPane>
         <TabPane key='3' title='Tab 3'>
