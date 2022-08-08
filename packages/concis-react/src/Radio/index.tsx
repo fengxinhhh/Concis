@@ -26,6 +26,11 @@ interface RadioProps {
    */
   canAddOption?: Boolean;
   /**
+   * @description 扩展按钮文案
+   * @default 'More...'
+   */
+  addOptionText?: Boolean;
+  /**
    * @description 方形样式
    * @default false
    */
