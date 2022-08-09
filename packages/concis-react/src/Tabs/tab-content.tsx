@@ -4,11 +4,5 @@ import { TabsContentProps } from './interface';
 export default function TabContent(props: TabsContentProps) {
   const { paneChildren, defaultActiveTab } = props;
 
-  return (
-    <>
-      {
-        paneChildren.filter(p => p.key === defaultActiveTab)
-      }
-    </>
-  )
+  return <>{paneChildren.filter((p) => p.key === defaultActiveTab)}</>;
 }

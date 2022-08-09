@@ -2,7 +2,6 @@ import React from 'react';
 import { MonthPicker } from '..';
 
 export default function TimePickerDemo1() {
-
   const handleChange = (date: string) => {
     console.log(date);
   };
@@ -11,7 +10,7 @@ export default function TimePickerDemo1() {
     <MonthPicker
       disableCheck={(date: Date) => date.getMonth() > 5}
       align="top"
-      showClear={true}
+      showClear
       handleChange={handleChange}
     />
   );

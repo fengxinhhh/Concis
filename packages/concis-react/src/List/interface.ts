@@ -1,6 +1,6 @@
 import { ReactNode, CSSProperties } from 'react';
 
-interface listProps<T = any> {
+interface listProps {
   /**
    * @description 类名
    */

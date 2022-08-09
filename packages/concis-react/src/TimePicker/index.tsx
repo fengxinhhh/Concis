@@ -6,7 +6,6 @@ import './index.module.less';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import dayjs from 'dayjs';
 import { ctx } from '../Form';
 import { getRenderColor } from '../common_utils/getRenderColor';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
@@ -71,7 +70,7 @@ export interface TimePickerProps {
 
 const getIdxArr = (length: number) => {
   const arr = new Array(length).fill('');
-  return arr.map((_, i) => (i < 10 ? '0' + i : String(i)));
+  return arr.map((_, i) => (i < 10 ? `0${i}` : String(i)));
 };
 
 const TimePicker = (props: TimePickerProps) => {
@@ -100,9 +99,9 @@ const TimePicker = (props: TimePickerProps) => {
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}time-picker`);
   const changeTime = (newHour: number = hour, newMin: number = min, newSecond: number = second) => {
-    const time = `${newHour < 10 ? '0' + newHour : String(newHour)}:${
-      newMin < 10 ? '0' + newMin : String(newMin)
-    }:${newSecond < 10 ? '0' + newSecond : String(newSecond)}`;
+    const time = `${newHour < 10 ? `0${newHour}` : String(newHour)}:${
+      newMin < 10 ? `0${newMin}` : String(newMin)
+    }:${newSecond < 10 ? `0${newSecond}` : String(newSecond)}`;
     changeCallback && changeCallback(time);
     handleConfirm && handleConfirm(time);
     setTimeValue(time);
@@ -113,7 +112,7 @@ const TimePicker = (props: TimePickerProps) => {
     setSecond(NOW_TIME.getSeconds());
   }, []);
   useEffect(() => {
-    //用于监听Form组件的重置任务
+    // 用于监听Form组件的重置任务
     if (formCtx.reset) {
       setHour(0);
       setMin(0);
@@ -153,7 +152,7 @@ const TimePicker = (props: TimePickerProps) => {
     <Popover
       type="click"
       align={align}
-      dialogWidth={'auto'}
+      dialogWidth="auto"
       closeDeps={[timeValue]}
       content={
         <div className={classNames}>
@@ -164,7 +163,7 @@ const TimePicker = (props: TimePickerProps) => {
               {
                 '--checked-color': getRenderColor(
                   (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                  globalColor,
+                  globalColor
                 ),
               } as any
             }

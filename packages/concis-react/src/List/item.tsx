@@ -26,6 +26,9 @@ const Item: FC<listItemProps> = (props) => {
       case 'large':
         defaultStyles.padding = '17px 20px';
         break;
+      default: {
+        defaultStyles.padding = '13px 20px';
+      }
     }
     return defaultStyles;
   }, [size]);

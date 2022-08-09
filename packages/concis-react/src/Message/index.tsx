@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef, CSSProperties, useContext } from 'react';
-import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../common_utils/classNames';
-import { globalCtx } from '../GlobalConfig';
 import ReactDOM from 'react-dom';
-import { MessageProps } from './interface';
-import './index.module.less';
 import {
   ExclamationCircleFilled,
   CheckCircleFilled,
@@ -12,6 +7,11 @@ import {
   LoadingOutlined,
   CloseOutlined,
 } from '@ant-design/icons';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
+import { MessageProps } from './interface';
+import './index.module.less';
 
 let container: HTMLDivElement | null;
 let topMessageNum: number = 0;
@@ -19,7 +19,7 @@ let bottomMessageNum: number = 0;
 
 function addInstance(
   type: 'info' | 'success' | 'warning' | 'error' | 'normal' | 'loading',
-  props: string | MessageProps<string>,
+  props: string | MessageProps<string>
 ) {
   let style: CSSProperties = {},
     duration: number = 3000,
@@ -70,14 +70,14 @@ function addInstance(
       messageBoxId={messageBoxId}
       dark={dark}
     />,
-    div,
+    div
   );
 }
 function remove(id: string, position: string) {
-  //重排节点下元素高度
+  // 重排节点下元素高度
   const container = document.querySelector('.all-container');
   const children = Array.prototype.slice.call(container?.childNodes);
-  for (let key in children) {
+  for (const key in children) {
     if (children[key].getAttribute('class') === `${position}-${id}`) {
       const removeDom = children[key];
       container?.removeChild(removeDom);
@@ -91,10 +91,10 @@ function remove(id: string, position: string) {
   }
 }
 function changeHeight(children: Array<HTMLElement>, position: any) {
-  for (let key in children) {
+  for (const key in children) {
     const child = children[key].childNodes[0] as HTMLElement;
     if (children[key].getAttribute('class')?.startsWith(position)) {
-      child.style[position] = Number(child.style[position].split('p')[0]) - 70 + 'px';
+      child.style[position] = `${Number(child.style[position].split('p')[0]) - 70}px`;
     }
   }
 }
@@ -107,7 +107,7 @@ const Message = (props: MessageProps<string>) => {
 
   const classNames = cs(
     prefixCls,
-    dark ? 'concis-dark-message-container' : 'concis-message-container',
+    dark ? 'concis-dark-message-container' : 'concis-message-container'
   );
 
   useEffect(() => {
@@ -126,22 +126,28 @@ const Message = (props: MessageProps<string>) => {
   }, []);
   useEffect(() => {
     const transform = position || 'top';
-    (messageDom?.current as HTMLElement).style[transform] =
-      (transform === 'top' ? topMessageNum : bottomMessageNum) * 70 + 'px';
+    (messageDom?.current as HTMLElement).style[transform] = `${
+      (transform === 'top' ? topMessageNum : bottomMessageNum) * 70
+    }px`;
   }, [topMessageNum, bottomMessageNum]);
 
   const messageIcon = useMemo(() => {
     if (type === 'info') {
       return <ExclamationCircleFilled style={{ color: '#325DFF', fontSize: '16px' }} />;
-    } else if (type === 'error') {
+    }
+    if (type === 'error') {
       return <CloseCircleFilled style={{ color: '#f53f3f', fontSize: '16px' }} />;
-    } else if (type === 'normal') {
+    }
+    if (type === 'normal') {
       return <></>;
-    } else if (type === 'success') {
+    }
+    if (type === 'success') {
       return <CheckCircleFilled style={{ color: '#00b42a', fontSize: '16px' }} />;
-    } else if (type === 'warning') {
+    }
+    if (type === 'warning') {
       return <ExclamationCircleFilled style={{ color: '#ff7d00', fontSize: '16px' }} />;
-    } else if (type === 'loading') {
+    }
+    if (type === 'loading') {
       return <LoadingOutlined style={{ color: '#325DFF', fontSize: '16px' }} />;
     }
   }, [type]);

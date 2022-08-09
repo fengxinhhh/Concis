@@ -15,11 +15,6 @@ interface layoutProps {
    * @default {}
    */
   extraStyle?: Object;
-  /**
-   * @description Slider/Content横向栅格比例
-   * @default Slider-3,Content-7
-   */
-  row?: Number;
 }
 
 const Layout: FC<layoutProps> = (props: layoutProps) => {

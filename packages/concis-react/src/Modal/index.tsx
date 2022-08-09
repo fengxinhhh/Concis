@@ -44,7 +44,7 @@ const Modal = (props: ModalProps) => {
   const [wrapperVisible, setWrapperVisible] = useState(visible);
   const [okLoading, setOkLoading] = useState(false);
   const [cancelLoading, setCancelLoading] = useState(false);
-  const isCloseWorking = useRef<boolean>(false); //正在关闭
+  const isCloseWorking = useRef<boolean>(false); // 正在关闭
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const classFirstName = darkTheme ? 'concis-dark-modal' : 'concis-modal';
@@ -69,7 +69,7 @@ const Modal = (props: ModalProps) => {
     };
   }, [wrapperVisible]);
 
-  //禁止滚动
+  // 禁止滚动
   useOverFlowScroll('body', wrapperVisible as boolean);
   const removeConfirmContainer = () => {
     const dom = document.querySelector('.concis-modal-confirm');
@@ -79,7 +79,7 @@ const Modal = (props: ModalProps) => {
       }, 400);
   };
 
-  //异步关闭后重置状态
+  // 异步关闭后重置状态
   const afterAsyncClose = () => {
     setWrapperVisible(false);
     confirm && removeConfirmContainer();
@@ -88,7 +88,7 @@ const Modal = (props: ModalProps) => {
     setCancelLoading(false);
     isCloseWorking.current = false;
   };
-  //确认
+  // 确认
   const finish = () => {
     if (!onOk) {
       setWrapperVisible(false);
@@ -114,7 +114,7 @@ const Modal = (props: ModalProps) => {
     }
   };
 
-  //取消
+  // 取消
   const cancel = () => {
     if (!onCancel) {
       setWrapperVisible(false);
@@ -152,21 +152,24 @@ const Modal = (props: ModalProps) => {
         return <WarningFilled style={{ color: '#ff7d00' }} />;
       case 'error':
         return <CloseCircleFilled style={{ color: '#f53f3f' }} />;
+      default: {
+        return <ExclamationCircleFilled style={{ color: '#325DFF' }} />;
+      }
     }
   }, [type]);
 
   return (
     <div
       className={classNames}
-      style={{ '--modal-width': `${typeof width === 'string' ? width : width + '%'}` } as any}
+      style={{ '--modal-width': `${typeof width === 'string' ? width : `${width}%`}` } as any}
     >
       <CSSTransition
         in={wrapperVisible}
         timeout={200}
         appear
-        mountOnEnter={true}
+        mountOnEnter
         classNames="fadeModal"
-        unmountOnExit={true}
+        unmountOnExit
         onEnter={(e: HTMLDivElement) => {
           e.style.display = 'block';
         }}
@@ -179,9 +182,9 @@ const Modal = (props: ModalProps) => {
             in={wrapperVisible}
             timeout={200}
             appear
-            mountOnEnter={true}
+            mountOnEnter
             classNames="fadeContent"
-            unmountOnExit={true}
+            unmountOnExit
             onEnter={(e: HTMLDivElement) => {
               e.style.display = 'block';
             }}
@@ -192,7 +195,7 @@ const Modal = (props: ModalProps) => {
             <div className="concis-modal-content" onClick={(e: any) => e.stopPropagation()}>
               <div className="concis-modal-content-header">
                 <div className="concis-title">
-                  <i></i>
+                  <i />
                   <div className="title">
                     {type && titleIcon}
                     <span> {title}</span>

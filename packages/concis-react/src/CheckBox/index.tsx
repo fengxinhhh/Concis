@@ -9,11 +9,11 @@ import React, {
   useEffect,
   useContext,
 } from 'react';
+import { CheckOutlined } from '@ant-design/icons';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import { CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
 
 type checkGroup = {
@@ -69,31 +69,31 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
     disabled ? 'disabled-checkbox' : '',
     group && group.length
       ? `concis-${darkTheme ? 'dark-' : ''}checkGroup`
-      : `concis-${darkTheme ? 'dark-' : ''}checkbox`,
+      : `concis-${darkTheme ? 'dark-' : ''}checkbox`
   );
 
   useEffect(() => {
-    if (checked != undefined) {
+    if (checked !== undefined) {
       setCheckStatus(checked);
     } else {
       setCheckStatus(false);
     }
   }, [checked]);
   useEffect(() => {
-    //用于监听Form组件的重置任务
+    // 用于监听Form组件的重置任务
     if (formCtx.reset) {
       setCheckStatus(checked);
     }
   }, [formCtx.reset]);
 
   const toggleCheckedStatus = () => {
-    //多选单组件切换状态
+    // 多选单组件切换状态
     if (disabled) return;
     setCheckStatus(!checkStatus);
     checkCallback && checkCallback(!checkStatus);
   };
   const toggleGroupCheckedStatus = (index: number) => {
-    //切换多选组状态
+    // 切换多选组状态
     const oldCheckGroup = [...checkGroup];
     oldCheckGroup[index].checked = oldCheckGroup[index]?.checked
       ? !oldCheckGroup[index].checked
@@ -103,35 +103,37 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
   };
 
   const renderCheckBoxDom = useMemo(() => {
-    //渲染单check状态
+    // 渲染单check状态
     if (disabled) {
-      return <div className="concis-checkbox-disabled"></div>;
-    } else if (checkStatus) {
+      return <div className="concis-checkbox-disabled" />;
+    }
+    if (checkStatus) {
       return (
         <div className="concis-checkbox-actived">
           <CheckOutlined style={{ fontSize: '12px' }} />
         </div>
       );
-    } else {
-      return <div className="concis-checkbox-noActived"></div>;
     }
+    return <div className="concis-checkbox-noActived" />;
   }, [checkStatus, checked]);
   const renderCheckGroupDom = useCallback(
     (checkBoxOptions: checkGroup) => {
-      //渲染checkbox组状态
+      // 渲染checkbox组状态
       if (checkBoxOptions.disabled) {
-        return <div className="concis-checkbox-disabled"></div>;
-      } else if (checkBoxOptions.checked) {
+        return <div className="concis-checkbox-disabled" />;
+      }
+      if (checkBoxOptions.checked) {
         return (
           <div className="concis-checkbox-actived">
             <CheckOutlined style={{ fontSize: '12px' }} />
           </div>
         );
-      } else if (!checkBoxOptions.checked) {
-        return <div className="concis-checkbox-noActived"></div>;
+      }
+      if (!checkBoxOptions.checked) {
+        return <div className="concis-checkbox-noActived" />;
       }
     },
-    [group],
+    [group]
   );
 
   return (

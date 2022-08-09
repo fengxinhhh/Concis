@@ -1,5 +1,5 @@
-import Divider from '..';
 import React from 'react';
+import Divider from '..';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 /**
  * transform: true

@@ -8,8 +8,8 @@ export default function ButtonDemo1() {
   const buttonStyle = { margin: '8px' };
   const style = {
     display: 'flex',
-    flexWrap: 'wrap'
-  }
+    flexWrap: 'wrap',
+  };
 
   return (
     <>
@@ -116,6 +116,5 @@ export default function ButtonDemo1() {
         </Button>
       </div>
     </>
-
   );
 }

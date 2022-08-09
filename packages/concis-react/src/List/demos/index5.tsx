@@ -291,7 +291,7 @@ export default function listDemo1() {
     <List
       style={{ fontSize: '16px', width: '600px' }}
       header="List title"
-      size={'large'}
+      size="large"
       dataSource={dataSource}
       render={(item: any) => {
         return (
@@ -308,6 +308,6 @@ export default function listDemo1() {
       }}
       virtualListProps
       virtualShowNum={10}
-    ></List>
+    />
   );
 }

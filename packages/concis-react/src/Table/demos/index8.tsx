@@ -1,6 +1,5 @@
 import React from 'react';
 import Table from '..';
-import Button from '../../Button';
 
 const columns = [
   {

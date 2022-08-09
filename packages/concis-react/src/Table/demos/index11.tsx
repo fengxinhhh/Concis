@@ -10,14 +10,14 @@ const columns = [
   {
     title: 'Salary',
     dataIndex: 'salary',
-    sorter: true, //默认排序，根据原生sort排序
+    sorter: true, // 默认排序，根据原生sort排序
     filter: true,
   },
   {
     title: 'Address',
     dataIndex: 'address',
     sorter: [
-      //自定义排序规则，根据地址长度排序
+      // 自定义排序规则，根据地址长度排序
       (a: any, b: any) => a.address.length - b.address.length,
       (a: any, b: any) => b.address.length - a.address.length,
     ],
@@ -26,7 +26,7 @@ const columns = [
     title: 'Email',
     dataIndex: 'email',
     sorter: [
-      //自定义排序规则，根据邮箱前缀排序
+      // 自定义排序规则，根据邮箱前缀排序
       (a: any, b: any) => a.email.split('@')[0].length - b.email.split('@')[0].length,
       (a: any, b: any) => b.email.split('@')[0].length - a.email.split('@')[0].length,
     ],

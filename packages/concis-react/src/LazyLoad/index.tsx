@@ -1,4 +1,13 @@
-import React, { FC, memo, useEffect, useState, createRef, useContext, ReactNode, CSSProperties } from 'react';
+import React, {
+  FC,
+  memo,
+  useEffect,
+  useState,
+  createRef,
+  useContext,
+  ReactNode,
+  CSSProperties,
+} from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -29,7 +38,7 @@ const LazyLoad: FC<LazyLoadProps> = (props: LazyLoadProps) => {
 
   const classNames = cs(prefixCls, className, 'concis-lazyLoad');
 
-  let io: IntersectionObserver; //观察者
+  let io: IntersectionObserver; // 观察者
 
   useEffect(() => {
     io = new IntersectionObserver((entries) => elementObverse(entries));
@@ -37,7 +46,7 @@ const LazyLoad: FC<LazyLoadProps> = (props: LazyLoadProps) => {
   }, []);
 
   const elementObverse = (entries: Array<IntersectionObserverEntry>) => {
-    //监听函数
+    // 监听函数
     entries.forEach((entry: IntersectionObserverEntry) => {
       if (entry.isIntersecting) {
         if (delay) {
