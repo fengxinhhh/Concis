@@ -1,7 +1,7 @@
 import { ReactNode, CSSProperties } from 'react';
 
 type ButtonProps = {
-  //自定义button接口
+  // 自定义button接口
   children?: ReactNode;
   /**
    * @description 类名
@@ -52,7 +52,7 @@ type ButtonProps = {
    * @description 按钮点击回调事件
    */
   handleClick?: Function;
-}
+};
 interface ButtonGroupProps {
   /**
    * @description 类名

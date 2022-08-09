@@ -1,6 +1,6 @@
 import React from 'react';
-import Badge from '..';
 import { ClockCircleOutlined } from '@ant-design/icons';
+import Badge from '..';
 
 export default function avatarDemo1() {
   return (

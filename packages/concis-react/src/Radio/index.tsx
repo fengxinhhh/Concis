@@ -43,7 +43,11 @@ interface RadioProps {
 const Radio: FC<RadioProps> = (props: RadioProps) => {
   const { children, className, style } = props;
 
-  return <div className={className} style={style}>{children}</div>;
+  return (
+    <div className={className} style={style}>
+      {children}
+    </div>
+  );
 };
 
 export default memo(Radio);

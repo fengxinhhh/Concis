@@ -1,11 +1,11 @@
 import React from 'react';
+import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import Menu from '..';
 import Layout from '../../Layout';
 import Header from '../../Layout/Header';
 import Slider from '../../Layout/Slider';
 import Content from '../../Layout/Content';
 import Footer from '../../Layout/Footer';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 export default function MenuDemos1() {
   const getItem = (
@@ -13,7 +13,7 @@ export default function MenuDemos1() {
     key: string | number,
     level: string | number,
     icon?: JSX.Element | null,
-    children?: Array<Object> | null,
+    children?: Array<Object> | null
   ) => {
     return {
       label,
@@ -56,13 +56,7 @@ export default function MenuDemos1() {
       <Header extraStyle={{ background: '#8eb8e0' }}>header</Header>
       <Layout>
         <Slider row={3} extraStyle={{ height: '100%', padding: '0' }}>
-          <Menu
-            items={items}
-            width={'100%'}
-            defaultOpen
-            dark
-            handleRouteChange={handleRouteChange}
-          />
+          <Menu items={items} width="100%" defaultOpen dark handleRouteChange={handleRouteChange} />
         </Slider>
         <Content row={7} extraStyle={{ background: '#8eb8e0' }}>
           content

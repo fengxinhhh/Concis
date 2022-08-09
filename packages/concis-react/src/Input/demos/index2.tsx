@@ -32,13 +32,15 @@ export default function InputDemo2() {
           option={option}
           width={100}
           handleSelectCallback={handleSelectCallback}
-          placeholder={'请选择'}
+          placeholder="请选择"
           style={{ marginLeft: '10px' }}
         />
       </div>
       <div style={{ display: 'flex', marginTop: '10px' }}>
         <Input placeholder="请输入" handleIptChange={handleIptChange} />
-        <Button type="primary" style={{ marginLeft: '10px' }}>搜索</Button>
+        <Button type="primary" style={{ marginLeft: '10px' }}>
+          搜索
+        </Button>
       </div>
     </>
   );

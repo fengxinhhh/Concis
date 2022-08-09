@@ -1,3 +1,3 @@
-interface BackTopProps<T> {}
+interface BackTopProps {}
 
 export type { BackTopProps };

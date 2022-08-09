@@ -11,15 +11,14 @@ const getNowTime = (format: boolean = true) => {
     const secord =
       String(date.getSeconds()).length < 2 ? `0${date.getSeconds()}` : date.getSeconds();
     return `${year}-${month}-${day} ${hour}:${minute}:${secord}`;
-  } else {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    const secord = date.getSeconds();
-    return `${year}-${month}-${day} ${hour}:${minute}:${secord}`;
   }
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const secord = date.getSeconds();
+  return `${year}-${month}-${day} ${hour}:${minute}:${secord}`;
 };
 
 export { getNowTime };

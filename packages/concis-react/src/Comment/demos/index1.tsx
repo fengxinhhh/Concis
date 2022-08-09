@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { LikeOutlined, StarOutlined, StarFilled, LikeFilled } from '@ant-design/icons';
 import Comment from '..';
 import Avatar from '../../Avatar';
-import { LikeOutlined, StarOutlined, StarFilled, LikeFilled } from '@ant-design/icons';
 import './demos.less';
 
 export default function index1() {
@@ -27,7 +27,7 @@ export default function index1() {
     author: 'Concis',
     avatar: (
       <Avatar>
-        <img src="http://concis.org.cn/images/swiper-img1.webp"></img>
+        <img src="http://concis.org.cn/images/swiper-img1.webp" />
       </Avatar>
     ),
     content: 'Hello Concis,coding is life,comment body content.',

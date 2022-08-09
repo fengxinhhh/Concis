@@ -20,7 +20,8 @@ const Skeleton = <T,>(props: SkeletonProps<T>) => {
           return {
             width: width[i],
           };
-        } else if (typeof width[i] === 'number') {
+        }
+        if (typeof width[i] === 'number') {
           return {
             width: `${width[i]}px`,
           };
@@ -28,7 +29,7 @@ const Skeleton = <T,>(props: SkeletonProps<T>) => {
       }
       return {};
     },
-    [width],
+    [width]
   );
 
   return loading ? (

@@ -1,9 +1,9 @@
 import React, { FC, memo, useMemo, useEffect, useContext, useState } from 'react';
+import { CaretDownOutlined, CaretRightOutlined, CaretLeftOutlined } from '@ant-design/icons';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { CollapseItemProps } from './interfase';
-import { CaretDownOutlined, CaretRightOutlined, CaretLeftOutlined } from '@ant-design/icons';
 import './style/item.module.less';
 import useStateCallback from '../common_utils/hooks/useStateCallback';
 import { ctx } from './index';
@@ -18,34 +18,34 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
 
   const classNames = cs(prefixCls, className, 'concis-collapse-item');
   const { activeKeyList, setActiveKeyList, accordion, headerAlign, lazyLoad, toggleCallback } =
-    useContext(ctx); //父组件共享状态
+    useContext(ctx); // 父组件共享状态
 
   useEffect(() => {
-    //根据默认值展开或收起
-    if (activeKeyList.indexOf(Number(listKey)) == -1) {
+    // 根据默认值展开或收起
+    if (activeKeyList.indexOf(Number(listKey)) === -1) {
       setContentDomHeight(0);
     } else {
       (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight &&
         setContentDomHeight(
           (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight +
-            30,
+            30
         );
     }
   }, [activeKeyList]);
 
   const toggleContent = () => {
-    if (disabled) return; //禁用
+    if (disabled) return; // 禁用
     let newHeight = contentDomHeight;
-    if (newHeight == 0) {
-      //展开
+    if (newHeight === 0) {
+      // 展开
       if (lazyLoad && !hasOpen) {
-        //首次展开懒加载
+        // 首次展开懒加载
         setHasOpen(true, (state: boolean) => {
           newHeight =
             (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight +
             30;
           if (accordion) {
-            //手风琴，全部清除再加入
+            // 手风琴，全部清除再加入
             setActiveKeyList([Number(listKey)]);
             toggleCallback && toggleCallback([Number(listKey)]);
           } else {
@@ -61,7 +61,7 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
           (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight +
           30;
         if (accordion) {
-          //手风琴，全部清除再加入
+          // 手风琴，全部清除再加入
           setActiveKeyList([Number(listKey)]);
           toggleCallback && toggleCallback([Number(listKey)]);
         } else {
@@ -73,14 +73,14 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
         setContentDomHeight(newHeight);
       }
     } else {
-      //收起
+      // 收起
       newHeight = 0;
       setActiveKeyList((oldAList: Array<string | number>) => {
         oldAList.splice(
           oldAList.findIndex(
-            (item: number | string, i: number | string) => Number(i) + 1 == listKey,
+            (item: number | string, i: number | string) => Number(i) + 1 === listKey
           ),
-          1,
+          1
         );
         return [...oldAList.sort()];
       });
@@ -89,13 +89,13 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
   };
 
   const headerHeight = useMemo(() => {
-    //展开高度
+    // 展开高度
     return {
       maxHeight: `${contentDomHeight}px`,
     };
   }, [contentDomHeight]);
   const renderHeader = useMemo(() => {
-    if (headerAlign == 'left') {
+    if (headerAlign === 'left') {
       return (
         <div
           className="concis-collapse-item-header"
@@ -104,14 +104,15 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
         >
           <div className="left">
             <div className="header-icon">
-              {headerHeight.maxHeight == '0px' ? <CaretRightOutlined /> : <CaretDownOutlined />}
+              {headerHeight.maxHeight === '0px' ? <CaretRightOutlined /> : <CaretDownOutlined />}
             </div>
             <div className="header-text">{header}</div>
           </div>
           {extra && <div className="right">{extra}</div>}
         </div>
       );
-    } else if (headerAlign == 'right') {
+    }
+    if (headerAlign === 'right') {
       return (
         <div
           className="concis-collapse-item-header"
@@ -124,12 +125,13 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
           <div className="right">
             {extra}
             <div className="header-icon">
-              {headerHeight.maxHeight == '0px' ? <CaretLeftOutlined /> : <CaretDownOutlined />}
+              {headerHeight.maxHeight === '0px' ? <CaretLeftOutlined /> : <CaretDownOutlined />}
             </div>
           </div>
         </div>
       );
-    } else if (headerAlign == 'hide') {
+    }
+    if (headerAlign === 'hide') {
       return (
         <div
           className="concis-collapse-item-header"

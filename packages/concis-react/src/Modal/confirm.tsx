@@ -14,7 +14,7 @@ function confirm(props: ModalProps, type: ConfirmType) {
   ReactDOM.render(
     <Modal
       {...props}
-      visible={true}
+      visible
       type={type}
       isPromiseOk={isPromiseOk}
       isPromiseCancel={isPromiseCancel}
@@ -22,7 +22,7 @@ function confirm(props: ModalProps, type: ConfirmType) {
     >
       {props.content}
     </Modal>,
-    div,
+    div
   );
 }
 

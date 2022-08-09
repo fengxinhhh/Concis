@@ -8,7 +8,9 @@ export default function index1() {
 
   return (
     <div>
-      <Button style={{ marginRight: '8px' }} handleClick={() => setVisible1(true)}>Open Modal1</Button>
+      <Button style={{ marginRight: '8px' }} handleClick={() => setVisible1(true)}>
+        Open Modal1
+      </Button>
       <Button handleClick={() => setVisible2(true)}>Open Modal2</Button>
 
       <Modal

@@ -2,7 +2,6 @@ import React from 'react';
 import { YearPicker } from '..';
 
 export default function TimePickerDemo1() {
-
   const handleChange = (date: string) => {
     console.log(date);
   };
@@ -11,7 +10,7 @@ export default function TimePickerDemo1() {
     <YearPicker
       disableCheck={(date: Date) => date.getFullYear() > 2022}
       align="top"
-      showClear={true}
+      showClear
       handleChange={handleChange}
     />
   );

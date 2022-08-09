@@ -5,18 +5,18 @@ import { getErrorInfo } from '../track/getErrorInfo';
 import sendData from '../track/sendData';
 
 const usePageListener = (componentName: string) => {
-  //监测单组件文档页面停留时间，进行埋点
+  // 监测单组件文档页面停留时间，进行埋点
   const startTime = useRef<Date>();
   const readTime = useRef<number>(0);
 
   getErrorInfo();
   useEffect(() => {
-    startTime.current = new Date(); //保存进入页面的时间戳
-    //计算页面停留时间
+    startTime.current = new Date(); // 保存进入页面的时间戳
+    // 计算页面停留时间
     return () => {
       const endTime = new Date();
       readTime.current = Math.round(
-        Math.abs((startTime.current as Date).getTime() - endTime.getTime()) / 1000,
+        Math.abs((startTime.current as Date).getTime() - endTime.getTime()) / 1000
       );
     };
   }, [startTime]);
@@ -28,11 +28,11 @@ const usePageListener = (componentName: string) => {
         componentName,
         leaveTime: readTime.current,
       };
-      const userDeviceInfo = (await getUserIp()) as object; //用户个人相关信息
-      const nativeBrowserInfo = (await getNativeBrowserInfo()) as object; //浏览器原生的信息
+      const userDeviceInfo = (await getUserIp()) as object; // 用户个人相关信息
+      const nativeBrowserInfo = (await getNativeBrowserInfo()) as object; // 浏览器原生的信息
       trackInfo = { ...trackInfo, ...userDeviceInfo, ...nativeBrowserInfo };
       console.log(trackInfo);
-      //将收集到的数据发送给后端
+      // 将收集到的数据发送给后端
       const result = await sendData(trackInfo);
       return result;
     };

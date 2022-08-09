@@ -46,22 +46,20 @@ const Space = <T,>(props: SpaceProps<T>) => {
           ? { marginRight: `${marginNum}px` }
           : { marginBottom: `${marginNum}px` }
         : {};
-    } else {
-      const marginRight = getMargin(size[0]);
-      const marginBottom = getMargin(size[1]);
-      if (wrap) {
-        return {
-          marginRight,
-          marginBottom,
-        };
-      } else {
-        return !isLastDom
-          ? direction === 'horizontal'
-            ? { marginRight: `${marginRight}px` }
-            : { marginBottom: `${marginBottom}px` }
-          : {};
-      }
     }
+    const marginRight = getMargin(size[0]);
+    const marginBottom = getMargin(size[1]);
+    if (wrap) {
+      return {
+        marginRight,
+        marginBottom,
+      };
+    }
+    return !isLastDom
+      ? direction === 'horizontal'
+        ? { marginRight: `${marginRight}px` }
+        : { marginBottom: `${marginBottom}px` }
+      : {};
   };
   const getAlignStyle = () => {
     switch (align) {
@@ -89,12 +87,12 @@ const Space = <T,>(props: SpaceProps<T>) => {
   };
   const spaceStyles = useMemo(() => {
     const returnStyle: spaceAlignParams = direction === 'horizontal' ? getAlignStyle() : {};
-    returnStyle['display'] = 'flex';
+    returnStyle.display = 'flex';
     console.log(direction);
     if (direction === 'vertical') {
-      returnStyle['flexDirection'] = 'column';
+      returnStyle.flexDirection = 'column';
     } else {
-      returnStyle['flexDirection'] = 'row';
+      returnStyle.flexDirection = 'row';
     }
     return returnStyle;
   }, [direction, align]);

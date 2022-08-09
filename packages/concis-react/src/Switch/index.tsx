@@ -69,7 +69,11 @@ const Switch = <T,>(props: SwitchProps<T>) => {
   }, [switchStatus, disabled, switchWidth, small, globalColor]);
 
   return (
-    <div className={classNames} style={{ ...style, ...switchStyle as any }} onClick={toggleSwitch}>
+    <div
+      className={classNames}
+      style={{ ...style, ...(switchStyle as any) }}
+      onClick={toggleSwitch}
+    >
       <div className="concis-switch-dot">{loading && <Loading width="1em" height="1em" />}</div>
       {checkedChildren && unCheckedChildren && (
         <div className="concis-switch-child">

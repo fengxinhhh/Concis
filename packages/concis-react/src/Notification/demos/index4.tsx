@@ -5,7 +5,7 @@ import Notification from '..';
 export default function index1() {
   const message = (
     val: string,
-    position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight',
+    position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
   ) => {
     Notification.info({
       title: 'Notification',

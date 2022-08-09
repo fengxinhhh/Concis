@@ -1,9 +1,7 @@
 import React from 'react';
 import { BackTopProps } from './interface';
 
-const BackTop = <T,>(props: BackTopProps<T>) => {
-  const {} = props;
-
+const BackTop = (props: BackTopProps) => {
   return <div>index</div>;
 };
 
