@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Tabs from '..';
 
 const TabPane = Tabs.TabPane;
@@ -9,21 +9,21 @@ export default function index1() {
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
-    padding: '100px 0'
-  }
+    padding: '100px 0',
+  };
   return (
     <div>
       <Tabs defaultActiveTab="1">
-        <TabPane key='1' title='Tab 1'>
+        <TabPane key="1" title="Tab 1">
           <div style={style}>Hello Concis!This is thie content of Tab Panel 1</div>
         </TabPane>
-        <TabPane key='2' title='Tab 2' disabled>
+        <TabPane key="2" title="Tab 2" disabled>
           <div style={style}>Hello Concis!This is thie content of Tab Panel 2</div>
         </TabPane>
-        <TabPane key='3' title='Tab 3'>
+        <TabPane key="3" title="Tab 3">
           <div style={style}>Hello Concis!This is thie content of Tab Panel 3</div>
         </TabPane>
       </Tabs>
     </div>
-  )
+  );
 }

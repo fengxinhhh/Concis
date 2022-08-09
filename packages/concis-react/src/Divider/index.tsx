@@ -33,7 +33,8 @@ const Divider: FC<dividerProps> = memo((props) => {
       return {
         justifyContent: 'left',
       };
-    } else if (align === 'right') {
+    }
+    if (align === 'right') {
       return {
         justifyContent: 'right',
       };
@@ -54,25 +55,26 @@ const Divider: FC<dividerProps> = memo((props) => {
           flexBasis: '24px',
           flexGrow: 0,
         };
-      } else if (domAlign === 'right' && align === 'right') {
+      }
+      if (domAlign === 'right' && align === 'right') {
         return {
           flexBasis: '24px',
           flexGrow: 0,
         };
       }
     },
-    [align],
+    [align]
   );
   return (
     <div className={classNames}>
       <div className={`${classFirstName}-line`} style={{ ...lineAlign }}>
         {children && (
           <>
-            <span className={`${classFirstName}-before-line-text`} style={lineStyle('left')}></span>
+            <span className={`${classFirstName}-before-line-text`} style={lineStyle('left')} />
             <span className={`${classFirstName}-line-text`} style={textStyle}>
               {children}
             </span>
-            <span className={`${classFirstName}-after-line-text`} style={lineStyle('right')}></span>
+            <span className={`${classFirstName}-after-line-text`} style={lineStyle('right')} />
           </>
         )}
       </div>

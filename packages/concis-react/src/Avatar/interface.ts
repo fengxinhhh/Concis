@@ -1,4 +1,5 @@
-import React, { CSSProperties, ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
+
 interface groupProps {
   children?: ReactNode;
   className?: string;

@@ -13,10 +13,10 @@ export default function index4() {
   };
   return (
     <TimePicker
-      showClear={true}
+      showClear
       disableHour={disableHour}
       disableMin={disableMin}
       disableSecond={disableSecond}
-    ></TimePicker>
+    />
   );
 }

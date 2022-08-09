@@ -2,7 +2,6 @@ import React from 'react';
 import DatePicker from '../DatePicker';
 
 export default function TimePickerDemo6() {
-
   const handleChange = (date: string) => {
     console.log(date);
   };
@@ -11,7 +10,7 @@ export default function TimePickerDemo6() {
     <DatePicker
       disableCheck={(date: Date) => date.getDate() > 13}
       align="right"
-      showClear={true}
+      showClear
       handleChange={handleChange}
     />
   );

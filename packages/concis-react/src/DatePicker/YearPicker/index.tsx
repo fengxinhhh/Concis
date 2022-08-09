@@ -1,5 +1,6 @@
 import React, { useEffect, FC, memo, useState, useContext } from 'react';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
+import chunk from 'lodash/chunk';
 import Input from '../../Input';
 import Popover from '../../Popover';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
@@ -8,8 +9,8 @@ import { globalCtx } from '../../GlobalConfig';
 import { getSiteTheme } from '../../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../../common_utils/getRenderColor';
 import { ctx } from '../../Form';
-import chunk from 'lodash/chunk';
 import './index.module.less';
+
 const dayjs = require('dayjs');
 
 interface YearPickerProps {
@@ -18,20 +19,10 @@ interface YearPickerProps {
    */
   className?: string;
   /**
-   * @description 日期选择器类型(primary/input)仅支持非range
-   * @default primary
-   */
-  type?: string;
-  /**
    * @description 设置日期的格式化
    * @default YYYY-MM-DD
    */
   format?: string;
-  /**
-   * @description 设置日期区间选择器
-   * @default false
-   */
-  showRange?: Boolean;
   /**
    * @description 显示日期重置按钮
    * @default false
@@ -58,11 +49,7 @@ interface YearItemProps {
   date: Date;
   disable: boolean;
 }
-interface NowDateProps {
-  year: number;
-  month: number;
-  day: number;
-}
+
 const YearPicker: FC<YearPickerProps> = (props) => {
   const {
     className,
@@ -92,12 +79,12 @@ const YearPicker: FC<YearPickerProps> = (props) => {
             value: year + i,
           };
         }),
-        3,
-      ),
+        3
+      )
     );
   }, [year]);
   useEffect(() => {
-    //用于监听Form组件的重置任务
+    // 用于监听Form组件的重置任务
     if (formCtx.reset) {
       setDateValue('');
     }
@@ -128,7 +115,7 @@ const YearPicker: FC<YearPickerProps> = (props) => {
     <Popover
       type="click"
       align={align}
-      dialogWidth={'auto'}
+      dialogWidth="auto"
       closeDeps={[dateValue]}
       content={
         <div
@@ -137,7 +124,7 @@ const YearPicker: FC<YearPickerProps> = (props) => {
             {
               '--checked-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
             } as any
           }
@@ -161,8 +148,9 @@ const YearPicker: FC<YearPickerProps> = (props) => {
                     <td
                       key={i}
                       onClick={() => setInputVal(date)}
-                      className={`${date.disable ? 'disable' : ''}  ${isSameDate(date.date) ? 'active' : ''
-                        }`}
+                      className={`${date.disable ? 'disable' : ''}  ${
+                        isSameDate(date.date) ? 'active' : ''
+                      }`}
                     >
                       <span>{date.value}</span>
                     </td>

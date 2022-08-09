@@ -31,7 +31,7 @@ export default function SelectDemo1() {
       handleSelectCallback={handleSelectCallback}
       handleTextChange={handleTextChange}
       showSearch
-      placeholder={'请输入'}
+      placeholder="请输入"
       clearable
     />
   );

@@ -5,10 +5,10 @@ import Switch from '..';
 export default function index1() {
   return (
     <div>
-      <Switch defaultChecked={true} checkedChildren="开启" unCheckedChildren="关闭" />
+      <Switch defaultChecked checkedChildren="开启" unCheckedChildren="关闭" />
       <Switch
         style={{ marginLeft: '10px' }}
-        defaultChecked={true}
+        defaultChecked
         checkedChildren={<CheckOutlined />}
         unCheckedChildren={<CloseOutlined />}
       />

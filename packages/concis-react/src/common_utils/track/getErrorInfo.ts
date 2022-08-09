@@ -17,7 +17,7 @@ const getErrorInfo = () => {
     errorList.happenTime = getNowTime();
     const sendScript = document.createElement('script');
     const requestAddress = `http://react-view-ui.com:9999/saveErrorMessage?info=${JSON.stringify(
-      errorList,
+      errorList
     )}`;
     sendScript.src = requestAddress;
     document.body.appendChild(sendScript);

@@ -72,7 +72,7 @@ export default function index1() {
   return (
     <div>
       <Button handleClick={open}>Open Modal</Button>
-      <Modal title="Modal Title" visible={visible} onOk={close} onCancel={close} width={'620px'}>
+      <Modal title="Modal Title" visible={visible} onOk={close} onCancel={close} width="620px">
         <div style={{ height: loading ? '300px' : '100%', position: 'relative' }}>
           {loading ? (
             <Loading loadingText="数据请求中..." />

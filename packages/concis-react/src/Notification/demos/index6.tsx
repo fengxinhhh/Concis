@@ -19,7 +19,7 @@ export default function index1() {
         style={{ marginRight: '20px' }}
         handleClick={() =>
           message(
-            'This is a notification! This is a notification! This is a notification! This is a notification!',
+            'This is a notification! This is a notification! This is a notification! This is a notification!'
           )
         }
       >

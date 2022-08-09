@@ -1,11 +1,4 @@
 import React, { useState, useEffect, useMemo, useRef, CSSProperties, useContext } from 'react';
-import ReactDOM from 'react-dom';
-import { GlobalConfigProps } from '../GlobalConfig/interface';
-import cs from '../common_utils/classNames';
-import { globalCtx } from '../GlobalConfig';
-import { NotificationProps, footerBtnVal } from './interface';
-import Button from '../Button';
-import './index.module.less';
 import {
   ExclamationCircleFilled,
   CheckCircleFilled,
@@ -13,6 +6,13 @@ import {
   LoadingOutlined,
   CloseOutlined,
 } from '@ant-design/icons';
+import ReactDOM from 'react-dom';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
+import cs from '../common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
+import { NotificationProps, footerBtnVal } from './interface';
+import Button from '../Button';
+import './index.module.less';
 
 let container: HTMLDivElement | null;
 let topLeftMessageNum: number = 0;
@@ -20,10 +20,10 @@ let topRightMessageNum: number = 0;
 let bottomLeftMessageNum: number = 0;
 let bottomRightMessageNum: number = 0;
 
-//添加消息窗口
+// 添加消息窗口
 function addInstance(
   type: 'info' | 'success' | 'warning' | 'error' | 'normal' | 'loading',
-  props: string | NotificationProps<string>,
+  props: string | NotificationProps<string>
 ) {
   let style: CSSProperties = {},
     duration: number = 3000,
@@ -84,7 +84,7 @@ function addInstance(
       }
     }
   }, duration + 200);
-  //挂载组件
+  // 挂载组件
   ReactDOM.render(
     <Notification
       title={title}
@@ -100,15 +100,15 @@ function addInstance(
       messageBoxId={messageBoxId}
       dark={dark}
     />,
-    div,
+    div
   );
 }
-//移除窗口
+// 移除窗口
 function remove(id: string, position: string, callback: Function) {
   const container = document.querySelector('.notification-container');
   const children = Array.prototype.slice.call(container?.childNodes);
 
-  for (let key in children) {
+  for (const key in children) {
     if (children[key].getAttribute('class') === `${position}-${id}`) {
       const removeDom = children[key];
       console.log(removeDom.childNodes);
@@ -131,15 +131,16 @@ function remove(id: string, position: string, callback: Function) {
     }
   }
 }
-//重排节点下窗口高度
+// 重排节点下窗口高度
 function changeHeight(children: Array<HTMLElement>, position: any) {
   const transform = position.startsWith('top') ? 'top' : 'bottom';
-  for (let key in children) {
+  for (const key in children) {
     const child = children[key].childNodes[0] as HTMLElement;
     if (children[key].getAttribute('class')?.startsWith(transform)) {
       const domHeight = document.querySelector('.concis-notifica-container')?.clientHeight;
-      child.style[transform] =
-        Number(child.style[transform].split('p')[0]) - 30 - (domHeight as number) + 'px';
+      child.style[transform] = `${
+        Number(child.style[transform].split('p')[0]) - 30 - (domHeight as number)
+      }px`;
     }
   }
 }
@@ -165,7 +166,7 @@ const Notification = (props: NotificationProps<string>) => {
 
   const classNames = cs(
     prefixCls,
-    dark ? 'concis-dark-notifica-container' : 'concis-notifica-container',
+    dark ? 'concis-dark-notifica-container' : 'concis-notifica-container'
   );
 
   useEffect(() => {
@@ -209,52 +210,57 @@ const Notification = (props: NotificationProps<string>) => {
       defaultHeight = messageDom.current.clientHeight * (bottomRightMessageNum - 1);
       avaHeight = bottomRightMessageNum;
     }
-    (messageDom?.current as HTMLElement).style[transform as 'top' | 'bottom'] =
-      (avaHeight as number) * 30 + defaultHeight + 'px';
+    (messageDom?.current as HTMLElement).style[transform as 'top' | 'bottom'] = `${
+      (avaHeight as number) * 30 + defaultHeight
+    }px`;
   }, [topLeftMessageNum, topRightMessageNum, bottomLeftMessageNum, bottomRightMessageNum]);
 
   const messageIcon = useMemo(() => {
     if (type === 'info') {
       return <ExclamationCircleFilled style={{ color: '#325DFF', fontSize: '24px' }} />;
-    } else if (type === 'error') {
+    }
+    if (type === 'error') {
       return <CloseCircleFilled style={{ color: '#f53f3f', fontSize: '24px' }} />;
-    } else if (type === 'normal') {
+    }
+    if (type === 'normal') {
       return <></>;
-    } else if (type === 'success') {
+    }
+    if (type === 'success') {
       return <CheckCircleFilled style={{ color: '#19b42a', fontSize: '24px' }} />;
-    } else if (type === 'warning') {
+    }
+    if (type === 'warning') {
       return <ExclamationCircleFilled style={{ color: '#fa7d00', fontSize: '24px' }} />;
-    } else if (type === 'loading') {
+    }
+    if (type === 'loading') {
       return <LoadingOutlined style={{ color: '#325DFF', fontSize: '24px' }} />;
     }
   }, [type]);
 
   const messageXtransform = useMemo(() => {
-    //提示框水平位置，居左/居右
+    // 提示框水平位置，居左/居右
     if (position?.includes('Left')) {
       return {
         left: '20px',
       };
-    } else {
-      return {
-        right: '20px',
-      };
     }
+    return {
+      right: '20px',
+    };
   }, [position]);
   const closeMessage = () => {
-    //close按钮关闭
+    // close按钮关闭
     remove(messageBoxId as string, position as string, () => {
       doneCallback && doneCallback(1);
     });
   };
   const enter = () => {
-    //确认关闭
+    // 确认关闭
     remove(messageBoxId as string, position as string, () => {
       doneCallback && doneCallback(2);
     });
   };
   const exit = () => {
-    //取消关闭
+    // 取消关闭
     remove(messageBoxId as string, position as string, () => {
       doneCallback && doneCallback(3);
     });
@@ -276,7 +282,7 @@ const Notification = (props: NotificationProps<string>) => {
       <div className="notification-content">{content}</div>
       {showFooter && (
         <div className="notification-footer">
-          <div></div>
+          <div />
           <div>
             <Button type="text" height={30} handleClick={enter}>
               {(footerBtnVal as footerBtnVal).exit}

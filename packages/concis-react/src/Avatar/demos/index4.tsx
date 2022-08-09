@@ -1,6 +1,6 @@
 import React from 'react';
-import Avatar from '..';
 import { UserOutlined, CameraOutlined, EditOutlined } from '@ant-design/icons';
+import Avatar from '..';
 
 export default function avatarDemo1() {
   const triggerClick = () => {
@@ -48,7 +48,7 @@ export default function avatarDemo1() {
         triggerIcon={<CameraOutlined style={{ fontSize: '20px' }} />}
         triggerClick={triggerClick}
       >
-        <img src="https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png"></img>
+        <img src="https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png" />
       </Avatar>
     </div>
   );

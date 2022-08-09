@@ -2,7 +2,7 @@ const sendData = (params: object) => {
   const sendScript = document.createElement('script');
   console.log(params);
   const requestAddress = `http://react-view-ui.com:9999/saveComponentLog?info=${JSON.stringify(
-    params,
+    params
   )}`;
   sendScript.src = requestAddress;
   sendScript.async = true;

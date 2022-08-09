@@ -27,12 +27,10 @@ const Badge: FC<badgeProps> = (props) => {
       if (maxCount) {
         if (count > maxCount) {
           return `${maxCount}+`;
-        } else {
-          return count;
         }
-      } else {
         return count;
       }
+      return count;
     }
   }, [count, maxCount]);
   const countStyle = useMemo(() => {
@@ -41,22 +39,19 @@ const Badge: FC<badgeProps> = (props) => {
         return {
           borderRadius: '20px',
         };
-      } else {
-        return {
-          borderRadius: '50%',
-        };
       }
-    } else {
-      if (String(computedCount).length == 1) {
-        return {
-          padding: '',
-        };
-      } else {
-        return {
-          padding: '0 6px',
-        };
-      }
+      return {
+        borderRadius: '50%',
+      };
     }
+    if (String(computedCount).length === 1) {
+      return {
+        padding: '',
+      };
+    }
+    return {
+      padding: '0 6px',
+    };
   }, [children, count, maxCount]);
   return (
     <>
@@ -70,7 +65,7 @@ const Badge: FC<badgeProps> = (props) => {
             <span
               className="concis-badge-dot"
               style={{ ...dotStyle, right: `${offset[0]}px`, top: `${offset[1]}px` }}
-            ></span>
+            />
           ) : text ? (
             <span className="concis-badge-text">{text}</span>
           ) : (

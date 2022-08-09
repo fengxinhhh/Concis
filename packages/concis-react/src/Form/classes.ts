@@ -1,13 +1,16 @@
 class FormItemAttrs {
-  wrapperCol: number; //底部距离
-  wrapperTol: number; //顶部距离
-  layout: string; //表单布局形式
+  wrapperCol: number; // 底部距离
+
+  wrapperTol: number; // 顶部距离
+
+  layout: string; // 表单布局形式
 
   constructor(wrapperCol: number, wrapperTol: number, layout: string) {
     this.wrapperCol = wrapperCol;
     this.wrapperTol = wrapperTol;
     this.layout = layout;
   }
+
   getStyle() {
     return {
       marginBottom: `${20 + this.wrapperCol}px`,
@@ -15,6 +18,7 @@ class FormItemAttrs {
       ...this.formatLayout(),
     };
   }
+
   formatLayout() {
     let layoutStyle = {};
     switch (this.layout) {
@@ -27,22 +31,27 @@ class FormItemAttrs {
           alignItems: 'flex-start',
         };
         break;
+      default: {
+        break;
+      }
     }
     return layoutStyle;
   }
 }
 
 class FormItemLabel {
-  layout: string; //表单布局形式
+  layout: string; // 表单布局形式
 
   constructor(layout: string) {
     this.layout = layout;
   }
+
   getStyle() {
     return {
       ...this.getAlign(),
     };
   }
+
   getAlign() {
     let layoutStyle = {};
     switch (this.layout) {
@@ -55,6 +64,9 @@ class FormItemLabel {
           marginBottom: '5px',
         };
         break;
+      default: {
+        break;
+      }
     }
     return layoutStyle;
   }

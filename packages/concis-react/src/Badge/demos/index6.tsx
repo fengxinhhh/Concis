@@ -14,7 +14,7 @@ export default function avatarDemo1() {
       <Badge count={100} maxCount={99}>
         <Avatar shape="square">A</Avatar>
       </Badge>
-      <Badge count={9}></Badge>
+      <Badge count={9} />
       <Badge count={9} dot>
         <span>Link</span>
       </Badge>

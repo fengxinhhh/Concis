@@ -18,7 +18,7 @@ export default function listDemo1() {
     <List
       style={{ fontSize: '16px', width: '600px' }}
       header="List title"
-      size={'default'}
+      size="default"
       dataSource={dataSource}
       render={(item: string) => {
         return (
@@ -27,6 +27,6 @@ export default function listDemo1() {
           </List.Item>
         );
       }}
-    ></List>
+    />
   );
 }

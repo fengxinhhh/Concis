@@ -31,12 +31,12 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
     if (formCtx.reset) {
       setValue('');
     }
-  }, [formCtx.reset])
+  }, [formCtx.reset]);
   useEffect(() => {
     if (formCtx.submitStatus) {
       formCtx.getChildVal(value);
     }
-  }, [formCtx.submitStatus])
+  }, [formCtx.submitStatus]);
 
   const handleIptChange = (val: string) => {
     setValue(val);
@@ -76,12 +76,19 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
           right: '-50%',
           top: '-120%',
         };
+      default: {
+        return {
+          left: '25%',
+          bottom: 'calc(100% + 5px)',
+        };
+      }
     }
   }, [align]);
   const traggerOptionClass = <T extends string, U>(label: T, disabled: U) => {
     if (disabled) {
       return 'disabled-option';
-    } else if (label === value) {
+    }
+    if (label === value) {
       return 'selected-option';
     }
     return 'option';
@@ -89,7 +96,7 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
   return (
     <div
       className={classNames}
-      style={{ ...style, '--select-color': globalColor ? globalColor : '#325dff' } as any}
+      style={{ ...style, '--select-color': globalColor || '#325dff' } as any}
     >
       <Input
         placeholder="请输入"
@@ -111,8 +118,8 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
         style={traggerTransform}
         timeout={200}
         appear
-        mountOnEnter={true}
-        unmountOnExit={true}
+        mountOnEnter
+        unmountOnExit
         onEnter={(e: HTMLDivElement) => {
           e.style.display = 'flex';
         }}

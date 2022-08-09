@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Popover from '..';
 import Button from '../../Button';
 

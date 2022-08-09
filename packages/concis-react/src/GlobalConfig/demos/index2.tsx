@@ -17,7 +17,6 @@ import Switch from '../../Switch';
 import Steps from '../../Steps';
 import Step from '../../Steps/Step';
 import InputPro from '../../InputPro';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const option = [
@@ -124,7 +123,7 @@ export default function index1() {
   const toggle = () => {
     document.documentElement.setAttribute(
       'data-prefers-color',
-      dark === 'light' ? 'dark' : 'light',
+      dark === 'light' ? 'dark' : 'light'
     );
     setDark(dark === 'light' ? 'dark' : 'light');
   };
@@ -133,7 +132,7 @@ export default function index1() {
   };
 
   return (
-    <GlobalConfig globalColor={globalColor} darkTheme={dark === 'dark' ? true : false}>
+    <GlobalConfig globalColor={globalColor} darkTheme={dark === 'dark'}>
       <div style={{ position: 'relative' }}>
         <Button type="primary" handleClick={toggle}>
           切换主题
@@ -141,37 +140,37 @@ export default function index1() {
         <Button type="danger" style={{ marginLeft: '20px' }} handleClick={changeColor}>
           开启自定义主题
         </Button>
-        <p></p>
+        <p />
         <Loading loadingText="正在加载中..." />
-        <p></p>
+        <p />
         <CheckBox>5</CheckBox>
-        <p></p>
+        <p />
         <Switch />
-        <p></p>
+        <p />
         <RangeDatePicker />
-        <p></p>
+        <p />
         <Input placeholder="请输入" width="200" />
-        <p></p>
+        <p />
         <RadioGroup value={1} canAddOption>
           <Radio disabled>Apple</Radio>
           <Radio>Orange</Radio>
           <Radio>Watch</Radio>
         </RadioGroup>
-        <p></p>
-        <Select option={option} width={200} placeholder={'请选择'} />
-        <p></p>
+        <p />
+        <Select option={option} width={200} placeholder="请选择" />
+        <p />
         <Tree treeData={treeData} />
-        <p></p>
+        <p />
         <Badge count={9} style={{ marginRight: '25px' }}>
           <Avatar shape="square">Num</Avatar>
         </Badge>
-        <p></p>
+        <p />
         <TreeView treeData={treeData} />
-        <p></p>
+        <p />
         <InputPro align="top" option={option} />
-        <p></p>
+        <p />
         <Pagination total={200} showSizeChanger pageSizeOptions={[10, 20, 30, 50]} showJumpInput />
-        <p></p>
+        <p />
         <Steps current={2}>
           {stepsData.map((step) => {
             return (

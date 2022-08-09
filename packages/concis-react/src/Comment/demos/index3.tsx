@@ -55,7 +55,7 @@ export default function index1() {
       author="Concis"
       avatar={
         <Avatar>
-          <img src="http://concis.org.cn/images/swiper-img1.webp"></img>
+          <img src="http://concis.org.cn/images/swiper-img1.webp" />
         </Avatar>
       }
       content="Hello Concis,coding is life,comment body content."
@@ -70,7 +70,7 @@ export default function index1() {
               author="Concis"
               avatar={
                 <Avatar>
-                  <img src="http://concis.org.cn/images/swiper-img3.webp"></img>
+                  <img src="http://concis.org.cn/images/swiper-img3.webp" />
                 </Avatar>
               }
               content={_.content}
@@ -84,15 +84,15 @@ export default function index1() {
         <Comment
           avatar={
             <Avatar>
-              <img src="http://concis.org.cn/images/swiper-img3.webp"></img>
+              <img src="http://concis.org.cn/images/swiper-img3.webp" />
             </Avatar>
           }
           content={
             <TextArea
               defaultValue={replyContent}
-              showCount={true}
+              showCount
               maxLength={30}
-              showClear={true}
+              showClear
               handleIptChange={(v: string) => setReplyContent(v)}
             />
           }

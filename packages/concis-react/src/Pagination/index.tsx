@@ -70,23 +70,21 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
     setNowIndex(1);
     if (Math.ceil(total / sizePage) > 6) {
       setPageRenderArray([2, 3, 4, 5, 6]);
+    } else if (Math.ceil(total / sizePage) > 2) {
+      const array = new Array((Math.ceil(total / sizePage) as number) - 2).fill(0);
+      array.forEach((item, index) => {
+        array[index] = index + 2;
+      });
+      setPageRenderArray(array);
     } else {
-      if (Math.ceil(total / sizePage) > 2) {
-        const array = new Array((Math.ceil(total / sizePage) as number) - 2).fill(0);
-        array.forEach((item, index) => {
-          array[index] = index + 2;
-        });
-        setPageRenderArray(array);
-      } else {
-        setPageRenderArray([]);
-      }
+      setPageRenderArray([]);
     }
     return Math.ceil(total / sizePage);
   }, [total, sizePage]);
-  //点击改页码
+  // 点击改页码
   const changePage = (pageNum: number) => {
     return () => {
-      //小型分页器
+      // 小型分页器
       if (totalPage <= 6) {
         changePageCallback && changePageCallback(pageNum);
         return setNowIndex(pageNum);
@@ -94,11 +92,11 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
       if (pageNum > 4 && pageNum <= totalPage - 4) {
         setPageRenderArray([pageNum - 2, pageNum - 1, pageNum, pageNum + 1, pageNum + 2]);
       }
-      //页码为1的情况
+      // 页码为1的情况
       if (pageNum <= 4) {
         setPageRenderArray([2, 3, 4, 5, 6]);
       }
-      //页码到倒数第四页内的情况
+      // 页码到倒数第四页内的情况
       if (pageNum > totalPage - 4) {
         setPageRenderArray([
           totalPage - 5,
@@ -112,7 +110,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
       changePageCallback && changePageCallback(pageNum);
     };
   };
-  //向前翻一页
+  // 向前翻一页
   const prevPage = () => {
     if (nowIndex === 1) {
       return;
@@ -121,20 +119,21 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
     if (totalPage > 6) {
       if (nowIndex > totalPage - 3) {
         return;
-      } else if (nowIndex > 4) {
+      }
+      if (nowIndex > 4) {
         setPageRenderArray(
           pageRenderArray.map((item: number) => {
             return item - 1;
-          }),
+          })
         );
       } else if (nowIndex - 5 <= 4) {
-        //开头几页翻页的情况，回到第一页
+        // 开头几页翻页的情况，回到第一页
         setPageRenderArray([2, 3, 4, 5, 6]);
       }
     }
     changePageCallback && changePageCallback(nowIndex - 1);
   };
-  //向后翻一页
+  // 向后翻一页
   const nextPage = () => {
     if (nowIndex === totalPage) {
       return;
@@ -155,37 +154,37 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
         setPageRenderArray(
           pageRenderArray.map((item: number) => {
             return item + 1;
-          }),
+          })
         );
       }
     }
     changePageCallback && changePageCallback(nowIndex + 1);
   };
-  //向前翻五页
+  // 向前翻五页
   const prevFivePage = () => {
-    var updateIndex: number = 0;
+    let updateIndex: number = 0;
     if (nowIndex - 5 <= 4) {
-      //开头几页翻页的情况，回到第一页
+      // 开头几页翻页的情况，回到第一页
       setPageRenderArray([2, 3, 4, 5, 6]);
       updateIndex = nowIndex - 5 <= 1 ? 1 : nowIndex - 5;
     } else if (nowIndex + 5 > totalPage) {
       setPageRenderArray([nowIndex - 7, nowIndex - 6, nowIndex - 5, nowIndex - 4, nowIndex - 3]);
       updateIndex = nowIndex - 5;
     } else if (nowIndex - 5 > 4) {
-      //中间翻页的情况
+      // 中间翻页的情况
       setPageRenderArray(
         pageRenderArray.map((item: number) => {
           return item - 5;
-        }),
+        })
       );
       updateIndex = nowIndex - 5;
     }
     setNowIndex(updateIndex);
     changePageCallback && changePageCallback(updateIndex);
   };
-  //向后翻五页
+  // 向后翻五页
   const nextFivePage = () => {
-    var updateIndex: number = 0;
+    let updateIndex: number = 0;
     if (nowIndex + 7 >= totalPage) {
       setPageRenderArray([
         totalPage - 5,
@@ -202,19 +201,19 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
       setPageRenderArray(
         pageRenderArray.map((item: number) => {
           return item + 5;
-        }),
+        })
       );
       updateIndex = nowIndex + 5;
     }
     setNowIndex(updateIndex);
     changePageCallback && changePageCallback(updateIndex);
   };
-  //跳页
+  // 跳页
   const jumpPageNum = (e: any) => {
     if (e.keyCode === 13) {
       const jumpPage = Number(e.target.value);
       if (jumpPage > totalPage || jumpPage < 0 || isNaN(jumpPage)) {
-        //超出页码范围，不挑
+        // 超出页码范围，不挑
         return (e.target.value = '');
       }
       if (jumpPage > 6 && jumpPage < totalPage - 6) {
@@ -235,7 +234,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
       e.target.value = '';
     }
   };
-  //select回调
+  // select回调
   const handleSelectCallback = (pageSize: any) => {
     setSizePage(pageSize.value);
     changePageSizeCallback && changePageSizeCallback(pageSize.value);
@@ -249,7 +248,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
           ...style,
           '--global-color': getRenderColor(
             (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-            globalColor,
+            globalColor
           ),
         } as any
       }
@@ -281,21 +280,19 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
       )}
       {totalPage >= 1 &&
         pageRenderArray.map((item: number, index: number) => {
-          {
-            return (
-              <div
-                className={
-                  nowIndex === item
-                    ? `${classFirstName}-actived  ${classFirstName}-numberBox`
-                    : `${classFirstName}-numberBox`
-                }
-                key={index}
-                onClick={changePage(item)}
-              >
-                {item}
-              </div>
-            );
-          }
+          return (
+            <div
+              className={
+                nowIndex === item
+                  ? `${classFirstName}-actived  ${classFirstName}-numberBox`
+                  : `${classFirstName}-numberBox`
+              }
+              key={index}
+              onClick={changePage(item)}
+            >
+              {item}
+            </div>
+          );
         })}
       {totalPage - nowIndex >= 4 && totalPage > 6 && (
         <div className={`${classFirstName}-numberBox`} onClick={nextFivePage}>
@@ -339,11 +336,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
       {showJumpInput && (
         <div className={`${classFirstName}-jumpBox`}>
           <span>跳至</span>
-          <input
-            type="text"
-            className={`${classFirstName}-jumpBox-jump`}
-            onKeyUp={jumpPageNum}
-          ></input>
+          <input type="text" className={`${classFirstName}-jumpBox-jump`} onKeyUp={jumpPageNum} />
           <span>页</span>
         </div>
       )}

@@ -22,8 +22,8 @@ export default function index1() {
             setTimeout(() => {
               setVisible(false);
               resolve('');
-            }, 2000)
-          })
+            }, 2000);
+          });
         }}
         onCancel={() => setVisible(false)}
       >

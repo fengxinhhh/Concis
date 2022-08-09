@@ -1,4 +1,13 @@
-import React, { FC, useMemo, useEffect, useState, useCallback, memo, useContext, CSSProperties } from 'react';
+import React, {
+  FC,
+  useMemo,
+  useEffect,
+  useState,
+  useCallback,
+  memo,
+  useContext,
+  CSSProperties,
+} from 'react';
 import { DownOutlined, UpOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
 import { ctx } from '../Form';
@@ -107,7 +116,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
     };
   }, []);
   useEffect(() => {
-    //用于监听Form组件的重置任务
+    // 用于监听Form组件的重置任务
     if (formCtx.reset) {
       setSelected('');
     }
@@ -119,7 +128,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
   }, [formCtx.submitStatus]);
 
   const ownsWidth = useMemo(() => {
-    //传参宽度
+    // 传参宽度
     if (width) {
       return {
         width: `${width}px`,
@@ -128,7 +137,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
     return {};
   }, [width]);
   const disabledStyle = useMemo(() => {
-    //禁用状态
+    // 禁用状态
     if (disabled || loading) {
       return {
         cursor: 'not-allowed',
@@ -138,13 +147,13 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
   }, [disabled, loading]);
 
   const toggleOptions = (e: any) => {
-    //切换下拉
+    // 切换下拉
     e.stopPropagation();
     if (disabled || loading) return;
     setVisible(!visible);
   };
   const changeOptions = (v: Options, e: any) => {
-    //选择选项
+    // 选择选项
     e.stopPropagation();
     if (v.disabled) return;
     setVisible(false);
@@ -155,20 +164,20 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
     }
   };
   const inputFilterOtpions = useMemo(() => {
-    //输入状态options过滤
+    // 输入状态options过滤
     return option?.filter((item) => {
       return (item.label as string).includes(selected);
     });
   }, [option, selected]);
   const handleInputChange = useCallback(
     (e: any) => {
-      //输入后的回调
+      // 输入后的回调
       setSelected(e.target.value);
       if (handleTextChange) {
         handleTextChange(e.target.value);
       }
     },
-    [selected],
+    [selected]
   );
   const clearSearchSelect = (e: React.SyntheticEvent) => {
     e.stopPropagation();
@@ -184,7 +193,11 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
       <div
         className={classNames}
         style={
-          { ...style, ...ownsWidth, '--global-color': disabled ? '#ccc' : globalColor || '#325DFF' } as any
+          {
+            ...style,
+            ...ownsWidth,
+            '--global-color': disabled ? '#ccc' : globalColor || '#325DFF',
+          } as any
         }
       >
         <div className={`selected ${disabled ? 'disabled-selected' : ''}`} style={disabledStyle}>
@@ -208,9 +221,9 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
           in={visible}
           timeout={100}
           appear
-          mountOnEnter={true}
+          mountOnEnter
           classNames="selectOption"
-          unmountOnExit={true}
+          unmountOnExit
           onEnter={(e: HTMLDivElement) => {
             e.style.display = 'block';
           }}
@@ -224,17 +237,17 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
                 <div
                   key={s.label as any}
                   className={
-                    s.value == selectedValue
+                    s.value === selectedValue
                       ? `select-option ${s.disabled ? 'disabled-option' : ''}`
                       : `option ${s.disabled ? 'disabled-option' : ''}`
                   }
                   style={
                     s.disabled
                       ? ({
-                        cursor: 'not-allowed',
-                        background: '#F2F3F5',
-                        '--line-disabled': '#000000',
-                      } as any)
+                          cursor: 'not-allowed',
+                          background: '#F2F3F5',
+                          '--line-disabled': '#000000',
+                        } as any)
                       : ({ '--line-disabled': globalColor || '#325DFF' } as any)
                   }
                   onClick={(e) => changeOptions(s as Options, e)}
@@ -264,7 +277,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
         onClick={toggleOptions}
         style={disabledStyle}
       >
-        {<div className={selectClassName}>{selected || placeholder}</div>}
+        <div className={selectClassName}>{selected || placeholder}</div>
         {loading ? (
           <LoadingOutlined style={{ fontSize: '12px' }} />
         ) : visible ? (
@@ -277,9 +290,9 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
         in={visible}
         timeout={100}
         appear
-        mountOnEnter={true}
+        mountOnEnter
         classNames="selectOption"
-        unmountOnExit={true}
+        unmountOnExit
         onEnter={(e: HTMLDivElement) => {
           e.style.display = 'block';
         }}
@@ -293,17 +306,17 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
               <div
                 key={s.label as any}
                 className={
-                  s.value == selectedValue
+                  s.value === selectedValue
                     ? `select-option ${s.disabled ? 'disabled-option' : ''}`
                     : `option ${s.disabled ? 'disabled-option' : ''}`
                 }
                 style={
                   s.disabled
                     ? ({
-                      cursor: 'not-allowed',
-                      background: '#F2F3F5',
-                      '--line-disabled': '#000000',
-                    } as any)
+                        cursor: 'not-allowed',
+                        background: '#F2F3F5',
+                        '--line-disabled': '#000000',
+                      } as any)
                     : ({ '--line-disabled': globalColor || '#325DFF' } as any)
                 }
                 onClick={(e) => changeOptions(s as Options, e)}

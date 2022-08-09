@@ -39,7 +39,7 @@ export default function index1() {
       <div style={{ width: '800px' }}>
         <List
           style={{ fontSize: '16px', width: '600px' }}
-          size={'default'}
+          size="default"
           dataSource={dataSource}
           render={(item: any) => {
             return loading ? (
@@ -58,7 +58,7 @@ export default function index1() {
               </List.Item>
             );
           }}
-        ></List>
+        />
       </div>
     </>
   );

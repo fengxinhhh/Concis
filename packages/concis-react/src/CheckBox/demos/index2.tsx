@@ -7,7 +7,7 @@ export default function TimePickerDemo1() {
   };
 
   return (
-    <CheckBox checked={true} disabled checkCallback={checkCallback}>
+    <CheckBox checked disabled checkCallback={checkCallback}>
       Apple
     </CheckBox>
   );

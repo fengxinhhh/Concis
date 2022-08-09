@@ -22,15 +22,14 @@ const HD_MODES = {
 const MobileDemoLayout: React.FC<IRouteComponentProps> = ({ children }) => {
   const { config } = useContext(context);
   const target = useRef<HTMLDivElement>(null);
-  const {
-    hd: { rules = [{ mode: 'vw', options: [100, 750] }] } = {},
-  } = config.theme as IThemeConfig;
+  const { hd: { rules = [{ mode: 'vw', options: [100, 750] }] } = {} } =
+    config.theme as IThemeConfig;
 
   useEffect(() => {
     // Simulate the touch event of mobile terminal
     if (target.current) {
       // fix https://github.com/umijs/dumi/issues/996
-      TouchEmulator(document)
+      TouchEmulator(document);
     }
 
     // listen route change message
@@ -38,7 +37,7 @@ const MobileDemoLayout: React.FC<IRouteComponentProps> = ({ children }) => {
       if (ev.data.type === ROUTE_MSG_TYPE) {
         history.push(ev.data.value);
       }
-    }
+    };
 
     window.addEventListener('message', handler);
 
@@ -51,9 +50,9 @@ const MobileDemoLayout: React.FC<IRouteComponentProps> = ({ children }) => {
 
       rules
         // discard invalid rules
-        .filter(rule => HD_MODES[rule.mode])
+        .filter((rule) => HD_MODES[rule.mode])
         // match first valid rule
-        .some(rule => {
+        .some((rule) => {
           if (
             // without min & max width
             (Number.isNaN(rule.minWidth * 1) && Number.isNaN(rule.maxWidth * 1)) ||
@@ -77,7 +76,11 @@ const MobileDemoLayout: React.FC<IRouteComponentProps> = ({ children }) => {
     return () => window.removeEventListener('resize', handler);
   }, [rules]);
 
-  return <div className="__dumi-default-mobile-demo-layout" ref={target}>{children}</div>;
+  return (
+    <div className="__dumi-default-mobile-demo-layout" ref={target}>
+      {children}
+    </div>
+  );
 };
 
 export default MobileDemoLayout;
