@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import List from '..';
-import Avatar from '../../Avatar/index';
 import './demo.module.less';
 
 export default function listDemo1() {
@@ -16,19 +15,19 @@ export default function listDemo1() {
   return (
     <>
       <span
-        className={listSize == 'small' ? 'active-size-bar' : 'size-change-bar'}
+        className={listSize === 'small' ? 'active-size-bar' : 'size-change-bar'}
         onClick={() => setListSize('small')}
       >
         small
       </span>
       <span
-        className={listSize == 'default' ? 'active-size-bar' : 'size-change-bar'}
+        className={listSize === 'default' ? 'active-size-bar' : 'size-change-bar'}
         onClick={() => setListSize('default')}
       >
         default
       </span>
       <span
-        className={listSize == 'large' ? 'active-size-bar' : 'size-change-bar'}
+        className={listSize === 'large' ? 'active-size-bar' : 'size-change-bar'}
         onClick={() => setListSize('large')}
       >
         large
@@ -41,7 +40,7 @@ export default function listDemo1() {
         render={(item: string) => {
           return <List.Item style={{ fontSize: '14px' }}>{item}</List.Item>;
         }}
-      ></List>
+      />
     </>
   );
 }

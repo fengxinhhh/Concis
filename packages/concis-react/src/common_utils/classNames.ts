@@ -1,7 +1,7 @@
 type classNamesArg = Array<any>;
 
 export default function (...args: classNamesArg): string {
-  let classNames: any = [];
+  const classNames: any = [];
   args.forEach((item) => {
     classNames.push(item);
   });

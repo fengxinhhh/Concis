@@ -21,7 +21,6 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
 
   const [activeDotIndex, setActiveDotIndex] = useState(0);
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
-  const theme = getSiteTheme();
 
   function getLoadingClass() {
     switch (type) {
@@ -64,7 +63,7 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
               ...loadingStyle,
               '--global-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
             } as any
           }
@@ -81,14 +80,15 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
                 aria-hidden="true"
                 focusable="false"
               >
-                <path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path>
+                <path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6" />
               </svg>
             )}
           </div>
           {loadingText && <div className="text">{loadingText}</div>}
         </div>
       );
-    } else if (type === 'dot') {
+    }
+    if (type === 'dot') {
       return (
         <div
           className={classNames}
@@ -96,7 +96,7 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
             {
               '--global-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
             } as any
           }
@@ -110,7 +110,8 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
           })}
         </div>
       );
-    } else if (type === 'strip') {
+    }
+    if (type === 'strip') {
       return (
         <div
           className={classNames}
@@ -118,7 +119,7 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
             {
               '--global-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
             } as any
           }

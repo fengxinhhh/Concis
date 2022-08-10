@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 数据录入
+mobile: false
 ---
 
 # Input 输入框

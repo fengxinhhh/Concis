@@ -8,7 +8,7 @@ export default function RadioBoxDemo1() {
   };
   return (
     <>
-      <RadioGroup value={1} onChange={onChange} canAddOption boxStyle>
+      <RadioGroup value={1} onChange={onChange} addOptionText="addOption..." canAddOption boxStyle>
         <Radio disabled>Apple</Radio>
         <Radio>Orange</Radio>
         <Radio>Watch</Radio>

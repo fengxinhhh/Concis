@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 布局
+mobile: false
 ---
 
 # Divider 分割线

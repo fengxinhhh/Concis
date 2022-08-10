@@ -72,8 +72,8 @@ const hobby = [
 ];
 
 export default function index1() {
-  const form = Form.useForm(); //使用Form组件回传的hooks，调用组件内链方法
-  const formRef = createRef(); //调用端设一个ref，保证单页面多表单唯一性
+  const form = Form.useForm(); // 使用Form组件回传的hooks，调用组件内链方法
+  const formRef = createRef(); // 调用端设一个ref，保证单页面多表单唯一性
 
   const submit = async () => {
     const submitParams = await form.onSubmit(formRef);
@@ -86,7 +86,7 @@ export default function index1() {
 
   return (
     <div>
-      <Form layout={'horizontal'} formField={formRef} style={{ width: '600px' }}>
+      <Form layout="horizontal" formField={formRef} style={{ width: '600px' }}>
         <Form.Item
           label="Username"
           field="username"
@@ -97,16 +97,16 @@ export default function index1() {
             { fn: (a: string) => a.includes('a'), message: '必须包含a' },
           ]}
         >
-          <Input placeholder="Please enter your usename" width="200"></Input>
+          <Input placeholder="Please enter your usename" width="200" />
         </Form.Item>
         <Form.Item label="Post" field="post">
-          <Input placeholder="Please enter your post" width="200"></Input>
+          <Input placeholder="Please enter your post" width="200" />
         </Form.Item>
         <Form.Item label="Hobby" field="hobby" rules={[{ required: true, message: '请输入爱好' }]}>
           <InputPro option={hobby} />
         </Form.Item>
         <Form.Item label="Name" field="name" rules={[{ required: true, message: '请输入名字' }]}>
-          <Select option={option} width={200} placeholder={'请选择'} />
+          <Select option={option} width={200} placeholder="请选择" />
         </Form.Item>
         <Form.Item
           label="CreateTime"
@@ -122,18 +122,10 @@ export default function index1() {
         >
           <DatePicker />
         </Form.Item>
-        <Form.Item
-          label="Year"
-          field="year"
-          rules={[{ required: true, message: '请输入年' }]}
-        >
+        <Form.Item label="Year" field="year" rules={[{ required: true, message: '请输入年' }]}>
           <YearPicker />
         </Form.Item>
-        <Form.Item
-          label="Month"
-          field="month"
-          rules={[{ required: true, message: '请输入月' }]}
-        >
+        <Form.Item label="Month" field="month" rules={[{ required: true, message: '请输入月' }]}>
           <MonthPicker />
         </Form.Item>
         <Form.Item label="Rate" field="Rate" rules={[{ required: true, message: '请选择分数' }]}>
@@ -143,7 +135,7 @@ export default function index1() {
           <Tree treeData={treeData} avaChooseMore />
         </Form.Item>
         <Form.Item wrapperTol={20}>
-          <CheckBox checked={true}>I have read the manual</CheckBox>
+          <CheckBox checked>I have read the manual</CheckBox>
         </Form.Item>
         <Form.Item wrapperTol={5}>
           <Button type="primary" handleClick={submit}>

@@ -9,7 +9,7 @@ export default function index1() {
       content: val,
       duration: 3000,
     });
-    //调用时请留给message结尾动画0.2s的空档时间
+    // 调用时请留给message结尾动画0.2s的空档时间
     setTimeout(() => {
       Notification.success({
         title: 'Success',

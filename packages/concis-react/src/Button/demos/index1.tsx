@@ -9,7 +9,7 @@ export default function ButtonDemo1() {
   const buttonStyle = { margin: '8px' };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       <Button type="primary" style={buttonStyle}>
         基础按钮
       </Button>

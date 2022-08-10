@@ -1,6 +1,5 @@
 import React from 'react';
 import Table from '..';
-import Button from '../../Button';
 
 const columns = [
   {
@@ -22,7 +21,7 @@ const columns = [
     title: 'Email',
     dataIndex: 'email',
     sorter: [
-      //自定义排序规则，根据邮箱前缀排序
+      // 自定义排序规则，根据邮箱前缀排序
       (a: any, b: any) => a.email.split('@')[0].length - b.email.split('@')[0].length,
       (a: any, b: any) => b.email.split('@')[0].length - a.email.split('@')[0].length,
     ],

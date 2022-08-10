@@ -1,15 +1,15 @@
 import CryptoJS from 'crypto-js';
 
-const SECRET_KEY = CryptoJS.enc.Utf8.parse('3333e6e143439161'); //十六位十六进制数作为密钥
-const SECRET_IV = CryptoJS.enc.Utf8.parse('e3bbe7e3ba84431a'); //十六位十六进制数作为密钥偏移量
+const SECRET_KEY = CryptoJS.enc.Utf8.parse('3333e6e143439161'); // 十六位十六进制数作为密钥
+const SECRET_IV = CryptoJS.enc.Utf8.parse('e3bbe7e3ba84431a'); // 十六位十六进制数作为密钥偏移量
 
 const encrypt = (data: object | string): string => {
-  //加密
+  // 加密
   if (typeof data === 'object') {
     try {
       data = JSON.stringify(data);
     } catch (e) {
-      throw new Error('encrypt error' + e);
+      throw new Error(`encrypt error${e}`);
     }
   }
   const dataHex = CryptoJS.enc.Utf8.parse(data);
@@ -22,7 +22,7 @@ const encrypt = (data: object | string): string => {
 };
 
 const decrypt = (data: string) => {
-  //解密
+  // 解密
   const encryptedHexStr = CryptoJS.enc.Hex.parse(data);
   const str = CryptoJS.enc.Base64.stringify(encryptedHexStr);
   const decrypt = CryptoJS.AES.decrypt(str, SECRET_KEY, {

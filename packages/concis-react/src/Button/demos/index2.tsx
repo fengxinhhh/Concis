@@ -1,12 +1,11 @@
 import React from 'react';
 import Button from '..';
-import Space from '../../Space';
 
 export default function ButtonDemo2() {
   const buttonStyle = { margin: '8px' };
 
   return (
-    <Space direction="vertical">
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Button type="primary" style={buttonStyle} width={400} height={40}>
         Primary
       </Button>
@@ -22,6 +21,6 @@ export default function ButtonDemo2() {
       <Button type="text" style={buttonStyle} width={400} height={40}>
         Text
       </Button>
-    </Space>
+    </div>
   );
 }

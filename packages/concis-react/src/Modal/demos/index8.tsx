@@ -61,23 +61,21 @@ export default function index1() {
         visible={visible}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
-        width={'620px'}
+        width="620px"
       >
         <div>
-          {
-            <>
-              <Steps current={2}>
-                <Step title="Waiting" />
-                <Step title="In Process" />
-                <Step title="Finished" />
-              </Steps>
-              <p style={{ lineHeight: '20px' }}>
-                You can select multiple plugins for the current project so that our app will verify
-                that the plugins are installed and enabled.
-              </p>
-              <Table titleParams={columns} tableData={defaultData} checked />
-            </>
-          }
+          <>
+            <Steps current={2}>
+              <Step title="Waiting" />
+              <Step title="In Process" />
+              <Step title="Finished" />
+            </Steps>
+            <p style={{ lineHeight: '20px' }}>
+              You can select multiple plugins for the current project so that our app will verify
+              that the plugins are installed and enabled.
+            </p>
+            <Table titleParams={columns} tableData={defaultData} checked />
+          </>
         </div>
       </Modal>
     </div>

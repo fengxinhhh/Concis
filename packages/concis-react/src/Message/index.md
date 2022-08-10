@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 反馈
+mobile: false
 ---
 
 # Message 全局提示

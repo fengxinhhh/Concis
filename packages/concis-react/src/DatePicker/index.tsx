@@ -1,4 +1,4 @@
-import DatePicker, { type DatePickerProps } from './DatePicker';
+import DatePicker from './DatePicker';
 import YearPicker from './YearPicker';
 import MonthPicker from './MonthPicker';
 import RangeDatePicker from './rangeDatePicker';

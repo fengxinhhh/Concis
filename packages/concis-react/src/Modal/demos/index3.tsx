@@ -2,7 +2,6 @@ import React from 'react';
 import Modal from '..';
 import Button from '../../Button';
 import Message from '../../Message';
-import Space from '../../Space';
 
 export default function index1() {
   const info = () => {
@@ -65,19 +64,19 @@ export default function index1() {
   };
 
   return (
-    <Space>
-      <Button type="primary" handleClick={info}>
+    <div style={{ display: 'flex' }}>
+      <Button type="primary" style={{ margin: '0 8px' }} handleClick={info}>
         Info
       </Button>
-      <Button type="info" handleClick={success}>
+      <Button type="info" style={{ margin: '0 8px' }} handleClick={success}>
         Success
       </Button>
-      <Button type="warning" handleClick={warning}>
+      <Button type="warning" style={{ margin: '0 8px' }} handleClick={warning}>
         Warning
       </Button>
-      <Button type="danger" handleClick={error}>
+      <Button type="danger" style={{ margin: '0 8px' }} handleClick={error}>
         Error
       </Button>
-    </Space>
+    </div>
   );
 }

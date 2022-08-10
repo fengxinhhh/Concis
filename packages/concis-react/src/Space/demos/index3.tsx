@@ -5,9 +5,9 @@ import RadioGroup from '../../Radio/RadioGroup';
 import Radio from '../../Radio';
 
 export default function index1() {
-  const [size, setSize] = useState('small');
+  const [size, setSize] = useState<'mini' | 'small' | 'medium' | 'large'>('small');
 
-  const onChange = (val) => {
+  const onChange = (val: { children: 'mini' | 'small' | 'medium' | 'large' }) => {
     setSize(val.children);
     console.log(size);
   };

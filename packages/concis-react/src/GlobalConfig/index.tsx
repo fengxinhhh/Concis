@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 import { GlobalConfigProps } from './interface';
 
-export const globalCtx = createContext<GlobalConfigProps>({} as GlobalConfigProps); //顶层通信装置
+export const globalCtx = createContext<GlobalConfigProps>({} as GlobalConfigProps); // 顶层通信装置
 
 const GlobalConfig = (props: GlobalConfigProps) => {
   const { children } = props;

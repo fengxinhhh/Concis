@@ -1,4 +1,4 @@
-import React, { useMemo, useContext, memo } from 'react';
+import React, { useMemo, useContext } from 'react';
 import { ButtonProps, ButtonGroupProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -7,7 +7,7 @@ import Group from './group';
 import './index.module.less';
 
 interface ButtonStyle<T> {
-  //button样式接口
+  // button样式接口
   width?: T;
   height?: T;
   borderRadius?: T;
@@ -44,16 +44,16 @@ const Button = (props: ButtonProps) => {
     return `concis-button-${type} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''}` as any;
   }, [type, loading, disabled]);
   const buttonSize = useMemo(() => {
-    var size: ButtonStyle<string> = {
+    let size: ButtonStyle<string> = {
       width: '100%',
       height: '40px',
       ...style,
     };
     if (width) {
-      size.width = width + 'px';
+      size.width = `${width}px`;
     }
     if (height) {
-      size.height = height + 'px';
+      size.height = `${height}px`;
     }
     if (circle) {
       size = { ...size, borderRadius: '50%' };
@@ -85,13 +85,13 @@ const Button = (props: ButtonProps) => {
         className={buttonStyle}
         style={
           {
-            width: width + 'px',
-            height: height + 'px',
+            width: `${width}px`,
+            height: `${height}px`,
             ...buttonSize,
             '--isDisabled': disabled ? 0.5 : 1,
           } as any
         }
-        disabled={disabled ? true : false}
+        disabled={!!disabled}
         onClick={clickButton}
       >
         {loading && <div className="concis-button-loading" />}

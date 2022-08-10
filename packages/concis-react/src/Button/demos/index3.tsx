@@ -5,7 +5,7 @@ export default function ButtonDemo3() {
   const buttonStyle = { margin: '8px' };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       <Button type="primary" style={buttonStyle} width={30} height={30} circle>
         P
       </Button>

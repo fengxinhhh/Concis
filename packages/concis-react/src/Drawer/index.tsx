@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef, useContext, useMemo } from 'react';
 import lodash from 'lodash';
 import { CSSTransition } from 'react-transition-group';
-import {
-  CloseOutlined
-} from '@ant-design/icons';
+import { CloseOutlined } from '@ant-design/icons';
 import Button from '../Button';
 import { DrawerProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -33,13 +31,13 @@ const Drawer = (props: DrawerProps) => {
     cancelText,
     width = '320px',
     onOk,
-    onCancel
+    onCancel,
   } = props;
 
   const [wrapperVisible, setWrapperVisible] = useState(visible);
   const [okLoading, setOkLoading] = useState(false);
   const [cancelLoading, setCancelLoading] = useState(false);
-  const isCloseWorking = useRef<boolean>(false); //正在关闭
+  const isCloseWorking = useRef<boolean>(false); // 正在关闭
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const classFirstName = darkTheme ? 'concis-dark-drawer' : 'concis-drawer';
@@ -64,16 +62,16 @@ const Drawer = (props: DrawerProps) => {
     };
   }, [wrapperVisible]);
 
-  //禁止滚动
+  // 禁止滚动
   useOverFlowScroll('body', wrapperVisible as boolean);
-  //异步关闭后重置状态
+  // 异步关闭后重置状态
   const afterAsyncClose = () => {
     setWrapperVisible(false);
     isCloseWorking.current = false;
     setOkLoading(false);
     setCancelLoading(false);
   };
-  //确认
+  // 确认
   const finish = () => {
     if (!onOk) {
       setWrapperVisible(false);
@@ -96,8 +94,8 @@ const Drawer = (props: DrawerProps) => {
         isCloseWorking.current = false;
       }
     }
-  }
-  //取消
+  };
+  // 取消
   const cancel = () => {
     if (!onCancel) {
       setWrapperVisible(false);
@@ -120,48 +118,58 @@ const Drawer = (props: DrawerProps) => {
         isCloseWorking.current = false;
       }
     }
-  }
+  };
   const drawerContentStyle = useMemo(() => {
-    const size = typeof width === 'string' ? width : width + '%';
+    const size = typeof width === 'string' ? width : `${width}%`;
     switch (align) {
-      case 'right': return {
-        top: 0,
-        right: 0,
-        height: '100%',
-        width: size
-      }
-      case 'left': return {
-        top: 0,
-        left: 0,
-        height: '100%',
-        width: size
-      }
-      case 'bottom': return {
-        bottom: 0,
-        left: 0,
-        width: '100%',
-        height: size
-      }
-      case 'top': return {
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: size
+      case 'right':
+        return {
+          top: 0,
+          right: 0,
+          height: '100%',
+          width: size,
+        };
+      case 'left':
+        return {
+          top: 0,
+          left: 0,
+          height: '100%',
+          width: size,
+        };
+      case 'bottom':
+        return {
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: size,
+        };
+      case 'top':
+        return {
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: size,
+        };
+      default: {
+        return {
+          top: 0,
+          right: 0,
+          height: '100%',
+          width: size,
+        };
       }
     }
-  }, [align])
+  }, [align]);
 
   return (
-    <div
-      className={classNames}
-    >
+    <div className={classNames}>
       <CSSTransition
         in={wrapperVisible}
         timeout={200}
         appear
-        mountOnEnter={true}
+        mountOnEnter
         classNames="fadedrawer"
-        unmountOnExit={true}
+        unmountOnExit
         onEnter={(e: HTMLDivElement) => {
           e.style.display = 'block';
         }}
@@ -174,9 +182,9 @@ const Drawer = (props: DrawerProps) => {
             in={wrapperVisible}
             timeout={300}
             appear
-            mountOnEnter={true}
+            mountOnEnter
             classNames={`fadedrawer-${align}-content`}
-            unmountOnExit={true}
+            unmountOnExit
             onEnter={(e: HTMLDivElement) => {
               e.style.display = 'flex';
             }}
@@ -184,7 +192,11 @@ const Drawer = (props: DrawerProps) => {
               e.style.display = 'none';
             }}
           >
-            <div className="concis-drawer-content" style={drawerContentStyle} onClick={(e: any) => e.stopPropagation()}>
+            <div
+              className="concis-drawer-content"
+              style={drawerContentStyle}
+              onClick={(e: any) => e.stopPropagation()}
+            >
               <div className="concis-drawer-content-header">
                 <div className="concis-title">
                   <div className="title">
@@ -229,6 +241,5 @@ const Drawer = (props: DrawerProps) => {
     </div>
   );
 };
-
 
 export default Drawer;

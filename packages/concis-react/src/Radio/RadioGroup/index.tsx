@@ -1,4 +1,4 @@
-import React, { FC, useState, memo, useCallback, useContext } from 'react';
+import React, { FC, useState, memo, useCallback, useContext, CSSProperties } from 'react';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
@@ -9,13 +9,11 @@ import './index.module.less';
 
 interface RadioGroupProps {
   children: Array<Object>;
-  /**
-   * @description 默认值
-   * @default 0
-   */
+  style?: CSSProperties;
   className?: string;
   value?: Number;
   canAddOption?: Boolean;
+  addOptionText?: String;
   boxStyle?: Boolean;
   onChange?: Function;
 }
@@ -25,9 +23,18 @@ interface RadioProps {
 }
 
 const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
-  const { children, className, value, canAddOption, boxStyle, onChange } = props;
+  const {
+    children,
+    style,
+    className,
+    value,
+    canAddOption,
+    addOptionText = 'More...',
+    boxStyle,
+    onChange,
+  } = props;
 
-  const [selectIndex, setSelectIndex] = useState(value || 0); //选中索引
+  const [selectIndex, setSelectIndex] = useState(value || 0); // 选中索引
   const [renderOptions, setRenderOptions] = useState(children);
   const [addOptionVal, setAddOptionVal] = useState('');
   const [showAddOption, setShowAddOption] = useState(canAddOption && false);
@@ -45,13 +52,13 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
     canAddOption && setShowAddOption(false);
   };
   const addOptions = () => {
-    //新增options
+    // 新增options
     setSelectIndex(renderOptions.length);
     setShowAddOption(true);
   };
   const handleKeyDown = (e: any) => {
-    //新增确认
-    if (e.keyCode == 13 && addOptionVal) {
+    // 新增确认
+    if (e.keyCode === 13 && addOptionVal) {
       setRenderOptions((old) => {
         const addOption = {
           props: {
@@ -64,7 +71,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
     }
   };
   const handleIptChange = (val: string) => {
-    //新增输入框
+    // 新增输入框
     setAddOptionVal(val);
   };
   const boxStyleClassName = useCallback(
@@ -72,18 +79,23 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
       if (props.disabled) {
         return 'groupDisabledStyle';
       }
-      if (i == selectIndex) {
+      if (i === selectIndex) {
         return 'groupActive';
       }
       return 'groupStyle';
     },
-    [children, boxStyle, value, selectIndex],
+    [children, boxStyle, value, selectIndex]
   );
 
   return (
     <div
       className={classNames}
-      style={{ '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor) } as any}
+      style={
+        {
+          ...style,
+          '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor),
+        } as any
+      }
     >
       {renderOptions.map((item: any, index: number) => {
         return boxStyle ? (
@@ -105,7 +117,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
             <div
               className={selectIndex === index ? 'radio-checked' : 'radio'}
               style={item.props.disabled ? { cursor: 'not-allowed' } : { cursor: 'pointer' }}
-            ></div>
+            />
             <span className={item.props.disabled ? 'disabledLabel' : 'radioLabel'}>
               {item.props.children}
             </span>
@@ -113,7 +125,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
         );
       })}
       {
-        //新增Options项(优雅之王)
+        // 新增Options项(优雅之王)
         canAddOption ? (
           boxStyle ? (
             <div className="addOption">
@@ -121,7 +133,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
                 className={selectIndex === renderOptions.length ? 'groupActive' : 'groupStyle'}
                 onClick={addOptions}
               >
-                More...
+                {addOptionText}
               </div>
               {showAddOption && (
                 <Input handleKeyDown={handleKeyDown} handleIptChange={handleIptChange} />
@@ -131,7 +143,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
             <div className="addOption">
               <div className="radioBox" onClick={addOptions}>
                 <div className={selectIndex === renderOptions.length ? 'radio-checked' : 'radio'} />
-                <span className="radioLabel">More...</span>
+                <span className="radioLabel">{addOptionText}</span>
               </div>
               {showAddOption && (
                 <Input handleKeyDown={handleKeyDown} handleIptChange={handleIptChange} />

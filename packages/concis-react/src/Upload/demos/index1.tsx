@@ -29,9 +29,9 @@ export default function index1() {
       defaultFileList={[]}
       action="test"
       limit={3}
-      multiple={true}
+      multiple
       autoUpload={false}
-      accept={'*'}
+      accept="*"
     />
   );
 }

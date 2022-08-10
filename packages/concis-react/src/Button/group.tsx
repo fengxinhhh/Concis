@@ -9,12 +9,15 @@ export default function Group(props: ButtonGroupProps, ref: unknown) {
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, darkTheme ? 'concis-dark-button-group' : 'concis-button-group');
-
+  const classNames = cs(
+    prefixCls,
+    className,
+    darkTheme ? 'concis-dark-button-group' : 'concis-button-group'
+  );
 
   return (
     <div className={classNames} style={style}>
       {children}
     </div>
-  )
+  );
 }

@@ -15,6 +15,7 @@ import { getSiteTheme } from '../../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../../common_utils/getRenderColor';
 import { ctx } from '../../Form';
 import './index.module.less';
+
 const dayjs = require('dayjs');
 
 export interface DatePickerProps {
@@ -23,11 +24,6 @@ export interface DatePickerProps {
    * @default ''
    */
   className?: string;
-  /**
-   * @description 日期选择器类型(primary/input)仅支持非range
-   * @default primary
-   */
-  type?: string;
   /**
    * @description 设置日期的格式化
    * @default YYYY-MM-DD
@@ -91,16 +87,17 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   const [clickDate, setClickDate] = useState(new Date());
   useEffect(() => {
     const { year, month } = nowDate;
-    //1号是星期几
+    // 1号是星期几
     const firstWeekDay = new Date(year, month, 1).getDay();
-    //最后一天几号
+    // 最后一天几号
     const lastDay = new Date(year, month, 0).getDate();
     const daysArr = new Array(Math.ceil((firstWeekDay + lastDay) / 7) * 7).fill('');
     setNowDayList(
       chunk(
         daysArr.map((_, i) => {
-          const day = `${i - firstWeekDay <= -1 || i - firstWeekDay + 1 > lastDay ? '' : i - firstWeekDay + 1
-            }`;
+          const day = `${
+            i - firstWeekDay <= -1 || i - firstWeekDay + 1 > lastDay ? '' : i - firstWeekDay + 1
+          }`;
           const date = new Date(year, month - 1, Number(day));
           return {
             date,
@@ -108,12 +105,12 @@ const DatePicker: FC<DatePickerProps> = (props) => {
             value: day,
           };
         }),
-        7,
-      ),
+        7
+      )
     );
   }, [nowDate.year, nowDate.month]);
   useEffect(() => {
-    //用于监听Form组件的重置任务
+    // 用于监听Form组件的重置任务
     if (formCtx.reset) {
       setNowDate(today);
       setDateValue('');
@@ -153,12 +150,10 @@ const DatePicker: FC<DatePickerProps> = (props) => {
       } else {
         date = { ...nowDate, month };
       }
+    } else if (month < 0) {
+      date = { ...nowDate, month: 12, year: nowDate.year - 1 };
     } else {
-      if (month < 0) {
-        date = { ...nowDate, month: 12, year: nowDate.year - 1 };
-      } else {
-        date = { ...nowDate, month };
-      }
+      date = { ...nowDate, month };
     }
     setNowDate(date);
   };
@@ -174,7 +169,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
     <Popover
       type="click"
       align={align}
-      dialogWidth={'auto'}
+      dialogWidth="auto"
       closeDeps={[dateValue]}
       content={
         <div
@@ -183,7 +178,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
             {
               '--checked-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
             } as any
           }
@@ -216,15 +211,16 @@ const DatePicker: FC<DatePickerProps> = (props) => {
                     <td
                       key={idx}
                       onClick={() => setInputVal(day)}
-                      className={`${day.value === '' ? 'day-empty' : ''} ${day.disable ? 'disable' : ''
-                        } ${isSameDate(day.date) ? 'active' : ''}`}
+                      className={`${day.value === '' ? 'day-empty' : ''} ${
+                        day.disable ? 'disable' : ''
+                      } ${isSameDate(day.date) ? 'active' : ''}`}
                     >
                       {day.value}
                     </td>
                   ))}
                 </tr>
               ))}
-              {nowDayList.length >= 6 ? <></> : <tr className="empty-row"></tr>}
+              {nowDayList.length >= 6 ? <></> : <tr className="empty-row" />}
             </tbody>
           </table>
         </div>

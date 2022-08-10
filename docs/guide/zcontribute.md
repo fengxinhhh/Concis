@@ -46,8 +46,9 @@ pnpm run docs:build        //文档打包，产物于docs-dist
 
 在 packages/子包目录下执行:
 
-````tsx pure
+```tsx pure
 pnpm run build             //npm打包，产物于web-react
+```
 
 ## 测试
 
@@ -56,7 +57,7 @@ pnpm run build             //npm打包，产物于web-react
 ```tsx pure
 pnpm run test:unit          //单元测试，对应/__tests__/unit
 pnpm run test:e2e          //e2e测试，对应/__tests__/e2e
-````
+```
 
 ## 分支管理
 
@@ -82,4 +83,4 @@ pnpm run test:e2e          //e2e测试，对应/__tests__/e2e
 
 如遇到任何使用问题或改善意见，欢迎来用户交流群吐槽。
 
-<img src="http://react-view-ui.com:92/images/wechat-group.jpeg" height="800" width="500" />
+<img src="http://concis.org.cn/images/wechat.group.jpeg" width="50%" />

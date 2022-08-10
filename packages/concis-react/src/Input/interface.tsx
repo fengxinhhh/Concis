@@ -1,6 +1,10 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, InputHTMLAttributes } from 'react';
 
-interface InputProps {
+interface InputProps
+  extends Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'onChange' | 'prefix' | 'className' | 'size' | 'height' | 'maxLength'
+  > {
   /**
    * @description 类名
    */

@@ -31,7 +31,7 @@ export default function TimePickerDemo1() {
       <CheckBox checked={checkAll} checkCallback={checkCallback}>
         全选
       </CheckBox>
-      <CheckBox group={checkGroup}></CheckBox>
+      <CheckBox group={checkGroup} />
     </>
   );
 }
