@@ -35,7 +35,7 @@
     "antd-mobile-icons": "^0.3.0",
     "core-js": "^3.22.2",
     "dayjs": "^1.11.4",
-    "dumi-theme-mobile": "^1.1.23",
+    "dumi-theme-default": "^1.1.23",
     "f2-touchemulator": "^0.0.1",
     "flex": "link:umi-hd/lib/flex",
     "lodash": "^4.17.21",

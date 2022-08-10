@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useContext, useCallback } from 'rea
 import { context } from 'dumi/theme';
 import type { IPreviewerProps } from 'dumi-theme-default/es/builtins/Previewer';
 import Previewer from 'dumi-theme-default/es/builtins/Previewer';
-import debounce from 'lodash.debounce';
+import { debounce } from 'lodash';
 import './Previewer.less';
 
 export const ACTIVE_MSG_TYPE = 'dumi:scroll-into-demo';
