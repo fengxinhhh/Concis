@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-type sizeType = 'mini' | 'small' | 'medium' | 'large';
+type sizeType = 'mini' | 'small' | 'medium' | 'large' | number;
 type alignType = 'start' | 'center' | 'end' | 'baseline';
 type spaceAlignParams = {
   display?: 'flex';

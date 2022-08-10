@@ -471,7 +471,11 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
                   <div
                     key={index}
                     className={i === '' ? 'white' : 'box-list'}
-                    style={i === startDate.startDay ? activeStyles().activeDay : {}}
+                    style={
+                      i === startDate.startDay
+                        ? (activeStyles().activeDay as React.CSSProperties)
+                        : {}
+                    }
                     onClick={() => chooseStartDay(Number(i))}
                   >
                     {i}
@@ -516,7 +520,9 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
                   <div
                     key={index}
                     className={disabledClass(i)}
-                    style={i === endDate.endDay ? activeStyles().activeDay : {}}
+                    style={
+                      i === endDate.endDay ? (activeStyles().activeDay as React.CSSProperties) : {}
+                    }
                     onClick={() => chooseEndDay(Number(i))}
                   >
                     {i}
