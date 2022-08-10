@@ -291,7 +291,7 @@ export default function listDemo1() {
     <List
       style={{ fontSize: '16px', width: '600px' }}
       header="List title"
-      size={'default'}
+      size="default"
       dataSource={dataSource}
       render={(item: any) => {
         return (
@@ -308,6 +308,6 @@ export default function listDemo1() {
       }}
       lazyLoad
       defaultShowNum={10}
-    ></List>
+    />
   );
 }

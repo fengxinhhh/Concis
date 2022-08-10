@@ -1,5 +1,5 @@
-import Divider from '..';
 import React from 'react';
+import Divider from '..';
 /**
  * transform: true
  */
@@ -7,7 +7,7 @@ export default function DividerDemo3() {
   return (
     <div>
       <div style={{ marginBottom: '40px' }}>
-        <Divider fontSize={14} align={'left'}>
+        <Divider fontSize={14} align="left">
           Concis
         </Divider>
       </div>
@@ -15,7 +15,7 @@ export default function DividerDemo3() {
         <Divider fontSize={14}>Concis</Divider>
       </div>
       <div style={{ marginBottom: '40px' }}>
-        <Divider fontSize={14} align={'right'}>
+        <Divider fontSize={14} align="right">
           Concis
         </Divider>
       </div>

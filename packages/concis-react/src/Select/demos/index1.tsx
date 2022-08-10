@@ -29,7 +29,7 @@ export default function SelectDemo1() {
       option={option}
       width={200}
       handleSelectCallback={handleSelectCallback}
-      placeholder={'请选择'}
+      placeholder="请选择"
     />
   );
 }

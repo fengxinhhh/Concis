@@ -5,5 +5,5 @@ export default function TimePickerDemo3() {
   const handleChange = (start: string, end: string) => {
     console.log(start, end);
   };
-  return <RangeDatePicker showClear={true} handleChange={handleChange} />;
+  return <RangeDatePicker showClear handleChange={handleChange} />;
 }

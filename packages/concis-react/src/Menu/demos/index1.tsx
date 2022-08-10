@@ -1,6 +1,6 @@
 import React from 'react';
-import Menu from '..';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import Menu from '..';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function MenuDemos1() {
@@ -11,7 +11,7 @@ export default function MenuDemos1() {
     key: string | number,
     level: string | number,
     icon?: JSX.Element | null,
-    children?: Array<Object> | null,
+    children?: Array<Object> | null
   ) => {
     return {
       label,

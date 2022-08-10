@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-type sizeType = 'mini' | 'small' | 'medium' | 'large';
+type sizeType = 'mini' | 'small' | 'medium' | 'large' | number;
 type alignType = 'start' | 'center' | 'end' | 'baseline';
 type spaceAlignParams = {
   display?: 'flex';
@@ -23,7 +23,7 @@ interface SpaceProps<T> {
    * @description 间距大小
    * @default small
    */
-  size?: sizeType | Array<sizeType>;
+  size?: sizeType | Array<number>;
   /**
    * @description 垂直对齐方式
    * @default center

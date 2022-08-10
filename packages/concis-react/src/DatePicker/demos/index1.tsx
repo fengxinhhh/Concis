@@ -13,7 +13,7 @@ export default function TimePickerDemo1() {
     <DatePicker
       disableCheck={(date: Date) => date.getDate() > 13}
       align="top"
-      showClear={true}
+      showClear
       handleChange={handleChange}
     />
   );

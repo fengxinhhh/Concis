@@ -5,6 +5,7 @@ nav:
   path: /common
 group:
   title: 布局
+mobile: false
 ---
 
 # Layout 快速布局

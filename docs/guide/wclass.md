@@ -8,9 +8,9 @@ nav:
 
 在全局配置中，你可以定义一个通配类名，挂载到所有 Concis 组件上，在此类名你可以选择一些非敏感类 CSS 样式进行全部处理，如字体类型。
 
-<img src="http://react-view-ui.com:92/images/className.jpg" />
+<img src="http://concis.org.cn/images/className.jpg" />
 
-配置方法很简单，同样在<a href="http://react-view-ui.com:92/#/common/global-config">GlobalConfig</a>组件中提供了 prefixCls 属性，全局配置即可，就像这样：
+配置方法很简单，同样在<a href="http://concis.org.cn/#/common/global-config">GlobalConfig</a>组件中提供了 prefixCls 属性，全局配置即可，就像这样：
 
 ```tsx pure
 import { GlobalConfig } from 'concis/web-react';

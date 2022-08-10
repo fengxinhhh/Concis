@@ -33,22 +33,22 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
   });
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
-  const [startMonthFirstDay, setStartMonthFirstDay] = useState(0); //本月第一天是周几
-  const [endMonthFirstDay, setEndMonthFirstDay] = useState(0); //本月第一天是周几
-  const [startDayListArray, setStartDayListArray] = useState<Array<number>>([]); //start月的日历
-  const [endDayListArray, setEndDayListArray] = useState<Array<number>>([]); //end月的日历
-  const [showTimeDiaglog, setShowTimeDialog] = useState(false); //日期选择器dialog show
+  const [startMonthFirstDay, setStartMonthFirstDay] = useState(0); // 本月第一天是周几
+  const [endMonthFirstDay, setEndMonthFirstDay] = useState(0); // 本月第一天是周几
+  const [startDayListArray, setStartDayListArray] = useState<Array<number>>([]); // start月的日历
+  const [endDayListArray, setEndDayListArray] = useState<Array<number>>([]); // end月的日历
+  const [showTimeDiaglog, setShowTimeDialog] = useState(false); // 日期选择器dialog show
   const [renderShowDialog, setRenderShowDialog] = useState(false);
   const [chooseStatus, setChooseStatus] = useState({
     start: false,
     end: false,
-  }); //是否被选择过
+  }); // 是否被选择过
 
   const formCtx = useContext(ctx);
   const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, 'concis-range-picker');
-  let activeBorderDom = useRef(null);
+  const activeBorderDom = useRef(null);
 
   useEffect(() => {
     const { startYear, startMonth } = startDate;
@@ -77,6 +77,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
         setRenderShowDialog(false);
       }, 300);
     });
+    console.log(startMonthFirstDay, endMonthFirstDay);
   }, []);
   useEffect(() => {
     if (chooseStatus.start && chooseStatus.end) {
@@ -93,7 +94,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     }
   }, [chooseStatus]);
   useEffect(() => {
-    //用于监听Form组件的重置任务
+    // 用于监听Form组件的重置任务
     if (formCtx.reset) {
       setStartDate({
         startYear: new Date().getFullYear(),
@@ -114,7 +115,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
       const { startYear, startMonth, startDay } = startDate;
       const { endYear, endMonth, endDay } = endDate;
       formCtx.getChildVal(
-        `${startYear}-${startMonth}-${startDay} ${endYear}-${endMonth}-${endDay}`,
+        `${startYear}-${startMonth}-${startDay} ${endYear}-${endMonth}-${endDay}`
       );
     }
   }, [formCtx.submitStatus]);
@@ -130,12 +131,12 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     (activeBorderDom.current as any).style.left = '190px';
   };
   const preYear = (type: string) => {
-    //切换上一年
-    if (type == 'start') {
+    // 切换上一年
+    if (type === 'start') {
       const renderDate = { ...startDate };
       renderDate.startYear -= 1;
       setStartDate(renderDate);
-    } else if (type == 'end') {
+    } else if (type === 'end') {
       if (endDate.endYear > startDate.startYear) {
         const renderDate = { ...endDate };
         renderDate.endYear -= 1;
@@ -144,36 +145,35 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     }
   };
   const nextYear = (type: string) => {
-    //切换下一年
-    if (type == 'start') {
+    // 切换下一年
+    if (type === 'start') {
       if (startDate.startYear < endDate.endYear) {
         const renderDate = { ...startDate };
         renderDate.startYear += 1;
         setStartDate(renderDate);
       }
-    } else if (type == 'end') {
+    } else if (type === 'end') {
       const renderDate = { ...endDate };
       renderDate.endYear += 1;
       setEndDate(renderDate);
     }
   };
   const preMonth = (type: string) => {
-    //切换上一个月
-    if (type == 'start') {
+    // 切换上一个月
+    if (type === 'start') {
       const renderDate = { ...startDate };
-      if (renderDate.startMonth == 1) {
+      if (renderDate.startMonth === 1) {
         renderDate.startMonth = 12;
         renderDate.startYear -= 1;
       } else {
         renderDate.startMonth -= 1;
       }
       setStartDate(renderDate);
-    } else if (type == 'end') {
-      if (endDate.endYear == startDate.startYear && endDate.endMonth == startDate.startMonth) {
-        return;
+    } else if (type === 'end') {
+      if (endDate.endYear === startDate.startYear && endDate.endMonth === startDate.startMonth) {
       } else {
         const renderDate = { ...endDate };
-        if (renderDate.endMonth == 1) {
+        if (renderDate.endMonth === 1) {
           renderDate.endMonth = 12;
           renderDate.endYear -= 1;
         } else {
@@ -187,13 +187,12 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     }
   };
   const nextMonth = (type: string) => {
-    //切换下一个月
-    if (type == 'start') {
-      if (endDate.endYear == startDate.startYear && endDate.endMonth == startDate.startMonth) {
-        return;
+    // 切换下一个月
+    if (type === 'start') {
+      if (endDate.endYear === startDate.startYear && endDate.endMonth === startDate.startMonth) {
       } else {
         const renderDate = { ...startDate };
-        if (renderDate.startMonth == 12) {
+        if (renderDate.startMonth === 12) {
           renderDate.startMonth = 1;
           renderDate.startYear += 1;
         } else {
@@ -201,9 +200,9 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
         }
         setStartDate(renderDate);
       }
-    } else if (type == 'end') {
+    } else if (type === 'end') {
       const renderDate = { ...endDate };
-      if (renderDate.endMonth == 12) {
+      if (renderDate.endMonth === 12) {
         renderDate.endMonth = 1;
         renderDate.endYear += 1;
       } else {
@@ -213,8 +212,8 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     }
   };
   const chooseStartDay = (day: number | string) => {
-    //选择开始日期
-    if (day == '') return;
+    // 选择开始日期
+    if (day === '') return;
     setStartDate((old) => {
       old.startDay = day as number;
       return { ...old };
@@ -224,7 +223,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
       return { ...old };
     });
     setStartTime(`${startDate.startYear}-${startDate.startMonth}-${day}`);
-    if (startDate.startYear == endDate.endYear && startDate.startMonth == endDate.endMonth) {
+    if (startDate.startYear === endDate.endYear && startDate.startMonth === endDate.endMonth) {
       if (day > endDate.endDay) {
         setEndDate((old) => {
           old.endDay = day as number;
@@ -234,8 +233,8 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     }
   };
   const chooseEndDay = (day: number | string) => {
-    //选择结束日期
-    if (startDate.startYear == endDate.endYear && startDate.startMonth == endDate.endMonth) {
+    // 选择结束日期
+    if (startDate.startYear === endDate.endYear && startDate.startMonth === endDate.endMonth) {
       if (day < startDate.startDay) {
         return;
       }
@@ -251,8 +250,8 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     setEndTime(`${endDate.endYear}-${endDate.endMonth}-${day}`);
   };
   const enterChangeStartTime = (e: any) => {
-    //回车改变
-    if (e.keyCode == 13) {
+    // 回车改变
+    if (e.keyCode === 13) {
       if (/^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(startTime)) {
         const start = startTime.split('-');
         if (
@@ -279,14 +278,14 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     }
   };
   const blurStartTime = () => {
-    //失去焦点
+    // 失去焦点
     if (!/^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(startTime)) {
       setStartTime('');
     }
   };
   const enterChangeEndTime = (e: any) => {
-    //回车改变
-    if (e.keyCode == 13) {
+    // 回车改变
+    if (e.keyCode === 13) {
       if (/^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(endTime)) {
         const start = endTime.split('-');
         if (
@@ -313,13 +312,13 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     }
   };
   const blurEndTime = () => {
-    //失去焦点
+    // 失去焦点
     if (!/^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(endTime)) {
       setEndTime('');
     }
   };
   const clearStartTime = () => {
-    //清空开始时间
+    // 清空开始时间
     setStartTime('');
     setStartDate((old) => {
       const now = new Date();
@@ -330,7 +329,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     });
   };
   const clearEndTime = () => {
-    //清空结束时间
+    // 清空结束时间
     setEndTime('');
     setEndDate((old) => {
       const now = new Date();
@@ -341,7 +340,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     });
   };
   const activeStyles = () => {
-    //选中的样式
+    // 选中的样式
     return {
       activeDay: {
         color: '#fff',
@@ -381,10 +380,10 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
   }, [align]);
   const disabledClass = useCallback(
     (day: number | string) => {
-      if (day == '') {
+      if (day === '') {
         return 'white';
       }
-      if (startDate.startYear == endDate.endYear && startDate.startMonth == endDate.endMonth) {
+      if (startDate.startYear === endDate.endYear && startDate.startMonth === endDate.endMonth) {
         if (day < startDate.startDay) {
           return 'disabled-day';
         }
@@ -392,7 +391,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
       }
       return 'day-box';
     },
-    [startDate, endDate],
+    [startDate, endDate]
   );
   return (
     <div
@@ -404,9 +403,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
         <Input
           placeholder="请输入开始日期"
           defaultValue={
-            startTime
-              ? startTime
-              : `${startDate.startYear}-${startDate.startMonth}-${startDate.startDay}`
+            startTime || `${startDate.startYear}-${startDate.startMonth}-${startDate.startDay}`
           }
           handleIptChange={(v: string) => setStartTime(v)}
           handleIptFocus={startIptFocus}
@@ -419,9 +416,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
         <SwapRightOutlined style={{ color: '#cccccc', fontSize: '20px' }} />
         <Input
           placeholder="请输入结束日期"
-          defaultValue={
-            endTime ? endTime : `${endDate.endYear}-${endDate.endMonth}-${endDate.endDay}`
-          }
+          defaultValue={endTime || `${endDate.endYear}-${endDate.endMonth}-${endDate.endDay}`}
           handleIptChange={(v: string) => setEndTime(v)}
           handleIptFocus={endIptFocus}
           handleKeyDown={(e: any) => enterChangeEndTime(e)}
@@ -430,7 +425,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
           showClear={showClear as boolean}
           isFather
         />
-        <div className="activeBorder" ref={activeBorderDom}></div>
+        <div className="activeBorder" ref={activeBorderDom} />
       </div>
       {renderShowDialog && (
         <div
@@ -475,8 +470,12 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
                 return (
                   <div
                     key={index}
-                    className={i == '' ? 'white' : 'box-list'}
-                    style={i == startDate.startDay ? activeStyles().activeDay : {}}
+                    className={i === '' ? 'white' : 'box-list'}
+                    style={
+                      i === startDate.startDay
+                        ? (activeStyles().activeDay as React.CSSProperties)
+                        : {}
+                    }
                     onClick={() => chooseStartDay(Number(i))}
                   >
                     {i}
@@ -521,7 +520,9 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
                   <div
                     key={index}
                     className={disabledClass(i)}
-                    style={i == endDate.endDay ? activeStyles().activeDay : {}}
+                    style={
+                      i === endDate.endDay ? (activeStyles().activeDay as React.CSSProperties) : {}
+                    }
                     onClick={() => chooseEndDay(Number(i))}
                   >
                     {i}

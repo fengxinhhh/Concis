@@ -1,7 +1,5 @@
 import React from 'react';
 import Badge from '..';
-import Avatar from '../../Avatar';
-import { ClockCircleOutlined } from '@ant-design/icons';
 
 export default function avatarDemo1() {
   return (

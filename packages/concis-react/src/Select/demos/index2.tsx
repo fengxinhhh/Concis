@@ -27,7 +27,7 @@ export default function SelectDemo1() {
       width={200}
       disabled
       handleSelectCallback={handleSelectCallback}
-      placeholder={'请选择'}
+      placeholder="请选择"
     />
   );
 }

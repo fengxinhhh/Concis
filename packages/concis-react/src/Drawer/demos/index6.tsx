@@ -35,7 +35,7 @@ export default function index1() {
       <Drawer
         title="Drawer Title"
         visible={visible}
-        width='400px'
+        width="400px"
         onCancel={() => setVisible(false)}
         footer={
           <Space>
@@ -51,7 +51,7 @@ export default function index1() {
           </Space>
         }
       >
-        <Form layout={'horizontal'} formField={formRef} style={{ width: '600px' }}>
+        <Form layout="horizontal" formField={formRef} style={{ width: '600px' }}>
           <Form.Item
             label="Username"
             field="username"
@@ -61,7 +61,7 @@ export default function index1() {
               { minLength: 3, message: '最小长度为3位' },
             ]}
           >
-            <Input placeholder="请输入用户名" width="200"></Input>
+            <Input placeholder="请输入用户名" width="200" />
           </Form.Item>
           <Form.Item
             label="Password"
@@ -71,14 +71,15 @@ export default function index1() {
               { maxLength: 10, message: '最大长度为10位' },
               { minLength: 3, message: '最小长度为3位' },
               { fn: (a: string) => a.includes('concis'), message: '必须包含concis' },
-            ]}>
-            <Input placeholder="请输入密码" width="200"></Input>
+            ]}
+          >
+            <Input placeholder="请输入密码" width="200" />
           </Form.Item>
           <Form.Item label="Star">
             <Rate />
           </Form.Item>
           <Form.Item wrapperTol={10}>
-            <CheckBox checked={true}>I have read the manual</CheckBox>
+            <CheckBox checked>I have read the manual</CheckBox>
           </Form.Item>
         </Form>
       </Drawer>

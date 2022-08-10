@@ -30,12 +30,12 @@ const Avatar: FC<avatarProps> = (props: avatarProps) => {
   }, []);
   const autoFixFontSizeHandler = () => {
     if (autoFixFontSize) {
-      //如果用户配置了文本自适应
+      // 如果用户配置了文本自适应
       if (textRef.current) {
         const textDomWidth = (textRef.current as HTMLElement).clientWidth;
         const avatarSize = groupProps.size || size || 40;
         if (textDomWidth - avatarSize > 0) {
-          //文本不够，需要自适应
+          // 文本不够，需要自适应
           (textRef.current as HTMLElement).style.transform = `scale(${
             1 - (textDomWidth - avatarSize + 5) / 100
           })`;
@@ -44,17 +44,17 @@ const Avatar: FC<avatarProps> = (props: avatarProps) => {
     }
   };
   const formatStyle = useMemo(() => {
-    //整合所有头像传参样式
+    // 整合所有头像传参样式
     const returnStyle: avatarStyles = { ...groupProps.groupStyle, ...style };
     if (Object.keys(groupProps).length > 0) {
-      //头像组
+      // 头像组
       if (groupProps.size) {
         returnStyle.width = `${groupProps.size}px`;
         returnStyle.height = `${groupProps.size}px`;
         returnStyle.fontSize = `${groupProps.size / 3}px`;
       }
     } else {
-      //单头像
+      // 单头像
       if (size) {
         returnStyle.width = `${size}px`;
         returnStyle.height = `${size}px`;
@@ -67,7 +67,9 @@ const Avatar: FC<avatarProps> = (props: avatarProps) => {
     return returnStyle;
   }, [style, shape, size, groupProps]);
   const buttonDialogTransform = useMemo(() => {
-    return shape == 'square' ? { right: '-2px', bottom: '-2px' } : { right: '2px', bottom: '-2px' };
+    return shape === 'square'
+      ? { right: '-2px', bottom: '-2px' }
+      : { right: '2px', bottom: '-2px' };
   }, [triggerType]);
   const handleClick = () => {
     triggerClick && triggerClick();
@@ -83,7 +85,7 @@ const Avatar: FC<avatarProps> = (props: avatarProps) => {
         </div>
       )}
       {
-        //按钮式dialog
+        // 按钮式dialog
         triggerType === 'button' && triggerIcon && (
           <div className="button-dialog" style={buttonDialogTransform} onClick={handleClick}>
             {triggerIcon}
@@ -91,7 +93,7 @@ const Avatar: FC<avatarProps> = (props: avatarProps) => {
         )
       }
       {
-        //内嵌式dialog
+        // 内嵌式dialog
         triggerType === 'mask' && triggerIcon && (
           <div className="dialog">
             <div className="icon" onClick={handleClick}>

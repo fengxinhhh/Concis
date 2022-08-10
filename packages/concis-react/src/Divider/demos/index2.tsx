@@ -1,5 +1,5 @@
-import Divider from '..';
 import React from 'react';
+import Divider from '..';
 /**
  * transform: true
  */

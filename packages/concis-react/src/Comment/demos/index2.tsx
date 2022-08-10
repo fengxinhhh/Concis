@@ -17,7 +17,7 @@ export default function index1() {
       author="Concis"
       avatar={
         <Avatar>
-          <img src="http://react-view-ui.com:92/images/swiper-img1.webp"></img>
+          <img src="http://concis.org.cn/images/swiper-img1.webp" />
         </Avatar>
       }
       content="Hello Concis,coding is life,comment body content."
@@ -28,7 +28,7 @@ export default function index1() {
         author="Concis"
         avatar={
           <Avatar>
-            <img src="http://react-view-ui.com:92/images/swiper-img2.webp"></img>
+            <img src="http://concis.org.cn/images/swiper-img2.webp" />
           </Avatar>
         }
         content="Hello Concis,coding is life,comment body content."
@@ -39,7 +39,7 @@ export default function index1() {
           author="Concis"
           avatar={
             <Avatar>
-              <img src="http://react-view-ui.com:92/images/swiper-img3.webp"></img>
+              <img src="http://concis.org.cn/images/swiper-img3.webp" />
             </Avatar>
           }
           content="Hello Concis,coding is life,comment body content."
@@ -50,7 +50,7 @@ export default function index1() {
           author="Concis"
           avatar={
             <Avatar>
-              <img src="http://react-view-ui.com:92/images/swiper-img4.webp"></img>
+              <img src="http://concis.org.cn/images/swiper-img4.webp" />
             </Avatar>
           }
           content="Hello Concis,coding is life,comment body content."

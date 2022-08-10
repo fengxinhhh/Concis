@@ -1,5 +1,6 @@
 import React, { useEffect, FC, memo, useState, useContext } from 'react';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
+import dayjs from 'dayjs';
 import Input from '../../Input';
 import Popover from '../../Popover';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
@@ -9,7 +10,6 @@ import { getSiteTheme } from '../../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../../common_utils/getRenderColor';
 import { ctx } from '../../Form';
 import './index.module.less';
-import dayjs from 'dayjs';
 
 interface MonthPickerProps {
   /**
@@ -17,20 +17,10 @@ interface MonthPickerProps {
    */
   className?: string;
   /**
-   * @description 日期选择器类型(primary/input)仅支持非range
-   * @default primary
-   */
-  type?: string;
-  /**
    * @description 设置日期的格式化
    * @default YYYY-MM-DD
    */
   format?: string;
-  /**
-   * @description 设置日期区间选择器
-   * @default false
-   */
-  showRange?: Boolean;
   /**
    * @description 显示日期重置按钮
    * @default false
@@ -75,7 +65,7 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}month-picker`);
 
   useEffect(() => {
-    //用于监听Form组件的重置任务
+    // 用于监听Form组件的重置任务
     if (formCtx.reset) {
       setClickDate(new Date());
       setDateValue('');
@@ -109,7 +99,7 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
     <Popover
       type="click"
       align={align}
-      dialogWidth={'auto'}
+      dialogWidth="auto"
       closeDeps={[dateValue]}
       content={
         <div
@@ -118,7 +108,7 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
             {
               '--checked-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
             } as any
           }
@@ -142,8 +132,9 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
                     <td
                       key={i}
                       onClick={() => setInputVal(new Date(startYear, idx * 3 + i))}
-                      className={`${disableCheck(new Date(startYear, idx * 3 + i)) ? 'disable' : ''
-                        }  ${isSameDate(new Date(startYear, idx * 3 + i)) ? 'active' : ''}`}
+                      className={`${
+                        disableCheck(new Date(startYear, idx * 3 + i)) ? 'disable' : ''
+                      }  ${isSameDate(new Date(startYear, idx * 3 + i)) ? 'active' : ''}`}
                     >
                       <span>{month}</span>
                     </td>

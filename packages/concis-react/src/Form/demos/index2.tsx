@@ -22,13 +22,13 @@ export default function index1() {
 
       <Form layout={align} style={{ width: '600px' }}>
         <Form.Item label="Username">
-          <Input placeholder="Please enter your usename" width="200"></Input>
+          <Input placeholder="Please enter your usename" width="200" />
         </Form.Item>
         <Form.Item label="Post">
-          <Input placeholder="Please enter your post" width="200"></Input>
+          <Input placeholder="Please enter your post" width="200" />
         </Form.Item>
         <Form.Item wrapperTol={20}>
-          <CheckBox checked={true}>I have read the manual</CheckBox>
+          <CheckBox checked>I have read the manual</CheckBox>
         </Form.Item>
         <Form.Item wrapperTol={5}>
           <Button type="primary">Submit</Button>

@@ -1,10 +1,14 @@
-import { ReactNode } from 'react';
+import { ReactNode, CSSProperties } from 'react';
 
 interface SwitchProps<T> {
   /**
    * @description 类名
    */
   className?: T;
+  /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
   /**
    * @description 禁用
    * @default false

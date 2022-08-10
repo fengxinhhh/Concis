@@ -68,13 +68,13 @@ const Affix: FC<AffixProps> = (props) => {
 
   const [affixElOffset, setAffixElOffset] = useState<offsetProps>({});
 
-  let io: IntersectionObserver; //观察者
+  let io: IntersectionObserver; // 观察者
 
   useEffect(() => {
     const el = document.querySelector('.concis-affix') as Element;
     io = new IntersectionObserver((entries) => elementObverse(entries));
-    io.observe(el); //数据劫持监听
-    if (affixType == 'scroll') {
+    io.observe(el); // 数据劫持监听
+    if (affixType === 'scroll') {
       window.addEventListener('scroll', screenScroll);
       setAffixElOffset((old) => {
         old.position = 'relative';
@@ -115,14 +115,13 @@ const Affix: FC<AffixProps> = (props) => {
     };
   }, []);
   const screenScroll = () => {
-    const el: any = document.querySelector('.affix');
     if (window.scrollY < 200) {
-      //首屏时，无需脱离文档流
+      // 首屏时，无需脱离文档流
       setAffixElOffset((old: offsetProps) => {
         for (const key in old as offsetProps) {
-          if (key == 'position') {
+          if (key === 'position') {
             old[key] = 'relative';
-          } else if (key == 'right' || key == 'left' || key == 'top' || key == 'bottom') {
+          } else if (key === 'right' || key === 'left' || key === 'top' || key === 'bottom') {
             old[key] = '0';
           }
         }
@@ -131,11 +130,11 @@ const Affix: FC<AffixProps> = (props) => {
     }
   };
   const elementObverse = (entries: Array<IntersectionObserverEntry>) => {
-    //监听函数
+    // 监听函数
     entries.forEach((entry: IntersectionObserverEntry) => {
       if (!entry.isIntersecting) {
         // 元素未被观测
-        if (affixElOffset.position == 'relative') {
+        if (affixElOffset.position === 'relative') {
           setAffixElOffset((old) => {
             old.position = 'fixed';
             if (offsetTop && offsetTop !== old.top) {

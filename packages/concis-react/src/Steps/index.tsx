@@ -1,10 +1,10 @@
 import React, { FC, memo, useCallback, useContext } from 'react';
+import { CheckOutlined } from '@ant-design/icons';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../common_utils/getRenderColor';
-import { CheckOutlined } from '@ant-design/icons';
 import './index.module.less';
 
 interface stepsProps {
@@ -41,28 +41,29 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
   const { current, className, onChange, children } = props;
 
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
-  const theme = getSiteTheme();
 
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}steps`);
 
   const indexClassName = useCallback(
     (index: number): string => {
-      if (index == current) {
+      if (index === current) {
         return 'active-index';
-      } else if (index > current) {
+      }
+      if (index > current) {
         return 'after-index';
-      } else if (index < current) {
+      }
+      if (index < current) {
         return 'before-index';
       }
       return 'before-index';
     },
-    [current],
+    [current]
   );
   const indexTitleClassName = useCallback(
     (args: string): string => {
-      return onChange ? 'hover-title ' + args : args;
+      return onChange ? `hover-title ${args}` : args;
     },
-    [current],
+    [current]
   );
   return (
     <div
@@ -71,7 +72,7 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
         {
           '--global-color': getRenderColor(
             (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-            globalColor,
+            globalColor
           ),
         } as any
       }

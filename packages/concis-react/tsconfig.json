@@ -4,5 +4,5 @@
     "baseUrl": "./",
     "typeRoots": ["node_modules/@types", "types"]
   },
-  "include": ["./typings.d.ts"]
+  "include": ["./typings.d.ts", "./src"]
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Modal from '..';
 import Button from '../../Button';
-import Space from '../../Space';
 
 export default function index1() {
   const [visible1, setVisible1] = useState(false);
@@ -19,11 +18,13 @@ export default function index1() {
 
   return (
     <div>
-      <Space>
+      <div style={{ display: 'flex' }}>
         <Button handleClick={() => setVisible1(true)}>打开禁用按钮Modal</Button>
-        <Button handleClick={() => setVisible2(true)}>打开自定义页脚Modal</Button>
+        <Button style={{ margin: '0 8px' }} handleClick={() => setVisible2(true)}>
+          打开自定义页脚Modal
+        </Button>
         <Button handleClick={() => setVisible3(true)}>打开无页脚Modal</Button>
-      </Space>
+      </div>
 
       <Modal
         title="Modal Title"
@@ -43,17 +44,22 @@ export default function index1() {
         visible={visible2}
         onCancel={() => setVisible2(false)}
         footer={
-          <Space>
+          <div style={{ display: 'flex' }}>
             <Button type="text" handleClick={() => setVisible2(false)}>
               Return
             </Button>
-            <Button type="text" handleClick={closeAsync} loading={loading}>
+            <Button
+              style={{ margin: '0 8px' }}
+              type="text"
+              handleClick={closeAsync}
+              loading={loading}
+            >
               Async Return
             </Button>
             <Button type="primary" handleClick={() => setVisible2(false)}>
               Enter
             </Button>
-          </Space>
+          </div>
         }
       >
         <p>

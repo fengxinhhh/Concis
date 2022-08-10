@@ -6,7 +6,7 @@ import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { CollapseProps } from './interfase';
 import './style/index.module.less';
 
-export const ctx = createContext<any>({} as any); //顶层通信装置
+export const ctx = createContext<any>({} as any); // 顶层通信装置
 
 const Collapse: FC<CollapseProps> = (props) => {
   const {
@@ -19,13 +19,13 @@ const Collapse: FC<CollapseProps> = (props) => {
     lazyLoad = false,
     toggleCallback,
   } = props;
-  const [activeKeyList, setActiveKeyList] = useState<Array<number | string>>(defaultActive || []); //父组件管理选中列表
+  const [activeKeyList, setActiveKeyList] = useState<Array<number | string>>(defaultActive || []); // 父组件管理选中列表
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}collapse-box`);
   const providerList = {
-    //父组件状态管理store
+    // 父组件状态管理store
     activeKeyList,
     setActiveKeyList,
     accordion,
@@ -38,7 +38,16 @@ const Collapse: FC<CollapseProps> = (props) => {
     <ctx.Provider value={providerList}>
       <div
         className={classNames}
-        style={noBorder ? {} : { border: (getSiteTheme() === ('dark' || 'auto') || darkTheme) ? '1px solid#484849' : '1px solid rgba(229, 230,235,1)' }}
+        style={
+          noBorder
+            ? {}
+            : {
+                border:
+                  getSiteTheme() === ('dark' || 'auto') || darkTheme
+                    ? '1px solid#484849'
+                    : '1px solid rgba(229, 230,235,1)',
+              }
+        }
       >
         {children}
       </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import Input from '..';
 import Select from '../../Select';
 import Button from '../../Button';
-import Space from '../../Space';
 
 export default function InputDemo2() {
   const option = [
@@ -27,21 +26,22 @@ export default function InputDemo2() {
   };
   return (
     <>
-      <Space direction="vertical">
-        <Space size="large">
-          <Input placeholder="请输入" handleIptChange={handleIptChange} />
-          <Select
-            option={option}
-            width={100}
-            handleSelectCallback={handleSelectCallback}
-            placeholder={'请选择'}
-          />
-        </Space>
-        <Space size="large">
-          <Input placeholder="请输入" handleIptChange={handleIptChange} />
-          <Button type="primary">搜索</Button>
-        </Space>
-      </Space>
+      <div style={{ display: 'flex' }}>
+        <Input placeholder="请输入" handleIptChange={handleIptChange} />
+        <Select
+          option={option}
+          width={100}
+          handleSelectCallback={handleSelectCallback}
+          placeholder="请选择"
+          style={{ marginLeft: '10px' }}
+        />
+      </div>
+      <div style={{ display: 'flex', marginTop: '10px' }}>
+        <Input placeholder="请输入" handleIptChange={handleIptChange} />
+        <Button type="primary" style={{ marginLeft: '10px' }}>
+          搜索
+        </Button>
+      </div>
     </>
   );
 }

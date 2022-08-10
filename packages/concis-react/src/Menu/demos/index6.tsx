@@ -1,6 +1,6 @@
 import React from 'react';
-import Menu from '..';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import Menu from '..';
 
 export default function MenuDemos1() {
   const getItem = (
@@ -8,7 +8,7 @@ export default function MenuDemos1() {
     key: string | number,
     level: string | number,
     icon?: JSX.Element | null,
-    children?: Array<Object> | null,
+    children?: Array<Object> | null
   ) => {
     return {
       label,

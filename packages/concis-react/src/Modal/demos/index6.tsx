@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Modal from '..';
 import Button from '../../Button';
-import Space from '../../Space';
 
 export default function index1() {
   const [visible1, setVisible1] = useState(false);
@@ -9,10 +8,10 @@ export default function index1() {
 
   return (
     <div>
-      <Space>
-        <Button handleClick={() => setVisible1(true)}>Open Modal1</Button>
-        <Button handleClick={() => setVisible2(true)}>Open Modal2</Button>
-      </Space>
+      <Button style={{ marginRight: '8px' }} handleClick={() => setVisible1(true)}>
+        Open Modal1
+      </Button>
+      <Button handleClick={() => setVisible2(true)}>Open Modal2</Button>
 
       <Modal
         title="Modal Title"
