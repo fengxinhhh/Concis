@@ -8,7 +8,7 @@ import useOverFlowScroll from '../common_utils/hooks/useOverFlowScroll';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-const Input: FC<ImageProps> = (props) => {
+const Image: FC<ImageProps> = (props) => {
   const {
     src,
     alt,
@@ -26,7 +26,12 @@ const Input: FC<ImageProps> = (props) => {
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}image`, `${preview ? 'concis-preview-image' : ''}`);
+  const classNames = cs(
+    prefixCls,
+    className,
+    `concis-${darkTheme ? 'dark-' : ''}image`,
+    `${preview ? 'concis-preview-image' : ''}`
+  );
 
   // 显示预览大图
   const [visible, setVisible] = useState(false);
@@ -37,47 +42,46 @@ const Input: FC<ImageProps> = (props) => {
   const handlePreview = (e: any) => {
     e.stopPropagation();
     if (preview) {
-      setVisible(true)
+      setVisible(true);
     }
-  }
+  };
 
   // 关闭预览
   const handleClose = (e: any) => {
     e.stopPropagation();
-    setVisible(false)
-  }
+    setVisible(false);
+  };
 
   // 缩小
   const handleSmall = (e?: any) => {
     e?.stopPropagation();
     if (scale <= 0.2) {
-      return
+      return;
     }
-    setScale(scale - 0.1)
-  }
+    setScale(scale - 0.1);
+  };
 
   // 放大
   const handleLarge = (e?: any) => {
     e?.stopPropagation();
     if (scale >= 10) {
-      return
+      return;
     }
-    setScale(scale + 0.1)
-  }
+    setScale(scale + 0.1);
+  };
 
   // 滚轮缩放
   const onImgMousewheel = (e: any) => {
-    e.stopPropagation()
+    e.stopPropagation();
     if (e.deltaY > 1) {
-      handleSmall()
-      return
+      handleSmall();
+      return;
     }
-    handleLarge()
-  }
+    handleLarge();
+  };
 
-  //禁止页面滚动
+  // 禁止页面滚动
   useOverFlowScroll('body', visible as boolean);
-
 
   useEffect(() => {
     preview && window.addEventListener('click', handleClose);
@@ -93,13 +97,13 @@ const Input: FC<ImageProps> = (props) => {
           src={src}
           alt={alt}
           draggable={draggable}
-          className={`${fit ? 'concis-image-' + fit : ''}`}
+          className={`${fit ? `concis-image-${fit}` : ''}`}
           style={{ width, height, borderRadius: round }}
         />
 
         {caption && (
           <div
-            className='concis-image-caption'
+            className="concis-image-caption"
             style={{
               ...captionStyle,
               borderBottomLeftRadius: round,
@@ -110,8 +114,9 @@ const Input: FC<ImageProps> = (props) => {
           </div>
         )}
         {preview && (
-          <div className='preview-image-mask'>
-            <EyeOutlined /><span>预览</span>
+          <div className="preview-image-mask">
+            <EyeOutlined />
+            <span>预览</span>
           </div>
         )}
       </div>
@@ -120,9 +125,9 @@ const Input: FC<ImageProps> = (props) => {
           in={visible}
           timeout={200}
           appear
-          mountOnEnter={true}
+          mountOnEnter
           classNames="fadeImage"
-          unmountOnExit={true}
+          unmountOnExit
           onEnter={(e: HTMLDivElement) => {
             e.style.display = 'block';
           }}
@@ -131,20 +136,22 @@ const Input: FC<ImageProps> = (props) => {
           }}
         >
           <div
-            className='preview-image-wrap'
+            className="preview-image-wrap"
             // style={{ display: visible ? 'block' : 'none' }}
             onWheel={onImgMousewheel}
           >
             <img
-              className='preview-show-image'
+              className="preview-show-image"
               src={src}
               style={{
-                transform: `scale(${scale})`
+                transform: `scale(${scale})`,
               }}
             />
-          </div></CSSTransition>
+          </div>
+        </CSSTransition>
       )}
     </>
   );
 };
-export default memo(Input);
+
+export default memo(Image);
