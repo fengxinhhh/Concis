@@ -24,4 +24,6 @@ mobile: false
 
 头像的基础使用
 
-<code src="./demos/index1.tsx" />
+<!-- <code src="./demos/index1.tsx" /> -->
+
+<API></API>
