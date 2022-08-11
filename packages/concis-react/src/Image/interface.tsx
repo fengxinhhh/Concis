@@ -1,6 +1,5 @@
 import { CSSProperties } from 'react';
 
-
 interface ImageProps {
   /**
    * @description 图片路径
@@ -41,10 +40,15 @@ interface ImageProps {
    */
   round?: string;
   /**
-   * @description 是否可预览
+   * @description 是否可预览，可传入预览图片列表
    * @default false
    */
-  preview?: boolean;
+  preview?: boolean | string[];
+  /**
+   * @description 是否展示图片预览底部操作栏
+   * @default true
+   */
+  showOperation?: boolean;
   /**
    * @description 图片上的描述文案
    */
