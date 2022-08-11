@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '..';
+import { Button } from 'concis';
 import '../../styles/demo-dark.less';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
