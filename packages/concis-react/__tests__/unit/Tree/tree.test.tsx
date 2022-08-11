@@ -1,8 +1,8 @@
 import React from 'react';
+import { act } from '@testing-library/react';
 import Tree, { treeNode } from '../../../src/Tree';
 import Enzyme from '../../setup';
 import mountTest from '../../mountTest';
-import { act } from '@testing-library/react';
 
 const { mount } = Enzyme;
 
@@ -167,7 +167,7 @@ describe('Tree', () => {
     expect(chooseCallback).toBeCalled();
   });
   it('test tree props', () => {
-    const component = mount(<Demo avaSearch={true} avaChooseMore={true} defaultOpen={true} />);
+    const component = mount(<Demo avaSearch avaChooseMore defaultOpen />);
     // act(() => {
     //   component.setProps({
     //     avaSearch: true,
