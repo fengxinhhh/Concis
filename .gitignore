@@ -1,28 +1,37 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-
-/node_modules
-/packages/concis-react/node_modules
-/packages/concis-react/package-lock.json
-/packages/concis-react/web-react
-/packages/concis-react-mobile/node_modules
-/packages/concis-react-mobile/package-lock.json
-/packages/concis-react-mobile/web-react-mobile
-/packages/concis-vscode-snippets/node_modules
-/packages/concis-vscode-snippets/dist
+# logs
+logs
+*.log
 /npm-debug.log*
-/yarn-error.log
-/yarn.lock
+
+# dependencies
+/node_modules
 /package-lock.json
-/lerna-debug.log
+/yarn.lock
+/packages/*/node_modules
+/packages/*/package-lock.json
+
+# bundle files
 /es
 /docs-dist
+/lib
+/packages/*/dist
+/packages/concis-react/web-react
+/packages/concis-react-mobile/web-react-mobile
+
+# misc
 .DS_Store
-/coverage
+
+# umi
 .umi-production
 .umi-test
 .umi
 .env.local
+
+# ide
 /.vscode
 /.idea
 
+# coverage
+/coverage
