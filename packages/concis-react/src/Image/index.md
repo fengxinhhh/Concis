@@ -27,9 +27,13 @@ mobile: false
 <code src="./demos/index3.tsx" />
 
 ## 预览
+`preview` 设置为 `true` 实现预览功能
 <code src="./demos/index4.tsx" />
 
-## 描述文案
+`preview` 传入数组可实现多图预览
 <code src="./demos/index5.tsx" />
+
+## 描述文案
+<code src="./demos/index6.tsx" />
 
 <API></API>
