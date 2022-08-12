@@ -44,3 +44,4 @@ export { default as InputPro } from './InputPro';
 export { default as Drawer } from './Drawer';
 export { default as Upload } from './Upload';
 export { default as Tabs } from './Tabs';
+export { default as BackTop } from './BackTop';

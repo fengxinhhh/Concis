@@ -18,12 +18,8 @@ mobile: false
 
 ## 基本使用
 
-头像的基础使用
+基础使用
 
 <code src="./demos/index1.tsx" />
-
-头像的基础使用
-
-<!-- <code src="./demos/index1.tsx" /> -->
 
 <API></API>
