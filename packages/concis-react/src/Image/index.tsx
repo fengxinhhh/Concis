@@ -66,6 +66,11 @@ const Image: FC<ImageProps> = (props) => {
   const handleClose = (e: any) => {
     e.stopPropagation();
     setVisible(false);
+    // 计算动画时间，在预览窗消失后重置预览图状态
+    setTimeout(() => {
+      setRotate(0);
+      setScale(1);
+    }, 200);
   };
 
   // 缩小
@@ -214,7 +219,7 @@ const Image: FC<ImageProps> = (props) => {
               </>
             )}
             {/* 关闭预览 */}
-            <div className="preview-image-close">
+            <div className="preview-image-close" onClick={handleClose}>
               <CloseOutlined />
             </div>
             {/* 操作栏 */}
