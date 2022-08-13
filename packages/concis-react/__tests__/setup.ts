@@ -27,20 +27,26 @@ export function setupIntersectionObserverMock({
   observe = () => null,
   takeRecords = () => [],
   unobserve = () => null,
-} = {}): { element: Element; callback: () => void }[] {
-  let observeElement: { element: Element; callback: () => void }[] = [];
+} = {}): Record<'observeElement', { element: Element; callback: () => void }[]> {
   class MockIntersectionObserver implements IntersectionObserver {
     readonly root: Element | null = root;
+
     readonly rootMargin: string = rootMargin;
+
     readonly thresholds: ReadonlyArray<number> = thresholds;
+
+    static observeElement: { element: Element; callback: () => void }[] = [];
+
     disconnect: () => void = disconnect;
+
     observe: (target: Element) => void = (element: Element) => {
-      observeElement.push({
+      MockIntersectionObserver.observeElement.push({
         element,
         callback: this.execute.bind(this),
       });
       observe();
     };
+
     takeRecords: () => IntersectionObserverEntry[] = () => [
       {
         boundingClientRect: {} as DOMRectReadOnly,
@@ -52,16 +58,22 @@ export function setupIntersectionObserverMock({
         time: 1,
       },
     ];
+
     unobserve: (target: Element) => void = (element) => {
-      observeElement = observeElement.filter((ele) => ele.element != element);
+      MockIntersectionObserver.observeElement = MockIntersectionObserver.observeElement.filter(
+        (ele) => ele.element != element
+      );
       unobserve();
     };
+
     callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void;
+
     constructor(
-      callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void,
+      callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void
     ) {
       this.callback = callback;
     }
+
     execute() {
       const takeRecords = this.takeRecords();
       this.callback.call(this, takeRecords, this);
@@ -79,7 +91,6 @@ export function setupIntersectionObserverMock({
     configurable: true,
     value: MockIntersectionObserver,
   });
-  return observeElement;
+  return MockIntersectionObserver;
 }
-
 export default Enzyme;
