@@ -1,23 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
+import { render, unmountComponentAtNode } from 'react-dom';
+import { act } from '@testing-library/react';
 import Enzyme, { setupIntersectionObserverMock } from '../../setup';
 import mountTest from '../../mountTest';
 import LazyLoad from '../../../src/LazyLoad';
-import { render, unmountComponentAtNode } from 'react-dom';
-import { act } from '@testing-library/react';
 
 const { mount } = Enzyme;
 mountTest(LazyLoad);
 
 let container: HTMLDivElement | null = null;
-let observeElement: { element: Element; callback: () => void }[] = [];
+let observeInstance: Record<'observeElement', { element: Element; callback: () => void }[]> | null =
+  null;
 let target: Element | null = null;
 const observe = jest.fn();
 beforeEach(() => {
   // 创建一个 DOM 元素作为渲染目标
   container = document.createElement('div');
   document.body.appendChild(container);
-  observeElement = setupIntersectionObserverMock({
-    observe: observe,
+  observeInstance = setupIntersectionObserverMock({
+    observe,
     disconnect: jest.fn(),
     unobserve: jest.fn(),
   });
@@ -25,7 +26,7 @@ beforeEach(() => {
 
 afterEach(() => {
   // 退出时进行清理
-  unmountComponentAtNode(container);
+  unmountComponentAtNode(container!);
   container?.remove();
   container = null;
 });
@@ -39,7 +40,7 @@ function Demo() {
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const observer = new IntersectionObserver(_callback);
     target = document.querySelector('.lazy');
     observer.observe(target!);
@@ -73,23 +74,22 @@ describe('LazyLoad', () => {
         <div className="a">111</div>
         <div className="a">111</div>
         <div className="a">111</div>
-      </LazyLoad>,
+      </LazyLoad>
     );
 
     expect(component.find('.concis-lazyLoad').length).toBe(1);
   });
   it('test LazyLoad lazy effect', () => {
     act(() => {
-      render(<Demo />, container);
-    });
-    expect(document.querySelector('.lazy')?.childNodes.length).toBe(0);
-    act(() => {
-      observeElement.forEach((x) => {
-        if (x.element == target) {
-          x.callback();
-        }
+      render(<Demo />, container, () => {
+        observeInstance?.observeElement.forEach((x) => {
+          if (x.element === target) {
+            x.callback();
+          }
+        });
       });
     });
+
     expect(observe).toBeCalled();
     expect(document.querySelector('.lazy')?.childNodes.length).toBe(3);
   });
