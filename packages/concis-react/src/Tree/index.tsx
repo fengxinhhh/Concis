@@ -43,7 +43,7 @@ interface treeProps {
    */
   chooseCallback?: Function;
 }
-interface treeNode {
+export interface treeNode {
   title: string;
   value: string;
   level?: number;
@@ -94,7 +94,7 @@ const Tree: FC<treeProps> = (props) => {
 
   const resolveTreeData = (treeData: Array<treeNode>, nowIndexLevel: number) => {
     // 二次处理treeData
-    treeData.forEach((treeNode: treeNode) => {
+    (treeData || []).forEach((treeNode: treeNode) => {
       treeNode.level = nowIndexLevel;
       if (defaultOpen) {
         // 默认全展开
@@ -165,18 +165,18 @@ const Tree: FC<treeProps> = (props) => {
           updateVal = updateVal.split(',');
           updateVal.splice(
             activedVal.split(',').findIndex((t) => t === clickTreeNode.title),
-            1
+            1,
           );
           updateVal = updateVal.join(',');
           setActivedVal(updateVal);
           chooseCallback && chooseCallback(updateVal);
         } else {
           setActivedVal(
-            activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`
+            activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`,
           );
           chooseCallback &&
             chooseCallback(
-              activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`
+              activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`,
             );
         }
       } else {
@@ -233,7 +233,7 @@ const Tree: FC<treeProps> = (props) => {
       }
       return theme === 'light' ? '#000000' : '#ffffffe6';
     },
-    [activedVal]
+    [activedVal],
   );
 
   const clearCallback = () => {
@@ -242,7 +242,7 @@ const Tree: FC<treeProps> = (props) => {
   };
   const render = (data: Array<treeNode> = stateTreeData) => {
     // 动态规划render函数
-    return data.map((treeNode: treeNode, index) => {
+    return (data || []).map((treeNode: treeNode, index) => {
       return (
         <Fragment key={index}>
           <div

@@ -4,6 +4,7 @@
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
+    "test:unit": "pnpm -C packages/concis-react test:unit",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "eslint": "eslint packages/concis-react/src --fix --cache --quiet --ext .js,.jsx,.ts,.tsx",
     "pre-commit": "pnpm run eslint && pnpm run prettier"

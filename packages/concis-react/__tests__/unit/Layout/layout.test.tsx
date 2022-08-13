@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Layout from '../../../src/Layout/index';
 import Header from '../../../src/Layout/Header';
 import Slider from '../../../src/Layout/Slider';
@@ -6,7 +7,6 @@ import Footer from '../../../src/Layout/Footer';
 import Content from '../../../src/Layout/Content';
 import Enzyme from '../../setup';
 import mountTest from '../../mountTest';
-import ReactDOM from 'react-dom';
 
 const { mount } = Enzyme;
 let container: HTMLDivElement | null;
