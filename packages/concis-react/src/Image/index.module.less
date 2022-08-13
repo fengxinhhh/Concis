@@ -1,5 +1,7 @@
 @import '../styles/common.less';
 
+@concis-image-btn-size: 20px;
+
 .concis-image,
 .concis-dark-image {
   position: relative;
@@ -93,6 +95,66 @@
     max-height: 100%;
     max-width: 100%;
     transition: 0.2s;
+  }
+
+  .preview-image-prev,
+  .preview-image-next,
+  .preview-image-close {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: @concis-image-btn-size;
+    color: rgba(255, 255, 255, .8);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    margin: auto;
+    cursor: pointer;
+  }
+
+  .preview-btn-disabled {
+    color: rgba(255, 255, 255, 0.1);
+    cursor: not-allowed;
+  }
+
+  .preview-image-prev {
+    left: 30px;
+    top: 0;
+    bottom: 0;
+  }
+
+  .preview-image-next {
+    right: 30px;
+    top: 0;
+    bottom: 0;
+  }
+
+  .preview-image-close {
+    right: 30px;
+    top: 30px;
+  }
+
+  .preview-image-operations {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 25px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 270px;
+    height: 44px;
+    color: #fff;
+    font-size: @concis-image-btn-size;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    margin: auto;
+
+    span {
+      cursor: pointer;
+    }
   }
 }
 

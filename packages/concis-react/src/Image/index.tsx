@@ -1,6 +1,15 @@
 import React, { FC, useState, useContext, useEffect, memo } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { EyeOutlined } from '@ant-design/icons';
+import {
+  EyeOutlined,
+  RightOutlined,
+  LeftOutlined,
+  CloseOutlined,
+  RotateLeftOutlined,
+  RotateRightOutlined,
+  ZoomOutOutlined,
+  ZoomInOutlined,
+} from '@ant-design/icons';
 import { ImageProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -19,7 +28,8 @@ const Image: FC<ImageProps> = (props) => {
     width,
     height,
     round,
-    preview,
+    preview = false,
+    showOperation = true,
     caption,
     captionStyle,
   } = props;
@@ -37,11 +47,17 @@ const Image: FC<ImageProps> = (props) => {
   const [visible, setVisible] = useState(false);
   // 缩放比例
   const [scale, setScale] = useState(1);
+  // 旋转角度
+  const [rotate, setRotate] = useState(0);
+  // 预览列表
+  const [previewList, setPreviewList] = useState<string[]>([]);
+  // 预览下标
+  const [previewShowIndex, setPreviewShowIndex] = useState(0);
 
   // 预览
   const handlePreview = (e: any) => {
     e.stopPropagation();
-    if (preview) {
+    if (previewList.length) {
       setVisible(true);
     }
   };
@@ -50,6 +66,11 @@ const Image: FC<ImageProps> = (props) => {
   const handleClose = (e: any) => {
     e.stopPropagation();
     setVisible(false);
+    // 计算动画时间，在预览窗消失后重置预览图状态
+    setTimeout(() => {
+      setRotate(0);
+      setScale(1);
+    }, 200);
   };
 
   // 缩小
@@ -70,6 +91,12 @@ const Image: FC<ImageProps> = (props) => {
     setScale(scale + 0.1);
   };
 
+  // 旋转
+  const handleRotate = (e: any, val: number) => {
+    e.stopPropagation();
+    setRotate(rotate + val);
+  };
+
   // 滚轮缩放
   const onImgMousewheel = (e: any) => {
     e.stopPropagation();
@@ -80,11 +107,36 @@ const Image: FC<ImageProps> = (props) => {
     handleLarge();
   };
 
+  // 上一张预览图
+  const showPreviousImage = (e: any) => {
+    e.stopPropagation();
+    if (previewShowIndex - 1 < 0) return;
+    setScale(1);
+    setRotate(0);
+    setPreviewShowIndex(previewShowIndex - 1);
+  };
+
+  // 上一张预览图
+  const showNextImage = (e: any) => {
+    e.stopPropagation();
+    if (previewShowIndex + 1 > previewList.length - 1) return;
+    setScale(1);
+    setRotate(0);
+    setPreviewShowIndex(previewShowIndex + 1);
+  };
+
   // 禁止页面滚动
   useOverFlowScroll('body', visible as boolean);
 
   useEffect(() => {
-    preview && window.addEventListener('click', handleClose);
+    if (Array.isArray(preview)) {
+      setPreviewList(preview);
+    } else if (preview && src) {
+      setPreviewList([src]);
+    } else {
+      return;
+    }
+    window.addEventListener('click', handleClose);
     return () => {
       window.removeEventListener('click', handleClose);
     };
@@ -135,18 +187,56 @@ const Image: FC<ImageProps> = (props) => {
             e.style.display = 'none';
           }}
         >
-          <div
-            className="preview-image-wrap"
-            // style={{ display: visible ? 'block' : 'none' }}
-            onWheel={onImgMousewheel}
-          >
+          <div className="preview-image-wrap" onWheel={onImgMousewheel}>
             <img
               className="preview-show-image"
-              src={src}
+              src={previewList[previewShowIndex]}
               style={{
-                transform: `scale(${scale})`,
+                transform: `scale(${scale}) rotate(${rotate}deg)`,
               }}
             />
+
+            {/* 切换前后图片 */}
+            {previewList.length > 1 && (
+              <>
+                <div
+                  className={`preview-image-prev ${
+                    previewShowIndex === 0 ? 'preview-btn-disabled' : ''
+                  }`}
+                  onClick={showPreviousImage}
+                >
+                  <LeftOutlined />
+                </div>
+
+                <div
+                  className={`preview-image-next ${
+                    previewShowIndex === previewList.length - 1 ? 'preview-btn-disabled' : ''
+                  }`}
+                  onClick={showNextImage}
+                >
+                  <RightOutlined />
+                </div>
+              </>
+            )}
+            {/* 关闭预览 */}
+            <div className="preview-image-close" onClick={handleClose}>
+              <CloseOutlined />
+            </div>
+            {/* 操作栏 */}
+            {showOperation && (
+              <div className="preview-image-operations">
+                <RotateLeftOutlined onClick={(e) => handleRotate(e, -90)} />
+                <RotateRightOutlined onClick={(e) => handleRotate(e, 90)} />
+                <ZoomOutOutlined
+                  className={scale <= 0.2 ? 'preview-btn-disabled' : ''}
+                  onClick={handleSmall}
+                />
+                <ZoomInOutlined
+                  className={scale >= 10 ? 'preview-btn-disabled' : ''}
+                  onClick={handleLarge}
+                />
+              </div>
+            )}
           </div>
         </CSSTransition>
       )}
