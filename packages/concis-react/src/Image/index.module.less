@@ -97,6 +97,15 @@
     transition: 0.2s;
   }
 
+  .preview-image-progress {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 16px;
+  }
+
   .preview-image-prev,
   .preview-image-next,
   .preview-image-close {
@@ -116,7 +125,7 @@
 
   .preview-btn-disabled {
     color: rgba(255, 255, 255, 0.1);
-    cursor: not-allowed;
+    cursor: not-allowed!important;
   }
 
   .preview-image-prev {
