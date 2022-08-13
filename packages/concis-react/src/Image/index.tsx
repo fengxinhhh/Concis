@@ -56,7 +56,7 @@ const Image: FC<ImageProps> = (props) => {
 
   // 预览
   const handlePreview = (e: any) => {
-    e.stopPropagation();
+    e?.stopPropagation();
     if (previewList.length) {
       setVisible(true);
     }
@@ -64,7 +64,7 @@ const Image: FC<ImageProps> = (props) => {
 
   // 关闭预览
   const handleClose = (e: any) => {
-    e.stopPropagation();
+    e?.stopPropagation();
     setVisible(false);
     // 计算动画时间，在预览窗消失后重置预览图状态
     setTimeout(() => {
@@ -199,6 +199,10 @@ const Image: FC<ImageProps> = (props) => {
             {/* 切换前后图片 */}
             {previewList.length > 1 && (
               <>
+                <div className="preview-image-progress">
+                  {`${previewShowIndex + 1} / ${previewList.length}`}
+                </div>
+
                 <div
                   className={`preview-image-prev ${
                     previewShowIndex === 0 ? 'preview-btn-disabled' : ''
