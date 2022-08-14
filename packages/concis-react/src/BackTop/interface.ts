@@ -16,7 +16,7 @@ interface BackTopProps {
    */
   target?: () => HTMLElement | Window | Document;
   /**
-   * @description 滚动距离大于该参数才会显示
+   * @description 滚动距离大于该参数时才会显示按钮
    * @default 400
    */
   visibilityHeight?: number;
