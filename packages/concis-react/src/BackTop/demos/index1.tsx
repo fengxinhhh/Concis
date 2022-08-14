@@ -4,8 +4,8 @@ import { BackTop } from 'concis';
 export default function BackTopDemo1() {
   return (
     <>
-      <div style={{ height: 200 }}>让滚动条飞一会儿</div>
-      <BackTop visibilityHeight={200} />
+      <div>向下滚动，点击右下角若隐若现的按钮，返回顶部。</div>
+      <BackTop />
     </>
   );
 }
