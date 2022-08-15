@@ -15,6 +15,11 @@ interface PaginationProps {
    */
   className?: string;
   /**
+   * @description 默认页码
+   * @default 1
+   */
+  defaultIndex: number;
+  /**
    * @description 总数据条数
    * @default 0
    */
@@ -55,9 +60,10 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
     pageSizeOptions,
     showJumpInput,
     showSizeChanger,
+    defaultIndex,
   } = props;
 
-  const [nowIndex, setNowIndex] = useState<number>(1);
+  const [nowIndex, setNowIndex] = useState<number>(defaultIndex);
   const [pageRenderArray, setPageRenderArray] = useState<Array<number>>([]);
   const [sizePage, setSizePage] = useState<number>(pageSizeOptions ? pageSizeOptions[0] : 10);
 
@@ -67,11 +73,11 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
   const classNames = cs(prefixCls, className, classFirstName);
 
   const totalPage = useMemo(() => {
-    setNowIndex(1);
-    if (Math.ceil(total / sizePage) > 6) {
+    const res: number = Math.ceil(total / sizePage);
+    if (res > 6) {
       setPageRenderArray([2, 3, 4, 5, 6]);
-    } else if (Math.ceil(total / sizePage) > 2) {
-      const array = new Array((Math.ceil(total / sizePage) as number) - 2).fill(0);
+    } else if (res > 2) {
+      const array = new Array(res - 2).fill(0);
       array.forEach((item, index) => {
         array[index] = index + 2;
       });
@@ -79,7 +85,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
     } else {
       setPageRenderArray([]);
     }
-    return Math.ceil(total / sizePage);
+    return res;
   }, [total, sizePage]);
   // 点击改页码
   const changePage = (pageNum: number) => {
@@ -343,4 +349,9 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
     </div>
   );
 };
+
+Pagination.defaultProps = {
+  defaultIndex: 1,
+};
+
 export default memo(Pagination);
