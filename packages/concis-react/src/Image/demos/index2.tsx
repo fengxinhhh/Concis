@@ -1,10 +1,7 @@
 import React from 'react';
 import Image from '..';
-import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function ImageDemo1() {
-  process.env.NODE_ENV === 'production' && usePageListener('Image');
-
   const fitList = ['fill', 'contain', 'cover', 'none', 'scale-down'];
 
   return (
