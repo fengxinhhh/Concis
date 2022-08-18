@@ -1,1 +1,5 @@
-export { default as Button } from './Button';
+import './global/index.less'
+
+export { Button } from './components/button';
+
+export { ConfigProvider, useConfig } from './components/config-provider'
