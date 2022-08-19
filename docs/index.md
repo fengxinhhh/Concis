@@ -67,7 +67,7 @@ export default () => (
     scale={1.2}
   >
     <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://concis.org.cn/images/wechat.group.jpeg" style={{ width: '400px' }} />
+      <img src="http://concis.org.cn/images/wechat.group.jpg" style={{ width: '400px' }} />
     </a>
   </Section>
 );
