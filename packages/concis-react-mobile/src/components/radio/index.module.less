@@ -1,0 +1,33 @@
+.concis-radio {
+  --icon-size: 22px;
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.concis-radio-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border-radius: 50%;
+  border: 1px solid var(--concis-color-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+.concis-radio-content {
+  padding-left: 8px;
+}
+
+.concis-radio-checked {
+  .concis-radio-icon {
+    background-color: var(--concis-color-primary);
+  }
+}
+
+.concis-radio-disabled {
+  cursor: not-allowed;
+}
