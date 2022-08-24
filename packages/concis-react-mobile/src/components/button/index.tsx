@@ -13,9 +13,9 @@ import { LoadingOutlined } from '@ant-design/icons';
 
 import { useConfig, ConfigProps } from '../config-provider';
 
-import { getClassNames } from '../../utils/classNames';
+import { getClassNames } from '../../utils/class-names';
 
-type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; //原生button接口
+type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; // 原生button接口
 
 export type ButtonProps = {
   children?: ReactNode;

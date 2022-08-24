@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useRef, useState, useMemo } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { UploadOutlined, CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons';
-import { isNumber } from 'util';
+
 import Button from '../Button';
 import { FileItem, UploadProps } from './interface';
 import List from '../List';
