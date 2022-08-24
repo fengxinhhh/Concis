@@ -5,6 +5,7 @@ import { RadioValue } from '.';
 export type GroupContextType = {
   value: RadioValue;
   disabled: boolean;
+  block: boolean;
   onSelect: (value: RadioValue) => void;
   onUnSelect: (value: RadioValue) => void;
 };

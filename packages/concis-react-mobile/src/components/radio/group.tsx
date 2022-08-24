@@ -1,11 +1,4 @@
-import React, {
-  useMemo,
-  useContext,
-  useImperativeHandle,
-  useRef,
-  forwardRef,
-  ReactNode,
-} from 'react';
+import React, { ReactNode } from 'react';
 
 import { useControllableValue } from 'ahooks';
 
@@ -16,29 +9,52 @@ import { Radio } from './radio';
 import { RadioValue } from '.';
 
 export type Option = {
+  /**
+   * @description 携带的标识值
+   */
   value: RadioValue;
+  /**
+   * @description 标题
+   */
   label: ReactNode;
+  /**
+   * @description 禁用状态
+   */
   disabled?: boolean;
 };
 
 export type RadioGroupProps = {
   children?: ReactNode;
+  /**
+   * @description 指定选中的选项
+   */
   value?: RadioValue | null;
+  /**
+   * @description 默认选中的选项
+   */
   defaultValue?: RadioValue;
   /**
-   * @description 禁用状态
+   * @description 整组禁用状态
    * @default false
    */
   disabled?: boolean;
-  options: Option[];
   /**
-   * @description 按钮点击回调事件
+   * @description 将整组宽度调整为其父宽度的选项
+   * @default false
+   */
+  block?: boolean;
+  /**
+   * @description 以配置形式设置子元素
+   */
+  options?: Option[];
+  /**
+   * @description 变化时回调函数
    */
   onChange?: (value: RadioValue) => void;
 };
 
-export const RadioGroup: React.FC<RadioGroupProps> = (props) => {
-  const { disabled = false, defaultValue, options, children } = props;
+export const Group: React.FC<RadioGroupProps> = (props) => {
+  const { block = false, disabled = false, defaultValue, options, children } = props;
 
   const [value, setValue] = useControllableValue<any>(props, {
     defaultValue,
@@ -53,7 +69,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = (props) => {
   };
 
   return (
-    <GroupContext.Provider value={{ value, disabled, onSelect, onUnSelect }}>
+    <GroupContext.Provider value={{ block, value, disabled, onSelect, onUnSelect }}>
       {Array.isArray(options)
         ? options.map((item) => {
             return (
@@ -67,4 +83,4 @@ export const RadioGroup: React.FC<RadioGroupProps> = (props) => {
   );
 };
 
-export default RadioGroup;
+export default Group;

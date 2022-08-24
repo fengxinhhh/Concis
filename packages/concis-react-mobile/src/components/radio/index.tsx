@@ -1,22 +1,15 @@
-import React, {
-  useMemo,
-  useContext,
-  useImperativeHandle,
-  useRef,
-  forwardRef,
-  ReactNode,
-} from 'react';
+import React from 'react';
 
 import './index.module.less';
 
 import { Radio as CRadio } from './radio';
 
-import { RadioGroup } from './group';
+import { Group } from './group';
+
+import { attachPropertiesToComponent } from '../../utils/attach-properties-to-component';
 
 export type { RadioValue } from './radio';
 
-const Radio = CRadio;
-
-Radio.Group = RadioGroup;
-
-export { Radio };
+export const Radio = attachPropertiesToComponent(CRadio, {
+  Group,
+});

@@ -1,12 +1,4 @@
-import React, {
-  useMemo,
-  useContext,
-  useImperativeHandle,
-  useRef,
-  forwardRef,
-  ReactNode,
-  useState,
-} from 'react';
+import React, { ReactNode } from 'react';
 
 import './index.module.less';
 
@@ -14,27 +6,34 @@ import { useControllableValue } from 'ahooks';
 
 import { CheckOutlined } from '@ant-design/icons';
 
-import { useConfig, ConfigProps } from '../config-provider';
+import { ConfigProps, useConfig } from '../config-provider';
 
 import { useGroupContext } from './group-context';
 
-import { getClassNames } from '../../utils/classNames';
+import { CustomIcon, CustomIconType } from './custom-icon';
 
-type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; // 原生button接口
+import { getClassNames } from '../../utils/class-names';
 
 export type RadioValue = number | string;
 
 export type RadioProps = {
   children?: ReactNode;
-  value: RadioValue;
-  checked?: boolean;
   /**
-   * @description 按钮大小
+   * @description input 元素的 id，常用来配合 label 使用
+   */
+  id?: string;
+  /**
+   * @description 勾选图标大小
    * @default middle
    */
   size?: ConfigProps['componentSize'];
   /**
-   * @description 	将按钮宽度调整为其父宽度的选项
+   * @description 指定当前是否选中
+   * @default false
+   */
+  checked?: boolean;
+  /**
+   * @description 	将宽度调整为其父宽度的选项
    * @default false
    */
   block?: boolean;
@@ -42,65 +41,94 @@ export type RadioProps = {
    * @description 禁用状态
    * @default false
    */
-  disabled?: Boolean;
+  disabled?: boolean;
   /**
-   * @description 设置按钮的图标组件
+   * @description 设置勾选图标图标组件
    */
-  icon?: React.ReactNode;
+  icon?: CustomIconType;
   /**
    * @description 类名
    */
   className?: string;
   /**
+   * @description 携带的标识值，用于 Group 模式
+   */
+  value?: RadioValue;
+  /**
    * @description 按钮点击回调事件
    */
   onChange?: (checked: boolean) => void;
-} & NativeButtonProps;
-
-export type ButtonRef = {
-  nativeElement: HTMLButtonElement | null;
 };
 
 export const Radio: React.FC<RadioProps> = (props) => {
-  const { size, block = false, icon, className = '', children, ...restProps } = props;
+  const { icon, className = '', children } = props;
 
   const { prefixCls, componentSize } = useConfig();
 
   const groupContext = useGroupContext();
 
+  let [checked, setChecked] = useControllableValue(props, {
+    valuePropName: groupContext ? 'value' : 'checked',
+  });
+
   const classPrefix = `${prefixCls}-radio`;
 
-  let [checked, setChecked] = useControllableValue(props);
+  const size = props.size || componentSize;
 
-  let disabled = props.disabled;
+  let block = props.block || false;
+
+  let disabled = props.disabled || false;
 
   if (groupContext && props.value !== undefined) {
     disabled = disabled || groupContext.disabled;
 
     checked = groupContext.value === props.value;
 
+    block = groupContext.block;
+
     setChecked = (innerChecked: boolean) => {
       if (innerChecked) {
-        groupContext.onSelect(props.value);
+        groupContext.onSelect(props.value as RadioValue);
       } else {
-        groupContext.onUnSelect(props.value);
+        groupContext.onUnSelect(props.value as RadioValue);
       }
 
       props.onChange?.(innerChecked);
     };
   }
 
+  const onClick = (e: React.MouseEvent<HTMLInputElement>) => {
+    e.stopPropagation();
+    const latestChecked = (e.target as HTMLInputElement).checked;
+    if (latestChecked === checked) return;
+    setChecked(latestChecked);
+  };
+
   const classNames = getClassNames({
     [classPrefix]: true,
+    [`${classPrefix}-${size}`]: !!size,
     [`${classPrefix}-checked`]: checked,
     [`${classPrefix}-disabled`]: disabled,
+    [`${classPrefix}-block`]: block,
     [className]: !!className,
   });
 
   return (
-    <label className={classNames} {...restProps}>
-      <input type="radio" hidden checked={checked} disabled={disabled} onChange={setChecked} />
-      <div className={`${classPrefix}-icon`}>{icon || <CheckOutlined />}</div>
+    <label className={classNames}>
+      <input
+        id={props.id}
+        type="radio"
+        hidden
+        checked={checked}
+        disabled={disabled}
+        onClick={onClick}
+        onChange={() => {}}
+      />
+      {icon ? (
+        <CustomIcon classPrefix={classPrefix} icon={icon} checked={checked} />
+      ) : (
+        <div className={`${classPrefix}-icon`}>{checked ? <CheckOutlined /> : null}</div>
+      )}
       <div className={`${classPrefix}-content`}>{children}</div>
     </label>
   );
