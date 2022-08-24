@@ -1,7 +1,5 @@
 import React, { ReactNode } from 'react';
 
-import './index.module.less';
-
 import { useControllableValue } from 'ahooks';
 
 import { CheckOutlined } from '@ant-design/icons';
