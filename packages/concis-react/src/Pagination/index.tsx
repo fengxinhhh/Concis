@@ -18,7 +18,7 @@ interface PaginationProps {
    * @description 默认页码
    * @default 1
    */
-  defaultIndex: number;
+  defaultIndex?: number;
   /**
    * @description 总数据条数
    * @default 0
@@ -63,7 +63,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
     defaultIndex,
   } = props;
 
-  const [nowIndex, setNowIndex] = useState<number>(defaultIndex);
+  const [nowIndex, setNowIndex] = useState<number>(defaultIndex || 1);
   const [pageRenderArray, setPageRenderArray] = useState<Array<number>>([]);
   const [sizePage, setSizePage] = useState<number>(pageSizeOptions ? pageSizeOptions[0] : 10);
 

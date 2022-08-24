@@ -3,8 +3,6 @@ import styles from './home-page.less';
 import { version } from '../../packages/concis-react/package.json';
 // import { context } from 'dumi/theme'
 
-const codesandboxLink = 'https://codesandbox.io/s/antd-mobile-snrxr?file=/package.json';
-
 export default () => {
   // const { locale } = useContext(context)
 
@@ -64,9 +62,9 @@ export default () => {
         {/* 功能特性 */}
         <div className={styles.group}>
           <div className={styles.groupTitle}>
-            <div></div>
+            <div />
             <span>主要特性</span>
-            <div></div>
+            <div />
           </div>
           <ul className={styles.features}>
             {characteristics.map((item) => {

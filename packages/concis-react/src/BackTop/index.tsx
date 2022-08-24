@@ -1,5 +1,5 @@
 import React, { createRef, useContext, useEffect, useRef, useState } from 'react';
-import { throttle } from 'lodash';
+import lodash from 'lodash';
 import { CSSTransition } from 'react-transition-group';
 import addEventListener from '../common_utils/dom/addEventListener';
 import getScrollTop from '../common_utils/dom/getScrollTop';
@@ -39,7 +39,7 @@ const BackTop = (props: BackTopProps) => {
   // acquire default container
   const getDefaultTarget = () => window;
 
-  const handleScroll = throttle((e: any | { target: any }) => {
+  const handleScroll = lodash.throttle((e: any | { target: any }) => {
     const { visibilityHeight = 400 } = props;
     const scrollTop = getScrollTop(e.target);
     setVisible(scrollTop > visibilityHeight);
