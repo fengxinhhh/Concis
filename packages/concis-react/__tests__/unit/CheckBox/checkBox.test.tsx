@@ -1,8 +1,8 @@
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import CheckBox from '../../../src/CheckBox/index';
 import Enzyme from '../../setup';
 import mountTest from '../../mountTest';
-import { act } from 'react-dom/test-utils';
 
 const { mount } = Enzyme;
 
@@ -12,9 +12,9 @@ describe('CheckBox', () => {
   it('test default checkBox show & click correctly', () => {
     const mockFn = jest.fn();
     const component = mount(
-      <CheckBox checked={true} checkCallback={mockFn}>
+      <CheckBox checked checkCallback={mockFn}>
         Apple
-      </CheckBox>,
+      </CheckBox>
     );
     expect(component.find('.concis-checkbox-actived')).toHaveLength(1);
     act(() => {
@@ -27,9 +27,9 @@ describe('CheckBox', () => {
 
   it('test disabled checkBox correctly', () => {
     const component = mount(
-      <CheckBox checked={true} disabled>
+      <CheckBox checked disabled>
         Apple
-      </CheckBox>,
+      </CheckBox>
     );
     expect(component.find('.concis-checkbox-disabled')).toHaveLength(1);
     act(() => {
@@ -56,15 +56,15 @@ describe('CheckBox', () => {
       },
     ];
     const mockFn = jest.fn();
-    const component = mount(<CheckBox group={checkGroup} checkGroupCallback={mockFn}></CheckBox>);
+    const component = mount(<CheckBox group={checkGroup} checkGroupCallback={mockFn} />);
     expect(component.find('.concis-checkGroup')).toHaveLength(1);
     expect(component.find('.concis-checkGroup .groupBox')).toHaveLength(3);
     expect(component.find('.concis-checkGroup .groupBox .concis-checkbox-noActived')).toHaveLength(
-      1,
+      1
     );
     expect(component.find('.concis-checkGroup .groupBox .concis-checkbox-actived')).toHaveLength(1);
     expect(component.find('.concis-checkGroup .groupBox .concis-checkbox-disabled')).toHaveLength(
-      1,
+      1
     );
   });
 });
