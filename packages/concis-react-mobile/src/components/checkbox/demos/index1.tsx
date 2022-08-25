@@ -1,7 +1,7 @@
 import React from 'react';
 import { FrownOutlined } from '@ant-design/icons';
 
-import { Radio } from '../index';
+import { Checkbox } from '../index';
 import usePageListener from '../../../../../concis-react/src/common_utils/hooks/usePageListener';
 
 import '../../../global/index.less';
@@ -13,27 +13,27 @@ export default function ButtonDemo1() {
     <>
       <p className="mobile-demo-title">基本使用</p>
 
-      <Radio>第一项</Radio>
+      <Checkbox>第一项</Checkbox>
 
       <p className="mobile-demo-title">禁用状态</p>
 
-      <Radio disabled>第一项</Radio>
+      <Checkbox disabled>第一项</Checkbox>
 
       <p className="mobile-demo-title">单选框组</p>
 
-      <Radio.Group block defaultValue={1}>
-        <Radio value={1} block>
+      <Checkbox.Group block defaultValue={[1]}>
+        <Checkbox value={1} block>
           第一项
-        </Radio>
-        <Radio value={2}>第二项</Radio>
-        <Radio value={3} disabled>
+        </Checkbox>
+        <Checkbox value={2}>第二项</Checkbox>
+        <Checkbox value={3} disabled>
           第二项
-        </Radio>
-      </Radio.Group>
+        </Checkbox>
+      </Checkbox.Group>
 
       <p className="mobile-demo-title">配置式单选框组</p>
 
-      <Radio.Group
+      <Checkbox.Group
         block
         options={[
           { value: 1, label: '第一项' },
@@ -44,35 +44,35 @@ export default function ButtonDemo1() {
 
       <p className="mobile-demo-title">占满整行宽度</p>
 
-      <Radio block>第一项</Radio>
+      <Checkbox block>第一项</Checkbox>
 
-      <Radio.Group block>
-        <Radio value={1}>第一项</Radio>
-        <Radio value={2}>第二项</Radio>
-        <Radio value={3}>第二项</Radio>
-      </Radio.Group>
+      <Checkbox.Group block>
+        <Checkbox value={1}>第一项</Checkbox>
+        <Checkbox value={2}>第二项</Checkbox>
+        <Checkbox value={3}>第二项</Checkbox>
+      </Checkbox.Group>
 
       <p className="mobile-demo-title">自定义大小</p>
 
-      <Radio size="small" block>
+      <Checkbox size="small" block>
         小
-      </Radio>
+      </Checkbox>
 
-      <Radio size="middle" block>
+      <Checkbox size="middle" block>
         中
-      </Radio>
+      </Checkbox>
 
-      <Radio size="large" block>
+      <Checkbox size="large" block>
         大
-      </Radio>
+      </Checkbox>
 
       <p className="mobile-demo-title">自定义图标</p>
 
-      <Radio icon={<FrownOutlined />} block>
+      <Checkbox icon={<FrownOutlined />} block>
         第一项
-      </Radio>
+      </Checkbox>
 
-      <Radio
+      <Checkbox
         icon={(checked) => {
           if (checked) return <FrownOutlined style={{ color: 'var(--ccsm-color-primary)' }} />;
           return <FrownOutlined />;
@@ -80,7 +80,7 @@ export default function ButtonDemo1() {
         block
       >
         第一项
-      </Radio>
+      </Checkbox>
     </>
   );
 }

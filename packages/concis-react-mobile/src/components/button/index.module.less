@@ -1,4 +1,4 @@
-.concis-btn {
+.ccsm-btn {
   --border-width: 1px;
 
   position: relative;
@@ -7,7 +7,7 @@
   box-sizing: border-box;
   padding: 0 12px;
   border: var(--border-width) solid #ddd;
-  border-radius: var(--concis-radius-s);
+  border-radius: var(--ccsm-radius-s);
   cursor: pointer;
 
   &:before {
@@ -19,109 +19,109 @@
     transform: translate(calc(var(--border-width) * -1), calc(var(--border-width) * -1));
     background-color: #000;
     border: var(--border-width) solid #000;
-    border-radius: var(--concis-radius-s);
+    border-radius: var(--ccsm-radius-s);
     opacity: 0;
     content: ' ';
     pointer-events: none;
   }
 
-  &:not(.concis-btn-disabled, .concis-btn-loading):active:before {
+  &:not(.ccsm-btn-disabled, .ccsm-btn-loading):active:before {
     opacity: 0.08;
   }
 }
 
-.concis-btn-small {
-  height: var(--concis-com-s);
+.ccsm-btn-small {
+  height: var(--ccsm-com-s);
   padding: 0 8px;
   font-size: 12px;
 }
 
-.concis-btn-middle {
-  height: var(--concis-com-m);
+.ccsm-btn-middle {
+  height: var(--ccsm-com-m);
   padding: 0 12px;
   font-size: 12px;
 }
 
-.concis-btn-large {
-  height: var(--concis-com-l);
+.ccsm-btn-large {
+  height: var(--ccsm-com-l);
   padding: 0 18px;
   font-size: 14px;
 }
 
-.concis-btn-primary {
-  background-color: var(--concis-color-primary);
-  border-color: var(--concis-color-primary);
+.ccsm-btn-primary {
+  background-color: var(--ccsm-color-primary);
+  border-color: var(--ccsm-color-primary);
   color: #fff;
 }
 
-.concis-btn-danger {
-  background-color: var(--concis-color-danger);
-  border-color: var(--concis-color-danger);
+.ccsm-btn-danger {
+  background-color: var(--ccsm-color-danger);
+  border-color: var(--ccsm-color-danger);
   color: #fff;
 }
 
-.concis-btn-warning {
-  background-color: var(--concis-color-warning);
-  border-color: var(--concis-color-warning);
+.ccsm-btn-warning {
+  background-color: var(--ccsm-color-warning);
+  border-color: var(--ccsm-color-warning);
   color: #fff;
 }
 
-.concis-btn-text {
+.ccsm-btn-text {
   border-color: transparent;
 }
 
-.concis-btn-block {
+.ccsm-btn-block {
   width: 100%;
 }
 
-.concis-btn-dangerous {
+.ccsm-btn-dangerous {
   border-width: 1px;
-  border-color: var(--concis-color-danger);
-  background-color: var(--concis-color-danger);
+  border-color: var(--ccsm-color-danger);
+  background-color: var(--ccsm-color-danger);
   color: #fff;
 
-  &.concis-btn-ghost {
+  &.ccsm-btn-ghost {
     background-color: transparent;
-    color: var(--concis-color-danger);
+    color: var(--ccsm-color-danger);
   }
 
-  &.concis-btn-text {
-    color: var(--concis-color-danger);
+  &.ccsm-btn-text {
+    color: var(--ccsm-color-danger);
     background-color: transparent;
     border-color: transparent;
   }
 }
 
-.concis-btn-ghost:not(.concis-btn-dangerous) {
+.ccsm-btn-ghost:not(.ccsm-btn-dangerous) {
   background-color: transparent;
 
-  &.concis-btn-primary {
-    color: var(--concis-color-primary);
+  &.ccsm-btn-primary {
+    color: var(--ccsm-color-primary);
   }
 
-  &.concis-btn-danger {
-    color: var(--concis-color-danger);
+  &.ccsm-btn-danger {
+    color: var(--ccsm-color-danger);
   }
 
-  &.concis-btn-warning {
-    color: var(--concis-color-warning);
+  &.ccsm-btn-warning {
+    color: var(--ccsm-color-warning);
   }
 }
 
-.concis-btn-dashed {
+.ccsm-btn-dashed {
   border-style: dashed;
 }
 
-.concis-btn-loading {
+.ccsm-btn-loading {
   cursor: default;
   opacity: 0.55;
 
-  .concis-btn-loading-icon {
+  .ccsm-btn-loading-icon {
     margin-right: 8px;
   }
 }
 
-.concis-btn-shape-round {
+.ccsm-btn-shape-round {
   border-radius: 50px;
 
   &:before {
@@ -129,7 +129,7 @@
   }
 }
 
-.concis-btn-shape-circle {
+.ccsm-btn-shape-circle {
   border-radius: 50%;
   padding-left: 0;
   padding-right: 0;
@@ -138,20 +138,20 @@
     border-radius: 50%;
   }
 
-  &.concis-btn-smal {
-    min-width: var(--concis-com-s);
+  &.ccsm-btn-smal {
+    min-width: var(--ccsm-com-s);
   }
 
-  &.concis-btn-middle {
-    min-width: var(--concis-com-m);
+  &.ccsm-btn-middle {
+    min-width: var(--ccsm-com-m);
   }
 
-  &.concis-btn-large {
-    min-width: var(--concis-com-l);
+  &.ccsm-btn-large {
+    min-width: var(--ccsm-com-l);
   }
 }
 
-.concis-btn-disabled {
+.ccsm-btn-disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }

@@ -7,7 +7,7 @@ export type ConfigProps = {
 };
 
 const defaultConfig: ConfigProps = {
-  prefixCls: 'concis',
+  prefixCls: 'ccsm',
   componentSize: 'middle',
   getPopupContainer: () => document.body,
 };
