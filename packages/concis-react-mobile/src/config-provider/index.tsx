@@ -1,7 +1,7 @@
 import React, { memo, useContext, createContext } from 'react';
 
-import { useSetSystemTheme } from '../../utils/system-mode';
-import { mergeProps } from '../../utils/merge-props';
+import { useSetSystemTheme } from '../utils/system-mode';
+import { mergeProps } from '../utils/merge-props';
 
 export type ConfigProps = {
   /**

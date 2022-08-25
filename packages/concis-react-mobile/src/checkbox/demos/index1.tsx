@@ -3,7 +3,7 @@ import { FrownOutlined } from '@ant-design/icons';
 
 import { Checkbox } from '../index';
 
-import '../../../global/index.less';
+import '../../global/index.less';
 
 export default function ButtonDemo1() {
   return (

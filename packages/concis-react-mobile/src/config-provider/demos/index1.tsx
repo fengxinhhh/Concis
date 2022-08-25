@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import { Button, ConfigProvider } from '../../../index';
+import { Button, ConfigProvider } from '../../index';
 
-import '../../../global/index.less';
+import '../../global/index.less';
 
 export default function ButtonDemo1() {
   const [theme, setTheme] = useState('light');

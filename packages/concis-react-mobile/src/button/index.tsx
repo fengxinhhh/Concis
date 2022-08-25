@@ -13,7 +13,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 
 import { useConfig, ConfigProps } from '../config-provider';
 
-import { getClassNames } from '../../utils/class-names';
+import { getClassNames } from '../utils/class-names';
 
 type NativeButtonProps = Omit<React.ButtonHTMLAttributes<HTMLElement>, 'type'>; // 原生button接口
 

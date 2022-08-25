@@ -6,7 +6,7 @@ import { Radio as CRadio } from './radio';
 
 import { Group } from './group';
 
-import { attachPropertiesToComponent } from '../../utils/attach-properties-to-component';
+import { attachPropertiesToComponent } from '../utils/attach-properties-to-component';
 
 export type { RadioValue } from './radio';
 

@@ -11,7 +11,7 @@ import { useGroupContext } from './group-context';
 
 import { CustomIcon, CustomIconType } from '../radio/custom-icon';
 
-import { getClassNames } from '../../utils/class-names';
+import { getClassNames } from '../utils/class-names';
 
 export type CheckboxValue = number | string;
 

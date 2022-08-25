@@ -10,7 +10,7 @@ import { useGroupContext } from './group-context';
 
 import { CustomIcon, CustomIconType } from './custom-icon';
 
-import { getClassNames } from '../../utils/class-names';
+import { getClassNames } from '../utils/class-names';
 
 export type RadioValue = number | string;
 
