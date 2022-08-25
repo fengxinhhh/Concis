@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from '../index';
-import usePageListener from '../../../../../concis-react/src/common_utils/hooks/usePageListener';
+import usePageListener from '../../../../concis-react/src/common_utils/hooks/usePageListener';
 
-import '../../../global/index.less';
+import '../../global/index.less';
 
 export default function ButtonDemo1() {
   process.env.NODE_ENV === 'production' && usePageListener('Button');

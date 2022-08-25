@@ -1,7 +1,7 @@
 import './global/index.less';
 
-export { Button } from './components/button';
+export { Button } from './button';
 
-export { ConfigProvider, useConfig } from './components/config-provider';
+export { ConfigProvider, useConfig } from './config-provider';
 
-export { Radio } from './components/radio';
+export { Radio } from './radio';
