@@ -1,6 +1,7 @@
 import React, { memo, useContext, createContext } from 'react';
 
 import { useSetSystemTheme } from '../../utils/system-mode';
+import { mergeProps } from '../../utils/merge-props';
 
 export type ConfigProps = {
   /**
@@ -33,7 +34,7 @@ export const useConfig = () => {
 };
 
 export const ConfigProvider: React.FC<ConfigProps> = memo(({ children, ...props }) => {
-  const config = { ...defaultConfig, ...props };
+  const config = mergeProps(defaultConfig, props);
 
   useSetSystemTheme(config.theme);
 
