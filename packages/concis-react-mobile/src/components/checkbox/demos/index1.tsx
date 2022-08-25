@@ -2,13 +2,10 @@ import React from 'react';
 import { FrownOutlined } from '@ant-design/icons';
 
 import { Checkbox } from '../index';
-import usePageListener from '../../../../../concis-react/src/common_utils/hooks/usePageListener';
 
 import '../../../global/index.less';
 
 export default function ButtonDemo1() {
-  process.env.NODE_ENV === 'production' && usePageListener('Button');
-
   return (
     <>
       <p className="mobile-demo-title">基本使用</p>
