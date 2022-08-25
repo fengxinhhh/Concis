@@ -4,17 +4,18 @@ import { useControllableValue } from 'ahooks';
 
 import { CheckOutlined } from '@ant-design/icons';
 
+import { useRef } from 'react';
 import { ConfigProps, useConfig } from '../config-provider';
 
 import { useGroupContext } from './group-context';
 
-import { CustomIcon, CustomIconType } from './custom-icon';
+import { CustomIcon, CustomIconType } from '../radio/custom-icon';
 
 import { getClassNames } from '../utils/class-names';
 
-export type RadioValue = number | string;
+export type CheckboxValue = number | string;
 
-export type RadioProps = {
+export type CheckboxProps = {
   children?: ReactNode;
   /**
    * @description input 元素的 id，常用来配合 label 使用
@@ -51,15 +52,17 @@ export type RadioProps = {
   /**
    * @description 携带的标识值，用于 Group 模式
    */
-  value?: RadioValue;
+  value?: CheckboxValue;
   /**
    * @description 按钮点击回调事件
    */
   onChange?: (checked: boolean) => void;
 };
 
-export const Radio: React.FC<RadioProps> = (props) => {
-  const { icon, className = '', children } = props;
+export const Checkbox: React.FC<CheckboxProps> = (props) => {
+  const { value, icon, className = '', children } = props;
+
+  const inputRef = useRef(null);
 
   const { prefixCls, componentSize } = useConfig();
 
@@ -70,7 +73,7 @@ export const Radio: React.FC<RadioProps> = (props) => {
     valuePropName: groupContext ? 'value' : 'checked',
   });
 
-  const classPrefix = `${prefixCls}-radio`;
+  const classPrefix = `${prefixCls}-checkbox`;
 
   const size = props.size || componentSize;
 
@@ -78,18 +81,18 @@ export const Radio: React.FC<RadioProps> = (props) => {
 
   let disabled = props.disabled || false;
 
-  if (groupContext && props.value !== undefined) {
+  if (groupContext && value !== undefined) {
     disabled = disabled || groupContext.disabled;
 
-    checked = groupContext.value === props.value;
+    checked = groupContext.value.includes(value);
 
     block = groupContext.block;
 
     setChecked = (innerChecked: boolean) => {
       if (innerChecked) {
-        groupContext.onSelect(props.value as RadioValue);
+        groupContext.onSelect(value);
       } else {
-        groupContext.onUnSelect(props.value as RadioValue);
+        groupContext.onUnSelect(value);
       }
 
       props.onChange?.(innerChecked);
@@ -115,8 +118,9 @@ export const Radio: React.FC<RadioProps> = (props) => {
   return (
     <label className={classNames}>
       <input
+        ref={inputRef}
         id={props.id}
-        type="radio"
+        type="checkbox"
         hidden
         checked={checked}
         disabled={disabled}
@@ -133,4 +137,4 @@ export const Radio: React.FC<RadioProps> = (props) => {
   );
 };
 
-export default Radio;
+export default Checkbox;

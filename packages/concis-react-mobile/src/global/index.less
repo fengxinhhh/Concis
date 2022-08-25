@@ -1,7 +1,16 @@
 @import './theme-default.less';
 
+[data-ccsm-theme='dark'] {
+  color-scheme: dark;
+
+  --ccsm-color-text: rgba(255, 255, 255, 0.85);
+  --ccsm-color-bg: #141414;
+}
+
 body {
-  font-family: var(--concis-font-family);
+  margin: 0;
+  background-color: var(--ccsm-color-bg);
+  color: var(--ccsm-color-text);
+  font-family: var(--ccsm-font-family);
   font-size: 14px;
-  color: var(--concis-color-text);
 }
