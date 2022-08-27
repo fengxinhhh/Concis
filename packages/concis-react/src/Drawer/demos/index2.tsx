@@ -13,7 +13,7 @@ export default function index1() {
       <RadioGroup
         value={0}
         onChange={(val: { children?: 'left' | 'right' | 'top' | 'bottom' }) =>
-          setAlign(val.children)
+          setAlign(val.children as any)
         }
       >
         <Radio>right</Radio>

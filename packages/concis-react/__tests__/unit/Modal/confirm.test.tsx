@@ -16,7 +16,7 @@ describe('Modal confirm', () => {
     jest.runAllTimers();
     expect(document.querySelectorAll('.concis-modal-content')).toHaveLength(1);
     expect(document.querySelector('.concis-modal-content-header .title')?.childNodes.length).toBe(
-      2,
+      2
     );
     document.body.innerHTML = '';
     jest.useFakeTimers();
@@ -27,7 +27,7 @@ describe('Modal confirm', () => {
     jest.runAllTimers();
     expect(document.querySelectorAll('.concis-modal-content')).toHaveLength(1);
     expect(document.querySelector('.concis-modal-content-header .title')?.childNodes.length).toBe(
-      2,
+      2
     );
     document.body.innerHTML = '';
     jest.useFakeTimers();
@@ -38,7 +38,7 @@ describe('Modal confirm', () => {
     jest.runAllTimers();
     expect(document.querySelectorAll('.concis-modal-content')).toHaveLength(1);
     expect(document.querySelector('.concis-modal-content-header .title')?.childNodes.length).toBe(
-      2,
+      2
     );
     document.body.innerHTML = '';
     jest.useFakeTimers();
@@ -49,7 +49,7 @@ describe('Modal confirm', () => {
     jest.runAllTimers();
     expect(document.querySelectorAll('.concis-modal-content')).toHaveLength(1);
     expect(document.querySelector('.concis-modal-content-header .title')?.childNodes.length).toBe(
-      2,
+      2
     );
     document.body.innerHTML = '';
     jest.useFakeTimers();
@@ -60,7 +60,7 @@ describe('Modal confirm', () => {
     jest.runAllTimers();
     expect(document.querySelectorAll('.concis-modal-content')).toHaveLength(1);
     expect(document.querySelector('.concis-modal-content-header .title')?.childNodes.length).toBe(
-      2,
+      2
     );
   });
 
@@ -100,7 +100,7 @@ describe('Modal confirm', () => {
         document
           .querySelector('.concis-modal-content .concis-button-primary')
           ?.getAttribute('class')
-          ?.includes('loading'),
+          ?.includes('loading')
       ).toBe(true);
     }, 200);
   });

@@ -118,39 +118,6 @@ describe('Modal', () => {
     expect(wrapper.find(Modal).props().visible).toBe(false);
   });
 
-  // it('test onOk and on Cancel correctly', () => {
-  //   const wrapper = mount(<DemoTest />);
-  //   function open() {
-  //     wrapper
-  //       .find('.concis-button-primary')
-  //       .filterWhere((n: any) => n.text() === 'Open')
-  //       .simulate('click');
-  //   }
-  //   open();
-  //   expect(
-  //     wrapper
-  //       .find('.concis-modal-content')
-  //       .getDOMNode()
-  //       ?.getAttribute('style')
-  //       ?.includes('display: block'),
-  //   ).toBe(true);
-  //   wrapper.find('.concis-modal-content .concis-button-primary').simulate('click');
-  //   jest.runAllTimers();
-  //   expect(wrapper.find('.concis-modal').getDOMNode().childNodes.length).toBe(0);
-  //   jest.useFakeTimers();
-  //   open();
-  //   expect(
-  //     wrapper
-  //       .find('.concis-modal-content')
-  //       .getDOMNode()
-  //       ?.getAttribute('style')
-  //       ?.includes('display: block'),
-  //   ).toBe(true);
-  //   wrapper.find('.concis-modal-content .concis-button-text').simulate('click');
-  //   jest.runAllTimers();
-  //   expect(wrapper.find('.concis-modal').getDOMNode().childNodes.length).toBe(0);
-  // });
-
   it('test modal set footer correctly', () => {
     const wrapper = mount(<FooterDemoTest />);
     wrapper
@@ -163,7 +130,7 @@ describe('Modal', () => {
         .at(0)
         ?.getDOMNode()
         ?.getAttribute('class')
-        ?.includes('disabled'),
+        ?.includes('disabled')
     ).toBe(true);
     expect(
       wrapper
@@ -171,7 +138,7 @@ describe('Modal', () => {
         .at(1)
         ?.getDOMNode()
         ?.getAttribute('class')
-        ?.includes('disabled'),
+        ?.includes('disabled')
     ).toBe(true);
   });
 
@@ -182,24 +149,24 @@ describe('Modal', () => {
       .filterWhere((n: any) => n.text() === 'Open')
       .simulate('click');
     expect(
-      wrapper.find('.concis-modal .concis-modal-content-footer').getDOMNode().childNodes.length,
+      wrapper.find('.concis-modal .concis-modal-content-footer').getDOMNode().childNodes.length
     ).toBe(0);
   });
 
   it('test diff button text modal correctly', () => {
     const wrapper = mount(
-      <Modal title="Modal Title" visible={true} okText="Ok" cancelText="Cancel">
+      <Modal title="Modal Title" visible okText="Ok" cancelText="Cancel">
         <p>
           You can customize modal body text by the current situation. This modal will be closed
           immediately once you press the OK button.
         </p>
-      </Modal>,
+      </Modal>
     );
     expect(wrapper.find('.concis-modal .concis-modal-content-footer button').at(0)?.text()).toBe(
-      'Cancel',
+      'Cancel'
     );
     expect(wrapper.find('.concis-modal .concis-modal-content-footer button').at(1)?.text()).toBe(
-      'Ok',
+      'Ok'
     );
   });
 });
