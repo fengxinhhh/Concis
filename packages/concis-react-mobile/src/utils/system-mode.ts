@@ -1,24 +1,14 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 
-type SystemMode = {
-  darkMode: MediaQueryList;
-  theme: string;
-};
-
-export const getSystemMode = (): SystemMode => {
+export const getDarkMode = (): MediaQueryList => {
   const darkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
 
-  const theme = darkMode && darkMode.matches ? 'dark' : 'light';
-
-  return {
-    darkMode,
-    theme,
-  };
+  return darkMode;
 };
 
 export const useSetSystemTheme = (value?: string) => {
   const rootRef = useRef(document.documentElement);
-  const darkModeRef = useRef<SystemMode>(getSystemMode());
+  const darkModeRef = useRef<MediaQueryList>(getDarkMode());
 
   const [theme, setTheme] = useState('');
 
@@ -41,11 +31,11 @@ export const useSetSystemTheme = (value?: string) => {
     if (!value) return;
 
     if (value === 'auto') {
-      darkModeRef.current.darkMode.addEventListener('change', darkModeChange);
+      darkModeRef.current.addEventListener('change', darkModeChange);
 
-      setTheme(darkModeRef.current.theme);
+      setTheme(darkModeRef.current.matches ? 'dark' : 'light');
     } else {
-      darkModeRef.current.darkMode?.removeEventListener('change', darkModeChange);
+      darkModeRef.current?.removeEventListener('change', darkModeChange);
 
       setTheme(value);
     }
@@ -53,9 +43,9 @@ export const useSetSystemTheme = (value?: string) => {
 
   useEffect(() => {
     return () => {
-      if (!darkModeRef.current?.darkMode) return;
+      if (!darkModeRef.current) return;
 
-      darkModeRef.current.darkMode?.removeEventListener('change', darkModeChange);
+      darkModeRef.current.removeEventListener('change', darkModeChange);
     };
   }, []);
 };
