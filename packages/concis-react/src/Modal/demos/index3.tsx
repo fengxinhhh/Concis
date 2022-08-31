@@ -1,7 +1,5 @@
 import React from 'react';
-import Modal from '..';
-import Button from '../../Button';
-import Message from '../../Message';
+import { Button, Modal, Message } from 'concis';
 
 export default function index1() {
   const info = () => {

@@ -1,6 +1,5 @@
 import React from 'react';
-import Comment from '..';
-import Avatar from '../../Avatar';
+import { Comment, Avatar } from 'concis';
 import './demos.less';
 
 export default function index1() {

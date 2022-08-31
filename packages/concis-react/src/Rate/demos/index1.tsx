@@ -1,5 +1,5 @@
 import React from 'react';
-import Rate from '..';
+import { Rate } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 /**
  * transform: true

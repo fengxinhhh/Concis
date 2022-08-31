@@ -1,5 +1,5 @@
 import React from 'react';
-import Switch from '..';
+import { Switch } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index1() {

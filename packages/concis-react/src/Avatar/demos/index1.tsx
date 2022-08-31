@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
-import Avatar from '..';
+import { Avatar } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function avatarDemo1() {

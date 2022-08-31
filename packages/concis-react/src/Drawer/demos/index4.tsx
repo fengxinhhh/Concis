@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Drawer from '..';
-import Button from '../../Button';
-import Space from '../../Space';
+import { Drawer, Button, Space } from 'concis';
 
 export default function index1() {
   const [visible1, setVisible1] = useState(false);

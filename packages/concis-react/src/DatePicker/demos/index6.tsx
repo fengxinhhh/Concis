@@ -1,5 +1,5 @@
 import React from 'react';
-import DatePicker from '../DatePicker';
+import { DatePicker } from 'concis';
 
 export default function TimePickerDemo6() {
   const handleChange = (date: string) => {

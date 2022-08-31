@@ -1,6 +1,6 @@
 import React from 'react';
 import { Loading3QuartersOutlined } from '@ant-design/icons';
-import Loading from '..';
+import { Loading } from 'concis';
 
 export default function LoadingDemo1() {
   return (

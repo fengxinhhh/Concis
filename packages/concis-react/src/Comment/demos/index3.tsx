@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import Comment from '..';
-import Avatar from '../../Avatar';
-import TextArea from '../../Input/TextArea';
-import Button from '../../Button';
-import Message from '../../Message';
+import { Comment, Avatar, TextArea, Button, Message } from 'concis';
 import './demos.less';
 
 export default function index1() {

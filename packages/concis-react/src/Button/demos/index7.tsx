@@ -7,7 +7,7 @@ import {
   DeleteOutlined,
   DownOutlined,
 } from '@ant-design/icons';
-import Button from '..';
+import { Button } from 'concis';
 
 export default function ButtonDemo6() {
   const buttonStyle = { margin: '0 20px' };

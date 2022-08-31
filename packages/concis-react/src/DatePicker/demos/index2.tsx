@@ -1,5 +1,5 @@
 import React from 'react';
-import { YearPicker } from '..';
+import { YearPicker } from 'concis';
 
 export default function TimePickerDemo1() {
   const handleChange = (date: string) => {

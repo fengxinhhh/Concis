@@ -1,6 +1,5 @@
 import React from 'react';
-import List from '..';
-import Avatar from '../../Avatar/index';
+import { List, Avatar } from 'concis';
 import './demo.module.less';
 
 export default function listDemo1() {

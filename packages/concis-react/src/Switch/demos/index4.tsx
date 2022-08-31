@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
-import Switch from '..';
+import { Switch } from 'concis';
 
 export default function index1() {
   return (

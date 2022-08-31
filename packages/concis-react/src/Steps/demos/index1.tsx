@@ -1,6 +1,5 @@
 import React from 'react';
-import Steps from '..';
-import Step from '../Step';
+import { Steps, Step } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 /**
  * transform: true

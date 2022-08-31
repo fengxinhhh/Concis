@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Modal from '..';
-import Button from '../../Button';
+import { Button, Modal } from 'concis';
 
 export default function index1() {
   const [visible, setVisible] = useState(false);

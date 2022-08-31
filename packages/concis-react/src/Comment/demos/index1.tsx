@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { LikeOutlined, StarOutlined, StarFilled, LikeFilled } from '@ant-design/icons';
-import Comment from '..';
-import Avatar from '../../Avatar';
+import { Comment, Avatar } from 'concis';
 import './demos.less';
 
 export default function index1() {

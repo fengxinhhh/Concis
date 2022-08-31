@@ -1,6 +1,5 @@
 import React from 'react';
-import Button from '../../Button';
-import Message from '..';
+import { Button, Message } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index1() {

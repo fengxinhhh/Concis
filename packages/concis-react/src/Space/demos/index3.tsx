@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import Space from '..';
-import Button from '../../Button';
-import RadioGroup from '../../Radio/RadioGroup';
-import Radio from '../../Radio';
+import { Space, Button, Radio, RadioGroup } from 'concis';
 
 export default function index1() {
   const [size, setSize] = useState<'mini' | 'small' | 'medium' | 'large'>('small');

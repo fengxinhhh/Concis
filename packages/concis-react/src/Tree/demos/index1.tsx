@@ -1,5 +1,5 @@
 import React from 'react';
-import Tree from '..';
+import { Tree } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const treeData = [
@@ -44,7 +44,7 @@ export default function MenuDemos1() {
 
 function arrToTree(arr) {
   function fn(cId) {
-    let cArr = [];
+    const cArr = [];
     for (let i = 0; i < arr.length; i++) {
       const element = arr[i];
       if (element.parentId == cId) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Pagination from '..';
+import { Pagination } from 'concis';
 
 export default function PatginationDemo2() {
   const changePageCallback = (pageNum: number) => {

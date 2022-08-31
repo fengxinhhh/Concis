@@ -1,12 +1,5 @@
 import React, { useState, createRef } from 'react';
-import Drawer from '..';
-import Button from '../../Button';
-import Form from '../../Form';
-import Input from '../../Input';
-import CheckBox from '../../CheckBox';
-import Message from '../../Message';
-import Rate from '../../Rate';
-import Space from '../../Space';
+import { Drawer, Button, Form, Input, CheckBox, Message, Rate, Space } from 'concis';
 
 export default function index1() {
   const [visible, setVisible] = useState(false);

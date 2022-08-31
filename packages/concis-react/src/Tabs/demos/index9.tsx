@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Radio from '../../Radio';
-import RadioGroup from '../../Radio/RadioGroup';
-import Tabs from '..';
+import { Tabs, Radio, RadioGroup } from 'concis';
 
 const TabPane = Tabs.TabPane;
 

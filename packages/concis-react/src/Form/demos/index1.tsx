@@ -1,8 +1,5 @@
 import React from 'react';
-import Form from '..';
-import Input from '../../Input';
-import CheckBox from '../../CheckBox';
-import Button from '../../Button';
+import { Form, Input, CheckBox, Button } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index1() {

@@ -1,9 +1,5 @@
 import React, { createRef } from 'react';
-import Form from '..';
-import Input from '../../Input';
-import CheckBox from '../../CheckBox';
-import Button from '../../Button';
-import Select from '../../Select';
+import { Form, Input, CheckBox, Button, Select } from 'concis';
 
 const option = [
   {

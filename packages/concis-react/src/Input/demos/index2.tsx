@@ -1,7 +1,5 @@
 import React from 'react';
-import Input from '..';
-import Select from '../../Select';
-import Button from '../../Button';
+import { Input, Button, Select } from 'concis';
 
 export default function InputDemo2() {
   const option = [

@@ -1,5 +1,5 @@
 import React from 'react';
-import Loading from '..';
+import { Loading } from 'concis';
 
 export default function LoadingDemo1() {
   return (

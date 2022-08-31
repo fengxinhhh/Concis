@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '..';
+import { Input } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function InputDemo1() {

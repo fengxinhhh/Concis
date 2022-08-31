@@ -1,6 +1,5 @@
 import React from 'react';
-import Space from '..';
-import Button from '../../Button';
+import { Space, Button } from 'concis';
 
 export default function index1() {
   return (

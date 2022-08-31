@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from '..';
+import { Table } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const columns = [

@@ -1,7 +1,5 @@
 import React from 'react';
-import Popover from '..';
-import Button from '../../Button';
-import Space from '../../Space';
+import { Popover, Button, Space } from 'concis';
 
 export default function MenuDemos1() {
   return (

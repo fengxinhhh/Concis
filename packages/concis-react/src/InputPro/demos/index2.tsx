@@ -1,6 +1,5 @@
 import React from 'react';
-import InputPro from '..';
-import Space from '../../Space';
+import { InputPro, Space } from 'concis';
 
 export default function InputProDemo1() {
   const option = [

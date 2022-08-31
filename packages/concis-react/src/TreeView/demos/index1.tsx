@@ -1,5 +1,5 @@
 import React from 'react';
-import TreeView from '..';
+import { TreeView } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const treeData = [

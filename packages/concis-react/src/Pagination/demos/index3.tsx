@@ -1,5 +1,5 @@
 import React from 'react';
-import Pagination from '..';
+import { Pagination } from 'concis';
 
 export default function PatginationDemo3() {
   const options = [10, 20, 30, 50];

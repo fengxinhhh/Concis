@@ -1,5 +1,5 @@
 import React from 'react';
-import Swiper from '..';
+import { Swiper } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function MenuDemos1() {

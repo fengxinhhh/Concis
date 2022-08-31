@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
-import GlobalConfig from '..';
-import Button from '../../Button';
-import Loading from '../../Loading';
-import CheckBox from '../../CheckBox';
-import { RangeDatePicker } from '../../DatePicker';
-import Input from '../../Input';
-import RadioGroup from '../../Radio/RadioGroup';
-import Radio from '../../Radio';
-import Select from '../../Select';
-import Tree from '../../Tree';
-import Badge from '../../Badge';
-import Avatar from '../../Avatar';
-import TreeView from '../../TreeView';
-import Pagination from '../../Pagination';
-import Switch from '../../Switch';
-import Steps from '../../Steps';
-import Step from '../../Steps/Step';
-import InputPro from '../../InputPro';
+import {
+  GlobalConfig,
+  Button,
+  Loading,
+  CheckBox,
+  RangeDatePicker,
+  Input,
+  RadioGroup,
+  Radio,
+  Select,
+  Tree,
+  Badge,
+  Avatar,
+  TreeView,
+  Pagination,
+  Switch,
+  Steps,
+  Step,
+  InputPro,
+} from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const option = [

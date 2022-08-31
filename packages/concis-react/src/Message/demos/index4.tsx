@@ -1,6 +1,5 @@
 import React from 'react';
-import Button from '../../Button';
-import Message from '..';
+import { Button, Message } from 'concis';
 
 export default function index1() {
   const message = (val: string, position: 'top' | 'bottom') => {

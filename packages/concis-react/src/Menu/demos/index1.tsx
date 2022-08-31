@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-import Menu from '..';
+import { Menu } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function MenuDemos1() {

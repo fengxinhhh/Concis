@@ -1,5 +1,5 @@
 import React from 'react';
-import Swiper from '..';
+import { Swiper } from 'concis';
 
 export default function MenuDemos1() {
   const imgList = [

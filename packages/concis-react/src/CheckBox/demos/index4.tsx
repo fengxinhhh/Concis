@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CheckBox from '..';
+import { CheckBox } from 'concis';
 
 export default function TimePickerDemo1() {
   const [checkAll, setCheckAll] = useState(false);

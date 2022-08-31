@@ -1,5 +1,5 @@
 import React from 'react';
-import Loading from '..';
+import { Loading } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function LoadingDemo1() {

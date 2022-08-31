@@ -1,7 +1,5 @@
 import React, { createRef } from 'react';
-import Form from '..';
-import Input from '../../Input';
-import Button from '../../Button';
+import { Form, Input, Button } from 'concis';
 
 export default function index1() {
   const form = Form.useForm(); // 使用Form组件回传的hooks，调用组件内链方法

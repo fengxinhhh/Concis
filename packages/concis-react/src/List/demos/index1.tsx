@@ -1,5 +1,5 @@
 import React from 'react';
-import List from '..';
+import { List } from 'concis';
 import './demo.module.less';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 

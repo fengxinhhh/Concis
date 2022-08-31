@@ -1,6 +1,5 @@
 import React from 'react';
-import Upload from '..';
-import Message from '../../Message';
+import { Upload, Message } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index1() {

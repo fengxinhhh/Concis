@@ -1,9 +1,5 @@
 import React from 'react';
-import Layout from '..';
-import Header from '../Header/index';
-import Content from '../Content';
-import Footer from '../Footer';
-import Slider from '../Slider';
+import { Layout, Header, Content, Footer, Slider } from 'concis';
 /**
  * transform: true
  */

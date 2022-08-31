@@ -1,5 +1,5 @@
 import React from 'react';
-import Switch from '..';
+import { Switch } from 'concis';
 
 export default function index1() {
   return (

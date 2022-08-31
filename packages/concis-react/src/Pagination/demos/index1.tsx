@@ -1,5 +1,5 @@
 import React from 'react';
-import Pagination from '..';
+import { Pagination } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function PatginationDemo1() {

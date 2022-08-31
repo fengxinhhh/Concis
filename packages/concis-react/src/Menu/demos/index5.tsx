@@ -1,11 +1,6 @@
 import React from 'react';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
-import Menu from '..';
-import Layout from '../../Layout';
-import Header from '../../Layout/Header';
-import Slider from '../../Layout/Slider';
-import Content from '../../Layout/Content';
-import Footer from '../../Layout/Footer';
+import { Menu, Layout, Header, Slider, Content, Footer } from 'concis';
 
 export default function MenuDemos1() {
   const getItem = (

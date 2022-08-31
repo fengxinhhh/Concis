@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '..';
+import { Button } from 'concis';
 
 export default function ButtonDemo2() {
   const buttonStyle = { margin: '8px' };

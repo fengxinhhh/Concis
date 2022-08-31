@@ -1,5 +1,5 @@
 import React from 'react';
-import TimePicker from '..';
+import { TimePicker } from 'concis';
 
 export default function index4() {
   const disableHour = (hour: string) => {

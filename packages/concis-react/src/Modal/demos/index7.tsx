@@ -1,8 +1,5 @@
 import React, { useState, useRef } from 'react';
-import Modal from '..';
-import Button from '../../Button';
-import Loading from '../../Loading';
-import Table from '../../Table';
+import { Button, Modal, Table, Loading } from 'concis';
 
 export default function index1() {
   const [visible, setVisible] = useState(false);

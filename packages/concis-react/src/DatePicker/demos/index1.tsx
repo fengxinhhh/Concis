@@ -1,5 +1,5 @@
 import React from 'react';
-import DatePicker from '../DatePicker';
+import { DatePicker } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function TimePickerDemo1() {

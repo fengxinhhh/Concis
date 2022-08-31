@@ -1,5 +1,5 @@
 import React from 'react';
-import Skeleton from '..';
+import { Skeleton } from 'concis';
 
 export default function index2() {
   return (

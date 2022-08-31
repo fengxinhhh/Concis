@@ -1,14 +1,19 @@
 import React, { createRef } from 'react';
-import Form from '..';
-import Input from '../../Input';
-import CheckBox from '../../CheckBox';
-import Button from '../../Button';
-import Select from '../../Select';
-import DatePicker, { RangeDatePicker, MonthPicker, YearPicker } from '../../DatePicker';
-import Rate from '../../Rate';
-import Tree from '../../Tree';
-import InputPro from '../../InputPro';
-import Message from '../../Message';
+import {
+  Form,
+  Input,
+  CheckBox,
+  Button,
+  Select,
+  DatePicker,
+  RangeDatePicker,
+  MonthPicker,
+  YearPicker,
+  Rate,
+  Tree,
+  InputPro,
+  Message,
+} from 'concis';
 
 const option = [
   {

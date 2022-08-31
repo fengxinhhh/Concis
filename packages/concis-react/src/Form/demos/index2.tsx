@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import Form from '..';
-import Input from '../../Input';
-import CheckBox from '../../CheckBox';
-import Button from '../../Button';
-import Radio from '../../Radio';
-import RadioGroup from '../../Radio/RadioGroup';
+import { Form, Input, CheckBox, Button, RadioGroup, Radio } from 'concis';
 
 export default function index1() {
   const [align, setAlign] = useState<'horizontal' | 'vertical'>('horizontal');

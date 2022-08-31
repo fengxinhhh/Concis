@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import List from '..';
+import { List } from 'concis';
 import './demo.module.less';
 
 export default function listDemo1() {

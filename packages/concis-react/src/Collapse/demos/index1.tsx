@@ -1,7 +1,5 @@
 import React from 'react';
-import Collapse from '..';
-import CollapseItem from '../CollapseItem';
-import Divider from '..';
+import { Collapse, CollapseItem, Divider } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function CollapseDemo1() {

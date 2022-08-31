@@ -1,6 +1,5 @@
 import React from 'react';
-import Popover from '..';
-import Button from '../../Button';
+import { Popover, Button } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function MenuDemos1() {

@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Skeleton from '..';
-import List from '../../List';
-import Avatar from '../../Avatar';
-import Switch from '../../Switch';
+import { Skeleton, List, Avatar, Switch } from 'concis';
 
 export default function index1() {
   const [loading, setLoading] = useState(true);

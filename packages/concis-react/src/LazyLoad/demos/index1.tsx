@@ -1,5 +1,5 @@
 import React from 'react';
-import LazyLoad from '..';
+import { LazyLoad } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function LazyLoadDemo1() {

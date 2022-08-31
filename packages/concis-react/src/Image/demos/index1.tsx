@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from '..';
+import { Image } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function ImageDemo1() {

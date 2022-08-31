@@ -1,5 +1,5 @@
 import React from 'react';
-import Skeleton from '..';
+import { Skeleton } from 'concis';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index2() {

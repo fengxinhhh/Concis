@@ -1,6 +1,5 @@
 import React from 'react';
-import Avatar from '..';
-import AvatarGroup from '../group';
+import { AvatarGroup, Avatar } from 'concis';
 
 export default function avatarDemo1() {
   return (

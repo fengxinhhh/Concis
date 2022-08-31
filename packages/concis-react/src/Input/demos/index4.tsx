@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '..';
+import { Input } from 'concis';
 
 export default function InputDemo4() {
   const handleIptChange = (h: string) => {

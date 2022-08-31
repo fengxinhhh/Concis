@@ -1,6 +1,5 @@
 import React from 'react';
-import Radio from '..';
-import RadioGroup from '../RadioGroup';
+import { Radio, RadioGroup } from 'concis';
 
 export default function RadioBoxDemo1() {
   const onChange = (a: string, b: number) => {

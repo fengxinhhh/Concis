@@ -1,6 +1,5 @@
 import React from 'react';
-import Badge from '..';
-import Avatar from '../../Avatar';
+import { Badge, Avatar } from 'concis';
 
 export default function avatarDemo1() {
   return (

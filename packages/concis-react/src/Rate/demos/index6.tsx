@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Rate from '..';
+import { Rate } from 'concis';
 /**
  * transform: true
  */

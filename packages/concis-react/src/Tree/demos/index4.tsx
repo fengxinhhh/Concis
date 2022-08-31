@@ -1,5 +1,5 @@
 import React from 'react';
-import Tree from '..';
+import { Tree } from 'concis';
 
 const treeData = [
   {

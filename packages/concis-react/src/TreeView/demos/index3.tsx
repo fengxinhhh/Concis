@@ -1,5 +1,5 @@
 import React from 'react';
-import TreeView from '..';
+import { TreeView } from 'concis';
 
 const treeData = [
   {

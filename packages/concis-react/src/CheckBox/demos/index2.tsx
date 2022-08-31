@@ -1,5 +1,5 @@
 import React from 'react';
-import CheckBox from '..';
+import { CheckBox } from 'concis';
 
 export default function TimePickerDemo1() {
   const checkCallback = (result: boolean) => {

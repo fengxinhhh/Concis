@@ -1,5 +1,5 @@
 import React from 'react';
-import { MonthPicker } from '..';
+import { MonthPicker } from 'concis';
 
 export default function TimePickerDemo1() {
   const handleChange = (date: string) => {

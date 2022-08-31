@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import Drawer from '..';
-import Button from '../../Button';
-import RadioGroup from '../../Radio/RadioGroup';
-import Radio from '../../Radio';
+import { Drawer, Button, RadioGroup, Radio } from 'concis';
 
 export default function index1() {
   const [visible, setVisible] = useState(false);

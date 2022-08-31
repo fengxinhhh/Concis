@@ -1,6 +1,5 @@
 import React from 'react';
-import Button from '../../Button';
-import Notification from '..';
+import { Button, Notification } from 'concis';
 
 export default function index1() {
   return (

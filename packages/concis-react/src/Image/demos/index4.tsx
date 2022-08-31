@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from '..';
+import { Image } from 'concis';
 
 export default function ImageDemo1() {
   return (
