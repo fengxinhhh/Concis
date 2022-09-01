@@ -19,7 +19,6 @@ import {
   Step,
   InputPro,
 } from 'concis';
-import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const option = [
   {
@@ -117,8 +116,6 @@ const stepsData = [
 ];
 
 export default function index1() {
-  process.env.NODE_ENV === 'production' && usePageListener('GlobalConfig');
-
   const [dark, setDark] = useState(document.documentElement.getAttribute('data-prefers-color'));
   const [globalColor, setGlobalColor] = useState('');
 
