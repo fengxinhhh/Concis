@@ -36,4 +36,4 @@ interface InputProProps<T> {
   handleClear?: Function;
 }
 
-export type { InputProProps };
+export type { InputProProps, optionParams };
