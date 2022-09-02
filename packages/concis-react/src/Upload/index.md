@@ -16,4 +16,8 @@ mobile: false
 
 <code src="./demos/index1.tsx"/>
 
+## 显示图片
+
+<code src="./demos/index2.tsx"/>
+
 <API />

@@ -27,9 +27,10 @@ export default function index1() {
       headers={{ token: '1' }}
       defaultFileList={[]}
       action="test"
+      showType="image-list"
       limit={3}
       multiple
-      autoUpload={true}
+      autoUpload={false}
       accept="*"
     />
   );

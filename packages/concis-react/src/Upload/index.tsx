@@ -1,12 +1,23 @@
-import React, { memo, useEffect, useRef, useState, useMemo } from 'react';
+import React, { memo, useEffect, useRef, useState, useMemo, useContext, ReactElement } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { UploadOutlined, CheckCircleFilled, CloseCircleFilled } from '@ant-design/icons';
+import {
+  UploadOutlined,
+  CheckCircleFilled,
+  CloseCircleFilled,
+  PlusOutlined,
+  EyeOutlined,
+  CloseCircleOutlined,
+} from '@ant-design/icons';
 import { isNumber } from 'util';
 
 import Button from '../Button';
 import { FileItem, UploadProps } from './interface';
 import List from '../List';
 import './styles/index.module.less';
+import Image from '../Image';
+import cs from '../common_utils/classNames';
+import { globalCtx } from '../GlobalConfig';
+import { GlobalConfigProps } from '../GlobalConfig/interface';
 
 const Upload = (props: UploadProps) => {
   const {
@@ -16,6 +27,7 @@ const Upload = (props: UploadProps) => {
     limit,
     action,
     name = 'file',
+    showType = 'file',
     headers = {},
     onExceedLimit,
     withCredentials = false,
@@ -23,11 +35,14 @@ const Upload = (props: UploadProps) => {
     defaultFileList,
     beforeUpload,
     onSuccess,
+    className = '',
     onError,
     onRemove,
     onChange,
   } = props;
 
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}upload `);
   const inputRef = useRef<any>(null);
   const [fileList, setFileList] = useState<FileItem[]>(defaultFileList || []);
   useEffect(() => {
@@ -114,7 +129,7 @@ const Upload = (props: UploadProps) => {
     onRemove && onRemove(fileItem, fileList);
   };
   const domNode = useMemo(() => {
-    return (
+    return showType === 'file' ? (
       <List
         className="concis-upload-container"
         header="文件列表"
@@ -152,10 +167,40 @@ const Upload = (props: UploadProps) => {
           );
         }}
       />
+    ) : (
+      <div className="image-list">
+        {fileList.map((_, idx) => (
+          <Image
+            src={URL.createObjectURL(_.file)}
+            width="100px"
+            key={_.uid}
+            height="100px"
+            fit="cover"
+            round="5px"
+            preview={true}
+            previewRender={(preview: any) => {
+              return (
+                <div>
+                  <EyeOutlined onClick={preview} />
+                  {_.status === 'unUpload' && (
+                    <UploadOutlined onClick={() => uploadFile(_.file, _)} />
+                  )}
+                  <CloseCircleOutlined
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      deleteFile(_);
+                    }}
+                  />
+                </div>
+              );
+            }}
+          />
+        ))}
+      </div>
     );
   }, [fileList]);
   return (
-    <div>
+    <div className={classNames}>
       <input
         accept={accept}
         multiple={multiple}
@@ -164,15 +209,27 @@ const Upload = (props: UploadProps) => {
         ref={inputRef}
         style={{ display: 'none' }}
       />
-      <Button
-        handleClick={uploadClick}
-        icon={<UploadOutlined />}
-        style={{ margin: '8px' }}
-        type="primary"
-      >
-        上传
-      </Button>
+      {showType === 'file' && (
+        <Button
+          handleClick={uploadClick}
+          icon={<UploadOutlined />}
+          style={{ margin: '8px' }}
+          type="primary"
+        >
+          上传
+        </Button>
+      )}
       {fileList.length !== 0 && domNode}
+      {showType === 'image-list' && (
+        <Button
+          type="text"
+          handleClick={uploadClick}
+          style={{}}
+          width={100}
+          height={100}
+          icon={<PlusOutlined />}
+        />
+      )}
     </div>
   );
 };
