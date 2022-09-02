@@ -1,10 +1,7 @@
 import React from 'react';
 import { Upload, Message } from 'concis';
-import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index1() {
-  process.env.NODE_ENV === 'production' && usePageListener('Upload');
-
   return (
     <Upload
       beforeUpload={(file: File) => {

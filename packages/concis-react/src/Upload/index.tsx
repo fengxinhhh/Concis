@@ -177,7 +177,7 @@ const Upload = (props: UploadProps) => {
             height="100px"
             fit="cover"
             round="5px"
-            preview={true}
+            preview
             previewRender={(preview: any) => {
               return (
                 <div>
