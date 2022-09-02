@@ -2,6 +2,11 @@ import { Awaitable } from 'puppeteer';
 
 export interface UploadProps {
   /**
+   * @description 自定义类名
+   * @default string
+   */
+  className: string;
+  /**
    * @description 允许的文件类型，参考MDN<input>accept属性
    * @default *
    */
@@ -21,6 +26,11 @@ export interface UploadProps {
    * @default false
    */
   disable?: boolean;
+  /**
+   * @description 文件列表的展示
+   * @default file
+   */
+  showType?: string;
   /**
    * @description 上传文件的键名
    * @default file
