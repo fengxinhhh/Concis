@@ -57,6 +57,10 @@ interface ImageProps {
    * @description 描述文案样式
    */
   captionStyle?: CSSProperties;
+  /**
+   * @description 自定义预览操作栏
+   */
+  previewRender?: Function;
 }
 
 export type { ImageProps };
