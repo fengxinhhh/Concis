@@ -32,7 +32,7 @@ const Image: FC<ImageProps> = (props) => {
     showOperation = true,
     caption,
     captionStyle,
-    previewRender = (dom: ReactElement) => dom,
+    previewRender,
   }: ImageProps = props;
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
@@ -166,15 +166,14 @@ const Image: FC<ImageProps> = (props) => {
             {caption}
           </div>
         )}
-        {preview && (
-          <div className="preview-image-mask">
-            {previewRender ? (
-              previewRender({ preview: handlePreview })
-            ) : (
-              <EyeOutlined onClick={handlePreview} />
-            )}
-          </div>
-        )}
+        {preview &&
+          (previewRender ? (
+            <div className="preview-image-mask">{previewRender(handlePreview)}</div>
+          ) : (
+            <div className="preview-image-mask">
+              <EyeOutlined onClick={handlePreview} />{' '}
+            </div>
+          ))}
       </div>
       {preview && (
         <CSSTransition

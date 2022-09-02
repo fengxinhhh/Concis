@@ -178,20 +178,21 @@ const Upload = (props: UploadProps) => {
             fit="cover"
             round="5px"
             preview={true}
-            previewRender={(event: any) => {
-              return [
-                <EyeOutlined key={1} onClick={event.preview} />,
-                _.status === 'unUpload' && (
-                  <UploadOutlined key={2} onClick={() => uploadFile(_.file, _)} />
-                ),
-                <CloseCircleOutlined
-                  key={3}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    deleteFile(_);
-                  }}
-                />,
-              ];
+            previewRender={(preview: any) => {
+              return (
+                <div>
+                  <EyeOutlined onClick={preview} />
+                  {_.status === 'unUpload' && (
+                    <UploadOutlined onClick={() => uploadFile(_.file, _)} />
+                  )}
+                  <CloseCircleOutlined
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      deleteFile(_);
+                    }}
+                  />
+                </div>
+              );
             }}
           />
         ))}
