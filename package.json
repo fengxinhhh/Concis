@@ -1,5 +1,5 @@
 {
-  "name": "concis-ui",
+  "name": "concis",
   "private": true,
   "scripts": {
     "start": "dumi dev",
