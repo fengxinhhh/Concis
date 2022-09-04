@@ -1,0 +1,109 @@
+@import '../styles/common.less';
+
+@concis-light-info-bg: #e8f3ff;
+@concis-light-success-bg: #e8ffea;
+@concis-light-warning-bg: #fef7e8;
+@concis-light-error-bg: #feece8;
+@concis-dark-info-bg: #253757;
+@concis-dark-success-bg: #22482c;
+@concis-dark-warning-bg: #573d25;
+@concis-dark-error-bg: #553332;
+@concis-light-content-color: #4e5969;
+@concis-light-title-color: #1d2129;
+@concis-dark-content-color: #ffffffb3;
+@concis-dark-title-color: #ffffff;
+
+.concis-alert, .concis-dark-alert {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: @concis-font-md;
+  text-align: left;
+  display: flex;
+  border-radius: @concis-radius-xs;
+  justify-content: space-between;
+  .alert-content {
+    display: flex;
+    color: @concis-light-content-color;
+    .alert-icon {
+      margin-right: @concis-transform-ms;
+      &-info {
+        color: @concis-primary-color;
+      }
+      &-success {
+        color: @concis-info-color;
+      }
+      &-warning {
+        color: @concis-warning-color;
+      }
+      &-error {
+        color: @concis-danger-color;
+      }
+    }
+    .alert-text {
+      display: flex;
+      flex-direction: column;
+      .title {
+        font-size: @concis-font-lg;
+        margin-bottom: @concis-transform-ms;
+        color: @concis-light-title-color;
+      }
+    }
+  }
+  .close-icon {
+    font-size: @concis-font-xs;
+    cursor: pointer;
+  }
+} 
+.concis-dark-alert-info {
+  background-color: @concis-dark-info-bg;
+}
+.concis-dark-alert-success {
+  background-color: @concis-dark-success-bg;
+}
+.concis-dark-alert-warning {
+  background-color: @concis-dark-warning-bg;
+}
+.concis-dark-alert-error {
+  background-color: @concis-dark-error-bg;
+}
+.concis-alert-info {
+  background-color: @concis-light-info-bg;
+}
+.concis-alert-success {
+  background-color: @concis-light-success-bg;
+}
+.concis-alert-warning {
+  background-color: @concis-light-warning-bg;
+}
+.concis-alert-error {
+  background-color: @concis-light-error-bg;
+}
+
+.concis-dark-alert {
+  .alert-content {
+    color: @concis-dark-content-color;
+    .alert-text .title {
+      color: @concis-dark-title-color;
+    }
+  }
+}
+
+.fadeContent-enter,
+.fadeContent-appear {
+  opacity: 0;
+}
+
+.fadeContent-enter-active,
+.fadeContent-appear-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.fadeContent-exit {
+  opacity: 1;
+}
+
+.fadeContent-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
