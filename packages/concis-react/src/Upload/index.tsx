@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState, useMemo, useContext, ReactElement } from 'react';
+import React, { memo, useEffect, useRef, useState, useMemo, useContext } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import {
   UploadOutlined,
@@ -8,7 +8,7 @@ import {
   EyeOutlined,
   CloseCircleOutlined,
 } from '@ant-design/icons';
-import { isNumber } from 'util'
+import { isNumber } from 'util';
 
 import Button from '../Button';
 import { FileItem, UploadProps } from './interface';
