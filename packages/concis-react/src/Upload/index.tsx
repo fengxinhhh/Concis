@@ -41,7 +41,7 @@ const Upload = (props: UploadProps) => {
     onChange,
   } = props;
 
-  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
+  const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}upload `);
   const inputRef = useRef<any>(null);
   const [fileList, setFileList] = useState<FileItem[]>(defaultFileList || []);
