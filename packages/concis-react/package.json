@@ -26,6 +26,7 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.18.10",
     "@babel/preset-react": "^7.18.6",
+    "cimi": "^1.0.21",
     "core-js": "^3.24.1",
     "dayjs": "^1.11.4",
     "lodash": "^4.17.21"
