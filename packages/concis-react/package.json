@@ -1,7 +1,7 @@
 {
   "name": "concis",
   "license": "MIT",
-  "version": "1.3.9",
+  "version": "1.3.10",
   "description": "Concis Component library for PC",
   "authors": {
     "name": "fengxin",
@@ -9,7 +9,6 @@
   },
   "scripts": {
     "build": "rollup -c ./rollup.config.js",
-    "publish": "npm run upgrade && npm run build && npm publish",
     "replase": "npm run build && cimi patch master",
     "test:e2e": "jest ./__tests__/e2e",
     "test:jest": "jest",
