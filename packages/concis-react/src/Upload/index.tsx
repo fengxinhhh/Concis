@@ -169,7 +169,7 @@ const Upload = (props: UploadProps) => {
       />
     ) : (
       <div className="image-list">
-        {fileList.map((_, idx) => (
+        {fileList.map((_) => (
           <Image
             src={URL.createObjectURL(_.file)}
             width="100px"
