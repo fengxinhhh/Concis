@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState, useMemo, useContext, ReactElement } from 'react';
+import React, { memo, useEffect, useRef, useState, useMemo, useContext } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import {
   UploadOutlined,
