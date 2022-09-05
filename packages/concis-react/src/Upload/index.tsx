@@ -8,7 +8,7 @@ import {
   EyeOutlined,
   CloseCircleOutlined,
 } from '@ant-design/icons';
-import { isNumber } from 'util';
+import { isNumber } from 'util'
 
 import Button from '../Button';
 import { FileItem, UploadProps } from './interface';
