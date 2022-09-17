@@ -9,7 +9,9 @@
   },
   "scripts": {
     "build": "rollup -c ./rollup.config.js",
-    "replase": "npm run build && cimi patch master",
+    "replase:patch": "npm run build && cimi patch master",
+    "replase:minor": "npm run build && cimi minor master",
+    "replase:major": "npm run build && cimi major master",
     "test:e2e": "jest ./__tests__/e2e",
     "test:jest": "jest",
     "test:unit": "jest ./__tests__/unit --silent=false -u",
