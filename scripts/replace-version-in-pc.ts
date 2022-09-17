@@ -1,16 +1,16 @@
-//更新concis-react/package.json中的版本
+// 更新concis-react/package.json中的版本
 const fs = require('fs-extra');
 const path = require('path');
 const { version } = require('../packages/concis-react/package.json');
 
 const fileText = fs.readFileSync(
   path.join(__dirname, '../packages/concis-react/package.json'),
-  'utf-8',
+  'utf-8'
 );
 
 const replacedVersion = fileText.split('\n').map((t) => {
   if (/"version":/.test(t)) {
-    let newVersion = version.split('.');
+    const newVersion = version.split('.');
     let [first, secord, third] = newVersion;
     if (third >= 10 || secord >= 10) {
       if (third >= 10) {
@@ -35,7 +35,7 @@ const replacedVersion = fileText.split('\n').map((t) => {
 
 fs.outputFile(
   path.resolve(__dirname, '../packages/concis-react/package.json'),
-  replacedVersion.join('\n'),
+  replacedVersion.join('\n')
 ).then(() => {
   console.log('替换package.json 中的 version 成功！'); // eslint-disable-line
 });

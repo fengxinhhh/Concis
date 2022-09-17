@@ -1,0 +1,37 @@
+@import '../styles/common.less';
+
+@concis-empty-icon-size: 48px;
+@concis-empty-light-icon-bg: #a9aeb8;
+@concis-empty-light-text-bg: #c4c7ce;
+@concis-empty-dark-icon-bg: #78787a;
+@concis-empty-dark-text-bg: #656566;
+
+.concis-empty, .concis-dark-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: @concis-transform-ms 0;
+
+  .empty-icon {
+    width: 1em;
+    height: 1em;
+    font-size: @concis-empty-icon-size;
+    color: @concis-empty-light-icon-bg;
+  }
+  
+  .empty-text {
+    margin-top: 8px;
+    color: @concis-empty-light-text-bg;
+  }
+}
+
+.concis-dark-empty {
+  .empty-icon {
+    color: @concis-empty-dark-icon-bg;
+  }
+  .empty-text {
+    color: @concis-empty-dark-text-bg;
+  }
+}
