@@ -83,4 +83,4 @@ pnpm run test:e2e          //e2e测试，对应/__tests__/e2e
 
 如遇到任何使用问题或改善意见，欢迎来用户交流群吐槽。
 
-<img src="http://concis.org.cn/images/wechat.group.jpg" width="50%" />
+<img src="http://concis.org.cn/images/wechat-self.jpg" width="50%" />
