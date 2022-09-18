@@ -2,8 +2,8 @@
 
 @concis-modal-light-border: #e5e6eb;
 @concis-modal-dark-border: #484849;
-@concis-modal-transform: 50%;
-@concis-modal-fadeExit-transform: 40%;
+@concis-modal-top-transform: 30%;
+@concis-modal-left-transform: 50%;
 
 .concis-modal,
 .concis-dark-modal {
@@ -19,8 +19,8 @@
   }
   &-content {
     position: absolute;
-    top: @concis-modal-transform;
-    left: @concis-modal-transform;
+    top: @concis-modal-top-transform;
+    left: @concis-modal-left-transform;
     z-index: 1002;
     width: var(--modal-width);
     overflow-x: auto;
@@ -94,7 +94,7 @@
 .fadeModal-enter-active,
 .fadeModal-appear-active {
   opacity: 1;
-  transition: opacity 200ms;
+  transition: opacity 500ms;
 }
 
 .fadeModal-exit {
@@ -103,39 +103,27 @@
 
 .fadeModal-exit-active {
   opacity: 0;
-  transition: opacity 200ms;
+  transition: opacity 500ms;
 }
 
 .fadeContent-enter,
 .fadeContent-appear {
-  top: @concis-modal-fadeExit-transform;
-  left: @concis-modal-fadeExit-transform;
-  width: calc(var(--modal-width) - 10%);
   opacity: 0;
 }
 
 .fadeContent-enter-active,
 .fadeContent-appear-active {
-  top: @concis-modal-transform;
-  left: @concis-modal-transform;
-  width: var(--modal-width);
   opacity: 1;
-  transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
+  transition: opacity 500ms;
 }
 
 .fadeContent-exit {
-  top: @concis-modal-transform;
-  left: @concis-modal-transform;
-  width: var(--modal-width);
   opacity: 1;
 }
 
 .fadeContent-exit-active {
-  top: @concis-modal-fadeExit-transform;
-  left: @concis-modal-fadeExit-transform;
-  width: calc(var(--modal-width) - 10%);
   opacity: 0;
-  transition: top 200ms, width 200ms, left 200ms, opacity 100ms;
+  transition: opacity 500ms;
 }
 
 @media screen and (max-width: 767px) {
@@ -143,36 +131,5 @@
     &-content {
       width: 90vw;
     }
-  }
-  .fadeContent-enter,
-  .fadeContent-appear {
-    top: @concis-modal-fadeExit-transform;
-    left: @concis-modal-fadeExit-transform;
-    width: 80vw;
-    opacity: 0;
-  }
-
-  .fadeContent-enter-active,
-  .fadeContent-appear-active {
-    top: @concis-modal-transform;
-    left: @concis-modal-transform;
-    width: 90vw;
-    opacity: 1;
-    transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
-  }
-
-  .fadeContent-exit {
-    top: @concis-modal-transform;
-    left: @concis-modal-transform;
-    width: 90vw;
-    opacity: 1;
-  }
-
-  .fadeContent-exit-active {
-    top: @concis-modal-fadeExit-transform;
-    left: @concis-modal-fadeExit-transform;
-    width: 80vw;
-    opacity: 0;
-    transition: top 200ms, width 200ms, left 200ms, opacity 100ms;
   }
 }
