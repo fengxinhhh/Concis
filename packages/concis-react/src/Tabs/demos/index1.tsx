@@ -1,9 +1,12 @@
 import React from 'react';
 import { Tabs } from 'concis';
+import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const TabPane = Tabs.TabPane;
 
 export default function index1() {
+  process.env.NODE_ENV === 'production' && usePageListener('Tabs');
+
   const style = {
     display: 'flex',
     justifyContent: 'center',
