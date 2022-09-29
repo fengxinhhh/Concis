@@ -87,7 +87,7 @@ ReactDOM.render(<App />, document.getElementById('app'));
 
 # 参与贡献
 
-贡献之前请先阅读[贡献指南](./CONTRIBUTING.zh-CN.md)。
+贡献之前请先阅读[贡献指南](http://concis.org.cn/#/guide/zcontribute)。
 
 感谢所有为 Concis 做过贡献的人!
 
