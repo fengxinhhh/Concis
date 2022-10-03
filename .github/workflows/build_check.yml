@@ -1,0 +1,16 @@
+name: build_check
+
+on: [push, pull_request]
+
+jobs:
+  jest-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: install
+        run: yarn install
+
+      - name: test:unit
+        run: cd packages/concis-react && yarn install && yarn build
