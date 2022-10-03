@@ -18,17 +18,25 @@ mobile: false
 
 ## 基本使用
 
+最基础的导航菜单。
+
 <code src="./demos/index1.tsx"/>
 
 ## 自定义宽度
+
+配置 `width` 自定义宽度。
 
 <code src="./demos/index2.tsx" />
 
 ## 深色风格
 
+配置 `dark` 开启深色风格（在官网深色模式下体验）。
+
 <code src="./demos/index3.tsx" />
 
 ## 手风琴风格
+
+配置 `ableToggle` 开启手风琴切换。
 
 <code src="./demos/index4.tsx" />
 
@@ -39,6 +47,8 @@ mobile: false
 <code src="./demos/index5.tsx" />
 
 ## 默认展开
+
+配置 `defaultOpen` 默认展开。
 
 <code src="./demos/index6.tsx" />
 

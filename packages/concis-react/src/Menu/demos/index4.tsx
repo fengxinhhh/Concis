@@ -46,5 +46,5 @@ export default function MenuDemos1() {
   const handleRouteChange = (page: string) => {
     console.log(page);
   };
-  return <Menu items={items} dark ableToggle handleRouteChange={handleRouteChange} />;
+  return <Menu items={items} ableToggle handleRouteChange={handleRouteChange} />;
 }

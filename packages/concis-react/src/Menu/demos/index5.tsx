@@ -51,7 +51,7 @@ export default function MenuDemos1() {
       <Header extraStyle={{ background: '#8eb8e0' }}>header</Header>
       <Layout>
         <Slider row={3} extraStyle={{ height: '100%', padding: '0' }}>
-          <Menu items={items} width="100%" defaultOpen dark handleRouteChange={handleRouteChange} />
+          <Menu items={items} width="100%" defaultOpen handleRouteChange={handleRouteChange} />
         </Slider>
         <Content row={7} extraStyle={{ background: '#8eb8e0' }}>
           content

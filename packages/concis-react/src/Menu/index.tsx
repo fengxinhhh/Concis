@@ -100,7 +100,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
     fatherKey: string | number
   ) => {
     // 初始化父级菜单高度
-    item.forEach((m) => {
+    item?.forEach((m) => {
       if (m.children) {
         if (m.level === 1) {
           obj[m.key] = {
@@ -308,7 +308,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
         } as any
       }
     >
-      {items.map((m: any) => {
+      {items?.map((m: any) => {
         return (
           <div key={m.key}>
             <div className={`${classFirstName}-menuOptions`} style={firstMenuHeight(m.key)}>
