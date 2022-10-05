@@ -2,6 +2,9 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "tslib" : ["./node_modules/tslib/tslib.d.ts"]
+    },
     "typeRoots": ["node_modules/@types", "types"]
   },
   "include": ["./typings.d.ts", "./src"]
