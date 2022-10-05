@@ -14,7 +14,7 @@ describe('Notification', () => {
   });
 
   it('test base Notification show correctly', () => {
-    //基础测试
+    // 基础测试
     Notification.info({
       title: 'Notification',
       content: 'test',
@@ -22,15 +22,15 @@ describe('Notification', () => {
     });
     expect(document.querySelectorAll('.concis-notifica-container')).toHaveLength(1);
     expect(
-      document.querySelectorAll('.concis-notifica-container .title-content')[0].innerHTML,
+      document.querySelectorAll('.concis-notifica-container .title-content')[0].innerHTML
     ).toBe('Notification');
     expect(
-      document.querySelectorAll('.concis-notifica-container .notification-content')[0].innerHTML,
+      document.querySelectorAll('.concis-notifica-container .notification-content')[0].innerHTML
     ).toBe('test');
   });
 
   it('test click five nums Notification show num correctly', () => {
-    //测试多次渲染
+    // 测试多次渲染
     for (let i = 0; i < 5; i++) {
       Notification.info({
         title: 'Notification',
@@ -42,7 +42,7 @@ describe('Notification', () => {
   });
 
   it('test four transform Notification show correctly', async () => {
-    //测试不同方向
+    // 测试不同方向
     const transforms = ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'];
     for (let i = 0; i < transforms.length; i++) {
       const transform = transforms[i] as 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
@@ -58,25 +58,25 @@ describe('Notification', () => {
           case 0:
             expect(
               dom.getAttribute('style')?.includes('top') &&
-                dom.getAttribute('style')?.includes('left'),
+                dom.getAttribute('style')?.includes('left')
             ).toBe(true);
             break;
           case 1:
             expect(
               dom.getAttribute('style')?.includes('top') &&
-                dom.getAttribute('style')?.includes('right'),
+                dom.getAttribute('style')?.includes('right')
             ).toBe(true);
             break;
           case 2:
             expect(
               dom.getAttribute('style')?.includes('bottom') &&
-                dom.getAttribute('style')?.includes('left'),
+                dom.getAttribute('style')?.includes('left')
             ).toBe(true);
             break;
           case 3:
             expect(
               dom.getAttribute('style')?.includes('bottom') &&
-                dom.getAttribute('style')?.includes('right'),
+                dom.getAttribute('style')?.includes('right')
             ).toBe(true);
             break;
         }
@@ -85,7 +85,7 @@ describe('Notification', () => {
   });
 
   it('test footer Notification show correctly', () => {
-    //测试自定义按钮
+    // 测试自定义按钮
     const mockFn = jest.fn();
     Notification.info({
       title: 'Notification',
@@ -103,17 +103,17 @@ describe('Notification', () => {
     expect(document.querySelector('.concis-notifica-container .notification-footer')).toBeDefined();
     expect(
       document.querySelector('.concis-notifica-container .notification-footer .concis-button-text')
-        ?.innerHTML,
+        ?.innerHTML
     ).toBe('取消');
     expect(
       document.querySelector(
-        '.concis-notifica-container .notification-footer .concis-button-primary',
-      )?.innerHTML,
+        '.concis-notifica-container .notification-footer .concis-button-primary'
+      )?.innerHTML
     ).toBe('确认');
   });
 
   it('test setting style Notification correctly', () => {
-    //测试自定义样式
+    // 测试自定义样式
     Notification.info({
       title: 'Notification',
       content: 'test',
@@ -124,7 +124,7 @@ describe('Notification', () => {
       document
         .querySelector('.concis-notifica-container')
         ?.getAttribute('style')
-        ?.includes('width: 500px, font-size: 15px'),
+        ?.includes('width: 500px, font-size: 15px')
     );
   });
 });

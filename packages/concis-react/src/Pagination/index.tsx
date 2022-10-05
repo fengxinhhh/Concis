@@ -222,9 +222,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
         // 超出页码范围，不挑
         return (e.target.value = '');
       }
-      if (jumpPage > 6 && jumpPage < totalPage - 6) {
-        setPageRenderArray([jumpPage - 2, jumpPage - 1, jumpPage, jumpPage + 1, jumpPage + 2]);
-      } else if (jumpPage - 5 < 0) {
+      if (jumpPage - 5 < 0) {
         setPageRenderArray([2, 3, 4, 5, 6]);
       } else if (jumpPage + 5 > totalPage) {
         setPageRenderArray([
@@ -234,6 +232,8 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
           totalPage - 2,
           totalPage - 1,
         ]);
+      } else {
+        setPageRenderArray([jumpPage - 2, jumpPage - 1, jumpPage, jumpPage + 1, jumpPage + 2]);
       }
       setNowIndex(jumpPage);
       changePageCallback && changePageCallback(jumpPage);
