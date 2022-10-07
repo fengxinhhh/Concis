@@ -37,7 +37,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
   const [selectIndex, setSelectIndex] = useState(value || 0); // 选中索引
   const [renderOptions, setRenderOptions] = useState(children);
   const [addOptionVal, setAddOptionVal] = useState('');
-  const [showAddOption, setShowAddOption] = useState(canAddOption && false);
+  const [showAddOption, setShowAddOption] = useState(canAddOption);
 
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const theme = getSiteTheme();
