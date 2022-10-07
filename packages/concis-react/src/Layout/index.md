@@ -1,32 +1,36 @@
 ---
-title: Layout 快速布局
+title: Layout
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 布局
+  title: Layout
 mobile: false
 ---
 
-# Layout 快速布局
+# Layout
 
-<p>快速成型常见网页布局</p>
+<p>Rapid Prototyping Common Web Page Layout</p>
 
-#### 组件概述
+## Component Overview
 
-- Layout：布局容器，其下可嵌套 Header Sider Content Footer 或 Layout 本身，可以放在任何父容器中
-- Header：顶部布局，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。
-- Sider：侧边栏，自带默认样式及基本功能，其下可嵌套任何元素，只能放在 Layout 中。
-- Content：内容部分，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。
-- Footer：底部布局，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。
+- Layout: a layout container, under which Header Sider Content Footer or Layout itself can be nested, and can be placed in any parent container.
 
-## 经典页面布局
+- Header: top layout, with its own default style, under which any element can be nested, and can only be placed in Layout.
+
+- Sider: The sidebar has its own default style and basic functions. Any element can be nested under it and can only be placed in Layout.
+
+- Content: The content part has its own default style, under which any element can be nested and can only be placed in Layout.
+
+- Footer: The bottom layout has its own default style. Any element can be nested under it and can only be placed in Layout.
+
+## Classic Page Layout
 
 <code src="./demos/index1.tsx"/>
 
-## 自定义样式
+## Custom Styles
 
-<p>根据业务需求选择自身样式</p>
+<p>Select your own style according to business requirements</p>
 
 <code src="./demos/index2.tsx"/>
 

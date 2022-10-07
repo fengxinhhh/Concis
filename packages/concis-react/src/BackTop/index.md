@@ -1,32 +1,34 @@
 ---
-title: BackTop 回到顶部
+title: BackTop
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 其他
+  title: Other
 mobile: false
 ---
 
-# BackTop 回到顶部
+# BackTop
 
-返回页面或者容器顶部的按钮。
+A button that returns to the top of a page or container.
 
-#### 何时使用
+## ##When to use
 
-- 当页面内容区域较长时。
-- 当用户需要频繁返回顶部查看内容时。
-- 当用户喜欢滚轮和页面交互时产生的滚动视差带来的快感时。
+- When the page content area is long.
 
-## 基本使用
+- When users need to return to the top frequently to view content.
 
-使用默认的按钮返回顶部。
+- When the user likes the pleasure brought by the rolling parallax when the wheel interacts with the page.
+
+## Basic use
+
+Use the default button to return to the top.
 
 <code src="./demos/index1.tsx" />
 
-## 自定义样式
+## Custom Styles
 
-可以自定义返回顶部的载体，你甚至可以塞一支火箭进去。
+You can customize the carrier that returns to the top, and you can even put a rocket in it.
 
 <code src="./demos/index2.tsx" />
 

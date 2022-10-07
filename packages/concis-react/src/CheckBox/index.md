@@ -1,34 +1,34 @@
 ---
-title: CheckBox 多选框
+title: CheckBox
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# CheckBox 多选框
+# CheckBox
 
-输入或选择日期的控件。
+Controls for entering or selecting dates.
 
-## 何时使用
+## When to use
 
-- 当用户需要输入一个日期，可以点击标准输入框，弹出日期面板进行选择。
+- When you need to enter a date, you can click the standard input box to pop up the date panel for selection.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx" />
 
-## 禁用
+## Disable
 
 <code src="./demos/index2.tsx" />
 
-## 多选组
+## Multiple choice group
 
 <code src="./demos/index3.tsx" />
 
-## 全选
+## Select All
 
 <code src="./demos/index4.tsx" />
 

@@ -1,47 +1,48 @@
 ---
-title: Input 输入框
+title: Input
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# Input 输入框
+# Input
 
-通过鼠标或键盘输入内容，是最基础的表单域的包装。
+Entering content through the mouse or keyboard is the packaging of the most basic form field.
 
-## 何时使用
+## When to use
 
-- 需要用户输入表单域内容时。
-- 提供组合型输入框，带搜索的输入框，还可以进行大小选择
+- When the user is required to enter the content of the form field.
 
-## 基本使用
+- Combination input box is provided with search input box, and size selection is also available.
+
+## Basic use
 
 <code src="./demos/index1.tsx" />
 
-## 多场景适用
+## Multi scenario application
 
 <code src="./demos/index2.tsx" />
 
-## 可清空
+## Emptyable
 
 <code src="./demos/index3.tsx" />
 
-## 数字框
+## Number Box
 
 <code src="./demos/index5.tsx" />
 
-## 基础文本域
+## Basic text field
 
 <code src="./demos/index6.tsx"/>
 
-## 限制最大字符数
+## Limit the maximum number of characters
 
 <code src="./demos/index7.tsx"/>
 
-## 可移除文本域
+## Removable text field
 
 <code src="./demos/index8.tsx"/>
 

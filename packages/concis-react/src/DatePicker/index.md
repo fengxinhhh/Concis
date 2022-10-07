@@ -1,42 +1,42 @@
 ---
-title: DatePicker 日期选择器
+title: DatePicker
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# DatePicker 日期选择器
+# DatePicker
 
-输入或选择日期的控件。
+Controls for entering or selecting dates.
 
-## 何时使用
+## When to use
 
-- 当用户需要输入一个日期，可以点击标准输入框，弹出日期面板进行选择。
+- When you need to enter a date, you can click the standard input box to pop up the date panel for selection.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx" />
 
-## 年份选择器
+## Year Selector
 
 <code src="./demos/index2.tsx" />
 
-## 月份选择器
+## Month Selector
 
 <code src="./demos/index3.tsx" />
 
-## 区间式日期选择器
+## Interval Date Selector
 
 <code src="./demos/index4.tsx" />
 
-## 重置时间
+## Reset time
 
 <code src="./demos/index4.tsx" />
 
-## 出现方向
+## Direction of occurrence
 
 <code src="./demos/index6.tsx" />
 

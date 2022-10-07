@@ -1,58 +1,60 @@
 ---
-title: Loading 加载中
+title: Loading
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 反馈
+  title: Feedback
 mobile: false
 ---
 
-# Loading 加载中
+# Loading
 
-用于页面和区块的加载中状态 - 页面局部处于等待异步数据或正在渲染过程时，合适的加载动效会有效缓解用户的焦虑。
+It is used for the loading state of pages and blocks 
 
-## 基本使用
+-  when the page is partially waiting for asynchronous data or in the rendering process, the appropriate loading dynamic effect will effectively alleviate the user's anxiety.
 
-一个简单的 loading 状态。
+## Basic use
+
+A simple loading state.
 
 <code src="./demos/index1.tsx"/>
 
-## 省略号加载
+## Ellipsis loading
 
-配置 type=dot，可以展示省略号显示。
+Configure `type=dot` to display ellipsis.
 
 <code src="./demos/index2.tsx" />
 
-## 列表式加载
+## List loading
 
-配置 type=strip，可以展示列表式显示。
+Configure `type=strip` to display in list mode.
 
 <code src="./demos/index7.tsx" />
 
-## 蒙层
+## Mantle
 
-配置 mask 属性，对展示内容进行蒙层显示，适用于容器内加载。
+Configure the mask attribute to mask the display content, which is suitable for loading in containers.
 
-注意：需对外层容器设置 position: relative 使得加载 Icon 在中心点。
+Note: you need to set position: relative to the outer container so that the loading icon is at the center point.
 
 <code src="./demos/index3.tsx" />
 
-## 加载文字
+## Load Text
 
-配置 loadingText，设置加载文字。
+Configure loadingText and set the loading text.
 
 <code src="./demos/index4.tsx" />
 
-## 不同大小
+## Different sizes
 
-通过 width、height，自定义大小。
+Customize the size through width and height.
 
 <code src="./demos/index5.tsx" />
 
-## 自定义图标
+## Custom icon
 
-通过 icon 属性，设置自定义图标，自定义图标大小不支持 width、height 属性。
+Set the custom icon through the icon attribute. The custom icon size does not support the width and height attributes.
 
 <code src="./demos/index6.tsx" />
 

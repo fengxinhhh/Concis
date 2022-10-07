@@ -1,74 +1,74 @@
 ---
-title: Modal 对话框
+title: Modal
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 反馈
+  title: Feedback
 mobile: false
 ---
 
-# Modal 对话框
+# Modal
 
-在当前页面打开一个浮层，承载相关操作。
+Open a floating layer on the current page to carry related operations.
 
-## 基本使用
+## Basic use
 
-最基本的对话框。
+The most basic dialog box.
 
 <code src="./demos/index1.tsx" />
 
-## 异步关闭
+## Asynchronous shutdown
 
-支持 `onOk`、`onCancel` 采用 `Promise` 异步关闭对话框。
+Support `onOk` and `onCancel` to use `Promise` to asynchronously close dialog boxes.
 
 <code src="./demos/index2.tsx" />
 
-## 函数式调用
+## Functional call
 
-通过 `Modal.confirm` 快速调用开启 Modal，同样支持异步关闭。
+Through ` Modal Confirm ` Quick call to enable Modal. Asynchronous closing is also supported.
 
-函数式调用与组件调用的区别是：前者将 Modal 显示状态交给组件托管，后者将 Modal 显示状态放在调用端托管。
+The difference between functional calling and component calling is that the former gives the Modal display status to the component hosting, and the latter places the Modal display status in the calling end hosting.
 
 <code src="./demos/index4.tsx" />
 
-## 消息提示
+## Message prompt
 
-有 `info`, `success`, `warning`, `error` 四种类型的消息提示。
+There are four types of message prompts: `info`, `success`,` warning `, and` error `.
 
 <code src="./demos/index3.tsx" />
 
-## 自定义页脚
+## Custom Footer
 
-传入 `okButtonProps` 和 `cancelButtonProps` 可分别自定义确定按钮和取消按钮的 props。如果 `okButtonProps` 、 `cancelButtonProps` 仍然不能满足需要的话，可以直接传入 `footer` 来自定义页脚内容。
+Pass in `okButtonProps` and` cancelButtonProps` to customize the props of the OK button and the Cancel button respectively. If `okButtonProps` and` cancelButtonProps` still cannot meet the needs, you can directly pass in `footer` to customize the footer content.
 
-`footer` 传入`<></>`则代表无页脚。
+`Footer ` Incoming `<></>` means there is no footer.
 
 <code src="./demos/index5.tsx" />
 
-## 自定义宽度
+## Custom Width
 
-通过 `width` 配置对话框百分比宽度。
+Use `width` to configure the percentage width of the dialog box.
 
-设置 string 代表 px 值，设置 number 代表百分比值。
+Set string to represent px value and number to represent percentage value.
 
 <code src="./demos/index9.tsx" />
 
-## 定制按钮文字
+## Customize button text
 
-设置 `okText` 与 `cancelText` 以自定义按钮文字。
+Set `okText` and `cancelText` to customize button text.
 
 <code src="./demos/index6.tsx" />
 
-## 延迟加载数据
+## Delay loading data
 
-对话框中显示 loading 效果。
+The loading effect is displayed in the dialog box.
 
 <code src="./demos/index7.tsx" />
 
-## 带有步骤条对话框
+## With step bar dialog box
 
-对话框中显示 Steps。
+Steps are displayed in the dialog box.
 
 <code src="./demos/index8.tsx" />
 

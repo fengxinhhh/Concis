@@ -1,22 +1,22 @@
 ---
-title: Upload 上传
+title: Upload
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# Upload 上传
+# Upload
 
-通过点击上传文件。
+Upload the file by clicking.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx"/>
 
-## 显示图片
+## Show Pictures
 
 <code src="./demos/index2.tsx"/>
 

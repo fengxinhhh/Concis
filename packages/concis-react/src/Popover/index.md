@@ -1,36 +1,36 @@
 ---
-title: Popover 气泡卡片
+title: Popover
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# Popover 气泡卡片
+# Popover
 
-点击/鼠标移入元素，弹出气泡式的卡片浮层。
+Click/move the mouse into the element to pop up the bubble type card floating layer.
 
-## 何时使用
+## When to use
 
-当目标元素有进一步的描述和相关操作时，可以收纳到卡片中，根据用户的操作行为进行展现。
+When the target element has further descriptions and related operations, it can be included in the card and displayed according to the user's operation behavior.
 
-和 Tooltip 的区别是，用户可以对浮层上的元素进行操作，因此它可以承载更复杂的内容，比如链接或按钮等。
+The difference from Tooltip is that users can operate on elements on the floating layer, so it can carry more complex content, such as links or buttons.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx"/>
 
-## 点击式
+## Click
 
 <code src="./demos/index2.tsx" />
 
-## 不同方向
+## Different directions
 
 <code src="./demos/index3.tsx" />
 
-## 浮层内关闭
+## Closed in floating layer
 
 <code src="./demos/index4.tsx" />
 

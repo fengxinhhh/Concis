@@ -1,5 +1,5 @@
 ---
-title: 轻量级组件库
+title: Lightweight component library
 full: true
 gapless: true
 ---
@@ -15,7 +15,7 @@ import { Section } from './site/Section';
 import './site/styles.less';
 export default () => (
   <Section
-    title="在线体验Concis的极致性"
+    title="Experience the ultimate in Concis online"
     style={{ marginTop: 40 }}
     titleStyle={{ paddingBottom: 100, fontWeight: 'bold' }}
   >
@@ -39,7 +39,7 @@ import './site/styles.less';
 
 export default () => (
   <Section
-    title="懒人写法，超高性能"
+    title="Lazy writing, super high performance"
     style={{ marginTop: 140, fontWeight: 'bold' }}
     titleStyle={{ paddingBottom: 140 }}
     scale={1.2}
@@ -61,7 +61,7 @@ import './site/styles.less';
 
 export default () => (
   <Section
-    title="答疑报错，请联系我"
+    title="Questions and errors, please contact me"
     style={{ marginTop: 140, fontWeight: 'bold' }}
     titleStyle={{ paddingBottom: 140 }}
     scale={1.2}
@@ -69,6 +69,35 @@ export default () => (
     <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
       <img src="http://concis.org.cn/images/wechat-self.jpg" style={{ width: '400px' }} />
     </a>
+  </Section>
+);
+```
+
+```tsx
+/**
+ * inline: true
+ */
+import React from 'react';
+import { Section } from './site/Section';
+import './site/styles.less';
+
+export default () => (
+  <Section
+    style={{ marginTop: 140, fontWeight: 'bold' }}
+    titleStyle={{ paddingBottom: 140 }}
+    scale={1.2}
+  >
+    <div>
+      <span>Copyright © 2022-2022 Concis. All Rights Reserved. Concis 版权所有</span>
+      <a
+        href="https://beian.miit.gov.cn/"
+        target="_blank"
+        rel="noreferrer"
+        style={{ color: '#1890ff' }}
+      >
+        苏ICP备2022018060号
+      </a>
+    </div>
   </Section>
 );
 ```

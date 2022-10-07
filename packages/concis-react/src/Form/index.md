@@ -1,81 +1,77 @@
 ---
-title: Form 表单
+title: Form
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# Form 表单
+# Form
 
-- 具有数据收集、校验和提交功能的表单，包含复选框、单选框、输入框、下拉选择框等元素。
-- 如需直接体验完整功能，可查看完整功能 demo，以下案例可参考代码，交互有偏差。
+- A form with data collection, verification and submission functions, including check boxes, radio boxes, input boxes, drop-down selection boxes and other elements.
 
-## 基本用法
+- If you want to experience the full function directly, you can view the demo of the full function. For the following cases, you can refer to the code. The interaction is biased.
 
-最基础的表单。
+## Basic usage
+
+The most basic form.
 
 <code src="./demos/index1.tsx"/>
 
-## 布局方式
+## Layout
 
-配置 layout 属性为 horizontal | vertical，改变布局方式。
+Configure the layout property as horizontal | vertical to change the layout method.
 
 <code src="./demos/index2.tsx"/>
 
-## 受控表单与异步校验
+## Controlled forms and asynchronous verification
 
-让表单成为受控表单需要做两步：
+To make a form controlled, you need to do two steps:
 
-1. useRef 创建一个 ref 并以 formField 参数传递给 Form;
-2. 配置 Form.Item 中的 field 属性，使其成为受控项，field 属性名不可重复;
+1. useRef creates a ref and passes it to the Form with the formField parameter;
 
-这样，你就可以通过 const form = Form.useForm(); 使用表单所提供的内部方法，获取表单的信息。在 onSubmit 方法触发时，会自动进行校验，但你也可以手动触发 validateFields 进行校验。
+2. Configure the field attribute in Form.Item to make it a controlled item. The field attribute name cannot be duplicate;
 
-在 rules 中，你可以添加自定义方法{fn: () => , message: '自定义提示'}传递自定义校验规则。
+In this way, you can use the const form=Form. useForm(); Use the internal methods provided by the form to obtain the information of the form. When the onSubmit method is triggered, the verification will be performed automatically, but you can also manually trigger validateFields for verification.
+
+In rules, you can add a custom method {fn: ()=>, message: 'custom prompt'} to pass custom verification rules.
 
 <code src="./demos/index3.tsx"/>
 
-## 表单重置
+## Form Reset
 
-使用 Form.useForm().resetFields 方法重置表单中的受控项。
+Use Form. useForm() The resetFields method resets the controlled items in the form.
 
 <code src="./demos/index4.tsx"/>
 
-## 全局禁用
+## Global Disable
 
-设置 disabled 属性，全局禁用。
+Set the disabled attribute to disable it globally.
 
 <code src="./demos/index5.tsx"/>
 
-## 单行禁用
+## Single row disabling
 
-设置 Form.Item 的 disabled 属性，单行禁用。
+Set the disabled attribute of Form.Item to disable a single line.
 
 <code src="./demos/index7.tsx" />
 
-## 注册表单
+## Registration Form
 
-注册表单案例。
+Registration form case.
 
 <code src="./demos/index8.tsx" />
 
-## 弹窗反馈
+## Pop up feedback
 
-通过 Message 组件进行提交反馈。
+Submit feedback through the Message component.
 
 <code src="./demos/index9.tsx" />
 
-## 获取表单上下文
+## Get form context
 
-使用 Form.useForm().useFormContext 获取表单受控参数。
+Use Form. useForm() UseFormContext gets the controlled parameters of the form.
 
-<code src="./demos/index10.tsx" />
-
-## 完整功能
-
-<code src="./demos/index6.tsx"/>
-
-<API />
+<code src="./demos/index10.

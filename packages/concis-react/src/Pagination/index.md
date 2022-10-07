@@ -1,35 +1,37 @@
 ---
-title: Pagination 分页器
+title: Pagination
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 导航
+  title: Navigation
 mobile: false
 ---
 
-# Pagination 分页器
+# Pagination
 
-采用分页的形式分隔长列表，每次只加载一个页面。
+The long list is separated by pages, and only one page is loaded at a time.
 
-## 何时使用
+## When to use
 
-- 当加载/渲染所有数据将花费很多时间时；
-- 可切换页码浏览数据。
+- When loading/rendering all data will take a lot of time;
 
-## 基本使用
+- You can switch page numbers to browse data.
+
+## Basic use
 
 <code src="./demos/index1.tsx"/>
 
-## 大数据分页
+## Big data paging
 
 <code src="./demos/index2.tsx"/>
 
-## 每页条数限制
+## Number of entries per page limit
 
 <code src="./demos/index3.tsx"/>
 
-## 输入框跳转
+## Input box jump
 
 <code src="./demos/index4.tsx"/>
+
 <API/>

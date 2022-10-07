@@ -1,46 +1,48 @@
 ---
-title: Collapse 折叠面板
+title: Collapse
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# Collapse 折叠面板
+# Collapse
 
-可以折叠 / 展开的内容区域。
+Content area that can be collapsed/expanded.
 
-## 基本使用
+## Basic use
 
-用于将复杂的内容区域分组和隐藏，可折叠或展开，默认可以展开多个面板，也可以只展开某几个面板。
+It is used to group and hide complex content areas. It can be collapsed or expanded. By default, multiple panels can be expanded, or only a few panels can be expanded.
 
 <code src="./demos/index1.tsx" />
 
-## 手风琴
+## Accordion
 
-手风琴模式
+Accordion mode.
 
 <code src="./demos/index2.tsx" />
 
-## 无边框
+## Borderless
 
 <code src="./demos/index6.tsx" />
 
-## 右侧节点
+## Right node
 
-extra 配置每个层级的头部右侧内容
+Extra configures the content on the right side of the header of each level.
 
 <code src="./demos/index3.tsx" />
 
-## 展开图标位置
+## Expand icon location
 
-可配置 headerAlign 进行头部布局切换或隐藏，可选值有 left、right、hide <code src="./demos/index4.tsx" />
+HeaderAlign can be configured to switch or hide the head layout. The optional values are left, right, and hide.
 
-## 懒加载
+<code src="./demos/index4.tsx"/>
 
-首次展开，加载 DOM
+## Lazy loading
+
+First expansion, loading DOM.
 
 <code src="./demos/index5.tsx" />
 

@@ -1,31 +1,32 @@
 ---
-title: Divider 分割线
+title: Divider
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 布局
+  title: Layout
 mobile: false
 ---
 
-# Divider 分割线
+# Divider
 
-<p>分隔内容的文档分割线</p>
+<p>Document divider that separates content</p>
 
-#### 何时使用
+## When to use
 
-- 对不同章节的文本段落进行分割。
-- 对行内文字/链接进行分割，例如表格的操作列。
+- Segmentation of text paragraphs in different chapters.
 
-## 基本用法
+- Splits inline text/links, such as table action columns.
+
+## Basic usage
 
 <code src="./demos/index1.tsx"/>
 
-## 字体大小
+## Font size
 
 <code src="./demos/index2.tsx"/>
 
-## 对齐方式
+## Alignment
 
 <code src="./demos/index4.tsx"/>
 

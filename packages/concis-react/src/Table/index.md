@@ -1,78 +1,82 @@
 ---
-title: Table 表格
+title: Table
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# Table 表格
+# Table
 
-用于数据收集展示、分析整理、操作处理。
+It is used for data collection, display, analysis and processing.
 
-## 基本使用
+## Basic use
 
-基础表格 <code src="./demos/index1.tsx"/>
+Basic table.
 
-## 对齐方式与宽度
+<code src="./demos/index1.tsx"/>
 
-配置表头数据和 align 自定义宽度和对齐方式 <code src="./demos/index2.tsx"/>
+## Alignment and Width
 
-## 展开行
+Configure header data and align custom width and alignment.
 
-配置 expandedRowRender 回调函数对展开行进行配置
+<code src="./demos/index2.tsx"/>
+
+## Expand Row
+
+Configure expandedRowRender callback function to configure expanded rows.
 
 <code src="./demos/index3.tsx" />
 
-## 单选
+## Single choice
 
-配置 radio 以支持单选，radioSelectCallback 获取选择结果
+Configure radio to support radio selection, and radioSelectCallback gets the selection results.
 
 <code src="./demos/index4.tsx" />
 
-## 多选
+## Multiple choice
 
-配置 checked 以支持多选，checkedSelectCallback 获取选择结果
+Configure checked to support multiple selections, and checkedSelectCallback gets the selection results.
 
 <code src="./demos/index5.tsx" />
 
-## 排序
+## Sort
 
-配置表头数组结构 sorter，默认排序设定值为 true 即可，自定义排序可设定为数组，0 下标位表示升序规则，1 下标位表示降序规则
+Configure the header array structure sorter. The default sorting setting is true. Custom sorting can be set as an array. The 0 subscript represents the ascending rule, and the 1 subscript represents the descending rule.
 
 <code src="./demos/index6.tsx" />
 
-## 筛选
+## Filter
 
-配置表头数组结构 filter，以及组件传参 filter，开启筛选
+Configure the header array structure filter and the component parameter transfer filter to enable filtering.
 
 <code src="./demos/index11.tsx" />
 
-### 以下虚拟列表滚动、懒加载、分页为大数据时的建议方案，无法同时使用，只能选择其一进行开发
+## #The suggested schemes for scrolling, lazy loading and paging of the following virtual lists as big data cannot be used at the same time. Only one of them can be selected for development
 
-## 虚拟列表滚动
+## Virtual list scrolling
 
-largeDateShowNum 表示固定列展示的数据条数，默认 10 条，通过 virtualized 开启虚拟列表
+LargeDateShowNum indicates the number of data displayed in a fixed column. The default is 10. The virtual list is enabled through virtualized.
 
 <code src="./demos/index7.tsx" />
 
-## 懒加载
+## Lazy loading
 
-largeDateShowNum 表示初始展示条数，默认 10 条，通过 lazyLoad 开启懒加载
+LargeDateShowNum indicates the number of initial presentations. The default is 10. LazyLoad is used to enable lazy loading.
 
 <code src="./demos/index8.tsx" />
 
-## 分页
+## Pagination
 
-通过 pagination 开启分页，通过 paginationAlign 改变分页对齐方式
+Enable pagination through pagination, and change pagination alignment through pagination Align.
 
 <code src="./demos/index9.tsx" />
 
-## 拖拽
+## Drag
 
-通过 dropabled 开启拖拽
+Enable dragging through dropable.
 
 <code src="./demos/index10.tsx" />
 

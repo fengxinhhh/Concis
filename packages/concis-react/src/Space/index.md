@@ -1,52 +1,52 @@
 ---
-title: Space 间距
+title: Space
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 布局
+  title: Layout
 mobile: false
 ---
 
-# Space 间距
+# Space
 
-设置组件之间的间距。
+Sets the spacing between components.
 
-#### 何时使用
+## ##When to use
 
-避免组件紧贴在一起，拉开统一的空间。
+Avoid components sticking together to open a unified space.
 
-- 适合行内元素的水平间距。
+- Horizontal spacing that fits elements in a row.
 
-- 可以设置各种水平对齐方式。
+- You can set various horizontal alignments.
 
-## 基本使用
+## Basic use
 
-间距组件的基本用法。
+Basic usage of spacing components.
 
 <code src="./demos/index1.tsx" />
 
-## 垂直间距
+## Vertical spacing
 
-可以设置垂直方向排列的间距。
+You can set the spacing for vertical arrangement.
 
 <code src="./demos/index2.tsx" />
 
-## 尺寸
+## Dimensions
 
-内置 4 个尺寸，mini - 4px small - 8px (默认) medium - 16px large - 24px，也支持传数字来自定义尺寸。
+There are 4 built- in dimensions, mini - 4px small - 8px (default) medium - 16px large - 24px, and user-defined dimensions can also be transferred to numbers.
 
 <code src="./demos/index3.tsx" />
 
-## 对齐
+## Align
 
-内置 4 种对齐方式，分别为 start center end baseline，在水平模式下默认为 center。
+There are four built- in alignment methods, namely, start center end baseline. In horizontal mode, the default is center.
 
 <code src="./demos/index4.tsx" />
 
-## 环绕间距
+## Wrap spacing
 
-环绕类型的间距，四周都有间距，一般用于换行的场景，配置 size 为[12,18]分别表示水平、垂直间距。
+The spacing of the wrapping type is set around. It is generally used for line breaking scenes. The configured size is [12,18], which indicates the horizontal and vertical spacing respectively.
 
 <code src="./demos/index5.tsx" />
 

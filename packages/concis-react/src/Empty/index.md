@@ -1,32 +1,32 @@
 ---
-title: Empty 空状态
+title: Empty
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# Empty 空状态
+# Empty
 
-指当前场景没有对应的数据内容，呈现出的一种状态。
+It refers to a state that the current scene has no corresponding data content.
 
-## 基本使用
+## Basic use
 
-基础用法。
+Basic usage.
 
 <code src="./demos/index1.tsx" />
 
-## 自定义图标
+## Custom icon
 
-通过 `icon` ，配置自定义图标。
+Configure custom icons through icon.
 
 <code src="./demos/index2.tsx" />
 
-## 自定义文案
+## Custom copywriting
 
-通过 `description` ，配置自定义文案。
+Configure a custom copy through 'description'.
 
 <code src="./demos/index3.tsx" />
 

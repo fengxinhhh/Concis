@@ -1,42 +1,42 @@
 ---
-title: List 列表
+title: List
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# List 列表
+# List
 
-## 基础用法
+## Basic usage
 
-通过 header 配置列表头部，dataSource 传递数据源，并写入 render 函数创建自定义模板。
+Configure the header of the list through the header. The dataSource transfers the data source and writes it to the render function to create a custom template.
 
 <code src="./demos/index1.tsx"/>
 
-## 不同尺寸
+## Different sizes
 
-设置 size 可设定不同尺寸。
+Set size to set different sizes.
 
 <code src="./demos/index2.tsx" />
 
-## 基础内容
+## Basic content
 
-更多的内容
+More content.
 
 <code src="./demos/index3.tsx" />
 
-## 懒加载
+## Lazy loading
 
-配置 lazyLoad、设置 defaultShowNum 默认展示行数开启懒加载。
+Configure lazyLoad and set the defaultShowNum default number of display lines to enable lazy loading.
 
 <code src="./demos/index4.tsx" />
 
-## 虚拟列表
+## Virtual List
 
-配置 virtualListProps、设置 virtualShowNum 默认展示行数开启虚拟列表。
+Configure virtualListProps, and set the number of virtual ShowNum default display lines to open the virtual list.
 
 <code src="./demos/index5.tsx" />
 
@@ -44,14 +44,14 @@ mobile: false
 
 | Name               | Description          | Type                      | Default   |
 | ------------------ | -------------------- | ------------------------- | --------- |
-| className          | 类名                 | string                    | `--`      |
-| style              | 自定义样式           | CSSProperties             | `--`      |
-| dataSource         | List 数据            | string[] object[]         | `[]`      |
-| render             | 渲染函数             | function                  | `--`      |
-| header             | 列表头部内容         | ReactNode                 | `<></>`   |
-| size               | 列表尺寸             | 'default' 'small' 'large' | `default` |
-| lazyLoad           | 懒加载               | boolean                   | `false`   |
-| defaultShowNum     | 懒加载默认展示行数   | number                    | `5`       |
-| virtualListProps   | 虚拟列表             | boolean                   | `false`   |
-| virtualShowNum     | 虚拟列表默认展示行数 | number                    | `5`       |
-| lazyScrollToBottom | 懒加载滚动到底部监听 | function                  | ``        |
+| className          | Class name           | string                    | `--`      |
+| style | Custom Style | CSSProperties | `--`|
+| dataSource | List Data | string[] object[] | `[]`|
+| render | Rendering function | function | `--`|
+| header | List header content | ReactNode | `<></>`|
+| size  |  List Size    | 'default' 'small' 'large' | `default` |
+| lazyLoad           | Lazy loading               | boolean        | `false`   |
+| defaultShowNum   | Default number of display lines for lazy loading  | number  |`5`    |
+| virtualListProps   | Virtual List    | boolean        | `false`   |
+| virtualShowNum     | Default Display Lines of Virtual List | number    | `5`       |
+| lazyScrollToBottom | Lazy loading, scrolling to the bottom, listening | function     | ``     |

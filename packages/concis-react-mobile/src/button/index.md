@@ -1,17 +1,17 @@
 ---
-title: Button 按钮
+title: Button
 nav:
-  title: 移动端
+  title: Mobile
   path: /mobile
 group:
-  title: 通用
+  title: Common
 ---
 
-# Button 按钮
+# Button
 
-按钮用于开始一个即时操作。
+The button is used to start an instant operation.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx" />
 

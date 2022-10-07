@@ -1,30 +1,30 @@
 ---
 nav:
-  title: 设计
+  title: Guide
   path: /guide
 mobile: false
 ---
 
-# 定制主题
+# Custom themes
 
-Concis 设计规范和技术上支持灵活的样式定制，以满足业务和品牌上多样化的视觉需求，支持全局主题颜色的配置。
+Concis design specifications and technology support flexible style customization to meet the diverse visual needs of business and branding, and support the configuration of global theme colors.
 
 <code src="../../packages/concis-react/src/GlobalConfig/demos/index1.tsx" />
 
-## Concis 提供的色彩变量
+## Color variables provided by Concis
 
-Concis 的样式使用了 Less 作为开发语言，并定义了一系列全局/组件的样式变量，你可以根据需求进行相应调整。
+The style of Concis uses Less as the development language, and defines a series of global/component style variables, which you can adjust according to your needs.
 
-你可以在<a href="http://concis.org.cn/#/guide/xcolor">色彩</a>中了解 Concis 内置 less 变量的使用和配置方法。
+You can learn how to use and configure Concis's built-in less variables in <a href="http://concis.org.cn/#/guide/vcolor">Colors</a>.
 
-如果你有建议的内置 less 变量（不限于色彩变量），可以在<a href="https://github.com/fengxinhhh/Concis">https://github.com/fengxinhhh/Concis</a>提出 issue。
+If you have suggested built- in less variables (not limited to color variables), you can <a href="https://github.com/fengxinhhh/Concis">https://github.com/fengxinhhh/Concis</a> Issue.
 
-## 定制方式
+## Customization method
 
-GlobalConfig 使用 React 的 context 特性，只需在应用外围包裹一次即可全局生效。
+GlobalConfig uses the context feature of React, which only needs to be wrapped around the application once to take effect globally.
 
 ```tsx pure
-import { GlobalConfig } from 'concis/web-react';
+import { GlobalConfig } from 'concis/web- react';
 
 // ...
 
@@ -35,4 +35,4 @@ export default () => (
 );
 ```
 
-你可以在安装、引入 Concis 的基础上对 React 中的根组件进行包裹，更多的主题定制 API 可在<a href="http://concis.org.cn/#/common/global-config">GlobalConfig 组件</a>中了解。
+You can package the root components in React based on the installation and introduction of Concis. More theme customization APIs can be found in <a href="http://concis.org.cn/#/common/global-config">GlobalConfig component</a>.

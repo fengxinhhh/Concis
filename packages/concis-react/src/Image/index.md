@@ -1,50 +1,51 @@
 ---
-title: Image 图片
+title: Image
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# Image 图片
+# Image
 
-可预览的图片展示组件。
+Previewable picture display components.
 
-## 何时使用
+## When to use
 
-- 需要展示图片时使用。
+- Use when you need to show pictures.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx" />
 
-## 填充模式
+## Fill Mode
 
 <code src="./demos/index2.tsx" />
 
-## 圆角
+## Fillet
 
 <code src="./demos/index3.tsx" />
 
-## 预览
+## Preview
 
-`preview` 设置为 `true` 实现预览功能
+`Preview 'is set to' true 'to realize preview function.
 
 <code src="./demos/index4.tsx" />
 
-`preview` 传入数组可实现多图预览
+`Preview ` Multi graph preview can be achieved by passing in an array.
 
 <code src="./demos/index5.tsx" />
 
-## 自定义预览操作栏
+## Customize Preview Action Bar
 
-配置`previewRender`，自定义自定义预览操作栏。
+Configure 'previewRender' to customize the preview action bar.
 
 <code src="./demos/index7.tsx" />
 
-## 描述文案
+## Descriptive copywriting
+
 <code src="./demos/index6.tsx" />
- 
+
 <API></API>

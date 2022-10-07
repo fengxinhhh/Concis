@@ -1,56 +1,56 @@
 ---
-title: Rate 评分
+title: Rate
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# Rate 评分
+# Rate
 
-评分组件。
+Scoring components.
 
-#### 何时使用
+## ##When to use
 
-- 对评价进行展示。
+- Display the evaluation.
 
-- 对事物进行快速的评级操作。
+- Perform quick rating operations on things.
 
-## 基本使用
+## Basic use
 
-基础评分组件。
+Basic scoring components.
 
 <code src="./demos/index1.tsx" />
 
-## 自定义颜色
+## Custom Color
 
-配置`starColor`属性自定义星星颜色。
+Configure the `starColor` attribute to customize the star color.
 
 <code src="./demos/index2.tsx" />
 
-## 数量与默认显示
+## Quantity and default display
 
-通过`num`、`defaultShow`自定义星星数量和默认显示数量。
+Customize the number of stars and the default display number through `num` and `defaultShow`.
 
 <code src="./demos/index3.tsx" />
 
-## 只读
+## Read Only
 
-配置`readonly`指定`Rate`为只读。
+Configure `readonly` to specify that `Rate` is read- only.
 
 <code src="./demos/index4.tsx" />
 
-## 可清除
+## Clearable
 
-指定`avaClear`允许双击清除评分。
+Specify `avaClear` to allow double clicking to clear the score.
 
 <code src="./demos/index5.tsx" />
 
-## 案例
+## Cases
 
-评分业务案例。
+Score the business case.
 
 <code src="./demos/index6.tsx" />
 

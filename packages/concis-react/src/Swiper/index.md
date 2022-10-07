@@ -1,40 +1,42 @@
 ---
-title: Swiper 轮播图
+title: Swiper
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# Swiper 轮播图
+# Swiper
 
-用于展示多张图片、视频或内嵌框架等内容的循环播放，支持系统自动播放或用户手动切换。
+It is used to display multiple pictures, videos, embedded frames and other contents for circular playback. It supports automatic playback by the system or manual switching by the user.
 
-## 何时使用
+## When to use
 
-展示多张图片，作为产品首页。
+Show several pictures as the product homepage.
 
-## 注意事项
+## Precautions
 
-如使用出现异常，可尝试关闭 React 严格模式（去除<React.StrictMode>标签）
+If there is an exception in use, try to turn off React strict mode (remove the<React. StrictMode>tag)
 
-## 基本使用
+## Basic use
 
-最基本的使用 <code src="./demos/index1.tsx"/>
+The most basic use of.
 
-## 自动播放
+<code src="./demos/index1.tsx"/>
+
+## Autoplay
 
 <code src="./demos/index2.tsx"/>
 
-## 切换选项
+## Toggle Options
 
-展示小圆点
+Show small dots
 
 <code src="./demos/index3.tsx"/>
 
-## 卡片式
+## Card
 
 <code src="./demos/index4.tsx"/>
 

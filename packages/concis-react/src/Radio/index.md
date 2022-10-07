@@ -1,35 +1,36 @@
 ---
-title: Radio 单选框
+title: Radio
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# Radio 单选框
+# Radio
 
-单选框。
+Radio box.
 
-## 何时使用
+## When to use
 
-- 用于在多个备选项中选中单个状态。
-- 和 Select 的区别是，Radio 所有选项默认可见，方便用户在比较中选择，因此选项不宜过多。
+- Lets you select a single state among multiple alternatives.
 
-## 基本使用
+- The difference between Radio and Select is that all options of Radio are visible by default, which is convenient for users to select in comparison. Therefore, there should not be too many options.
+
+## Basic use
 
 <code src="./demos/index1.tsx" />
 
-## 禁用
+## Disable
 
 <code src="./demos/index2.tsx" />
 
-## 扩展性
+## Scalability
 
 <code src="./demos/index3.tsx" />
 
-## 盒子样式单选
+## Box style single choice
 
 <code src="./demos/index4.tsx" />
 

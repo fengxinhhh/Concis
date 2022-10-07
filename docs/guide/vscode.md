@@ -1,20 +1,20 @@
 ---
 nav:
-  title: 指南
+  title: Guide
   path: /guide
 ---
 
-# vscode 支持
+# vscode support
 
-## 介绍
+## Introduce
 
-Concis 针对 vscode 开发工具提供了代码自动补全、语法高亮、提示信息的功能，可以在插件市场中下载：
+Concis provides the functions of code auto-completion, syntax highlighting, and prompt information for the vscode development tool, which can be downloaded from the plugin market:
 
 <img src="http://concis.org.cn/images/vscode.plugin.jpg" height="600" />
 
-## 使用
+## Using
 
-下载完毕后，通过 c + 组件名称，如 cbutton 即可快速生成 Button 组件。
+After downloading, click c+component name, such as cbutton, to quickly generate Button components.
 
 <img src="http://concis.org.cn/images/vscode-demo1.jpg" height="400" />
 

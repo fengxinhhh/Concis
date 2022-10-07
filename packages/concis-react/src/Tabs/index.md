@@ -1,78 +1,78 @@
 ---
-title: Tabs 标签页
+title: Tabs
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# Tabs 标签页
+# Tabs
 
-选项卡切换组件。
+Tab Toggle Components.
 
-## 基本使用
+## Basic use
 
-最基础的选项卡。
+The most basic tab.
 
 <code src="./demos/index1.tsx"/>
 
-## 禁用
+## Disable
 
-禁用某一项标签页。
+Disable a tab.
 
 <code src="./demos/index6.tsx"/>
 
-## 位置
+## Location
 
-配置`tabPosition`使用不同的布局，共有`left`、`right`、`top`、`bottom` 4 种方式，默认`top`。
+Configure `tabPosition` to use different layouts. There are four methods: `left`, `right`, `top`, and `bottom`. The default is` top `.
 
 <code src="./demos/index2.tsx"/>
 
-## 不同类型
+## Different types
 
-配置`type`使用不同的布局，共有`line`、`text`、`round`、`card` 4 种方式，默认`line`。
+Configure `type` using different layouts. There are four methods: `line`, `text`, `round`, and `card`. The default is` line `.
 
 <code src="./demos/index3.tsx"/>
 
-## 额外内容
+## Additional content
 
-通过`extra`设置右侧额外页签，仅支持水平排列。
+Set additional tabs on the right through `extra`. Only horizontal arrangement is supported.
 
 <code src="./demos/index4.tsx"/>
 
-## 动态增减页签
+## Dynamic Increase/Decrease Tab
 
-配置`editable`开启编辑模式，通过`onAddTab`获取监听新增事件、`onDeleteTab`获取删除事件，修改传参数据。
+Configure `editable` to enable the editing mode. Use `onAddTab` to obtain listening new events, `onDeleteTab` to obtain deletion events, and modify the parameter transfer data.
 
-仅在`type`=`card`时生效。
+It only takes effect when `type`=`card`.
 
 <code src="./demos/index5.tsx" />
 
-## 嵌套
+## Nesting
 
-组件支持嵌套使用。
+Components support nested use.
 
 <code src="./demos/index7.tsx" />
 
-## 不同尺寸
+## Different sizes
 
-配置`size`定制不同的尺寸，共有`mini`、`small`、`default`、`large` 4 种尺寸，默认`default`。
+Configure `size` to customize different sizes, including `mini`, `small`, `default` and `large`. The default size is` default `.
 
 <code src="./demos/index8.tsx" />
 
-## 滚动
+## Scroll
 
-导航栏撑开一定距离后自动开启滚动。
+When the navigation bar is stretched for a certain distance, scrolling is automatically enabled.
 
 <code src="./demos/index9.tsx" />
 
 <API />
 
-## TabPane
+##  TabPane
 
 | Name  | Description | Type     | Default |
 | ----- | ----------- | -------- | ------- |
-| key   | 唯一标识    | `string` | `--`    |
-| title | 标题        | `string` | `--`    |
+|Key | Unique ID | ` string ` | `--`|
+|Title | Title | ` string ` | `--`|

@@ -1,34 +1,40 @@
 ---
 nav:
-  title: 指南
+  title: Guide
   path: /guide
 ---
 
-# 在 Create-react-app 中使用
+# Use in Create-react-app
 
-你可以使用 create-react-app 或自建一个包管理工程目录，安装完预设包，如 react、react-dom。
+You can use create-react-app or build a package management project directory by yourself, and install preset packages, such as react and react-dom.
 
 ```tsx pure
+
 create-react-app myapp
+
 ```
 
-或者是
+Or
 
 ```tsx pure
+
 mkdir myapp && cd myapp
-npm init -y
+npm init - y
 npm i --save-dev react react-dom
+
 ```
 
-## 安装
+## Installation
 
-通过命令安装 Concis：
+Install Concis through the command:
 
 ```tsx pure
+
 npm i --save-dev concis
+
 ```
 
-## 引入和使用
+## Introduction and use
 
 ```tsx pure
 import { Button } from 'concis/web-react';
@@ -40,12 +46,14 @@ const App = () => (
 );
 ```
 
-修改 src/App.css，在文件顶部引入 antd/dist/antd.css。
+Modify `src/App.css`. `concis/web-react/style/index.css` is introduced at the top of the file.
 
 ```tsx pure
+
 @import 'concis/web-react/style/index.css';
+
 ```
 
-好了，现在你应该能看到页面上已经有了 Concis 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程你可以参考 create-react-app 的官方文档。
+OK, now you can see that there are blue button components of Concis on the page, and you can continue to use other components to develop applications. For other development processes, you can refer to the official document of create react app.
 
-我们现在已经把 Concis 组件成功运行起来了，开始开发你的应用吧！
+Now that we have successfully run the Concis component, start developing your application!

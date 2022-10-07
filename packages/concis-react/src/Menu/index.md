@@ -1,54 +1,54 @@
 ---
-title: Menu 导航菜单
+title: Menu
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 导航
+  title: Navigation
 mobile: false
 ---
 
-# Menu 导航菜单
+# Menu
 
-为页面和功能提供导航的菜单列表。
+A menu list that provides navigation for pages and functions.
 
-## 何时使用
+## When to use
 
-导航菜单是一个网站的灵魂，用户依赖导航在各个页面中进行跳转。一般分为顶部导航和侧边导航，顶部导航提供全局性的类目和功能，侧边导航提供多级结构来收纳和排列网站架构。
+Navigation menu is the soul of a website. Users rely on navigation to jump from page to page. It is generally divided into top navigation and side navigation. Top navigation provides global categories and functions, while side navigation provides multi- level structure to store and arrange the website architecture.
 
-## 基本使用
+## Basic use
 
-最基础的导航菜单。
+The most basic navigation menu.
 
 <code src="./demos/index1.tsx"/>
 
-## 自定义宽度
+## Custom Width
 
-配置 `width` 自定义宽度。
+Configure `width` custom width.
 
 <code src="./demos/index2.tsx" />
 
-## 深色风格
+## Dark style
 
-配置 `dark` 开启深色风格（在官网深色模式下体验）。
+Configure `dark` to enable the dark style (experience in the dark mode of the official website).
 
 <code src="./demos/index3.tsx" />
 
-## 手风琴风格
+## Accordion style
 
-配置 `ableToggle` 开启手风琴切换。
+Configure `ableToggle` to enable accordion switching.
 
 <code src="./demos/index4.tsx" />
 
-## 交互
+## Interaction
 
-- 应用于快速布局 Layout-Slider 侧边栏中
+- Apply to quick layout Layout Slider sidebar
 
 <code src="./demos/index5.tsx" />
 
-## 默认展开
+## Default expansion
 
-配置 `defaultOpen` 默认展开。
+Configure `defaultOpen` default deployment.
 
 <code src="./demos/index6.tsx" />
 

@@ -1,48 +1,48 @@
 ---
-title: Avatar 头像
+title: Avatar
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# Avatar 头像
+# Avatar
 
-用作头像显示，可以为图片、图标或字符形式展示。
+It can be used for avatar display and can be displayed in the form of pictures, icons or characters.
 
-#### 何时使用
+## When to use
 
-头像的基础使用。如果头像是文字的话，会自动调节字体大小，来适应头像框。
+Basic use of avatars. If the avatar is text, the font size will be automatically adjusted to fit the avatar box.
 
-## 基本使用
+## Basic use
 
-头像的基础使用
+Basic use of avatar.
 
 <code src="./demos/index1.tsx" />
 
-## 大小和形状
+## Size and shape
 
-配置 size 参数改变大小，默认为 40px; 配置 shape:square 设置为方形头像。
+Configure the size parameter to change the size. The default value is 40px; Configure shape: square as a square head.
 
 <code src="./demos/index2.tsx" />
 
-## 头像组
+## Head portrait group
 
-使用 AvatarGroup 可以使用头像组功能，可通过 size 指定头像的大小，通过 style 为每个头像配置共同样式，如间距。
+AvatarGroup allows you to use the avatar group function. You can specify the size of avatars through size, and configure common styles for each avatar through style, such as spacing.
 
 <code src="./demos/index3.tsx" />
 
-## 交互
+## Interaction
 
-可以通过 triggerIcon、triggerType 来定制交互按钮，类型有 mask (遮罩) 和 button (按钮) 两种，通过 onClick 参数来添加回调。
+Interactive buttons can be customized through triggerIcon and triggerType. There are two types: mask and button. Callbacks can be added through the onClick parameter.
 
 <code src="./demos/index4.tsx" />
 
-## 文本自适应
+## Text adaptation
 
-配置 autoFixFontSize，对不确定文本内容长度的头像进行自适应，撑满头像，默认 true。
+Configure autoFixFontSize to adaptively adapt the avatar with uncertain text content length. The avatar is full, and the default is true.
 
 <code src="./demos/index5.tsx" />
 

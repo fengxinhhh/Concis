@@ -1,17 +1,17 @@
 ---
-title: Checkbox 多选框
+title: Checkbox
 nav:
-  title: 移动端
+  title: Mobile
   path: /mobile
 group:
-  title: 信息录入
+  title: Entry information
 ---
 
-# Checkbox 多选框
+# Checkbox
 
-在一组可选项中进行多选。
+Select multiple options in a group.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx" />
 
@@ -23,8 +23,8 @@ group:
 
 ## Option
 
-| Name | Description | Type | Default |
-| --- | --- | --- | --- |
-| value | 携带的标识值 | CheckboxValue | -- |
-| label | 标题 | string | -- |
-| disabled | 禁用状态 | boolean | -- |
+| Name     | Description            | Type          | Default |
+| -------- | ---------------------- | ------------- | ------- |
+| Value    | Identity value carried | CheckboxValue | --      |
+| Label    | Title                  | string        | --      |
+| Disabled | Disabled status        | boolean       | --      |

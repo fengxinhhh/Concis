@@ -1,17 +1,17 @@
 ---
-title: Space 间距
+title: Space
 nav:
-  title: 移动端
+  title: Mobile
   path: /mobile
 group:
-  title: 布局
+  title: Layout
 ---
 
-# Space 间距
+# Space
 
-元素排列中保持相同的宽度。
+Keep the same width in the arrangement of elements.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx" />
 

@@ -1,50 +1,50 @@
 ---
-title: Alert 警告提示
+title: Alert
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 反馈
+  title: Feedback
 mobile: false
 ---
 
-# Alert 警告提示
+# Alert
 
-向用户显示警告的信息时，通过警告提示，展现需要关注的信息。
+When displaying warning information to users, the warning prompt displays the information that needs attention.
 
-## 基本使用
+## Basic use
 
-警告提示，展现需要关注的信息，适用于简短的警告提示。
+Warning prompt, which shows the information that needs attention, is applicable to short warning prompts.
 
 <code src="./demos/index1.tsx" />
 
-## 不同类型
+## Different types
 
-警告提示的类型有 `info`, `success`, `warning`, `error` 四种。
+There are four types of warning prompts: 'info', 'success',' warning ', and' error '.
 
 <code src="./demos/index2.tsx" />
 
-## 可关闭
+## Can be closed
 
-通过 `showClear` ，显示关闭按钮，通过 `onClose` 获取关闭回调。
+Use 'showClear' to display the close button, and use 'onClose' to obtain the close callback.
 
 <code src="./demos/index3.tsx" />
 
-## 自定义关闭元素
+## Custom Close Element
 
-通过 `closeElement` ，自定义关闭按钮。
+Use 'closeElement' to customize the close button.
 
 <code src="./demos/index4.tsx" />
 
-## 标题
+## Title
 
-通过 `title` ，配置标题。
+Configure the title through 'title'.
 
 <code src="./demos/index5.tsx" />
 
-## 无图标
+## No icon
 
-通过 `showIcon = false` ，不显示图标。
+The icon is not displayed through 'showIcon=false'.
 
 <code src="./demos/index6.tsx" />
 

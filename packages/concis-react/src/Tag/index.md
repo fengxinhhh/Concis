@@ -1,56 +1,56 @@
 ---
-title: Tag 标签
+title: Tag
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# Tag 标签
+# Tag
 
-用于信息的选择、筛选、分类。用户通过标签进行信息反馈和交互操作。
+It is used for information selection, filtering and classification. Users conduct information feedback and interactive operation through tags.
 
-## 基本使用
+## Basic use
 
-最基础的标签。
+The most basic label.
 
 <code src="./demos/index1.tsx"/>
 
-## 字体颜色
+## Font Color
 
-通过 `color` 自定义标签字色。
+Customize the label color through `color`.
 
 <code src="./demos/index2.tsx"/>
 
-## 背景颜色
+## Background color
 
-通过 `tagBackground` 自定义标签背景色。
+Use `tagBackground` to customize the label background color.
 
 <code src="./demos/index3.tsx"/>
 
-## 可选中
+## Selectable
 
-通过 `checkable` 开启标签选中模式，`defaultChecked` 用于默认选中状态。默认 `true`。
+Enable the tag selection mode through `checkable`. `defaultChecked` is used for the default selection status. The default is` true `.
 
 <code src="./demos/index4.tsx" />
 
-## 可关闭
+## Can be closed
 
-通过 `closeable` 配置可关闭标签，通过 `closeCallback` 获取关闭回调。
+The tag can be closed through `closeable` configuration, and the closing callback can be obtained through `closeCallback`.
 
 <code src="./demos/index5.tsx" />
 
-## 动态编辑标签
+## Edit label dynamically
 
-一个实际业务案例，结合 `Input` 的使用。
+An actual business case, combined with the use of `Input`.
 
 <code src="./demos/index6.tsx" />
 
-## 不同尺寸
+## Different sizes
 
-通过 `size` 配置不同尺寸的标签，默认为 `default`。
+Configure labels of different sizes through `size`. The default is` default `.
 
 <code src="./demos/index7.tsx" />
 

@@ -1,54 +1,54 @@
 ---
-title: Skeleton 骨架屏
+title: Skeleton
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 反馈
+  title: Feedback
 mobile: false
 ---
 
-# Skeleton 骨架屏
+# Skeleton
 
-在需要等待加载内容的位置提供一个占位图形组合。
+Provide a placeholder graphic combination where you need to wait for content to load.
 
-#### 何时使用
+## ##When to use
 
-- 网络较慢，需要长时间等待加载处理的情况下。
+- The network is slow and needs to wait for a long time to load.
 
-- 图文信息内容较多的列表/卡片中。
+- List/card with more graphic information.
 
-- 只在第一次加载数据的时候使用。
+- It is only used when loading data for the first time.
 
-- 可以被 Loading 完全代替，但是在可用的场景下可以比 Loading 提供更好的视觉效果和用户体验。
+- It can be completely replaced by Loading, but it can provide better visual effects and user experience than Loading in the available scenarios.
 
-## 基本使用
+## Basic use
 
-最基本的骨架屏。
+The most basic skeleton screen.
 
 <code src="./demos/index1.tsx" />
 
-## 显示标题
+## Show Title
 
-配置 title，显示标题骨架。
+Configure title to display the title skeleton.
 
 <code src="./demos/index2.tsx" />
 
-## 显示头像
+## Show avatar
 
-配置 avatar，显示标题骨架。
+Configure avatar to display the title skeleton.
 
 <code src="./demos/index3.tsx" />
 
-## 自定义数量和宽度
+## Custom quantity and width
 
-通过 row 配置展示列数，通过 width 配置每列宽度。
+The number of columns is displayed through row configuration, and the width of each column is configured through width.
 
 <code src="./demos/index4.tsx" />
 
-## 完整功能
+## Full functionality
 
-完整功能展示。
+Complete function demonstration.
 
 <code src="./demos/index5.tsx" />
 

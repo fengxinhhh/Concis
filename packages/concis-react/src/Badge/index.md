@@ -1,44 +1,44 @@
 ---
-title: Badge 徽标
+title: Badge
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# Badge 徽标
+# Badge
 
-一般出现在图标或文字的右上角。提供及时、重要的信息提示。
+It usually appears in the upper right corner of the icon or text. Provide timely and important information prompts.
 
-## 基本使用
+## Basic use
 
-基础的用法。只需指定 count，即可显示徽标。
+Basic usage. Simply specify count to display the logo.
 
 <code src="./demos/index1.tsx" />
 
-## 独立使用
+## Independent use
 
-children 为空时，将会独立展示徽标。
+When children is empty, the logo will be displayed independently.
 
 <code src="./demos/index2.tsx" />
 
-## 小红点
+## Small red dot
 
-设置 dot，即可只显示小红点而不显示数字。count > 0 时才显示，并通过 offset 自定义小红点位置。
+Set dot to display only small red dots without displaying numbers. Only when count>0 is displayed, and the position of the small red dot can be customized through offset.
 
 <code src="./demos/index3.tsx" />
 
-## 文本内容
+## Text content
 
-设置 text，可设置徽标为文本内容。
+Set text to set the logo as text content.
 
 <code src="./demos/index4.tsx" />
 
-## 最大值
+## Maximum
 
-设置 maxCount，可以限制最大显示的徽标数值，超过将会加 + 后缀。maxCount 默认为 99。
+Set maxCount to limit the maximum displayed logo value. If it exceeds the value, a+suffix will be added. MaxCount defaults to 99.
 
 <code src="./demos/index5.tsx" />
 

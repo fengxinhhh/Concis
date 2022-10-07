@@ -1,48 +1,48 @@
 ---
-title: Comment 评论
+title: Comment
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# Comment 评论
+# Comment
 
-对网站内容反馈，展示评论信息
+Feedback on website content and display comments.
 
-## 何时使用
+## When to use
 
-- 评论组件可用于对事物的讨论、对网站的反馈等等
+- The comment component can be used to discuss things, give feedback to the website, etc.
 
-## 基本使用
+## Basic use
 
-基本评论组件。
+Basic comment component.
 
 <code src='./demos/index1.tsx'/>
 
-## 嵌套评论
+## Nested comments
 
-可嵌套使用。
+It can be nested.
 
 <code src='./demos/index2.tsx' />
 
-## 对齐方式
+## Alignment
 
-配置 align=right，使日期右对齐。
+Configure align=right to align the date to the right.
 
 <code src='./demos/index5.tsx' />
 
-## 头部额外内容
+## Head Extra
 
-配置 afterAuthor，个性化名字后的内容。
+Configure afterAuthor to personalize the content after the name.
 
 <code src='./demos/index4.tsx' />
 
-## 回复框
+## Reply box
 
-实现一个基本的评论回复。
+Implement a basic comment reply.
 
 <code src='./demos/index3.tsx' />
 

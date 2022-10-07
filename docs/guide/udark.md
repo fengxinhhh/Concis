@@ -1,58 +1,72 @@
 ---
 nav:
-  title: 设计
+  title: Guide
   path: /guide
 mobile: false
 ---
 
-# 暗黑模式
+# Dark mode
 
-## 介绍
+## Introduce
 
-Concis 内置提供了暗黑模式的主题，暗黑模式的优势在于在弱光环境下具有更高的可读性。
+Concis built in provides the theme of dark mode. The advantage of dark mode is that it has higher readability in low light environment.
 
 <code src="../../packages/concis-react/src/GlobalConfig/demos/index2.tsx" />
 
-## 案例
+## Cases
 
-基于 Concis 全家桶默认主题和暗黑主题的素材。
+Based on the default theme and dark theme of Concis Family Bucket.
 
 <img src="http://concis.org.cn/images/concis-light-template.jpg" />
 
 <img src="http://concis.org.cn/images/concis-dark-template.jpg" />
 
-## 使用
+## Using
 
-通过 `GlobalConfig` 组件，配置 `darkTheme` 属性即可生效。
+Through the `GlobalConfig` component, the `darkTheme` attribute can be configured to take effect.
 
 ```tsx pure
-import React from 'react';
+
+import React from "react';
+
 import ReactDOM from 'react-dom/client';
+
 import App from './App';
+
 import { GlobalConfig } from 'concis/web-react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <React.StrictMode>
-    <GlobalConfig darkTheme>
-      <App />
-    </GlobalConfig>
-  </React.StrictMode>,
+
+<React.StrictMode>
+
+<GlobalConfig darkTheme>
+
+<App />
+
+</GlobalConfig>
+
+</React.StrictMode>,
+
 );
+
 ```
 
-## 注入推荐样式
+## Inject recommended style
 
-推荐组件库推荐的项目背景色和字体颜色来更好的适配 Concis 暗黑模式。
+The project background color and font color recommended by the component library are recommended to better adapt to the Concis dark mode.
 
 ```css pure
-@import 'concis/web-react/style/compiled-colors.less';
-@import 'concis/web-react/style/index.css';
+@import `concis/web-react/style/compiled-colors.less`;
+
+@import `concis/web-react/style/index.css`;
 
 .App {
   color: @dark-theme-text-color;
+
   background: @dark-theme-background;
 }
 ```
 
-更多全局配置可至<a href="http://concis.org.cn/#/common/global-config">GlobalConfig</a>查看。
+More global configurations can be found at <a href="http://concis.org.cn/#/common/global-config">GlobalConfig</a>.

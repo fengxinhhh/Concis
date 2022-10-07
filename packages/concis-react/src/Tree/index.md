@@ -1,34 +1,34 @@
 ---
-title: Tree 树选择器
+title: Tree
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# Tree 树选择器
+# Tree
 
-树型选择控件。
+Tree type selection control.
 
-## 何时使用
+## When to use
 
-类似 Select 的选择控件，可选择的数据结构是一个树形结构时，可以使用 TreeSelect，例如公司层级、学科系统、分类目录等等。
+Similar to the Select control, TreeSelect can be used when the selectable data structure is a tree structure, such as company level, discipline system, classification catalog, etc.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx"/>
 
-## 搜索
+## Search
 
 <code src="./demos/index2.tsx"/>
 
-## 默认展开
+## Default expansion
 
 <code src="./demos/index3.tsx"/>
 
-## 多选
+## Multiple choice
 
 <code src="./demos/index4.tsx"/>
 

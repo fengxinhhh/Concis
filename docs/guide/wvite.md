@@ -1,45 +1,57 @@
 ---
 nav:
-  title: 指南
+  title: Guide
   path: /guide
 ---
 
-# 在 Vite 中使用
+# Use in Vite
 
-你可以使用 vite 快速搭建一个react项目，安装完预设包，如 react、react-dom。
+You can use vite to quickly build a react project and install preset packages, such as react and react-dom.
 
 ```tsx pure
+
 npm run create vite
+
 ```
 
-然后选择`react-ts`模板，项目安装预设依赖。
+Then select the `react ts` template to install the default dependency of the project.
 
-## 安装
+## Installation
 
-通过命令安装 Concis：
+Install Concis through the command:
 
 ```tsx pure
+
 npm i --save-dev concis
+
 ```
 
-## 引入和使用
+## Introduction and use
 
 ```tsx pure
-import { Button } from 'concis/web-react';
+
+import { Button } from `concis/web-react`;
 
 const App = () => (
-  <div className="App">
-    <Button type="primary">Button</Button>
-  </div>
+
+<div className="App">
+
+<Button type="primary">Button</Button>
+
+</div>
+
 );
+
 ```
 
-修改 src/App.css，在文件顶部引入 antd/dist/antd.css。
+Modify src/App Css. Antd/dist/antd.css is introduced at the top of the file.
 
 ```tsx pure
+
 @import 'concis/web-react/style/index.css';
+
 ```
 
-好了，现在你应该能看到页面上已经有了 Concis 的蓝色按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程你可以参考 vite 的官方文档。
+OK, now you can see that there are blue button components of Concis on the page, and you can continue to use other components to develop applications. For other development processes, you can refer to the official documents of vite.
 
-我们现在已经把 Concis 组件成功运行起来了，开始开发你的应用吧！
+Now that we have successfully run the Concis component, start developing your application!

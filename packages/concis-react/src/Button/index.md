@@ -1,62 +1,62 @@
 ---
-title: Button 按钮
+title: Button
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 通用
+  title: Common
 mobile: false
 ---
 
-# Button 按钮
+# Button
 
-按钮用于开始一个即时操作。
+The button is used to start an instant operation.
 
-## 基本使用
+## Basic use
 
-最基础的按钮，共有五种状态。
+The most basic button has five states.
 
 <code src="./demos/index1.tsx" />
 
-## 长按钮
+## Long button
 
-自定义宽高配置不同尺寸按钮。
+Customize the width and height to configure different size buttons.
 
 <code src="./demos/index2.tsx" />
 
-## 字体按钮
+## Font Button
 
-配置 circle 变成圆按钮。
+Configure the Circle button.
 
 <code src="./demos/index3.tsx" />
 
-## 禁用按钮
+## Disable button
 
-配置 disabled 禁用按钮。
+Configure the disabled disable button.
 
 <code src="./demos/index4.tsx" />
 
-## 虚线按钮
+## Dashed button
 
-dashed 配置虚线按钮。
+Dashed button is configured.
 
 <code src="./demos/index5.tsx" />
 
-## 加载状态
+## Loading status
 
-loading 配置加载状态按钮。
+Loading Configure the loading status button.
 
 <code src="./demos/index6.tsx" />
 
-## 图标按钮
+## Icon button
 
-通过 icon 属性，定制图标按钮。
+Customize icon buttons through icon attributes.
 
 <code src="./demos/index8.tsx" />
 
-## 按钮组
+## Button group
 
-通过 Button.Group 放入多个按钮组。
+Through Button Group Place multiple button groups.
 
 <code src="./demos/index7.tsx" />
 

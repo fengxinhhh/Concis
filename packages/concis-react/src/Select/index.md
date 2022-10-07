@@ -1,38 +1,38 @@
 ---
-title: Select 下拉菜单
+title: Select
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# Select 下拉菜单
+# Select
 
-下拉选择器。
+Drop down selector.
 
-#### 何时使用
+## ##When to use
 
-弹出一个下拉菜单给用户选择操作，用于代替原生的选择器。
+A pull- down menu pops up for the user to select an operation to replace the native selector.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx" />
 
-## 禁用
+## Disable
 
 <code src="./demos/index2.tsx" />
 
-## 加载
+## Load
 
 <code src="./demos/index3.tsx" />
 
-## 下拉项单独禁用
+## Drop down items are disabled separately
 
 <code src="./demos/index4.tsx" />
 
-## 可输入
+## Enterable
 
 <code src="./demos/index5.tsx" />
 

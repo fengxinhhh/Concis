@@ -1,40 +1,40 @@
 ---
-title: Switch 开关
+title: Switch
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# Switch 开关
+# Switch
 
-开关选择器。
+Switch selector.
 
-## 何时使用
+## When to use
 
-- 需要表示开关状态/两种状态之间的切换时；
+- When it is necessary to indicate switch status/switching between two statuses;
 
-- 和 checkbox 的区别是，切换 switch 会直接触发状态改变，而 checkbox 一般用于状态标记，需要和提交操作配合。
+- The difference between the checkbox and the switch switch is that the switch switch will directly trigger the status change, while the checkbox is generally used for status marking and needs to be coordinated with the submission operation.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx"/>
 
-## 禁用状态
+## Disable Status
 
 <code src="./demos/index2.tsx" />
 
-## 不同大小
+## Different sizes
 
 <code src="./demos/index3.tsx" />
 
-## 文字和图标
+## Text and Icons
 
 <code src="./demos/index4.tsx" />
 
-## 加载中
+## Loading
 
 <code src="./demos/index5.tsx" />
 

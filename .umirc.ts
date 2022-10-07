@@ -21,26 +21,65 @@ export default defineConfig({
   history: {
     type: 'hash',
   },
-  navs: [
-    null,
-    {
-      title: '作者',
-      children: [
-        {
-          title: 'CSDN',
-          path: 'https://blog.csdn.net/m0_46995864?spm=1019.2139.3001.5343',
-        },
-        {
-          title: '掘金',
-          path: 'https://juejin.cn/user/3061476130044487',
-        },
-      ],
-    },
-    {
-      title: 'GitHub',
-      path: 'https://github.com/fengxinhhh/Concis',
-    },
-  ],
+  navs: {
+    'en-US': [
+      null, // null 值代表保留约定式生成的导航，只做增量配置
+      {
+        title: 'Author',
+        children: [
+          {
+            title: 'CSDN',
+            path: 'https://blog.csdn.net/m0_46995864?spm=1019.2139.3001.5343',
+          },
+          {
+            title: '掘金',
+            path: 'https://juejin.cn/user/3061476130044487',
+          },
+        ],
+      },
+      {
+        title: 'GitHub',
+        path: 'https://github.com/fengxinhhh/Concis',
+      },
+    ],
+    'zh-CN': [
+      null, // null 值代表保留约定式生成的导航，只做增量配置
+      {
+        title: '作者',
+        children: [
+          {
+            title: 'CSDN',
+            path: 'https://blog.csdn.net/m0_46995864?spm=1019.2139.3001.5343',
+          },
+          {
+            title: '掘金',
+            path: 'https://juejin.cn/user/3061476130044487',
+          },
+        ],
+      },
+      {
+          title: 'GitHub',
+          path: 'https://github.com/fengxinhhh/Concis',
+      },
+    ],
+    // {
+    //   title: '作者',
+    //   children: [
+    //     {
+    //       title: 'CSDN',
+    //       path: 'https://blog.csdn.net/m0_46995864?spm=1019.2139.3001.5343',
+    //     },
+    //     {
+    //       title: '掘金',
+    //       path: 'https://juejin.cn/user/3061476130044487',
+    //     },
+    //   ],
+    // },
+    // {
+    //   title: 'GitHub',
+    //   path: 'https://github.com/fengxinhhh/Concis',
+    // },
+  },
   styles: [style],
   themeConfig: {
     carrier: 'dumi', // 设备状态栏左侧的文本内容

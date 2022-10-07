@@ -1,22 +1,22 @@
 ---
-title: LazyLoad 懒加载
+title: LazyLoad
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 通用
+  title: Common
 mobile: false
 ---
 
-# LazyLoad 懒加载
+# LazyLoad
 
-对一些内容进行显示监测，出现时进行静态加载。
+Display and monitor some contents, and load them statically when they appear.
 
-## 何时使用
+## When to use
 
-常用于长列表 SPA 首屏下，对中下部分元素进行懒加载，实现页面加载优化。
+It is often used in the first screen of long list SPA to lazy load the lower and middle elements to optimize page loading.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx"/>
 

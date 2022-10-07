@@ -1,73 +1,67 @@
 ---
 nav:
-  title: 指南
+  title: Guide
   path: /guide
 ---
 
-# 介绍
+# Introduce
 
 ## Concis
 
-concis 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。
+concis is a React UI component library based on the Ant Design design system, which is mainly used to develop enterprise-level mid- and back-end products.
 
-## 特性
+## Characteristics
 
-- 🌈 提炼自企业级中后台产品的交互语言和视觉风格。
+- 🌈 The interactive language and visual style extracted from enterprise level middle and back office products.
 
-- 📦 开箱即用的高质量 React 组件。
+- 📦 High quality React components out of the box.
 
-- 🛡 使用 TypeScript 开发，提供完整的类型定义文件。
+- 🛡 Developed using TypeScript to provide a complete type definition file.
 
-- ⚙️ 全链路开发和设计工具体系。
+- ⚙️ Full link development and design tool system.
 
-- 🌍 数十个国际化语言支持。
+- 🌍 Dozens of international languages are supported.
 
-- 🎨 深入每个细节的主题定制能力。
+- 🎨 The ability to customize topics in depth for each detail.
 
-- 💡 vscode 代码提示高亮支持。
+- 💡 Vscode code hint highlighting support.
 
-- 💪 确保 90%以上单元测试覆盖率，提供稳定性保证
+- 💪 Ensure more than 90% unit test coverage and provide stability assurance
 
-## 兼容环境
+## Compatible environment
 
-- 现代浏览器和 IE11（需要 polyfills）。
+- Modern browsers and IE11 (polyfills required).
 
-- 支持服务端渲染。
+- Support server rendering.
 
 - React-Native。
 
-对于 IE 系列浏览器，需要提供相应的 Polyfill 支持，建议使用 @babel/preset-env 来解决浏览器兼容问题。如果你在使用 umi，可以直接使用 targets 配置。
+For IE series browsers, you need to provide corresponding Polyfill support. It is recommended to use @ babel/preset env to solve the browser compatibility problem. If you are using umi, you can directly use the targets configuration.
 
-## 如何贡献？
+## How to contribute?
 
-#### 拉取仓库
+## Pull Warehouse
 
-- 原始仓库： <a href="https://github.com/fengxinhhh/Concis">https://github.com/fengxinhhh/Concis</a>
+- Original warehouse:<a href="https://github.com/fengxinhhh/Concis"> https://github.com/fengxinhhh/Concis </a>
 
-- 目标仓库：fork 到自己的 github 上
+- Target warehouse: fork to your github
 
-#### 拉取分支
+## Pull branch
 
-拉取分支 fengxinhhh/Concis/master 分支即可。
+Pull the branch fengxinhhh/Concis/master.
 
-<Alert>注意：建议分支名为[feat]-[name]，[feat]是这个分支的类型，可选的有[feat][unitest][docs][bugfix][other]，[name]则是名字，自定义就好了。eg. unittest-core(意为：对核心补充单测)</Alert>
+<Alert>Note: It is recommended that the branch name is [feature] - [name]. [feature] is the type of the branch. The options include [feature] [unitest] [docs] [bugfix] [other], and [name] is the name. It is OK to customize it. Eg. unittest core
 
-#### 提交代码
+## Submission Code
 
-代码风格遵循 2 空格，无分号，非说明请不要在代码中附带任何 console 相关的方法及 debugger。 开发完成后，到自己 fork 出来的仓库提交 pull request。
+The code style follows 2 spaces without semicolons. Please do not attach any console related methods and debuggers to the code unless specified. After the development is completed, submit a pull request to the warehouse from your own fork.
 
 <img src="http://concis.org.cn/images/github-doc.jpg" />
 
-#### 审核与合并
+## Review and consolidation
 
-由于目前社区人数有限，审核流程比较简单，作者在 review 代码后会将反馈留在 pull request commit 中，关注提交的 pull request 即可。
+Due to the limited number of community members, the review process is relatively simple. After reviewing the code, the author will leave the feedback in the pull request commit and focus on the submitted pull request.
 
-## 问题汇报
+## Problem report
 
-如在使用过程中遇到问题，可以通过下面几个途径寻求帮助，同时我们也鼓励资深用户通过下面的途径给新人提供帮助。
-
-1. github issue
-
-2. email address: 1244200081@qq.com
-
-3. wechat: 18913594546
+If you encounter problems during use, you can ask for help in the following ways

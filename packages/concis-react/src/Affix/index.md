@@ -1,26 +1,26 @@
 ---
-title: Affix 固钉
+title: Affix
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 导航
+  title: Navigation
 mobile: false
 ---
 
-# Affix 固钉
+# Affix
 
-将页面元素钉在可视范围。
+Pin page elements to the visible range.
 
-## 何时使用
+## When to use
 
-- 当内容区域比较长，需要滚动页面时，这部分内容对应的操作或者导航需要在滚动范围内始终展现。常用于侧边菜单和按钮组合。
+- When the content area is long and the page needs to be scrolled, the corresponding operations or navigation of this part of content should always be displayed within the scrolling range. It is commonly used for side menu and button combination.
 
-- 页面可视范围过小时，慎用此功能以免遮挡页面内容。
+- If the visual range of the page is too small, use this function carefully to avoid blocking the page content.
 
-## 滚动容器
+## Scroll Container
 
-- 在首屏时保持元素位置，在滚动后脱离文档流至指定位置
+- Keep the element position on the first screen, and leave the document flow to the specified position after scrolling
 
 <code src="./demos/index1.tsx" />
 

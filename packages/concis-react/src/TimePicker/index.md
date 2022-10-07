@@ -1,34 +1,34 @@
 ---
-title: TimePicker 时间选择器
+title: TimePicker
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# TimePicker 时间选择器
+# TimePicker
 
-输入或选择日期的控件。
+Controls for entering or selecting dates.
 
-## 何时使用
+## When to use
 
-- 当用户需要输入一个时间，可以点击标准输入框，弹出时间面板进行选择。
+- When you need to input a time, you can click the standard input box to pop up the time panel for selection.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx" />
 
-## 展示清除按钮
+## Show Clear Button
 
 <code src="./demos/index2.tsx" />
 
-## 确认回调
+## Confirm callback
 
 <code src="./demos/index3.tsx" />
 
-## 禁用时分秒选项
+## Disable the hour minute second option
 
 <code src="./demos/index4.tsx" />
 

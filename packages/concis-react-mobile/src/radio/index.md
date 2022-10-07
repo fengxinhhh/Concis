@@ -1,17 +1,17 @@
 ---
-title: Radio 单选框
+title: Radio
 nav:
-  title: 移动端
+  title: Mobile
   path: /mobile
 group:
-  title: 信息录入
+  title: Entry information
 ---
 
-# Radio 单选框
+# Radio
 
-在一组可选项中进行单选。
+Make a single selection in a set of options.
 
-## 基本使用
+## basic use
 
 <code src="./demos/index1.tsx" />
 
@@ -23,8 +23,8 @@ group:
 
 ## Option
 
-| Name | Description | Type | Default |
-| --- | --- | --- | --- |
-| value | 携带的标识值 | RadioValue | -- |
-| label | 标题 | string | -- |
-| disabled | 禁用状态 | boolean | -- |
+| Name     | Description              | Type       | Default |
+| -------- | ------------------------ | ---------- | ------- |
+| value    | Carry the identity value | RadioValue | --      |
+| label    | Title                    | string     | --      |
+| disabled | Disabled status          | boolean    | --      |

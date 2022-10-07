@@ -1,34 +1,34 @@
 ---
-title: TreeView 树型控件
+title: TreeView
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据展示
+  title: Data display
 mobile: false
 ---
 
-# TreeView 树型控件
+# TreeView
 
-多层次的结构列表。
+Multilevel structure list.
 
-## 何时使用
+## When to use
 
-文件夹、组织架构、生物分类、国家地区等等，世间万物的大多数结构都是树形结构。使用 树控件 可以完整展现其中的层级关系，并具有展开收起选择等交互功能。
+Folder, organizational structure, biological classification, countries and regions, etc. Most structures of everything in the world are tree structures. The tree control can fully display the hierarchical relationship, and has interactive functions such as expanding, folding and selecting.
 
-## 基本使用
+## Basic use
 
 <code src="./demos/index1.tsx"/>
 
-## 默认展开
+## Default expansion
 
 <code src="./demos/index2.tsx"/>
 
-## 禁用
+## Disable
 
 <code src="./demos/index3.tsx"/>
 
-## 可拖拽
+## Draggable
 
 <code src="./demos/index4.tsx"/>
 

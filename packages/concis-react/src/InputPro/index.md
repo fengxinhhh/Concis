@@ -1,32 +1,32 @@
 ---
-title: InputPro 预选择输入框
+title: InputPro
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 数据录入
+  title: Data entry
 mobile: false
 ---
 
-# InputPro 预选择输入框
+# InputPro
 
-在 Input 基础上提供预选择的输入框。
+Provide pre selected input boxes based on Input.
 
-## 基本使用
+## Basic use
 
-基础预选择输入框组件。
+Basic pre selection input box component.
 
 <code src="./demos/index1.tsx" />
 
-## 不同位置
+## Different locations
 
-配置`align`改变预选择出现位置，有`left`、`right`、`top`、`bottom`四个位置。
+Configure 'align' to change the preselection location. There are four locations: 'left', 'right', 'top', and 'bottom'.
 
 <code src="./demos/index2.tsx" />
 
-## 单独禁用
+## Disable separately
 
-配置`option`项中`disabled`属性，实现单项禁用。
+Configure the 'disabled' attribute in the 'option' item to disable individual items.
 
 <code src="./demos/index3.tsx" />
 

@@ -1,52 +1,52 @@
 ---
-title: Notification 通知提醒框
+title: Notification
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 反馈
+  title: Feedback
 mobile: false
 ---
 
-# Notification 通知提醒框
+# Notification
 
-全局展示通知提醒，将信息及时有效的传达给用户。
+The notice reminder is displayed globally to convey the information to users in a timely and effective manner.
 
-## 基本使用
+## Basic use
 
-最简单的例子。
+The simplest example.
 
 <code src="./demos/index1.tsx"/>
 
-## 不同类型
+## Different types
 
-全局提示有 6 种不同的类型，分别为：info, success, warning, error, normal, loading。
+There are six different types of global prompts: info, success, warning, error, normal, and loading.
 
 <code src="./demos/index2.tsx"/>
 
-## 状态切换
+## State switching
 
-通过 duration 属性，连续出现多个状态。
+Multiple states appear continuously through the duration attribute.
 
-注意: 每一条 Message 消失前有 200ms 的动画，需计算具体时间以便于位置显示正确。
+Note: There is 200ms animation before each message disappears, and the specific time needs to be calculated so that the position display is correct.
 
 <code src="./demos/index3.tsx"/>
 
-## 通知提醒位置
+## Notification Reminder Location
 
-通过 position 属性，通知提醒框有 4 种不同的弹出位置，分别为：左上角, 右上角 (默认), 左下角, 右下角。
+Through the position attribute, the notification reminder box has four different pop- up positions: upper left corner, upper right corner (default), lower left corner, and lower right corner.
 
 <code src="./demos/index4.tsx"/>
 
-## 自定义操作按钮
+## Custom Action Button
 
-通过 clearable 属性，可手动关闭，通过 showFooter 属性，打开底部栏，也可通过 footerBtnVal 改变按钮文字。
+Through the clearable attribute, you can manually close it, through the showFooter attribute, open the bottom column, or change the button text through the footerBtnVal.
 
 <code src="./demos/index5.tsx"/>
 
-## 自定义样式
+## Custom Styles
 
-通过 style 属性，设置样式。
+Set the style through the style attribute.
 
 <code src="./demos/index6.tsx"/>
 

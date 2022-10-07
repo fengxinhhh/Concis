@@ -1,54 +1,54 @@
 ---
-title: Drawer 抽屉
+title: Drawer
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 反馈
+  title: Feedback
 mobile: false
 ---
 
-# Drawer 抽屉
+# Drawer
 
-触发命令后，从屏幕一侧滑出的抽屉式的面板。
+A drawer type panel that slides out from one side of the screen after a command is triggered.
 
-## 基本使用
+## Basic use
 
-基础抽屉，点击触发按钮抽屉从右侧滑出，点击遮罩区关闭。
+For the basic drawer, click the trigger button to slide the drawer out from the right side, and click the mask area to close it.
 
 <code src="./demos/index1.tsx" />
 
-## 不同方向
+## Different directions
 
-配置`align`改变抽屉出现位置，可选`left`、`right`、`top`、`bottom`，默认为`right`。
+Configure 'align' to change the drawer location. You can select 'left', 'right', 'top', and 'bottom'. The default is' right '.
 
 <code src="./demos/index2.tsx" />
 
-## 异步关闭
+## Asynchronous shutdown
 
-支持`onCancel`、`onOk`为 Promise 写法，异步控制抽屉显示状态。
+'onCancel' and 'onOk' are supported for Promise writing, and asynchronous control drawer display status.
 
 <code src="./demos/index3.tsx" />
 
-## 自定义页脚
+## Custom Footer
 
-传入 `okButtonProps` 和 `cancelButtonProps` 可分别自定义确定按钮和取消按钮的 `props`。如果 `okButtonProps` 、 `cancelButtonProps` 仍然不能满足需要的话，可以直接传入 `footer` 来自定义页脚内容。
+Pass in 'okButtonProps' and' cancelButtonProps' to customize the 'props' of the OK button and the Cancel button respectively. If 'okButtonProps' and' cancelButtonProps' still cannot meet the needs, you can directly pass in 'footer' to customize the footer content.
 
-`footer` 传入`<></>`则代表无页脚。
+`Footer ` Incoming '<></>' means there is no footer.
 
 <code src="./demos/index4.tsx" />
 
-## 自定义宽度
+## Custom Width
 
-通过 `width` 配置对话框百分比宽度。
+Use 'width' to configure the percentage width of the dialog box.
 
-设置 `string` 代表 px 值，设置 `number` 代表百分比值。
+Set 'string' to represent the px value, and set 'number' to represent the percentage value.
 
 <code src="./demos/index5.tsx" />
 
-## 抽屉表单
+## Drawer Form
 
-一个`Form` + `Drawer`的实例。
+An instance of 'Form'+'Drawer'.
 
 <code src="./demos/index6.tsx" />
 

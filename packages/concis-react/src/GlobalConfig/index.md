@@ -1,20 +1,20 @@
 ---
-title: GlobalConfig 全局配置
+title: GlobalConfig
 nav:
-  title: 组件
+  title: Component
   path: /common
 group:
-  title: 其他
+  title: Other
 mobile: false
 ---
 
-# GlobalConfig 全局配置
+# GlobalConfig
 
-为组件提供统一的全局化配置。
+Provides unified global configuration for components.
 
-## 使用
+## Using
 
-GlobalConfig 使用 React 的 context 特性，只需在应用外围包裹一次即可全局生效。
+GlobalConfig uses the context feature of React, which only needs to be wrapped around the application once to take effect globally.
 
 ```tsx pure
 import { GlobalConfig } from 'concis/web-react';
@@ -28,32 +28,34 @@ export default () => (
 );
 ```
 
-## 自定义主题
+## Custom Theme
 
-此处列出了 Concis 所有支持主题色自定义的组件，你可以在演示中切换主题色。
+All components of Concis that support theme color customization are listed here. You can switch theme colors in the demo.
 
 <code src="./demos/index1.tsx"/>
 
-## 暗黑模式
+## Dark Mode
 
-通过 darkTheme 开启暗黑模式，为所有 Concis 添加暗黑样式。
+Turn on dark mode through darkTheme, and add dark style to all Concis.
 
-在使用了暗黑模式的基础下，Concis 不建议同时使用自定义主题，虽然也做了兼容。
+Based on the use of dark mode, Concis does not recommend using a custom theme at the same time, although it is also compatible.
 
 <code src="./demos/index2.tsx"/>
 
-我们推荐使用 Concis 自带的项目背景色和字体色，配置如下：
+We recommend using the project background color and font color provided by Concis. The configuration is as follows:
 
 ```css pure
 @import 'concis/web-react/style/compiled-colors.less';
+
 @import 'concis/web-react/style/index.css';
 
 .App {
-  color: @dark-theme-text-color;
-  background: @dark-theme-background;
+  color: @dark- theme-text-color;
+
+  background: @dark- theme-background;
 }
 ```
 
-对于优先级，自定义主题色的优先级会高于暗黑主题的颜色，当然你可以通过全局 className，组件局部 className，来深度自定化一些自己所需要的业务样式。
+For priority, the priority of custom theme color will be higher than that of dark theme color. Of course, you can customize some business styles you need deeply through global className and component local className.
 
 <API />

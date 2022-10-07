@@ -1,20 +1,20 @@
 ---
 nav:
-  title: 设计
+  title: Guide
   path: /guide
 ---
 
-# 色彩
+# Color
 
-组件库内置了一套符合人眼视觉的色彩算法。
+The Component library has a built-in set of color algorithms that conform to human vision.
 
-## 介绍
+## Introduce
 
-组件库内置了一套基于动态梯度的色彩算法，并且在亮色的色彩算法基础上，经过反转和微调，得到了一套暗黑模式下的色彩算法。
+A set of color algorithm based on dynamic gradient is built in the component library, and a set of color algorithm in dark mode is obtained through inversion and fine- tuning based on the color algorithm of bright color.
 
-色板中包含了 13 个常见的颜色，每个颜色分为 10 个梯度。通常，我们把 6 号色作为色板中的主色。
+The color palette contains 13 common colors, and each color is divided into 10 gradients. Usually, we use color 6 as the main color in the color palette.
 
-你可以在安装 less 的环境下直接在项目中使用这些 less 色彩变量。
+You can directly use these less color variables in the project under the installation environment of less.
 
 ```tsx
 /**
@@ -260,15 +260,15 @@ export default () => (
 );
 ```
 
-## 使用色彩库
+## Use color library
 
-如果需要使用组件库内置的色彩值，请在你的 react 项目入口 less 文件中（App.less）引入:
+If you need to use the built-in color values ​​of the component library, please include in your react project entry less file (App.less):
 
 ```css pure
 @import 'concis/web-react/style/compiled-colors.less';
 ```
 
-这样就可以在项目中直接使用这些色彩变量，如:
+This makes it possible to use these color variables directly in the project, like:
 
 ```less pure
 .App {
@@ -276,7 +276,7 @@ export default () => (
 }
 ```
 
-你也可以基于 Concis 色彩库挑选出一些喜欢的颜色封装在自己的项目中，就像这样:
+You can also pick out some favorite colors based on the Concis color library and encapsulate them in your own projects, like this:
 
 ```less pure
 @import 'concis/web-react/style/compiled-colors.less';
