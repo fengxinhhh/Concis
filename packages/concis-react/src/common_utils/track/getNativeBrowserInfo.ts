@@ -47,6 +47,7 @@ const getNativeBrowserInfo = (): Promise<nativeBrowserInfoType> => {
     }
     // 获取性能相关参数
     if (window && window.performance) {
+      // @ts-ignore
       params.memory = formatMemory(window.performance.memory.usedJSHeapSize);
       params.connectTime = formatTimeToSecord(
         window.performance.timing.connectEnd - window.performance.timing.connectStart

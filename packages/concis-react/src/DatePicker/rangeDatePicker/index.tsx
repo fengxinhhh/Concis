@@ -71,18 +71,26 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     setEndMonthFirstDay(endFirstDay);
   }, [startDate.startYear, startDate.startMonth, endDate.endYear, endDate.endMonth]);
   useEffect(() => {
-    window.addEventListener('click', () => {
+    let timerID: ReturnType<typeof setTimeout>;
+    const handleClick = () => {
       setShowTimeDialog(false);
-      setTimeout(() => {
+      timerID = setTimeout(() => {
         setRenderShowDialog(false);
       }, 300);
-    });
+    };
+    window.addEventListener('click', handleClick);
     console.log(startMonthFirstDay, endMonthFirstDay);
+
+    return () => {
+      clearTimeout(timerID);
+      window.removeEventListener('click', handleClick);
+    };
   }, []);
   useEffect(() => {
+    let timerID: ReturnType<typeof setTimeout>;
     if (chooseStatus.start && chooseStatus.end) {
       setShowTimeDialog(false);
-      setTimeout(() => {
+      timerID = setTimeout(() => {
         setRenderShowDialog(false);
       }, 300);
       setChooseStatus((old) => {
@@ -92,6 +100,10 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
       });
       handleChange && handleChange(startTime, endTime);
     }
+
+    return () => {
+      clearTimeout(timerID);
+    };
   }, [chooseStatus]);
   useEffect(() => {
     // 用于监听Form组件的重置任务

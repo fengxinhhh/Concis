@@ -6,7 +6,8 @@ const getUserIp = () => {
     scriptElement.onload = () => {
       try {
         document.body.removeChild(scriptElement);
-        resolve(returnCitySN);
+        // @ts-ignore
+        resolve(window.returnCitySN);
       } catch (e) {
         reject(e);
       }
