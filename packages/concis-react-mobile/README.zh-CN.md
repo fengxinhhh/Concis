@@ -41,7 +41,7 @@
 
 # 安装
 
-[npm package](https://www.npmjs.com/package/@arco-design/web-react)
+[npm package](https://www.npmjs.com/package/concis)
 
 ```bash
 // with npm

@@ -47,7 +47,7 @@ All components are written in TypeScript so it's type friendly.
 
 # Installation
 
-Available as an [npm package](https://www.npmjs.com/package/@arco-design/web-react)
+Available as an [npm package](https://www.npmjs.com/package/concis)
 
 ```bash
 // with npm
