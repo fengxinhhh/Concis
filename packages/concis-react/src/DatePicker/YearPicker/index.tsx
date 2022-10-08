@@ -1,4 +1,4 @@
-import React, { useEffect, FC, memo, useState, useContext } from 'react';
+import React, { useEffect, FC, memo, useState, useContext, CSSProperties } from 'react';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import chunk from 'lodash/chunk';
 import Input from '../../Input';
@@ -15,9 +15,13 @@ const dayjs = require('dayjs');
 
 interface YearPickerProps {
   /**
-   * @description 类名
+   * @description 自定义类名
    */
   className?: string;
+  /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
   /**
    * @description 设置日期的格式化
    * @default YYYY-MM-DD
@@ -53,6 +57,7 @@ interface YearItemProps {
 const YearPicker: FC<YearPickerProps> = (props) => {
   const {
     className,
+    style,
     showClear = false,
     align,
     handleChange,
@@ -126,6 +131,7 @@ const YearPicker: FC<YearPickerProps> = (props) => {
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
                 globalColor
               ),
+              ...style,
             } as any
           }
         >

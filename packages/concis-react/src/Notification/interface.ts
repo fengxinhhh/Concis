@@ -6,6 +6,15 @@ type footerBtnVal = {
 };
 interface NotificationProps<T> {
   /**
+   * @description 自定义样式
+   * @default {}
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
+   */
+  className?: string;
+  /**
    * @description 标题
    */
   title: T;
@@ -47,11 +56,6 @@ interface NotificationProps<T> {
    * @default {1 -> 确认 2 -> 取消 3 -> 关闭}
    */
   doneCallback?: Function;
-  /**
-   * @description 自定义样式
-   * @default {}
-   */
-  style?: CSSProperties;
   /**
    * @description 暗黑模式
    * @default false

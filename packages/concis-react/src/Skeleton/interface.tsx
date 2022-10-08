@@ -1,8 +1,14 @@
+import { CSSProperties } from 'react';
+
 interface SkeletonProps<T> {
   /**
-   * @description 类名
+   * @description 自定义类名
    */
   className?: T;
+  /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
   /**
    * @description 加载状态
    * @default true

@@ -1,4 +1,4 @@
-import React, { FC, useMemo, memo, useContext } from 'react';
+import React, { FC, useMemo, memo, useContext, CSSProperties } from 'react';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
@@ -6,7 +6,7 @@ import './index.module.less';
 
 interface FooterProps {
   className?: string;
-  extraStyle?: Object;
+  extraStyle?: CSSProperties;
   children?: Element | undefined | String | any;
 }
 const Footer: FC<FooterProps> = (props: FooterProps) => {

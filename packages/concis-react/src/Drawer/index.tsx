@@ -20,6 +20,7 @@ function isPromiseFn(fn: Function): boolean {
 const Drawer = (props: DrawerProps) => {
   const {
     className,
+    style,
     children,
     title,
     visible,
@@ -162,7 +163,7 @@ const Drawer = (props: DrawerProps) => {
   }, [align]);
 
   return (
-    <div className={classNames}>
+    <div className={classNames} style={style}>
       <CSSTransition
         in={wrapperVisible}
         timeout={200}

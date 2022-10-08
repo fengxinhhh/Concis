@@ -1,4 +1,4 @@
-import React, { useEffect, FC, memo, useState, useContext } from 'react';
+import React, { useEffect, FC, memo, useState, useContext, CSSProperties } from 'react';
 import {
   DoubleLeftOutlined,
   LeftOutlined,
@@ -20,10 +20,15 @@ const dayjs = require('dayjs');
 
 export interface DatePickerProps {
   /**
-   * @description 类名
+   * @description 自定义类名
    * @default ''
    */
   className?: string;
+  /**
+   * @description 自定义样式
+   * @default {}
+   */
+  style?: CSSProperties;
   /**
    * @description 设置日期的格式化
    * @default YYYY-MM-DD
@@ -63,6 +68,7 @@ interface NowDateProps {
 const DatePicker: FC<DatePickerProps> = (props) => {
   const {
     className,
+    style,
     showClear = false,
     align,
     handleChange,
@@ -180,6 +186,7 @@ const DatePicker: FC<DatePickerProps> = (props) => {
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
                 globalColor
               ),
+              ...style,
             } as any
           }
         >

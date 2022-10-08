@@ -1,4 +1,12 @@
-import React, { FC, useState, useEffect, memo, useCallback, useContext } from 'react';
+import React, {
+  FC,
+  useState,
+  useEffect,
+  memo,
+  useCallback,
+  useContext,
+  CSSProperties,
+} from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -8,7 +16,11 @@ import './index.module.less';
 
 interface rateProps {
   /**
-   * @description 类名
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
    */
   className?: string;
   /**
@@ -45,6 +57,7 @@ const Rate: FC<rateProps> = (props: rateProps) => {
   const {
     num = 5,
     className,
+    style,
     starColor,
     defaultShow = num || 0,
     avaClear,
@@ -202,7 +215,7 @@ const Rate: FC<rateProps> = (props: rateProps) => {
   );
 
   return (
-    <div className={classNames}>
+    <div className={classNames} style={style}>
       <div className="rate-container" onMouseLeave={leaveRate} onMouseEnter={enterRate}>
         {new Array(num).fill('').map((ra, i) => {
           return (

@@ -1,8 +1,14 @@
+import { CSSProperties } from 'react';
+
 interface tableProps {
   /**
-   * @description 类名
+   * @description 自定义类名
    */
   className?: string;
+  /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
   /**
    * @description 表头配置项
    * @default []

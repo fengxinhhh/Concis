@@ -1,4 +1,4 @@
-import React, { memo, useContext, useEffect, useRef, useState } from 'react';
+import React, { memo, useContext, useEffect, useRef, useState, CSSProperties } from 'react';
 import Input from '../Input';
 import Popover from '../Popover';
 import Button from '../Button';
@@ -11,6 +11,16 @@ import { getRenderColor } from '../common_utils/getRenderColor';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 
 export interface TimePickerProps {
+  /**
+   * @description 自定义样式
+   * @default
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
+   * @default
+   */
+  className?: string;
   /**
    * @description 出现方位
    * @default bottom
@@ -26,11 +36,6 @@ export interface TimePickerProps {
    * @default false
    */
   showClear?: boolean;
-  /**
-   * @description 增加类名
-   * @default
-   */
-  className?: string;
   /**
    * @description 占位字符
    * @default
@@ -77,6 +82,7 @@ const TimePicker = (props: TimePickerProps) => {
   const {
     align,
     className,
+    style,
     placeholder = '请选择时间',
     defaultTime,
     disableHour,
@@ -155,7 +161,7 @@ const TimePicker = (props: TimePickerProps) => {
       dialogWidth="auto"
       closeDeps={[timeValue]}
       content={
-        <div className={classNames}>
+        <div className={classNames} style={style}>
           <div
             ref={parentRef}
             className="time-panel"

@@ -99,7 +99,8 @@ function changeHeight(children: Array<HTMLElement>, position: any) {
   }
 }
 const Message = (props: MessageProps<string>) => {
-  const { style, content, type, duration, position, clearable, messageBoxId, dark } = props;
+  const { style, content, type, duration, position, clearable, messageBoxId, dark, className } =
+    props;
   const [opac, setOpac] = useState(1);
   const messageDom = useRef<any>(null);
 
@@ -107,6 +108,7 @@ const Message = (props: MessageProps<string>) => {
 
   const classNames = cs(
     prefixCls,
+    className,
     dark ? 'concis-dark-message-container' : 'concis-message-container'
   );
 

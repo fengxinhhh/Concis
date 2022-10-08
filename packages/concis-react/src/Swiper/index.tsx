@@ -7,6 +7,7 @@ import React, {
   useCallback,
   useRef,
   useContext,
+  CSSProperties,
 } from 'react';
 import { RightCircleOutlined, LeftCircleOutlined } from '@ant-design/icons';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -17,9 +18,13 @@ import './index.module.less';
 
 interface swiperProps {
   /**
-   * @description 类名
+   * @description 自定义类名
    */
   className?: string;
+  /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
   /**
    * @description 图片列表
    * @default []
@@ -98,6 +103,7 @@ const Swiper: FC<swiperProps> = (props) => {
   const {
     imgList,
     className,
+    style,
     pictureSize = 400,
     height = 240,
     autoPlayer,
@@ -1015,7 +1021,10 @@ const Swiper: FC<swiperProps> = (props) => {
   return (
     <Fragment>
       {!card ? (
-        <div className={classNames} style={{ width: `${pictureSize}px`, height: `${height}px` }}>
+        <div
+          className={classNames}
+          style={{ width: `${pictureSize}px`, height: `${height}px`, ...style }}
+        >
           <div
             className="swiperList"
             style={{
@@ -1052,7 +1061,7 @@ const Swiper: FC<swiperProps> = (props) => {
       ) : (
         <div
           className={classNames}
-          style={{ height: `${height}px`, width: `${pictureSize * 2}px` }}
+          style={{ height: `${height}px`, width: `${pictureSize * 2}px`, ...style }}
         >
           <div
             className="center-pic"

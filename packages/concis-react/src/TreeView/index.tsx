@@ -1,4 +1,13 @@
-import React, { memo, FC, Fragment, useState, useEffect, useCallback, useContext } from 'react';
+import React, {
+  memo,
+  FC,
+  Fragment,
+  useState,
+  useEffect,
+  useCallback,
+  useContext,
+  CSSProperties,
+} from 'react';
 import { CaretRightOutlined, CaretDownOutlined, CheckOutlined } from '@ant-design/icons';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -7,7 +16,11 @@ import './index.module.less';
 
 type treeViewProps = {
   /**
-   * @description Tree配置参数
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
    */
   className?: string;
   /**
@@ -51,7 +64,7 @@ interface treeData {
 }
 
 const TreeView: FC<treeViewProps> = (props) => {
-  const { treeData, className, defaultOpen, avaDrop, checkCallback, dropCallback } = props;
+  const { treeData, className, defaultOpen, avaDrop, checkCallback, dropCallback, style } = props;
 
   const [stateTreeData, setStateTreeData] = useState<Array<treeData>>(treeData); // 树结构
   const [hoverTreeNode, setHoverTreeNode] = useState(''); // 当前覆盖的节点
@@ -442,7 +455,10 @@ const TreeView: FC<treeViewProps> = (props) => {
 
   return (
     <Fragment>
-      <div className={classNames} style={{ '--global-color': globalColor || '#325DFF' } as any}>
+      <div
+        className={classNames}
+        style={{ '--global-color': globalColor || '#325DFF', ...style } as any}
+      >
         {render(stateTreeData)}
       </div>
     </Fragment>

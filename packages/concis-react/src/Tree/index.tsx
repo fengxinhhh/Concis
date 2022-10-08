@@ -1,4 +1,13 @@
-import React, { FC, memo, Fragment, useState, useEffect, useCallback, useContext } from 'react';
+import React, {
+  FC,
+  memo,
+  Fragment,
+  useState,
+  useEffect,
+  useCallback,
+  useContext,
+  CSSProperties,
+} from 'react';
 import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
 import Input from '../Input';
@@ -11,7 +20,11 @@ import './index.module.less';
 
 interface treeProps {
   /**
-   * @description 类名
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
    */
   className?: string;
   /**
@@ -55,6 +68,7 @@ const Tree: FC<treeProps> = (props) => {
   const {
     width = '200',
     className,
+    style,
     treeData,
     avaSearch,
     avaChooseMore,
@@ -278,7 +292,7 @@ const Tree: FC<treeProps> = (props) => {
 
   return (
     <Fragment>
-      <div className={classNames} onClick={(e) => e.stopPropagation()}>
+      <div className={classNames} style={style} onClick={(e) => e.stopPropagation()}>
         <Input
           moreStyle={avaSearch ? {} : { caretColor: 'transparent' }}
           placeholder={avaSearch ? '请输入' : ''}

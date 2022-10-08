@@ -34,7 +34,11 @@ const BackTop = (props: BackTopProps) => {
   const scrollEventRef = useRef<any>();
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
-  const classNames = cs(prefixCls, darkTheme ? 'concis-dark-back-top' : 'concis-back-top');
+  const classNames = cs(
+    prefixCls,
+    props.className,
+    darkTheme ? 'concis-dark-back-top' : 'concis-back-top'
+  );
 
   // acquire default container
   const getDefaultTarget = () => window;
@@ -95,7 +99,7 @@ const BackTop = (props: BackTopProps) => {
   }, [props.target]);
 
   return (
-    <div className={classNames} ref={ref} onClick={scrollToTop}>
+    <div className={classNames} style={props.style} ref={ref} onClick={scrollToTop}>
       {renderChildren()}
     </div>
   );

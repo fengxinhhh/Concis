@@ -3,12 +3,12 @@ import { ReactNode, CSSProperties } from 'react';
 interface badgeProps {
   children?: ReactNode;
   /**
-   * @description 徽标样式
+   * @description 自定义类名
    * @default {}
    */
   className?: string;
   /**
-   * @description 徽标样式
+   * @description 自定义样式
    * @default {}
    */
   style?: CSSProperties;

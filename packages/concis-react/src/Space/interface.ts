@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, CSSProperties } from 'react';
 
 type sizeType = 'mini' | 'small' | 'medium' | 'large' | number;
 type alignType = 'start' | 'center' | 'end' | 'baseline';
@@ -11,7 +11,11 @@ type spaceAlignParams = {
 interface SpaceProps<T> {
   children?: ReactNode;
   /**
-   * @description 类名
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
    */
   className?: string;
   /**

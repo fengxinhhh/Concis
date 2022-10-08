@@ -30,6 +30,7 @@ const options = [10, 20, 30, 50];
 const Table: FC<tableProps> = (props: tableProps) => {
   const {
     className,
+    style,
     titleParams,
     tableData,
     align,
@@ -785,8 +786,9 @@ const Table: FC<tableProps> = (props: tableProps) => {
                 (largeDateShowNum + 2) *
                 (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight
               }px`,
+              ...style,
             }
-          : {}
+          : style
       }
     >
       <div

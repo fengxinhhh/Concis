@@ -1,4 +1,13 @@
-import React, { useEffect, FC, memo, useState, useCallback, useRef, useContext } from 'react';
+import React, {
+  useEffect,
+  FC,
+  memo,
+  useState,
+  useCallback,
+  useRef,
+  useContext,
+  CSSProperties,
+} from 'react';
 import {
   DoubleLeftOutlined,
   LeftOutlined,
@@ -15,12 +24,13 @@ import './index.module.less';
 
 interface RangeProps {
   className?: string;
+  style?: CSSProperties;
   showClear?: Boolean;
   align?: string;
   handleChange?: Function;
 }
 const RangeDatePicker: FC<RangeProps> = (props) => {
-  const { className, showClear, align, handleChange } = props;
+  const { className, showClear, align, handleChange, style } = props;
   const [startDate, setStartDate] = useState({
     startYear: new Date().getFullYear(),
     startMonth: new Date().getMonth() + 1,
@@ -409,7 +419,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
     <div
       className={classNames}
       onClick={(e) => e.stopPropagation()}
-      style={{ '--hover-color': globalColor || '#325DFF' } as any}
+      style={{ '--hover-color': globalColor || '#325DFF', ...style } as any}
     >
       <div className="rangePicker" onClick={(e) => e.stopPropagation()}>
         <Input

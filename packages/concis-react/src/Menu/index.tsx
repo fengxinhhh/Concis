@@ -1,4 +1,13 @@
-import React, { FC, useState, useEffect, memo, useCallback, useMemo, useContext } from 'react';
+import React, {
+  FC,
+  useState,
+  useEffect,
+  memo,
+  useCallback,
+  useMemo,
+  useContext,
+  CSSProperties,
+} from 'react';
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -8,9 +17,13 @@ import './index.module.less';
 
 interface MenuProps {
   /**
-   * @description 类名
+   * @description 自定义类名
    */
   className?: string;
+  /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
   /**
    * @description 配置对象
    * @default {}
@@ -61,7 +74,8 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
   const [nowActiveKey, setNowActiveKey] = useState(''); // 选中的子菜单key
   const [parentMenuHeightList, setParentMenuHeightList] = useState<any>({}); // 父菜单高度集合
 
-  const { items, className, width, dark, ableToggle, defaultOpen, handleRouteChange } = props;
+  const { items, className, width, dark, ableToggle, defaultOpen, handleRouteChange, style } =
+    props;
 
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -299,6 +313,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
       style={
         {
           ...customWidth,
+          ...style,
           '--global-color': globalColor || darkTheme ? '#3C7EFF' : '#325DFF',
           '--global-menu-option-bg': darkTheme
             ? '#3C7EFF'

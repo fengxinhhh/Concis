@@ -1,20 +1,20 @@
-import React, { useMemo, memo, FC, useContext } from 'react';
+import React, { useMemo, memo, FC, useContext, ReactNode, CSSProperties } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface layoutProps {
-  children?: any;
+  children?: ReactNode;
   /**
-   * @description 类名
+   * @description 自定义类名
    */
   className?: string;
   /**
    * @description 自定义样式
    * @default {}
    */
-  extraStyle?: Object;
+  extraStyle?: CSSProperties;
 }
 
 const Layout: FC<layoutProps> = (props: layoutProps) => {

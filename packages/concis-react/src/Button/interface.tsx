@@ -4,6 +4,10 @@ type ButtonProps = {
   // 自定义button接口
   children?: ReactNode;
   /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
    * @description 类名
    */
   className?: string;
@@ -44,10 +48,6 @@ type ButtonProps = {
    * @description 图标按钮
    */
   icon?: ReactNode;
-  /**
-   * @description 自定义样式
-   */
-  style?: Object;
   /**
    * @description 按钮点击回调事件
    */

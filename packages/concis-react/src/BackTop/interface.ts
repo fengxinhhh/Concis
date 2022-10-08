@@ -1,10 +1,18 @@
-import { ReactNode } from 'react';
+import { ReactNode, CSSProperties } from 'react';
 
 interface BackTopProps {
   /**
    * @description 自定义按钮内容
    */
   children?: ReactNode;
+  /**
+   * @description 自定义类名
+   */
+  className?: string;
+  /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
   /**
    * @description 回到顶部所需时间(ms)
    * @default 450

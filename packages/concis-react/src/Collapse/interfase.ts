@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, CSSProperties } from 'react';
 
 interface CollapseItemProps {
   children?: ReactNode;
@@ -11,7 +11,11 @@ interface CollapseItemProps {
 interface CollapseProps {
   children?: ReactNode;
   /**
-   * @description 类名
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
    */
   className?: string;
   /**

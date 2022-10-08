@@ -3,7 +3,7 @@ import React, { FC, memo, CSSProperties, ReactNode } from 'react';
 interface RadioProps {
   children: ReactNode;
   /**
-   * @description 类名
+   * @description 自定义类名
    */
   className?: string;
   /**

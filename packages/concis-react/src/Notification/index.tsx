@@ -147,6 +147,7 @@ function changeHeight(children: Array<HTMLElement>, position: any) {
 const Notification = (props: NotificationProps<string>) => {
   const {
     style,
+    className,
     title,
     content,
     type,
@@ -166,6 +167,7 @@ const Notification = (props: NotificationProps<string>) => {
 
   const classNames = cs(
     prefixCls,
+    className,
     dark ? 'concis-dark-notifica-container' : 'concis-notifica-container'
   );
 

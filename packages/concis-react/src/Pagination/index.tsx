@@ -1,4 +1,4 @@
-import React, { useState, FC, useMemo, memo, useContext } from 'react';
+import React, { useState, FC, useMemo, memo, useContext, CSSProperties } from 'react';
 import { EllipsisOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Select } from '..';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -9,9 +9,12 @@ import { getRenderColor } from '../common_utils/getRenderColor';
 import './index.module.less';
 
 interface PaginationProps {
-  style?: object;
   /**
-   * @description 类名
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
    */
   className?: string;
   /**

@@ -10,6 +10,11 @@ interface AffixProps {
    */
   className?: string;
   /**
+   * @description 插槽样式
+   * @default {}
+   */
+  style?: Object;
+  /**
    * @description 类型 scroll表示滚动容器
    * @default ''
    */
@@ -38,11 +43,6 @@ interface AffixProps {
    * @default 0
    */
   offsetRight?: number | string;
-  /**
-   * @description 插槽样式
-   * @default {}
-   */
-  style?: Object;
 }
 interface offsetProps {
   left?: number | string;

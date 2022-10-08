@@ -6,7 +6,7 @@ import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 const Skeleton = <T,>(props: SkeletonProps<T>) => {
-  const { className, loading = true, title, avatar, row = 3, width = [], size = 40 } = props;
+  const { className, style, loading = true, title, avatar, row = 3, width = [], size = 40 } = props;
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -33,7 +33,10 @@ const Skeleton = <T,>(props: SkeletonProps<T>) => {
   );
 
   return loading ? (
-    <div className={classNames} style={{ '--skeleton-container-avatar-size': `${size}px` } as any}>
+    <div
+      className={classNames}
+      style={{ '--skeleton-container-avatar-size': `${size}px`, ...style } as any}
+    >
       {avatar && <div className={`${firstClass}-avatar`} />}
       <div className={`${firstClass}-container`}>
         {title && <div className={`${firstClass}-container-title`} />}

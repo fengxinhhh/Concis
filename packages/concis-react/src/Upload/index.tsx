@@ -36,6 +36,7 @@ const Upload = (props: UploadProps) => {
     beforeUpload,
     onSuccess,
     className = '',
+    style,
     onError,
     onRemove,
     onChange,
@@ -200,7 +201,7 @@ const Upload = (props: UploadProps) => {
     );
   }, [fileList]);
   return (
-    <div className={classNames}>
+    <div className={classNames} style={style}>
       <input
         accept={accept}
         multiple={multiple}

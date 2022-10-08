@@ -1,4 +1,4 @@
-import React, { FC, useMemo, memo, useContext } from 'react';
+import React, { FC, useMemo, memo, useContext, CSSProperties } from 'react';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
@@ -7,7 +7,7 @@ import './index.module.less';
 interface ContentProps {
   className?: string;
   row?: Number;
-  extraStyle?: Object;
+  extraStyle?: CSSProperties;
   children?: Element | undefined | String | any;
 }
 const Content: FC<ContentProps> = (props: ContentProps) => {

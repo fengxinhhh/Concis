@@ -1,13 +1,17 @@
-import React, { FC, useMemo, memo, useContext, useCallback } from 'react';
+import React, { FC, useMemo, memo, useContext, useCallback, ReactNode, CSSProperties } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 interface dividerProps {
-  children?: any;
+  children?: ReactNode;
   /**
-   * @description 类名
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
    */
   className?: string;
   /**
@@ -21,7 +25,7 @@ interface dividerProps {
   align?: String;
 }
 const Divider: FC<dividerProps> = memo((props) => {
-  const { children, className, fontSize, align } = props;
+  const { children, style, className, fontSize, align } = props;
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -66,7 +70,7 @@ const Divider: FC<dividerProps> = memo((props) => {
     [align]
   );
   return (
-    <div className={classNames}>
+    <div className={classNames} style={style}>
       <div className={`${classFirstName}-line`} style={{ ...lineAlign }}>
         {children && (
           <>

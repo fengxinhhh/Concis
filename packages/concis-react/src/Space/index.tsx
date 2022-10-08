@@ -9,6 +9,7 @@ const Space = <T,>(props: SpaceProps<T>) => {
   const {
     children,
     className,
+    style,
     direction = 'horizontal',
     size = 'small',
     align = 'center',
@@ -88,7 +89,6 @@ const Space = <T,>(props: SpaceProps<T>) => {
   const spaceStyles = useMemo(() => {
     const returnStyle: spaceAlignParams = direction === 'horizontal' ? getAlignStyle() : {};
     returnStyle.display = 'flex';
-    console.log(direction);
     if (direction === 'vertical') {
       returnStyle.flexDirection = 'column';
     } else {
@@ -98,7 +98,7 @@ const Space = <T,>(props: SpaceProps<T>) => {
   }, [direction, align]);
 
   return (
-    <div className={classNames} style={spaceStyles}>
+    <div className={classNames} style={{ ...spaceStyles, ...style }}>
       {childrenList.map((child: ReactNode, index: number) => {
         return (
           <Fragment key={index}>

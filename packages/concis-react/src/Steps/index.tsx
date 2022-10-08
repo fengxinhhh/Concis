@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback, useContext } from 'react';
+import React, { FC, memo, useCallback, useContext, CSSProperties } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -9,7 +9,11 @@ import './index.module.less';
 
 interface stepsProps {
   /**
-   * @description 类名
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
    */
   className?: string;
   /**
@@ -38,7 +42,7 @@ interface stepsProps {
 }
 
 const Steps: FC<stepsProps> = (props: stepsProps) => {
-  const { current, className, onChange, children } = props;
+  const { current, className, style, onChange, children } = props;
 
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -74,6 +78,7 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
             (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
             globalColor
           ),
+          ...style,
         } as any
       }
     >

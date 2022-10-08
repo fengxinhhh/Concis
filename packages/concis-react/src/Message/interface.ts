@@ -2,6 +2,16 @@ import { CSSProperties } from 'react';
 
 interface MessageProps<T> {
   /**
+   * @description 自定义样式
+   * @default {}
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
+   * @default {}
+   */
+  className?: string;
+  /**
    * @description 对象类型传参时的内容
    */
   content?: T;
@@ -24,11 +34,6 @@ interface MessageProps<T> {
    * @default false
    */
   clearable?: boolean;
-  /**
-   * @description 自定义样式
-   * @default {}
-   */
-  style?: CSSProperties;
   /**
    * @description 暗黑模式
    * @default false

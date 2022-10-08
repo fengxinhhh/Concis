@@ -6,7 +6,7 @@ interface InputProps
     'onChange' | 'prefix' | 'className' | 'size' | 'height' | 'maxLength'
   > {
   /**
-   * @description 类名
+   * @description 自定义类名
    */
   className?: string;
   /**

@@ -25,6 +25,7 @@ const Modal = (props: ModalProps) => {
   const {
     className,
     children,
+    style,
     title,
     visible,
     okButtonProps = {},
@@ -161,7 +162,9 @@ const Modal = (props: ModalProps) => {
   return (
     <div
       className={classNames}
-      style={{ '--modal-width': `${typeof width === 'string' ? width : `${width}%`}` } as any}
+      style={
+        { '--modal-width': `${typeof width === 'string' ? width : `${width}%`}`, ...style } as any
+      }
     >
       <CSSTransition
         in={wrapperVisible}

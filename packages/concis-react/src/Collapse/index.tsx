@@ -11,6 +11,7 @@ export const ctx = createContext<any>({} as any); // 顶层通信装置
 const Collapse: FC<CollapseProps> = (props) => {
   const {
     children,
+    style,
     className,
     defaultActive,
     accordion,
@@ -40,8 +41,9 @@ const Collapse: FC<CollapseProps> = (props) => {
         className={classNames}
         style={
           noBorder
-            ? {}
+            ? { ...style }
             : {
+                ...style,
                 border:
                   getSiteTheme() === ('dark' || 'auto') || darkTheme
                     ? '1px solid#484849'

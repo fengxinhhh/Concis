@@ -8,6 +8,7 @@ import React, {
   Fragment,
   useEffect,
   useContext,
+  CSSProperties,
 } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
 import { ctx } from '../Form';
@@ -25,7 +26,11 @@ type checkGroup = {
 interface checkBoxProps {
   children?: ReactNode;
   /**
-   * @description 类名
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
    */
   className?: string;
   /**
@@ -54,8 +59,16 @@ interface checkBoxProps {
 }
 
 const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
-  const { children, className, checked, disabled, group, checkCallback, checkGroupCallback } =
-    props;
+  const {
+    children,
+    className,
+    style,
+    checked,
+    disabled,
+    group,
+    checkCallback,
+    checkGroupCallback,
+  } = props;
 
   const [checkStatus, setCheckStatus] = useState<boolean>();
   const [checkGroup, setCheckGroup] = useState<Array<checkGroup>>(group || []);
@@ -139,7 +152,10 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
   return (
     <Fragment>
       {group && group.length ? (
-        <div className={classNames} style={{ '--global-color': globalColor || '#325DFF' } as any}>
+        <div
+          className={classNames}
+          style={{ '--global-color': globalColor || '#325DFF', ...style } as any}
+        >
           {group.map((c: checkGroup, i: number) => {
             return (
               <div
@@ -157,7 +173,7 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
         <div
           className={classNames}
           onClick={toggleCheckedStatus}
-          style={{ '--global-color': globalColor || '#325DFF' } as any}
+          style={{ '--global-color': globalColor || '#325DFF', ...style } as any}
         >
           {renderCheckBoxDom}
           <div className={disabled ? `text disabled` : `text`}>{children}</div>

@@ -6,7 +6,7 @@ type optionParams = {
 };
 interface InputProProps<T> {
   /**
-   * @description 类名
+   * @description 自定义类名
    */
   className?: string;
   /**

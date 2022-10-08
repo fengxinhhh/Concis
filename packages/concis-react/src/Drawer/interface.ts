@@ -2,9 +2,12 @@ import { ReactNode, CSSProperties } from 'react';
 
 interface DrawerProps {
   /**
-   * @description 类名
+   * @description 自定义类名
    */
   className?: string;
+  /**
+   * @description 自定义样式
+   */
   style?: CSSProperties;
   children?: ReactNode;
   /**

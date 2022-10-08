@@ -1,6 +1,11 @@
 import { Awaitable } from 'puppeteer';
+import { CSSProperties } from 'react';
 
 export interface UploadProps {
+  /**
+   * @description 自定义样式
+   */
+  style: CSSProperties;
   /**
    * @description 自定义类名
    * @default string

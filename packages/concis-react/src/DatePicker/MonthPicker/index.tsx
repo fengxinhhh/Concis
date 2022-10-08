@@ -1,4 +1,4 @@
-import React, { useEffect, FC, memo, useState, useContext } from 'react';
+import React, { useEffect, FC, memo, useState, useContext, CSSProperties } from 'react';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import Input from '../../Input';
@@ -13,9 +13,13 @@ import './index.module.less';
 
 interface MonthPickerProps {
   /**
-   * @description 类名
+   * @description 自定义类名
    */
   className?: string;
+  /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
   /**
    * @description 设置日期的格式化
    * @default YYYY-MM-DD
@@ -50,6 +54,7 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
     handleChange,
     disableCheck = () => false,
     format = 'YYYY-MM',
+    style,
   } = props;
   const monthList = [
     ['一月', '二月', '三月'],
@@ -110,6 +115,7 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
                 globalColor
               ),
+              ...style,
             } as any
           }
         >

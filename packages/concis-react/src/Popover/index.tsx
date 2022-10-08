@@ -8,6 +8,7 @@ import React, {
   useContext,
   forwardRef,
   useImperativeHandle,
+  CSSProperties,
 } from 'react';
 import lodash from 'lodash';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -18,7 +19,11 @@ import './index.module.less';
 interface popoverProps {
   children?: ReactNode;
   /**
-   * @description 类名
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
    */
   className?: string;
   /**
@@ -78,6 +83,7 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
     const {
       children,
       className,
+      style,
       type = 'hover',
       align = 'bottom',
       content,
@@ -200,7 +206,7 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
       };
     }, [content, showDialog, defaultShow, showBtnSize]);
     return (
-      <div className={classNames}>
+      <div className={classNames} style={style}>
         <div
           className="open-container"
           onMouseEnter={() => hoverOpenDialog()}

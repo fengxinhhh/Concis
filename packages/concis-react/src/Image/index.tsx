@@ -1,4 +1,4 @@
-import React, { FC, useState, useContext, useEffect, memo, ReactElement } from 'react';
+import React, { FC, useState, useContext, useEffect, memo } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import {
   EyeOutlined,
@@ -41,7 +41,7 @@ const Image: FC<ImageProps> = (props) => {
     prefixCls,
     className,
     `concis-${darkTheme ? 'dark-' : ''}image`,
-    `${preview ? 'concis-preview-image' : ''}`,
+    `${preview ? 'concis-preview-image' : ''}`
   );
 
   // 显示预览大图

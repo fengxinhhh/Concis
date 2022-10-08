@@ -1,4 +1,4 @@
-import React, { memo, ReactNode, useContext, FC } from 'react';
+import React, { memo, ReactNode, useContext, FC, CSSProperties } from 'react';
 import './index.module.less';
 import { globalCtx } from '../GlobalConfig';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -9,7 +9,11 @@ import cs from '../common_utils/classNames';
 type CommentProps = {
   children?: ReactNode;
   /**
-   * @description 类名
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
    */
   className?: string;
   /**
@@ -45,6 +49,7 @@ type CommentProps = {
 const Comment: FC<CommentProps> = (props: CommentProps) => {
   const {
     className,
+    style,
     author,
     afterAuthor,
     avatar,
@@ -68,6 +73,7 @@ const Comment: FC<CommentProps> = (props: CommentProps) => {
             globalColor
           ),
           '--header-align': align === 'left' ? 'flex-start' : 'space-between',
+          ...style,
         } as any
       }
     >
