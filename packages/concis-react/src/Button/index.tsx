@@ -1,21 +1,10 @@
-import React, { useMemo, useContext } from 'react';
+import React, { useMemo, useContext, CSSProperties } from 'react';
 import { ButtonProps, ButtonGroupProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import Group from './group';
 import './index.module.less';
-
-interface ButtonStyle<T> {
-  // button样式接口
-  width?: T;
-  height?: T;
-  borderRadius?: T;
-  border?: T;
-  cursor?: T;
-  background?: T;
-  color?: T;
-}
 
 const Button = (props: ButtonProps) => {
   const {
@@ -44,7 +33,7 @@ const Button = (props: ButtonProps) => {
     return `concis-button-${type} ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''}` as any;
   }, [type, loading, disabled]);
   const buttonSize = useMemo(() => {
-    let size: ButtonStyle<string> = {
+    let size: CSSProperties = {
       width: '100%',
       height: '40px',
       ...style,
