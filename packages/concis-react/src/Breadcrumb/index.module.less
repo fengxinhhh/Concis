@@ -1,0 +1,32 @@
+@import '../styles/common.less';
+
+@concis-breadcrumb-light-item-color: #4e5969;
+@concis-breadcrumb-light-separator-color: #cdd1d8;
+@concis-breadcrumb-dark-item-color: #ffffffb3;
+@concis-breadcrumb-dark-separator-color: #ffffff4d;
+
+.concis-breadcrumb, .concis-dark-breadcrumb {
+  display: flex;
+  font-size: @concis-font-md;
+  align-items: center;
+  .concis-breadcrumb-item {
+    color: @concis-breadcrumb-light-item-color;
+  }
+  .concis-breadcrumb-item-ellipse {
+    position: relative;
+    bottom: 3px;
+    color: @concis-breadcrumb-light-item-color;
+  }
+  .concis-breadcrumb-item-separator {
+    margin: 0 12px;
+    color: @concis-breadcrumb-light-separator-color;
+  }
+}
+.concis-dark-breadcrumb {
+  .concis-breadcrumb-item, .concis-breadcrumb-item-ellipse {
+    color: @concis-breadcrumb-dark-item-color;
+  }
+  .concis-breadcrumb-item-separator {
+    color: @concis-breadcrumb-dark-separator-color;
+  }
+}
