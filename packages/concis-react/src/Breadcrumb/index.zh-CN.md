@@ -46,7 +46,7 @@ mobile: false
 
 ## Breadcrumb.Item
 
-| Name      | Description | Type          | Default |
-| --------- | ----------- | ------------- | ------- |
-| className | 自定义类名  | string        | `--`    |
-| style     | 自定义样式  | CSSProperties | `--`    |
+| Name      | Description | Type            | Default |
+| --------- | ----------- | --------------- | ------- |
+| className | 自定义类名  | `string`        | `--`    |
+| style     | 自定义样式  | `CSSProperties` | `--`    |

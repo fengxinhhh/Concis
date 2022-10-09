@@ -1,0 +1,60 @@
+@import '../styles/common.less';
+
+@concis-link-disabled-opacity: 0.6;
+@concis-dark-link-hover-bg: #333232;
+
+.concis-link, .concis-dark-link {
+  display: inline-block;
+  cursor: pointer;
+  padding: @concis-transform-xs 3px;
+  transition: .2s linear;
+  border-radius: @concis-radius-xs;
+  text-decoration: none;
+}
+.concis-link {
+  &-primary {
+    color: @concis-primary-color;
+  }
+  &-error {
+    color: @concis-danger-color;
+  }
+  &-success {
+    color: @concis-info-color;
+  }
+  &-warning {
+    color: @concis-warning-color;
+  }
+  &-disabled {
+    opacity: @concis-link-disabled-opacity;
+    cursor: not-allowed;
+  }
+  &-icon {
+    display: inline-block;
+    margin-right: @concis-transform-xs;
+  }
+}
+.concis-dark-link {
+  &-primary {
+    color: @concis-dark-primary-color;
+  }
+  &-error {
+    color: @concis-dark-danger-color;
+  }
+  &-success {
+    color: @concis-dark-info-color;
+  }
+  &-warning {
+    color: @concis-dark-warning-color;
+  }
+  &-disabled {
+    opacity: @concis-link-disabled-opacity;
+    cursor: not-allowed;
+  }
+  .concis-link-icon {
+    display: inline-block;
+    margin-right: @concis-transform-xs;
+  }
+  &:not(&-disabled):hover {
+    background-color: @concis-dark-link-hover-bg;
+  }
+}

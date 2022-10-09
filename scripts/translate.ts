@@ -19,7 +19,7 @@ files.forEach((file, index) => {
   }, index * 2000);
 });
 // 翻译单个文档
-// translate('Modal');
+// translate('Link');
 
 function translate(componentName) {
   // 判断file首字母大写

@@ -46,7 +46,7 @@ Configure `maxCount` to specify the maximum number of breadcrumbs to be displaye
 
 ## Breadcrumb.Item
 
-| Name      | Description  | Type          | Default |
-| --------- | ------------ | ------------- | ------- |
-| className | Class name   | string        | `--`    |
-| style     | Custom Style | CSSProperties | `--`    |
+| Name      | Description  | Type            | Default |
+| --------- | ------------ | --------------- | ------- |
+| className | Class name   | `string`        | `--`    |
+| style     | Custom Style | `CSSProperties` | `--`    |

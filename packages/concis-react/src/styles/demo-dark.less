@@ -581,4 +581,23 @@ html[data-prefers-color='dark'] {
       color: #ffffff4d;
     }
   }
+  //link
+  .concis-link {
+    &-primary {
+      color: @concis-dark-primary-color;
+    }
+    &-error {
+      color: @concis-dark-danger-color;
+    }
+    &-success {
+      color: @concis-dark-info-color;
+    }
+    &-warning {
+      color: @concis-dark-warning-color;
+    }
+    &:not(&-disabled):hover {
+      background-color: #333232;
+    }
+    
+  }
 }
