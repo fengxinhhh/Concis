@@ -1,3 +1,3 @@
 import demoTest from '../../demoTest';
 
-demoTest('Badge');
+demoTest('Breadcrumb');
