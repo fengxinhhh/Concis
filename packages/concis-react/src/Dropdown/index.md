@@ -1,0 +1,67 @@
+---
+title: Dropdown
+nav:
+  title: Component
+  path: /common
+group:
+  title: Navigation
+mobile: false
+---
+
+# Dropdown
+
+When there are too many commands on the page, you can store alternative commands in a floating container that expands down.
+
+## Basic usage
+
+Basic dropdown menu.
+
+<code src="./demos/index1.tsx" />
+
+## Hover move in
+
+Configured as a drop-in menu with `type = hover`.
+
+<code src="./demos/index2.tsx" />
+
+## Button style
+
+Provide `status` parameter, switch to button style, there are `primary`, `error`, `warning`, `success` four.
+
+<code src="./demos/index3.tsx" />
+
+## Flat
+
+Configure the `colums` parameter, flat expand all options, the list width can inform the `columsWidth` setting, the default is `500px`.
+
+<code src="./demos/index4.tsx" />
+
+## Pop-up location
+
+Configure the `position` parameter, select the menu popup position, the optional positions are `top`, `bottom`, `left`, `right`, the default is `bottom`.
+
+<code src="./demos/index5.tsx" />
+
+## Icon menu
+
+Configure the icon of each menu item through the `icon` item in `data`.
+
+<code src="./demos/index6.tsx" />
+
+## Disabled
+
+Disable the menu via `disabled`, via `disabled` in `data`, single item disable.
+
+<code src="./demos/index7.tsx" />
+
+<API />
+
+## dataType API
+
+| Name     | Description                                                | Type       | Default |
+| -------- | ---------------------------------------------------------- | ---------- | ------- |
+| content  | label name                                                 | string     | `--`    |
+| link     | jump link                                                  | string     | `--`    |
+| children | children (only one layer of children is supported for now) | dataType[] | `[]`    |
+| disabled | disabled                                                   | boolean    | `false` |
+| icon     | icon                                                       | ReactNode  | `<></>` |

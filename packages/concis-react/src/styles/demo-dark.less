@@ -598,6 +598,143 @@ html[data-prefers-color='dark'] {
     &:not(&-disabled):hover {
       background-color: #333232;
     }
-    
+  }
+  //dropdown
+  .concis-dropdown {
+    .concis-dropdown-result-default {
+      color: #ffffffe6;
+      &:hover:not(.concis-dropdown-result-disabled) {
+        color: @concis-dark-primary-color;
+      }
+    }
+    .concis-dropdown-result-default-active {
+      color: @concis-dark-primary-color;
+    }
+    .concis-dropdown-result-primary {
+      border: 1px solid @concis-dark-primary-color;
+      color: @concis-dark-primary-color;
+      &:hover:not(.concis-dropdown-result-disabled) {
+        color: #ffffff;
+        background-color: @concis-dark-primary-color;
+      }
+      ~ .concis-dropdown-content {
+        .list {
+          &:hover:not(.list-disabled) {
+            background-color: #49494b;
+            color: @concis-dark-primary-color;
+          }
+          .sub-list-item {
+            &:hover:not(.sub-list-item-disabled) {
+              background-color: #49494b;
+              color: @concis-dark-primary-color;
+            }
+          }
+        }
+      }
+    }
+    .concis-dropdown-result-primary-active {
+      color: #ffffff;
+      background-color: @concis-dark-primary-color;
+    }
+    .concis-dropdown-result-error {
+      border: 1px solid @concis-dark-danger-color;
+      color: @concis-dark-danger-color;
+      &:hover:not(.concis-dropdown-result-disabled) {
+        color: #ffffff;
+        background-color: @concis-dark-danger-color;
+      }
+      ~ .concis-dropdown-content {
+        .list {
+          &:hover:not(.list-disabled) {
+            background-color: #49494b;
+            color: @concis-dark-danger-color;
+          }
+          .sub-list-item {
+            &:hover:not(.sub-list-item-disabled) {
+              background-color: #49494b;
+              color: @concis-dark-danger-color;
+            }
+          }
+        }
+      }
+    }
+    .concis-dropdown-result-error-active {
+      color: #ffffff;
+      background-color: @concis-dark-danger-color;
+    }
+    .concis-dropdown-result-warning {
+      border: 1px solid @concis-dark-warning-color;
+      color: @concis-dark-warning-color;
+      &:hover:not(.concis-dropdown-result-disabled) {
+        color: #ffffff;
+        background-color: @concis-dark-warning-color;
+      }
+      ~ .concis-dropdown-content {
+        .list {
+          &:hover:not(.list-disabled) {
+            background-color: #49494b;
+            color: @concis-dark-warning-color;
+          }
+          .sub-list-item {
+            &:hover:not(.sub-list-item-disabled) {
+              background-color: #49494b;
+              color: @concis-dark-warning-color;
+            }
+          }
+        }
+      }
+    }
+    .concis-dropdown-result-warning-active {
+      color: #ffffff;
+      background-color: @concis-dark-warning-color;
+    }
+    .concis-dropdown-result-success {
+      border: 1px solid @concis-dark-info-color;
+      color: @concis-dark-info-color;
+      &:hover:not(.concis-dropdown-result-disabled) {
+        color: #ffffff;
+        background-color: @concis-dark-info-color;
+      }
+      ~ .concis-dropdown-content {
+        .list {
+          &:hover:not(.list-disabled) {
+            background-color: #49494b;
+            color: @concis-dark-info-color;
+          }
+          .sub-list-item {
+            &:hover:not(.sub-list-item-disabled) {
+              background-color: #49494b;
+              color: @concis-dark-info-color;
+            }
+          }
+        }
+      }
+    }
+    .concis-dropdown-result-success-active {
+      color: #ffffff;
+      background-color: @concis-dark-info-color;
+    }
+    .concis-dropdown-content {
+      background: #373739;
+      border: 1px solid #535355;
+      .list {
+        color: #ffffffe6;
+        &:hover:not(.list-disabled) {
+          background-color: #49494b;
+          color: @concis-dark-primary-color;
+        }
+        .sub-list {
+          background: #373739;
+          border: 1px solid #535355;
+          &-item {
+            color: #ffffffe6;
+            &:hover:not(.sub-list-item-disabled) {
+              background-color: #49494b;
+              color: @concis-dark-primary-color;
+            }
+          }
+        }
+      }
+    }
   }
 }

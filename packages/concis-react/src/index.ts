@@ -52,3 +52,4 @@ export { default as Empty } from './Empty';
 export { default as Tag } from './Tag';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as Link } from './Link';
+export { default as Dropdown } from './Dropdown';
