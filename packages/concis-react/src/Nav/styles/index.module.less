@@ -1,0 +1,86 @@
+@import '../../styles/common.less';
+@import './animate.less';
+
+@concis-nav-option-padding: @concis-transform-ms 14px 14px;
+@concis-nav-option-height: 70px;
+
+.concis-nav, .concis-dark-nav {
+  display: inline-block;
+  .concis-nav-left {
+    display: inline-block;
+    height: @concis-nav-option-height;
+    padding: @concis-nav-option-padding;
+  }
+  .concis-nav-right {
+    display: inline-block;
+    height: @concis-nav-option-height;
+    padding: @concis-nav-option-padding;
+    margin-left: @concis-transform-lg;
+  }
+  .concis-nav-bar {
+    color: #000000;
+    font-size: 18px;
+    display: flex;
+    height: @concis-nav-option-height;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    transition: .2s linear;
+    &-option {
+      height: 100%;
+      padding: @concis-nav-option-padding;
+      cursor: pointer;
+      &:hover {
+        opacity: .7;
+      }
+    }
+    .line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #1890ff;
+      transition: .2s linear;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 45%;
+        width: @concis-transform-lg;
+        height: @concis-transform-ms;
+        background: url(https://thingsboard.io/images/head-arrow.svg) no-repeat; 
+      }
+    }
+    .line-dialog {
+      position: absolute;
+      top: 100%;
+      transition: .2s linear; 
+      background-color: #ffffff;
+      z-index: 9999;
+      border-radius: @concis-radius-xs;
+      color: #000000;
+      padding: @concis-transform-md @concis-transform-lg;
+      overflow: hidden;
+      box-shadow: 0 0 20px 4px #9aa1b126, 0 4px 80px -8px #24282f40, 0 4px 4px -2px #5b5e6926
+    }
+    .line-dialog2 {
+      position: absolute;
+      top: 100%;
+      background-color: #ffffff;
+      z-index: 1;
+      border-radius: @concis-radius-xs;
+      color: #000000;
+      padding: @concis-transform-md @concis-transform-lg;
+      opacity: 0;
+    }
+  }
+}
+
+.concis-dark-nav {
+  .concis-nav-bar {
+    color: #ffffff;
+  }
+}
+
