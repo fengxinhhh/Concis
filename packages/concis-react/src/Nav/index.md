@@ -10,7 +10,7 @@ mobile: false
 
 # Nav
 
-Open a floating layer on the current page to carry related operations.
+Commonly used in the top navigation bar of a website.
 
 ## Basic use
 
