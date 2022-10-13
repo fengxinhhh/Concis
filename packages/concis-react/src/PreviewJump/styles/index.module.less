@@ -1,0 +1,36 @@
+@import '../../styles/common.less';
+@import './animate.less';
+
+@concis-previewJump-text-size: 20px;
+@concis-previewJump-dialog-bg: rgba(36, 36, 36, 0.7);
+
+.concis-previewJump, .concis-dark-previewJump {
+  position: relative;
+  cursor: var(--cursorType);
+  display: inline-block;
+  overflow: hidden;
+  border-radius: @concis-radius-xs;
+  .concis-preview-content {
+    width: 100%;
+    height: 100%;
+  }
+  .concis-preview-dialog {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: @concis-previewJump-dialog-bg;
+    &-content {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: @concis-previewJump-text-size;
+      transition: .2s linear;
+      .text {
+        margin-left: @concis-transform-md;
+      }
+    }
+  }
+}
+

@@ -54,3 +54,4 @@ export { default as Breadcrumb } from './Breadcrumb';
 export { default as Link } from './Link';
 export { default as Dropdown } from './Dropdown';
 export { default as Nav } from './Nav';
+export { default as PreviewJump } from './PreviewJump';
