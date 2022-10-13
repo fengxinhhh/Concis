@@ -25,14 +25,14 @@ English | [简体中文](./README.zh-CN.md)
 </div>
 
 <div align="center">
-  <img src="http://concis.org.cn/images/index.bg.jpeg" width="1200" />
+  <img src="http://concis.org.cn/images/index-bg.jpg" width="1200" />
 </div>
 
 # Features
 
 ## Comprehensive
 
-With more than 40 crafted components that you can use out of the box.
+With more than 50 crafted components that you can use out of the box.
 
 ## Customizable theme
 

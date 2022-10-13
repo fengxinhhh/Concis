@@ -25,14 +25,14 @@
 </div>
 
 <div align="center">
-  <img src="http://concis.org.cn/images/index.bg.jpeg" width="1200" />
+  <img src="http://concis.org.cn/images/index-bg.jpg" width="1200" />
 </div>
 
 # 特征
 
 ## 全面
 
-拥有 40 多种开箱即用的高质量组件，可以覆盖绝大部分业务场景。
+拥有 50 多种开箱即用的高质量组件，可以覆盖绝大部分业务场景。
 
 ## 主题配置
 
