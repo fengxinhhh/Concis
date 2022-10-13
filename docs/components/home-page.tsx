@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { context } from 'dumi/theme';
-import styles from './home-page.less';
+import './home-page.less';
 import { version } from '../../packages/concis-react/package.json';
 
 export default () => {
@@ -29,6 +29,16 @@ export default () => {
           title: '简单易用',
           txt: '在 Ant Design 上进行了自己的封装，更加易用',
         },
+        {
+          img: 'https://gw.alipayobjects.com/zos/bmw-prod/b8570f4d-c1b1-45eb-a1da-abff53159967/kj9t990h_w144_h144.png',
+          title: '自定义主题',
+          txt: '支持自定义主题，满足多样化的产品需求',
+        },
+        {
+          img: 'https://gw.alipayobjects.com/zos/bmw-prod/3863e74a-7870-4874-b1e1-00a8cdf47684/kj9t7ww3_w144_h144.png',
+          title: '移动端组件支持',
+          txt: 'concis额外支持移动端组件，提供pc/mobile双端支持',
+        },
       ];
     }
     return [
@@ -52,52 +62,60 @@ export default () => {
         title: 'Easy to use',
         txt: 'Encapsulated on Ant Design to make it easier to use',
       },
+      {
+        img: 'https://gw.alipayobjects.com/zos/bmw-prod/b8570f4d-c1b1-45eb-a1da-abff53159967/kj9t990h_w144_h144.png',
+        title: 'Custom theme',
+        txt: 'Support custom themes to meet diverse product needs',
+      },
+      {
+        img: 'https://gw.alipayobjects.com/zos/bmw-prod/3863e74a-7870-4874-b1e1-00a8cdf47684/kj9t7ww3_w144_h144.png',
+        title: 'Mobile component support',
+        txt: 'concis additionally supports mobile components and provides pc/mobile dual-end support',
+      },
     ];
   }, [locale]);
   return (
-    <div className={styles.homePage}>
+    <div className="homePage">
       {/* 内容部分 */}
-      <div className={styles.main}>
-        <div className={styles.header}>
-          <div className={styles.headerLeft}>
-            <h1 className={styles.title}>Concis</h1>
-            <p className={styles.description}>
+      <div className="main">
+        <div className="header">
+          <div className="headerLeft">
+            <h1 className="title">Concis</h1>
+            <p className="description">
               {locale === 'zh-CN'
                 ? '体验轻量级React Web开发体验'
                 : 'Experience lightweight React Web development experience'}
 
-              <span className={styles.version}>v{version}</span>
+              <span className="version">v{version}</span>
             </p>
-            <p className={styles.buttons}>
+            <p className="buttons">
               <a href="/#/guide/introduce">{locale === 'zh-CN' ? '开始' : 'Start'}</a>
-              <a href="/#/common/button">{locale === 'zh-CN' ? '组件' : 'Components'}</a>
-              <a href="https://github.com/fengxinhhh/Concis">
+              <a className="componentBtn" href="/#/common/button">
+                {locale === 'zh-CN' ? '组件' : 'Components'}
+              </a>
+              <a className="githubBtn" href="https://github.com/fengxinhhh/Concis">
                 {locale === 'zh-CN' ? '在Github上查看' : 'View on Github'}
               </a>
             </p>
           </div>
-          <div className={styles.headerRight}>
+          <div className="headerRight">
             <img
-              className={styles.headerImage}
+              className="headerImage"
               alt="header-image"
               src="http://concis.org.cn/images/concis-logo.png"
             />
-            <span className={styles.plus}>+</span>
+            <div className="headerImageBg" />
+            <span className="plus">+</span>
             <img
-              className={styles.headerImage}
+              className="headerImage"
               alt="header-image"
               src="http://concis.org.cn/images/react-icon.svg"
             />
           </div>
         </div>
         {/* 功能特性 */}
-        <div className={styles.group}>
-          <div className={styles.groupTitle}>
-            <div />
-            <span>{locale === 'zh-CN' ? '功能特性' : 'Characteristics'}</span>
-            <div />
-          </div>
-          <ul className={styles.features}>
+        <div className="group">
+          <ul className="features">
             {characteristics.map((item) => {
               return (
                 <li key={item.title}>

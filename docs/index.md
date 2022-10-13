@@ -39,13 +39,13 @@ import './site/styles.less';
 
 export default () => (
   <Section
-    title="Lazy writing, super high performance"
+    title="Questions and errors, please contact me"
     style={{ marginTop: 140, fontWeight: 'bold' }}
     titleStyle={{ paddingBottom: 140 }}
     scale={1.2}
   >
     <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://concis.org.cn/images/index-demo.jpg" />
+      <img src="http://concis.org.cn/images/wechat-self.jpg" style={{ width: '400px' }} />
     </a>
   </Section>
 );
@@ -61,13 +61,13 @@ import './site/styles.less';
 
 export default () => (
   <Section
-    title="Questions and errors, please contact me"
+    title="Thanks to all contributors"
     style={{ marginTop: 140, fontWeight: 'bold' }}
     titleStyle={{ paddingBottom: 140 }}
     scale={1.2}
   >
     <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://concis.org.cn/images/wechat-self.jpg" style={{ width: '400px' }} />
+      <img src="https://camo.githubusercontent.com/5ce8190e7e8e30339db94821680e237d1437491b835077d0069efec85fea06f4/68747470733a2f2f636f6e747269622e726f636b732f696d6167653f7265706f3d66656e6778696e6868682f636f6e636973" style={{ width: '800px' }} />
     </a>
   </Section>
 );
