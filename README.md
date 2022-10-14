@@ -6,9 +6,7 @@
 <div align="center">
   <h1>Concis</h1>
 </div>
-
 <div align="center">
-
 A Lightweight React UI components library.
 
 <img src="https://img.shields.io/github/stars/fengxinhhh/concis" alt="stars">
