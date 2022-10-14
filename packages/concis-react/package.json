@@ -1,15 +1,25 @@
 {
   "name": "concis",
   "license": "MIT",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "Concis Component library for PC",
-  "module": "./es/index.js",
-  "main": "./umd/index.js",
-  "typings": "es/index.d.ts",
+  "module": "./web-react/es/index.js",
+  "main": "./web-react/umd/index.js",
+  "types": "./web-react/es/index.d.ts",
   "authors": {
     "name": "fengxin",
     "email": "1244200081@qq.com"
   },
+  "keywords": [
+    "react",
+    "react18",
+    "reactComponent",
+    "component",
+    "components",
+    "ui",
+    "framework",
+    "frontend"
+  ],
   "scripts": {
     "build": "rollup -c ./rollup.config.js",
     "replase:patch": "npm run build && cimi patch master",

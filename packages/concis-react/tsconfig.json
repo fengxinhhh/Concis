@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
+    "declaration": true,
     "paths": {
       "tslib" : ["./node_modules/tslib/tslib.d.ts"]
     },
