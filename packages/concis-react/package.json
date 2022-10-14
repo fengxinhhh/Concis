@@ -1,10 +1,11 @@
 {
   "name": "concis",
   "license": "MIT",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Concis Component library for PC",
   "module": "./web-react/es/index.js",
   "main": "./web-react/umd/index.js",
+  "typings": "es/index.d.ts",
   "authors": {
     "name": "fengxin",
     "email": "1244200081@qq.com"
@@ -21,8 +22,6 @@
     "test:unit": "jest ./__tests__/unit --silent=false -u",
     "upgrade": "node ../../scripts/replace-version-in-pc.ts"
   },
-  "module": "es/index.js",
-  "typings": "es/index.d.ts",
   "files": [
     "web-react",
     "README.md",
