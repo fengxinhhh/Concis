@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { act } from 'react-dom/test-utils';
 import List from '../../../src/List/index';
 import Enzyme from '../../setup';
 import mountTest from '../../mountTest';
-import { act } from 'react-dom/test-utils';
 
 const { render, mount } = Enzyme;
 
@@ -304,12 +304,12 @@ interface vicDataType {
 
 describe('list', () => {
   it('check list component render correctly', () => {
-    //测试基础列表渲染数据正确
+    // 测试基础列表渲染数据正确
     const component = render(
       <List
         style={{ fontSize: '16px', width: '600px' }}
         header="List title"
-        size={'default'}
+        size="default"
         dataSource={dataSource}
         render={(item: string) => {
           return (
@@ -318,18 +318,18 @@ describe('list', () => {
             </List.Item>
           );
         }}
-      ></List>,
+      />
     );
     expect(component.find('.concis-list-item')).toHaveLength(5);
   });
 
   it('check noData list show correctly', () => {
-    //测试空列表渲染数据正确
+    // 测试空列表渲染数据正确
     const component = render(
       <List
         style={{ fontSize: '16px', width: '600px' }}
         header="List title"
-        size={'default'}
+        size="default"
         dataSource={[]}
         render={(item: string) => {
           return (
@@ -338,15 +338,15 @@ describe('list', () => {
             </List.Item>
           );
         }}
-      ></List>,
+      />
     );
     expect(component.find('.list-item')).toHaveLength(0);
   });
 
   it('check different list size show correctly', () => {
-    //测试列表size
+    // 测试列表size
     const ListSizeComponent = () => {
-      //demo
+      // demo
       const [listSize, setListSize] = useState('default');
 
       return (
@@ -368,12 +368,12 @@ describe('list', () => {
             render={(item: string) => {
               return <List.Item style={{ fontSize: '14px' }}>{item}</List.Item>;
             }}
-          ></List>
+          />
         </div>
       );
     };
     const component = mount(<ListSizeComponent />);
-    //依次测试三种size状态
+    // 依次测试三种size状态
     ['large', 'default', 'small'].forEach((size: string) => {
       act(() => {
         component.find(`.${size}`).simulate('click');
@@ -384,12 +384,12 @@ describe('list', () => {
   });
 
   it('check victurl list show correctly', () => {
-    //测试虚拟列表
+    // 测试虚拟列表
     const component = mount(
       <List
         style={{ fontSize: '16px', width: '600px' }}
         header="List title"
-        size={'default'}
+        size="default"
         dataSource={vicDataSource}
         render={(item: vicDataType) => {
           return (
@@ -401,7 +401,7 @@ describe('list', () => {
         }}
         virtualListProps
         virtualShowNum={10}
-      ></List>,
+      />
     );
     expect(component.find('.victurl-list-content')).toHaveLength(1);
     expect(component.find('.victurl-relly-content')).toHaveLength(1);
@@ -409,13 +409,13 @@ describe('list', () => {
   });
 
   it('check lazyLoad list show correctly', () => {
-    //测试懒加载列表
+    // 测试懒加载列表
     const lazyScrollToBottom = jest.fn();
     const component = mount(
       <List
         style={{ fontSize: '16px', width: '600px' }}
         header="List title"
-        size={'default'}
+        size="default"
         dataSource={vicDataSource}
         render={(item: vicDataType) => {
           return (
@@ -428,7 +428,7 @@ describe('list', () => {
         lazyLoad
         defaultShowNum={10}
         lazyScrollToBottom={lazyScrollToBottom}
-      ></List>,
+      />
     );
     expect(component.find('.concis-list-item')).toHaveLength(10);
     act(() => {

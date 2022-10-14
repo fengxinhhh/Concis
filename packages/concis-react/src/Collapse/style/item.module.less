@@ -9,28 +9,34 @@
     margin-bottom: @concis-transform-md;
     padding: @concis-transform-ms 0;
     font-size: @concis-font-md;
-    border-bottom: 1px solid rgba(229, 230, 235, 1);
+    border-bottom: 1px solid rgba(229, 230, 235, 100%);
     cursor: pointer;
+
     .left {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       .header-icon {
         font-size: @concis-font-sm;
       }
+
       .header-text {
         margin-left: @concis-transform-ms;
       }
     }
+
     .right {
       display: flex;
       align-items: center;
+
       .header-icon {
         margin-left: @concis-transform-ms;
         font-size: @concis-font-sm;
       }
     }
   }
+
   &-content {
     box-sizing: border-box;
     max-height: 0;

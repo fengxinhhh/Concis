@@ -16,22 +16,24 @@
   cursor: var(--disabled);
   opacity: var(--opacity);
   transition: 0.1s linear;
+
   &-dot {
     position: absolute;
     top: var(--dot-transformY);
     left: var(--dot-transformX);
     width: var(--dot-size);
     height: var(--dot-size);
-    background: #ffffff;
+    background: #fff;
     border-radius: @concis-radius-lg;
     transition: 0.1s linear;
   }
+
   &-child {
     position: absolute;
     top: 0;
     left: var(--child-transform);
     min-width: @concis-transform-lg;
-    color: #ffffff;
+    color: #fff;
     font-size: @concis-font-sm;
     transition: 0.1s linear;
   }

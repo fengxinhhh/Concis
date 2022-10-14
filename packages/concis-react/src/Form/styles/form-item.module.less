@@ -10,6 +10,7 @@
   display: flex;
   margin-bottom: @concis-transform-lg;
   font-size: @concis-font-md;
+
   &-label {
     position: relative;
     top: @concis-transform-xs;
@@ -17,6 +18,7 @@
     margin-right: @concis-transform-lg;
     color: #4e5969;
     text-align: right;
+
     svg {
       position: relative;
       bottom: 2px;
@@ -24,6 +26,7 @@
       color: @concis-red-color;
     }
   }
+
   &-disabled {
     position: absolute;
     top: 0;
@@ -34,6 +37,7 @@
     cursor: not-allowed;
     opacity: @concis-half-opacity;
   }
+
   .hide-rule-label,
   .show-rule-label {
     position: absolute;
@@ -44,9 +48,11 @@
     opacity: @concis-none-opacity;
     transition: 0.2s linear;
   }
+
   .hide-rule-label {
     opacity: @concis-none-opacity;
   }
+
   .show-rule-label {
     opacity: @concis-full-opacity;
   }

@@ -124,6 +124,7 @@
     "no-return-await": "off",
     "react/no-unused-prop-types": "off",
     "no-await-in-loop": "off",
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "jsx-a11y/img-redundant-alt": "off"
   }
 }

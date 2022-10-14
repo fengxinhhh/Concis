@@ -17,15 +17,15 @@
   border: 1px solid @concis-select-placeholder-border-color;
   cursor: pointer;
   transition: 0.1s linear;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
+  user-select: none;
+  user-select: none;
+  user-select: none;
+
   .disabled-selected {
     color: @concis-select-disabled-color;
   }
+
   .selected {
     display: flex;
     align-items: center;
@@ -33,28 +33,33 @@
     height: 100%;
     padding: 0 @concis-transform-xs;
     background: @concis-select-background;
+
     .size {
       margin-right: @concis-transform-xs;
     }
+
     .placeholder {
       margin-right: @concis-transform-xs;
       color: @concis-select-placeholder-border-color;
     }
+
     &:focus {
       border-color: var(--global-color);
     }
   }
+
   &:hover {
     border-color: var(--global-color);
   }
+
   input {
     border: none;
     outline: none;
   }
+
   .selectOptions {
     position: absolute;
     top: 35px;
-    z-index: 500;
     display: flex;
     flex-direction: column;
     width: @concis-select-width;
@@ -63,19 +68,23 @@
     box-shadow: 0 0 20px 4px #9aa1b126, 0 4px 80px -8px #24282f40, 0 4px 4px -2px #5b5e6926;
     transition: 0.1s linear;
     z-index: 9999;
+
     .option {
       padding: 5px 0 5px 15px;
       font-size: @concis-font-md;
       line-height: 2em;
       text-align: left;
       cursor: pointer;
+
       &:hover:not(.disabled-option) {
         font-weight: 600;
       }
     }
+
     .disabled-option {
       color: @concis-select-disabled-color;
     }
+
     .select-option {
       padding: 5px 0 5px 15px;
       color: var(--global-color);
@@ -83,6 +92,7 @@
     }
   }
 }
+
 .concis-dark-select {
   .selected,
   .selectOptions,
@@ -90,14 +100,17 @@
     color: #b0b0b0;
     background: #343436 !important;
   }
+
   .selectOptions {
     .disabled-option {
       color: #606060;
     }
   }
+
   .disabled-selected {
     color: #606060;
   }
+
   .select-option {
     background-color: #474749 !important;
   }
@@ -105,7 +118,7 @@
 
 .selectOption-enter,
 .selectOption-appear {
-  height: 0px;
+  height: 0;
   opacity: 0;
 }
 
@@ -122,7 +135,7 @@
 }
 
 .selectOption-exit-active {
-  height: 0px;
+  height: 0;
   opacity: 0;
   transition: height 200ms, opacity 100ms;
 }

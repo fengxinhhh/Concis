@@ -6,10 +6,11 @@
 .concis-dark-date-picker {
   //margin: @concis-transform-xs;
   font-size: 15px;
+
   .date-picker-select {
     display: flex;
     justify-content: space-around;
-    padding: 6px 0 6px;
+    padding: 6px 0;
     border-bottom: 1px solid #e0e0e0;
 
     .left-select,
@@ -18,6 +19,7 @@
         width: 25px;
         height: 25px;
         font-size: 13px;
+
         svg {
           position: relative;
           top: 50%;
@@ -32,17 +34,20 @@
         }
       }
     }
+
     .middle-select {
       display: flex;
       align-items: center;
     }
   }
+
   table {
     width: 100%;
     padding: 10px;
     //border-top: 1px solid #e0e0e0;
     tr {
       display: flex;
+
       td,
       th {
         display: flex;
@@ -55,13 +60,14 @@
         margin: 5px 0;
         border-radius: 50%;
         //transition: all 0.3s linear;
-        &:hover:not(th):not(.day-empty, .disable, .active) {
-          color: #ffffff;
+        &:hover:not(th, .day-empty, .disable, .active) {
+          color: #fff;
           background-image: linear-gradient(var(--checked-color), var(--checked-color));
           background-position: center;
           cursor: pointer;
         }
       }
+
       .disable:not(.day-empty) {
         color: #a8abb2;
         background-color: #f5f7fa;
@@ -69,16 +75,19 @@
         cursor: not-allowed;
         opacity: 1;
       }
+
       .active {
-        color: #ffffff;
+        color: #fff;
         background-image: linear-gradient(var(--checked-color), var(--checked-color));
       }
     }
+
     .empty-row {
       height: 42px;
     }
   }
 }
+
 .concis-date-picker .pop-dialog {
   padding: 0;
 }
@@ -88,6 +97,7 @@
     color: @concis-dark-font-color;
     background-color: transparent;
   }
+
   .disable:not(.day-empty) {
     background: #5c5c5c !important;
   }

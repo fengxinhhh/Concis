@@ -5,10 +5,9 @@
 .concis-menu,
 .concis-dark-menu {
   width: 220px;
-  padding: 2px 0px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
+  padding: 2px 0;
   user-select: none;
+
   &-menuOptions {
     padding: 0 @concis-transform-ms;
     overflow: hidden;
@@ -17,18 +16,21 @@
     cursor: pointer;
     transition: 0.2s linear;
   }
+
   &-fatherTitle,
   &-activeFatherTitle {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: @concis-option-height;
+
     .left {
       i {
         margin-right: @concis-transform-ms;
       }
     }
   }
+
   &-activeMenuOptions,
   &-childMenuOptions {
     display: flex;
@@ -42,22 +44,27 @@
     transition: 0.2s linear;
   }
 }
+
 .concis-menu {
   color: black;
-  background-color: #ffffff;
+  background-color: #fff;
+
   &-fatherTitle,
   .activeFatherTitle {
     &:hover {
       color: var(--global-color);
     }
   }
+
   .activeFatherTitle {
     color: var(--global-color);
   }
+
   &-activeMenuOptions {
     color: var(--global-color);
     background-color: var(--global-menu-option-bg);
-    :after {
+
+    ::after {
       width: 3px;
       height: @concis-option-height;
       background-color: var(--global-color);
@@ -65,23 +72,28 @@
     }
   }
 }
+
 .concis-dark-menu {
   &-fatherTitle {
     &:hover {
       color: var(--global-menu-option-bg);
     }
   }
+
   &-childMenuOptions {
-    color: #ffffff;
+    color: #fff;
+
     &:hover {
       color: var(--global-menu-option-bg);
     }
   }
+
   .active {
-    color: #ffffff !important;
+    color: #fff !important;
     background-color: var(--global-menu-option-bg);
+
     .concis-dark-menu-fatherTitle:hover {
-      color: #ffffff !important;
+      color: #fff !important;
     }
   }
 }

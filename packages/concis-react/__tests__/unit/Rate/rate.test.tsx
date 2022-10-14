@@ -24,7 +24,7 @@ describe('Rate', () => {
         .at(0)
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('color: red'),
+        ?.includes('color: red')
     );
   });
 

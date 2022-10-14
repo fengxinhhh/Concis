@@ -9,7 +9,7 @@
   justify-content: space-between;
   height: 40px;
   padding: 0 @concis-transform-lg;
-  color: #000000;
+  color: #000;
   font-size: @concis-font-md;
   background-color: #fff;
   border: 1px solid rgb(240, 240, 240);
@@ -17,6 +17,7 @@
   transform: translate(-50%, 0);
   opacity: 1;
   animation: concis-show-message 0.3s;
+
   .toast-content {
     margin: 0 @concis-transform-ms;
   }
@@ -25,6 +26,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -32,6 +34,6 @@
 
 .concis-dark-message-container {
   color: @concis-dark-font-color;
-  background-color: #000000;
+  background-color: #000;
   border: 1px solid #939393;
 }

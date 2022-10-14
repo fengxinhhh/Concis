@@ -29,7 +29,7 @@ export default function index1() {
       action="test"
       limit={3}
       multiple
-      autoUpload={true}
+      autoUpload
       accept="*"
     />
   );

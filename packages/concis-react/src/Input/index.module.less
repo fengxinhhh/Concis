@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   .input {
     box-sizing: border-box;
     padding: 4px 18px 4px 11px;
@@ -20,31 +21,23 @@
     border-radius: 2px;
     outline: none;
     transition: all 0.3s;
+
     &:hover {
       background: #e4e4e4;
     }
+
     &:focus {
-      background: #ffffff;
+      background: #fff;
       border-color: var(--focus-color);
     }
   }
+
   .input-clear {
     top: 9px;
     right: 5px;
     position: absolute;
   }
-  .input::-webkit-input-placeholder {
-    color: @concis-gray-color;
-  }
-  .input::-moz-placeholder {
-    color: @concis-gray-color;
-  }
-  .input:-moz-placeholder {
-    color: @concis-gray-color;
-  }
-  .input:-ms-input-placeholder {
-    color: @concis-gray-color;
-  }
+
   .numTags {
     position: absolute;
     right: @concis-transform-xs;
@@ -58,14 +51,17 @@
   .input {
     color: @concis-dark-font-color !important;
     background: #232323;
+
     &:hover {
       background: #282828;
     }
+
     &:focus {
       background: #232323;
       border-color: var(--focus-color);
     }
   }
+
   .input-clear {
     color: #c5c5c5;
   }

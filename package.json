@@ -4,20 +4,12 @@
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
-    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
-    "eslint": "eslint packages/concis-react/src --fix --cache --quiet --ext .js,.jsx,.ts,.tsx",
-    "pre-commit": "pnpm run eslint && pnpm run prettier"
+    "pre-commit": "pretty-quick --staged && npm run eslint && npm run stylelint",
+    "eslint": "eslint docs/ packages/concis-react/src --fix --cache --quiet --ext .js,.jsx,.ts,.tsx",
+    "stylelint": "stylelint '{packages,docs}/**/*.less' --fix"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
   },
   "license": "MIT",
   "dependencies": {
@@ -71,7 +63,9 @@
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-tsdoc": "^0.2.16",
     "lint-staged": "^10.5.4",
+    "postcss-less": "^6.0.0",
     "prettier": "^2.7.1",
+    "pretty-quick": "^3.1.3",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-transition-group": "^4.4.5",
@@ -88,6 +82,10 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.34.1",
     "rollup-plugin-uglify": "^6.0.4",
+    "stylelint": "^14.13.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^28.0.0",
+    "typescript": "4.4.4",
     "umi": "^3.5.32",
     "yorkie": "^2.0.0"
   },

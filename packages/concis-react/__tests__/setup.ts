@@ -61,7 +61,7 @@ export function setupIntersectionObserverMock({
 
     unobserve: (target: Element) => void = (element) => {
       MockIntersectionObserver.observeElement = MockIntersectionObserver.observeElement.filter(
-        (ele) => ele.element != element
+        (ele) => ele.element !== element
       );
       unobserve();
     };

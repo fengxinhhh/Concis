@@ -252,7 +252,6 @@ describe('Form', () => {
   });
 
   it('test useFormContext api correctly', () => {
-    const form = Form.useForm();
     const formRef = createRef();
     const mockFn = jest.fn();
 

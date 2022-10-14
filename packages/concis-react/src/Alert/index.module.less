@@ -21,27 +21,35 @@
   display: flex;
   border-radius: @concis-radius-xs;
   justify-content: space-between;
+
   .alert-content {
     display: flex;
     color: @concis-light-content-color;
+
     .alert-icon {
       margin-right: @concis-transform-ms;
+
       &-info {
         color: @concis-primary-color;
       }
+
       &-success {
         color: @concis-info-color;
       }
+
       &-warning {
         color: @concis-warning-color;
       }
+
       &-error {
         color: @concis-danger-color;
       }
     }
+
     .alert-text {
       display: flex;
       flex-direction: column;
+
       .title {
         font-size: @concis-font-lg;
         margin-bottom: @concis-transform-ms;
@@ -49,32 +57,41 @@
       }
     }
   }
+
   .close-icon {
     font-size: @concis-font-xs;
     cursor: pointer;
   }
 } 
+
 .concis-dark-alert-info {
   background-color: @concis-dark-info-bg;
 }
+
 .concis-dark-alert-success {
   background-color: @concis-dark-success-bg;
 }
+
 .concis-dark-alert-warning {
   background-color: @concis-dark-warning-bg;
 }
+
 .concis-dark-alert-error {
   background-color: @concis-dark-error-bg;
 }
+
 .concis-alert-info {
   background-color: @concis-light-info-bg;
 }
+
 .concis-alert-success {
   background-color: @concis-light-success-bg;
 }
+
 .concis-alert-warning {
   background-color: @concis-light-warning-bg;
 }
+
 .concis-alert-error {
   background-color: @concis-light-error-bg;
 }
@@ -82,6 +99,7 @@
 .concis-dark-alert {
   .alert-content {
     color: @concis-dark-content-color;
+
     .alert-text .title {
       color: @concis-dark-title-color;
     }

@@ -20,6 +20,7 @@
     @concis-loading-fail-center-transform,
     @concis-loading-fail-center-transform
   );
+
   .loading-container {
     position: absolute;
     top: @concis-loading-center-transform;
@@ -33,29 +34,26 @@
       @concis-loading-fail-center-transform,
       @concis-loading-fail-center-transform
     );
+
     svg {
       display: inline-block;
       color: inherit;
       font-style: normal;
       vertical-align: -2px;
-      -webkit-transform-origin: center center;
-      -ms-transform-origin: center center;
       transform-origin: center center;
       animation: arco-loading-circle 1s linear infinite;
     }
     @keyframes arco-loading-circle {
       from {
-        -ms-transform: rotate(@concis-loading-rotate-start);
-        -webkit-transform: rotate(@concis-loading-rotate-start);
         transform: rotate(@concis-loading-rotate-start);
       }
+
       to {
-        -ms-transform: rotate(@concis-loading-rotate-end);
-        -webkit-transform: rotate(@concis-loading-rotate-end);
         transform: rotate(@concis-loading-rotate-end);
       }
     }
   }
+
   .text {
     display: inline-block;
     width: 200px;
@@ -64,6 +62,7 @@
     text-align: center;
   }
 }
+
 .concis-loading-dialog {
   position: absolute;
   top: 0;
@@ -74,6 +73,7 @@
   background-color: #fff;
   opacity: 0.7;
 }
+
 .concis-dot-loading {
   position: absolute;
   top: @concis-loading-center-transform;
@@ -87,6 +87,7 @@
     @concis-loading-fail-center-transform,
     @concis-loading-fail-center-transform
   );
+
   .dot-active {
     width: @concis-dot-actived-size;
     height: @concis-dot-actived-size;
@@ -95,6 +96,7 @@
     border-radius: @concis-radius-lg;
     transition: 0.4s linear;
   }
+
   .dot {
     width: @concis-dot-size;
     height: @concis-dot-size;
@@ -105,6 +107,7 @@
     transition: 0.4s linear;
   }
 }
+
 .concis-strip-loading {
   position: absolute;
   top: @concis-loading-center-transform;
@@ -118,8 +121,10 @@
     @concis-loading-fail-center-transform,
     @concis-loading-fail-center-transform
   );
+
   .strip-list {
     --map-time: calc(var(--lineIndex) * 100ms);
+
     width: 8px;
     height: 50px;
     margin: 0 @concis-transform-xs;
@@ -131,6 +136,7 @@
     0% {
       height: 15px;
     }
+
     100% {
       height: 50px;
     }

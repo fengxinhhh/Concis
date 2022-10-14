@@ -2,7 +2,6 @@
   --border-width: 1px;
 
   position: relative;
-  border: 1px solid transparent;
   background-color: transparent;
   box-sizing: border-box;
   padding: 0 12px;
@@ -10,7 +9,7 @@
   border-radius: var(--ccsm-radius-s);
   cursor: pointer;
 
-  &:before {
+  &::before {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,7 +24,7 @@
     pointer-events: none;
   }
 
-  &:not(.ccsm-btn-disabled, .ccsm-btn-loading):active:before {
+  &:not(.ccsm-btn-disabled, .ccsm-btn-loading):active::before {
     opacity: 0.08;
   }
 }
@@ -124,7 +123,7 @@
 .ccsm-btn-shape-round {
   border-radius: 50px;
 
-  &:before {
+  &::before {
     border-radius: 50px;
   }
 }
@@ -134,7 +133,7 @@
   padding-left: 0;
   padding-right: 0;
 
-  &:before {
+  &::before {
     border-radius: 50%;
   }
 

@@ -7,6 +7,7 @@
 .concis-pagination,
 .concis-dark-pagination {
   display: flex;
+
   &-prev,
   &-next,
   &-numberBox,
@@ -21,32 +22,36 @@
     border: 1px solid #ccc;
     border-radius: @concis-radius-xs;
     cursor: pointer;
-    -moz-user-select: none;
-    -o-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    user-select: none;
+    user-select: none;
+    user-select: none;
     user-select: none;
   }
+
   &-numberBox:hover {
     color: var(--global-color);
     border: 1px solid var(--global-color);
     cursor: pointer;
   }
+
   &-disabled {
     color: #c0c4cc;
     cursor: not-allowed;
   }
+
   &-actived {
     color: var(--global-color);
     border-color: var(--global-color);
   }
+
   &-pageSizeSelect {
     min-width: @concis-pagination-select-width;
     margin-left: @concis-transform-ms;
+
     .size {
       margin-right: @concis-transform-xs;
     }
+
     .options {
       position: relative;
       top: @concis-transform-xs;
@@ -55,21 +60,26 @@
       width: @concis-pagination-select-width;
       box-shadow: 0 0 20px rgb(218, 218, 218);
       transition: 0.2s linear;
+
       .option {
         font-size: @concis-font-md;
         line-height: 2em;
         text-align: center;
+
         &:hover {
           color: var(--global-color);
         }
       }
     }
+
     &:hover {
       border: 1px solid var(--global-color);
     }
   }
+
   &-jumpBox {
     margin-left: 10px;
+
     &-jump {
       width: 40px;
       height: 25px;
@@ -78,9 +88,11 @@
       border-radius: @concis-radius-xs;
       outline-color: var(--global-color);
       transition: 0.2s linear;
+
       &:hover {
         border-color: var(--global-color);
       }
+
       &:active {
         border-color: var(--global-color);
       }
@@ -93,6 +105,7 @@
 .concis-dark-pagination-prev {
   background-color: transparent;
 }
+
 .concis-dark-pagination-jumpBox input {
   color: @concis-dark-font-color;
   background-color: #343436;

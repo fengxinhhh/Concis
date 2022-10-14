@@ -26,7 +26,7 @@ describe(`image`, () => {
         {fitList.map((fit: any) => (
           <Image src="http://concis.org.cn/images/swiper-img5.webp" fit={fit} key={fit} />
         ))}
-      </div>,
+      </div>
     );
 
     const images = Array.from(component.find('img'));
@@ -39,10 +39,10 @@ describe(`image`, () => {
     // 图片圆角测试
     const round = '10px';
     const component = mount(
-      <Image src="http://concis.org.cn/images/swiper-img5.webp" round={round} />,
+      <Image src="http://concis.org.cn/images/swiper-img5.webp" round={round} />
     );
     expect(
-      component.find('img').getDOMNode().getAttribute('style').includes(`border-radius: ${round};`),
+      component.find('img').getDOMNode().getAttribute('style').includes(`border-radius: ${round};`)
     ).toBe(true);
   });
 
@@ -54,7 +54,7 @@ describe(`image`, () => {
         src="http://concis.org.cn/images/swiper-img5.webp"
         caption={text}
         captionStyle={{ color: 'skyblue' }}
-      />,
+      />
     );
     const caption = component.find('.concis-image-caption');
     expect(caption).toHaveLength(1);
@@ -94,7 +94,7 @@ describe(`image`, () => {
       'http://concis.org.cn/images/swiper-img4.webp',
     ];
     const component = mount(
-      <Image src="http://concis.org.cn/images/swiper-img5.webp" preview={previewList} />,
+      <Image src="http://concis.org.cn/images/swiper-img5.webp" preview={previewList} />
     );
     const image = component.find('.concis-image .anticon-eye');
     image.simulate('click');
@@ -120,7 +120,7 @@ describe(`image`, () => {
           .find('img')
           .getDOMNode()
           .getAttribute('style')
-          .includes(`'transform: scale(0.9) rotate(-90deg)`),
+          .includes(`'transform: scale(0.9) rotate(-90deg)`)
       ).toBe(true);
     }, 200);
 

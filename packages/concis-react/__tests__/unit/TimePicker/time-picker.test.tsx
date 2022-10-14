@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { act } from 'react-dom/test-utils';
 import Enzyme from '../../setup';
 import mountTest from '../../mountTest';
 import TimePicker from '../../../src/TimePicker';
-import { act } from 'react-dom/test-utils';
 
 const { mount } = Enzyme;
 let container: HTMLDivElement | null = null;
@@ -26,11 +26,11 @@ describe('TimePicker', () => {
     const component = mount(<TimePicker />);
     expect(component.find('.concis-time-picker')).toHaveLength(1);
     expect(
-      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0'),
+      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0')
     ).toBe(true);
   });
   it('test TimePicker attribute correctly', () => {
-    const component = <TimePicker defaultTime="12:00:20" showClear={true} />;
+    const component = <TimePicker defaultTime="12:00:20" showClear />;
     act(() => {
       ReactDOM.render(component, container);
     });
@@ -45,11 +45,11 @@ describe('TimePicker', () => {
     const mockFnChange = jest.fn();
     const component = mount(
       <TimePicker
-        showClear={true}
+        showClear
         handleConfirm={mockFnConfirm}
         clearCallback={mockFnClear}
         changeCallback={mockFnChange}
-      />,
+      />
     );
     const hourElement = component.find('.time-panel div').at(0).find('span').at(5);
     act(() => {
@@ -92,9 +92,9 @@ describe('TimePicker', () => {
     const hourDisableElement = component.find('.time-panel div').at(0).find('span.disable');
     expect(hourDisableElement).toHaveLength(5);
     const nowHour = new Date().getHours();
-    //测试凌晨三点的active
+    // 测试凌晨三点的active
     expect(hourDisableElement.at(3).getDOMNode().getAttribute('class').trim()).toBe(
-      nowHour === 3 ? 'active disable' : 'disable',
+      nowHour === 3 ? 'active disable' : 'disable'
     );
     expect(component.find('.time-panel div').at(0).getDOMNode().getAttribute('class')).toBe(null);
   });

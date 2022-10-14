@@ -15,10 +15,12 @@
   font-size: @concis-font-sm;
   background-color: #c9cdd4;
   border-radius: @concis-radius-lg;
+
   img {
     width: 100%;
     height: 100%;
   }
+
   .button-dialog {
     position: absolute;
     right: -2px;
@@ -32,10 +34,12 @@
     border-radius: @concis-radius-lg;
     cursor: pointer;
     transition: 0.2s linear;
+
     &:hover {
       background-color: #e4e6ed;
     }
   }
+
   .dialog {
     position: absolute;
     top: 0;
@@ -45,15 +49,18 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(94, 91, 91, 0);
+    background-color: rgba(94, 91, 91, 0%);
     cursor: pointer;
     transition: 0.2s linear;
+
     .icon {
       opacity: 0;
       transition: 0.2s linear;
     }
+
     &:hover {
-      background-color: rgba(94, 91, 91, 0.7);
+      background-color: rgba(94, 91, 91, 70%);
+
       .icon {
         opacity: 0.8;
       }

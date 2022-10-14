@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+
   &-actived,
   &-noActived,
   &-disabled {
@@ -25,46 +26,57 @@
     border: 1px solid #858585;
     cursor: not-allowed;
   }
+
   &-actived {
     color: @concis-white-color;
     background: var(--global-color);
     border: 1px solid transparent;
   }
+
   &-noActived {
     color: @concis-white-color;
     background: @concis-white-color;
     border: 1px solid @concis-disabled-color;
     transition: 0.3s linear;
+
     &:hover {
       border: 1px solid #afacac;
     }
   }
+
   .text {
     margin-left: 5px;
     font-size: @concis-font-md;
   }
+
   .disabled {
     cursor: not-allowed;
   }
 }
+
 .disabled-checkbox {
   cursor: not-allowed;
   opacity: 0.3;
+
   .concis-checkbox-disabled {
     border: 1px solid #858585;
   }
 }
+
 .concis-checkGroup,
 .concis-dark-checkGroup {
   display: flex;
   cursor: pointer;
+
   .checkbox {
     display: flex;
     align-items: center;
   }
+
   .groupBox {
     margin-right: 10px;
   }
+
   .disabled {
     cursor: not-allowed;
     opacity: 0.3;

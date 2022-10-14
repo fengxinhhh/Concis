@@ -16,11 +16,13 @@
   display: flex;
   width: 100%;
   padding: 15px;
+
   &-container {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin-left: @skeleton-container-margin-left;
+
     &-line,
     &-title {
       position: relative;
@@ -31,6 +33,7 @@
       overflow: hidden;
       background: @skeleton-container-background;
       border-radius: 10px;
+
       &::after {
         position: absolute;
         top: 0;
@@ -43,10 +46,12 @@
         content: '';
       }
     }
+
     &-title {
       width: @skeleton-container-title-width;
     }
   }
+
   &-avatar {
     position: relative;
     z-index: 1;
@@ -55,6 +60,7 @@
     overflow: hidden;
     background: @skeleton-container-background;
     border-radius: 50%;
+
     &::after {
       position: absolute;
       top: 0;
@@ -68,17 +74,19 @@
     }
   }
 }
+
 .concis-skeleton-dark {
   &-avatar,
   &-container-title,
   &-container-line {
     background: #ffffff1f;
+
     &::after {
       background: linear-gradient(
         90deg,
-        hsla(0, 0%, 100%, 0),
-        hsla(0, 0%, 100%, 0.3),
-        hsla(0, 0%, 100%, 0)
+        hsla(0deg, 0%, 100%, 0%),
+        hsla(0deg, 0%, 100%, 30%),
+        hsla(0deg, 0%, 100%, 0%)
       );
     }
   }
@@ -88,6 +96,7 @@
   75% {
     left: -100%;
   }
+
   100% {
     left: 100%;
   }

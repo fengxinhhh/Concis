@@ -41,7 +41,7 @@ describe('Select', () => {
   it('test base Select correctly', () => {
     const mockFn = jest.fn();
     const component = mount(
-      <Select option={option} width={200} handleSelectCallback={mockFn} placeholder={'请选择'} />,
+      <Select option={option} width={200} handleSelectCallback={mockFn} placeholder="请选择" />
     );
     expect(component.find('.concis-select').length).toBe(1);
     component.find('.selected').simulate('click');
@@ -50,34 +50,34 @@ describe('Select', () => {
         .find('.selectOptions')
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('display: block'),
+        ?.includes('display: block')
     );
     component.find('.selectOptions .option').at(0).simulate('click');
     expect(mockFn).toBeCalled();
   });
 
   it('test disabled Select correctly', () => {
-    const component = mount(<Select option={option} width={200} disabled placeholder={'请选择'} />);
+    const component = mount(<Select option={option} width={200} disabled placeholder="请选择" />);
     expect(
       component
         .find('.concis-select')
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('cursor: not-allowed;'),
+        ?.includes('cursor: not-allowed;')
     );
     component.find('.concis-select').simulate('click');
     expect(
-      !component.find('.concis-select').getDOMNode().getAttribute('style')?.includes('height'),
+      !component.find('.concis-select').getDOMNode().getAttribute('style')?.includes('height')
     );
   });
 
   it('test loading Select correctly', () => {
-    const component = mount(<Select option={option} width={200} loading placeholder={'请选择'} />);
+    const component = mount(<Select option={option} width={200} loading placeholder="请选择" />);
     expect(component.find('.selected span').hasClass('anticon anticon-loading anticon-spin'));
   });
 
   it('test Select with disabled options correctly', () => {
-    const component = mount(<Select option={disabledOption} width={200} placeholder={'请选择'} />);
+    const component = mount(<Select option={disabledOption} width={200} placeholder="请选择" />);
     component.find('.selected').simulate('click');
     expect(
       component
@@ -85,7 +85,7 @@ describe('Select', () => {
         .at(0)
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('cursor: not-allowed; background: rgb(238, 238, 238);'),
+        ?.includes('cursor: not-allowed; background: rgb(238, 238, 238);')
     );
   });
 
@@ -99,9 +99,9 @@ describe('Select', () => {
         handleSelectCallback={selectCallback}
         handleTextChange={inputCallback}
         showSearch
-        placeholder={'请输入'}
+        placeholder="请输入"
         clearable
-      />,
+      />
     );
     component.find('.selected input').simulate('click');
     component.find('.selected input').simulate('change', {

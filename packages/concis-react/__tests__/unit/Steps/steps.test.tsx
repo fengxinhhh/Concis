@@ -52,25 +52,25 @@ describe('Steps', () => {
         <Step title="Waiting" />
         <Step title="In Process" />
         <Step title="Finished" />
-      </Steps>,
+      </Steps>
     );
     expect(wrapper.find('.concis-steps').length).toBe(1);
     expect(wrapper.find('.step-box').length).toBe(3);
     expect(
-      wrapper.find('.step-box').at(0).find('span').at(0).getDOMNode().getAttribute('class'),
+      wrapper.find('.step-box').at(0).find('span').at(0).getDOMNode().getAttribute('class')
     ).toBe('active-index');
   });
   it('test Steps event callback', () => {
-    const wrapper = mount(<MenuDemos1></MenuDemos1>);
+    const wrapper = mount(<MenuDemos1 />);
     wrapper.find('.step-box').at(1).simulate('click');
     expect(
-      wrapper.find('.step-box').at(1).find('span').at(0).getDOMNode().getAttribute('class'),
+      wrapper.find('.step-box').at(1).find('span').at(0).getDOMNode().getAttribute('class')
     ).toBe('active-index');
     expect(
-      wrapper.find('.step-box').at(0).find('span').at(0).getDOMNode().getAttribute('class'),
+      wrapper.find('.step-box').at(0).find('span').at(0).getDOMNode().getAttribute('class')
     ).toBe('anticon anticon-check');
     expect(
-      wrapper.find('.step-box').at(2).find('span').at(0).getDOMNode().getAttribute('class'),
+      wrapper.find('.step-box').at(2).find('span').at(0).getDOMNode().getAttribute('class')
     ).toBe('after-index');
     expect(wrapper.find(Steps).props().current).toBe(2);
   });

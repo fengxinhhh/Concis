@@ -14,9 +14,10 @@
     z-index: 1001;
     width: 100vw;
     height: 100vh;
-    background: rgba(29, 33, 41, 0.6);
+    background: rgba(29, 33, 41, 60%);
     transition: 0.1s linear;
   }
+
   &-content {
     position: absolute;
     top: @concis-modal-top-transform;
@@ -24,9 +25,10 @@
     z-index: 1002;
     width: var(--modal-width);
     overflow-x: auto;
-    background: #ffffff;
+    background: #fff;
     border-radius: @concis-radius-xs;
     transform: translate(-50%, -50%);
+
     &-header {
       .concis-title {
         display: flex;
@@ -35,51 +37,61 @@
         padding: @concis-transform-lg;
         font-weight: 500;
         border-bottom: 1px solid @concis-modal-light-border;
+
         .title {
           span {
             margin-left: @concis-transform-ms;
             font-size: @concis-font-lg;
           }
         }
+
         .close-icon {
           font-size: @concis-font-sm;
           cursor: pointer;
         }
       }
     }
+
     &-view {
       padding: @concis-transform-lg 24px;
       font-size: @concis-font-md;
       border-bottom: 1px solid @concis-modal-light-border;
     }
+
     &-footer {
       width: 100%;
       padding: 16px @concis-transform-lg;
       text-align: right;
+
       .button {
         .concis-button-text,
         .concis-button-primary {
           height: 30px !important;
         }
       }
+
       .cancel-btn {
         margin-right: @concis-transform-ms;
       }
     }
   }
 }
+
 .concis-dark-modal {
   &-dialog {
-    background: rgba(23, 23, 26, 0.6);
+    background: rgba(23, 23, 26, 60%);
   }
+
   &-content {
     color: #c4c4c5;
     background: #2a2a2b;
+
     &-header {
       .concis-title {
         border-bottom: 1px solid @concis-modal-dark-border;
       }
     }
+
     &-view {
       border-bottom: 1px solid @concis-modal-dark-border;
     }
