@@ -3,7 +3,7 @@ name: build_check
 on: [push, pull_request]
 
 jobs:
-  jest-test:
+  component-build-test:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
