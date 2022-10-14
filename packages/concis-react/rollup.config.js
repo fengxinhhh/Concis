@@ -12,17 +12,17 @@ export default {
   input: ['./src/index.ts'],
   output: [
     {
-      file: 'web-react/cjs.js',
+      file: 'web-react/cjs/index.js',
       format: 'cjs',
       name: 'cjs.js',
     },
     {
-      file: 'web-react/umd.js',
+      file: 'web-react/umd/index.js',
       format: 'umd',
       name: 'umd.js',
     },
     {
-      file: 'web-react/index.js',
+      file: 'web-react/es/index.js',
       format: 'es',
       name: 'index.js',
     },
