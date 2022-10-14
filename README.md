@@ -91,4 +91,6 @@ Developers interested in contributing should read the [Contributing Guide](http:
 
 Thank you to all the people who already contributed to Concis!
 
-<a href="https://github.com/fengxinhhh/concis/graphs/contributors"><img src="https://contrib.rocks/image?repo=fengxinhhh/concis" /></a>
+<a href="https://github.com/fengxinhhh/concis/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=fengxinhhh/concis" />
+</a>

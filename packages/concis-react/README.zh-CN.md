@@ -91,4 +91,6 @@ ReactDOM.render(<App />, document.getElementById('app'));
 
 感谢所有为 Concis 做过贡献的人!
 
-<a href="https://github.com/fengxinhhh/concis/graphs/contributors"><img src="https://contrib.rocks/image?repo=fengxinhhh/concis" /></a>
+<a href="https://github.com/fengxinhhh/concis/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=fengxinhhh/concis" />
+</a>
