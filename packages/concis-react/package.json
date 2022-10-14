@@ -1,10 +1,10 @@
 {
   "name": "concis",
   "license": "MIT",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Concis Component library for PC",
-  "module": "./web-react/es/index.js",
-  "main": "./web-react/umd/index.js",
+  "module": "./es/index.js",
+  "main": "./umd/index.js",
   "typings": "es/index.d.ts",
   "authors": {
     "name": "fengxin",
