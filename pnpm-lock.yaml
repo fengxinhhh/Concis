@@ -43,6 +43,7 @@ importers:
       eslint-plugin-tsdoc: ^0.2.16
       f2-touchemulator: ^0.0.1
       flex: link:umi-hd/lib/flex
+      husky: ^8.0.1
       lint-staged: ^10.5.4
       lodash: ^4.17.21
       md5: ^2.3.0
@@ -126,6 +127,7 @@ importers:
       eslint-plugin-prettier: 3.4.1_rpj2lnfnqon5xeujjqgixljdgq
       eslint-plugin-react: 7.30.1_eslint@7.32.0
       eslint-plugin-tsdoc: 0.2.16
+      husky: 8.0.1
       lint-staged: 10.5.4
       postcss-less: 6.0.0_postcss@8.4.16
       prettier: 2.7.1
@@ -7356,6 +7358,12 @@ packages:
 
   /humps/2.0.1:
     resolution: {integrity: sha512-E0eIbrFWUhwfXJmsbdjRQFQPrl5pTEoKlz163j1mTqqUnU9PgR4AgB8AIITzuB3vLBdxZXyZ9TDIrwB2OASz4g==}
+
+  /husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
 
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
