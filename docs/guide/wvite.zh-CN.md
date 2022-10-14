@@ -25,7 +25,7 @@ npm i --save-dev concis
 ## 引入和使用
 
 ```tsx pure
-import { Button } from 'concis/web-react';
+import { Button } from 'concis';
 
 const App = () => (
   <div className="App">

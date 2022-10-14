@@ -31,7 +31,7 @@ npm i --save-dev @types/react @types/react-dom @types/node
 在项目根目录新建 typings.d.ts 对于默认引入模块的类型配置：
 
 ```tsx pure
-declare module 'concis/web-react';
+declare module 'concis';
 ```
 
 ## 安装
@@ -47,7 +47,7 @@ npm i --save-dev concis
 在项目中新建一个 tsx 文件并写入：
 
 ```tsx pure
-import { Button, DatePicker, Loading } from 'concis/web-react';
+import { Button, DatePicker, Loading } from 'concis';
 
 const App = () => (
   <div className="App">

@@ -33,7 +33,7 @@ This completes the installation of all the dependent packages of TypeScript in t
 Create a new typeings.d.ts in the project root directory. For the type configuration of the default import module:
 
 ```tsx pure
-declare module 'concis/web-react';
+declare module 'concis';
 ```
 
 ## Installation
@@ -51,7 +51,7 @@ npm i --save-dev concis
 Create a new tsx file in the project and write it to:
 
 ```tsx pure
-import { Button, DatePicker, Loading } from 'concis/web-react';
+import { Button, DatePicker, Loading } from 'concis';
 
 const App = () => (
   <div className="App">

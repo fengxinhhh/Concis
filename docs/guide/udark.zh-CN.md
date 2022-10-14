@@ -29,7 +29,7 @@ Concis 内置提供了暗黑模式的主题，暗黑模式的优势在于在弱�
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { GlobalConfig } from 'concis/web-react';
+import { GlobalConfig } from 'concis';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

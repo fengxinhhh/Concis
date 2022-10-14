@@ -8,7 +8,7 @@ nav:
 
 ## Concis
 
-concis 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。
+concis 是一套轻量级 React UI 组件库，同时支持多模块，专注于支持传统组件外推出各类个性化组件，主要用于研发企业级中后台产品。
 
 ## 特性
 
@@ -37,6 +37,10 @@ concis 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研
 - React-Native。
 
 对于 IE 系列浏览器，需要提供相应的 Polyfill 支持，建议使用 @babel/preset-env 来解决浏览器兼容问题。如果你在使用 umi，可以直接使用 targets 配置。
+
+## 多模块支持
+
+Concis 支持`cjs`、`ejs`、`umd` 三种模块，定制化你的Web运行环境，同时Concis采用 `TypeScript` 编写，在使用过程中可以享受智能提示。
 
 ## 如何贡献？
 

@@ -38,4 +38,29 @@ export default () => (
 
 你可以在组件页面的左侧菜单查看组件列表，比如 <a href="http://concis.org.cn/#/zh-CN/common/button">Button</a> 组件，组件文档中提供了各类演示，最下方有组件 API 文档可以查阅。在代码演示部分找到第一个例子，点击右下角的图标展开代码。
 
-然后依照演示代码的写法，在之前的 codesandbox 里修改 index.js，首先在 import 内引入其他组件：
+然后依照演示代码的写法，在之前的 codesandbox 里修改 index.js，首先在 import 内引入其他组件。
+
+## 多模块支持
+
+Concis 在打包产物中提供了`ejs`、`cjs`、`umd` 三种模块化文件，默认为 `umd` 模块文件，如果想使用其他模块的组件可以通过如下:
+
+使用cjs模块:
+
+```tsx pure
+import React from 'react';
+import { Button } from 'concis/web-react/cjs';
+```
+
+使用ejs模块:
+
+```tsx pure
+import React from 'react';
+import { Button } from 'concis/web-react/es';
+```
+
+## 内置类型提示
+
+Concis 采用 `TypeScript` 编写，并将每个组件的类型向外暴露，在编写Concis组件的过程中，你可以通过悬浮组件标签上获得提示，就像这样:
+
+<img src="http://concis.org.cn/images/ts-alias.jpg" />
+

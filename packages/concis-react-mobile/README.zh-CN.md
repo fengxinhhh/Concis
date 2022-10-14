@@ -56,7 +56,7 @@ yarn add concis@latest
 ```typescript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from 'concis/web-react';
+import { Button } from 'concis';
 import 'concis/web-react/style/index.css';
 
 function App() {

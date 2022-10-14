@@ -17,7 +17,7 @@ mobile: false
 GlobalConfig 使用 React 的 context 特性，只需在应用外围包裹一次即可全局生效。
 
 ```tsx pure
-import { GlobalConfig } from 'concis/web-react';
+import { GlobalConfig } from 'concis';
 
 // ...
 

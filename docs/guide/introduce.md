@@ -8,7 +8,7 @@ nav:
 
 ## Concis
 
-concis is a React UI component library based on the Ant Design design system, which is mainly used to develop enterprise-level mid- and back-end products.
+Concis is a lightweight React UI component library that supports multiple modules. It focuses on supporting the introduction of various personalized components outside of traditional components, and is mainly used to develop enterprise level middle and back office products.
 
 ## Characteristics
 
@@ -37,6 +37,10 @@ concis is a React UI component library based on the Ant Design design system, wh
 - React-Native。
 
 For IE series browsers, you need to provide corresponding Polyfill support. It is recommended to use @ babel/preset env to solve the browser compatibility problem. If you are using umi, you can directly use the targets configuration.
+
+## Multi module support
+
+Concis supports three modules: `cjs`、`ejs`、`umd`. It customizes your Web running environment. Concis is written in `TypeScript`. You can enjoy intelligent prompts during use.
 
 ## How to contribute?
 

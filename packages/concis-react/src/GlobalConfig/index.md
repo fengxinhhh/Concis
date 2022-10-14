@@ -17,7 +17,7 @@ Provides unified global configuration for components.
 GlobalConfig uses the context feature of React, which only needs to be wrapped around the application once to take effect globally.
 
 ```tsx pure
-import { GlobalConfig } from 'concis/web-react';
+import { GlobalConfig } from 'concis';
 
 // ...
 

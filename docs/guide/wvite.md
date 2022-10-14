@@ -30,7 +30,7 @@ npm i --save-dev concis
 
 ```tsx pure
 
-import { Button } from `concis/web-react`;
+import { Button } from `concis`;
 
 const App = () => (
 

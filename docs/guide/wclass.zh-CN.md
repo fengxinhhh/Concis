@@ -13,7 +13,7 @@ nav:
 配置方法很简单，同样在 <a href="http://concis.org.cn/#/zh-CN/common/global-config">GlobalConfig</a> 组件中提供了 prefixCls 属性，全局配置即可，就像这样：
 
 ```tsx pure
-import { GlobalConfig } from 'concis/web-react';
+import { GlobalConfig } from 'concis';
 
 // ...
 

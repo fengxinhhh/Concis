@@ -8,8 +8,6 @@
     "eslint": "eslint packages/concis-react/src --fix --cache --quiet --ext .js,.jsx,.ts,.tsx",
     "pre-commit": "pnpm run eslint && pnpm run prettier"
   },
-  "module": "es/index.js",
-  "typings": "es/index.d.ts",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
