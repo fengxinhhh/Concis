@@ -8,9 +8,6 @@
     "eslint": "eslint docs/ packages/concis-react/src --fix --cache --quiet --ext .js,.jsx,.ts,.tsx",
     "stylelint": "stylelint '{packages,docs}/**/*.less' --fix"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
   "license": "MIT",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
