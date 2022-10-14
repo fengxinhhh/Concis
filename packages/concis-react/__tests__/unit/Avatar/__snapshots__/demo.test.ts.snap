@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Avatar demo render Avatar/demos//Users/apple/Desktop/Concis/packages/concis-react/src/Avatar/demos/index2.tsx correctly 1`] = `
+exports[`Avatar demo render Avatar demo 2 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],
@@ -36,7 +36,7 @@ LoadedCheerio {
 }
 `;
 
-exports[`Avatar demo render Avatar/demos//Users/apple/Desktop/Concis/packages/concis-react/src/Avatar/demos/index3.tsx correctly 1`] = `
+exports[`Avatar demo render Avatar demo 3 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],
@@ -72,7 +72,7 @@ LoadedCheerio {
 }
 `;
 
-exports[`Avatar demo render Avatar/demos//Users/apple/Desktop/Concis/packages/concis-react/src/Avatar/demos/index4.tsx correctly 1`] = `
+exports[`Avatar demo render Avatar demo 4 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],
@@ -108,7 +108,7 @@ LoadedCheerio {
 }
 `;
 
-exports[`Avatar demo render Avatar/demos//Users/apple/Desktop/Concis/packages/concis-react/src/Avatar/demos/index5.tsx correctly 1`] = `
+exports[`Avatar demo render Avatar demo 5 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],

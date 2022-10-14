@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Comment demo render Comment/demos//Users/apple/Desktop/Concis/packages/concis-react/src/Comment/demos/index2.tsx correctly 1`] = `
+exports[`Comment demo render Comment demo 2 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],
@@ -36,7 +36,7 @@ LoadedCheerio {
 }
 `;
 
-exports[`Comment demo render Comment/demos//Users/apple/Desktop/Concis/packages/concis-react/src/Comment/demos/index3.tsx correctly 1`] = `
+exports[`Comment demo render Comment demo 3 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],
@@ -72,7 +72,7 @@ LoadedCheerio {
 }
 `;
 
-exports[`Comment demo render Comment/demos//Users/apple/Desktop/Concis/packages/concis-react/src/Comment/demos/index4.tsx correctly 1`] = `
+exports[`Comment demo render Comment demo 4 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],
@@ -108,7 +108,7 @@ LoadedCheerio {
 }
 `;
 
-exports[`Comment demo render Comment/demos//Users/apple/Desktop/Concis/packages/concis-react/src/Comment/demos/index5.tsx correctly 1`] = `
+exports[`Comment demo render Comment demo 5 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],

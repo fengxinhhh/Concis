@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Empty demo render Empty/demos//Users/apple/Desktop/Concis/packages/concis-react/src/Empty/demos/index2.tsx correctly 1`] = `
+exports[`Empty demo render Empty demo 2 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],
@@ -36,7 +36,7 @@ LoadedCheerio {
 }
 `;
 
-exports[`Empty demo render Empty/demos//Users/apple/Desktop/Concis/packages/concis-react/src/Empty/demos/index3.tsx correctly 1`] = `
+exports[`Empty demo render Empty demo 3 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],

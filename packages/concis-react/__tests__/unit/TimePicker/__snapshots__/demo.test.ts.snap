@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TimePicker demo render TimePicker/demos//Users/apple/Desktop/Concis/packages/concis-react/src/TimePicker/demos/index2.tsx correctly 1`] = `
+exports[`TimePicker demo render TimePicker demo 2 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],
@@ -36,7 +36,7 @@ LoadedCheerio {
 }
 `;
 
-exports[`TimePicker demo render TimePicker/demos//Users/apple/Desktop/Concis/packages/concis-react/src/TimePicker/demos/index3.tsx correctly 1`] = `
+exports[`TimePicker demo render TimePicker demo 3 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],
@@ -72,7 +72,7 @@ LoadedCheerio {
 }
 `;
 
-exports[`TimePicker demo render TimePicker/demos//Users/apple/Desktop/Concis/packages/concis-react/src/TimePicker/demos/index4.tsx correctly 1`] = `
+exports[`TimePicker demo render TimePicker demo 4 correctly 1`] = `
 LoadedCheerio {
   "0": Document {
     "children": Array [],

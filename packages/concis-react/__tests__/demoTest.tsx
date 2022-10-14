@@ -11,8 +11,8 @@ function demoTest(component: string) {
     files.splice(5, 2);
   }
   describe(`${component} demo`, () => {
-    files.forEach((file) => {
-      it(`render ${component}/demos/${file} correctly`, () => {
+    files.forEach((file, index) => {
+      it(`render ${component} demo ${index + 2} correctly`, () => {
         const demo = require(file).default;
         const component = render(demo);
         expect(component).toMatchSnapshot();

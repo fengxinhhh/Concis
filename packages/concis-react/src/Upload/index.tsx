@@ -9,7 +9,6 @@ import {
   CloseCircleOutlined,
 } from '@ant-design/icons';
 import { isNumber } from 'util';
-
 import Button from '../Button';
 import { FileItem, UploadProps } from './interface';
 import List from '../List';
@@ -114,8 +113,9 @@ const Upload = (props: UploadProps) => {
         onExceedLimit && onExceedLimit(fileList, files as FileList);
         break;
       }
+
       list.push({
-        uid: crypto.randomUUID(),
+        uid: String(Math.random() * 1000),
         status: 'unUpload',
         name: files[i].name,
         file: files[i],
