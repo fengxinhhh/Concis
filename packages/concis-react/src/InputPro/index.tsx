@@ -49,7 +49,7 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
     setIsFocus(false);
   };
   const chooseVal = <T extends string, U>(val: T, disabled: U): void => {
-    (event as any).stopPropagation();
+    (event as any)?.stopPropagation();
     if (disabled) return;
     setValue(val);
     handleClick && handleClick(val);

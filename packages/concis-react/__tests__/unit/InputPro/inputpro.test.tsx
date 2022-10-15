@@ -1,5 +1,6 @@
 import React from 'react';
 import InputPro from '../../../src/InputPro/index';
+import { sleep } from '../../sleep';
 import { optionParams } from '../../../src/InputPro/interface';
 import Enzyme from '../../setup';
 import mountTest from '../../mountTest';
@@ -23,19 +24,17 @@ const option: optionParams[] = [
   },
 ];
 describe('InputPro', () => {
-  it('test base InputPro show correctly', () => {
+  it('test base InputPro show correctly', async () => {
     const component = mount(<InputPro option={option} />);
 
     expect(component.find('.concis-input-pro').length).toBe(1);
     component.find('.concis-input-pro input').simulate('focus');
+    await sleep(200);
     expect(component.find('.concis-input-pro-tragger').length).toBe(1);
-    setTimeout(() => {
-      component.find('.concis-input-pro .concis-input-pro-tragger .option').at(0).simulate('click');
-      expect(component.find('.concis-input-pro-tragger').length).toBe(0);
-      expect(component.find('.concis-input-pro input').getDOMNode().getAttribute('value')).toBe(
-        'TypeScript'
-      );
-    }, 200);
+    component.find('.concis-input-pro .concis-input-pro-tragger span').at(1).simulate('click');
+    expect(component.find('.concis-input-pro input').getDOMNode().getAttribute('value')).toBe(
+      'TypeScript',
+    );
   });
 
   it('test different align show correctly', () => {
@@ -48,7 +47,7 @@ describe('InputPro', () => {
         .find('.concis-input-pro-tragger')
         .getDOMNode()
         .getAttribute('style')
-        .includes('left: 25%; top: calc(100% + 5px)')
+        .includes('left: 25%; top: calc(100% + 5px)'),
     ).toBe(true);
     component.setProps({ align: 'top' });
     expect(
@@ -61,7 +60,7 @@ describe('InputPro', () => {
           .find('.concis-input-pro-tragger')
           .getDOMNode()
           .getAttribute('style')
-          .includes('bottom: calc(100% + 5px);')
+          .includes('bottom: calc(100% + 5px);'),
     ).toBe(true);
     component.setProps({ align: 'left' });
     expect(
@@ -74,7 +73,7 @@ describe('InputPro', () => {
           .find('.concis-input-pro-tragger')
           .getDOMNode()
           .getAttribute('style')
-          .includes('top: -120%;')
+          .includes('top: -120%;'),
     ).toBe(true);
     component.setProps({ align: 'right' });
     expect(
@@ -87,7 +86,7 @@ describe('InputPro', () => {
           .find('.concis-input-pro-tragger')
           .getDOMNode()
           .getAttribute('style')
-          .includes('top: -120%;')
+          .includes('top: -120%;'),
     ).toBe(true);
   });
 

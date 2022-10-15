@@ -38,7 +38,7 @@ export default defineConfig({
         ],
       },
       {
-        title: 'GitHub',
+        title: 'gitHub',
         path: 'https://github.com/fengxinhhh/Concis',
       },
     ],
@@ -58,8 +58,8 @@ export default defineConfig({
         ],
       },
       {
-          title: 'GitHub',
-          path: 'https://github.com/fengxinhhh/Concis',
+        title: 'GitHub',
+        path: 'https://github.com/fengxinhhh/Concis',
       },
     ],
     // {

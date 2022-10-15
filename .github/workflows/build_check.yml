@@ -12,5 +12,5 @@ jobs:
       - name: install
         run: yarn install
 
-      - name: test:unit
+      - name: run build
         run: cd packages/concis-react && yarn install && yarn build

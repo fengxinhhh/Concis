@@ -1,4 +1,3 @@
-import React from 'react';
 import Notification from '../../../src/Notification/index';
 import Enzyme from '../../setup';
 
@@ -22,10 +21,10 @@ describe('Notification', () => {
     });
     expect(document.querySelectorAll('.concis-notifica-container')).toHaveLength(1);
     expect(
-      document.querySelectorAll('.concis-notifica-container .title-content')[0].innerHTML
+      document.querySelectorAll('.concis-notifica-container .title-content')[0].innerHTML,
     ).toBe('Notification');
     expect(
-      document.querySelectorAll('.concis-notifica-container .notification-content')[0].innerHTML
+      document.querySelectorAll('.concis-notifica-container .notification-content')[0].innerHTML,
     ).toBe('test');
   });
 
@@ -58,27 +57,32 @@ describe('Notification', () => {
           case 0:
             expect(
               dom.getAttribute('style')?.includes('top') &&
-                dom.getAttribute('style')?.includes('left')
+                dom.getAttribute('style')?.includes('left'),
             ).toBe(true);
             break;
           case 1:
             expect(
               dom.getAttribute('style')?.includes('top') &&
-                dom.getAttribute('style')?.includes('right')
+                dom.getAttribute('style')?.includes('right'),
             ).toBe(true);
             break;
           case 2:
             expect(
               dom.getAttribute('style')?.includes('bottom') &&
-                dom.getAttribute('style')?.includes('left')
+                dom.getAttribute('style')?.includes('left'),
             ).toBe(true);
             break;
           case 3:
             expect(
               dom.getAttribute('style')?.includes('bottom') &&
-                dom.getAttribute('style')?.includes('right')
+                dom.getAttribute('style')?.includes('right'),
             ).toBe(true);
             break;
+          default:
+            expect(
+              dom.getAttribute('style')?.includes('top') &&
+                dom.getAttribute('style')?.includes('left'),
+            ).toBe(true);
         }
       }, 500);
     }
@@ -103,12 +107,12 @@ describe('Notification', () => {
     expect(document.querySelector('.concis-notifica-container .notification-footer')).toBeDefined();
     expect(
       document.querySelector('.concis-notifica-container .notification-footer .concis-button-text')
-        ?.innerHTML
+        ?.innerHTML,
     ).toBe('取消');
     expect(
       document.querySelector(
-        '.concis-notifica-container .notification-footer .concis-button-primary'
-      )?.innerHTML
+        '.concis-notifica-container .notification-footer .concis-button-primary',
+      )?.innerHTML,
     ).toBe('确认');
   });
 
@@ -124,7 +128,7 @@ describe('Notification', () => {
       document
         .querySelector('.concis-notifica-container')
         ?.getAttribute('style')
-        ?.includes('width: 500px, font-size: 15px')
+        ?.includes('width: 500px, font-size: 15px'),
     );
   });
 });
