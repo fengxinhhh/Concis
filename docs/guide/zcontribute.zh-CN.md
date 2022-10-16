@@ -71,16 +71,28 @@ pnpm run test:e2e          //e2e测试，对应/__tests__/e2e
 
 当你 clone 了 Concis 的代码后并使用 npm install 安装完所有依赖后，你还可以运行如下几个常见的命令：
 
-- npm start 在本地运行 Concis 网站。
+- pnpm start 在本地运行 Concis 网站。
 
-- npm test:jest 测试所有包的 unit、e2e 测试。
+- pnpm test:jest 测试所有包的 unit、e2e 测试。
 
-- npm run docs:build 打包网站 Web 包。
+- pnpm docs:build 打包网站 Web 包。
 
 对于组件库 npm 包，在 packages 目录下对应的子包中的 package.json 中可以查看相应命令。
 
+## 本地体验
+
+在 example 文件夹中，有一个 `vite` + `react` 的工程运行环境，你可以在该环境中体验 `concis` 组件，在项目根目录运行命令:
+
+```tsx pure
+pnpm example:dev
+```
+
+访问`http://localhost:5173`。
+
+<img src="http://concis.org.cn/images/example-demo.jpg" />
+
 ## 问题反馈
 
-如遇到任何使用问题或改善意见，欢迎来用户交流群吐槽。
+如遇到任何使用问题或改善意见，欢迎联系留言。
 
 <img src="http://concis.org.cn/images/wechat-self.jpg" width="50%" />

@@ -72,6 +72,18 @@ function App() {
 ReactDOM.render(<App />, document.getElementById('app'));
 ```
 
+# 本地体验
+
+在 example 文件夹中，有一个 `vite` + `react` 的工程运行环境，你可以在该环境中体验 `concis` 组件，在项目根目录运行命令:
+
+```tsx pure
+pnpm example:dev
+```
+
+访问`http://localhost:5173`。
+
+<img src="http://concis.org.cn/images/example-demo.jpg" />
+
 # 相关链接
 
 - [官网](http://concis.org.cn/#/)
@@ -87,7 +99,7 @@ ReactDOM.render(<App />, document.getElementById('app'));
 
 # 参与贡献
 
-贡献之前请先阅读[贡献指南](./CONTRIBUTING.zh-CN.md)。
+贡献之前请先阅读[贡献指南](http://concis.org.cn/#/guide/zcontribute)。
 
 感谢所有为 Concis 做过贡献的人!
 

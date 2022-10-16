@@ -76,4 +76,34 @@ Please follow the commonly used branch guidelines, use the keywords feat, fix bu
 
 ## Recommendations and bug fixes
 
-If you have any good ideas, such as adding new components and repairing styles
+If you have any good ideas, such as new components, style fixes, project architecture design, you can go to <a href="https://github.com/fengxinhhh/Concis/issues">github issue</a> Report and we will respond positively on the same day.
+
+## Development Process
+
+After you have cloned the Concis code and installed all dependencies with npm install, you can also run the following common commands:
+
+- pnpm start runs the Concis website locally.
+
+- pnpm test:jest tests unit, e2e tests for all packages.
+
+- pnpm docs:build to package the website web package.
+
+For the component library npm package, you can view the corresponding command in package.json in the corresponding subpackage in the packages directory.
+
+## Local experience
+
+In the example folder, there is a `vite` + `react` project runtime environment, in which you can experience the `concis` component, run the command in the project root directory:
+
+```tsx pure
+pnpm example:dev
+```
+
+Visit `http://localhost:5173`.
+
+<img src="http://concis.org.cn/images/example-demo.jpg" />
+
+## Feedback
+
+f you encounter any problems or suggestions for improvement, please contact and leave a message.
+
+<img src="http://concis.org.cn/images/wechat-self.jpg" width="50%" />
