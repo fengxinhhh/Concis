@@ -1,4 +1,4 @@
-import React, { useEffect, FC, memo, useState, useContext, CSSProperties } from 'react';
+import React, { useEffect, useState, useContext, CSSProperties, forwardRef } from 'react';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import chunk from 'lodash/chunk';
 import Input from '../../Input';
@@ -54,7 +54,7 @@ interface YearItemProps {
   disable: boolean;
 }
 
-const YearPicker: FC<YearPickerProps> = (props) => {
+const YearPicker = (props, ref) => {
   const {
     className,
     style,
@@ -84,8 +84,8 @@ const YearPicker: FC<YearPickerProps> = (props) => {
             value: year + i,
           };
         }),
-        3
-      )
+        3,
+      ),
     );
   }, [year]);
   useEffect(() => {
@@ -125,11 +125,12 @@ const YearPicker: FC<YearPickerProps> = (props) => {
       content={
         <div
           className={classNames}
+          ref={ref}
           style={
             {
               '--checked-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
+                globalColor,
               ),
               ...style,
             } as any
@@ -180,4 +181,4 @@ const YearPicker: FC<YearPickerProps> = (props) => {
   );
 };
 
-export default memo(YearPicker);
+export default forwardRef<unknown, YearPickerProps>(YearPicker);

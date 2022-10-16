@@ -6,6 +6,7 @@ export default function MenuDemos1() {
     <>
       <Popover
         type="click"
+        style={{ padding: '0 0 15px 15px' }}
         align="right"
         dialogWidth={300}
         content={

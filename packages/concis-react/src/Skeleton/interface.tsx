@@ -1,10 +1,10 @@
 import { CSSProperties } from 'react';
 
-interface SkeletonProps<T> {
+interface SkeletonProps {
   /**
    * @description 自定义类名
    */
-  className?: T;
+  className?: string;
   /**
    * @description 自定义样式
    */

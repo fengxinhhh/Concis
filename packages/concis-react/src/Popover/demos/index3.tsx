@@ -6,6 +6,7 @@ export default function MenuDemos1() {
     <Space>
       <Popover
         type="click"
+        style={{ padding: '0 0 15px 15px' }}
         align="bottom"
         content={
           <>
@@ -21,6 +22,7 @@ export default function MenuDemos1() {
       </Popover>
       <Popover
         type="click"
+        style={{ padding: '0 0 15px 15px' }}
         align="top"
         content={
           <>
@@ -36,6 +38,7 @@ export default function MenuDemos1() {
       </Popover>
       <Popover
         type="click"
+        style={{ padding: '0 0 15px 15px' }}
         align="left"
         content={
           <>
@@ -51,6 +54,7 @@ export default function MenuDemos1() {
       </Popover>
       <Popover
         type="click"
+        style={{ padding: '0 0 15px 15px' }}
         align="right"
         content={
           <>

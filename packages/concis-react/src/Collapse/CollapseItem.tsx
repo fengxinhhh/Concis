@@ -1,4 +1,4 @@
-import React, { FC, memo, useMemo, useEffect, useContext, useState } from 'react';
+import React, { useMemo, useEffect, useContext, useState, forwardRef } from 'react';
 import { CaretDownOutlined, CaretRightOutlined, CaretLeftOutlined } from '@ant-design/icons';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -8,7 +8,7 @@ import './style/item.module.less';
 import useStateCallback from '../common_utils/hooks/useStateCallback';
 import { ctx } from './index';
 
-const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
+const CollapseItem = (props, ref) => {
   const { children, className, header, disabled = false, listKey, extra } = props;
 
   const [contentDomHeight, setContentDomHeight] = useState(0);
@@ -28,7 +28,7 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
       (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight &&
         setContentDomHeight(
           (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight +
-            30
+            30,
         );
     }
   }, [activeKeyList]);
@@ -78,9 +78,9 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
       setActiveKeyList((oldAList: Array<string | number>) => {
         oldAList.splice(
           oldAList.findIndex(
-            (item: number | string, i: number | string) => Number(i) + 1 === listKey
+            (item: number | string, i: number | string) => Number(i) + 1 === listKey,
           ),
-          1
+          1,
         );
         return [...oldAList.sort()];
       });
@@ -146,8 +146,9 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
       );
     }
   }, [headerAlign, headerHeight, disabled]);
+
   return (
-    <div className={classNames}>
+    <div className={classNames} ref={ref}>
       {renderHeader}
       <div className="concis-collapse-item-content" style={headerHeight}>
         {lazyLoad ? hasOpen && children : children}
@@ -156,4 +157,4 @@ const CollapseItem: FC<CollapseItemProps> = (props: CollapseItemProps) => {
   );
 };
 
-export default memo(CollapseItem);
+export default forwardRef<unknown, CollapseItemProps>(CollapseItem);

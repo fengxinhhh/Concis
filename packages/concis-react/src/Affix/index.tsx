@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, forwardRef } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -51,7 +51,7 @@ interface offsetProps {
   bottom?: number | string;
   position?: string;
 }
-const Affix: FC<AffixProps> = (props) => {
+const Affix = (props, ref) => {
   const {
     children,
     className,
@@ -159,6 +159,7 @@ const Affix: FC<AffixProps> = (props) => {
   return (
     <div
       className={classNames}
+      ref={ref}
       style={{
         ...(affixElOffset as React.HtmlHTMLAttributes<any>),
         ...style,
@@ -169,4 +170,4 @@ const Affix: FC<AffixProps> = (props) => {
   );
 };
 
-export default memo(Affix);
+export default forwardRef<unknown, AffixProps>(Affix);

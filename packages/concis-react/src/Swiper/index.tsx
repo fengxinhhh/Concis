@@ -1,6 +1,4 @@
 import React, {
-  FC,
-  memo,
   Fragment,
   useState,
   useEffect,
@@ -8,6 +6,7 @@ import React, {
   useRef,
   useContext,
   CSSProperties,
+  forwardRef,
 } from 'react';
 import { RightCircleOutlined, LeftCircleOutlined } from '@ant-design/icons';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -99,7 +98,7 @@ interface imgOptions {
   };
 }
 
-const Swiper: FC<swiperProps> = (props) => {
+const Swiper = (props, ref) => {
   const {
     imgList,
     className,
@@ -387,7 +386,7 @@ const Swiper: FC<swiperProps> = (props) => {
 
       return 'option';
     },
-    [rightTransform]
+    [rightTransform],
   );
   const cardImgStyle = useCallback(
     (option: number) => {
@@ -426,7 +425,7 @@ const Swiper: FC<swiperProps> = (props) => {
         };
       }
     },
-    [cardImgTransform]
+    [cardImgTransform],
   );
   const toggleCard = (styles: any) => {
     // 卡片轮播手动切换
@@ -1024,6 +1023,7 @@ const Swiper: FC<swiperProps> = (props) => {
         <div
           className={classNames}
           style={{ width: `${pictureSize}px`, height: `${height}px`, ...style }}
+          ref={ref}
         >
           <div
             className="swiperList"
@@ -1062,6 +1062,7 @@ const Swiper: FC<swiperProps> = (props) => {
         <div
           className={classNames}
           style={{ height: `${height}px`, width: `${pictureSize * 2}px`, ...style }}
+          ref={ref}
         >
           <div
             className="center-pic"
@@ -1105,4 +1106,4 @@ const Swiper: FC<swiperProps> = (props) => {
   );
 };
 
-export default memo(Swiper);
+export default forwardRef<unknown, swiperProps>(Swiper);

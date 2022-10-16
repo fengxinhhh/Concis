@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, memo, useMemo, useRef } from 'react';
+import React, { useContext, useEffect, useMemo, useRef, forwardRef } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -6,7 +6,7 @@ import { ctx } from './group';
 import { avatarProps, avatarStyles } from './interface';
 import './styles/avatar.module.less';
 
-const Avatar: FC<avatarProps> = (props: avatarProps) => {
+const Avatar = (props, ref) => {
   const {
     children,
     className,
@@ -76,7 +76,7 @@ const Avatar: FC<avatarProps> = (props: avatarProps) => {
   };
 
   return (
-    <div className={classNames} style={formatStyle}>
+    <div className={classNames} style={formatStyle} ref={ref}>
       {children && (children as any).type === 'img' ? (
         children
       ) : (
@@ -106,4 +106,4 @@ const Avatar: FC<avatarProps> = (props: avatarProps) => {
   );
 };
 
-export default memo(Avatar);
+export default forwardRef<HTMLElement, avatarProps>(Avatar);

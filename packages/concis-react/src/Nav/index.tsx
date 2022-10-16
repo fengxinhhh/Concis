@@ -1,4 +1,12 @@
-import React, { useContext, useState, useCallback, createRef, useRef, useEffect } from 'react';
+import React, {
+  useContext,
+  useState,
+  useCallback,
+  createRef,
+  useRef,
+  useEffect,
+  forwardRef,
+} from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { NavProps, lineStyleProps, dialogStyleProps, navDataOption } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -6,7 +14,7 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './styles/index.module.less';
 
-const Nav = (props: NavProps) => {
+const Nav = (props, ref) => {
   const { className, style, navData, navContent, leftSlot, rightSlot } = props;
 
   const [visible, setVisible] = useState(false);
@@ -100,7 +108,7 @@ const Nav = (props: NavProps) => {
   };
 
   return (
-    <div className={classNames} style={style}>
+    <div className={classNames} style={style} ref={ref}>
       <div className="concis-nav-bar" ref={widthRef}>
         {leftSlot && (
           <div className="concis-nav-left" ref={leftNavRef}>
@@ -155,4 +163,4 @@ const Nav = (props: NavProps) => {
   );
 };
 
-export default Nav;
+export default forwardRef<unknown, NavProps>(Nav);

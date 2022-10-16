@@ -1,4 +1,4 @@
-import React, { FC, memo, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, forwardRef } from 'react';
 import { TextareaProps } from './interface';
 import { globalCtx } from '../../GlobalConfig';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
@@ -6,7 +6,8 @@ import cs from '../../common_utils/classNames';
 import './index.module.less';
 
 type NativeTextareaProps = Omit<React.TextareaHTMLAttributes<HTMLElement>, 'type'>;
-const TextArea: FC<TextareaProps & NativeTextareaProps> = (props) => {
+
+const TextArea = (props, ref) => {
   const {
     className,
     moreStyle,
@@ -77,6 +78,7 @@ const TextArea: FC<TextareaProps & NativeTextareaProps> = (props) => {
         onClick={txaHandleClick}
         onCompositionStart={onCompositionStartTxa}
         onCompositionEnd={onCompositionEndTxa}
+        ref={ref}
       />
       {showClear && (
         <span
@@ -110,4 +112,4 @@ const TextArea: FC<TextareaProps & NativeTextareaProps> = (props) => {
     </div>
   );
 };
-export default memo(TextArea);
+export default forwardRef<unknown, NativeTextareaProps & TextareaProps>(TextArea);

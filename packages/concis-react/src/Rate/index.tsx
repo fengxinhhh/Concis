@@ -1,11 +1,10 @@
 import React, {
-  FC,
   useState,
   useEffect,
-  memo,
   useCallback,
   useContext,
   CSSProperties,
+  forwardRef,
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -53,7 +52,7 @@ interface rateProps {
    */
   chooseCallback?: Function;
 }
-const Rate: FC<rateProps> = (props: rateProps) => {
+const Rate = (props, ref) => {
   const {
     num = 5,
     className,
@@ -150,7 +149,7 @@ const Rate: FC<rateProps> = (props: rateProps) => {
                 next = 0;
               }
               return (pre as number) + (next as number);
-            })
+            }),
           );
         setLogStarShowStatus((oldArr: any): Array<boolean | string> => {
           // 清除
@@ -185,8 +184,8 @@ const Rate: FC<rateProps> = (props: rateProps) => {
                 next = 0;
               }
               return (pre as number) + (next as number);
-            }
-          )
+            },
+          ),
         );
     }
   };
@@ -211,11 +210,11 @@ const Rate: FC<rateProps> = (props: rateProps) => {
     (i: number) => {
       return { color: starShowStatus[i] ? starColor : '#ccc' };
     },
-    [starShowStatus]
+    [starShowStatus],
   );
 
   return (
-    <div className={classNames} style={style}>
+    <div className={classNames} style={style} ref={ref}>
       <div className="rate-container" onMouseLeave={leaveRate} onMouseEnter={enterRate}>
         {new Array(num).fill('').map((ra, i) => {
           return (
@@ -252,4 +251,4 @@ const Rate: FC<rateProps> = (props: rateProps) => {
     </div>
   );
 };
-export default memo(Rate);
+export default forwardRef<unknown, rateProps>(Rate);

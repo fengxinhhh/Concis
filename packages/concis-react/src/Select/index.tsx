@@ -1,12 +1,11 @@
 import React, {
-  FC,
   useMemo,
   useEffect,
   useState,
   useCallback,
-  memo,
   useContext,
   CSSProperties,
+  forwardRef,
 } from 'react';
 import { DownOutlined, UpOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
@@ -77,7 +76,7 @@ interface SelectProps {
   handleTextChange?: Function;
 }
 
-const Select: FC<SelectProps> = (props: SelectProps) => {
+const Select = (props, ref) => {
   const {
     option,
     className,
@@ -177,7 +176,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
         handleTextChange(e.target.value);
       }
     },
-    [selected]
+    [selected],
   );
   const clearSearchSelect = (e: React.SyntheticEvent) => {
     e.stopPropagation();
@@ -219,7 +218,7 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
         </div>
         <CSSTransition
           in={visible}
-          timeout={100}
+          timeout={400}
           appear
           mountOnEnter
           classNames="selectOption"
@@ -269,8 +268,10 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
           ...ownsWidth,
           ...disabledStyle,
           '--global-color': disabled ? '#ccc' : globalColor || '#325DFF',
+          '--option-size': `${option?.length * 33 || 0}px`,
         } as any
       }
+      ref={ref}
     >
       <div
         className={`selected ${disabled ? 'disabled-selected' : ''}`}
@@ -330,4 +331,4 @@ const Select: FC<SelectProps> = (props: SelectProps) => {
     </div>
   );
 };
-export default memo(Select);
+export default forwardRef<unknown, SelectProps>(Select);

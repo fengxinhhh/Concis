@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useContext, useMemo, forwardRef } from 'react';
 import lodash from 'lodash';
 import { CSSTransition } from 'react-transition-group';
 import { CloseOutlined } from '@ant-design/icons';
@@ -17,7 +17,7 @@ function isPromiseFn(fn: Function): boolean {
   return false;
 }
 
-const Drawer = (props: DrawerProps) => {
+const Drawer = (props, ref) => {
   const {
     className,
     style,
@@ -163,7 +163,7 @@ const Drawer = (props: DrawerProps) => {
   }, [align]);
 
   return (
-    <div className={classNames} style={style}>
+    <div className={classNames} style={style} ref={ref}>
       <CSSTransition
         in={wrapperVisible}
         timeout={200}
@@ -243,4 +243,4 @@ const Drawer = (props: DrawerProps) => {
   );
 };
 
-export default Drawer;
+export default forwardRef<unknown, DrawerProps>(Drawer);

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState, useMemo, useContext } from 'react';
+import React, { useEffect, useRef, useState, useMemo, useContext, forwardRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import {
   UploadOutlined,
@@ -18,7 +18,7 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 
-const Upload = (props: UploadProps) => {
+const Upload = (props, ref) => {
   const {
     accept,
     multiple = false,
@@ -201,7 +201,7 @@ const Upload = (props: UploadProps) => {
     );
   }, [fileList]);
   return (
-    <div className={classNames} style={style}>
+    <div className={classNames} style={style} ref={ref}>
       <input
         accept={accept}
         multiple={multiple}
@@ -234,4 +234,4 @@ const Upload = (props: UploadProps) => {
     </div>
   );
 };
-export default memo(Upload);
+export default forwardRef<unknown, UploadProps>(Upload);

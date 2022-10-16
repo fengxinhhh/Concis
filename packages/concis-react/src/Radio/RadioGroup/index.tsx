@@ -1,4 +1,4 @@
-import React, { FC, useState, memo, useCallback, useContext, CSSProperties } from 'react';
+import React, { useState, useCallback, useContext, CSSProperties, forwardRef } from 'react';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
@@ -22,7 +22,7 @@ interface RadioProps {
   disabled: Boolean;
 }
 
-const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
+const RadioGroup = (props, ref) => {
   const {
     children,
     style,
@@ -84,7 +84,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
       }
       return 'groupStyle';
     },
-    [children, boxStyle, value, selectIndex]
+    [children, boxStyle, value, selectIndex],
   );
 
   return (
@@ -96,6 +96,7 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
           '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor),
         } as any
       }
+      ref={ref}
     >
       {renderOptions.map((item: any, index: number) => {
         return boxStyle ? (
@@ -158,4 +159,4 @@ const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
   );
 };
 
-export default memo(RadioGroup);
+export default forwardRef<unknown, RadioGroupProps>(RadioGroup);

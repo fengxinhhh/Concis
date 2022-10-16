@@ -1,4 +1,4 @@
-import React, { FC, useState, useContext, useEffect, memo } from 'react';
+import React, { useState, useContext, useEffect, forwardRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import {
   EyeOutlined,
@@ -17,7 +17,7 @@ import useOverFlowScroll from '../common_utils/hooks/useOverFlowScroll';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-const Image: FC<ImageProps> = (props) => {
+const Image = (props, ref) => {
   const {
     src,
     alt,
@@ -41,7 +41,7 @@ const Image: FC<ImageProps> = (props) => {
     prefixCls,
     className,
     `concis-${darkTheme ? 'dark-' : ''}image`,
-    `${preview ? 'concis-preview-image' : ''}`
+    `${preview ? 'concis-preview-image' : ''}`,
   );
 
   // 显示预览大图
@@ -145,7 +145,7 @@ const Image: FC<ImageProps> = (props) => {
 
   return (
     <>
-      <div className={classNames} style={{ ...style }}>
+      <div className={classNames} style={{ ...style }} ref={ref}>
         <img
           src={src}
           alt={alt}
@@ -251,4 +251,4 @@ const Image: FC<ImageProps> = (props) => {
   );
 };
 
-export default memo(Image);
+export default forwardRef<unknown, ImageProps>(Image);

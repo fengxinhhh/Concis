@@ -6,7 +6,7 @@
     "docs:build": "dumi build",
     "examples:dev": "cd examples && yarn && yarn dev",
     "pre-commit": "pretty-quick --staged && npm run eslint && npm run stylelint",
-    "eslint": "eslint docs/ packages/concis-react/src --fix --cache --quiet --ext .js,.jsx,.ts,.tsx",
+    "eslint": "eslint docs/ packages/concis-react/src --cache --quiet --ext .js,.jsx,.ts,.tsx",
     "stylelint": "stylelint '{packages,docs}/**/*.less' --fix",
     "prepare": "husky install"
   },

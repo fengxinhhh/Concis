@@ -1,12 +1,11 @@
 import React, {
-  FC,
   useState,
   useEffect,
-  memo,
   useCallback,
   useMemo,
   useContext,
   CSSProperties,
+  forwardRef,
 } from 'react';
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -69,7 +68,7 @@ interface RenderOptions {
   children?: Array<any> | null | undefined;
 }
 
-const Menu: FC<MenuProps> = (props: MenuProps) => {
+const Menu = (props, ref) => {
   const [nowActiveMainKey, setNowActiveMainKey] = useState(''); // 选中的一级菜单key
   const [nowActiveKey, setNowActiveKey] = useState(''); // 选中的子菜单key
   const [parentMenuHeightList, setParentMenuHeightList] = useState<any>({}); // 父菜单高度集合
@@ -92,12 +91,12 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
         initList[key].height = initList[key].childNum + 1;
         if (initList[key].children.length > 0) {
           initList[key].children.map(
-            (item: any) => (item.height = `${(item.childNum + 1) * 50}px`)
+            (item: any) => (item.height = `${(item.childNum + 1) * 50}px`),
           );
           initList[key].height += initList[key].children.reduce(
             (pre: MenuHeightProps, next: MenuHeightProps) => {
               return (pre.childNum as number) + (next.childNum as number);
-            }
+            },
           );
         }
         initList[key].height = `${initList[key].height * 50}px`;
@@ -111,7 +110,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
   const initParentMenuHeight = (
     item: Array<RenderOptions>,
     obj: any,
-    fatherKey: string | number
+    fatherKey: string | number,
   ) => {
     // 初始化父级菜单高度
     item?.forEach((m) => {
@@ -182,12 +181,12 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
         if (
           refreshObject[key].children &&
           refreshObject[key].children.findIndex(
-            (item: MenuHeightProps) => item.key === cMenu.key
+            (item: MenuHeightProps) => item.key === cMenu.key,
           ) !== -1
         ) {
           // 找出是哪个一级菜单的children
           const childIndex = refreshObject[key].children.findIndex(
-            (item: MenuHeightProps) => item.key === cMenu.key
+            (item: MenuHeightProps) => item.key === cMenu.key,
           );
           refreshObject[key].children[childIndex].height =
             refreshObject[key].children[childIndex].height === '50px'
@@ -198,7 +197,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
           parentHeight += refreshObject[key].children.reduce(
             (pre: MenuHeightProps, next: MenuHeightProps) => {
               return Number(pre.height.split('px')[0]) + Number(next.height.split('px')[0]);
-            }
+            },
           );
           refreshObject[key].height = parentHeight;
         }
@@ -210,7 +209,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
         if (
           parentMenuHeightList[key].children &&
           parentMenuHeightList[key].children.findIndex(
-            (item: MenuHeightProps) => item.key === fKey
+            (item: MenuHeightProps) => item.key === fKey,
           ) !== -1
         ) {
           setNowActiveMainKey(parentMenuHeightList[key].key);
@@ -234,7 +233,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
       // 第二级菜单高度
       for (const i in parentMenuHeightList) {
         const childIndex = parentMenuHeightList[i].children?.findIndex(
-          (item: RenderOptions) => item.key === key
+          (item: RenderOptions) => item.key === key,
         );
         if (childIndex !== -1) {
           return {
@@ -246,7 +245,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
         height: '50px',
       };
     },
-    [parentMenuHeightList]
+    [parentMenuHeightList],
   );
   const customWidth = useMemo(() => {
     if (width) {
@@ -322,6 +321,7 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
             : '#e6f7ff',
         } as any
       }
+      ref={ref}
     >
       {items?.map((m: any) => {
         return (
@@ -354,4 +354,4 @@ const Menu: FC<MenuProps> = (props: MenuProps) => {
   );
 };
 
-export default memo(Menu);
+export default forwardRef<unknown, MenuProps>(Menu);

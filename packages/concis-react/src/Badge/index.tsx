@@ -1,11 +1,11 @@
-import React, { FC, memo, useMemo, useContext } from 'react';
+import React, { useMemo, useContext, forwardRef } from 'react';
 import { badgeProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-const Badge: FC<badgeProps> = (props) => {
+const Badge = (props, ref) => {
   const {
     children,
     className,
@@ -59,6 +59,7 @@ const Badge: FC<badgeProps> = (props) => {
         <div
           className={classNames}
           style={{ ...style, ...({ '--global-color': globalColor || '#f53f3f' } as any) }}
+          ref={ref}
         >
           {children}
           {dot ? (
@@ -83,6 +84,7 @@ const Badge: FC<badgeProps> = (props) => {
             ...countStyle,
             ...{ '--global-color': globalColor || '#f53f3f' },
           }}
+          ref={ref}
         >
           {computedCount}
         </div>
@@ -91,4 +93,4 @@ const Badge: FC<badgeProps> = (props) => {
   );
 };
 
-export default memo(Badge);
+export default forwardRef<unknown, badgeProps>(Badge);

@@ -1,12 +1,12 @@
-import React, { useMemo, useContext, CSSProperties } from 'react';
-import { ButtonProps, ButtonGroupProps } from './interface';
+import React, { useMemo, useContext, CSSProperties, forwardRef } from 'react';
+import { ButtonProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import Group from './group';
 import './index.module.less';
 
-const Button = (props: ButtonProps) => {
+const Button = (props, ref) => {
   const {
     type,
     className,
@@ -61,6 +61,7 @@ const Button = (props: ButtonProps) => {
     }
     return size;
   }, [width, height, circle, dashed, globalColor]);
+
   const clickButton: React.MouseEventHandler<HTMLElement> = (event: any) => {
     handleClick && handleClick(event);
   };
@@ -69,6 +70,7 @@ const Button = (props: ButtonProps) => {
     <div
       className={classNames}
       style={{ '--loading-icon-color': type === 'text' ? '#000000' : '#ffffff' } as any}
+      ref={ref}
     >
       <button
         className={buttonStyle}
@@ -98,8 +100,14 @@ const Button = (props: ButtonProps) => {
   );
 };
 
-const GroupComponent = React.forwardRef<unknown, ButtonGroupProps>(Group);
-GroupComponent.displayName = 'ButtonGroup';
-Button.Group = GroupComponent;
+const forwardRefButton = forwardRef<unknown, ButtonProps>(Button);
 
-export default Button;
+const ButtonComponent = forwardRefButton as typeof forwardRefButton & {
+  Group: typeof Group;
+};
+
+ButtonComponent.Group = Group;
+
+ButtonComponent.displayName = 'Button';
+
+export default ButtonComponent;

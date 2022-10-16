@@ -1,4 +1,4 @@
-import React, { FC, useMemo, memo, useContext, CSSProperties } from 'react';
+import React, { useMemo, useContext, CSSProperties, forwardRef } from 'react';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
@@ -10,7 +10,7 @@ interface SliderProps {
   extraStyle?: CSSProperties;
   children?: Element | undefined | String | any;
 }
-const Slider: FC<SliderProps> = (props: SliderProps) => {
+const Slider = (props, ref) => {
   const { className, row, extraStyle } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
@@ -33,9 +33,9 @@ const Slider: FC<SliderProps> = (props: SliderProps) => {
   }, [extraStyle]);
 
   return (
-    <div className={classNames} style={{ ...sliderRow, ...propsStyle }}>
+    <div className={classNames} style={{ ...sliderRow, ...propsStyle }} ref={ref}>
       {props.children}
     </div>
   );
 };
-export default memo(Slider);
+export default forwardRef<unknown, SliderProps>(Slider);

@@ -1,4 +1,4 @@
-import React, { memo, ReactNode, useContext, FC, CSSProperties } from 'react';
+import React, { ReactNode, useContext, CSSProperties, forwardRef } from 'react';
 import './index.module.less';
 import { globalCtx } from '../GlobalConfig';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -46,7 +46,7 @@ type CommentProps = {
    */
   align?: 'left' | 'right';
 };
-const Comment: FC<CommentProps> = (props: CommentProps) => {
+const Comment = (props, ref) => {
   const {
     className,
     style,
@@ -70,12 +70,13 @@ const Comment: FC<CommentProps> = (props: CommentProps) => {
         {
           '--global-color': getRenderColor(
             (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-            globalColor
+            globalColor,
           ),
           '--header-align': align === 'left' ? 'flex-start' : 'space-between',
           ...style,
         } as any
       }
+      ref={ref}
     >
       <div className="avatar">{avatar}</div>
       <div className="comment-content">
@@ -94,4 +95,4 @@ const Comment: FC<CommentProps> = (props: CommentProps) => {
   );
 };
 
-export default memo(Comment);
+export default forwardRef<unknown, CommentProps>(Comment);

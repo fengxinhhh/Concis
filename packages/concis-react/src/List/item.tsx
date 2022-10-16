@@ -1,4 +1,4 @@
-import React, { FC, memo, useMemo, useContext } from 'react';
+import React, { useMemo, useContext, forwardRef } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -6,7 +6,7 @@ import { listItemProps } from './interface';
 import { ctx } from './index';
 import './style/item.module.less';
 
-const Item: FC<listItemProps> = (props) => {
+const Item = (props, ref) => {
   const { children, className, style = {} } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
@@ -33,10 +33,10 @@ const Item: FC<listItemProps> = (props) => {
     return defaultStyles;
   }, [size]);
   return (
-    <div className={classNames} style={listItemStyle}>
+    <div className={classNames} style={listItemStyle} ref={ref}>
       {children}
     </div>
   );
 };
 
-export default memo(Item);
+export default forwardRef<unknown, listItemProps>(Item);

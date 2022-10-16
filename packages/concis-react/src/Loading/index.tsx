@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, Fragment, useMemo, useContext } from 'react';
+import React, { useEffect, useState, Fragment, useMemo, useContext, forwardRef } from 'react';
 import { LoadingProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -7,7 +7,7 @@ import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../common_utils/getRenderColor';
 import './index.module.less';
 
-const Loading: FC<LoadingProps> = (props: LoadingProps) => {
+const Loading = (props, ref) => {
   const {
     type = 'default',
     className,
@@ -63,10 +63,11 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
               ...loadingStyle,
               '--global-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
+                globalColor,
               ),
             } as any
           }
+          ref={ref}
         >
           <div className="loading-container" style={loadingStyle}>
             {icon || (
@@ -96,10 +97,11 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
             {
               '--global-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
+                globalColor,
               ),
             } as any
           }
+          ref={ref}
         >
           {new Array(3).fill('').map((item, index) => {
             return (
@@ -119,10 +121,11 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
             {
               '--global-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
+                globalColor,
               ),
             } as any
           }
+          ref={ref}
         >
           {new Array(6).fill('').map((item, index) => {
             return (
@@ -144,4 +147,4 @@ const Loading: FC<LoadingProps> = (props: LoadingProps) => {
   );
 };
 
-export default Loading;
+export default forwardRef<HTMLDivElement, LoadingProps>(Loading);

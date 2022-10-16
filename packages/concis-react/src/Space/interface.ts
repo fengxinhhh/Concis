@@ -8,7 +8,7 @@ type spaceAlignParams = {
   alignItems?: any;
 };
 
-interface SpaceProps<T> {
+interface SpaceProps {
   children?: ReactNode;
   /**
    * @description 自定义样式
@@ -37,7 +37,7 @@ interface SpaceProps<T> {
    * @description 环绕间距
    * @default false
    */
-  wrap?: T;
+  wrap?: boolean;
 }
 
 export type { SpaceProps, sizeType, alignType, spaceAlignParams };

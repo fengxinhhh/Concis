@@ -1,12 +1,11 @@
 import React, {
-  FC,
-  memo,
   Fragment,
   useState,
   useEffect,
   useCallback,
   useContext,
   CSSProperties,
+  forwardRef,
 } from 'react';
 import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
@@ -64,7 +63,7 @@ export interface treeNode {
   children?: Array<treeNode>;
 }
 
-const Tree: FC<treeProps> = (props) => {
+const Tree = (props, ref) => {
   const {
     width = '200',
     className,
@@ -179,18 +178,18 @@ const Tree: FC<treeProps> = (props) => {
           updateVal = updateVal.split(',');
           updateVal.splice(
             activedVal.split(',').findIndex((t) => t === clickTreeNode.title),
-            1
+            1,
           );
           updateVal = updateVal.join(',');
           setActivedVal(updateVal);
           chooseCallback && chooseCallback(updateVal);
         } else {
           setActivedVal(
-            activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`
+            activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`,
           );
           chooseCallback &&
             chooseCallback(
-              activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`
+              activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`,
             );
         }
       } else {
@@ -247,7 +246,7 @@ const Tree: FC<treeProps> = (props) => {
       }
       return theme === 'light' ? '#000000' : '#ffffffe6';
     },
-    [activedVal]
+    [activedVal],
   );
 
   const clearCallback = () => {
@@ -292,7 +291,7 @@ const Tree: FC<treeProps> = (props) => {
 
   return (
     <Fragment>
-      <div className={classNames} style={style} onClick={(e) => e.stopPropagation()}>
+      <div className={classNames} style={style} ref={ref} onClick={(e) => e.stopPropagation()}>
         <Input
           moreStyle={avaSearch ? {} : { caretColor: 'transparent' }}
           placeholder={avaSearch ? '请输入' : ''}
@@ -334,4 +333,4 @@ const Tree: FC<treeProps> = (props) => {
   );
 };
 
-export default memo(Tree);
+export default forwardRef<unknown, treeProps>(Tree);

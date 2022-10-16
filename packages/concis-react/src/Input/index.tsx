@@ -1,4 +1,4 @@
-import React, { FC, useState, useMemo, useContext, useEffect, memo, useRef } from 'react';
+import React, { useState, useMemo, useContext, useEffect, forwardRef } from 'react';
 import { EyeOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
 import { InputProps } from './interface';
 import { ctx } from '../Form';
@@ -8,7 +8,7 @@ import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLElement>, 'type'>; // 原生Input接口
-const Input: FC<InputProps & NativeInputProps> = (props) => {
+const Input = (props, ref) => {
   const {
     className,
     style,
@@ -31,6 +31,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     defaultValue,
     isFather = false,
   } = props;
+
   const [iptValue, setIptValue] = useState<string | number>(defaultValue || '');
   const [pwdIptState, setPwdIptState] = useState(true); // 密码框切换状态
 
@@ -39,7 +40,6 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}input`);
 
   const formCtx: any = useContext(ctx);
-  const iptRef = useRef(null);
 
   useEffect(() => {
     // 用于监听Form组件的重置任务
@@ -141,7 +141,7 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
         onFocus={focusIpt}
         onKeyUp={(e) => handleKeyDown && handleKeyDown(e)}
         onClick={iptHandleClick}
-        ref={iptRef}
+        ref={ref}
       />
       {
         // 可清除
@@ -185,4 +185,5 @@ const Input: FC<InputProps & NativeInputProps> = (props) => {
     </div>
   );
 };
-export default memo(Input);
+
+export default forwardRef<unknown, NativeInputProps & InputProps>(Input);

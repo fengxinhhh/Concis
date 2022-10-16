@@ -1,11 +1,11 @@
-import React, { memo, FC, useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import { EmptyProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-const Empty: FC<EmptyProps> = (props) => {
+const Empty = (props, ref) => {
   const { className, style, icon, description = '暂无数据' } = props;
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
@@ -13,7 +13,7 @@ const Empty: FC<EmptyProps> = (props) => {
   const classNames = cs(prefixCls, className, darkTheme ? 'concis-dark-empty' : 'concis-empty');
 
   return (
-    <div className={classNames} style={style}>
+    <div className={classNames} style={style} ref={ref}>
       {icon || (
         <svg
           fill="none"
@@ -32,4 +32,4 @@ const Empty: FC<EmptyProps> = (props) => {
   );
 };
 
-export default memo(Empty);
+export default forwardRef<unknown, EmptyProps>(Empty);

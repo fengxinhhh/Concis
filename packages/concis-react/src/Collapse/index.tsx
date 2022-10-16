@@ -1,4 +1,4 @@
-import React, { FC, memo, useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, forwardRef } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -8,7 +8,7 @@ import './style/index.module.less';
 
 export const ctx = createContext<any>({} as any); // 顶层通信装置
 
-const Collapse: FC<CollapseProps> = (props) => {
+const Collapse = (props, ref) => {
   const {
     children,
     style,
@@ -50,6 +50,7 @@ const Collapse: FC<CollapseProps> = (props) => {
                     : '1px solid rgba(229, 230,235,1)',
               }
         }
+        ref={ref}
       >
         {children}
       </div>
@@ -57,4 +58,8 @@ const Collapse: FC<CollapseProps> = (props) => {
   );
 };
 
-export default memo(Collapse);
+const collapseComponent = forwardRef<unknown, CollapseProps>(Collapse);
+
+collapseComponent.displayName = 'Collapse';
+
+export default collapseComponent;

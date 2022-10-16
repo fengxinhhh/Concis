@@ -1,4 +1,4 @@
-import React, { Children, useContext, Fragment } from 'react';
+import React, { Children, useContext, Fragment, forwardRef } from 'react';
 import { BreadcrumbProps } from './interface';
 import BreadcrumbItem from './item';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -6,7 +6,7 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-const Breadcrumb = (props: BreadcrumbProps) => {
+const Breadcrumb = (props: BreadcrumbProps, ref) => {
   const { children, className, style, separator = '/', maxCount } = props;
   const childrenList = Children.toArray(children);
 
@@ -15,11 +15,11 @@ const Breadcrumb = (props: BreadcrumbProps) => {
   const classNames = cs(
     prefixCls,
     className,
-    darkTheme ? 'concis-dark-breadcrumb' : 'concis-breadcrumb'
+    darkTheme ? 'concis-dark-breadcrumb' : 'concis-breadcrumb',
   );
 
   return (
-    <div className={classNames} style={style}>
+    <div className={classNames} style={style} ref={ref}>
       {maxCount && maxCount < childrenList.length
         ? childrenList.slice(0, maxCount).map((child, index) => {
             return (
@@ -48,6 +48,13 @@ const Breadcrumb = (props: BreadcrumbProps) => {
   );
 };
 
-Breadcrumb.Item = BreadcrumbItem;
+const forwardRefBreadcrumb = forwardRef<unknown, BreadcrumbProps>(Breadcrumb);
 
-export default Breadcrumb;
+const BreadcrumbComponent = forwardRefBreadcrumb as typeof forwardRefBreadcrumb & {
+  Item: typeof BreadcrumbItem;
+};
+
+BreadcrumbComponent.displayName = 'Breadcrumb';
+BreadcrumbComponent.Item = BreadcrumbItem;
+
+export default BreadcrumbComponent;

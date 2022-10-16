@@ -1,4 +1,4 @@
-import React, { createRef, useContext, useEffect, useRef, useState } from 'react';
+import React, { createRef, useContext, useEffect, useRef, useState, memo, FC } from 'react';
 import lodash from 'lodash';
 import { CSSTransition } from 'react-transition-group';
 import addEventListener from '../common_utils/dom/addEventListener';
@@ -28,7 +28,7 @@ const defaultChildren = (
   </div>
 );
 
-const BackTop = (props: BackTopProps) => {
+const BackTop: FC<BackTopProps> = (props) => {
   const [visible, setVisible] = useState(false);
   const ref = createRef<HTMLDivElement>();
   const scrollEventRef = useRef<any>();
@@ -37,7 +37,7 @@ const BackTop = (props: BackTopProps) => {
   const classNames = cs(
     prefixCls,
     props.className,
-    darkTheme ? 'concis-dark-back-top' : 'concis-back-top'
+    darkTheme ? 'concis-dark-back-top' : 'concis-back-top',
   );
 
   // acquire default container
@@ -105,4 +105,4 @@ const BackTop = (props: BackTopProps) => {
   );
 };
 
-export default BackTop;
+export default memo(BackTop);

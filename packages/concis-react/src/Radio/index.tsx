@@ -1,4 +1,4 @@
-import React, { FC, memo, CSSProperties, ReactNode } from 'react';
+import React, { CSSProperties, ReactNode, forwardRef } from 'react';
 
 interface RadioProps {
   children: ReactNode;
@@ -40,14 +40,14 @@ interface RadioProps {
    */
   onChange?: Function;
 }
-const Radio: FC<RadioProps> = (props: RadioProps) => {
+const Radio = (props, ref) => {
   const { children, className, style } = props;
 
   return (
-    <div className={className} style={style}>
+    <div className={className} style={style} ref={ref}>
       {children}
     </div>
   );
 };
 
-export default memo(Radio);
+export default forwardRef<unknown, RadioProps>(Radio);

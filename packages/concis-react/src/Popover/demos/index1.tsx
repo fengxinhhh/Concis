@@ -9,6 +9,7 @@ export default function MenuDemos1() {
     <>
       <Popover
         type="hover"
+        style={{ padding: '0 0 15px 15px' }}
         content={
           <>
             <p style={{ color: '#1d2129', fontSize: '16px' }}>Title</p>

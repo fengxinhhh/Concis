@@ -1,4 +1,4 @@
-import React, { useState, FC, useMemo, memo, useContext, CSSProperties } from 'react';
+import React, { useState, useMemo, useContext, CSSProperties, forwardRef } from 'react';
 import { EllipsisOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Select } from '..';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -53,7 +53,8 @@ interface PaginationProps {
    */
   changePageSizeCallback?: Function;
 }
-const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
+
+const Pagination = (props, ref) => {
   const {
     className,
     style,
@@ -63,7 +64,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
     pageSizeOptions,
     showJumpInput,
     showSizeChanger,
-    defaultIndex,
+    defaultIndex = 1,
   } = props;
 
   const [nowIndex, setNowIndex] = useState<number>(defaultIndex || 1);
@@ -133,7 +134,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
         setPageRenderArray(
           pageRenderArray.map((item: number) => {
             return item - 1;
-          })
+          }),
         );
       } else if (nowIndex - 5 <= 4) {
         // 开头几页翻页的情况，回到第一页
@@ -163,7 +164,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
         setPageRenderArray(
           pageRenderArray.map((item: number) => {
             return item + 1;
-          })
+          }),
         );
       }
     }
@@ -184,7 +185,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
       setPageRenderArray(
         pageRenderArray.map((item: number) => {
           return item - 5;
-        })
+        }),
       );
       updateIndex = nowIndex - 5;
     }
@@ -210,7 +211,7 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
       setPageRenderArray(
         pageRenderArray.map((item: number) => {
           return item + 5;
-        })
+        }),
       );
       updateIndex = nowIndex + 5;
     }
@@ -257,10 +258,11 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
           ...style,
           '--global-color': getRenderColor(
             (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-            globalColor
+            globalColor,
           ),
         } as any
       }
+      ref={ref}
     >
       <div
         className={
@@ -353,8 +355,4 @@ const Pagination: FC<PaginationProps> = (props: PaginationProps) => {
   );
 };
 
-Pagination.defaultProps = {
-  defaultIndex: 1,
-};
-
-export default memo(Pagination);
+export default forwardRef<unknown, PaginationProps>(Pagination);

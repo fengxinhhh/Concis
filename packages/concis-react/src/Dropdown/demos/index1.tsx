@@ -1,7 +1,10 @@
 import React from 'react';
 import { Dropdown } from 'concis';
+import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function DropdownDemo1() {
+  process.env.NODE_ENV === 'production' && usePageListener('Dropdown');
+
   const data = [
     {
       content: 'Beijing',

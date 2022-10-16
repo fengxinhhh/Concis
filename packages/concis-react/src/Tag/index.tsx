@@ -1,4 +1,4 @@
-import React, { FC, memo, useContext, useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState, forwardRef } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
 import { TagProps } from './interface';
 import cs from '../common_utils/classNames';
@@ -6,7 +6,7 @@ import { globalCtx } from '../GlobalConfig';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import './index.module.less';
 
-const Tag: FC<TagProps> = (props) => {
+const Tag = (props, ref) => {
   const {
     children,
     className,
@@ -72,7 +72,7 @@ const Tag: FC<TagProps> = (props) => {
   }, [color, tagBackground, visible, size]);
 
   return show ? (
-    <div className={classNames} style={mergeStyle} onClick={clickTag}>
+    <div className={classNames} style={mergeStyle} ref={ref} onClick={clickTag}>
       <div className="tag-content">
         <div className="tag-text">{children}</div>
         {closeable && <CloseOutlined className="close-icon" onClick={closeTag} />}
@@ -83,4 +83,4 @@ const Tag: FC<TagProps> = (props) => {
   );
 };
 
-export default memo(Tag);
+export default forwardRef<unknown, TagProps>(Tag);

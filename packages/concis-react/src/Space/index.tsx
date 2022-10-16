@@ -1,11 +1,11 @@
-import React, { memo, Children, Fragment, useMemo, useContext, ReactNode } from 'react';
+import React, { Children, Fragment, useMemo, useContext, ReactNode, forwardRef } from 'react';
 import { SpaceProps, sizeType, spaceAlignParams } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-const Space = <T,>(props: SpaceProps<T>) => {
+const Space = (props, ref) => {
   const {
     children,
     className,
@@ -98,7 +98,7 @@ const Space = <T,>(props: SpaceProps<T>) => {
   }, [direction, align]);
 
   return (
-    <div className={classNames} style={{ ...spaceStyles, ...style }}>
+    <div className={classNames} style={{ ...spaceStyles, ...style }} ref={ref}>
       {childrenList.map((child: ReactNode, index: number) => {
         return (
           <Fragment key={index}>
@@ -112,4 +112,4 @@ const Space = <T,>(props: SpaceProps<T>) => {
   );
 };
 
-export default memo(Space);
+export default forwardRef<unknown, SpaceProps>(Space);

@@ -1,4 +1,4 @@
-import React, { FC, useMemo, memo, useContext, CSSProperties } from 'react';
+import React, { useMemo, useContext, CSSProperties, forwardRef } from 'react';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
@@ -10,7 +10,7 @@ interface ContentProps {
   extraStyle?: CSSProperties;
   children?: Element | undefined | String | any;
 }
-const Content: FC<ContentProps> = (props: ContentProps) => {
+const Content = (props, ref) => {
   const { children, className, row, extraStyle } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
@@ -33,9 +33,9 @@ const Content: FC<ContentProps> = (props: ContentProps) => {
   }, [extraStyle]);
 
   return (
-    <div className={classNames} style={{ ...contentRow, ...propsStyle }}>
+    <div className={classNames} style={{ ...contentRow, ...propsStyle }} ref={ref}>
       {children}
     </div>
   );
 };
-export default memo(Content);
+export default forwardRef<unknown, ContentProps>(Content);

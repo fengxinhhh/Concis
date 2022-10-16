@@ -1,12 +1,11 @@
 import React, {
-  FC,
   useEffect,
   useCallback,
   useState,
   createRef,
   useMemo,
-  memo,
   useContext,
+  forwardRef,
 } from 'react';
 import {
   PlusOutlined,
@@ -27,7 +26,7 @@ import './style/index.module.less';
 let sTop = 0;
 const options = [10, 20, 30, 50];
 
-const Table: FC<tableProps> = (props: tableProps) => {
+const Table = (props, ref) => {
   const {
     className,
     style,
@@ -110,7 +109,7 @@ const Table: FC<tableProps> = (props: tableProps) => {
       }
       return styleResult;
     },
-    [titleParams]
+    [titleParams],
   );
   const openRow = (row: object, key: number): void => {
     // 展开列表
@@ -253,7 +252,7 @@ const Table: FC<tableProps> = (props: tableProps) => {
         color: thRow.sorter[1].sorted ? '#325DFF' : '#a9adb2',
       };
     },
-    [titleParams, doColumnData]
+    [titleParams, doColumnData],
   );
   const scrollTable = (e: any) => {
     if (virtualized) {
@@ -304,7 +303,7 @@ const Table: FC<tableProps> = (props: tableProps) => {
     changePNumCallback &&
       changePNumCallback(
         pageNum,
-        tableData.slice((pageNum - 1) * pageSize, (pageNum - 1) * pageSize + pageSize)
+        tableData.slice((pageNum - 1) * pageSize, (pageNum - 1) * pageSize + pageSize),
       );
   };
   const changePageSizeCallback = (pageSize: number) => {
@@ -790,6 +789,7 @@ const Table: FC<tableProps> = (props: tableProps) => {
             }
           : style
       }
+      ref={ref}
     >
       <div
         className="table"
@@ -905,4 +905,4 @@ const Table: FC<tableProps> = (props: tableProps) => {
   );
 };
 
-export default memo(Table);
+export default forwardRef<unknown, tableProps>(Table);

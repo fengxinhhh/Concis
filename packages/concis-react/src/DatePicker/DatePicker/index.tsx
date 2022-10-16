@@ -1,4 +1,4 @@
-import React, { useEffect, FC, memo, useState, useContext, CSSProperties } from 'react';
+import React, { useEffect, useState, useContext, CSSProperties, forwardRef } from 'react';
 import {
   DoubleLeftOutlined,
   LeftOutlined,
@@ -65,7 +65,7 @@ interface NowDateProps {
   month: number;
   day: number;
 }
-const DatePicker: FC<DatePickerProps> = (props) => {
+const DatePicker = (props, ref) => {
   const {
     className,
     style,
@@ -111,8 +111,8 @@ const DatePicker: FC<DatePickerProps> = (props) => {
             value: day,
           };
         }),
-        7
-      )
+        7,
+      ),
     );
   }, [nowDate.year, nowDate.month]);
   useEffect(() => {
@@ -184,11 +184,12 @@ const DatePicker: FC<DatePickerProps> = (props) => {
             {
               '--checked-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
+                globalColor,
               ),
               ...style,
             } as any
           }
+          ref={ref}
         >
           <div className="date-picker-select">
             <div className="left-select">
@@ -245,4 +246,4 @@ const DatePicker: FC<DatePickerProps> = (props) => {
   );
 };
 
-export default memo(DatePicker);
+export default forwardRef<unknown, DatePickerProps>(DatePicker);

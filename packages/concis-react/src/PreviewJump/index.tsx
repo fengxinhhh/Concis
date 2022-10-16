@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo, memo } from 'react';
+import React, { useContext, useState, useMemo, forwardRef } from 'react';
 import { EyeOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
 import { PreviewJumpProps } from './interface';
@@ -7,12 +7,11 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './styles/index.module.less';
 
-const PreviewJump = (props: PreviewJumpProps) => {
+const PreviewJump = (props, ref) => {
   const { className, style, children, icon, jumpText, jumpContent, link, disabled } = props;
   const [visible, setVisible] = useState(false);
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
-
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}previewJump`);
 
   const jump = () => {
@@ -49,6 +48,7 @@ const PreviewJump = (props: PreviewJumpProps) => {
     <div
       className={classNames}
       style={{ '--cursorType': disabled ? 'not-allowed' : 'pointer', ...style } as any}
+      ref={ref}
     >
       <div className="concis-preview-content" onMouseEnter={hoverDialog}>
         {children}
@@ -80,4 +80,4 @@ const PreviewJump = (props: PreviewJumpProps) => {
   );
 };
 
-export default memo(PreviewJump);
+export default forwardRef<unknown, PreviewJumpProps>(PreviewJump);

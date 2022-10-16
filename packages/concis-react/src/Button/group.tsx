@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import { ButtonGroupProps } from './interface';
 import cs from '../common_utils/classNames';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import { globalCtx } from '../GlobalConfig';
 
-export default function Group(props: ButtonGroupProps, ref: unknown) {
+function Group(props: ButtonGroupProps, ref) {
   const { children, style, className } = props;
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
@@ -12,12 +12,18 @@ export default function Group(props: ButtonGroupProps, ref: unknown) {
   const classNames = cs(
     prefixCls,
     className,
-    darkTheme ? 'concis-dark-button-group' : 'concis-button-group'
+    darkTheme ? 'concis-dark-button-group' : 'concis-button-group',
   );
 
   return (
-    <div className={classNames} style={style}>
+    <div className={classNames} style={style} ref={ref}>
       {children}
     </div>
   );
 }
+
+const groupComponent = forwardRef<unknown, ButtonGroupProps>(Group);
+
+groupComponent.displayName = 'ButtonGroup';
+
+export default groupComponent;

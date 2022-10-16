@@ -1,4 +1,4 @@
-import React, { memo, useContext, useEffect, useRef, useState, CSSProperties } from 'react';
+import React, { useContext, useEffect, useRef, useState, CSSProperties, forwardRef } from 'react';
 import Input from '../Input';
 import Popover from '../Popover';
 import Button from '../Button';
@@ -78,7 +78,7 @@ const getIdxArr = (length: number) => {
   return arr.map((_, i) => (i < 10 ? `0${i}` : String(i)));
 };
 
-const TimePicker = (props: TimePickerProps) => {
+const TimePicker = (props, ref) => {
   const {
     align,
     className,
@@ -161,7 +161,7 @@ const TimePicker = (props: TimePickerProps) => {
       dialogWidth="auto"
       closeDeps={[timeValue]}
       content={
-        <div className={classNames} style={style}>
+        <div className={classNames} style={style} ref={ref}>
           <div
             ref={parentRef}
             className="time-panel"
@@ -169,7 +169,7 @@ const TimePicker = (props: TimePickerProps) => {
               {
                 '--checked-color': getRenderColor(
                   (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                  globalColor
+                  globalColor,
                 ),
               } as any
             }
@@ -259,4 +259,4 @@ const TimePicker = (props: TimePickerProps) => {
     </Popover>
   );
 };
-export default memo(TimePicker);
+export default forwardRef<unknown, TimePickerProps>(TimePicker);

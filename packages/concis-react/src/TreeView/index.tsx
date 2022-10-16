@@ -1,4 +1,4 @@
-import React, { memo, FC, Fragment, useState, useEffect, useCallback, useContext } from 'react';
+import React, { Fragment, useState, useEffect, useCallback, useContext, forwardRef } from 'react';
 import {
   CaretRightOutlined,
   CaretDownOutlined,
@@ -11,7 +11,7 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-const TreeView: FC<treeViewProps> = (props) => {
+const TreeView = (props, ref) => {
   const {
     treeData,
     className,
@@ -455,6 +455,7 @@ const TreeView: FC<treeViewProps> = (props) => {
       <div
         className={classNames}
         style={{ '--global-color': globalColor || '#325DFF', ...style } as any}
+        ref={ref}
       >
         {render(stateTreeData)}
       </div>
@@ -462,4 +463,4 @@ const TreeView: FC<treeViewProps> = (props) => {
   );
 };
 
-export default memo(TreeView);
+export default forwardRef<unknown, treeViewProps>(TreeView);

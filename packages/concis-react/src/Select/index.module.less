@@ -121,18 +121,18 @@
 
 .selectOption-enter-active,
 .selectOption-appear-active {
-  height: 100%;
+  height: var(--option-size);
   opacity: 1;
-  transition: height 200ms, opacity 100ms;
+  transition: height 400ms, opacity 400ms;
 }
 
 .selectOption-exit {
-  height: 100%;
+  height: var(--option-size);
   opacity: 1;
 }
 
 .selectOption-exit-active {
   height: 0;
   opacity: 0;
-  transition: height 200ms, opacity 100ms;
+  transition: height 400ms, opacity 400ms;
 }

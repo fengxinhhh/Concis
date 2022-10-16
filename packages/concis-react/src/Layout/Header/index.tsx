@@ -1,4 +1,4 @@
-import React, { FC, memo, useMemo, useContext, CSSProperties } from 'react';
+import React, { useMemo, useContext, CSSProperties, forwardRef } from 'react';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
@@ -9,7 +9,7 @@ interface HeaderProps {
   extraStyle?: CSSProperties;
   children?: Element | undefined | String | any;
 }
-const Header: FC<HeaderProps> = (props: HeaderProps) => {
+const Header = (props, ref) => {
   const { className, children, extraStyle } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
@@ -24,9 +24,9 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
   }, [extraStyle]);
 
   return (
-    <div className={classNames} style={propsStyle}>
+    <div className={classNames} style={propsStyle} ref={ref}>
       {children}
     </div>
   );
 };
-export default memo(Header);
+export default forwardRef<unknown, HeaderProps>(Header);

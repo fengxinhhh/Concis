@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useMemo } from 'react';
+import React, { useContext, useState, useEffect, useMemo, forwardRef } from 'react';
 import { DownOutlined, RightOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
 import { DropdownProps, dataType } from './interface';
@@ -7,7 +7,7 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './styles/index.module.less';
 
-const Dropdown = (props: DropdownProps) => {
+const Dropdown = (props, ref) => {
   const {
     placeholder = 'Please select',
     data,
@@ -202,7 +202,11 @@ const Dropdown = (props: DropdownProps) => {
   }, [status, dropValue, visible, dropData, position]);
 
   return (
-    <div className={classNames} style={{ '--colums-width': `${columsWidth}px`, ...style } as any}>
+    <div
+      className={classNames}
+      style={{ '--colums-width': `${columsWidth}px`, ...style } as any}
+      ref={ref}
+    >
       <div
         className={cs(
           'concis-dropdown-result',
@@ -267,4 +271,8 @@ const Dropdown = (props: DropdownProps) => {
   );
 };
 
-export default Dropdown;
+const forwardRefDropdown = forwardRef<unknown, DropdownProps>(Dropdown);
+
+forwardRefDropdown.displayName = 'Dropdown';
+
+export default forwardRefDropdown;

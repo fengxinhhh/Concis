@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, memo, useMemo } from 'react';
+import React, { useState, useContext, useEffect, useMemo, forwardRef } from 'react';
 import { SwitchProps } from './interface';
 import Loading from '../Loading';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -8,7 +8,7 @@ import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../common_utils/getRenderColor';
 import './index.module.less';
 
-const Switch = <T,>(props: SwitchProps<T>) => {
+const Switch = (props, ref) => {
   const {
     disabled,
     className,
@@ -73,6 +73,7 @@ const Switch = <T,>(props: SwitchProps<T>) => {
       className={classNames}
       style={{ ...style, ...(switchStyle as any) }}
       onClick={toggleSwitch}
+      ref={ref}
     >
       <div className="concis-switch-dot">{loading && <Loading width="1em" height="1em" />}</div>
       {checkedChildren && unCheckedChildren && (
@@ -84,4 +85,4 @@ const Switch = <T,>(props: SwitchProps<T>) => {
   );
 };
 
-export default memo(Switch);
+export default forwardRef<unknown, SwitchProps>(Switch);

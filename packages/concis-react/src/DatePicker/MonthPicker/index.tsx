@@ -1,4 +1,4 @@
-import React, { useEffect, FC, memo, useState, useContext, CSSProperties } from 'react';
+import React, { useEffect, useState, useContext, CSSProperties, forwardRef } from 'react';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import Input from '../../Input';
@@ -46,7 +46,7 @@ interface MonthPickerProps {
    */
   disableCheck?: Function;
 }
-const MonthPicker: FC<MonthPickerProps> = (props) => {
+const MonthPicker = (props, ref) => {
   const {
     className,
     showClear = false,
@@ -113,11 +113,12 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
             {
               '--checked-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
+                globalColor,
               ),
               ...style,
             } as any
           }
+          ref={ref}
         >
           <div className="month-picker-select">
             <div className="left-select">
@@ -164,4 +165,4 @@ const MonthPicker: FC<MonthPickerProps> = (props) => {
   );
 };
 
-export default memo(MonthPicker);
+export default forwardRef<unknown, MonthPickerProps>(MonthPicker);

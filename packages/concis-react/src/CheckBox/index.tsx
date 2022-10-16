@@ -1,6 +1,4 @@
 import React, {
-  FC,
-  memo,
   ReactNode,
   useState,
   useCallback,
@@ -9,6 +7,7 @@ import React, {
   useEffect,
   useContext,
   CSSProperties,
+  forwardRef,
 } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
 import { ctx } from '../Form';
@@ -58,7 +57,7 @@ interface checkBoxProps {
   checkGroupCallback?: Function;
 }
 
-const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
+const CheckBox = (props, ref) => {
   const {
     children,
     className,
@@ -155,6 +154,7 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
         <div
           className={classNames}
           style={{ '--global-color': globalColor || '#325DFF', ...style } as any}
+          ref={ref}
         >
           <div className="concis-checkbox-content">
             {group.map((c: checkGroup, i: number) => {
@@ -176,6 +176,7 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
           className={classNames}
           onClick={toggleCheckedStatus}
           style={{ '--global-color': globalColor || '#325DFF', ...style } as any}
+          ref={ref}
         >
           <div className="concis-checkbox-content">
             {renderCheckBoxDom}
@@ -187,4 +188,4 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
   );
 };
 
-export default memo(CheckBox);
+export default forwardRef<unknown, checkBoxProps>(CheckBox);

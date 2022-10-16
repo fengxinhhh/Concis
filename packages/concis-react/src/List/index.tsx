@@ -9,7 +9,7 @@ import './style/list.module.less';
 
 export const ctx = createContext<any>({}); // 顶层通信装置
 
-const List = (props: listProps, ref: unknown) => {
+const List = (props, ref) => {
   const {
     style = {},
     className,
@@ -120,7 +120,7 @@ const List = (props: listProps, ref: unknown) => {
   };
   const victurlScroll = () => {
     const startIndex = Math.floor(
-      ((victurlListContentRef.current as HTMLElement).scrollTop / listItemHeight.current) as number
+      ((victurlListContentRef.current as HTMLElement).scrollTop / listItemHeight.current) as number,
     );
     setScrollTop((victurlListContentRef.current as HTMLDivElement).scrollTop);
     setFormatDataSource((old: Array<any>) => {
@@ -132,7 +132,7 @@ const List = (props: listProps, ref: unknown) => {
   // 这里懒加载、虚拟列表使用React动画会破坏效果，渲染全部元素，待定
   return (
     <ctx.Provider value={contextProps}>
-      <div className={classNames} style={listStyle}>
+      <div className={classNames} style={listStyle} ref={ref}>
         <div className="list-header" style={listHeaderStyle}>
           {header}
         </div>
@@ -189,7 +189,7 @@ interface ForwardRefListType
   (
     props: React.PropsWithChildren<listProps> & {
       ref?: React.Ref<HTMLDivElement>;
-    }
+    },
   ): React.ReactElement;
   Item: typeof Item;
   displayName: string;

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Modal } from 'concis';
+import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index1() {
+  process.env.NODE_ENV === 'production' && usePageListener('Modal');
+
   const [visible, setVisible] = useState(false);
 
   return (

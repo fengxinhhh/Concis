@@ -1,4 +1,4 @@
-import React, { memo, FC, useContext, useMemo, useState } from 'react';
+import React, { forwardRef, useContext, useMemo, useState } from 'react';
 import {
   InfoCircleFilled,
   CheckCircleFilled,
@@ -12,7 +12,7 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-const Alert: FC<AlertProps> = (props) => {
+const Alert = (props, ref) => {
   const {
     style,
     className,
@@ -32,7 +32,7 @@ const Alert: FC<AlertProps> = (props) => {
     prefixCls,
     className,
     `concis-${darkTheme ? 'dark-' : ''}alert-${type}`,
-    darkTheme ? 'concis-dark-alert' : 'concis-alert'
+    darkTheme ? 'concis-dark-alert' : 'concis-alert',
   );
 
   const leftIcon = useMemo(() => {
@@ -70,7 +70,7 @@ const Alert: FC<AlertProps> = (props) => {
         e.style.display = 'none';
       }}
     >
-      <div className={classNames} style={style}>
+      <div className={classNames} style={style} ref={ref}>
         <div className="alert-content">
           {showIcon && <div className="alert-icon">{leftIcon}</div>}
           <div className="alert-text">
@@ -88,4 +88,4 @@ const Alert: FC<AlertProps> = (props) => {
   );
 };
 
-export default memo(Alert);
+export default forwardRef<unknown, AlertProps>(Alert);

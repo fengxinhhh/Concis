@@ -1,4 +1,4 @@
-import React, { memo, FC, useState, useEffect, useContext, useMemo } from 'react';
+import React, { useState, useEffect, useContext, useMemo, forwardRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -8,7 +8,7 @@ import { ctx } from '../Form';
 import Input from '../Input';
 import './index.module.less';
 
-const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
+const InputPro = (props, ref) => {
   const {
     style,
     className,
@@ -105,6 +105,7 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
       className={classNames}
       style={{ ...style, '--select-color': globalColor || '#325dff' } as any}
       onClick={(e) => e.stopPropagation()}
+      ref={ref}
     >
       <Input
         placeholder="请输入"
@@ -152,4 +153,4 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
   );
 };
 
-export default memo(InputPro);
+export default forwardRef<unknown, InputProProps<string>>(InputPro);

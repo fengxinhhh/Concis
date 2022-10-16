@@ -33,7 +33,6 @@ const LazyLoad: FC<LazyLoadProps> = (props: LazyLoadProps) => {
   const { children, style, className, delay } = props;
   const [showEl, setShowEl] = useState(false);
   const lazyRef = createRef();
-
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, 'concis-lazyLoad');

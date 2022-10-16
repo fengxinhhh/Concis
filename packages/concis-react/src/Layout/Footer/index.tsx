@@ -1,4 +1,4 @@
-import React, { FC, useMemo, memo, useContext, CSSProperties } from 'react';
+import React, { useMemo, useContext, CSSProperties, forwardRef } from 'react';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
@@ -9,7 +9,7 @@ interface FooterProps {
   extraStyle?: CSSProperties;
   children?: Element | undefined | String | any;
 }
-const Footer: FC<FooterProps> = (props: FooterProps) => {
+const Footer = (props, ref) => {
   const { className, children, extraStyle } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
@@ -24,9 +24,9 @@ const Footer: FC<FooterProps> = (props: FooterProps) => {
   }, [extraStyle]);
 
   return (
-    <div className={classNames} style={propsStyle}>
+    <div className={classNames} style={propsStyle} ref={ref}>
       {children}
     </div>
   );
 };
-export default memo(Footer);
+export default forwardRef<unknown, FooterProps>(Footer);

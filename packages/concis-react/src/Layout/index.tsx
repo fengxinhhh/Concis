@@ -1,4 +1,4 @@
-import React, { useMemo, memo, FC, useContext, ReactNode, CSSProperties } from 'react';
+import React, { useMemo, useContext, ReactNode, CSSProperties, forwardRef } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -17,7 +17,7 @@ interface layoutProps {
   extraStyle?: CSSProperties;
 }
 
-const Layout: FC<layoutProps> = (props: layoutProps) => {
+const Layout = (props, ref) => {
   const { children, className, extraStyle } = props;
 
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
@@ -32,9 +32,9 @@ const Layout: FC<layoutProps> = (props: layoutProps) => {
   }, [extraStyle]);
 
   return (
-    <div className={classNames} style={propsStyles}>
+    <div className={classNames} style={propsStyles} ref={ref}>
       {children}
     </div>
   );
 };
-export default memo(Layout);
+export default forwardRef<unknown, layoutProps>(Layout);

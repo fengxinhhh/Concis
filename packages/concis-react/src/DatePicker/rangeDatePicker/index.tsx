@@ -1,12 +1,11 @@
 import React, {
   useEffect,
-  FC,
-  memo,
   useState,
   useCallback,
   useRef,
   useContext,
   CSSProperties,
+  forwardRef,
 } from 'react';
 import {
   DoubleLeftOutlined,
@@ -29,7 +28,7 @@ interface RangeProps {
   align?: string;
   handleChange?: Function;
 }
-const RangeDatePicker: FC<RangeProps> = (props) => {
+const RangeDatePicker = (props, ref) => {
   const { className, showClear, align, handleChange, style } = props;
   const [startDate, setStartDate] = useState({
     startYear: new Date().getFullYear(),
@@ -137,7 +136,7 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
       const { startYear, startMonth, startDay } = startDate;
       const { endYear, endMonth, endDay } = endDate;
       formCtx.getChildVal(
-        `${startYear}-${startMonth}-${startDay} ${endYear}-${endMonth}-${endDay}`
+        `${startYear}-${startMonth}-${startDay} ${endYear}-${endMonth}-${endDay}`,
       );
     }
   }, [formCtx.submitStatus]);
@@ -413,13 +412,14 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
       }
       return 'day-box';
     },
-    [startDate, endDate]
+    [startDate, endDate],
   );
   return (
     <div
       className={classNames}
       onClick={(e) => e.stopPropagation()}
       style={{ '--hover-color': globalColor || '#325DFF', ...style } as any}
+      ref={ref}
     >
       <div className="rangePicker" onClick={(e) => e.stopPropagation()}>
         <Input
@@ -559,4 +559,4 @@ const RangeDatePicker: FC<RangeProps> = (props) => {
   );
 };
 
-export default memo(RangeDatePicker);
+export default forwardRef<unknown, RangeProps>(RangeDatePicker);

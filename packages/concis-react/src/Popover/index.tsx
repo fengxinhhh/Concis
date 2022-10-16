@@ -83,7 +83,7 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
     const {
       children,
       className,
-      style,
+      style = {},
       type = 'hover',
       align = 'bottom',
       content,
@@ -184,6 +184,7 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
         setShowDialog(false);
       }
     }, 200);
+
     const dialogStyle = useMemo(() => {
       const alignStyle: alignStyle = {
         opacity: 0,
@@ -205,8 +206,9 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
         ...alignStyle,
       };
     }, [content, showDialog, defaultShow, showBtnSize]);
+
     return (
-      <div className={classNames} style={style}>
+      <div className={classNames}>
         <div
           className="open-container"
           onMouseEnter={() => hoverOpenDialog()}
@@ -217,7 +219,7 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
           </div>
           <div
             className="pop-dialog"
-            style={dialogStyle}
+            style={{ ...dialogStyle, ...style }}
             onClick={(e) => e.stopPropagation()}
             onMouseEnter={() => hoverOpenDialog()}
             onMouseLeave={() => hoverCloseDialog()}
@@ -228,7 +230,7 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 export default Popover;

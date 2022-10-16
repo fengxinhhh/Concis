@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback, useContext, CSSProperties } from 'react';
+import React, { useCallback, useContext, CSSProperties, forwardRef } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -41,7 +41,7 @@ interface stepsProps {
   children: any;
 }
 
-const Steps: FC<stepsProps> = (props: stepsProps) => {
+const Steps = (props, ref) => {
   const { current, className, style, onChange, children } = props;
 
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
@@ -61,13 +61,13 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
       }
       return 'before-index';
     },
-    [current]
+    [current],
   );
   const indexTitleClassName = useCallback(
     (args: string): string => {
       return onChange ? `hover-title ${args}` : args;
     },
-    [current]
+    [current],
   );
   return (
     <div
@@ -76,11 +76,12 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
         {
           '--global-color': getRenderColor(
             (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-            globalColor
+            globalColor,
           ),
           ...style,
         } as any
       }
+      ref={ref}
     >
       <div className="step-content">
         <div className="step-line">
@@ -135,4 +136,4 @@ const Steps: FC<stepsProps> = (props: stepsProps) => {
   );
 };
 
-export default memo(Steps);
+export default forwardRef<unknown, stepsProps>(Steps);
