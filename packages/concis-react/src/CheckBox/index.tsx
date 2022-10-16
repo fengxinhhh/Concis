@@ -82,7 +82,7 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
     disabled ? 'disabled-checkbox' : '',
     group && group.length
       ? `concis-${darkTheme ? 'dark-' : ''}checkGroup`
-      : `concis-${darkTheme ? 'dark-' : ''}checkbox`
+      : `concis-${darkTheme ? 'dark-' : ''}checkbox`,
   );
 
   useEffect(() => {
@@ -146,7 +146,7 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
         return <div className="concis-checkbox-noActived" />;
       }
     },
-    [group]
+    [group],
   );
 
   return (
@@ -156,18 +156,20 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
           className={classNames}
           style={{ '--global-color': globalColor || '#325DFF', ...style } as any}
         >
-          {group.map((c: checkGroup, i: number) => {
-            return (
-              <div
-                className={`checkbox groupBox ${c.disabled ? 'disabled' : ''}`}
-                key={i}
-                onClick={() => toggleGroupCheckedStatus(i)}
-              >
-                {renderCheckGroupDom(c)}
-                <div className="text">{c.label}</div>
-              </div>
-            );
-          })}
+          <div className="concis-checkbox-content">
+            {group.map((c: checkGroup, i: number) => {
+              return (
+                <div
+                  className={`checkbox groupBox ${c.disabled ? 'disabled' : ''}`}
+                  key={i}
+                  onClick={() => toggleGroupCheckedStatus(i)}
+                >
+                  {renderCheckGroupDom(c)}
+                  <div className="text">{c.label}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       ) : (
         <div
@@ -175,8 +177,10 @@ const CheckBox: FC<checkBoxProps> = (props: checkBoxProps) => {
           onClick={toggleCheckedStatus}
           style={{ '--global-color': globalColor || '#325DFF', ...style } as any}
         >
-          {renderCheckBoxDom}
-          <div className={disabled ? `text disabled` : `text`}>{children}</div>
+          <div className="concis-checkbox-content">
+            {renderCheckBoxDom}
+            <div className={disabled ? `text disabled` : `text`}>{children}</div>
+          </div>
         </div>
       )}
     </Fragment>

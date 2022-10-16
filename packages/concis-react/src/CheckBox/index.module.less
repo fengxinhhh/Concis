@@ -7,9 +7,13 @@
 .concis-checkGroup,
 .concis-dark-checkbox,
 .concis-dark-checkGroup {
-  display: flex;
-  align-items: center;
+  display: inline-block;
   cursor: pointer;
+
+  .concis-checkbox-content {
+    display: flex;
+    align-items: center;
+  }
 
   &-actived,
   &-noActived,
@@ -65,9 +69,6 @@
 
 .concis-checkGroup,
 .concis-dark-checkGroup {
-  display: flex;
-  cursor: pointer;
-
   .checkbox {
     display: flex;
     align-items: center;
