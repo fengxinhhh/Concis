@@ -10,6 +10,8 @@ logs
 /package-lock.json
 /yarn.lock
 /packages/*/node_modules
+/example/node_modules
+/example/yarn.lock
 /packages/*/package-lock.json
 
 # bundle files

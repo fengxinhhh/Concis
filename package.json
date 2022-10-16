@@ -4,6 +4,7 @@
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
+    "example:dev": "cd example && yarn && yarn dev",
     "pre-commit": "pretty-quick --staged && npm run eslint && npm run stylelint",
     "eslint": "eslint docs/ packages/concis-react/src --fix --cache --quiet --ext .js,.jsx,.ts,.tsx",
     "stylelint": "stylelint '{packages,docs}/**/*.less' --fix",

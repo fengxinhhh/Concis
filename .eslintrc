@@ -5,11 +5,7 @@
     "es6": true
   },
   "parser": "@typescript-eslint/parser",
-  "extends": [
-    "airbnb",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended",
-  ],
+  "extends": ["airbnb", "plugin:react/recommended", "plugin:prettier/recommended"],
   "parserOptions": {
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
@@ -32,7 +28,7 @@
     {
       "files": ["*.ts", "*.tsx"],
       "rules": {
-        "@typescript-eslint/no-unused-vars": [2, { "args": "none" }],
+        "@typescript-eslint/no-unused-vars": [2, { "args": "none" }]
       }
     }
   ],
@@ -125,6 +121,7 @@
     "react/no-unused-prop-types": "off",
     "no-await-in-loop": "off",
     "linebreak-style": "off",
-    "jsx-a11y/img-redundant-alt": "off"
+    "jsx-a11y/img-redundant-alt": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }
