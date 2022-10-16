@@ -18,18 +18,32 @@ mobile: false
 
 ## 基本使用
 
+最基本的树形控件。
+
 <code src="./demos/index1.tsx"/>
 
 ## 默认展开
+
+配置 `defaultOpen` 默认展开树。
 
 <code src="./demos/index2.tsx"/>
 
 ## 禁用
 
+通过 `treeData` 中设置 `disabled`，单项禁用。
+
 <code src="./demos/index3.tsx"/>
 
 ## 可拖拽
 
+配置 `avaDrop` 开启拖拽模式，可通过 `dropCallback` 回调函数获取拖拽后的 `treeData`。
+
 <code src="./demos/index4.tsx"/>
+
+## 动态加载
+
+配置 `lazyLoad` 开启首次展开动态加载，可通过 `lazyLoadWaitSecond` 设置延时，默认 `1000ms`。
+
+<code src="./demos/index5.tsx"/>
 
 <API />

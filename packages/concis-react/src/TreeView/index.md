@@ -18,18 +18,32 @@ Folder, organizational structure, biological classification, countries and regio
 
 ## Basic use
 
+The most basic tree control.
+
 <code src="./demos/index1.tsx"/>
 
 ## Default expansion
+
+Configure `defaultOpen` to expand the tree by default.
 
 <code src="./demos/index2.tsx"/>
 
 ## Disable
 
+By setting `disabled` in `treeData`, a single item is disabled.
+
 <code src="./demos/index3.tsx"/>
 
 ## Draggable
 
+Configure `avaDrop` to enable drag mode, and the `treeData` after dragging can be obtained through the `dropCallback` callback function.
+
 <code src="./demos/index4.tsx"/>
+
+## Dynamic loading
+
+Configure `lazyLoad` to enable dynamic loading of the first expansion. You can set the delay through `lazyLoadWaitSecond`, the default is `1000ms`.
+
+<code src="./demos/index5.tsx"/>
 
 <API />

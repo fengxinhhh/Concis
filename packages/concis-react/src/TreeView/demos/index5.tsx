@@ -1,5 +1,6 @@
 import React from 'react';
 import { TreeView } from 'concis';
+import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const treeData = [
   {
@@ -11,7 +12,6 @@ const treeData = [
         title: 'parent 1-0',
         value: '0-0-1',
         group: 0,
-        disabled: true,
       },
       {
         title: 'parent 1-1',
@@ -50,27 +50,32 @@ const treeData = [
     title: 'parent2',
     value: '0-1',
     group: 1,
-    disabled: true,
     children: [
       {
         title: 'parent 2-0',
         value: '0-0-3',
         group: 1,
-        disabled: true,
       },
       {
         title: 'parent 2-1',
         value: '0-0-3',
         group: 1,
-        disabled: true,
       },
     ],
   },
 ];
 
 export default function MenuDemos1() {
+  process.env.NODE_ENV === 'production' && usePageListener('TreeView');
   const checkCallback = (va: Array<object>) => {
     console.log(va);
   };
-  return <TreeView treeData={treeData} defaultOpen checkCallback={checkCallback} />;
+  return (
+    <TreeView
+      treeData={treeData}
+      checkCallback={checkCallback}
+      lazyLoad
+      lazyLoadWaitSecord={1500}
+    />
+  );
 }

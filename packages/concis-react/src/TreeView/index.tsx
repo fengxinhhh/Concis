@@ -1,73 +1,36 @@
-import React, {
-  memo,
-  FC,
-  Fragment,
-  useState,
-  useEffect,
-  useCallback,
-  useContext,
-  CSSProperties,
-} from 'react';
-import { CaretRightOutlined, CaretDownOutlined, CheckOutlined } from '@ant-design/icons';
+import React, { memo, FC, Fragment, useState, useEffect, useCallback, useContext } from 'react';
+import {
+  CaretRightOutlined,
+  CaretDownOutlined,
+  CheckOutlined,
+  LoadingOutlined,
+} from '@ant-design/icons';
+import { treeViewProps, treeData, loadingTreeNodeType } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-type treeViewProps = {
-  /**
-   * @description 自定义样式
-   */
-  style?: CSSProperties;
-  /**
-   * @description 自定义类名
-   */
-  className?: string;
-  /**
-   * @description Tree配置参数
-   */
-  treeData: Array<treeData>;
-  /**
-   * @description 默认展开
-   * @default false
-   */
-  defaultOpen?: boolean;
-  /**
-   * @description 禁用
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * @description 可拖拽
-   * @default false
-   */
-  avaDrop?: boolean;
-  /**
-   * @description 选中回调函数
-   */
-  checkCallback?: Function;
-  /**
-   * @description 拖拽回调函数
-   */
-  dropCallback?: Function;
-};
-interface treeData {
-  title: string;
-  value: string;
-  group: number;
-  level?: number;
-  prev?: treeData | null;
-  height?: string;
-  disabled?: boolean;
-  checked?: boolean;
-  children?: Array<treeData>;
-}
-
 const TreeView: FC<treeViewProps> = (props) => {
-  const { treeData, className, defaultOpen, avaDrop, checkCallback, dropCallback, style } = props;
+  const {
+    treeData,
+    className,
+    defaultOpen,
+    avaDrop,
+    checkCallback,
+    dropCallback,
+    style,
+    lazyLoad,
+    lazyLoadWaitSecond = 1000,
+  } = props;
 
   const [stateTreeData, setStateTreeData] = useState<Array<treeData>>(treeData); // 树结构
   const [hoverTreeNode, setHoverTreeNode] = useState(''); // 当前覆盖的节点
+  const [loadingTreeNode, setLoadingTreeNode] = useState<loadingTreeNodeType>({
+    group: -1,
+    value: '',
+    title: '',
+  }); // 当前加载的节点
 
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -80,7 +43,7 @@ const TreeView: FC<treeViewProps> = (props) => {
   const resolveTreeData = (
     treeData: Array<treeData>,
     nowIndexLevel: number,
-    prev: treeData | null
+    prev: treeData | null,
   ) => {
     // 二次处理treeData
     const newTreeData = [...treeData];
@@ -109,7 +72,6 @@ const TreeView: FC<treeViewProps> = (props) => {
     // 菜单切换或直接选中终极节点
     if (clickTreeNode?.children?.length) {
       // 菜单切换的情况
-      const oldStateTree = [...stateTreeData];
       const editTreeNode = (treeNode: Array<treeData>) => {
         // 所选节点后代收起处理函数
         treeNode.forEach((child) => {
@@ -127,6 +89,10 @@ const TreeView: FC<treeViewProps> = (props) => {
         treeNode.forEach((t: treeData, i: number) => {
           if (t.title === clickTreeNode.title && t.value === clickTreeNode.value) {
             if (t?.children?.length) {
+              // 动态加载
+              if (lazyLoad && !t.hasOpen) {
+                t.hasOpen = true;
+              }
               // 后代节点处理，如果打开，只需打开下一代即可，如果关闭，需要关闭所有后代
               if (t.children[0].height === '0') {
                 // 打开
@@ -146,18 +112,41 @@ const TreeView: FC<treeViewProps> = (props) => {
           }
         });
       };
-      mapFn(oldStateTree);
-      setStateTreeData(oldStateTree);
-    } else {
+      const oldStateTree = [...stateTreeData];
+      if (lazyLoad && !clickTreeNode.hasOpen) {
+        const { group, value, title } = clickTreeNode;
+        setLoadingTreeNode({
+          group,
+          value,
+          title,
+        });
+        setTimeout(() => {
+          mapFn(oldStateTree);
+          setStateTreeData(oldStateTree);
+          setLoadingTreeNode({
+            group: -1,
+            value: '',
+            title: '',
+          });
+        }, lazyLoadWaitSecond);
+      } else {
+        mapFn(oldStateTree);
+        setStateTreeData(oldStateTree);
+      }
     }
   };
+
   const checkTreeNode = (clickTreeNode: treeData) => {
     // 选中节点
     if (clickTreeNode.disabled) {
       return;
     }
     const oldStateTree = [...stateTreeData];
-    const editTreeNode = (treeNode: Array<treeData>, status: boolean) => {
+    mapFn(oldStateTree, null);
+    setStateTreeData(oldStateTree);
+    checkCallback && checkCallback(oldStateTree);
+
+    function editTreeNode(treeNode: Array<treeData>, status: boolean) {
       // 所选节点后代处理函数
       treeNode.forEach((child) => {
         // 找到节点，对子节点进行处理
@@ -168,8 +157,8 @@ const TreeView: FC<treeViewProps> = (props) => {
           child.checked = status;
         }
       });
-    };
-    const mapFn = (treeNode: Array<treeData>, prevNode: treeData | null) => {
+    }
+    function mapFn(treeNode: Array<treeData>, prevNode: treeData | null) {
       // 当前节点/上一代节点/爷爷节点
       // 深度优先查找节点函数
       treeNode.forEach((t: treeData, i: number) => {
@@ -201,11 +190,9 @@ const TreeView: FC<treeViewProps> = (props) => {
           mapFn(t.children, t);
         }
       });
-    };
-    mapFn(oldStateTree, null);
-    setStateTreeData(oldStateTree);
-    checkCallback && checkCallback(oldStateTree);
+    }
   };
+
   const checkBoxRender = useCallback(
     (treeData: treeData) => {
       // 根据index对指定数据进行查找
@@ -231,7 +218,7 @@ const TreeView: FC<treeViewProps> = (props) => {
         const mapFn = (treeNode: treeData): any => {
           for (let i = 0; i < (treeNode.children as Array<treeData>).length; i++) {
             const child: treeData = (treeNode.children as Array<treeData>)[i];
-            treeList.push(child.checked ? 1 : 0);
+            !child.disabled && treeList.push(child.checked ? 1 : 0);
             if (child.children && child.children.length) {
               // 还有后代
               return mapFn(child);
@@ -264,7 +251,7 @@ const TreeView: FC<treeViewProps> = (props) => {
         return mapFn(treeData);
       }
     },
-    [stateTreeData]
+    [stateTreeData],
   );
 
   const dragStartTree = (e: any, treeData: treeData) => {
@@ -408,10 +395,20 @@ const TreeView: FC<treeViewProps> = (props) => {
     dropCallback && dropCallback(oldStateTree);
   };
 
+  const renderChild = (treeNode: treeData) => {
+    if (treeNode?.children?.length && lazyLoad && treeNode.hasOpen) {
+      return render(treeNode.children);
+    }
+    if (treeNode?.children?.length && !lazyLoad) {
+      return render(treeNode.children);
+    }
+  };
+
   const render = useCallback(
     (data: Array<treeData> = stateTreeData) => {
+      const { group, value, title } = loadingTreeNode;
       // 动态规划render函数
-      return data.map((treeNode: treeData, index) => {
+      return data.map((treeNode: treeData, index: number) => {
         return (
           <Fragment key={index}>
             <div
@@ -425,17 +422,17 @@ const TreeView: FC<treeViewProps> = (props) => {
               onDrop={(e) => drop(e, treeNode)}
               onDragOver={(e) => dropOver(e, treeNode)}
             >
-              {
-                treeNode?.children?.length ? (
-                  treeNode.children[0].height === '0' ? (
-                    <CaretRightOutlined onClick={() => toggleTreeMenu(treeNode)} />
-                  ) : (
-                    <CaretDownOutlined onClick={() => toggleTreeMenu(treeNode)} />
-                  )
+              {treeNode.group === group && treeNode.value === value && treeNode.title === title ? ( // 空间占位符
+                <LoadingOutlined />
+              ) : treeNode?.children?.length ? (
+                treeNode.children[0].height === '0' ? (
+                  <CaretRightOutlined onClick={() => toggleTreeMenu(treeNode)} />
                 ) : (
-                  <div style={{ width: '14px', height: '14px' }} />
-                ) // 空间占位符
-              }
+                  <CaretDownOutlined onClick={() => toggleTreeMenu(treeNode)} />
+                )
+              ) : (
+                <div style={{ width: '14px', height: '14px' }} />
+              )}
               {checkBoxRender(treeNode)}
               <span
                 className="text"
@@ -445,12 +442,12 @@ const TreeView: FC<treeViewProps> = (props) => {
                 {treeNode.title}
               </span>
             </div>
-            {treeNode?.children?.length && render(treeNode.children)}
+            {renderChild(treeNode)}
           </Fragment>
         );
       });
     },
-    [stateTreeData]
+    [stateTreeData, loadingTreeNode],
   );
 
   return (
