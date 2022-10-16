@@ -26,7 +26,6 @@ const option: optionParams[] = [
 describe('InputPro', () => {
   it('test base InputPro show correctly', async () => {
     const component = mount(<InputPro option={option} />);
-
     expect(component.find('.concis-input-pro').length).toBe(1);
     component.find('.concis-input-pro input').simulate('focus');
     await sleep(200);
@@ -95,5 +94,8 @@ describe('InputPro', () => {
     const component = mount(<InputPro option={option} />);
     component.find('.concis-input-pro input').simulate('focus');
     expect(component.find('.concis-input-pro-tragger .disabled-option').length).toBe(1);
+    component.find('.concis-input-pro-tragger .disabled-option').at(0).simulate('click');
+    expect(component.find('.concis-input-pro input').getDOMNode().getAttribute('value')).toBe('');
+    expect(component.find('.concis-input-pro .concis-input-pro-tragger').length).toBe(1);
   });
 });

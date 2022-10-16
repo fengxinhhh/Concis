@@ -37,7 +37,16 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
       formCtx.getChildVal(value);
     }
   }, [formCtx.submitStatus]);
+  useEffect(() => {
+    window.addEventListener('click', reset);
+    return () => {
+      window.removeEventListener('click', reset);
+    };
+  }, []);
 
+  const reset = () => {
+    setIsFocus(false);
+  };
   const handleIptChange = (val: string) => {
     setValue(val);
     handleChange && handleChange(val);
@@ -45,14 +54,12 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
   const handleIptFocus = () => {
     setIsFocus(true);
   };
-  const handleIptBlur = () => {
-    setIsFocus(false);
-  };
-  const chooseVal = <T extends string, U>(val: T, disabled: U): void => {
-    (event as any)?.stopPropagation();
+  const chooseVal = <T extends string, U>(val: T, disabled: U, e: any): void => {
+    e.stopPropagation();
     if (disabled) return;
     setValue(val);
     handleClick && handleClick(val);
+    setIsFocus(false);
   };
   const traggerTransform = useMemo(() => {
     switch (align) {
@@ -97,6 +104,7 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
     <div
       className={classNames}
       style={{ ...style, '--select-color': globalColor || '#325dff' } as any}
+      onClick={(e) => e.stopPropagation()}
     >
       <Input
         placeholder="请输入"
@@ -104,7 +112,6 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
         defaultValue={value}
         showClear
         handleIptFocus={handleIptFocus}
-        handleIptBlur={handleIptBlur}
         handleIptChange={handleIptChange}
         clearCallback={() => {
           setValue('');
@@ -133,7 +140,7 @@ const InputPro: FC<InputProProps<string>> = (props: InputProProps<string>) => {
               <span
                 className={traggerOptionClass<string, boolean | undefined>(label, disabled)}
                 key={i}
-                onClick={() => chooseVal<string, boolean | undefined>(label, disabled)}
+                onClick={(e) => chooseVal<string, boolean | undefined>(label, disabled, e)}
               >
                 {label}
               </span>
