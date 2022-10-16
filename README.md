@@ -74,10 +74,10 @@ ReactDOM.render(<App />, document.getElementById('app'));
 
 # Local experience
 
-In the example folder, there is a `vite` + `react` project runtime environment, in which you can experience the `concis` component, run the command in the project root directory:
+In the examples folder, there is a `vite` + `react` project runtime environment, in which you can experience the `concis` component, run the command in the project root directory:
 
 ```tsx pure
-pnpm example:dev
+pnpm examples:dev
 ```
 
 Visit `http://localhost:5173`.

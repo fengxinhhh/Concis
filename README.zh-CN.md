@@ -74,10 +74,10 @@ ReactDOM.render(<App />, document.getElementById('app'));
 
 # 本地体验
 
-在 example 文件夹中，有一个 `vite` + `react` 的工程运行环境，你可以在该环境中体验 `concis` 组件，在项目根目录运行命令:
+在 examples 文件夹中，有一个 `vite` + `react` 的工程运行环境，你可以在该环境中体验 `concis` 组件，在项目根目录运行命令:
 
 ```tsx pure
-pnpm example:dev
+pnpm examples:dev
 ```
 
 访问`http://localhost:5173`。
