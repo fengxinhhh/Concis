@@ -5,7 +5,9 @@ import Enzyme from './setup';
 const { render } = Enzyme;
 
 function demoTest(component: string) {
-  const files = glob.sync(path.resolve(__dirname, `../src/${component}/demos/*.tsx`));
+  const files = glob.sync(
+    path.resolve(__dirname, `../packages/concis-react/src/${component}/demos/*.tsx`),
+  );
   files.shift();
   if (component === 'Modal') {
     files.splice(5, 2);

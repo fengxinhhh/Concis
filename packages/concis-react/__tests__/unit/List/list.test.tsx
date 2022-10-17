@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { act } from 'react-dom/test-utils';
 import List from '../../../src/List/index';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { render, mount } = Enzyme;
 
@@ -318,7 +318,7 @@ describe('list', () => {
             </List.Item>
           );
         }}
-      />
+      />,
     );
     expect(component.find('.concis-list-item')).toHaveLength(5);
   });
@@ -338,7 +338,7 @@ describe('list', () => {
             </List.Item>
           );
         }}
-      />
+      />,
     );
     expect(component.find('.list-item')).toHaveLength(0);
   });
@@ -401,7 +401,7 @@ describe('list', () => {
         }}
         virtualListProps
         virtualShowNum={10}
-      />
+      />,
     );
     expect(component.find('.victurl-list-content')).toHaveLength(1);
     expect(component.find('.victurl-relly-content')).toHaveLength(1);
@@ -428,7 +428,7 @@ describe('list', () => {
         lazyLoad
         defaultShowNum={10}
         lazyScrollToBottom={lazyScrollToBottom}
-      />
+      />,
     );
     expect(component.find('.concis-list-item')).toHaveLength(10);
     act(() => {

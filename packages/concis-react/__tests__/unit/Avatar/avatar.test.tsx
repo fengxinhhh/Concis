@@ -4,8 +4,8 @@ import { CameraOutlined } from '@ant-design/icons';
 import { act } from 'react-dom/test-utils';
 import Avatar from '../../../src/Avatar';
 import AvatarGroup from '../../../src/Avatar/group';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 
@@ -68,7 +68,7 @@ describe('Avatar', () => {
       },
     ];
     const groupDom = (container as HTMLDivElement).querySelector(
-      '.concis-avatar-group'
+      '.concis-avatar-group',
     ) as HTMLElement;
     expect(groupDom.childElementCount).toBe(3);
 
@@ -79,7 +79,7 @@ describe('Avatar', () => {
         avatar
           .getAttribute('style')
           ?.includes(`background: ${avatarStyleList[index].background}`) &&
-          avatar.querySelector('.text-ref')?.innerHTML === avatarStyleList[index].content
+          avatar.querySelector('.text-ref')?.innerHTML === avatarStyleList[index].content,
       ).toBe(true);
       if (index === 0) {
         // 测试头像形状
@@ -99,7 +99,7 @@ describe('Avatar', () => {
         triggerClick={mockFn}
       >
         <img src="https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png" />
-      </Avatar>
+      </Avatar>,
     );
     act(() => {
       component.simulate('click');

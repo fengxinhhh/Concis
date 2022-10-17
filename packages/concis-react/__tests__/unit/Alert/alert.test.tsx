@@ -1,7 +1,7 @@
 import React from 'react';
 import Alert from '../../../src/Alert';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 
@@ -21,7 +21,7 @@ describe('Alert', () => {
         <Alert type="warning" content="Here is an example text" />
         <Alert type="error" content="Here is an example text" />
         <Alert type="info" content="Here is an example text" />
-      </div>
+      </div>,
     );
     expect(component.find('.concis-alert-success').length).toBe(1);
     expect(component.find('.concis-alert-warning').length).toBe(1);
@@ -45,7 +45,7 @@ describe('Alert', () => {
         content="Here is an example text"
         showClear
         closeElement={<div className="close-element">close</div>}
-      />
+      />,
     );
     const closeElement = component.find('.close-element');
     expect(closeElement.length).toBe(1);

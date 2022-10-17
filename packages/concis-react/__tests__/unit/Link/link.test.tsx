@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from '../../../src/Link/index';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 

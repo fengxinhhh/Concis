@@ -1,7 +1,7 @@
 import React from 'react';
 import Empty from '../../../src/Empty';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 

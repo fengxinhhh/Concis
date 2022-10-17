@@ -1,7 +1,7 @@
 import React from 'react';
 import Rate from '../../../src/Rate';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 
@@ -24,7 +24,7 @@ describe('Rate', () => {
         .at(0)
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('color: red')
+        ?.includes('color: red'),
     );
   });
 

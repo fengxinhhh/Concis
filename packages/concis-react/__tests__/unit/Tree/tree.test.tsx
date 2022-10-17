@@ -1,8 +1,8 @@
 import React from 'react';
 import { act } from '@testing-library/react';
 import Tree, { treeNode } from '../../../src/Tree';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 
@@ -63,7 +63,7 @@ describe('Tree', () => {
     component.update();
     const container = component.find('.cocnis-tree-container').at(0);
     expect(container.getDOMNode().childNodes[1].className).toBe(
-      'tree-select-dialog treeDialog-enter treeDialog-enter-active'
+      'tree-select-dialog treeDialog-enter treeDialog-enter-active',
     );
     expect(container.getDOMNode().childNodes[1].childNodes.length).toBe(6);
 
@@ -190,7 +190,7 @@ describe('Tree', () => {
         .childAt(1)
         .children()
         .at(0)
-        .find('span[aria-label="caret-right"]')
+        .find('span[aria-label="caret-right"]'),
     ).toHaveLength(0);
     expect(
       component
@@ -198,7 +198,7 @@ describe('Tree', () => {
         .childAt(1)
         .children()
         .at(0)
-        .find('span[aria-label="caret-down"]')
+        .find('span[aria-label="caret-down"]'),
     ).toHaveLength(3);
     // act(() => {
     //   container.find('input').simulate('change', {

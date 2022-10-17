@@ -1,8 +1,8 @@
 import React from 'react';
 import RadioGroup from '../../../src/Radio/RadioGroup';
 import Radio from '../../../src/Radio';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 
@@ -16,12 +16,12 @@ describe('Radio', () => {
         <Radio>Apple</Radio>
         <Radio>Orange</Radio>
         <Radio>Watch</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(component.find('.concis-radio-group')).toHaveLength(1);
     expect(component.find('.concis-radio-group .radioBox')).toHaveLength(3);
     expect(
-      component.find('.concis-radio-group .radioBox').at(0).find('.radio-checked')
+      component.find('.concis-radio-group .radioBox').at(0).find('.radio-checked'),
     ).toHaveLength(1);
     component.find('.concis-radio-group .radioBox').at(1).simulate('click');
     expect(mockFn).toBeCalled();
@@ -34,7 +34,7 @@ describe('Radio', () => {
         <Radio disabled>Apple</Radio>
         <Radio>Orange</Radio>
         <Radio>Watch</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(
       component
@@ -42,7 +42,7 @@ describe('Radio', () => {
         .at(0)
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('cursor: not-allowed')
+        ?.includes('cursor: not-allowed'),
     );
   });
 
@@ -53,7 +53,7 @@ describe('Radio', () => {
         <Radio disabled>Apple</Radio>
         <Radio>Orange</Radio>
         <Radio>Watch</Radio>
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(component.find('.concis-radio-group .addOption')).toHaveLength(1);
     const openOptionDom = component.find('.concis-radio-group .addOption');

@@ -1,8 +1,8 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from '@testing-library/react';
-import Enzyme, { setupIntersectionObserverMock } from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme, { setupIntersectionObserverMock } from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 import LazyLoad from '../../../src/LazyLoad';
 
 const { mount } = Enzyme;
@@ -74,7 +74,7 @@ describe('LazyLoad', () => {
         <div className="a">111</div>
         <div className="a">111</div>
         <div className="a">111</div>
-      </LazyLoad>
+      </LazyLoad>,
     );
 
     expect(component.find('.concis-lazyLoad').length).toBe(1);

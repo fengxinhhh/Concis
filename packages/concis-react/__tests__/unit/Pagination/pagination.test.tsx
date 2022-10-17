@@ -1,8 +1,8 @@
 import React from 'react';
 import Pagination from '../../../src/Pagination/index';
-import { sleep } from '../../sleep';
-import Enzyme from '../../setup';
-import renderTest from '../../mountTest';
+import { sleep } from '../../../../../tests/sleep';
+import Enzyme from '../../../../../tests/setup';
+import renderTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 

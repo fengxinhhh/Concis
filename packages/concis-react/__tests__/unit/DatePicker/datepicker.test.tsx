@@ -4,8 +4,8 @@ import DatePicker from '../../../src/DatePicker/DatePicker';
 import MonthPicker from '../../../src/DatePicker/MonthPicker';
 import YearPicker from '../../../src/DatePicker/YearPicker';
 import RangeDatePicker from '../../../src/DatePicker/rangeDatePicker';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 
@@ -23,11 +23,11 @@ describe('DatePicker', () => {
         align="top"
         showClear
         handleChange={mockFn}
-      />
+      />,
     );
     expect(component.find('.concis-date-picker')).toHaveLength(1);
     expect(
-      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0')
+      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0'),
     ).toBe(true);
     act(() => {
       component.find('input').simulate('focus');
@@ -36,7 +36,7 @@ describe('DatePicker', () => {
     component.find('.concis-date-picker table tr td:not(.day-empty)').at(0).simulate('click');
     expect(mockFn).toBeCalled();
     expect(
-      component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[2]
+      component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[2],
     ).toBe('01');
   });
   it('test MonthPicker correctly', () => {
@@ -47,11 +47,11 @@ describe('DatePicker', () => {
         align="top"
         showClear
         handleChange={mockFn}
-      />
+      />,
     );
     expect(component.find('.concis-month-picker')).toHaveLength(1);
     expect(
-      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0')
+      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0'),
     ).toBe(true);
     act(() => {
       component.find('input').simulate('focus');
@@ -60,7 +60,7 @@ describe('DatePicker', () => {
     component.find('.concis-month-picker table tr').at(0).find('td').at(0).simulate('click');
     expect(mockFn).toBeCalled();
     expect(
-      component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[1]
+      component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[1],
     ).toBe('01');
   });
   it('test YearPicker correctly', () => {
@@ -71,11 +71,11 @@ describe('DatePicker', () => {
         align="top"
         showClear
         handleChange={mockFn}
-      />
+      />,
     );
     expect(component.find('.concis-year-picker')).toHaveLength(1);
     expect(
-      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0')
+      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0'),
     ).toBe(true);
     act(() => {
       component.find('input').simulate('focus');
@@ -84,7 +84,7 @@ describe('DatePicker', () => {
     component.find('.concis-year-picker table tr').at(0).find('td').at(0).simulate('click');
     expect(mockFn).toBeCalled();
     expect(component.find('.concis-input input').getDOMNode()?.getAttribute('value')).toBe(
-      String(new Date().getFullYear())
+      String(new Date().getFullYear()),
     );
   });
   it('test range DatePicker show correctly', () => {

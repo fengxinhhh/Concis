@@ -1,8 +1,8 @@
 import React from 'react';
 import Collapse from '../../../src/Collapse/index';
 import CollapseItem from '../../../src/Collapse/CollapseItem';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 
@@ -33,7 +33,7 @@ describe('Collapse', () => {
             published stories approximately two seconds after the event ended.
           </span>
         </CollapseItem>
-      </Collapse>
+      </Collapse>,
     );
     expect(component.find('.concis-collapse-box')).toHaveLength(1);
     expect(component.find('.concis-collapse-box').getDOMNode().childNodes.length).toBe(3);
@@ -44,7 +44,7 @@ describe('Collapse', () => {
         .find('.concis-collapse-item-content')
         .getDOMNode()
         .getAttribute('style')
-        .includes('max-height: 0px')
+        .includes('max-height: 0px'),
     ).toBe(true);
     expect(
       component
@@ -53,7 +53,7 @@ describe('Collapse', () => {
         .find('.concis-collapse-item-header')
         .getDOMNode()
         .getAttribute('style')
-        .includes(' cursor: not-allowed')
+        .includes(' cursor: not-allowed'),
     ).toBe(true);
   });
   it('test right node show correctly', () => {
@@ -80,13 +80,13 @@ describe('Collapse', () => {
             published stories approximately two seconds after the event ended.
           </span>
         </CollapseItem>
-      </Collapse>
+      </Collapse>,
     );
     expect(
       component
         .find('.concis-collapse-box .concis-collapse-item')
         .at(1)
-        .find('.concis-collapse-item-header .right')
+        .find('.concis-collapse-item-header .right'),
     ).toHaveLength(1);
   });
   it('test headerAlign props correctly', () => {
@@ -113,13 +113,13 @@ describe('Collapse', () => {
             published stories approximately two seconds after the event ended.
           </span>
         </CollapseItem>
-      </Collapse>
+      </Collapse>,
     );
     expect(
       component
         .find('.concis-collapse-box .concis-collapse-item')
         .at(1)
-        .find('.concis-collapse-item-header .right')
+        .find('.concis-collapse-item-header .right'),
     ).toHaveLength(1);
   });
   it('test lazyload correctly', () => {
@@ -146,14 +146,14 @@ describe('Collapse', () => {
             published stories approximately two seconds after the event ended.
           </span>
         </CollapseItem>
-      </Collapse>
+      </Collapse>,
     );
     expect(
       component
         .find('.concis-collapse-box .concis-collapse-item')
         .at(2)
         .find('.concis-collapse-item-content')
-        .getDOMNode().childNodes.length
+        .getDOMNode().childNodes.length,
     ).toBe(0);
     component
       .find('.concis-collapse-box .concis-collapse-item')
@@ -165,7 +165,7 @@ describe('Collapse', () => {
         .find('.concis-collapse-box .concis-collapse-item')
         .at(2)
         .find('.concis-collapse-item-content')
-        .getDOMNode().childNodes.length
+        .getDOMNode().childNodes.length,
     ).toBe(1);
   });
 });

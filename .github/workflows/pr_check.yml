@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: install
-        run: yarn install
+        run: yarn install && yarn add enzyme @wojtekmaj/enzyme-adapter-react-17
 
       - name: test:unit
         run: cd packages/concis-react && yarn install && yarn test:unit

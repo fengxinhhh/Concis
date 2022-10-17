@@ -1,6 +1,6 @@
 import React from 'react';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 import Switch from '../../../src/Switch';
 
 const { mount } = Enzyme;
@@ -27,14 +27,14 @@ describe('Switch', () => {
         .find('.concis-switch')
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('background-color:rgba(201,205,212,1); ')
+        ?.includes('background-color:rgba(201,205,212,1); '),
     );
     expect(
       component
         .find('.concis-switch-dot')
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('left: 20px;')
+        ?.includes('left: 20px;'),
     );
   });
   it('test switch loading', () => {

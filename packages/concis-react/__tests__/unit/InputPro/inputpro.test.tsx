@@ -1,9 +1,9 @@
 import React from 'react';
 import InputPro from '../../../src/InputPro/index';
-import { sleep } from '../../sleep';
+import { sleep } from '../../../../../tests/sleep';
 import { optionParams } from '../../../src/InputPro/interface';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 

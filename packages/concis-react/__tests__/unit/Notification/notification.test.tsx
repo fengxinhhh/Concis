@@ -1,5 +1,5 @@
 import Notification from '../../../src/Notification/index';
-import Enzyme from '../../setup';
+import Enzyme from '../../../../../tests/setup';
 
 const { mount } = Enzyme;
 

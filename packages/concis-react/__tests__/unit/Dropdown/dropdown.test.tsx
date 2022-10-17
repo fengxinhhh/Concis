@@ -1,9 +1,9 @@
 import React from 'react';
 import { InfoCircleOutlined } from '@ant-design/icons';
-import { sleep } from '../../sleep';
+import { sleep } from '../../../../../tests/sleep';
 import Dropdown from '../../../src/Dropdown';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from '../../../src/Select';
-import Enzyme from '../../setup';
-import mountTest from '../../mountTest';
+import Enzyme from '../../../../../tests/setup';
+import mountTest from '../../../../../tests/mountTest';
 
 const { mount } = Enzyme;
 
@@ -41,7 +41,7 @@ describe('Select', () => {
   it('test base Select correctly', () => {
     const mockFn = jest.fn();
     const component = mount(
-      <Select option={option} width={200} handleSelectCallback={mockFn} placeholder="请选择" />
+      <Select option={option} width={200} handleSelectCallback={mockFn} placeholder="请选择" />,
     );
     expect(component.find('.concis-select').length).toBe(1);
     component.find('.selected').simulate('click');
@@ -50,7 +50,7 @@ describe('Select', () => {
         .find('.selectOptions')
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('display: block')
+        ?.includes('display: block'),
     );
     component.find('.selectOptions .option').at(0).simulate('click');
     expect(mockFn).toBeCalled();
@@ -63,11 +63,11 @@ describe('Select', () => {
         .find('.concis-select')
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('cursor: not-allowed;')
+        ?.includes('cursor: not-allowed;'),
     );
     component.find('.concis-select').simulate('click');
     expect(
-      !component.find('.concis-select').getDOMNode().getAttribute('style')?.includes('height')
+      !component.find('.concis-select').getDOMNode().getAttribute('style')?.includes('height'),
     );
   });
 
@@ -85,7 +85,7 @@ describe('Select', () => {
         .at(0)
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('cursor: not-allowed; background: rgb(238, 238, 238);')
+        ?.includes('cursor: not-allowed; background: rgb(238, 238, 238);'),
     );
   });
 
@@ -101,7 +101,7 @@ describe('Select', () => {
         showSearch
         placeholder="请输入"
         clearable
-      />
+      />,
     );
     component.find('.selected input').simulate('click');
     component.find('.selected input').simulate('change', {

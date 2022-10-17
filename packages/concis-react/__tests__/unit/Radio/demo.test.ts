@@ -1,3 +1,3 @@
-import demoTest from '../../demoTest';
+import demoTest from '../../../../../tests/demoTest';
 
 demoTest('Radio');
