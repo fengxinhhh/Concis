@@ -40,4 +40,23 @@ mobile: false
 
 <code src="./demos/index4.tsx" />
 
-<API />
+## API
+
+| Name               | Description        | Type                | Default |
+| ------------------ | ------------------ | ------------------- | ------- |
+| style              | 自定义样式         | `CSSProperties`     | `--`    |
+| className          | 类名               | `string`            | `--`    |
+| checked            | 默认选中状态       | `boolean`           | `false` |
+| disabled           | 禁用               | `boolean`           | `false` |
+| group              | 多选组配置         | `Array<checkGroup>` | `[]`    |
+| checkCallback      | 多选框选中回调函数 | `Function`          | `--`    |
+| checkGroupCallback | 多选组改变回调函数 | `Function`          | `--`    |
+
+## checkGroup API
+
+| Name     | Description | Type              | Default |
+| -------- | ----------- | ----------------- | ------- |
+| label    | 显示标题    | `string`          | `--`    |
+| value    | 选中值      | `string / number` | `--`    |
+| checked  | 选中状态    | `boolean`         | `--`    |
+| disabled | 禁用        | `boolean`         | `--`    |

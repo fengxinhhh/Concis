@@ -11,7 +11,7 @@ interface FormProps<T>
    * @description 类名
    * @default null
    */
-  className?: string;
+  className?: T;
   /**
    * @description 布局方式
    * @default horizontal
@@ -28,31 +28,6 @@ interface FormProps<T>
    * @default false
    */
   disabled?: boolean;
-  /**
-   * @description Form.Item标签
-   * @default  null
-   */
-  label?: T;
-  /**
-   * @description Form.Item当行底部距离
-   * @default  20px
-   */
-  wrapperCol?: number;
-  /**
-   * @description Form.Item当行顶部距离
-   * @default  20px
-   */
-  wrapperTol?: number;
-  /**
-   * @description Form.Item受控项名称
-   * @default  null
-   */
-  field?: T;
-  /**
-   * @description Form.Item当行校验规则
-   * @default  20px
-   */
-  rules?: Array<ruleType>;
   /**
    * @description 受控表单向外暴露的hook
    */
@@ -75,21 +50,63 @@ interface FormProps<T>
   useFormContext?: Function;
 }
 type ruleType = {
+  /**
+   * @description 必填
+   */
   required?: boolean;
+  /**
+   * @description 最大长度
+   */
   maxLength?: number;
+  /**
+   * @description 最小长度
+   */
   minLength?: number;
+  /**
+   * @description 提示信息
+   */
   message: string;
+  /**
+   * @description 自定义校验规则
+   */
   fn?: Function;
 };
 interface FormItemProps {
   children: ReactNode;
+  /**
+   * @description 类名
+   */
   className?: string;
+  /**
+   * @description 自定义样式
+   */
   style?: CSSProperties;
+  /**
+   * @description 标题
+   */
   label?: string;
+  /**
+   * @description 单行距离顶部Item距离
+   * @default 20px
+   */
   wrapperCol?: number;
+  /**
+   * @description 单行距离底部Item距离
+   * @default 20px
+   */
   wrapperTol?: number;
+  /**
+   * @description 单行受控唯一名称
+   */
   field?: string;
+  /**
+   * @description 单行校验规则
+   */
   rules?: Array<ruleType>;
+  /**
+   * @description 禁用
+   * @default false
+   */
   disabled?: boolean;
 }
 

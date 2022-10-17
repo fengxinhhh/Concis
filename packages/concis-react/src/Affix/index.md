@@ -24,4 +24,15 @@ Pin page elements to the visible range.
 
 <code src="./demos/index1.tsx" />
 
-<API/>
+## API
+
+| Name         | Description                        | Type              | Default |
+| ------------ | ---------------------------------- | ----------------- | ------- |
+| className    | class name                         | `string`          | `--`    |
+| style        | Slot styles                        | `CSSProperties`   | `--`    |
+| affixType    | type scroll means scroll container | `string`          | `--`    |
+| children     | slot                               | `ReactNode`       | `--`    |
+| offsetTop    | top distance                       | `number / string` | `0`     |
+| offsetLeft   | Left distance                      | `number / string` | `0`     |
+| offsetBottom | Bottom distance                    | `number / string` | `0`     |
+| offsetRight  | right distance                     | `number / string` | `0`     |

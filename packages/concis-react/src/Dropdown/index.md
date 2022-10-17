@@ -54,14 +54,27 @@ Disable the menu via `disabled`, via `disabled` in `data`, single item disable.
 
 <code src="./demos/index7.tsx" />
 
-<API />
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| style | Custom styles | `CSSProperties` | `--` |
+| className | class name | `string` | `--` |
+| data | Configuration data item | `string[] / dataType[]` | `--` |
+| placeholder | Display text not selected | `string` | `Please select` |
+| disabled | disabled | `boolean` | `false` |
+| type | Selection type | `hover / click` | `click` |
+| status | Dropdown menu type | `default / primary / error / warning / success` | `default` |
+| colums | flattening, multiple columns side by side | `boolean` | `false` |
+| columnsWidth | Multi-column side by side column width | `number` | `500px` |
+| position | Appearance position | `top / bottom / left / right` | `bottom` |
 
 ## dataType API
 
-| Name     | Description                                                | Type       | Default |
-| -------- | ---------------------------------------------------------- | ---------- | ------- |
-| content  | label name                                                 | string     | `--`    |
-| link     | jump link                                                  | string     | `--`    |
-| children | children (only one layer of children is supported for now) | dataType[] | `[]`    |
-| disabled | disabled                                                   | boolean    | `false` |
-| icon     | icon                                                       | ReactNode  | `<></>` |
+| Name     | Description                                                | Type         | Default |
+| -------- | ---------------------------------------------------------- | ------------ | ------- |
+| content  | label name                                                 | `string`     | `--`    |
+| link     | jump link                                                  | `string`     | `--`    |
+| children | children (only one layer of children is supported for now) | `dataType[]` | `[]`    |
+| disabled | disabled                                                   | `boolean`    | `false` |
+| icon     | icon                                                       | `ReactNode`  | `<></>` |

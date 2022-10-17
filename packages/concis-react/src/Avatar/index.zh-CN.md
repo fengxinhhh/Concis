@@ -46,4 +46,23 @@ mobile: false
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name            | Description    | Type            | Default  |
+| --------------- | -------------- | --------------- | -------- |
+| style           | 头像自定义样式 | `CSSProperties` | `--`     |
+| className       | 类名           | `string`        | `--`     |
+| size            | 头像大小       | `number`        | `40px`   |
+| shape           | 头像形状       | `string`        | `circle` |
+| autoFixFontSize | 文本自适应     | `boolean`       | `true`   |
+| triggerType     | 交互类型       | `mask / button` | `button` |
+| triggerIcon     | 交互按钮图标   | `ReactNode`     | `<></>`  |
+| triggerClick    | 交互点击回调   | `Function`      | `--`     |
+
+## Avatar Group API
+
+| Name       | Description    | Type            | Default |
+| ---------- | -------------- | --------------- | ------- |
+| size       | 按钮组头像大小 | `number`        | `--`    |
+| className  | 类名           | `string`        | `--`    |
+| groupStyle | 按钮组样式     | `CSSProperties` | `--`    |

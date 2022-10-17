@@ -42,4 +42,15 @@ Set maxCount to limit the maximum displayed logo value. If it exceeds the value,
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name      | Description        | Type                 | Default |
+| --------- | ------------------ | -------------------- | ------- |
+| className | Custom class name  | `string`             | `--`    |
+| style     | Custom styles      | `CSSProperties`      | `--`    |
+| count     | Logo number value  | `number / ReactNode` | `--`    |
+| maxCount  | Logo maximum value | `number`             | `99`    |
+| dotStyle  | Dot style          | `CSSProperties`      | `{}`    |
+| dot       | use dots           | `boolean`            | `false` |
+| offset    | Dot position value | `Array<number>`      | `[2,2]` |
+| text      | Dot text value     | `string`             | `''`    |

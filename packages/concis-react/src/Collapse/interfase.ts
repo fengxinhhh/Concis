@@ -2,27 +2,10 @@ import { ReactNode, CSSProperties } from 'react';
 
 interface CollapseItemProps {
   children?: ReactNode;
-  className?: string;
-  header: string;
-  disabled?: boolean;
-  listKey: number | string;
-  extra?: ReactNode;
-}
-interface CollapseProps {
-  children?: ReactNode;
   /**
-   * @description 自定义样式
-   */
-  style?: CSSProperties;
-  /**
-   * @description 自定义类名
+   * @description 类名
    */
   className?: string;
-  /**
-   * @description 默认展开列表
-   * @default []
-   */
-  defaultActive?: Array<string | number>;
   /**
    * @description 头部内容
    * @default <></>
@@ -43,6 +26,22 @@ interface CollapseProps {
    * @default <></>
    */
   extra?: ReactNode;
+}
+interface CollapseProps {
+  children?: ReactNode;
+  /**
+   * @description 自定义样式
+   */
+  style?: CSSProperties;
+  /**
+   * @description 自定义类名
+   */
+  className?: string;
+  /**
+   * @description 默认展开列表
+   * @default []
+   */
+  defaultActive?: Array<string | number>;
   /**
    * @description 手风琴
    * @default false

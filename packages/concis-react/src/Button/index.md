@@ -60,4 +60,25 @@ Through Button Group Place multiple button groups.
 
 <code src="./demos/index7.tsx" />
 
-<API></API>
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| style | Custom styles | `CSSProperties` | `--` |
+| className | class name | `string` | `--` |
+| type | button theme | `primary / danger / warning / info / text` | `primary` |
+| width | width | `number` | `--` |
+| height | height | `number` | `40px` |
+| disabled | disabled state | `boolean` | `false` |
+| circle | font button | `boolean` | `false` |
+| dashed | button border is dashed | `boolean` | `false` |
+| loading | loading state | `boolean` | `false` |
+| icon | Icon button | `ReactNode` | `<></>` |
+| handleClick | Button click callback event | `Function` | `--` |
+
+## Button Group API
+
+| Name      | Description   | Type            | Default |
+| --------- | ------------- | --------------- | ------- |
+| style     | Custom styles | `CSSProperties` | `--`    |
+| className | class name    | `string`        | `--`    |

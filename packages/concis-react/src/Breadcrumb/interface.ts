@@ -24,7 +24,14 @@ interface BreadcrumbProps {
 
 interface BreadcrumbItemProps {
   children?: ReactNode;
+  /**
+   * @description 自定义类名
+   */
   className?: string;
+  /**
+   * @description 自定义样式
+   * @default {}
+   */
   style?: CSSProperties;
 }
 

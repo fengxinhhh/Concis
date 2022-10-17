@@ -16,12 +16,12 @@ interface AlertProps {
   type?: 'info' | 'success' | 'warning' | 'error';
   /**
    * @description 显示标题
-   * @default '''
+   * @default ''
    */
   title?: string;
   /**
    * @description 警告文字
-   * @default '''
+   * @default ''
    */
   content: string;
   /**

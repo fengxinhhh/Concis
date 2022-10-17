@@ -52,4 +52,20 @@ mobile: false
 
 <code src="./demos/index6.tsx" />
 
-<API />
+## API
+
+| Name              | Description      | Type                          | Default          |
+| ----------------- | ---------------- | ----------------------------- | ---------------- |
+| style             | 自定义样式       | `CSSProperties`               | `--`             |
+| className         | 类名             | `string`                      | `--`             |
+| title             | 标题             | `string / ReactNode`          | `--`             |
+| visible           | 显示状态         | `boolean`                     | `false`          |
+| align             | 出现位置         | `left / right / top / bottom` | `right`          |
+| okButtonProps     | 确认按钮 props   | `参考Button组件api`           | `--`             |
+| cancelButtonProps | 取消按钮 props   | `参考Button组件api`           | `--`             |
+| footer            | 自定义页脚       | `ReactNode`                   | `确定、取消按钮` |
+| okText            | 确认按钮文字     | `string`                      | `确定`           |
+| cancelText        | 取消按钮文字     | `string`                      | `取消`           |
+| width             | 对话框宽度百分比 | `string / number`             | `520px`          |
+| onOk              | 确认回调函数     | `Function`                    | `--`             |
+| onCancel          | 取消关闭回调函数 | `Function`                    | `--`             |

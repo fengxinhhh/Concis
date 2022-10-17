@@ -40,4 +40,24 @@ Controls for entering or selecting dates.
 
 <code src="./demos/index6.tsx" />
 
-<API src="./DatePicker/index.tsx"/>
+## DatePicker, MonthPicker, YearPicker API
+
+| Name         | Description                                   | Type            | Default      |
+| ------------ | --------------------------------------------- | --------------- | ------------ |
+| style        | Custom styles                                 | `CSSProperties` | `--`         |
+| className    | class name                                    | `string`        | `--`         |
+| format       | Set the format of the date                    | `string`        | `YYYY-MM-DD` |
+| showClear    | Show date reset button                        | `boolean`       | `false`      |
+| align        | orientation                                   | `string`        | `top`        |
+| handleChange | callback function after selection             | `Function`      | `--`         |
+| disableCheck | A function to verify if an option is disabled | `Function`      | `--`         |
+
+## RangeDatePicker API
+
+| Name         | Description                   | Type            | Default  |
+| ------------ | ----------------------------- | --------------- | -------- |
+| style        | Custom styles                 | `CSSProperties` | `--`     |
+| className    | class name                    | `string`        | `--`     |
+| showClear    | Show date reset button        | `boolean`       | `false`  |
+| align        | orientation                   | `string`        | `bottom` |
+| handleChange | Date change callback function | `Function`      | `--`     |

@@ -1,12 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-  useRef,
-  useContext,
-  CSSProperties,
-  forwardRef,
-} from 'react';
+import React, { useEffect, useState, useCallback, useRef, useContext, forwardRef } from 'react';
 import {
   DoubleLeftOutlined,
   LeftOutlined,
@@ -14,6 +6,7 @@ import {
   RightOutlined,
   SwapRightOutlined,
 } from '@ant-design/icons';
+import type { RangeProps } from './interface';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
@@ -21,13 +14,6 @@ import { globalCtx } from '../../GlobalConfig';
 import { ctx } from '../../Form';
 import './index.module.less';
 
-interface RangeProps {
-  className?: string;
-  style?: CSSProperties;
-  showClear?: Boolean;
-  align?: string;
-  handleChange?: Function;
-}
 const RangeDatePicker = (props, ref) => {
   const { className, showClear, align, handleChange, style } = props;
   const [startDate, setStartDate] = useState({

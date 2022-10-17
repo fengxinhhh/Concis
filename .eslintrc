@@ -33,6 +33,7 @@
     }
   ],
   "rules": {
+    "prettier/prettier": ["error", { "trailingComma": "es5", "printWidth": 100 }],
     "no-case-declarations": 0,
     "no-param-reassign": 0,
     "no-underscore-dangle": 0,
@@ -117,7 +118,6 @@
     "import/no-duplicates": "off",
     "react/jsx-key": "off",
     "no-return-await": "off",
-    "prettier/prettier": "off",
     "react/no-unused-prop-types": "off",
     "no-await-in-loop": "off",
     "linebreak-style": "off",

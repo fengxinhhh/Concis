@@ -30,4 +30,11 @@ Configure a custom copy through 'description'.
 
 <code src="./demos/index3.tsx" />
 
-<API />
+## API
+
+| Name        | Description   | Type                 | Default       |
+| ----------- | ------------- | -------------------- | ------------- |
+| style       | Custom styles | `CSSProperties`      | `--`          |
+| className   | class name    | `string`             | `--`          |
+| icon        | custom icon   | `ReactNode`          | `--`          |
+| description | Custom text   | `string / ReactNode` | `No data yet` |

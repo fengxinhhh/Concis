@@ -42,4 +42,15 @@ children 为空时，将会独立展示徽标。
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name      | Description  | Type                 | Default |
+| --------- | ------------ | -------------------- | ------- |
+| className | 自定义类名   | `string`             | `--`    |
+| style     | 自定义样式   | `CSSProperties`      | `--`    |
+| count     | 徽标数字值   | `number / ReactNode` | `--`    |
+| maxCount  | 徽标最大值   | `number`             | `99`    |
+| dotStyle  | 小圆点样式   | `CSSProperties`      | `{}`    |
+| dot       | 使用小圆点   | `boolean`            | `false` |
+| offset    | 小圆点位置值 | `Array<number>`      | `[2,2]` |
+| text      | 小圆点文本值 | `string`             | `''`    |

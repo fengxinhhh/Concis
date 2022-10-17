@@ -24,4 +24,15 @@ mobile: false
 
 <code src="./demos/index1.tsx" />
 
-<API/>
+## API
+
+| Name         | Description              | Type              | Default |
+| ------------ | ------------------------ | ----------------- | ------- |
+| className    | 类名                     | `string`          | `--`    |
+| style        | 插槽样式                 | `CSSProperties`   | `--`    |
+| affixType    | 类型 scroll 表示滚动容器 | `string`          | `--`    |
+| children     | 插槽                     | `ReactNode`       | `--`    |
+| offsetTop    | 顶部距离                 | `number / string` | `0`     |
+| offsetLeft   | 左侧距离                 | `number / string` | `0`     |
+| offsetBottom | 底部距离                 | `number / string` | `0`     |
+| offsetRight  | 右侧距离                 | `number / string` | `0`     |

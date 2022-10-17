@@ -44,4 +44,25 @@ extra 配置每个层级的头部右侧内容
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name           | Description                          | Type                     | Default |
+| -------------- | ------------------------------------ | ------------------------ | ------- |
+| style          | 自定义样式                           | `CSSProperties`          | `--`    |
+| className      | 类名                                 | `string`                 | `--`    |
+| defaultActive  | 默认展开列表                         | `Array<string / number>` | `[]`    |
+| accordion      | 手风琴                               | `boolean`                | `false` |
+| noBorder       | 无边框                               | `boolean`                | `false` |
+| headerAlign    | 头部对齐方式                         | `string`                 | `left`  |
+| lazyLoad       | 懒加载                               | `boolean`                | `false` |
+| toggleCallback | 切换回调函数，返回打开列表的 listKey | `Function`               | `--`    |
+
+## CollapseItem API
+
+| Name      | Description  | Type              | Default |
+| --------- | ------------ | ----------------- | ------- |
+| className | 类名         | `string`          | `--`    |
+| header    | 头部内容     | `string`          | `<></>` |
+| listKey   | 层级下标     | `number / string` | `1`     |
+| disabled  | 禁止展开     | `boolean`         | `false` |
+| extra     | 头部右侧内容 | `ReactNode`       | `<></>` |

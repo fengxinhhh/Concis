@@ -46,4 +46,16 @@ mobile: false
 
 <code src='./demos/index3.tsx' />
 
-<API></API>
+## API
+
+| Name        | Description        | Type            | Default |
+| ----------- | ------------------ | --------------- | ------- |
+| style       | 自定义样式         | `CSSProperties` | `--`    |
+| className   | 类名               | `string`        | `--`    |
+| author      | 作者名             | `string`        | `--`    |
+| afterAuthor | 作者名后的额外内容 | `ReactNode`     | `--`    |
+| avatar      | 头像               | `JSX.Element`   | `--`    |
+| content     | 评论内容           | `ReactNode`     | `--`    |
+| datetime    | 时间描述           | `string`        | `--`    |
+| actions     | 底部配置项         | `ReactNode`     | `--`    |
+| align       | 标题栏对齐方式     | `left / right`  | `left`  |

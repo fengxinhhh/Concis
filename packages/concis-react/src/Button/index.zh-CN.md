@@ -60,4 +60,25 @@ loading 配置加载状态按钮。
 
 <code src="./demos/index7.tsx" />
 
-<API></API>
+## API
+
+| Name        | Description      | Type                                       | Default   |
+| ----------- | ---------------- | ------------------------------------------ | --------- |
+| style       | 自定义样式       | `CSSProperties`                            | `--`      |
+| className   | 类名             | `string`                                   | `--`      |
+| type        | 按钮主题         | `primary / danger / warning / info / text` | `primary` |
+| width       | 宽度             | `number`                                   | `--`      |
+| height      | 高度             | `number`                                   | `40px`    |
+| disabled    | 禁用状态         | `boolean`                                  | `false`   |
+| circle      | 字体按钮         | `boolean`                                  | `false`   |
+| dashed      | 按钮边框为虚线   | `boolean`                                  | `false`   |
+| loading     | 加载状态         | `boolean`                                  | `false`   |
+| icon        | 图标按钮         | `ReactNode`                                | `<></>`   |
+| handleClick | 按钮点击回调事件 | `Function`                                 | `--`      |
+
+## Button Group API
+
+| Name      | Description | Type            | Default |
+| --------- | ----------- | --------------- | ------- |
+| style     | 自定义样式  | `CSSProperties` | `--`    |
+| className | 类名        | `string`        | `--`    |

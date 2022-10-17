@@ -40,4 +40,23 @@ A case.
 
 <code src="./demos/index4.tsx" />
 
-<API />
+## API
+
+| Name               | Description                                 | Type                | Default |
+| ------------------ | ------------------------------------------- | ------------------- | ------- |
+| style              | Custom styles                               | `CSSProperties`     | `--`    |
+| className          | class name                                  | `string`            | `--`    |
+| checked            | Default checked state                       | `boolean`           | `false` |
+| disabled           | disabled                                    | `boolean`           | `false` |
+| group              | Multi-select group configuration            | `Array<checkGroup>` | `[]`    |
+| checkCallback      | Check callback function for checkboxes      | `Function`          | `--`    |
+| checkGroupCallback | Multi-select group change callback function | `Function`          | `--`    |
+
+## checkGroup API
+
+| Name     | Description    | Type              | Default |
+| -------- | -------------- | ----------------- | ------- |
+| label    | Display title  | `string`          | `--`    |
+| value    | selected value | `string / number` | `--`    |
+| checked  | checked state  | `boolean`         | `--`    |
+| disabled | disabled       | `boolean`         | `--`    |

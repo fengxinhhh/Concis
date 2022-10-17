@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useContext, CSSProperties, forwardRef } from 'react';
+import React, { useEffect, useState, useContext, forwardRef } from 'react';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import chunk from 'lodash/chunk';
+import type { YearPickerProps, YearItemProps } from './interface';
 import Input from '../../Input';
 import Popover from '../../Popover';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
@@ -12,47 +13,6 @@ import { ctx } from '../../Form';
 import './index.module.less';
 
 const dayjs = require('dayjs');
-
-interface YearPickerProps {
-  /**
-   * @description 自定义类名
-   */
-  className?: string;
-  /**
-   * @description 自定义样式
-   */
-  style?: CSSProperties;
-  /**
-   * @description 设置日期的格式化
-   * @default YYYY-MM-DD
-   */
-  format?: string;
-  /**
-   * @description 显示日期重置按钮
-   * @default false
-   */
-  showClear?: boolean;
-  /**
-   * @description 方向
-   * @default false
-   */
-  align?: string;
-  /**
-   * @description 选择完毕后的回调函数
-   * @default Function
-   */
-  handleChange?: Function;
-  /**
-   * @description 验证是否禁用选项的函数
-   * @default Function
-   */
-  disableCheck?: Function;
-}
-interface YearItemProps {
-  value: string;
-  date: Date;
-  disable: boolean;
-}
 
 const YearPicker = (props, ref) => {
   const {

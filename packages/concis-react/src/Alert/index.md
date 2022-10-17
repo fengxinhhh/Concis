@@ -48,4 +48,16 @@ The icon is not displayed through 'showIcon=false'.
 
 <code src="./demos/index6.tsx" />
 
-<API />
+## API
+
+| Name         | Description             | Type                               | Default |
+| ------------ | ----------------------- | ---------------------------------- | ------- |
+| style        | Custom styles           | `CSSProperties`                    | `--`    |
+| className    | class name              | `string`                           | `--`    |
+| type         | type                    | `info / success / warning / error` | `info`  |
+| title        | Display title           | `string`                           | `''`    |
+| content      | Warning text            | `string`                           | `''`    |
+| showClear    | Show clear button       | `boolean`                          | `false` |
+| showIcon     | Show warning icon       | `boolean`                          | `true`  |
+| closeElement | Custom close icon       | `React.ReactNode/string`           | `--`    |
+| onClose      | Close callback function | `Function`                         | `--`    |

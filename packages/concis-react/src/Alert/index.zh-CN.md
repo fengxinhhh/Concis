@@ -48,4 +48,16 @@ mobile: false
 
 <code src="./demos/index6.tsx" />
 
-<API />
+## API
+
+| Name         | Description      | Type                               | Default |
+| ------------ | ---------------- | ---------------------------------- | ------- |
+| style        | 自定义样式       | `CSSProperties`                    | `--`    |
+| className    | 类名             | `string`                           | `--`    |
+| type         | 类型             | `info / success / warning / error` | `info`  |
+| title        | 显示标题         | `string`                           | `''`    |
+| content      | 警告文字         | `string`                           | `''`    |
+| showClear    | 显示清除按钮     | `boolean`                          | `false` |
+| showIcon     | 显示警告提示图标 | `boolean`                          | `true`  |
+| closeElement | 自定义关闭图标   | `React.ReactNode / string`         | `--`    |
+| onClose      | 关闭回调函数     | `Function`                         | `--`    |

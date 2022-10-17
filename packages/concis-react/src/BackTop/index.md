@@ -32,4 +32,15 @@ You can customize the carrier that returns to the top, and you can even put a ro
 
 <code src="./demos/index2.tsx" />
 
-<API></API>
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| children | custom button content | `ReactNode` | `--` |
+| className | Custom class name | `string` | `--` |
+| style | Custom styles | `CSSProperties` | `--` |
+| duration | time to return to top (ms) | `number` | `450` |
+| target | The target element that needs to listen to scroll events | `() => HTMLElement / window / document` | `window` |
+| visibilityHeight | The button will only be displayed when the scroll distance is greater than this parameter | `number` | `400` |
+| onClick | Button click event callback function | `React.MouseEventHandler<HTMLElement>` | `--` |
+| onReachTop | Callback function after scrolling to the top | `() => void` | `--` |

@@ -42,7 +42,14 @@ mobile: false
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name      | Description  | Type                 | Default |
+| --------- | ------------ | -------------------- | ------- |
+| className | 自定义类名   | `string`             | `--`    |
+| style     | 自定义样式   | `CSSProperties`      | `{}`    |
+| separator | 自定义分隔符 | `ReactNode / string` | `/`     |
+| maxCount  | 最大显示数量 | `number`             | `--`    |
 
 ## Breadcrumb.Item
 

@@ -42,7 +42,14 @@ Configure `maxCount` to specify the maximum number of breadcrumbs to be displaye
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name      | Description           | Type                 | Default |
+| --------- | --------------------- | -------------------- | ------- |
+| className | Custom class name     | `string`             | `--`    |
+| style     | Custom styles         | `CSSProperties`      | `{}`    |
+| separator | custom separator      | `ReactNode / string` | `/`     |
+| maxCount  | maximum display count | `number`             | `--`    |
 
 ## Breadcrumb.Item
 

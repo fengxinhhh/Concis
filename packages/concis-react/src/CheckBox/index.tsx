@@ -1,61 +1,19 @@
 import React, {
-  ReactNode,
   useState,
   useCallback,
   useMemo,
   Fragment,
   useEffect,
   useContext,
-  CSSProperties,
   forwardRef,
 } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
+import type { checkGroup, checkBoxProps } from './interface';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
-
-type checkGroup = {
-  label: string;
-  value: string | number;
-  checked?: boolean;
-  disabled?: boolean;
-};
-interface checkBoxProps {
-  children?: ReactNode;
-  /**
-   * @description 自定义样式
-   */
-  style?: CSSProperties;
-  /**
-   * @description 自定义类名
-   */
-  className?: string;
-  /**
-   * @description 默认选中状态
-   * @default boolean
-   */
-  checked?: boolean;
-  /**
-   * @description 禁用
-   * @default boolean
-   */
-  disabled?: boolean;
-  /**
-   * @description 多选组配置
-   * @default Array
-   */
-  group?: Array<checkGroup>;
-  /**
-   * @description 多选框选中回调函数
-   */
-  checkCallback?: Function;
-  /**
-   * @description 多选组改变回调函数
-   */
-  checkGroupCallback?: Function;
-}
 
 const CheckBox = (props, ref) => {
   const {

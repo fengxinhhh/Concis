@@ -46,4 +46,25 @@ First expansion, loading DOM.
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| style | Custom styles | `CSSProperties` | `--` |
+| className | class name | `string` | `--` |
+| defaultActive | Default expanded list | `Array<string / number>` | `[]` |
+| accordion | accordion | `boolean` | `false` |
+| noBorder | no border | `boolean` | `false` |
+| headerAlign | header alignment | `string` | `left` |
+| lazyLoad | lazy loading | `boolean` | `false` |
+| toggleCallback | Toggle callback function, return listKey of open list | `Function` | `--` |
+
+## CollapseItem API
+
+| Name      | Description                             | Type              | Default |
+| --------- | --------------------------------------- | ----------------- | ------- |
+| className | class name                              | `string`          | `--`    |
+| header    | header content                          | `string`          | `<></>` |
+| listKey   | Hierarchical index                      | `number / string` | `1`     |
+| disabled  | Disable expansion                       | `boolean`         | `false` |
+| extra     | content on the right side of the header | `ReactNode`       | `<></>` |

@@ -1,56 +1,10 @@
 import React, { useEffect, useState, useContext, forwardRef } from 'react';
-import { GlobalConfigProps } from '../GlobalConfig/interface';
+import type { AffixProps, offsetProps } from './interface';
+import type { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-interface AffixProps {
-  /**
-   * @description 类名
-   */
-  className?: string;
-  /**
-   * @description 插槽样式
-   * @default {}
-   */
-  style?: Object;
-  /**
-   * @description 类型 scroll表示滚动容器
-   * @default ''
-   */
-  affixType?: string;
-  /**
-   * @description 插槽
-   */
-  children?: any;
-  /**
-   * @description 顶部距离
-   * @default 0
-   */
-  offsetTop?: number | string;
-  /**
-   * @description 左侧距离
-   * @default 0
-   */
-  offsetLeft?: number | string;
-  /**
-   * @description 底部距离
-   * @default 0
-   */
-  offsetBottom?: number | string;
-  /**
-   * @description 右侧距离
-   * @default 0
-   */
-  offsetRight?: number | string;
-}
-interface offsetProps {
-  left?: number | string;
-  right?: number | string;
-  top?: number | string;
-  bottom?: number | string;
-  position?: string;
-}
 const Affix = (props, ref) => {
   const {
     children,

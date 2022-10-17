@@ -32,4 +32,15 @@ mobile: false
 
 <code src="./demos/index2.tsx" />
 
-<API></API>
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| children | 自定义按钮内容 | `ReactNode` | `--` |
+| className | 自定义类名 | `string` | `--` |
+| style | 自定义样式 | `CSSProperties` | `--` |
+| duration | 回到顶部所需时间(ms) | `number` | `450` |
+| target | 需要监听滚动事件的目标元素 | `() => HTMLElement / window / document` | `window` |
+| visibilityHeight | 滚动距离大于该参数时才会显示按钮 | `number` | `400` |
+| onClick | 按钮点击事件回调函数 | `React.MouseEventHandler<HTMLElement>` | `--` |
+| onReachTop | 滚动到顶部后的回调函数 | `() => void` | `--` |

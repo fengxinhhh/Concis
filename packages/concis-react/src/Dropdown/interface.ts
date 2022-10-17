@@ -27,8 +27,8 @@ interface DropdownProps {
    */
   placeholder?: string;
   /**
-   * @description 未选中展示文本
-   * @default Please select
+   * @description 禁用
+   * @default false
    */
   disabled?: boolean;
   /**

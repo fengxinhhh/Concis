@@ -46,4 +46,16 @@ Implement a basic comment reply.
 
 <code src='./demos/index3.tsx' />
 
-<API></API>
+## API
+
+| Name        | Description                | Type            | Default |
+| ----------- | -------------------------- | --------------- | ------- |
+| style       | Custom styles              | `CSSProperties` | `--`    |
+| className   | class name                 | `string`        | `--`    |
+| author      | Author name                | `string`        | `--`    |
+| afterAuthor | Extras after author name   | `ReactNode`     | `--`    |
+| avatar      | Avatar                     | `JSX.Element`   | `--`    |
+| content     | Comment content            | `ReactNode`     | `--`    |
+| datetime    | time description           | `string`        | `--`    |
+| actions     | Bottom configuration items | `ReactNode`     | `--`    |
+| align       | title bar alignment        | `left / right`  | `left`  |

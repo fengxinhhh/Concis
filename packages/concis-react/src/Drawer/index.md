@@ -52,4 +52,20 @@ An instance of 'Form'+'Drawer'.
 
 <code src="./demos/index6.tsx" />
 
-<API />
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| style | Custom styles | `CSSProperties` | `--` |
+| className | class name | `string` | `--` |
+| title | title | `string/ReactNode` | `--` |
+| visible | display status | `boolean` | `false` |
+| align | Occurrence position | `left / right / top / bottom` | `right` |
+| okButtonProps | Confirm button props | `Refer to Button component api` | `--` |
+| cancelButtonProps | Cancel button props | `Refer to Button component api` | `--` |
+| footer | custom footer | `ReactNode` | `OK, Cancel buttons` |
+| okText | Confirm button text | `string` | `OK` |
+| cancelText | Cancel button text | `string` | `Cancel` |
+| width | Dialog width percentage | `string / number` | `520px` |
+| onOk | Confirm callback function | `Function` | `--` |
+| onCancel | Cancel close callback function | `Function` | `--` |

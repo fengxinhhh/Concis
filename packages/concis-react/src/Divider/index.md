@@ -30,4 +30,11 @@ mobile: false
 
 <code src="./demos/index4.tsx"/>
 
-<API></API>
+## API
+
+| Name      | Description   | Type                    | Default  |
+| --------- | ------------- | ----------------------- | -------- |
+| style     | Custom styles | `CSSProperties`         | `--`     |
+| className | class name    | `string`                | `--`     |
+| fontSize  | font size     | `string`                | `14px`   |
+| align     | alignment     | `left / right / center` | `center` |

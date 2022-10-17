@@ -65,9 +65,6 @@ interface DrawerProps {
    * @default () =>
    */
   onCancel?: Function;
-  /**
-   * @description 调用式函数Modal内容
-   */
 }
 type DialogStyle = {
   width?: string;

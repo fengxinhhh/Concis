@@ -46,4 +46,23 @@ Configure autoFixFontSize to adaptively adapt the avatar with uncertain text con
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name            | Description                | Type            | Default  |
+| --------------- | -------------------------- | --------------- | -------- |
+| style           | Avatar custom style        | `CSSProperties` | `--`     |
+| className       | class name                 | `string`        | `--`     |
+| size            | Avatar size                | `number`        | `40px`   |
+| shape           | Avatar shape               | `string`        | `circle` |
+| autoFixFontSize | Text fit                   | `boolean`       | `true`   |
+| triggerType     | interaction type           | `mask / button` | `button` |
+| triggerIcon     | Interactive button icon    | `ReactNode`     | `<></>`  |
+| triggerClick    | Interactive click callback | `Function`      | `--`     |
+
+## Avatar Group API
+
+| Name       | Description              | Type            | Default |
+| ---------- | ------------------------ | --------------- | ------- |
+| size       | button group avatar size | `number`        | `--`    |
+| className  | class name               | `string`        | `--`    |
+| groupStyle | Button group style       | `CSSProperties` | `--`    |

@@ -54,14 +54,27 @@ mobile: false
 
 <code src="./demos/index7.tsx" />
 
-<API />
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| style | 自定义样式 | `CSSProperties` | `--` |
+| className | 类名 | `string` | `--` |
+| data | 配置数据项 | `string[] / dataType[]` | `--` |
+| placeholder | 未选中展示文本 | `string` | `Please select` |
+| disabled | 禁用 | `boolean` | `false` |
+| type | 选中类型 | `hover / click` | `click` |
+| status | 下拉菜单类型 | `default / primary / error / warning / success` | `default` |
+| colums | 扁平化，多列并排 | `boolean` | `false` |
+| columsWidth | 多列并排列表宽度 | `number` | `500px` |
+| position | 出现位置 | `top / bottom / left / right` | `bottom` |
 
 ## dataType API
 
-| Name     | Description                 | Type       | Default |
-| -------- | --------------------------- | ---------- | ------- |
-| content  | 标签名                      | string     | `--`    |
-| link     | 跳转链接                    | string     | `--`    |
-| children | 子项(暂只支持一层 children) | dataType[] | `[]`    |
-| disabled | 禁用                        | boolean    | `false` |
-| icon     | 图标                        | ReactNode  | `<></>` |
+| Name     | Description                 | Type         | Default |
+| -------- | --------------------------- | ------------ | ------- |
+| content  | 标签名                      | `string`     | `--`    |
+| link     | 跳转链接                    | `string`     | `--`    |
+| children | 子项(暂只支持一层 children) | `dataType[]` | `[]`    |
+| disabled | 禁用                        | `boolean`    | `false` |
+| icon     | 图标                        | `ReactNode`  | `<></>` |

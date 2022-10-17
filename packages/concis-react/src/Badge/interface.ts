@@ -39,7 +39,7 @@ interface badgeProps {
   offset?: Array<number>;
   /**
    * @description 小圆点文本值
-   * @default '''
+   * @default ''
    */
   text?: string;
 }

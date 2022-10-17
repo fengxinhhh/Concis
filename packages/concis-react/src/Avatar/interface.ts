@@ -2,11 +2,16 @@ import { CSSProperties, ReactNode } from 'react';
 
 interface groupProps {
   children?: ReactNode;
+  /**
+   * @description 类名
+   */
   className?: string;
+  /**
+   * @description 按钮组头像大小
+   */
   size?: number;
   /**
    * @description 按钮组样式
-   * @default primary
    */
   groupStyle?: CSSProperties;
 }
@@ -50,11 +55,6 @@ interface avatarProps {
    * @description 交互点击回调
    */
   triggerClick?: Function;
-  /**
-   * @description 按钮组样式
-   * @default {}
-   */
-  groupStyle?: CSSProperties;
 }
 type avatarStyles = {
   width?: number | string;

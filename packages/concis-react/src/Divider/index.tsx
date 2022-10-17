@@ -1,36 +1,10 @@
-import React, {
-  useMemo,
-  useContext,
-  useCallback,
-  ReactNode,
-  CSSProperties,
-  forwardRef,
-} from 'react';
-import { GlobalConfigProps } from '../GlobalConfig/interface';
+import React, { useMemo, useContext, useCallback, forwardRef } from 'react';
+import type { DividerProps } from './interface';
+import type { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
-interface dividerProps {
-  children?: ReactNode;
-  /**
-   * @description 自定义样式
-   */
-  style?: CSSProperties;
-  /**
-   * @description 自定义类名
-   */
-  className?: string;
-  /**
-   * @description 字体大小
-   */
-  fontSize?: Number;
-  /**
-   * @description 对齐方式
-   * @default center
-   */
-  align?: String;
-}
 const Divider = (props, ref) => {
   const { children, style, className, fontSize, align } = props;
 
@@ -94,4 +68,4 @@ const Divider = (props, ref) => {
   );
 };
 
-export default forwardRef<unknown, dividerProps>(Divider);
+export default forwardRef<unknown, DividerProps>(Divider);

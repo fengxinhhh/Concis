@@ -7,7 +7,7 @@
     "examples:dev": "cd examples && yarn && yarn dev",
     "test:pkg": "jest ./tests -u",
     "pre-commit": "pretty-quick --staged && npm run eslint && npm run stylelint",
-    "eslint": "eslint docs/ packages/concis-react/src --cache --quiet --ext .js,.jsx,.ts,.tsx",
+    "eslint": "eslint docs/ packages/concis-react/src --cache --fix --quiet --ext .js,.jsx,.ts,.tsx",
     "stylelint": "stylelint '{packages,docs}/**/*.less' --fix",
     "prepare": "husky install"
   },
