@@ -20,4 +20,10 @@ It is often used in the first screen of long list SPA to lazy load the lower and
 
 <code src="./demos/index1.tsx"/>
 
-<API/>
+## API
+
+| Name      | Description       | Type            | Default |
+| --------- | ----------------- | --------------- | ------- |
+| className | Custom class name | `string`        | `--`    |
+| style     | Custom styles     | `CSSProperties` | `--`    |
+| delay     | lazy loading      | `number`        | `0ms`   |

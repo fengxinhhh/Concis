@@ -30,4 +30,21 @@ Configure the 'disabled' attribute in the 'option' item to disable individual it
 
 <code src="./demos/index3.tsx" />
 
-<API />
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | Custom class name | `string` | `--` |
+| style | Custom styles | `CSSProperties` | `--` |
+| option | List configuration items | `optionParams[]` | `[]` |
+| align | alignment | `left / right / top / bottom` | `top` |
+| handleClick | The callback function after selection | `Function` | `--` |
+| handleChange | callback function for textbox change | `Function` | `--` |
+| handleClear | The callback function for clearing the text box | `Function` | `--` |
+
+## optionParams API
+
+| Name     | Description | Type      | Default |
+| -------- | ----------- | --------- | ------- |
+| label    | title       | `string`  | `--`    |
+| disabled | disabled    | `boolean` | `--`    |

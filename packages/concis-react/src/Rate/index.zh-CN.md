@@ -54,4 +54,15 @@ mobile: false
 
 <code src="./demos/index6.tsx" />
 
-<API />
+## API
+
+| Name           | Description  | Type            | Default |
+| -------------- | ------------ | --------------- | ------- |
+| className      | 自定义类名   | `string`        | `--`    |
+| style          | 自定义样式   | `CSSProperties` | `--`    |
+| num            | 星星个数     | `number`        | `5`     |
+| starColor      | 颜色         | `string`        | `--`    |
+| defaultShow    | 默认显示个数 | `number`        | `all`   |
+| avaClear       | 双击清除     | `boolean`       | `false` |
+| readonly       | 只读         | `boolean`       | `false` |
+| chooseCallback | 选择回调函数 | `Function`      | `--`    |

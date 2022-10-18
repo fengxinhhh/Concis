@@ -1,33 +1,8 @@
-import React, {
-  FC,
-  memo,
-  useEffect,
-  useState,
-  createRef,
-  useContext,
-  ReactNode,
-  CSSProperties,
-} from 'react';
+import React, { FC, memo, useEffect, useState, createRef, useContext } from 'react';
+import type { LazyLoadProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-
-interface LazyLoadProps {
-  children?: ReactNode;
-  /**
-   * @description 类名
-   */
-  className?: string;
-  /**
-   * @description 自定义样式
-   */
-  style?: CSSProperties;
-  /**
-   * @description 延迟加载
-   * @default 0ms
-   */
-  delay?: number;
-}
 
 const LazyLoad: FC<LazyLoadProps> = (props: LazyLoadProps) => {
   const { children, style, className, delay } = props;

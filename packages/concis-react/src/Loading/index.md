@@ -10,9 +10,9 @@ mobile: false
 
 # Loading
 
-It is used for the loading state of pages and blocks 
+It is used for the loading state of pages and blocks
 
--  when the page is partially waiting for asynchronous data or in the rendering process, the appropriate loading dynamic effect will effectively alleviate the user's anxiety.
+- when the page is partially waiting for asynchronous data or in the rendering process, the appropriate loading dynamic effect will effectively alleviate the user's anxiety.
 
 ## Basic use
 
@@ -58,4 +58,15 @@ Set the custom icon through the icon attribute. The custom icon size does not su
 
 <code src="./demos/index6.tsx" />
 
-<API />
+## API
+
+| Name        | Description       | Type                | Default   |
+| ----------- | ----------------- | ------------------- | --------- |
+| className   | Custom class name | `string`            | `--`      |
+| style       | Custom styles     | `CSSProperties`     | `--`      |
+| type        | Load Icon type    | `default/dot/strip` | `default` |
+| mask        | Configure mask    | `boolean`           | `false`   |
+| loadingText | loading text      | `string`            | `--`      |
+| icon        | custom icon       | `ReactNode`         | `--`      |
+| width       | custom width      | `string`            | `2em`     |
+| height      | custom height     | `string`            | `2em`     |

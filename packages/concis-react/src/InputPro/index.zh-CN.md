@@ -30,4 +30,21 @@ mobile: false
 
 <code src="./demos/index3.tsx" />
 
-<API />
+## API
+
+| Name         | Description          | Type                          | Default |
+| ------------ | -------------------- | ----------------------------- | ------- |
+| className    | 自定义类名           | `string`                      | `--`    |
+| style        | 自定义样式           | `CSSProperties`               | `--`    |
+| option       | 列表配置项           | `optionParams[]`              | `[]`    |
+| align        | 对齐方式             | `left / right / top / bottom` | `top`   |
+| handleClick  | 选择后的回调函数     | `Function`                    | `--`    |
+| handleChange | 文本框改变的回调函数 | `Function`                    | `--`    |
+| handleClear  | 文本框清空的回调函数 | `Function`                    | `--`    |
+
+## optionParams API
+
+| Name     | Description | Type      | Default |
+| -------- | ----------- | --------- | ------- |
+| label    | 标题        | `string`  | `--`    |
+| disabled | 禁用        | `boolean` | `--`    |

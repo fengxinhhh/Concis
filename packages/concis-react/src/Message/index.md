@@ -44,4 +44,15 @@ The clearable attribute allows you to manually close.
 
 <code src="./demos/index5.tsx"/>
 
-<API/>
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | Custom class name | `string` | `--` |
+| style | Custom styles | `CSSProperties` | `--` |
+| content | The content when the object type is passed as a parameter | `string` | `[]` |
+| type | Message type | `info / success / warning / error / normal / loading` | `info` |
+| duration | Display time | `number` | `3000ms` |
+| position | display position | `top / bottom` | `top` |
+| clearable | Clearable button appears | `boolean` | `false` |
+| dark | dark mode | `boolean` | `false` |

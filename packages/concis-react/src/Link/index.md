@@ -30,4 +30,13 @@ Configure the `icon` attribute to display the icon. The default icon is displaye
 
 <code src="./demos/index3.tsx" />
 
-<API />
+## API
+
+| Name      | Description       | Type                                  | Default   |
+| --------- | ----------------- | ------------------------------------- | --------- |
+| className | Custom class name | `string`                              | `--`      |
+| style     | Custom styles     | `CSSProperties`                       | `--`      |
+| href      | Jump link         | `string`                              | `--`      |
+| status    | status            | `primary / error / success / warning` | `primary` |
+| disabled  | disabled state    | `boolean`                             | `false`   |
+| icon      | Icon state        | `boolean / ReactNode`                 | `false`   |

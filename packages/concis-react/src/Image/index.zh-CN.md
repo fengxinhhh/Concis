@@ -48,4 +48,21 @@ mobile: false
 
 <code src="./demos/index6.tsx" />
  
-<API></API>
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| src | 图片路径 | `string` | `--` |
+| alt | 原生 alt 属性 | `string` | `--` |
+| fit | 填充方式 | `fill / contain / cover / none / scale-down` | `fill` |
+| draggable | 是否可拖动 | `boolean` | `true` |
+| className | 自定义类名 | `string` | `--` |
+| style | 自定义样式 | `CSSProperties` | `--` |
+| width | 图片宽度 | `string` | `--` |
+| height | 图片高度 | `string` | `--` |
+| round | 配置圆角 | `string` | `--` |
+| preview | 是否可预览，可传入预览图片列表 | `boolean / string[]` | `false` |
+| showOperation | 是否展示图片预览底部操作栏 | `boolean` | `true` |
+| caption | 图片上的描述文案 | `string` | `--` |
+| captionStyle | 描述文案样式 | `CSSProperties` | `--` |
+| previewRender | 自定义预览操作栏 | `Function` | `--` |

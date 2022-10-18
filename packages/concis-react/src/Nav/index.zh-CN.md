@@ -30,11 +30,20 @@ mobile: false
 
 <code src="./demos/index3.tsx" />
 
-<API />
+## API
+
+| Name       | Description            | Type              | Default |
+| ---------- | ---------------------- | ----------------- | ------- |
+| className  | 自定义类名             | `string`          | `--`    |
+| style      | 自定义样式             | `CSSProperties`   | `--`    |
+| navData    | 导航栏标签配置项       | `navDataOption[]` | `[]`    |
+| navContent | 导航栏标题显示窗配置项 | `ReactNode[]`     | `[]`    |
+| leftSlot   | 左侧插槽               | `ReactNode`       | `--`    |
+| rightSlot  | 右侧插槽               | `ReactNode`       | `--`    |
 
 ## navData API
 
-| Name  | Description | Type   | Default |
-| ----- | ----------- | ------ | ------- |
-| link  | 跳转链接    | string | `--`    |
-| label | 菜单标签名  | string | `--`    |
+| Name  | Description | Type     | Default |
+| ----- | ----------- | -------- | ------- |
+| link  | 跳转链接    | `string` | `--`    |
+| label | 菜单标签名  | `string` | `--`    |

@@ -6,6 +6,11 @@ interface LoadingProps {
    */
   className?: string;
   /**
+   * @description 自定义样式
+   * @default {}
+   */
+  style?: CSSProperties;
+  /**
    * @description 加载Icon类型
    * @default default
    */
@@ -17,7 +22,7 @@ interface LoadingProps {
   mask?: boolean;
   /**
    * @description 加载文字
-   * @default '''
+   * @default ''
    */
   loadingText?: string;
   /**
@@ -35,11 +40,6 @@ interface LoadingProps {
    * @default 2em
    */
   height?: string;
-  /**
-   * @description 自定义样式
-   * @default {}
-   */
-  style?: CSSProperties;
 }
 
 export type { LoadingProps };

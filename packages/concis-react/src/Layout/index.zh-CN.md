@@ -30,4 +30,9 @@ mobile: false
 
 <code src="./demos/index2.tsx"/>
 
-<API></API>
+## Layout、Header、Slider、Content、Footer API
+
+| Name       | Description | Type            | Default |
+| ---------- | ----------- | --------------- | ------- |
+| className  | 自定义类名  | `string`        | `--`    |
+| extraStyle | 自定义样式  | `CSSProperties` | `--`    |

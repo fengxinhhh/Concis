@@ -58,4 +58,10 @@ We recommend using the project background color and font color provided by Conci
 
 For priority, the priority of custom theme color will be higher than that of dark theme color. Of course, you can customize some business styles you need deeply through global className and component local className.
 
-<API />
+## API
+
+| Name        | Description                        | Type      | Default   |
+| ----------- | ---------------------------------- | --------- | --------- |
+| globalColor | Theme color                        | `string`  | `#325DFF` |
+| prefixCls   | Global component class name prefix | `any`     | `concis`  |
+| darkTheme   | dark mode                          | `boolean` | `false`   |

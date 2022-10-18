@@ -1,57 +1,12 @@
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useContext,
-  CSSProperties,
-  forwardRef,
-} from 'react';
+import React, { useState, useEffect, useCallback, useContext, forwardRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import type { RateProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { ctx } from '../Form';
 import './index.module.less';
 
-interface rateProps {
-  /**
-   * @description 自定义样式
-   */
-  style?: CSSProperties;
-  /**
-   * @description 自定义类名
-   */
-  className?: string;
-  /**
-   * @description 星星个数
-   * @default 5
-   */
-  num?: number;
-  /**
-   * @description 颜色
-   * @default 5
-   */
-  starColor?: string;
-  /**
-   * @description 默认显示个数
-   * @default num || 0
-   */
-  defaultShow?: number;
-  /**
-   * @description 双击清除
-   * @default false
-   */
-  avaClear?: boolean;
-  /**
-   * @description 只读
-   * @default false
-   */
-  readonly?: boolean;
-  /**
-   * @description 选择回调函数
-   */
-  chooseCallback?: Function;
-}
 const Rate = (props, ref) => {
   const {
     num = 5,
@@ -251,4 +206,4 @@ const Rate = (props, ref) => {
     </div>
   );
 };
-export default forwardRef<unknown, rateProps>(Rate);
+export default forwardRef<unknown, RateProps>(Rate);

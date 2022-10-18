@@ -34,4 +34,9 @@ mobile: false
 
 <code src="./demos/index2.tsx"/>
 
-<API></API>
+## Layout, Header, Slider, Content, Footer API
+
+| Name       | Description       | Type            | Default |
+| ---------- | ----------------- | --------------- | ------- |
+| className  | Custom class name | `string`        | `--`    |
+| extraStyle | Custom styles     | `CSSProperties` | `--`    |

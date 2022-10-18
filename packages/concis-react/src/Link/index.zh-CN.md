@@ -30,4 +30,13 @@ mobile: false
 
 <code src="./demos/index3.tsx" />
 
-<API />
+## API
+
+| Name      | Description | Type                                  | Default   |
+| --------- | ----------- | ------------------------------------- | --------- |
+| className | 自定义类名  | `string`                              | `--`      |
+| style     | 自定义样式  | `CSSProperties`                       | `--`      |
+| href      | 跳转链接    | `string`                              | `--`      |
+| status    | 状态        | `primary / error / success / warning` | `primary` |
+| disabled  | 禁用状态    | `boolean`                             | `false`   |
+| icon      | 图标状态    | `boolean / ReactNode`                 | `false`   |

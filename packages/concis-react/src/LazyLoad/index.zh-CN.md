@@ -20,4 +20,10 @@ mobile: false
 
 <code src="./demos/index1.tsx"/>
 
-<API/>
+## API
+
+| Name      | Description | Type            | Default |
+| --------- | ----------- | --------------- | ------- |
+| className | 自定义类名  | `string`        | `--`    |
+| style     | 自定义样式  | `CSSProperties` | `--`    |
+| delay     | 延迟加载    | `number`        | `0ms`   |

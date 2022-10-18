@@ -56,4 +56,15 @@ mobile: false
 
 <code src="./demos/index6.tsx" />
 
-<API />
+## API
+
+| Name        | Description    | Type                    | Default   |
+| ----------- | -------------- | ----------------------- | --------- |
+| className   | 自定义类名     | `string`                | `--`      |
+| style       | 自定义样式     | `CSSProperties`         | `--`      |
+| type        | 加载 Icon 类型 | `default / dot / strip` | `default` |
+| mask        | 配置蒙层       | `boolean`               | `false`   |
+| loadingText | 加载文字       | `string`                | `--`      |
+| icon        | 自定义图标     | `ReactNode`             | `--`      |
+| width       | 自定义宽度     | `string`                | `2em`     |
+| height      | 自定义高度     | `string`                | `2em`     |

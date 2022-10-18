@@ -48,4 +48,21 @@ Configure 'previewRender' to customize the preview action bar.
 
 <code src="./demos/index6.tsx" />
 
-<API></API>
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| src | image path | `string` | `--` |
+| alt | native alt attributes | `string` | `--` |
+| fit | fill method | `fill / contain / cover / none / scale-down` | `fill` |
+| draggable | Whether it is draggable | `boolean` | `true` |
+| className | Custom class name | `string` | `--` |
+| style | Custom styles | `CSSProperties` | `--` |
+| width | image width | `string` | `--` |
+| height | Image height | `string` | `--` |
+| round | Configure rounded corners | `string` | `--` |
+| preview | Whether to preview, you can pass in the preview image list | `boolean / string[]` | `false` |
+| showOperation | Whether to show the bottom operation bar of the image preview | `boolean` | `true` |
+| caption | caption on the image | `string` | `--` |
+| captionStyle | Caption style | `CSSProperties` | `--` |
+| previewRender | Customize the preview action bar | `Function` | `--` |

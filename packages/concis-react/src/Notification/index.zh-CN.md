@@ -50,4 +50,26 @@ mobile: false
 
 <code src="./demos/index6.tsx"/>
 
-<API/>
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | 自定义类名 | `string` | `--` |
+| style | 自定义样式 | `CSSProperties` | `--` |
+| title | 标题 | `string` | `--` |
+| content | 正文 | `string` | `--` |
+| type | 提醒框类型类型 | `info / success / warning / error / normal / loading` | `info` |
+| duration | 显示时间 | `number` | `3000ms` |
+| position | 显示位置 | `topLeft / topRight / bottomLeft / bottomRight` | `topRight` |
+| clearable | 出现可清除按钮 | `boolean` | `false` |
+| showFooter | 出现底部菜单 | `boolean` | `false` |
+| footerBtnVal | 底部按钮名称 | `footerBtnVal` | `Cancel、OK` |
+| doneCallback | 关闭/确认回调函数，根据返回参数判断事件触发类型 | `Function` | `{1 -> 确认 2 -> 取消 3 -> 关闭}` |
+| dark | 暗黑模式 | `boolean` | `false` |
+
+## footerBtnVal API
+
+| Name  | Description  | Type     | Default |
+| ----- | ------------ | -------- | ------- |
+| enter | 确认按钮文字 | `string` | `--`    |
+| exit  | 取消按钮文字 | `string` | `--`    |

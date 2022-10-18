@@ -54,4 +54,15 @@ Score the business case.
 
 <code src="./demos/index6.tsx" />
 
-<API />
+## API
+
+| Name           | Description               | Type            | Default |
+| -------------- | ------------------------- | --------------- | ------- |
+| className      | Custom class name         | `string`        | `--`    |
+| style          | Custom styles             | `CSSProperties` | `--`    |
+| num            | number of stars           | `number`        | `5`     |
+| starColor      | color                     | `string`        | `--`    |
+| defaultShow    | Default number to display | `number`        | `all`   |
+| avaClear       | Double click to clear     | `boolean`       | `false` |
+| readonly       | read only                 | `boolean`       | `false` |
+| chooseCallback | Choose callback function  | `Function`      | `--`    |

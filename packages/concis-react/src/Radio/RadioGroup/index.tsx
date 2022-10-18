@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useContext, CSSProperties, forwardRef } from 'react';
+import React, { useState, useCallback, useContext, forwardRef } from 'react';
+import type { RadioItemProps, RadioGroupProps } from '../interface';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
@@ -6,21 +7,6 @@ import { globalCtx } from '../../GlobalConfig';
 import { getSiteTheme } from '../../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../../common_utils/getRenderColor';
 import './index.module.less';
-
-interface RadioGroupProps {
-  children: Array<Object>;
-  style?: CSSProperties;
-  className?: string;
-  value?: Number;
-  canAddOption?: Boolean;
-  addOptionText?: String;
-  boxStyle?: Boolean;
-  onChange?: Function;
-}
-interface RadioProps {
-  children: string;
-  disabled: Boolean;
-}
 
 const RadioGroup = (props, ref) => {
   const {
@@ -44,7 +30,7 @@ const RadioGroup = (props, ref) => {
 
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}radio-group`);
 
-  const changeOptions = (item: RadioProps, i: number, e: any) => {
+  const changeOptions = (item: RadioItemProps, i: number, e: any) => {
     if (item.disabled) return;
     e && e.stopPropagation();
     setSelectIndex(i);
@@ -75,7 +61,7 @@ const RadioGroup = (props, ref) => {
     setAddOptionVal(val);
   };
   const boxStyleClassName = useCallback(
-    (props: RadioProps, i: number) => {
+    (props: RadioItemProps, i: number) => {
       if (props.disabled) {
         return 'groupDisabledStyle';
       }

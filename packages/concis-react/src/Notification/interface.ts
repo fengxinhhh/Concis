@@ -33,7 +33,7 @@ interface NotificationProps<T> {
   duration?: number;
   /**
    * @description 显示位置
-   * @default top
+   * @default topRight
    */
   position?: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
   /**

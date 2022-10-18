@@ -20,18 +20,39 @@ The difference from Tooltip is that users can operate on elements on the floatin
 
 ## Basic use
 
+Basic bubble card.
+
 <code src="./demos/index1.tsx"/>
 
 ## Click
+
+Configure `type = click` to switch to click trigger.
 
 <code src="./demos/index2.tsx" />
 
 ## Different directions
 
+Through `align`, switch different appearance directions, optional `left`, `right`, `top`, `bottom`.
+
 <code src="./demos/index3.tsx" />
 
 ## Closed in floating layer
 
+Declare a separate `ref` through `useRef` and pass it to `Popover`, and call `ref.current.setShowDialog` to switch the display state.
+
 <code src="./demos/index4.tsx" />
 
-<API />
+## API
+
+| Name            | Description                     | Type              | Default  |
+| --------------- | ------------------------------- | ----------------- | -------- |
+| className       | Custom class name               | `string`          | `--`     |
+| style           | Custom styles                   | `CSSProperties`   | `--`     |
+| type            | trigger type hover/click        | `string`          | `hover`  |
+| align           | alignment left/right/top/bottom | `string`          | `bottom` |
+| content         | Card content                    | `ReactNode`       | `<></>`  |
+| dialogWidth     | Card width                      | `number / string` | `200px`  |
+| noBorder        | no border                       | `boolean`         | `false`  |
+| defaultShow     | Show bubble cards by default    | `boolean`         | `false`  |
+| closeDeps       | Bubble card close dependencies  | `any[]`           | `[]`     |
+| onVisibleChange | Card show hide callback         | `Function`        | `--`     |

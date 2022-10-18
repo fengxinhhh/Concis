@@ -40,4 +40,14 @@ mobile: false
 
 <code src="./demos/index4.tsx" />
 
-<API />
+## API
+
+| Name        | Description          | Type                 | Default    |
+| ----------- | -------------------- | -------------------- | ---------- |
+| className   | 自定义类名           | `string`             | `--`       |
+| style       | 自定义样式           | `CSSProperties`      | `--`       |
+| icon        | 自定义预览遮罩层图标 | `ReactNode`          | `eye icon` |
+| jumpText    | 自定义预览遮罩层文本 | `ReactNode / string` | `See more` |
+| jumpContent | 自定义预览遮罩层内容 | `ReactNode`          | `<></>`    |
+| link        | 跳转链接             | `string`             | `--`       |
+| disabled    | 禁用                 | `boolean`            | `false`    |

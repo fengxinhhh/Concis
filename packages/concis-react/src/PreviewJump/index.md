@@ -40,4 +40,14 @@ Business case, jump to details via `PreviewJump` or `Link`.
 
 <code src="./demos/index4.tsx" />
 
-<API />
+## API
+
+| Name        | Description                 | Type                 | Default    |
+| ----------- | --------------------------- | -------------------- | ---------- |
+| className   | Custom class name           | `string`             | `--`       |
+| style       | Custom styles               | `CSSProperties`      | `--`       |
+| icon        | Custom preview mask icon    | `ReactNode`          | `eye icon` |
+| jumpText    | Custom preview mask text    | `ReactNode / string` | `See more` |
+| jumpContent | Custom preview mask content | `ReactNode`          | `<></>`    |
+| link        | Jump link                   | `string`             | `--`       |
+| disabled    | disabled                    | `boolean`            | `false`    |

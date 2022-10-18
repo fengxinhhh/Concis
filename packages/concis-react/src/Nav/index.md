@@ -30,11 +30,20 @@ Provides `leftSlot`, `rightSlot` to customize the content on the left and right 
 
 <code src="./demos/index3.tsx" />
 
-<API />
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | Custom class name | `string` | `--` |
+| style | Custom styles | `CSSProperties` | `--` |
+| navData | Navigation bar label configuration item | `navDataOption[]` | `[]` |
+| navContent | Navigation bar title display window configuration item | `ReactNode[]` | `[]` |
+| leftSlot | left slot | `ReactNode` | `--` |
+| rightSlot | right slot | `ReactNode` | `--` |
 
 ## navData API
 
-| Name  | Description     | Type   | Default |
-| ----- | --------------- | ------ | ------- |
-| link  | jump link       | string | `--`    |
-| label | menu label name | string | `--`    |
+| Name  | Description     | Type     | Default |
+| ----- | --------------- | -------- | ------- |
+| link  | jump link       | `string` | `--`    |
+| label | menu label name | `string` | `--`    |

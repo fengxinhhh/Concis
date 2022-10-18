@@ -26,7 +26,7 @@ Support `onOk` and `onCancel` to use `Promise` to asynchronously close dialog bo
 
 ## Functional call
 
-Through ` Modal Confirm ` Quick call to enable Modal. Asynchronous closing is also supported.
+Through `Modal Confirm` Quick call to enable Modal. Asynchronous closing is also supported.
 
 The difference between functional calling and component calling is that the former gives the Modal display status to the component hosting, and the latter places the Modal display status in the calling end hosting.
 
@@ -34,7 +34,7 @@ The difference between functional calling and component calling is that the form
 
 ## Message prompt
 
-There are four types of message prompts: `info`, `success`,` warning `, and` error `.
+There are four types of message prompts: `info`, `success`,`warning`, and`error`.
 
 <code src="./demos/index3.tsx" />
 
@@ -72,4 +72,20 @@ Steps are displayed in the dialog box.
 
 <code src="./demos/index8.tsx" />
 
-<API />
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | Custom class name | `string` | `--` |
+| style | Custom styles | `CSSProperties` | `--` |
+| title | title | `string , ReactNode` | `--` |
+| visible | display status | `boolean` | `false` |
+| okButtonProps | OK button props | `Button component props` | `--` |
+| cancelButtonProps | cancel button props | `Button component props` | `--` |
+| footer | custom footer | `ReactNode` | `OK, Cancel buttons` |
+| okText | Confirm button text | `string` | `OK` |
+| cancelText | Cancel button text | `string` | `Cancel` |
+| width | Dialog width percentage | `number / string` | `520px` |
+| onOk | Confirm callback function | `Function` | `--` |
+| onCancel | Cancel close callback function | `Function` | `--` |
+| content | Callable function Modal content | `ReactNode` | `--` |

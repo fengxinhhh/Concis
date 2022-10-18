@@ -52,4 +52,25 @@ mobile: false
 
 <code src="./demos/index6.tsx" />
 
-<API/>
+## API
+
+| Name              | Description      | Type                   | Default |
+| ----------------- | ---------------- | ---------------------- | ------- |
+| className         | 自定义类名       | `string`               | `--`    |
+| style             | 自定义样式       | `CSSProperties`        | `--`    |
+| items             | 配置对象         | `Array<RenderOptions>` | `[]`    |
+| width             | 自定义宽度       | `string / number`      | `220px` |
+| dark              | 深度模式         | `boolean`              | `false` |
+| ableToggle        | 手风琴           | `boolean`              | `false` |
+| defaultOpen       | 默认展开         | `boolean`              | `false` |
+| handleRouteChange | 切换菜单回调函数 | `Function`             | `--`    |
+
+## RenderOptions API
+
+| Name     | Description | Type                   | Default |
+| -------- | ----------- | ---------------------- | ------- |
+| label    | 自定义类名  | `string`               | `--`    |
+| key      | 自定义样式  | `string / number`      | `--`    |
+| level    | 配置对象    | `string / number`      | `--`    |
+| icon     | 自定义样式  | `ReactNode`            | `--`    |
+| children | 配置对象    | `Array<RenderOptions>` | `[]`    |

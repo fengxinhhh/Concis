@@ -56,4 +56,10 @@ export default () => (
 
 对于优先级，自定义主题色的优先级会高于暗黑主题的颜色，当然你可以通过全局 className，组件局部 className，来深度自定化一些自己所需要的业务样式。
 
-<API />
+## API
+
+| Name        | Description      | Type      | Default   |
+| ----------- | ---------------- | --------- | --------- |
+| globalColor | 主题颜色         | `string`  | `#325DFF` |
+| prefixCls   | 全局组件类名前缀 | `any`     | `concis`  |
+| darkTheme   | 深色模式         | `boolean` | `false`   |

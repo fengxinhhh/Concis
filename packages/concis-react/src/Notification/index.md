@@ -50,4 +50,26 @@ Set the style through the style attribute.
 
 <code src="./demos/index6.tsx"/>
 
-<API/>
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | Custom class name | `string` | `--` |
+| style | Custom styles | `CSSProperties` | `--` |
+| title | title | `string` | `--` |
+| content | body | `string` | `--` |
+| type | Type of alert box | `info / success / warning / error / normal / loading` | `info` |
+| duration | Display time | `number` | `3000ms` |
+| position | Display position | `topLeft / topRight / bottomLeft / bottomRight` | `topRight` |
+| clearable | Clearable button appears | `boolean` | `false` |
+| showFooter | Show the bottom menu | `boolean` | `false` |
+| footerBtnVal | Bottom button name | `footerBtnVal` | `Cancel, OK` |
+| doneCallback | Close/confirm callback function, judge the event trigger type according to the returned parameter | `Function` | `{1 -> confirm 2 -> cancel 3 -> close}` |
+| dark | dark mode | `boolean` | `false` |
+
+## footerBtnVal API
+
+| Name  | Description         | Type     | Default |
+| ----- | ------------------- | -------- | ------- |
+| enter | Confirm button text | `string` | `--`    |
+| exit  | Cancel button text  | `string` | `--`    |

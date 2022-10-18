@@ -52,4 +52,25 @@ Configure `defaultOpen` default deployment.
 
 <code src="./demos/index6.tsx" />
 
-<API/>
+## API
+
+| Name              | Description                   | Type                   | Default |
+| ----------------- | ----------------------------- | ---------------------- | ------- |
+| className         | Custom class name             | `string`               | `--`    |
+| style             | Custom styles                 | `CSSProperties`        | `--`    |
+| items             | Configuration object          | `Array<RenderOptions>` | `[]`    |
+| width             | custom width                  | `string / number`      | `220px` |
+| dark              | depth mode                    | `boolean`              | `false` |
+| ableToggle        | Accordion                     | `boolean`              | `false` |
+| defaultOpen       | default open                  | `boolean`              | `false` |
+| handleRouteChange | toggle menu callback function | `Function`             | `--`    |
+
+## RenderOptions API
+
+| Name     | Description          | Type                   | Default |
+| -------- | -------------------- | ---------------------- | ------- |
+| label    | custom class name    | `string`               | `--`    |
+| key      | custom style         | `string / number`      | `--`    |
+| level    | Configuration object | `string / number`      | `--`    |
+| icon     | custom style         | `ReactNode`            | `--`    |
+| children | Configuration object | `Array<RenderOptions>` | `[]`    |

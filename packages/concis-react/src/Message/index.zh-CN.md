@@ -44,4 +44,15 @@ mobile: false
 
 <code src="./demos/index5.tsx"/>
 
-<API/>
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | 自定义类名 | `string` | `--` |
+| style | 自定义样式 | `CSSProperties` | `--` |
+| content | 对象类型传参时的内容 | `string` | `[]` |
+| type | Message 类型 | `info / success / warning / error / normal / loading` | `info` |
+| duration | 显示时间 | `number` | `3000ms` |
+| position | 显示位置 | `top / bottom` | `top` |
+| clearable | 出现可清除按钮 | `boolean` | `false` |
+| dark | 暗黑模式 | `boolean` | `false` |

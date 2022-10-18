@@ -22,7 +22,7 @@ interface InputProps
    * @description 自定义样式
    * @default {}
    */
-  moreStyle?: object;
+  moreStyle?: CSSProperties;
   /**
    * @description 输入框类型
    * @default text
