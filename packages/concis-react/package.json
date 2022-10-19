@@ -27,8 +27,8 @@
     "replase:major": "npm run build && cimi major master",
     "replase:beta": "npm run build && cimi beta master",
     "replase:upgrade": "npm run build && cimi upgradeBeta master",
-    "test:jest": "jest",
-    "test:unit": "jest ./src/*/__test__/ --silent=false -u",
+    "test:unit": "jest ./src/*/__test__/*.test.tsx --silent=false -u",
+    "test:demo": "jest ./src/*/__test__/demo.test.ts --silent=false -u",
     "upgrade": "node ../../scripts/replace-version-in-pc.ts"
   },
   "files": [

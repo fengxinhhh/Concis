@@ -33,6 +33,7 @@ const Badge = (props, ref) => {
       return count;
     }
   }, [count, maxCount]);
+
   const countStyle = useMemo(() => {
     if (children) {
       if (String(computedCount).length > 1) {
@@ -53,6 +54,7 @@ const Badge = (props, ref) => {
       padding: '0 6px',
     };
   }, [children, count, maxCount]);
+
   return (
     <>
       {children ? (

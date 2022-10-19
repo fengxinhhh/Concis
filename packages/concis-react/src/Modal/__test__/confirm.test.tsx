@@ -1,12 +1,9 @@
 import Modal from '../../../src/Modal';
-import mountTest from '../../../../../tests/mountTest';
 
 const Enzyme = require('enzyme');
 const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
 
 Enzyme.configure({ adapter: new Adapter() });
-
-mountTest(Modal);
 
 describe('Modal confirm', () => {
   it('test base api correctly', () => {
