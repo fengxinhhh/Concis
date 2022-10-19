@@ -55,3 +55,4 @@ export { default as Link } from './Link';
 export { default as Dropdown } from './Dropdown';
 export { default as Nav } from './Nav';
 export { default as PreviewJump } from './PreviewJump';
+export { default as Highlight } from './Highlight';
