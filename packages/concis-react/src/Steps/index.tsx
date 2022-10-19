@@ -1,45 +1,12 @@
-import React, { useCallback, useContext, CSSProperties, forwardRef } from 'react';
+import React, { useCallback, useContext, forwardRef } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
+import type { stepsProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../common_utils/getRenderColor';
 import './index.module.less';
-
-interface stepsProps {
-  /**
-   * @description 自定义样式
-   */
-  style?: CSSProperties;
-  /**
-   * @description 自定义类名
-   */
-  className?: string;
-  /**
-   *
-   * @description 当前步骤下标
-   * @default 1
-   */
-  current: number;
-  /**
-   * @description 步骤标题
-   */
-  title?: string;
-  /**
-   * @description 步骤子标题
-   */
-  subTitle?: string;
-  /**
-   * @description 步骤描述
-   */
-  description?: string;
-  /**
-   * @description 点击步骤条回调函数
-   */
-  onChange?: (value: number) => void;
-  children: any;
-}
 
 const Steps = (props, ref) => {
   const { current, className, style, onChange, children } = props;

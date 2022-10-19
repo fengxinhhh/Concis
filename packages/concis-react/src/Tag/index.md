@@ -32,7 +32,7 @@ Use `tagBackground` to customize the label background color.
 
 ## Selectable
 
-Enable the tag selection mode through `checkable`. `defaultChecked` is used for the default selection status. The default is` true `.
+Enable the tag selection mode through `checkable`. `defaultChecked` is used for the default selection status. The default is`true`.
 
 <code src="./demos/index4.tsx" />
 
@@ -50,8 +50,22 @@ An actual business case, combined with the use of `Input`.
 
 ## Different sizes
 
-Configure labels of different sizes through `size`. The default is` default `.
+Configure labels of different sizes through `size`. The default is`default`.
 
 <code src="./demos/index7.tsx" />
 
-<API />
+## API
+
+| Name           | Description           | Type                               | Default   |
+| -------------- | --------------------- | ---------------------------------- | --------- |
+| className      | class name            | `string`                           | `--`      |
+| style          | Custom styles         | `CSSProperties`                    | `--`      |
+| color          | Label font color      | `string`                           | `--`      |
+| size           | Label size            | `large / medium / default / small` | `default` |
+| tagBackground  | tag background color  | `string`                           | `--`      |
+| checkable      | checkable or not      | `boolean`                          | `false`   |
+| closeable      | whether to close      | `boolean`                          | `false`   |
+| defaultChecked | Default checked       | `boolean`                          | `true`    |
+| clickCallback  | Click callback event  | `Function`                         | `--`      |
+| checkCallback  | Select callback event | `Function`                         | `--`      |
+| closeCallback  | close callback event  | `Function`                         | `--`      |

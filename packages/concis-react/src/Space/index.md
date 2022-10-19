@@ -50,4 +50,13 @@ The spacing of the wrapping type is set around. It is generally used for line br
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | Custom class name | `string` | `--` |
+| style | Custom styles | `CSSProperties` | `--` |
+| direction | direction | `horizontal / vertical` | `horizontal` |
+| size | Gap size | `mini / small / medium / large / number / Array<number>` | `small` |
+| align | vertical alignment | `start / center / end / baseline` | `center` |
+| wrap | wrap spacing | `boolean` | `false` |

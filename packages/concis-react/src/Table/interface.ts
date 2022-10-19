@@ -102,7 +102,7 @@ interface tableProps {
    */
   changePNumCallback?: Function;
   /**
-   * @description 分页器改变页码回调函数
+   * @description 分页器改变每页数量回调函数
    */
   changePSizeCallback?: Function;
   /**

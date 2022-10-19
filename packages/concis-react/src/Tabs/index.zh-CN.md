@@ -68,7 +68,21 @@ mobile: false
 
 <code src="./demos/index9.tsx" />
 
-<API />
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | 类名 | `string` | `--` |
+| style | 自定义样式 | `CSSProperties` | `--` |
+| defaultActiveTab | 默认选中的 key | `string` | `--` |
+| tabPosition | 出现方位 | `top / bottom / left / right` | `top` |
+| type | Tabs 类型 | `line / text / round / card` | `line` |
+| size | Tabs 大小 | `mini / small / default / large` | `default` |
+| extra | 导航栏右侧插槽 | `ReactNode` | `<></>` |
+| editable | 可编辑模式 | `boolean` | `false` |
+| onAddTab | 可编辑模式下添加回调函数 | `Function` | `无返回参数` |
+| onDeleteTab | 可编辑模式下删除回调函数 | `Function` | `返回删除的key` |
+| onChange | 切换 Tabs 回调函数 | `Function` | `返回切换后当前key` |
 
 ## TabPane
 

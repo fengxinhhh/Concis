@@ -194,7 +194,7 @@ const Table = (props, ref) => {
     setDoColumnData((old: Array<tableThType>) => {
       old.forEach((item: tableThType) => {
         if (item === t) {
-          if (item.filter) item.filter = v;
+          if (item.filter !== undefined) item.filter = v;
         }
       });
       return [...old];
@@ -442,7 +442,7 @@ const Table = (props, ref) => {
                           />
                         </div>
                       )}
-                      {t?.filter && filter && (
+                      {t?.filter !== undefined && filter && (
                         <Popover
                           type="click"
                           align="bottom"
@@ -850,7 +850,7 @@ const Table = (props, ref) => {
                               />
                             </div>
                           )}
-                          {t?.filter && filter && (
+                          {t?.filter !== undefined && filter && (
                             <Popover
                               type="click"
                               align="bottom"

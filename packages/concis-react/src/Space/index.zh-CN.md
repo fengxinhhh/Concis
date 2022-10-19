@@ -50,4 +50,13 @@ mobile: false
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | 自定义类名 | `string` | `--` |
+| style | 自定义样式 | `CSSProperties` | `--` |
+| direction | 方向 | `horizontal / vertical` | `horizontal` |
+| size | 间距大小 | `mini / small / medium / large / number / Array<number>` | `small` |
+| align | 垂直对齐方式 | `start / center / end / baseline` | `center` |
+| wrap | 环绕间距 | `boolean` | `false` |

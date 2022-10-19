@@ -1,14 +1,9 @@
 import React, { FC, memo, useContext } from 'react';
+import type { stepProps } from '../interface';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
 
-interface stepProps {
-  className?: string;
-  title: string;
-  subTitle?: string;
-  description?: string;
-}
 const Step: FC<stepProps> = (props: stepProps) => {
   const { title, className } = props;
 

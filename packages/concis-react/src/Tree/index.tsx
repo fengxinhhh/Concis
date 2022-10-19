@@ -1,14 +1,7 @@
-import React, {
-  Fragment,
-  useState,
-  useEffect,
-  useCallback,
-  useContext,
-  CSSProperties,
-  forwardRef,
-} from 'react';
+import React, { Fragment, useState, useEffect, useCallback, useContext, forwardRef } from 'react';
 import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
+import type { treeProps, treeNode } from './interface';
 import Input from '../Input';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -16,52 +9,6 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import './index.module.less';
-
-interface treeProps {
-  /**
-   * @description 自定义样式
-   */
-  style?: CSSProperties;
-  /**
-   * @description 自定义类名
-   */
-  className?: string;
-  /**
-   * @description Tree配置参数
-   */
-  treeData: Array<treeNode>;
-  /**
-   * @description 宽度
-   * @default 200px
-   */
-  width?: string;
-  /**
-   * @description 支持搜索
-   * @default false
-   */
-  avaSearch?: boolean;
-  /**
-   * @description 支持多选
-   * @default false
-   */
-  avaChooseMore?: boolean;
-  /**
-   * @description 全展开
-   * @default false
-   */
-  defaultOpen?: boolean;
-  /**
-   * @description 选择回调函数
-   */
-  chooseCallback?: Function;
-}
-export interface treeNode {
-  title: string;
-  value: string;
-  level?: number;
-  height?: string;
-  children?: Array<treeNode>;
-}
 
 const Tree = (props, ref) => {
   const {

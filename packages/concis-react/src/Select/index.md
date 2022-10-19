@@ -18,22 +18,54 @@ A pull- down menu pops up for the user to select an operation to replace the nat
 
 ## Basic use
 
+Basic dropdown box component.
+
 <code src="./demos/index1.tsx" />
 
 ## Disable
 
+Disabled with `disabled`.
+
 <code src="./demos/index2.tsx" />
 
-## Load
+## Loading
+
+Disabled by `loading`.
 
 <code src="./demos/index3.tsx" />
 
 ## Drop down items are disabled separately
 
+Configure `option` single item `disabled` for single item disable.
+
 <code src="./demos/index4.tsx" />
 
 ## Enterable
 
+Configure `showSearch` to enable enterable state.
+
 <code src="./demos/index5.tsx" />
 
-<API></API>
+## API
+
+| Name                 | Description                   | Type             | Default |
+| -------------------- | ----------------------------- | ---------------- | ------- |
+| className            | Custom class name             | `string`         | `--`    |
+| style                | Custom styles                 | `CSSProperties`  | `--`    |
+| option               | selector data                 | `Array<Options>` | `[]`    |
+| width                | width                         | `number`         | `80px`  |
+| placeholder          | hint                          | `string`         | `--`    |
+| disabled             | disabled state                | `boolean`        | `false` |
+| loading              | loading state                 | `boolean`        | `false` |
+| showSearch           | Enterable state               | `boolean`        | `false` |
+| clearable            | Can be cleared in input state | `boolean`        | `false` |
+| handleSelectCallback | Callback after selection      | `Function`       | `--`    |
+| handleTextChange     | callback after input          | `Function`       | `--`    |
+
+## Options API
+
+| Name     | Description    | Type              | Default |
+| -------- | -------------- | ----------------- | ------- |
+| label    | Display label  | `string / number` | `--`    |
+| value    | selected value | `string / number` | `--`    |
+| disabled | disabled       | `boolean`         | `--`    |

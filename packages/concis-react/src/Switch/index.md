@@ -20,22 +20,44 @@ Switch selector.
 
 ## Basic use
 
+The most basic use.
+
 <code src="./demos/index1.tsx"/>
 
 ## Disable Status
+
+Disabled is enabled via `disabled`.
 
 <code src="./demos/index2.tsx" />
 
 ## Different sizes
 
+If you think the default is larger, switch to the small switch through `small`.
+
 <code src="./demos/index3.tsx" />
 
 ## Text and Icons
+
+`checkedChildren` customizes the checked content, `unCheckedChildren` customizes the unchecked content.
 
 <code src="./demos/index4.tsx" />
 
 ## Loading
 
+Toggle the loading switch via `loading`.
+
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name              | Description              | Type            | Default |
+| ----------------- | ------------------------ | --------------- | ------- |
+| className         | Custom class name        | `string`        | `--`    |
+| style             | Custom styles            | `CSSProperties` | `--`    |
+| disabled          | disabled                 | `boolean`       | `false` |
+| small             | small button             | `boolean`       | `false` |
+| defaultChecked    | Default checked          | `boolean`       | `false` |
+| checkedChildren   | checked text             | `ReactNode`     | `--`    |
+| unCheckedChildren | unchecked text           | `ReactNode`     | `--`    |
+| loading           | loading state            | `boolean`       | `false` |
+| handleChange      | Change callback function | `Function`      | `--`    |

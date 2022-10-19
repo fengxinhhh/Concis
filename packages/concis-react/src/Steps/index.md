@@ -18,18 +18,43 @@ When a task is complex or has a priority relationship, it is decomposed into a s
 
 ## Basic use
 
+Basic step bar component.
+
 <code src="./demos/index1.tsx"/>
 
 ## Additional parameters
+
+Use `subTitle` to configure the step subtitle and `description` to configure the step description.
 
 <code src="./demos/index2.tsx"/>
 
 ## Traversal use
 
+Iterate over components.
+
 <code src="./demos/index3.tsx" />
 
 ## Clickable
 
+Click the toggle step to get the clicked `current` through `onChange`.
+
 <code src="./demos/index4.tsx"/>
 
-<API />
+## Steps API
+
+| Name      | Description                                        | Type            | Default |
+| --------- | -------------------------------------------------- | --------------- | ------- |
+| className | Custom class name                                  | `string`        | `--`    |
+| style     | Custom styles                                      | `CSSProperties` | `--`    |
+| current   | current step subscript                             | `number`        | `1`     |
+| onChange  | Click the step bar to change the callback function | `Function`      | `--`    |
+
+## Step API
+
+| Name        | Description       | Type            | Default |
+| ----------- | ----------------- | --------------- | ------- |
+| className   | Custom class name | `string`        | `--`    |
+| style       | Custom styles     | `CSSProperties` | `--`    |
+| title       | Step title        | `string`        | `--`    |
+| subTitle    | Step subtitle     | `string`        | `--`    |
+| description | Step description  | `string`        | `--`    |

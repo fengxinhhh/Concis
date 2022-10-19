@@ -46,4 +46,26 @@ Configure `lazyLoad` to enable dynamic loading of the first expansion. You can s
 
 <code src="./demos/index5.tsx"/>
 
-<API />
+## API
+
+| Name               | Description                   | Type              | Default  |
+| ------------------ | ----------------------------- | ----------------- | -------- |
+| className          | class name                    | `string`          | `--`     |
+| style              | Custom styles                 | `CSSProperties`   | `--`     |
+| treeData           | Tree configuration parameters | `Array<treeData>` | `[]`     |
+| defaultOpen        | default open                  | `boolean`         | `false`  |
+| disabled           | disabled                      | `boolean`         | `false`  |
+| avaDrop            | draggable                     | `boolean`         | `false`  |
+| lazyLoad           | dynamic loading               | `boolean`         | `false`  |
+| lazyLoadWaitSecond | Dynamic loading wait delay    | `number`          | `1000ms` |
+| checkCallback      | Check callback function       | `Function`        | `--`     |
+| dropCallback       | drop callback function        | `Function`        | `--`     |
+
+## treeData API
+
+| Name     | Description      | Type              | Default |
+| -------- | ---------------- | ----------------- | ------- |
+| title    | title            | `string`          | `--`    |
+| value    | selected content | `string`          | `--`    |
+| group    | Node grouping    | `number`          | `--`    |
+| children | child nodes      | `Array<treeData>` | `[]`    |

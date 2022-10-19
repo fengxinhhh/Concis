@@ -28,16 +28,32 @@ mobile: false
 
 ## 自动播放
 
+通过 `autoPlayer` 自动播放，`deply` 设置播放时延。
+
 <code src="./demos/index2.tsx"/>
 
 ## 切换选项
 
-展示小圆点
+配置 `showTrigger` 展示小圆点。
 
 <code src="./demos/index3.tsx"/>
 
 ## 卡片式
 
+配置 `card` 切换到卡片式轮播图。
+
 <code src="./demos/index4.tsx"/>
 
-<API />
+## API
+
+| Name        | Description  | Type            | Default  |
+| ----------- | ------------ | --------------- | -------- |
+| className   | 自定义类名   | `string`        | `--`     |
+| style       | 自定义样式   | `CSSProperties` | `--`     |
+| imgList     | 图片列表     | `Array<string>` | `[]`     |
+| pictureSize | 轮播图宽度   | `number`        | `400px`  |
+| height      | 轮播图高度   | `number`        | `240px`  |
+| autoPlayer  | 自动播放     | `boolean`       | `false`  |
+| showTrigger | 展示小圆点   | `boolean`       | `false`  |
+| deply       | 自动播放间隔 | `number`        | `3000ns` |
+| card        | 卡片式轮播图 | `boolean`       | `false`  |

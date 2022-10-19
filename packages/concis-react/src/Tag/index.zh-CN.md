@@ -54,4 +54,18 @@ mobile: false
 
 <code src="./demos/index7.tsx" />
 
-<API />
+## API
+
+| Name           | Description  | Type                               | Default   |
+| -------------- | ------------ | ---------------------------------- | --------- |
+| className      | 类名         | `string`                           | `--`      |
+| style          | 自定义样式   | `CSSProperties`                    | `--`      |
+| color          | 标签字体颜色 | `string`                           | `--`      |
+| size           | 标签尺寸     | `large / medium / default / small` | `default` |
+| tagBackground  | 标签背景颜色 | `string`                           | `--`      |
+| checkable      | 是否可选中   | `boolean`                          | `false`   |
+| closeable      | 是否可关闭   | `boolean`                          | `false`   |
+| defaultChecked | 默认选中     | `boolean`                          | `true`    |
+| clickCallback  | 点击回调事件 | `Function`                         | `--`      |
+| checkCallback  | 选择回调事件 | `Function`                         | `--`      |
+| closeCallback  | 关闭回调事件 | `Function`                         | `--`      |

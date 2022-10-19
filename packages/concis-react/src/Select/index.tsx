@@ -1,80 +1,12 @@
-import React, {
-  useMemo,
-  useEffect,
-  useState,
-  useCallback,
-  useContext,
-  CSSProperties,
-  forwardRef,
-} from 'react';
+import React, { useMemo, useEffect, useState, useCallback, useContext, forwardRef } from 'react';
 import { DownOutlined, UpOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
+import type { SelectProps, Options } from './interface';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
-
-interface Options {
-  label: String | number;
-  value: String | number;
-  disabled?: Boolean;
-}
-interface SelectProps {
-  /**
-   * @description 选择器数据
-   * @default []
-   */
-  option: Array<Options>;
-  /**
-   * @description 类名
-   */
-  className?: string;
-  /**
-   * @description 自定义样式
-   */
-  style?: CSSProperties;
-  /**
-   * @description 宽度
-   * @default 80px
-   */
-  width?: Number;
-  /**
-   * @description 提示
-   * @default false
-   */
-  placeholder?: String;
-  /**
-   * @description 禁用状态
-   * @default false
-   */
-  disabled?: Boolean;
-  /**
-   * @description 加载状态
-   * @default false
-   */
-  loading?: Boolean;
-  /**
-   * @description 可输入状态
-   * @default false
-   */
-  showSearch?: Boolean;
-  /**
-   * @description 可输入状态下清除
-   * @default false
-   */
-  clearable?: Boolean;
-  /**
-   * @description 选择后的回调
-   * @default {}
-   */
-  handleSelectCallback?: Function;
-  /**
-   * @description 输入后的回调
-   * @default {}
-   */
-  handleTextChange?: Function;
-}
 
 const Select = (props, ref) => {
   const {

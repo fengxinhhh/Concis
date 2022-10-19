@@ -26,13 +26,13 @@ Disable a tab.
 
 ## Location
 
-Configure `tabPosition` to use different layouts. There are four methods: `left`, `right`, `top`, and `bottom`. The default is` top `.
+Configure `tabPosition` to use different layouts. There are four methods: `left`, `right`, `top`, and `bottom`. The default is`top`.
 
 <code src="./demos/index2.tsx"/>
 
 ## Different types
 
-Configure `type` using different layouts. There are four methods: `line`, `text`, `round`, and `card`. The default is` line `.
+Configure `type` using different layouts. There are four methods: `line`, `text`, `round`, and `card`. The default is`line`.
 
 <code src="./demos/index3.tsx"/>
 
@@ -58,7 +58,7 @@ Components support nested use.
 
 ## Different sizes
 
-Configure `size` to customize different sizes, including `mini`, `small`, `default` and `large`. The default size is` default `.
+Configure `size` to customize different sizes, including `mini`, `small`, `default` and `large`. The default size is`default`.
 
 <code src="./demos/index8.tsx" />
 
@@ -68,11 +68,25 @@ When the navigation bar is stretched for a certain distance, scrolling is automa
 
 <code src="./demos/index9.tsx" />
 
-<API />
+## API
 
-##  TabPane
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| className | class name | `string` | `--` |
+| style | Custom styles | `CSSProperties` | `--` |
+| defaultActiveTab | default selected key | `string` | `--` |
+| tabPosition | Appearance position | `top / bottom / left / right` | `top` |
+| type | Tabs type | `line / text / round / card` | `line` |
+| size | Tabs size | `mini / small / default / large` | `default` |
+| extra | right slot of navbar | `ReactNode` | `<></>` |
+| editable | editable mode | `boolean` | `false` |
+| onAddTab | Add callback function in editable mode | `Function` | `No return parameter` |
+| onDeleteTab | Delete callback function in editable mode | `Function` | `Returns the deleted key` |
+| onChange | Switch Tabs callback function | `Function` | `Return the current key after switching` |
+
+## TabPane
 
 | Name  | Description | Type     | Default |
 | ----- | ----------- | -------- | ------- |
-|Key | Unique ID | ` string ` | `--`|
-|Title | Title | ` string ` | `--`|
+| Key   | Unique ID   | `string` | `--`    |
+| Title | Title       | `string` | `--`    |

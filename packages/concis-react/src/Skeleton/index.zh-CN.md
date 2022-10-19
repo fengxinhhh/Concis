@@ -30,19 +30,19 @@ mobile: false
 
 ## 显示标题
 
-配置 title，显示标题骨架。
+配置 `title`，显示标题骨架。
 
 <code src="./demos/index2.tsx" />
 
 ## 显示头像
 
-配置 avatar，显示标题骨架。
+配置 `avatar`，显示标题骨架。
 
 <code src="./demos/index3.tsx" />
 
 ## 自定义数量和宽度
 
-通过 row 配置展示列数，通过 width 配置每列宽度。
+通过 `row` 配置展示列数，通过 `width` 配置每列宽度。
 
 <code src="./demos/index4.tsx" />
 
@@ -52,4 +52,15 @@ mobile: false
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name      | Description | Type                     | Default |
+| --------- | ----------- | ------------------------ | ------- |
+| className | 自定义类名  | `string`                 | `--`    |
+| style     | 自定义样式  | `CSSProperties`          | `--`    |
+| loading   | 加载状态    | `boolean`                | `true`  |
+| title     | 显示标题    | `boolean`                | `false` |
+| avatar    | 显示头像    | `boolean`                | `false` |
+| row       | 自定义行数  | `number`                 | `3`     |
+| width     | 自定义宽度  | `Array<string / number>` | `100%`  |
+| size      | 头像尺寸    | `number`                 | `40`    |

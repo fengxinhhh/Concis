@@ -46,4 +46,26 @@ mobile: false
 
 <code src="./demos/index5.tsx"/>
 
-<API />
+## API
+
+| Name               | Description      | Type              | Default  |
+| ------------------ | ---------------- | ----------------- | -------- |
+| className          | 类名             | `string`          | `--`     |
+| style              | 自定义样式       | `CSSProperties`   | `--`     |
+| treeData           | Tree 配置参数    | `Array<treeData>` | `[]`     |
+| defaultOpen        | 默认展开         | `boolean`         | `false`  |
+| disabled           | 禁用             | `boolean`         | `false`  |
+| avaDrop            | 可拖拽           | `boolean`         | `false`  |
+| lazyLoad           | 动态加载         | `boolean`         | `false`  |
+| lazyLoadWaitSecond | 动态加载等待时延 | `number`          | `1000ms` |
+| checkCallback      | 选中回调函数     | `Function`        | `--`     |
+| dropCallback       | 拖拽回调函数     | `Function`        | `--`     |
+
+## treeData API
+
+| Name     | Description | Type              | Default |
+| -------- | ----------- | ----------------- | ------- |
+| title    | 标题        | `string`          | `--`    |
+| value    | 选中内容    | `string`          | `--`    |
+| group    | 节点分组    | `number`          | `--`    |
+| children | 子节点      | `Array<treeData>` | `[]`    |

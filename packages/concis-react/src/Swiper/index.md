@@ -28,16 +28,32 @@ The most basic use of.
 
 ## Autoplay
 
+Autoplay via `autoPlayer`, and `deply` to set the playback delay.
+
 <code src="./demos/index2.tsx"/>
 
 ## Toggle Options
 
-Show small dots
+Configure `showTrigger` to display small dots.
 
 <code src="./demos/index3.tsx"/>
 
 ## Card
 
+Configure `card` to switch to a card carousel.
+
 <code src="./demos/index4.tsx"/>
 
-<API />
+## API
+
+| Name        | Description       | Type            | Default  |
+| ----------- | ----------------- | --------------- | -------- |
+| className   | Custom class name | `string`        | `--`     |
+| style       | Custom styles     | `CSSProperties` | `--`     |
+| imgList     | Image list        | `Array<string>` | `[]`     |
+| pictureSize | carousel width    | `number`        | `400px`  |
+| height      | Carousel height   | `number`        | `240px`  |
+| autoPlayer  | autoplay          | `boolean`       | `false`  |
+| showTrigger | Show dots         | `boolean`       | `false`  |
+| deply       | autoplay interval | `number`        | `3000ns` |
+| card        | Card carousel     | `boolean`       | `false`  |

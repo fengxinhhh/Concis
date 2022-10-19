@@ -30,19 +30,19 @@ The most basic skeleton screen.
 
 ## Show Title
 
-Configure title to display the title skeleton.
+Configure `title` to display the title skeleton.
 
 <code src="./demos/index2.tsx" />
 
 ## Show avatar
 
-Configure avatar to display the title skeleton.
+Configure `avatar` to display the title skeleton.
 
 <code src="./demos/index3.tsx" />
 
 ## Custom quantity and width
 
-The number of columns is displayed through row configuration, and the width of each column is configured through width.
+The number of columns is displayed through `row` configuration, and the width of each column is configured through `width`.
 
 <code src="./demos/index4.tsx" />
 
@@ -52,4 +52,15 @@ Complete function demonstration.
 
 <code src="./demos/index5.tsx" />
 
-<API />
+## API
+
+| Name      | Description       | Type                     | Default |
+| --------- | ----------------- | ------------------------ | ------- |
+| className | Custom class name | `string`                 | `--`    |
+| style     | Custom styles     | `CSSProperties`          | `--`    |
+| loading   | loading state     | `boolean`                | `true`  |
+| title     | show title        | `boolean`                | `false` |
+| avatar    | show avatar       | `boolean`                | `false` |
+| row       | custom row number | `number`                 | `3`     |
+| width     | custom width      | `Array<string / number>` | `100%`  |
+| size      | Avatar size       | `number`                 | `40`    |
