@@ -98,7 +98,6 @@ const Form = <T,>(props: FormProps<T>) => {
       resultField = outputFormData();
     }
     const resultRules: any = {};
-    console.log(resultField, 100);
     for (const key in resultField) {
       const field = fieldList[key];
       const value = resultField[key].val;
@@ -106,19 +105,7 @@ const Form = <T,>(props: FormProps<T>) => {
         let isPass = true;
         const rules = fieldList[key].rules;
         rules.forEach((rule: ruleType) => {
-          if (rule.required && value === '' && isPass) {
-            isPass = false;
-            changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
-          } else if (rule.maxLength && value.length > rule.maxLength && isPass) {
-            isPass = false;
-            changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
-          } else if (rule.minLength && value.length < rule.minLength && isPass) {
-            isPass = false;
-            changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
-          } else if (rule.fn && !rule.fn(value)) {
-            isPass = false;
-            changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
-          }
+          isPass = validateRow(isPass, value, key, rule);
           if (
             isPass &&
             (ref as any).current.querySelector(` .concis-form-item .${key} .show-rule-label`)
@@ -130,18 +117,38 @@ const Form = <T,>(props: FormProps<T>) => {
         });
       }
     }
+    function validateRow(isPass, value, key, rule) {
+      if (rule.required && value === '' && isPass) {
+        // 必填校验
+        isPass = false;
+        changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
+      } else if (rule.maxLength && value.length > rule.maxLength && isPass) {
+        // 最长字段校验
+        isPass = false;
+        changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
+      } else if (rule.minLength && value.length < rule.minLength && isPass) {
+        // 最小字段校验
+        isPass = false;
+        changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
+      } else if (rule.fn && !rule.fn(value)) {
+        // 自定义校验
+        isPass = false;
+        changeValidateText(` .concis-form-item .${key}`, rule.message, key, ref);
+      }
+      return isPass;
+    }
     function changeValidateText(
       className: string,
       text: string,
       field: string,
-      ref: Ref<T | unknown> | null
+      ref: Ref<T | unknown> | null,
     ) {
       resultRules[field] = text;
       const hideDom = (ref as any).current.querySelector(
-        `${className} .hide-rule-label`
+        `${className} .hide-rule-label`,
       ) as HTMLElement;
       const showDom = (ref as any).current.querySelector(
-        `${className} .show-rule-label`
+        `${className} .show-rule-label`,
       ) as HTMLElement;
       if (hideDom && hideDom?.innerText) {
         hideDom.innerText = text;
@@ -161,7 +168,7 @@ const Form = <T,>(props: FormProps<T>) => {
         setReset(false);
       });
     },
-    [formControlRef]
+    [formControlRef],
   );
   const useFormContext = () => {
     // 表单提交

@@ -14,7 +14,6 @@ function buildRegex(query: string[]) {
 }
 function highlightWords({ text, query }: Options): Chunk[] {
   const regex = buildRegex(query);
-  // console.log(regex);
   if (!regex) {
     return [{ text, match: false }];
   }
@@ -40,11 +39,18 @@ const Highlight = (props, ref) => {
   const chunks = useHighlight({ query, text: children });
 
   const lighLightStyle = useMemo((): highlightStyle => {
+    const defaultPy = 0,
+      defaultPx = 0,
+      defaultMy = 0,
+      defaultMx = 0,
+      defaultRadius = '5px',
+      defaultBg = '#b2f5ea';
+
     return {
-      padding: `${styles?.py || 0}px ${styles?.px || 5}px`,
-      margin: `${styles?.my || 0}px ${styles?.mx || 0}px`,
-      borderRadius: styles?.rounded ? '15px' : '5px',
-      backgroundColor: styles?.bg ? styles.bg : '#b2f5ea',
+      padding: `${styles?.py || defaultPy}px ${styles?.px || defaultPx}px`,
+      margin: `${styles?.my || defaultMy}px ${styles?.mx || defaultMx}px`,
+      borderRadius: styles?.rounded ? '15px' : defaultRadius,
+      backgroundColor: styles?.bg ? styles.bg : defaultBg,
     };
   }, [styles]);
 

@@ -24,50 +24,51 @@ const Affix = (props, ref) => {
 
   let io: IntersectionObserver; // 观察者
 
+  function getOffset(affixEl) {
+    if (affixType === 'scroll') {
+      window.addEventListener('scroll', screenScroll);
+      affixEl.position = 'relative';
+    } else {
+      affixEl.position = 'fixed';
+    }
+    if (offsetTop && !affixEl.bottom) {
+      affixEl.top = affixType === 'scroll' ? 0 : offsetTop;
+    }
+    if (offsetBottom && !affixEl.top) {
+      affixEl.bottom = affixType === 'scroll' ? 0 : offsetBottom;
+    }
+    if (offsetLeft && !affixEl.right) {
+      affixEl.left = affixType === 'scroll' ? 0 : offsetLeft;
+    }
+    if (offsetRight && !affixEl.left) {
+      affixEl.right = affixType === 'scroll' ? 0 : offsetRight;
+    }
+    return affixEl;
+  }
+
+  function transformToFixed(affixEl) {
+    affixEl = {
+      position: 'fixed',
+      top: offsetTop ? `${offsetTop}px` : affixEl.top,
+      bottom: offsetBottom ? `${offsetBottom}px` : affixEl.bottom,
+      left: offsetLeft ? `${offsetLeft}px` : affixEl.left,
+      right: offsetRight ? `${offsetRight}px` : affixEl.right,
+    };
+    return affixEl;
+  }
+
   useEffect(() => {
     const el = document.querySelector('.concis-affix') as Element;
     io = new IntersectionObserver((entries) => elementObverse(entries));
     io.observe(el); // 数据劫持监听
-    if (affixType === 'scroll') {
-      window.addEventListener('scroll', screenScroll);
-      setAffixElOffset((old) => {
-        old.position = 'relative';
-        if (offsetTop && !old.bottom) {
-          old.top = 0;
-        }
-        if (offsetBottom && !old.top) {
-          old.bottom = 0;
-        }
-        if (offsetLeft && !old.right) {
-          old.left = 0;
-        }
-        if (offsetRight && !old.left) {
-          old.right = 0;
-        }
-        return JSON.parse(JSON.stringify(old));
-      });
-    } else {
-      setAffixElOffset((old) => {
-        old.position = 'fixed';
-        if (offsetTop && !old.bottom) {
-          old.top = offsetTop;
-        }
-        if (offsetBottom && !old.top) {
-          old.bottom = offsetBottom;
-        }
-        if (offsetLeft && !old.right) {
-          old.left = offsetLeft;
-        }
-        if (offsetRight && !old.left) {
-          old.right = offsetRight;
-        }
-        return JSON.parse(JSON.stringify(old));
-      });
-    }
+    setAffixElOffset((old) => {
+      return JSON.parse(JSON.stringify(getOffset(old)));
+    });
     return () => {
       io.unobserve(el);
     };
   }, []);
+
   const screenScroll = () => {
     if (window.scrollY < 200) {
       // 首屏时，无需脱离文档流
@@ -83,6 +84,7 @@ const Affix = (props, ref) => {
       });
     }
   };
+
   const elementObverse = (entries: Array<IntersectionObserverEntry>) => {
     // 监听函数
     entries.forEach((entry: IntersectionObserverEntry) => {
@@ -90,20 +92,7 @@ const Affix = (props, ref) => {
         // 元素未被观测
         if (affixElOffset.position === 'relative') {
           setAffixElOffset((old) => {
-            old.position = 'fixed';
-            if (offsetTop && offsetTop !== old.top) {
-              old.top = `${offsetTop}px`;
-            }
-            if (offsetBottom && offsetBottom !== old.bottom) {
-              old.bottom = `${offsetBottom}px`;
-            }
-            if (offsetLeft && offsetLeft !== old.left) {
-              old.left = `${offsetLeft}px`;
-            }
-            if (offsetRight && offsetRight !== old.right) {
-              old.right = `${offsetRight}px`;
-            }
-            return JSON.parse(JSON.stringify(old));
+            return JSON.parse(JSON.stringify(transformToFixed(old)));
           });
         }
       }
