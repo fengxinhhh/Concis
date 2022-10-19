@@ -6,11 +6,23 @@ jobs:
   jest-test:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@master
 
-      - name: install
-        run: yarn install && yarn add enzyme @wojtekmaj/enzyme-adapter-react-17
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
 
-      - name: test:unit
-        run: cd packages/concis-react && yarn install && yarn test:unit
+      - name: Set node version to 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install
+        run: pnpm install --no-frozen-lockfile && pnpm add enzyme @wojtekmaj/enzyme-adapter-react-17 -w
+
+      - name: Unit test
+        run: cd packages/concis-react && pnpm install && pnpm test:unit
+
+      - name: Demo test
+        run: pnpm add glob -w && cd packages/concis-react && pnpm install && pnpm test:demo

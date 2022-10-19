@@ -1,4 +1,4 @@
-import React, { Children, useContext, Fragment, forwardRef } from 'react';
+import React, { Children, useContext, Fragment, forwardRef, useMemo } from 'react';
 import { BreadcrumbProps } from './interface';
 import BreadcrumbItem from './item';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -18,29 +18,24 @@ const Breadcrumb = (props: BreadcrumbProps, ref) => {
     darkTheme ? 'concis-dark-breadcrumb' : 'concis-breadcrumb',
   );
 
+  const renderBreadcrumb = useMemo(() => {
+    const list =
+      maxCount && maxCount < childrenList.length ? childrenList.slice(0, maxCount) : childrenList;
+    return list.map((child, index) => {
+      return (
+        <Fragment key={index}>
+          {child}
+          {index !== childrenList.length - 1 && (
+            <span className="concis-breadcrumb-item-separator">{separator}</span>
+          )}
+        </Fragment>
+      );
+    });
+  }, [childrenList, children]);
+
   return (
     <div className={classNames} style={style} ref={ref}>
-      {maxCount && maxCount < childrenList.length
-        ? childrenList.slice(0, maxCount).map((child, index) => {
-            return (
-              <Fragment key={index}>
-                {child}
-                {index !== childrenList.length - 1 && (
-                  <span className="concis-breadcrumb-item-separator">{separator}</span>
-                )}
-              </Fragment>
-            );
-          })
-        : childrenList.map((child, index) => {
-            return (
-              <Fragment key={index}>
-                {child}
-                {index !== childrenList.length - 1 && (
-                  <span className="concis-breadcrumb-item-separator">{separator}</span>
-                )}
-              </Fragment>
-            );
-          })}
+      {renderBreadcrumb}
       {maxCount && maxCount < childrenList.length && (
         <span className="concis-breadcrumb-item-ellipse">...</span>
       )}

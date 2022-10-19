@@ -11,9 +11,7 @@ const setupPuppeteer = () => {
   let page: puppeteer.Page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch({
-      headless: false,
-    });
+    browser = await puppeteer.launch({ headless: false });
   });
   beforeEach(async () => {
     page = await browser.newPage();
