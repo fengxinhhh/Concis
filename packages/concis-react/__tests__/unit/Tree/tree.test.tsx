@@ -1,6 +1,7 @@
 import React from 'react';
 import { act } from '@testing-library/react';
-import Tree, { treeNode } from '../../../src/Tree';
+import Tree from '../../../src/Tree';
+import type { treeNode } from '../../../src/Tree/interface';
 import Enzyme from '../../../../../tests/setup';
 import mountTest from '../../../../../tests/mountTest';
 
