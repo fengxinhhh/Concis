@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from '@testing-library/react';
 import Enzyme, { setupIntersectionObserverMock } from '../../../../../tests/setup';
 import mountTest from '../../../../../tests/mountTest';
-import LazyLoad from '../../../src/LazyLoad';
+import LazyLoad from '..';
 
 const { mount } = Enzyme;
 mountTest(LazyLoad);

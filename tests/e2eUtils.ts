@@ -4,7 +4,7 @@ const getExampleUrl = (componentName: string) => {
   // 获取测试组件的页面url
   return `http://localhost:8000/#/common/${componentName}`;
 };
-const e2eTestTimeout = 30 * 1000;
+const e2eTestTimeout = 100 * 1000;
 
 const setupPuppeteer = () => {
   let browser: puppeteer.Browser;

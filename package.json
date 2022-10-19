@@ -32,7 +32,8 @@
     "qrcode.react": "^3.1.0",
     "umi-hd": "^5.0.1",
     "vh": "link:umi-hd/lib/vh",
-    "vw": "link:umi-hd/lib/vw"
+    "vw": "link:umi-hd/lib/vw",
+    "puppeteer": "^15.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.10",

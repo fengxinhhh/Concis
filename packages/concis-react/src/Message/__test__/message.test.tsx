@@ -1,7 +1,9 @@
 import Message from '../../../src/Message/index';
-import Enzyme from '../../../../../tests/setup';
 
-const { mount } = Enzyme;
+const Enzyme = require('enzyme');
+const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('Message', () => {
   beforeEach(() => {

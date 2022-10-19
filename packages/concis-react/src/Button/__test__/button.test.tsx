@@ -1,6 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import Button from '../../../src/Button/index';
+import Button from '../index';
 import Enzyme from '../../../../../tests/setup';
 import mountTest from '../../../../../tests/mountTest';
 

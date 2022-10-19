@@ -51,6 +51,7 @@ importers:
       prettier: ^2.7.1
       pretty-quick: ^3.1.3
       prismjs: ^1.28.0
+      puppeteer: ^15.5.0
       qrcode: ^1.5.1
       qrcode.react: ^3.1.0
       react: ^17.0.0
@@ -95,6 +96,7 @@ importers:
       lodash: 4.17.21
       md5: 2.3.0
       prismjs: 1.28.0
+      puppeteer: 15.5.0
       qrcode: 1.5.1
       qrcode.react: 3.1.0_react@17.0.2
       umi-hd: 5.0.1
@@ -3315,7 +3317,6 @@ packages:
     requiresBuild: true
     dependencies:
       '@types/node': 18.6.5
-    dev: true
     optional: true
 
   /@typescript-eslint/eslint-plugin/4.33.0_zrqxgwgitu7trrjeml3nqco3jq:
@@ -5296,7 +5297,6 @@ packages:
       {
         integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==,
       }
-    dev: true
 
   /buffer-fill/1.0.0:
     resolution:
@@ -6288,7 +6288,6 @@ packages:
       node-fetch: 2.6.7
     transitivePeerDependencies:
       - encoding
-    dev: true
 
   /cross-spawn/5.1.0:
     resolution:
@@ -6854,7 +6853,6 @@ packages:
       {
         integrity: sha512-wvq+KscQ7/6spEV7czhnZc9RM/woz1AY+/Vpd8/h2HFMwJSdTliu7f/yr1A6vDdJfKICZsShqsYpEQbdhg8AFQ==,
       }
-    dev: true
 
   /diff-sequences/27.5.1:
     resolution:
@@ -8625,7 +8623,6 @@ packages:
       '@types/yauzl': 2.10.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
 
   /f2-touchemulator/0.0.1:
     resolution:
@@ -8726,7 +8723,6 @@ packages:
       }
     dependencies:
       pend: 1.2.0
-    dev: true
 
   /figures/2.0.0:
     resolution:
@@ -9188,7 +9184,6 @@ packages:
     engines: { node: '>=8' }
     dependencies:
       pump: 3.0.0
-    dev: true
 
   /get-stream/6.0.1:
     resolution:
@@ -12987,7 +12982,6 @@ packages:
       {
         integrity: sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==,
       }
-    dev: true
 
   /mkdirp/0.5.6:
     resolution:
@@ -13169,7 +13163,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: true
 
   /node-int64/0.4.0:
     resolution:
@@ -13954,7 +13947,6 @@ packages:
       {
         integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==,
       }
-    dev: true
 
   /performance-now/2.1.0:
     resolution:
@@ -14021,7 +14013,6 @@ packages:
     engines: { node: '>=8' }
     dependencies:
       find-up: 4.1.0
-    dev: true
 
   /please-upgrade-node/3.2.0:
     resolution:
@@ -15259,7 +15250,6 @@ packages:
         integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==,
       }
     engines: { node: '>=0.4.0' }
-    dev: true
 
   /promise-inflight/1.0.1_bluebird@3.7.2:
     resolution:
@@ -15447,7 +15437,6 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
-    dev: true
 
   /qrcode.react/3.1.0_react@17.0.2:
     resolution:
@@ -16634,7 +16623,6 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
-    dev: true
 
   /ripemd160/2.0.2:
     resolution:
@@ -18220,7 +18208,6 @@ packages:
       mkdirp-classic: 0.5.3
       pump: 3.0.0
       tar-stream: 2.2.0
-    dev: true
 
   /tar-stream/1.6.2:
     resolution:
@@ -18249,7 +18236,6 @@ packages:
       fs-constants: 1.0.0
       inherits: 2.0.4
       readable-stream: 3.6.0
-    dev: true
 
   /term-size/1.2.0:
     resolution:
@@ -18472,7 +18458,6 @@ packages:
       {
         integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==,
       }
-    dev: true
 
   /tr46/1.0.1:
     resolution:
@@ -18882,7 +18867,6 @@ packages:
     dependencies:
       buffer: 5.7.1
       through: 2.3.8
-    dev: true
 
   /unicode-canonical-property-names-ecmascript/2.0.0:
     resolution:
@@ -19344,7 +19328,6 @@ packages:
       {
         integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==,
       }
-    dev: true
 
   /webidl-conversions/4.0.2:
     resolution:
@@ -19498,7 +19481,6 @@ packages:
     dependencies:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
-    dev: true
 
   /whatwg-url/7.1.0:
     resolution:
@@ -19683,7 +19665,6 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
-    dev: true
 
   /ws/8.8.1:
     resolution:
@@ -19852,7 +19833,6 @@ packages:
     dependencies:
       buffer-crc32: 0.2.13
       fd-slicer: 1.1.0
-    dev: true
 
   /yocto-queue/0.1.0:
     resolution:

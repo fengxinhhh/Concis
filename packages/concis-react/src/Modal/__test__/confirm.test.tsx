@@ -1,8 +1,10 @@
 import Modal from '../../../src/Modal';
-import Enzyme from '../../../../../tests/setup';
 import mountTest from '../../../../../tests/mountTest';
 
-const { mount } = Enzyme;
+const Enzyme = require('enzyme');
+const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
+
+Enzyme.configure({ adapter: new Adapter() });
 
 mountTest(Modal);
 
