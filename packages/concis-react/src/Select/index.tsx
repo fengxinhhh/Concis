@@ -37,13 +37,12 @@ const Select = (props, ref) => {
     }
   };
   useEffect(() => {
-    document.body.addEventListener('click', (e) => {
+    const handleClick = (e) => {
       closeSelect(e);
-    });
+    };
+    document.body.addEventListener('click', handleClick);
     return () => {
-      document.body.removeEventListener('click', (e) => {
-        closeSelect(e);
-      });
+      document.body.removeEventListener('click', handleClick);
     };
   }, []);
   useEffect(() => {

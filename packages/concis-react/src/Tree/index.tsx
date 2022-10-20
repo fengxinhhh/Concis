@@ -36,8 +36,13 @@ const Tree = (props, ref) => {
   const classNames = cs(prefixCls, className, `cocnis-${darkTheme ? 'dark-' : ''}tree-container`);
 
   useEffect(() => {
+    const func = () => setVisible(false);
     resolveTreeData(treeData as Array<treeNode>, 1);
-    window.addEventListener('click', () => setVisible(false));
+    window.addEventListener('click', func);
+
+    return () => {
+      window.removeEventListener('click', func);
+    };
   }, []);
   useEffect(() => {
     // 用于监听Form组件的重置任务
