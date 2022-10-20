@@ -106,9 +106,17 @@ const Nav = (props, ref) => {
     setVisible(false);
     setHoverNavIndex(-1);
   };
+  const leaveDialog = (e) => {
+    const leaveToEl = e.nativeEvent.relatedTarget;
+    // 如果移出整个Nav，清除所有状态
+    if (leaveToEl.getAttribute('class') !== 'line fadeIn-enter-done') {
+      setVisible(false);
+      setHoverNavIndex(-1);
+    }
+  };
 
   return (
-    <div className={classNames} style={style} ref={ref}>
+    <div className={classNames} style={style} ref={ref} onMouseLeave={leaveNav}>
       <div className="concis-nav-bar" ref={widthRef}>
         {leftSlot && (
           <div className="concis-nav-left" ref={leftNavRef}>
@@ -121,8 +129,7 @@ const Nav = (props, ref) => {
             <div
               className="concis-nav-bar-option"
               key={index}
-              onMouseEnter={(e) => enterNav(index)}
-              onMouseLeave={leaveNav}
+              onMouseEnter={() => enterNav(index)}
               onClick={() => jump(item)}
             >
               {item.label}
@@ -133,27 +140,45 @@ const Nav = (props, ref) => {
           in={visible}
           timeout={200}
           appear
+          classNames="fadeIn"
           mountOnEnter
-          classNames="fadeContent"
-          unmountOnExit
-          onEnter={(e: HTMLDivElement) => {
+          onEnter={(e) => {
             e.style.display = 'inline-block';
           }}
-          onExited={(e: HTMLDivElement) => {
+          onExited={(e) => {
             e.style.display = 'none';
           }}
         >
           <>
             <div className="line" style={lineStyle} />
             {navContent && navContent.length > 0 && (
-              <>
-                <div className="line-dialog" ref={contentRef} style={dialogStyle}>
-                  {navContent[hoverNavIndex]}
-                </div>
-                <div className="line-dialog2" ref={dialogRef}>
-                  {navContent[hoverNavIndex]}
-                </div>
-              </>
+              <CSSTransition
+                in={visible && hoverNavIndex !== -1}
+                timeout={100}
+                appear
+                classNames="dialogFade"
+                mountOnEnter
+                onEnter={(e) => {
+                  e.style.display = 'inline-block';
+                }}
+                onExited={(e) => {
+                  e.style.display = 'none';
+                }}
+              >
+                <>
+                  <div
+                    className="line-dialog"
+                    ref={contentRef}
+                    style={dialogStyle}
+                    onMouseLeave={leaveDialog}
+                  >
+                    {navContent[hoverNavIndex]}
+                  </div>
+                  <div className="line-dialog2" ref={dialogRef}>
+                    {navContent[hoverNavIndex]}
+                  </div>
+                </>
+              </CSSTransition>
             )}
           </>
         </CSSTransition>

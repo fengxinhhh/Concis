@@ -4,7 +4,8 @@
 @concis-nav-option-padding: @concis-transform-ms 14px 14px;
 @concis-nav-option-height: 70px;
 
-.concis-nav, .concis-dark-nav {
+.concis-nav,
+.concis-dark-nav {
   display: inline-block;
 
   .concis-nav-left {
@@ -29,7 +30,7 @@
     align-items: center;
     position: relative;
     width: 100%;
-    transition: .2s linear;
+    transition: 0.2s linear;
 
     &-option {
       height: 100%;
@@ -37,7 +38,7 @@
       cursor: pointer;
 
       &:hover {
-        opacity: .7;
+        opacity: 0.7;
       }
     }
 
@@ -48,7 +49,8 @@
       width: 100%;
       height: 3px;
       background-color: #1890ff;
-      transition: .2s linear;
+      transition: 0.2s linear;
+      z-index: 500;
 
       &::after {
         content: '';
@@ -57,21 +59,21 @@
         left: 45%;
         width: @concis-transform-lg;
         height: @concis-transform-ms;
-        background: url(https://thingsboard.io/images/head-arrow.svg) no-repeat; 
+        background: url(https://thingsboard.io/images/head-arrow.svg) no-repeat;
       }
     }
 
     .line-dialog {
       position: absolute;
       top: 100%;
-      transition: .2s linear; 
+      transition: 0.2s linear;
       background-color: #fff;
-      z-index: 9999;
+      z-index: 499;
       border-radius: @concis-radius-xs;
       color: #000;
       padding: @concis-transform-md @concis-transform-lg;
       overflow: hidden;
-      box-shadow: 0 0 20px 4px #9aa1b126, 0 4px 80px -8px #24282f40, 0 4px 4px -2px #5b5e6926
+      box-shadow: 0 0 20px 4px #9aa1b126, 0 4px 80px -8px #24282f40, 0 4px 4px -2px #5b5e6926;
     }
 
     .line-dialog2 {
@@ -92,4 +94,3 @@
     color: #fff;
   }
 }
-

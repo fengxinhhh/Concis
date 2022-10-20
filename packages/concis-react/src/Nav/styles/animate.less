@@ -1,19 +1,39 @@
-.fadeContent-enter,
-.fadeContent-appear {
+.fadeIn-enter,
+.fadeIn-appear {
   opacity: 0;
 }
 
-.fadeContent-enter-active,
-.fadeContent-appear-active {
+.fadeIn-enter-active,
+.fadeIn-appear-active {
   opacity: 1;
-  transition: opacity 200ms;
+  transition: opacity 0.2s linear;
 }
 
-.fadeContent-exit {
+.fadeIn-exit {
   opacity: 1;
 }
 
-.fadeContent-exit-active {
+.fadeIn-exit-active {
   opacity: 0;
-  transition: opacity 200ms;
+  transition: opacity 0.2s linear;
+}
+
+.dialogFade-enter,
+.dialogFade-appear {
+  opacity: 0;
+}
+
+.dialogFade-enter-active,
+.dialogFade-appear-active {
+  opacity: 1;
+  transition: opacity 0.1s linear;
+}
+
+.dialogFade-exit {
+  opacity: 1;
+}
+
+.dialogFade-exit-active {
+  opacity: 0;
+  transition: opacity 0.1s linear;
 }

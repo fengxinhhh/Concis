@@ -6,6 +6,7 @@ import {
   RightOutlined,
   SwapRightOutlined,
 } from '@ant-design/icons';
+import { CSSTransition } from 'react-transition-group';
 import type { RangeProps } from './interface';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
@@ -36,7 +37,6 @@ const RangeDatePicker = (props, ref) => {
   const [endMonthFirstDay, setEndMonthFirstDay] = useState(0); // 本月第一天是周几
   const [startDayListArray, setStartDayListArray] = useState<Array<number>>([]); // start月的日历
   const [endDayListArray, setEndDayListArray] = useState<Array<number>>([]); // end月的日历
-  const [showTimeDiaglog, setShowTimeDialog] = useState(false); // 日期选择器dialog show
   const [renderShowDialog, setRenderShowDialog] = useState(false);
   const [chooseStatus, setChooseStatus] = useState({
     start: false,
@@ -71,40 +71,27 @@ const RangeDatePicker = (props, ref) => {
   }, [startDate.startYear, startDate.startMonth, endDate.endYear, endDate.endMonth]);
 
   useEffect(() => {
-    let timerID: ReturnType<typeof setTimeout>;
     const handleClick = () => {
-      setShowTimeDialog(false);
-      timerID = setTimeout(() => {
-        setRenderShowDialog(false);
-      }, 300);
+      setRenderShowDialog(false);
     };
     window.addEventListener('click', handleClick);
-    console.log(startMonthFirstDay, endMonthFirstDay);
 
     return () => {
-      clearTimeout(timerID);
       window.removeEventListener('click', handleClick);
     };
   }, []);
 
   useEffect(() => {
-    let timerID: ReturnType<typeof setTimeout>;
     if (chooseStatus.start && chooseStatus.end) {
-      setShowTimeDialog(false);
-      timerID = setTimeout(() => {
-        setRenderShowDialog(false);
-      }, 300);
+      setRenderShowDialog(false);
       setChooseStatus((old) => {
         old.start = false;
         old.end = false;
         return { ...old };
       });
       handleChange && handleChange(startTime, endTime);
+      console.log(startMonthFirstDay, endMonthFirstDay);
     }
-
-    return () => {
-      clearTimeout(timerID);
-    };
   }, [chooseStatus]);
 
   useEffect(() => {
@@ -136,7 +123,6 @@ const RangeDatePicker = (props, ref) => {
   }, [formCtx.submitStatus]);
 
   const iptFocus = (position: string) => {
-    setShowTimeDialog(true);
     setRenderShowDialog(true);
     (activeBorderDom.current as HTMLDivElement).style.left = position === 'left' ? '0' : '190px';
   };
@@ -472,11 +458,23 @@ const RangeDatePicker = (props, ref) => {
         />
         <div className="activeBorder" ref={activeBorderDom} />
       </div>
-      {renderShowDialog && (
+      <CSSTransition
+        in={renderShowDialog}
+        timeout={300}
+        appear
+        classNames="fadeIn"
+        mountOnEnter
+        onEnter={(e) => {
+          e.style.display = 'flex';
+        }}
+        onExited={(e) => {
+          e.style.display = 'none';
+        }}
+      >
         <div
           className="date-box"
           onClick={(e) => e.stopPropagation()}
-          style={{ ...(showTimeDiaglog ? activeStyles().showDialog : {}), ...alignFn() } as any}
+          style={{ ...alignFn() } as any}
         >
           <div className="left">
             <div className="top-bar">
@@ -577,7 +575,7 @@ const RangeDatePicker = (props, ref) => {
             </div>
           </div>
         </div>
-      )}
+      </CSSTransition>
     </div>
   );
 };

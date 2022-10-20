@@ -52,11 +52,18 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
         width: (showBtnRef.current as any).offsetWidth,
         height: (showBtnRef.current as any).offsetHeight,
       });
-      if (type === 'click') {
-        window.addEventListener('click', () => {
-          setShowDialog(false);
-        });
+      function resetVisible() {
+        setShowDialog(false);
       }
+      if (type === 'click') {
+        window.addEventListener('click', resetVisible);
+      }
+
+      return () => {
+        if (type === 'click') {
+          window.removeEventListener('click', resetVisible);
+        }
+      };
     }, []);
     useEffect(() => {
       // 依赖于父组件的状态改变，关闭popover
