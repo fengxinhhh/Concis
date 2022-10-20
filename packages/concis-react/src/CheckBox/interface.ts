@@ -6,6 +6,7 @@ type checkGroup = {
   checked?: boolean;
   disabled?: boolean;
 };
+
 interface checkBoxProps {
   children?: ReactNode;
   /**

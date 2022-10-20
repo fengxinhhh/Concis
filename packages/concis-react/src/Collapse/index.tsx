@@ -3,10 +3,13 @@ import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
-import { CollapseProps } from './interfase';
+import { CollapseProps } from './interface';
 import './style/index.module.less';
 
 export const ctx = createContext<any>({} as any); // 顶层通信装置
+
+const darkBorderColor = '#484849',
+  lightBorderColor = 'rgba(229, 230,235,1)';
 
 const Collapse = (props, ref) => {
   const {
@@ -46,8 +49,8 @@ const Collapse = (props, ref) => {
                 ...style,
                 border:
                   getSiteTheme() === ('dark' || 'auto') || darkTheme
-                    ? '1px solid#484849'
-                    : '1px solid rgba(229, 230,235,1)',
+                    ? `1px solid ${darkBorderColor}`
+                    : `1px solid ${lightBorderColor}`,
               }
         }
         ref={ref}

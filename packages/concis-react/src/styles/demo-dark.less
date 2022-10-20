@@ -265,8 +265,14 @@ html[data-prefers-color='dark'] {
     outline: none;
   }
   //datepicker
-  .concis-range-picker .date-box {
-    background-color: #373739;
+  .concis-range-picker {
+    .date-box {
+      background-color: #373739;
+
+      .day-list .disabled-day {
+        opacity: 0.6 !important;
+      }
+    }
   }
 
   .concis-date-picker .result {

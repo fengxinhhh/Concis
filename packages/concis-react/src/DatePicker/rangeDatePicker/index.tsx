@@ -14,8 +14,12 @@ import { globalCtx } from '../../GlobalConfig';
 import { ctx } from '../../Form';
 import './index.module.less';
 
+const dateReg = /^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/;
+const defaultPrimaryColor = '#325DFF';
+
 const RangeDatePicker = (props, ref) => {
   const { className, showClear, align, handleChange, style } = props;
+
   const [startDate, setStartDate] = useState({
     startYear: new Date().getFullYear(),
     startMonth: new Date().getMonth() + 1,
@@ -40,9 +44,9 @@ const RangeDatePicker = (props, ref) => {
   }); // 是否被选择过
 
   const formCtx = useContext(ctx);
-  const { globalColor, prefixCls } = useContext(globalCtx) as GlobalConfigProps;
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, 'concis-range-picker');
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}range-picker`);
   const activeBorderDom = useRef(null);
 
   useEffect(() => {
@@ -65,6 +69,7 @@ const RangeDatePicker = (props, ref) => {
     setEndDayListArray(endDayList);
     setEndMonthFirstDay(endFirstDay);
   }, [startDate.startYear, startDate.startMonth, endDate.endYear, endDate.endMonth]);
+
   useEffect(() => {
     let timerID: ReturnType<typeof setTimeout>;
     const handleClick = () => {
@@ -81,6 +86,7 @@ const RangeDatePicker = (props, ref) => {
       window.removeEventListener('click', handleClick);
     };
   }, []);
+
   useEffect(() => {
     let timerID: ReturnType<typeof setTimeout>;
     if (chooseStatus.start && chooseStatus.end) {
@@ -100,6 +106,7 @@ const RangeDatePicker = (props, ref) => {
       clearTimeout(timerID);
     };
   }, [chooseStatus]);
+
   useEffect(() => {
     // 用于监听Form组件的重置任务
     if (formCtx.reset) {
@@ -117,6 +124,7 @@ const RangeDatePicker = (props, ref) => {
       setEndTime('');
     }
   }, [formCtx.reset]);
+
   useEffect(() => {
     if (formCtx.submitStatus) {
       const { startYear, startMonth, startDay } = startDate;
@@ -127,97 +135,115 @@ const RangeDatePicker = (props, ref) => {
     }
   }, [formCtx.submitStatus]);
 
-  const startIptFocus = () => {
+  const iptFocus = (position: string) => {
     setShowTimeDialog(true);
     setRenderShowDialog(true);
-    (activeBorderDom.current as any).style.left = '0';
+    (activeBorderDom.current as HTMLDivElement).style.left = position === 'left' ? '0' : '190px';
   };
-  const endIptFocus = () => {
-    setShowTimeDialog(true);
-    setRenderShowDialog(true);
-    (activeBorderDom.current as any).style.left = '190px';
+
+  const toggleYear = (type: string, toggleType: 'next' | 'prev') => {
+    // 切换年份
+    if (toggleType === 'next') {
+      if (type === 'start') {
+        if (startDate.startYear < endDate.endYear) {
+          const renderDate = { ...startDate };
+          renderDate.startYear += 1;
+          setStartDate(renderDate);
+        }
+      } else if (type === 'end') {
+        const renderDate = { ...endDate };
+        renderDate.endYear += 1;
+        setEndDate(renderDate);
+      }
+    } else if (toggleType === 'prev') {
+      if (type === 'start') {
+        const renderDate = { ...startDate };
+        renderDate.startYear -= 1;
+        setStartDate(renderDate);
+      } else if (type === 'end') {
+        if (endDate.endYear > startDate.startYear) {
+          const renderDate = { ...endDate };
+          renderDate.endYear -= 1;
+          setEndDate(renderDate);
+        }
+      }
+    }
   };
+
   const preYear = (type: string) => {
     // 切换上一年
-    if (type === 'start') {
-      const renderDate = { ...startDate };
-      renderDate.startYear -= 1;
-      setStartDate(renderDate);
-    } else if (type === 'end') {
-      if (endDate.endYear > startDate.startYear) {
-        const renderDate = { ...endDate };
-        renderDate.endYear -= 1;
-        setEndDate(renderDate);
-      }
-    }
+    toggleYear(type, 'prev');
   };
+
   const nextYear = (type: string) => {
     // 切换下一年
-    if (type === 'start') {
-      if (startDate.startYear < endDate.endYear) {
-        const renderDate = { ...startDate };
-        renderDate.startYear += 1;
-        setStartDate(renderDate);
-      }
-    } else if (type === 'end') {
-      const renderDate = { ...endDate };
-      renderDate.endYear += 1;
-      setEndDate(renderDate);
-    }
+    toggleYear(type, 'next');
   };
-  const preMonth = (type: string) => {
-    // 切换上一个月
-    if (type === 'start') {
-      const renderDate = { ...startDate };
-      if (renderDate.startMonth === 1) {
-        renderDate.startMonth = 12;
-        renderDate.startYear -= 1;
-      } else {
-        renderDate.startMonth -= 1;
-      }
-      setStartDate(renderDate);
-    } else if (type === 'end') {
-      if (endDate.endYear === startDate.startYear && endDate.endMonth === startDate.startMonth) {
-      } else {
-        const renderDate = { ...endDate };
-        if (renderDate.endMonth === 1) {
-          renderDate.endMonth = 12;
-          renderDate.endYear -= 1;
+
+  const toggleMonth = (type: string, toggleType: 'next' | 'prev') => {
+    // 切换月份
+    if (toggleType === 'next') {
+      if (type === 'start') {
+        if (endDate.endYear === startDate.startYear && endDate.endMonth === startDate.startMonth) {
         } else {
-          renderDate.endMonth -= 1;
+          const renderDate = { ...startDate };
+          if (renderDate.startMonth === 12) {
+            renderDate.startMonth = 1;
+            renderDate.startYear += 1;
+          } else {
+            renderDate.startMonth += 1;
+          }
+          setStartDate(renderDate);
         }
-        if (renderDate.endDay < startDate.startDay) {
-          renderDate.endDay = startDate.startDay;
+      } else if (type === 'end') {
+        const renderDate = { ...endDate };
+        if (renderDate.endMonth === 12) {
+          renderDate.endMonth = 1;
+          renderDate.endYear += 1;
+        } else {
+          renderDate.endMonth += 1;
         }
         setEndDate(renderDate);
       }
-    }
-  };
-  const nextMonth = (type: string) => {
-    // 切换下一个月
-    if (type === 'start') {
-      if (endDate.endYear === startDate.startYear && endDate.endMonth === startDate.startMonth) {
-      } else {
+    } else if (toggleType === 'prev') {
+      if (type === 'start') {
         const renderDate = { ...startDate };
-        if (renderDate.startMonth === 12) {
-          renderDate.startMonth = 1;
-          renderDate.startYear += 1;
+        if (renderDate.startMonth === 1) {
+          renderDate.startMonth = 12;
+          renderDate.startYear -= 1;
         } else {
-          renderDate.startMonth += 1;
+          renderDate.startMonth -= 1;
         }
         setStartDate(renderDate);
+      } else if (type === 'end') {
+        if (endDate.endYear === startDate.startYear && endDate.endMonth === startDate.startMonth) {
+        } else {
+          const renderDate = { ...endDate };
+          if (renderDate.endMonth === 1) {
+            renderDate.endMonth = 12;
+            renderDate.endYear -= 1;
+          } else {
+            renderDate.endMonth -= 1;
+          }
+          if (renderDate.endDay < startDate.startDay) {
+            renderDate.endDay = startDate.startDay;
+          }
+          setEndDate(renderDate);
+        }
       }
-    } else if (type === 'end') {
-      const renderDate = { ...endDate };
-      if (renderDate.endMonth === 12) {
-        renderDate.endMonth = 1;
-        renderDate.endYear += 1;
-      } else {
-        renderDate.endMonth += 1;
-      }
-      setEndDate(renderDate);
     }
   };
+
+  const preMonth = (type: string) => {
+    // 切换上一个月
+    toggleMonth(type, 'prev');
+  };
+
+  const nextMonth = (type: string) => {
+    // 切换下一个月
+    toggleMonth(type, 'next');
+  };
+
   const chooseStartDay = (day: number | string) => {
     // 选择开始日期
     if (day === '') return;
@@ -239,6 +265,7 @@ const RangeDatePicker = (props, ref) => {
       }
     }
   };
+
   const chooseEndDay = (day: number | string) => {
     // 选择结束日期
     if (startDate.startYear === endDate.endYear && startDate.startMonth === endDate.endMonth) {
@@ -256,10 +283,11 @@ const RangeDatePicker = (props, ref) => {
     });
     setEndTime(`${endDate.endYear}-${endDate.endMonth}-${day}`);
   };
+
   const enterChangeStartTime = (e: any) => {
     // 回车改变
     if (e.keyCode === 13) {
-      if (/^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(startTime)) {
+      if (dateReg.test(startTime)) {
         const start = startTime.split('-');
         if (
           Number(start[0]) <= endDate.endYear &&
@@ -284,16 +312,18 @@ const RangeDatePicker = (props, ref) => {
       }
     }
   };
+
   const blurStartTime = () => {
     // 失去焦点
-    if (!/^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(startTime)) {
+    if (!dateReg.test(startTime)) {
       setStartTime('');
     }
   };
+
   const enterChangeEndTime = (e: any) => {
     // 回车改变
     if (e.keyCode === 13) {
-      if (/^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(endTime)) {
+      if (dateReg.test(endTime)) {
         const start = endTime.split('-');
         if (
           Number(start[0]) >= startDate.startYear &&
@@ -318,12 +348,14 @@ const RangeDatePicker = (props, ref) => {
       }
     }
   };
+
   const blurEndTime = () => {
     // 失去焦点
-    if (!/^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/.test(endTime)) {
+    if (!dateReg.test(endTime)) {
       setEndTime('');
     }
   };
+
   const clearStartTime = () => {
     // 清空开始时间
     setStartTime('');
@@ -335,6 +367,7 @@ const RangeDatePicker = (props, ref) => {
       return { ...old };
     });
   };
+
   const clearEndTime = () => {
     // 清空结束时间
     setEndTime('');
@@ -346,12 +379,13 @@ const RangeDatePicker = (props, ref) => {
       return { ...old };
     });
   };
+
   const activeStyles = () => {
     // 选中的样式
     return {
       activeDay: {
         color: '#fff',
-        background: globalColor || '#325DFF',
+        background: globalColor || defaultPrimaryColor,
         fontWeight: 'bold',
         borderRadius: '5px',
       },
@@ -360,6 +394,7 @@ const RangeDatePicker = (props, ref) => {
       },
     };
   };
+
   const alignFn = useCallback(() => {
     if (!align) {
       return {
@@ -385,6 +420,7 @@ const RangeDatePicker = (props, ref) => {
       },
     }[align];
   }, [align]);
+
   const disabledClass = useCallback(
     (day: number | string) => {
       if (day === '') {
@@ -400,11 +436,12 @@ const RangeDatePicker = (props, ref) => {
     },
     [startDate, endDate],
   );
+
   return (
     <div
       className={classNames}
       onClick={(e) => e.stopPropagation()}
-      style={{ '--hover-color': globalColor || '#325DFF', ...style } as any}
+      style={{ '--hover-color': globalColor || defaultPrimaryColor, ...style } as any}
       ref={ref}
     >
       <div className="rangePicker" onClick={(e) => e.stopPropagation()}>
@@ -414,11 +451,11 @@ const RangeDatePicker = (props, ref) => {
             startTime || `${startDate.startYear}-${startDate.startMonth}-${startDate.startDay}`
           }
           handleIptChange={(v: string) => setStartTime(v)}
-          handleIptFocus={startIptFocus}
+          handleIptFocus={() => iptFocus('left')}
           handleKeyDown={(e: any) => enterChangeStartTime(e)}
           handleIptBlur={blurStartTime}
           clearCallback={clearStartTime}
-          showClear={showClear as boolean}
+          showClear={showClear}
           isFather
         />
         <SwapRightOutlined style={{ color: '#cccccc', fontSize: '20px' }} />
@@ -426,11 +463,11 @@ const RangeDatePicker = (props, ref) => {
           placeholder="请输入结束日期"
           defaultValue={endTime || `${endDate.endYear}-${endDate.endMonth}-${endDate.endDay}`}
           handleIptChange={(v: string) => setEndTime(v)}
-          handleIptFocus={endIptFocus}
+          handleIptFocus={() => iptFocus('right')}
           handleKeyDown={(e: any) => enterChangeEndTime(e)}
           handleIptBlur={blurEndTime}
           clearCallback={clearEndTime}
-          showClear={showClear as boolean}
+          showClear={showClear}
           isFather
         />
         <div className="activeBorder" ref={activeBorderDom} />

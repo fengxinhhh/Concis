@@ -2,7 +2,8 @@
 
 @concis-white-color: #ffffff;
 
-.concis-range-picker {
+.concis-range-picker,
+.concis-dark-range-picker {
   position: relative;
   user-select: none;
 
@@ -128,6 +129,16 @@
           text-align: center;
         }
       }
+    }
+  }
+}
+
+.concis-dark-range-picker {
+  .date-box {
+    background-color: #373739;
+
+    .day-list .disabled-day {
+      opacity: 0.6;
     }
   }
 }

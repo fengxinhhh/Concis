@@ -27,6 +27,7 @@ interface CollapseItemProps {
    */
   extra?: ReactNode;
 }
+
 interface CollapseProps {
   children?: ReactNode;
   /**
@@ -68,4 +69,27 @@ interface CollapseProps {
   toggleCallback?: Function;
 }
 
-export type { CollapseItemProps, CollapseProps };
+interface CollapseHeaderProps {
+  /**
+   * @description 头部对齐方式
+   * @default left
+   */
+  headerAlign?: string;
+  /**
+   * @description 头部内容
+   * @default <></>
+   */
+  header?: string;
+  /**
+   * @description 头部右侧内容
+   * @default <></>
+   */
+  extra?: ReactNode;
+  /**
+   * @description 头部高度
+   * @default 0
+   */
+  headerHeight?: CSSProperties;
+}
+
+export type { CollapseItemProps, CollapseProps, CollapseHeaderProps };

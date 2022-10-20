@@ -26,6 +26,9 @@ const Button = (props, ref) => {
 
   const classNames = cs(prefixCls, className, darkTheme ? 'concis-dark-button' : 'concis-button');
 
+  const textLoadingColor = '#000000',
+    defaultLoadingColor = '#ffffff';
+
   const buttonStyle = useMemo(() => {
     if (!type && type !== 'danger' && type !== 'warning' && type !== 'info' && type !== 'text') {
       return `concis-button-primary ${disabled ? 'disabled' : ''} ${loading ? 'loading' : ''}`;
@@ -38,6 +41,8 @@ const Button = (props, ref) => {
       height: '40px',
       ...style,
     };
+    const defaultBorderColor = '#cccccc',
+      defaultDisabledColor = '#000000';
     if (width) {
       size.width = `${width}px`;
     }
@@ -48,11 +53,11 @@ const Button = (props, ref) => {
       size = { ...size, borderRadius: '50%' };
     }
     if (dashed && type === 'text') {
-      size = { ...size, border: '1px dashed #ccc' };
+      size = { ...size, border: `1px dashed ${defaultBorderColor}` };
     }
     if (disabled) {
       if (type === 'text') {
-        size = { ...size, color: '#000000' };
+        size = { ...size, color: defaultDisabledColor };
       }
       size = { ...size, cursor: 'not-allowed' };
     }
@@ -69,7 +74,9 @@ const Button = (props, ref) => {
   return (
     <div
       className={classNames}
-      style={{ '--loading-icon-color': type === 'text' ? '#000000' : '#ffffff' } as any}
+      style={
+        { '--loading-icon-color': type === 'text' ? textLoadingColor : defaultLoadingColor } as any
+      }
       ref={ref}
     >
       <button

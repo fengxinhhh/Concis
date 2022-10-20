@@ -42,6 +42,18 @@ const CheckBox = (props, ref) => {
       : `concis-${darkTheme ? 'dark-' : ''}checkbox`,
   );
 
+  const defaultPrimaryColor = '#325DFF';
+
+  const checkBoxDom = {
+    disabled: <div className="concis-checkbox-disabled" />,
+    actived: (
+      <div className="concis-checkbox-actived">
+        <CheckOutlined style={{ fontSize: '12px' }} />
+      </div>
+    ),
+    noActived: <div className="concis-checkbox-noActived" />,
+  };
+
   useEffect(() => {
     if (checked !== undefined) {
       setCheckStatus(checked);
@@ -49,6 +61,7 @@ const CheckBox = (props, ref) => {
       setCheckStatus(false);
     }
   }, [checked]);
+
   useEffect(() => {
     // 用于监听Form组件的重置任务
     if (formCtx.reset) {
@@ -75,33 +88,26 @@ const CheckBox = (props, ref) => {
   const renderCheckBoxDom = useMemo(() => {
     // 渲染单check状态
     if (disabled) {
-      return <div className="concis-checkbox-disabled" />;
+      return checkBoxDom.disabled;
     }
     if (checkStatus) {
-      return (
-        <div className="concis-checkbox-actived">
-          <CheckOutlined style={{ fontSize: '12px' }} />
-        </div>
-      );
+      return checkBoxDom.actived;
     }
-    return <div className="concis-checkbox-noActived" />;
+    return checkBoxDom.noActived;
   }, [checkStatus, checked]);
+
   const renderCheckGroupDom = useCallback(
     (checkBoxOptions: checkGroup) => {
       // 渲染checkbox组状态
-      if (checkBoxOptions.disabled) {
-        return <div className="concis-checkbox-disabled" />;
+      const { disabled, checked } = checkBoxOptions;
+
+      if (disabled) {
+        return checkBoxDom.disabled;
       }
-      if (checkBoxOptions.checked) {
-        return (
-          <div className="concis-checkbox-actived">
-            <CheckOutlined style={{ fontSize: '12px' }} />
-          </div>
-        );
+      if (checked) {
+        return checkBoxDom.actived;
       }
-      if (!checkBoxOptions.checked) {
-        return <div className="concis-checkbox-noActived" />;
-      }
+      return checkBoxDom.noActived;
     },
     [group],
   );
@@ -111,7 +117,7 @@ const CheckBox = (props, ref) => {
       {group && group.length ? (
         <div
           className={classNames}
-          style={{ '--global-color': globalColor || '#325DFF', ...style } as any}
+          style={{ '--global-color': globalColor || defaultPrimaryColor, ...style } as any}
           ref={ref}
         >
           <div className="concis-checkbox-content">
@@ -133,7 +139,7 @@ const CheckBox = (props, ref) => {
         <div
           className={classNames}
           onClick={toggleCheckedStatus}
-          style={{ '--global-color': globalColor || '#325DFF', ...style } as any}
+          style={{ '--global-color': globalColor || defaultPrimaryColor, ...style } as any}
           ref={ref}
         >
           <div className="concis-checkbox-content">

@@ -18,25 +18,37 @@ mobile: false
 
 ## 基本使用
 
+最基本的日期选择器。
+
 <code src="./demos/index1.tsx" />
 
 ## 年份选择器
+
+通过 `YearPicker` 使用年份选择器。
 
 <code src="./demos/index2.tsx" />
 
 ## 月份选择器
 
+通过 `MonthPicker` 使用年份选择器。
+
 <code src="./demos/index3.tsx" />
 
 ## 区间式日期选择器
+
+通过 `RangeDatePicker` 使用年份选择器。
 
 <code src="./demos/index4.tsx" />
 
 ## 重置时间
 
-<code src="./demos/index4.tsx" />
+配置 `showClear` 即可重置开始、结束时间。
+
+<code src="./demos/index5.tsx" />
 
 ## 出现方向
+
+通过 `align` 指定出现方向，可选参数有 `left`、`right`、`top`、`bottom`。
 
 <code src="./demos/index6.tsx" />
 
