@@ -3,7 +3,7 @@ import lodash from 'lodash';
 import { CSSTransition } from 'react-transition-group';
 import { CloseOutlined } from '@ant-design/icons';
 import Button from '../Button';
-import { DrawerProps } from './interface';
+import { DrawerProps, alignProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -72,6 +72,7 @@ const Drawer = (props, ref) => {
     setOkLoading(false);
     setCancelLoading(false);
   };
+
   // 确认
   const finish = () => {
     if (!onOk) {
@@ -122,44 +123,47 @@ const Drawer = (props, ref) => {
   };
   const drawerContentStyle = useMemo(() => {
     const size = typeof width === 'string' ? width : `${width}%`;
-    switch (align) {
-      case 'right':
-        return {
-          top: 0,
-          right: 0,
-          height: '100%',
-          width: size,
-        };
-      case 'left':
-        return {
-          top: 0,
-          left: 0,
-          height: '100%',
-          width: size,
-        };
-      case 'bottom':
-        return {
-          bottom: 0,
-          left: 0,
-          width: '100%',
-          height: size,
-        };
-      case 'top':
-        return {
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: size,
-        };
-      default: {
-        return {
-          top: 0,
-          right: 0,
-          height: '100%',
-          width: size,
-        };
+    function getStyleByAlign(align: alignProps) {
+      switch (align) {
+        case 'right':
+          return {
+            top: 0,
+            right: 0,
+            height: '100%',
+            width: size,
+          };
+        case 'left':
+          return {
+            top: 0,
+            left: 0,
+            height: '100%',
+            width: size,
+          };
+        case 'bottom':
+          return {
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            height: size,
+          };
+        case 'top':
+          return {
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: size,
+          };
+        default: {
+          return {
+            top: 0,
+            right: 0,
+            height: '100%',
+            width: size,
+          };
+        }
       }
     }
+    return getStyleByAlign(align);
   }, [align]);
 
   return (

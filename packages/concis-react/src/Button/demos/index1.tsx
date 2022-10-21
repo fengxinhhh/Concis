@@ -4,7 +4,7 @@ import '../../styles/demo-dark.less';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function ButtonDemo1() {
-  process.env.NODE_ENV === 'production' && usePageListener('Button');
+  usePageListener('Button');
 
   const buttonStyle = { margin: '8px' };
 

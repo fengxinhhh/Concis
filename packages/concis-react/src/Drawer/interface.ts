@@ -24,7 +24,7 @@ interface DrawerProps {
    * @description 出现位置
    * @default right
    */
-  align?: 'left' | 'right' | 'top' | 'bottom';
+  align?: alignProps;
   /**
    * @description 确认按钮props
    * @default type -> primary
@@ -66,10 +66,13 @@ interface DrawerProps {
    */
   onCancel?: Function;
 }
+
+type alignProps = 'left' | 'right' | 'top' | 'bottom';
+
 type DialogStyle = {
   width?: string;
   height?: string;
   opacity?: string;
 };
 
-export type { DrawerProps, DialogStyle };
+export type { DrawerProps, DialogStyle, alignProps };

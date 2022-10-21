@@ -58,6 +58,7 @@ const Dropdown = (props, ref) => {
     setVisible(false);
     closeAllChild();
   };
+
   // 关闭所有子项
   const closeAllChild = () => {
     setDropData((data) => {
@@ -72,8 +73,9 @@ const Dropdown = (props, ref) => {
       });
     });
   };
+
   // 移入移除子项
-  const hoverInDropOption = (item: string | dataType, e: any, status: boolean) => {
+  const hoverInDropOption = (item: string | dataType, status: boolean) => {
     if (typeof item !== 'string' && item?.children && type === 'hover') {
       setDropData((data) => {
         return data.map((subItem: string | dataType) => {
@@ -88,6 +90,7 @@ const Dropdown = (props, ref) => {
       });
     }
   };
+
   // 点击子项触发
   const changeDropVal = (item: string | dataType, e: any) => {
     e.stopPropagation();
@@ -122,37 +125,44 @@ const Dropdown = (props, ref) => {
       }
     }
   };
+
+  const hoverMouseEvent = (eventType: 'enter' | 'leave', e) => {
+    if (disabled || type !== 'hover') return;
+    e.stopPropagation();
+    setVisible(eventType === 'enter');
+  };
+
+  const Option = (props) => {
+    const { item, index, children } = props;
+
+    return (
+      <div
+        className={cs('list', typeof item !== 'string' && item.disabled ? 'list-disabled' : '')}
+        key={index}
+        onClick={(e) => changeDropVal(item, e)}
+        onMouseEnter={() => hoverInDropOption(item, true)}
+        onMouseLeave={() => hoverInDropOption(item, false)}
+      >
+        {typeof item !== 'string' && item.icon && item.icon}
+        <div className="list-option">{typeof item === 'string' ? item : item?.content}</div>
+        {children}
+      </div>
+    );
+  };
+
   // 渲染列表
   const listELementRender = useMemo(() => {
     // 多列平铺
     if (colums) {
       return dropData?.map((item, index) => {
-        return (
-          <div
-            className={cs('list', typeof item !== 'string' && item.disabled ? 'list-disabled' : '')}
-            key={index}
-            onClick={(e) => changeDropVal(item, e)}
-            onMouseEnter={(e) => hoverInDropOption(item, e, true)}
-            onMouseLeave={(e) => hoverInDropOption(item, e, false)}
-          >
-            {typeof item !== 'string' && item.icon && item.icon}
-            <div className="list-option">{typeof item === 'string' ? item : item?.content}</div>
-          </div>
-        );
+        return <Option item={item} index={index} />;
       });
     }
+
     // 常规下拉
     return dropData?.map((item, index) => {
       return (
-        <div
-          className={cs('list', typeof item !== 'string' && item.disabled ? 'list-disabled' : '')}
-          key={index}
-          onClick={(e) => changeDropVal(item, e)}
-          onMouseEnter={(e) => hoverInDropOption(item, e, true)}
-          onMouseLeave={(e) => hoverInDropOption(item, e, false)}
-        >
-          {typeof item !== 'string' && item.icon && item.icon}
-          <div className="list-option">{typeof item === 'string' ? item : item?.content}</div>
+        <Option item={item} index={index}>
           {typeof item !== 'string' && item?.children && (
             <RightOutlined className="drop-down-icon" />
           )}
@@ -196,7 +206,7 @@ const Dropdown = (props, ref) => {
           ) : (
             <></>
           )}
-        </div>
+        </Option>
       );
     });
   }, [status, dropValue, visible, dropData, position]);
@@ -219,16 +229,8 @@ const Dropdown = (props, ref) => {
           e.stopPropagation();
           setVisible(!visible);
         }}
-        onMouseEnter={(e) => {
-          if (disabled || type !== 'hover') return;
-          e.stopPropagation();
-          setVisible(true);
-        }}
-        onMouseLeave={(e) => {
-          if (disabled || type !== 'hover') return;
-          e.stopPropagation();
-          setVisible(false);
-        }}
+        onMouseEnter={(e) => hoverMouseEvent('enter', e)}
+        onMouseLeave={(e) => hoverMouseEvent('leave', e)}
       >
         {dropValue}
         <DownOutlined className="drop-icon" />
@@ -253,16 +255,8 @@ const Dropdown = (props, ref) => {
             colums ? 'concis-dropdown-content-colums' : '',
             `concis-dropdown-content-${position}`,
           )}
-          onMouseEnter={(e) => {
-            if (disabled || type !== 'hover') return;
-            e.stopPropagation();
-            setVisible(true);
-          }}
-          onMouseLeave={(e) => {
-            if (disabled || type !== 'hover') return;
-            e.stopPropagation();
-            setVisible(false);
-          }}
+          onMouseEnter={(e) => hoverMouseEvent('enter', e)}
+          onMouseLeave={(e) => hoverMouseEvent('leave', e)}
         >
           {listELementRender}
         </div>

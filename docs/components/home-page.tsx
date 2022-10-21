@@ -82,10 +82,11 @@ export default () => {
           <div className="headerLeft">
             <h1 className="title">Concis</h1>
             <p className="description">
-              {locale === 'zh-CN'
-                ? '体验轻量级React Web开发体验'
-                : 'Experience lightweight React Web development experience'}
-
+              <span>
+                {locale === 'zh-CN'
+                  ? '体验轻量级React Web开发体验'
+                  : 'Lightweight React component library'}
+              </span>
               <span className="version">v{version}</span>
             </p>
             <p className="buttons">

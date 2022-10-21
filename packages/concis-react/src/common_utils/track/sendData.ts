@@ -1,8 +1,8 @@
 const sendData = (params: object) => {
   const sendScript = document.createElement('script');
   console.log(params);
-  const requestAddress = `http://react-view-ui.com:9999/saveComponentLog?info=${JSON.stringify(
-    params
+  const requestAddress = `https://concis.org.cn:9999/saveComponentLog?info=${JSON.stringify(
+    params,
   )}`;
   sendScript.src = requestAddress;
   sendScript.async = true;

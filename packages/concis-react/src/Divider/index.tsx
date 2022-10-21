@@ -14,18 +14,14 @@ const Divider = (props, ref) => {
   const classNames = cs(prefixCls, className, classFirstName);
 
   const lineAlign = useMemo(() => {
-    if (align === 'left') {
+    if (align === 'left' || align === 'right') {
       return {
-        justifyContent: 'left',
-      };
-    }
-    if (align === 'right') {
-      return {
-        justifyContent: 'right',
+        justifyContent: align,
       };
     }
     return {};
   }, [align]);
+
   const textStyle = useMemo(() => {
     if (fontSize) {
       return {
@@ -33,34 +29,37 @@ const Divider = (props, ref) => {
       };
     }
   }, [fontSize]);
+
   const lineStyle = useCallback(
     (domAlign: string) => {
-      if (domAlign === 'left' && align === 'left') {
+      if (
+        (domAlign === 'left' && align === 'left') ||
+        (domAlign === 'right' && align === 'right')
+      ) {
         return {
           flexBasis: '24px',
           flexGrow: 0,
         };
       }
-      if (domAlign === 'right' && align === 'right') {
-        return {
-          flexBasis: '24px',
-          flexGrow: 0,
-        };
-      }
+      return {};
     },
     [align],
   );
 
+  const formatClass = (className: string) => {
+    return `${classFirstName}-${className}`;
+  };
+
   return (
     <div className={classNames} style={style} ref={ref}>
-      <div className={`${classFirstName}-line`} style={{ ...lineAlign }}>
+      <div className={formatClass('line')} style={{ ...lineAlign }}>
         {children && (
           <>
-            <span className={`${classFirstName}-before-line-text`} style={lineStyle('left')} />
-            <span className={`${classFirstName}-line-text`} style={textStyle}>
+            <span className={formatClass('before-line-text')} style={lineStyle('left')} />
+            <span className={formatClass('line-text')} style={textStyle}>
               {children}
             </span>
-            <span className={`${classFirstName}-after-line-text`} style={lineStyle('right')} />
+            <span className={formatClass('after-line-text')} style={lineStyle('right')} />
           </>
         )}
       </div>
