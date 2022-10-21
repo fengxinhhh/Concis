@@ -8,7 +8,7 @@ export default function ImageDemo1() {
     <>
       {fitList.map((fit: any, index) => (
         <Image
-          src="http://concis.org.cn/images/swiper-img5.webp"
+          src="https://concis.org.cn/images/swiper-img5.webp"
           width="200px"
           height="200px"
           style={{ marginRight: '20px' }}

@@ -40,7 +40,7 @@ concis 是一套轻量级 React UI 组件库，同时支持多模块，专注于
 
 ## 多模块支持
 
-Concis 支持`cjs`、`ejs`、`umd` 三种模块，定制化你的Web运行环境，同时Concis采用 `TypeScript` 编写，在使用过程中可以享受智能提示。
+Concis 支持`cjs`、`ejs`、`umd` 三种模块，定制化你的 Web 运行环境，同时 Concis 采用 `TypeScript` 编写，在使用过程中可以享受智能提示。
 
 ## 如何贡献？
 
@@ -60,7 +60,7 @@ Concis 支持`cjs`、`ejs`、`umd` 三种模块，定制化你的Web运行环境
 
 代码风格遵循 2 空格，无分号，非说明请不要在代码中附带任何 console 相关的方法及 debugger。 开发完成后，到自己 fork 出来的仓库提交 pull request。
 
-<img src="http://concis.org.cn/images/github-doc.jpg" />
+<img src="https://concis.org.cn/images/github-doc.jpg" />
 
 #### 审核与合并
 

@@ -79,7 +79,7 @@ describe('test Comment', () => {
           author: 'Concis',
           avatar: (
             <Avatar>
-              <img src="http://concis.org.cn/images/swiper-img1.webp" />
+              <img src="https://concis.org.cn/images/swiper-img1.webp" />
             </Avatar>
           ),
           content: 'Hello Concis,coding is life,comment body content.',
@@ -90,7 +90,7 @@ describe('test Comment', () => {
     expect(component.find('.concis-comment').length).toBe(1);
     expect(
       component.find('.concis-comment .concis-avatar img').getDOMNode().getAttribute('src'),
-    ).toBe('http://concis.org.cn/images/swiper-img1.webp');
+    ).toBe('https://concis.org.cn/images/swiper-img1.webp');
     expect(
       component
         .find('.concis-comment .comment-content .comment-content-header .author span')
@@ -140,7 +140,7 @@ describe('test Comment', () => {
           author: 'Concis',
           avatar: (
             <Avatar>
-              <img src="http://concis.org.cn/images/swiper-img1.webp" />
+              <img src="https://concis.org.cn/images/swiper-img1.webp" />
             </Avatar>
           ),
           content: 'Hello Concis,coding is life,comment body content.',

@@ -8,9 +8,9 @@ nav:
 
 In the global configuration, you can define a wildcard class name and mount it on all Concis Component. In this class name, you can choose some non-sensitive CSS styles for all processing, such as font type.
 
-<img src="http://concis.org.cn/images/className.jpg" />
+<img src="https://concis.org.cn/images/className.jpg" />
 
-The configuration method is very simple. Also, in <a href="http://concis.org.cn/#/common/global-config">GlobalConfig</a> component provides the prefixCls attribute, which can be configured globally, as follows:
+The configuration method is very simple. Also, in <a href="https://concis.org.cn/#/common/global-config">GlobalConfig</a> component provides the prefixCls attribute, which can be configured globally, as follows:
 
 ```tsx pure
 

@@ -4,7 +4,7 @@ import { componentList } from './componentList';
 const compileFiles = ['react', 'typescript', 'javascript', 'javascriptreact', 'typescriptreact'];
 
 function provideHover(document: vscode.TextDocument, position: vscode.Position) {
-  //移入Concis组件Dom，出现介绍
+  // 移入Concis组件Dom，出现介绍
   const line = document.lineAt(position);
   let isConcisComponentDom = false;
   let matchComponent = '';
@@ -25,12 +25,12 @@ function provideHover(document: vscode.TextDocument, position: vscode.Position) 
       }
       componentDocPath += str;
     }
-    let text =
-      (isCN
+    const text = `${
+      isCN
         ? `查看 ${matchComponent} 组件官方文档`
-        : `View the official documentation of the Button component`) +
-      `\n
-Concis -> http://concis.org.cn/#/common/${componentDocPath.toLowerCase()}`;
+        : `View the official documentation of the Button component`
+    }\n
+Concis -> https://concis.org.cn/#/common/${componentDocPath.toLowerCase()}`;
 
     return new vscode.Hover(text);
   }

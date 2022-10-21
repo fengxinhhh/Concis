@@ -15,7 +15,7 @@ Concis design specifications and technology support flexible style customization
 
 The style of Concis uses Less as the development language, and defines a series of global/component style variables, which you can adjust according to your needs.
 
-You can learn how to use and configure Concis's built-in less variables in <a href="http://concis.org.cn/#/guide/vcolor">Colors</a>.
+You can learn how to use and configure Concis's built-in less variables in <a href="https://concis.org.cn/#/guide/vcolor">Colors</a>.
 
 If you have suggested built- in less variables (not limited to color variables), you can <a href="https://github.com/fengxinhhh/Concis">https://github.com/fengxinhhh/Concis</a> Issue.
 
@@ -35,4 +35,4 @@ export default () => (
 );
 ```
 
-You can package the root components in React based on the installation and introduction of Concis. More theme customization APIs can be found in <a href="http://concis.org.cn/#/common/global-config">GlobalConfig component</a>.
+You can package the root components in React based on the installation and introduction of Concis. More theme customization APIs can be found in <a href="https://concis.org.cn/#/common/global-config">GlobalConfig component</a>.

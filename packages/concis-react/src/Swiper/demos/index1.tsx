@@ -6,11 +6,11 @@ export default function MenuDemos1() {
   process.env.NODE_ENV === 'production' && usePageListener('Swiper');
 
   const imgList = [
-    'http://concis.org.cn/images/swiper-img1.webp',
-    'http://concis.org.cn/images/swiper-img2.webp',
-    'http://concis.org.cn/images/swiper-img3.webp',
-    'http://concis.org.cn/images/swiper-img4.webp',
-    'http://concis.org.cn/images/swiper-img5.webp',
+    'https://concis.org.cn/images/swiper-img1.webp',
+    'https://concis.org.cn/images/swiper-img2.webp',
+    'https://concis.org.cn/images/swiper-img3.webp',
+    'https://concis.org.cn/images/swiper-img4.webp',
+    'https://concis.org.cn/images/swiper-img5.webp',
   ];
   return <Swiper imgList={imgList} pictureSize={600} height={240} />;
 }

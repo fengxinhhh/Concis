@@ -6,7 +6,7 @@ export default function PreviewDemo1() {
   return (
     <div className="preview-demo">
       <PreviewJump link="#" style={{ width: 600, height: 240 }}>
-        <img src="http://concis.org.cn/images/swiper-img5.webp" />
+        <img src="https://concis.org.cn/images/swiper-img5.webp" />
       </PreviewJump>
       <div className="introduce">
         <h1>Beautiful scenery</h1>

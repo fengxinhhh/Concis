@@ -11,7 +11,7 @@ export default function PreviewDemo1() {
   );
   return (
     <PreviewJump link="#" jumpContent={jumpContent}>
-      <img src="http://concis.org.cn/images/swiper-img5.webp" />
+      <img src="https://concis.org.cn/images/swiper-img5.webp" />
     </PreviewJump>
   );
 }

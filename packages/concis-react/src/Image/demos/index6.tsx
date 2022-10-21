@@ -5,7 +5,7 @@ export default function ImageDemo1() {
   return (
     <>
       <Image
-        src="http://concis.org.cn/images/swiper-img1.webp"
+        src="https://concis.org.cn/images/swiper-img1.webp"
         width="200px"
         height="200px"
         style={{ marginRight: '20px' }}
@@ -13,7 +13,7 @@ export default function ImageDemo1() {
         caption="晚霞"
       />
       <Image
-        src="http://concis.org.cn/images/swiper-img5.webp"
+        src="https://concis.org.cn/images/swiper-img5.webp"
         width="200px"
         height="200px"
         style={{ marginRight: '20px' }}
@@ -22,7 +22,7 @@ export default function ImageDemo1() {
         captionStyle={{ color: 'skyblue' }}
       />
       <Image
-        src="http://concis.org.cn/images/swiper-img4.webp"
+        src="https://concis.org.cn/images/swiper-img4.webp"
         width="200px"
         height="200px"
         fit="cover"

@@ -3,8 +3,8 @@ import style from './docs/siteIndexStyle';
 
 export default defineConfig({
   title: 'Concis',
-  favicon: 'http://concis.org.cn/images/concis-logo.png',
-  logo: 'http://concis.org.cn/images/concis-logo.png',
+  favicon: 'https://concis.org.cn/images/concis-logo.png',
+  logo: 'https://concis.org.cn/images/concis-logo.png',
   outputPath: 'docs-dist',
   mode: 'site',
   apiParser: {

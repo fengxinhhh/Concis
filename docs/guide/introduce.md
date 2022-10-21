@@ -60,7 +60,7 @@ Pull the branch fengxinhhh/Concis/master.
 
 The code style follows 2 spaces without semicolons. Please do not attach any console related methods and debuggers to the code unless specified. After the development is completed, submit a pull request to the warehouse from your own fork.
 
-<img src="http://concis.org.cn/images/github-doc.jpg" />
+<img src="https://concis.org.cn/images/github-doc.jpg" />
 
 ## Review and consolidation
 

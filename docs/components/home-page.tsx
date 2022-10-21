@@ -102,14 +102,14 @@ export default () => {
             <img
               className="headerImage"
               alt="header-image"
-              src="http://concis.org.cn/images/concis-logo.png"
+              src="https://concis.org.cn/images/concis-logo.png"
             />
             <div className="headerImageBg" />
             <span className="plus">+</span>
             <img
               className="headerImage"
               alt="header-image"
-              src="http://concis.org.cn/images/react-icon.svg"
+              src="https://concis.org.cn/images/react-icon.svg"
             />
           </div>
         </div>

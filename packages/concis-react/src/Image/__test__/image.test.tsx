@@ -11,7 +11,7 @@ mountTest(Image);
 describe(`image`, () => {
   it('image src correctly', () => {
     // 图片链接测试
-    const src = 'http://concis.org.cn/images/swiper-img5.webp';
+    const src = 'https://concis.org.cn/images/swiper-img5.webp';
     const component = shallow(<Image src={src} />);
 
     expect(component.find('img')).toHaveLength(1);
@@ -24,7 +24,7 @@ describe(`image`, () => {
     const component = shallow(
       <div>
         {fitList.map((fit: any) => (
-          <Image src="http://concis.org.cn/images/swiper-img5.webp" fit={fit} key={fit} />
+          <Image src="https://concis.org.cn/images/swiper-img5.webp" fit={fit} key={fit} />
         ))}
       </div>,
     );
@@ -39,7 +39,7 @@ describe(`image`, () => {
     // 图片圆角测试
     const round = '10px';
     const component = mount(
-      <Image src="http://concis.org.cn/images/swiper-img5.webp" round={round} />,
+      <Image src="https://concis.org.cn/images/swiper-img5.webp" round={round} />,
     );
     expect(
       component.find('img').getDOMNode().getAttribute('style').includes(`border-radius: ${round};`),
@@ -51,7 +51,7 @@ describe(`image`, () => {
     const text = '描述文案';
     const component = mount(
       <Image
-        src="http://concis.org.cn/images/swiper-img5.webp"
+        src="https://concis.org.cn/images/swiper-img5.webp"
         caption={text}
         captionStyle={{ color: 'skyblue' }}
       />,
@@ -64,7 +64,7 @@ describe(`image`, () => {
 
   it('image preview correctly', () => {
     // 预览测试
-    const component = shallow(<Image src="http://concis.org.cn/images/swiper-img5.webp" />);
+    const component = shallow(<Image src="https://concis.org.cn/images/swiper-img5.webp" />);
     const image = component.find('.concis-image');
     image.simulate('click');
     expect(component.find('.preview-image-wrap')).toHaveLength(0);
@@ -89,12 +89,12 @@ describe(`image`, () => {
   it('image previewList correctly', () => {
     // 多图预览测试
     const previewList = [
-      'http://concis.org.cn/images/swiper-img1.webp',
-      'http://concis.org.cn/images/swiper-img5.webp',
-      'http://concis.org.cn/images/swiper-img4.webp',
+      'https://concis.org.cn/images/swiper-img1.webp',
+      'https://concis.org.cn/images/swiper-img5.webp',
+      'https://concis.org.cn/images/swiper-img4.webp',
     ];
     const component = mount(
-      <Image src="http://concis.org.cn/images/swiper-img5.webp" preview={previewList} />,
+      <Image src="https://concis.org.cn/images/swiper-img5.webp" preview={previewList} />,
     );
     const image = component.find('.concis-image .anticon-eye');
     image.simulate('click');

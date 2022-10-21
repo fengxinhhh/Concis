@@ -44,8 +44,8 @@ export default () => (
     titleStyle={{ paddingBottom: 140 }}
     scale={1.2}
   >
-    <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://concis.org.cn/images/wechat-self.jpg" style={{ width: '400px' }} />
+    <a href="https://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
+      <img src="https://concis.org.cn/images/wechat-self.jpg" style={{ width: '400px' }} />
     </a>
   </Section>
 );
@@ -66,7 +66,11 @@ export default () => (
     titleStyle={{ paddingBottom: 140 }}
     scale={0.8}
   >
-    <a href="https://github.com/fengxinhhh/concis/graphs/contributors" target="_blank" rel="noreferrer">
+    <a
+      href="https://github.com/fengxinhhh/concis/graphs/contributors"
+      target="_blank"
+      rel="noreferrer"
+    >
       <img src="https://contrib.rocks/image?repo=fengxinhhh/concis" width={600} />
     </a>
   </Section>
