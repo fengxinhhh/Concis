@@ -8,14 +8,11 @@
 </div>
 
 <div align="center">
- 
 A Lightweight React UI components library.
-
 <img src="https://img.shields.io/github/stars/fengxinhhh/concis" alt="stars">
 <img src="https://img.shields.io/badge/react-v18.2.0%2B-%23407fbc" alt="react">
 <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="licence">
 <img src="https://github.com/fengxinhhh/concis/workflows/CI/badge.svg" alt="ci">
-
 </div>
 
 <div align="center">
