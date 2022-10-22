@@ -61,7 +61,7 @@ class FormItemLabel {
       case 'vertical':
         layoutStyle = {
           textAlign: 'left',
-          marginBottom: '5px',
+          marginBottom: '15px',
         };
         break;
       default: {

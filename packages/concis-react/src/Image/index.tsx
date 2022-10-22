@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, forwardRef } from 'react';
+import React, { useState, useContext, useEffect, forwardRef, useMemo } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import {
   EyeOutlined,
@@ -55,8 +55,24 @@ const Image = (props, ref) => {
   // 预览下标
   const [previewShowIndex, setPreviewShowIndex] = useState(0);
 
+  useEffect(() => {
+    if (!preview) return;
+    getPreviewPath();
+    window.addEventListener('click', handleClose);
+    function getPreviewPath() {
+      if (Array.isArray(preview)) {
+        setPreviewList(preview);
+      } else if (preview && src) {
+        setPreviewList([src]);
+      }
+    }
+    return () => {
+      preview && window.removeEventListener('click', handleClose);
+    };
+  }, [preview]);
+
   // 预览
-  const handlePreview = (e: any) => {
+  const handlePreview = (e) => {
     e?.stopPropagation();
     if (previewList.length) {
       setVisible(true);
@@ -64,84 +80,145 @@ const Image = (props, ref) => {
   };
 
   // 关闭预览
-  const handleClose = (e: any) => {
+  const handleClose = async (e) => {
     e?.stopPropagation();
     setVisible(false);
     // 计算动画时间，在预览窗消失后重置预览图状态
-    setTimeout(() => {
-      setRotate(0);
-      setScale(1);
-    }, 200);
+    function sleep() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(null);
+        }, 200);
+      });
+    }
+    await sleep();
+    setRotate(0);
+    setScale(1);
   };
 
-  // 缩小
-  const handleSmall = (e?: any) => {
+  // 放大与缩小图片
+  const toggleImageSize = (toggleType: 'small' | 'large', e) => {
     e?.stopPropagation();
-    if (scale <= 0.2) {
-      return;
-    }
-    setScale(scale - 0.1);
-  };
-
-  // 放大
-  const handleLarge = (e?: any) => {
-    e?.stopPropagation();
-    if (scale >= 10) {
-      return;
-    }
-    setScale(scale + 0.1);
+    if ((toggleType === 'small' && scale <= 0.2) || (toggleType === 'large' && scale >= 10)) return;
+    setScale(toggleType === 'small' ? scale - 0.1 : scale + 0.1);
   };
 
   // 旋转
-  const handleRotate = (e: any, val: number) => {
+  const handleRotate = (e, val: number) => {
     e.stopPropagation();
     setRotate(rotate + val);
   };
 
   // 滚轮缩放
-  const onImgMousewheel = (e: any) => {
+  const onImgMousewheel = (e) => {
     e.stopPropagation();
     if (e.deltaY > 1) {
-      handleSmall();
+      toggleImageSize('small', e);
       return;
     }
-    handleLarge();
+    toggleImageSize('large', e);
   };
 
-  // 上一张预览图
-  const showPreviousImage = (e: any) => {
+  const toggleImage = (toggleType: 'next' | 'prev', e) => {
     e.stopPropagation();
-    if (previewShowIndex - 1 < 0) return;
+    if (
+      (toggleType === 'next' && previewShowIndex + 1 > previewList.length - 1) ||
+      (toggleType === 'prev' && previewShowIndex - 1 < 0)
+    )
+      return;
     setScale(1);
     setRotate(0);
-    setPreviewShowIndex(previewShowIndex - 1);
-  };
-
-  // 上一张预览图
-  const showNextImage = (e: any) => {
-    e.stopPropagation();
-    if (previewShowIndex + 1 > previewList.length - 1) return;
-    setScale(1);
-    setRotate(0);
-    setPreviewShowIndex(previewShowIndex + 1);
+    setPreviewShowIndex(toggleType === 'next' ? previewShowIndex + 1 : previewShowIndex - 1);
   };
 
   // 禁止页面滚动
   useOverFlowScroll('body', visible as boolean);
 
-  useEffect(() => {
-    if (Array.isArray(preview)) {
-      setPreviewList(preview);
-    } else if (preview && src) {
-      setPreviewList([src]);
-    } else {
-      return;
+  // 遮罩层
+  const renderPreviewDialog = useMemo(() => {
+    // preview option项className
+    function zoomIconClass(type: 'large' | 'small' | 'next' | 'prev') {
+      if (
+        (type === 'large' && scale >= 10) ||
+        (type === 'small' && scale <= 0.2) ||
+        (type === 'next' && previewShowIndex === previewList.length - 1) ||
+        (type === 'prev' && previewShowIndex === 0)
+      ) {
+        return 'preview-btn-disabled';
+      }
+      return '';
     }
-    window.addEventListener('click', handleClose);
-    return () => {
-      window.removeEventListener('click', handleClose);
-    };
-  }, [preview]);
+
+    return (
+      <>
+        {preview && (
+          <CSSTransition
+            in={visible}
+            timeout={200}
+            appear
+            mountOnEnter
+            classNames="fadeImage"
+            unmountOnExit
+            onEnter={(e: HTMLDivElement) => {
+              e.style.display = 'block';
+            }}
+            onExited={(e: HTMLDivElement) => {
+              e.style.display = 'none';
+            }}
+          >
+            <div className="preview-image-wrap" onWheel={onImgMousewheel}>
+              <img
+                className="preview-show-image"
+                src={previewList[previewShowIndex]}
+                style={{
+                  transform: `scale(${scale}) rotate(${rotate}deg)`,
+                }}
+              />
+              {/* 切换前后图片 */}
+              {previewList.length > 1 && (
+                <>
+                  <div className="preview-image-progress">
+                    {`${previewShowIndex + 1} / ${previewList.length}`}
+                  </div>
+                  <div
+                    className={cs('preview-image-prev', zoomIconClass('prev'))}
+                    onClick={(e) => toggleImage('prev', e)}
+                  >
+                    <LeftOutlined />
+                  </div>
+                  <div
+                    className={cs('preview-image-next', zoomIconClass('next'))}
+                    onClick={(e) => toggleImage('next', e)}
+                  >
+                    <RightOutlined />
+                  </div>
+                </>
+              )}
+              {/* 关闭预览 */}
+              <div className="preview-image-close" onClick={handleClose}>
+                <CloseOutlined />
+              </div>
+              {/* 操作栏 */}
+              {showOperation && (
+                <div className="preview-image-operations">
+                  <RotateLeftOutlined onClick={(e) => handleRotate(e, -90)} />
+                  <RotateRightOutlined onClick={(e) => handleRotate(e, 90)} />
+                  <ZoomOutOutlined
+                    className={zoomIconClass('small')}
+                    onClick={(e) => toggleImageSize('small', e)}
+                  />
+                  <ZoomInOutlined
+                    className={zoomIconClass('large')}
+                    onClick={(e) => toggleImageSize('large', e)}
+                  />
+                </div>
+              )}
+            </div>
+          </CSSTransition>
+        )}
+      </>
+    );
+  }, [preview, visible, scale, rotate, previewList, previewShowIndex, showOperation]);
 
   return (
     <>
@@ -166,87 +243,13 @@ const Image = (props, ref) => {
             {caption}
           </div>
         )}
-        {preview &&
-          (previewRender ? (
-            <div className="preview-image-mask">{previewRender(handlePreview)}</div>
-          ) : (
-            <div className="preview-image-mask">
-              <EyeOutlined onClick={handlePreview} />{' '}
-            </div>
-          ))}
-      </div>
-      {preview && (
-        <CSSTransition
-          in={visible}
-          timeout={200}
-          appear
-          mountOnEnter
-          classNames="fadeImage"
-          unmountOnExit
-          onEnter={(e: HTMLDivElement) => {
-            e.style.display = 'block';
-          }}
-          onExited={(e: HTMLDivElement) => {
-            e.style.display = 'none';
-          }}
-        >
-          <div className="preview-image-wrap" onWheel={onImgMousewheel}>
-            <img
-              className="preview-show-image"
-              src={previewList[previewShowIndex]}
-              style={{
-                transform: `scale(${scale}) rotate(${rotate}deg)`,
-              }}
-            />
-
-            {/* 切换前后图片 */}
-            {previewList.length > 1 && (
-              <>
-                <div className="preview-image-progress">
-                  {`${previewShowIndex + 1} / ${previewList.length}`}
-                </div>
-
-                <div
-                  className={`preview-image-prev ${
-                    previewShowIndex === 0 ? 'preview-btn-disabled' : ''
-                  }`}
-                  onClick={showPreviousImage}
-                >
-                  <LeftOutlined />
-                </div>
-
-                <div
-                  className={`preview-image-next ${
-                    previewShowIndex === previewList.length - 1 ? 'preview-btn-disabled' : ''
-                  }`}
-                  onClick={showNextImage}
-                >
-                  <RightOutlined />
-                </div>
-              </>
-            )}
-            {/* 关闭预览 */}
-            <div className="preview-image-close" onClick={handleClose}>
-              <CloseOutlined />
-            </div>
-            {/* 操作栏 */}
-            {showOperation && (
-              <div className="preview-image-operations">
-                <RotateLeftOutlined onClick={(e) => handleRotate(e, -90)} />
-                <RotateRightOutlined onClick={(e) => handleRotate(e, 90)} />
-                <ZoomOutOutlined
-                  className={scale <= 0.2 ? 'preview-btn-disabled' : ''}
-                  onClick={handleSmall}
-                />
-                <ZoomInOutlined
-                  className={scale >= 10 ? 'preview-btn-disabled' : ''}
-                  onClick={handleLarge}
-                />
-              </div>
-            )}
+        {preview && (
+          <div className="preview-image-mask">
+            {previewRender ? previewRender(handlePreview) : <EyeOutlined onClick={handlePreview} />}
           </div>
-        </CSSTransition>
-      )}
+        )}
+      </div>
+      {renderPreviewDialog}
     </>
   );
 };

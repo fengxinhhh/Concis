@@ -48,6 +48,7 @@ const FormItem = (props: FormItemProps) => {
     const formAttrs = new FormItemAttrs(wrapperCol, wrapperTol, Ctx.get('layout'));
     return formAttrs.getStyle();
   }, [wrapperCol, wrapperTol, Ctx.get('layout')]);
+
   const getLabelPropsStyle = useCallback(() => {
     // 基于props，动态构建一个label props style集合
     const labelAttrs = new FormItemLabel(Ctx.get('layout'));
