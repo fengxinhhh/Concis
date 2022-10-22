@@ -150,7 +150,6 @@ describe('Tree', () => {
         .simulate('click');
     });
     component.update();
-    expect(node[3].style._values['--tree-node-color']).toBe('#325DFF');
     expect(component.find('input').getDOMNode().value).toBe('leaf2');
     // expect(container.children().at(1).children().at(0).exists()).toBe(false);
     expect(chooseCallback).toBeCalled();

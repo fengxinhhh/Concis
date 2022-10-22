@@ -7,7 +7,6 @@ import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import './index.module.less';
 
 const Tree = (props, ref) => {
@@ -28,8 +27,6 @@ const Tree = (props, ref) => {
   const [isFocus, setIsFocus] = useState(false); // 聚焦状态
 
   const formCtx: any = useContext(ctx);
-
-  const theme = getSiteTheme();
 
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -176,22 +173,13 @@ const Tree = (props, ref) => {
     (treeNode: treeNode): string => {
       if (avaChooseMore) {
         if (activedVal.split(',').includes(treeNode.title)) {
-          if (theme === 'auto' || 'dark') {
-            return globalColor || (darkTheme ? '#3C7EFF' : '#325DFF');
-          }
           return globalColor || (darkTheme ? '#325DFF' : '#3C7EFF');
         }
-        return theme === 'light' ? '#000000' : '#ffffffe6';
       }
-
       // 搜索高亮样式
       if (treeNode.title.includes(activedVal) && activedVal !== '') {
-        if (theme === 'auto' || 'dark') {
-          return globalColor || (darkTheme ? '#3C7EFF' : '#325DFF');
-        }
         return globalColor || (darkTheme ? '#325DFF' : '#3C7EFF');
       }
-      return theme === 'light' ? '#000000' : '#ffffffe6';
     },
     [activedVal],
   );

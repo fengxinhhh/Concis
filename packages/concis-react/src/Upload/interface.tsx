@@ -5,12 +5,12 @@ export interface UploadProps {
   /**
    * @description 自定义样式
    */
-  style: CSSProperties;
+  style?: CSSProperties;
   /**
    * @description 自定义类名
    * @default string
    */
-  className: string;
+  className?: string;
   /**
    * @description 允许的文件类型，参考MDN<input>accept属性
    * @default *
