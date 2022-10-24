@@ -74,18 +74,19 @@ mobile: false
 
 ## API
 
-| Name              | Description           | Type                  | Default          |
-| ----------------- | --------------------- | --------------------- | ---------------- |
-| className         | 自定义类名            | `string`              | `--`             |
-| style             | 自定义样式            | `CSSProperties`       | `--`             |
-| title             | 标题                  | `string 、 ReactNode` | `--`             |
-| visible           | 显示状态              | `boolean`             | `false`          |
-| okButtonProps     | 确认按钮 props        | `Button组件props`     | `--`             |
-| cancelButtonProps | 取消按钮 props        | `Button组件props`     | `--`             |
-| footer            | 自定义页脚            | `ReactNode`           | `确定、取消按钮` |
-| okText            | 确认按钮文字          | `string`              | `确定`           |
-| cancelText        | 取消按钮文字          | `string`              | `取消`           |
-| width             | 对话框宽度百分比      | `number / string`     | `520px`          |
-| onOk              | 确认回调函数          | `Function`            | `--`             |
-| onCancel          | 取消关闭回调函数      | `Function`            | `--`             |
-| content           | 调用式函数 Modal 内容 | `ReactNode`           | `--`             |
+| Name               | Description            | Type                  | Default          |
+| ------------------ | ---------------------- | --------------------- | ---------------- |
+| className          | 自定义类名             | `string`              | `--`             |
+| style              | 自定义样式             | `CSSProperties`       | `--`             |
+| title              | 标题                   | `string 、 ReactNode` | `--`             |
+| visible            | 显示状态               | `boolean`             | `false`          |
+| okButtonProps      | 确认按钮 props         | `Button组件props`     | `--`             |
+| cancelButtonProps  | 取消按钮 props         | `Button组件props`     | `--`             |
+| footer             | 自定义页脚             | `ReactNode`           | `确定、取消按钮` |
+| okText             | 确认按钮文字           | `string`              | `确定`           |
+| cancelText         | 取消按钮文字           | `string`              | `取消`           |
+| cancelOnlyByButton | 只能通过按钮关闭 Modal | `boolean`             | `false`          |
+| width              | 对话框宽度百分比       | `number / string`     | `520px`          |
+| onOk               | 确认回调函数           | `Function`            | `--`             |
+| onCancel           | 取消关闭回调函数       | `Function`            | `--`             |
+| content            | 调用式函数 Modal 内容  | `ReactNode`           | `--`             |

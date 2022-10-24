@@ -74,18 +74,19 @@ Steps are displayed in the dialog box.
 
 ## API
 
-| Name | Description | Type | Default |
-| --- | --- | --- | --- |
-| className | Custom class name | `string` | `--` |
-| style | Custom styles | `CSSProperties` | `--` |
-| title | title | `string , ReactNode` | `--` |
-| visible | display status | `boolean` | `false` |
-| okButtonProps | OK button props | `Button component props` | `--` |
-| cancelButtonProps | cancel button props | `Button component props` | `--` |
-| footer | custom footer | `ReactNode` | `OK, Cancel buttons` |
-| okText | Confirm button text | `string` | `OK` |
-| cancelText | Cancel button text | `string` | `Cancel` |
-| width | Dialog width percentage | `number / string` | `520px` |
-| onOk | Confirm callback function | `Function` | `--` |
-| onCancel | Cancel close callback function | `Function` | `--` |
-| content | Callable function Modal content | `ReactNode` | `--` |
+| Name               | Description                         | Type                     | Default              |
+| ------------------ | ----------------------------------- | ------------------------ | -------------------- |
+| className          | Custom class name                   | `string`                 | `--`                 |
+| style              | Custom styles                       | `CSSProperties`          | `--`                 |
+| title              | title                               | `string , ReactNode`     | `--`                 |
+| visible            | display status                      | `boolean`                | `false`              |
+| okButtonProps      | OK button props                     | `Button component props` | `--`                 |
+| cancelButtonProps  | cancel button props                 | `Button component props` | `--`                 |
+| footer             | custom footer                       | `ReactNode`              | `OK, Cancel buttons` |
+| okText             | Confirm button text                 | `string`                 | `OK`                 |
+| cancelText         | Cancel button text                  | `string`                 | `Cancel`             |
+| cancelOnlyByButton | Modal can only be closed via button | `boolean`                | `false`              |
+| width              | Dialog width percentage             | `number / string`        | `520px`              |
+| onOk               | Confirm callback function           | `Function`               | `--`                 |
+| onCancel           | Cancel close callback function      | `Function`               | `--`                 |
+| content            | Callable function Modal content     | `ReactNode`              | `--`                 |

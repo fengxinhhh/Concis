@@ -46,6 +46,11 @@ interface ModalProps {
    */
   cancelText?: string;
   /**
+   * @description 只能通过按钮关闭Modal
+   * @default false
+   */
+  cancelOnlyByButton?: boolean;
+  /**
    * @description 对话框宽度百分比
    * @default 520px
    */

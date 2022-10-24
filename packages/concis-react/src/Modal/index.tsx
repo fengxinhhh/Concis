@@ -33,6 +33,7 @@ const Modal = (props: ModalProps) => {
     footer,
     okText,
     cancelText,
+    cancelOnlyByButton = false,
     width = '520px',
     onCancel,
     onOk,
@@ -64,11 +65,11 @@ const Modal = (props: ModalProps) => {
   }, [visible]);
 
   useEffect(() => {
-    wrapperVisible && window.addEventListener('click', clickDocumentCancel);
+    !cancelOnlyByButton && wrapperVisible && window.addEventListener('click', clickDocumentCancel);
     return () => {
-      window.removeEventListener('click', clickDocumentCancel);
+      !cancelOnlyByButton && window.removeEventListener('click', clickDocumentCancel);
     };
-  }, [wrapperVisible]);
+  }, [wrapperVisible, cancelOnlyByButton]);
 
   // 禁止滚动
   useOverFlowScroll('body', wrapperVisible as boolean);
