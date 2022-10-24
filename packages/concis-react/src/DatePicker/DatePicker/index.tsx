@@ -65,8 +65,8 @@ const DatePicker = (props, ref) => {
             value: day,
           };
         }),
-        7,
-      ),
+        7
+      )
     );
   }, [nowDate.year, nowDate.month]);
   useEffect(() => {
@@ -138,7 +138,7 @@ const DatePicker = (props, ref) => {
             {
               '--checked-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
               ...style,
             } as any

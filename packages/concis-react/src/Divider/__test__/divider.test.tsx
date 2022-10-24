@@ -23,7 +23,7 @@ describe('divider', () => {
         .find('.concis-divider-line-text')
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('font-size: 18px'),
+        ?.includes('font-size: 18px')
     );
   });
 
@@ -35,7 +35,7 @@ describe('divider', () => {
         .find('.concis-divider-before-line-text')
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('flex-basis: 24px; flex-grow: 0;'),
+        ?.includes('flex-basis: 24px; flex-grow: 0;')
     ).toBe(true);
     component.setProps({
       align: 'right',
@@ -45,7 +45,7 @@ describe('divider', () => {
         .find('.concis-divider-after-line-text')
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('flex-basis: 24px; flex-grow: 0;'),
+        ?.includes('flex-basis: 24px; flex-grow: 0;')
     ).toBe(true);
   });
 });

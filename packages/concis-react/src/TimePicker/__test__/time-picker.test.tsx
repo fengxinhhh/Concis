@@ -26,7 +26,7 @@ describe('TimePicker', () => {
     const component = mount(<TimePicker />);
     expect(component.find('.concis-time-picker')).toHaveLength(1);
     expect(
-      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0'),
+      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0')
     ).toBe(true);
   });
   it('test TimePicker attribute correctly', () => {
@@ -49,7 +49,7 @@ describe('TimePicker', () => {
         handleConfirm={mockFnConfirm}
         clearCallback={mockFnClear}
         changeCallback={mockFnChange}
-      />,
+      />
     );
     const hourElement = component.find('.time-panel div').at(0).find('span').at(5);
     act(() => {
@@ -94,7 +94,7 @@ describe('TimePicker', () => {
     const nowHour = new Date().getHours();
     // 测试凌晨三点的active
     expect(hourDisableElement.at(3).getDOMNode().getAttribute('class').trim()).toBe(
-      nowHour === 3 ? 'active disable' : 'disable',
+      nowHour === 3 ? 'active disable' : 'disable'
     );
     expect(component.find('.time-panel div').at(0).getDOMNode().getAttribute('class')).toBe(null);
   });

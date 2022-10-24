@@ -120,7 +120,7 @@ const List = (props, ref) => {
   };
   const victurlScroll = () => {
     const startIndex = Math.floor(
-      ((victurlListContentRef.current as HTMLElement).scrollTop / listItemHeight.current) as number,
+      ((victurlListContentRef.current as HTMLElement).scrollTop / listItemHeight.current) as number
     );
     setScrollTop((victurlListContentRef.current as HTMLDivElement).scrollTop);
     setFormatDataSource((old: Array<any>) => {
@@ -189,7 +189,7 @@ interface ForwardRefListType
   (
     props: React.PropsWithChildren<listProps> & {
       ref?: React.Ref<HTMLDivElement>;
-    },
+    }
   ): React.ReactElement;
   Item: typeof Item;
   displayName: string;

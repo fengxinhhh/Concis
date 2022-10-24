@@ -30,7 +30,7 @@ const CollapseItem = (props, ref) => {
       (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight &&
         setContentDomHeight(
           (document.querySelector('.concis-collapse-item-content') as HTMLElement)?.scrollHeight +
-            30,
+            30
         );
     }
   }, [activeKeyList]);
@@ -67,7 +67,7 @@ const CollapseItem = (props, ref) => {
       setActiveKeyList((oldAList: Array<string | number>) => {
         oldAList.splice(
           oldAList.findIndex((item: number | string) => String(item) === String(listKey)),
-          1,
+          1
         );
         return [...oldAList.sort()];
       });

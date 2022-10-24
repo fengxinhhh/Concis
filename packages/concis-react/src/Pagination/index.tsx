@@ -89,7 +89,7 @@ const Pagination = (props, ref) => {
         setPageRenderArray(
           pageRenderArray.map((item: number) => {
             return item - 1;
-          }),
+          })
         );
       } else if (nowIndex - 5 <= 4) {
         // 开头几页翻页的情况，回到第一页
@@ -119,7 +119,7 @@ const Pagination = (props, ref) => {
         setPageRenderArray(
           pageRenderArray.map((item: number) => {
             return item + 1;
-          }),
+          })
         );
       }
     }
@@ -140,7 +140,7 @@ const Pagination = (props, ref) => {
       setPageRenderArray(
         pageRenderArray.map((item: number) => {
           return item - 5;
-        }),
+        })
       );
       updateIndex = nowIndex - 5;
     }
@@ -166,7 +166,7 @@ const Pagination = (props, ref) => {
       setPageRenderArray(
         pageRenderArray.map((item: number) => {
           return item + 5;
-        }),
+        })
       );
       updateIndex = nowIndex + 5;
     }
@@ -213,7 +213,7 @@ const Pagination = (props, ref) => {
           ...style,
           '--global-color': getRenderColor(
             (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-            globalColor,
+            globalColor
           ),
         } as any
       }

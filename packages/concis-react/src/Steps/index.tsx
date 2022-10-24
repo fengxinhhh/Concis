@@ -28,13 +28,13 @@ const Steps = (props, ref) => {
       }
       return 'before-index';
     },
-    [current],
+    [current]
   );
   const indexTitleClassName = useCallback(
     (args: string): string => {
       return onChange ? `hover-title ${args}` : args;
     },
-    [current],
+    [current]
   );
   return (
     <div
@@ -43,7 +43,7 @@ const Steps = (props, ref) => {
         {
           '--global-color': getRenderColor(
             (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-            globalColor,
+            globalColor
           ),
           ...style,
         } as any

@@ -43,7 +43,7 @@ const Divider = (props, ref) => {
       }
       return {};
     },
-    [align],
+    [align]
   );
 
   const formatClass = (className: string) => {

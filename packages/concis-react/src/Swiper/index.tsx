@@ -303,7 +303,7 @@ const Swiper = (props, ref) => {
 
       return 'option';
     },
-    [rightTransform],
+    [rightTransform]
   );
   const cardImgStyle = useCallback(
     (option: number) => {
@@ -342,7 +342,7 @@ const Swiper = (props, ref) => {
         };
       }
     },
-    [cardImgTransform],
+    [cardImgTransform]
   );
   const toggleCard = (styles: any) => {
     // 卡片轮播手动切换

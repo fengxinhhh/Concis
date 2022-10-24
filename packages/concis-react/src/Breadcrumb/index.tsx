@@ -15,7 +15,7 @@ const Breadcrumb = (props: BreadcrumbProps, ref) => {
   const classNames = cs(
     prefixCls,
     className,
-    darkTheme ? 'concis-dark-breadcrumb' : 'concis-breadcrumb',
+    darkTheme ? 'concis-dark-breadcrumb' : 'concis-breadcrumb'
   );
 
   const renderBreadcrumb = useMemo(() => {

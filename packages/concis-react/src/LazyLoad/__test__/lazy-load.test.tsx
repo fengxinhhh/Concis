@@ -74,7 +74,7 @@ describe('LazyLoad', () => {
         <div className="a">111</div>
         <div className="a">111</div>
         <div className="a">111</div>
-      </LazyLoad>,
+      </LazyLoad>
     );
 
     expect(component.find('.concis-lazyLoad').length).toBe(1);

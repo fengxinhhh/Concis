@@ -79,7 +79,7 @@ const MonthPicker = (props, ref) => {
             {
               '--checked-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
               ...style,
             } as any

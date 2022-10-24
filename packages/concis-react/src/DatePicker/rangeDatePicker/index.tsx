@@ -117,7 +117,7 @@ const RangeDatePicker = (props, ref) => {
       const { startYear, startMonth, startDay } = startDate;
       const { endYear, endMonth, endDay } = endDate;
       formCtx.getChildVal(
-        `${startYear}-${startMonth}-${startDay} ${endYear}-${endMonth}-${endDay}`,
+        `${startYear}-${startMonth}-${startDay} ${endYear}-${endMonth}-${endDay}`
       );
     }
   }, [formCtx.submitStatus]);
@@ -420,7 +420,7 @@ const RangeDatePicker = (props, ref) => {
       }
       return 'day-box';
     },
-    [startDate, endDate],
+    [startDate, endDate]
   );
 
   return (

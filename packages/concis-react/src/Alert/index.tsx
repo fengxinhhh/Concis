@@ -32,7 +32,7 @@ const Alert = (props, ref) => {
     prefixCls,
     className,
     `concis-${darkTheme ? 'dark-' : ''}alert-${type}`,
-    darkTheme ? 'concis-dark-alert' : 'concis-alert',
+    darkTheme ? 'concis-dark-alert' : 'concis-alert'
   );
 
   const leftIcon = useMemo(() => {

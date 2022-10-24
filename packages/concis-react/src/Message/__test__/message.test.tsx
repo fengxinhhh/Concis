@@ -18,7 +18,7 @@ describe('Message', () => {
     Message.info('this is a test');
     expect(document.querySelectorAll('.all-container')).toHaveLength(1);
     expect(document.querySelectorAll('.concis-message-container .toast-content')[0].innerHTML).toBe(
-      'this is a test',
+      'this is a test'
     );
   });
 
@@ -39,7 +39,7 @@ describe('Message', () => {
       document
         .querySelectorAll('.concis-message-container')[0]
         .getAttribute('style')
-        ?.includes('bottom:'),
+        ?.includes('bottom:')
     );
   });
 

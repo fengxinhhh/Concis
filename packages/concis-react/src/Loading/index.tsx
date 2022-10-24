@@ -63,7 +63,7 @@ const Loading = (props, ref) => {
               ...loadingStyle,
               '--global-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
             } as any
           }
@@ -97,7 +97,7 @@ const Loading = (props, ref) => {
             {
               '--global-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
             } as any
           }
@@ -121,7 +121,7 @@ const Loading = (props, ref) => {
             {
               '--global-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
             } as any
           }

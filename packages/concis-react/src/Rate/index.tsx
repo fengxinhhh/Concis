@@ -104,7 +104,7 @@ const Rate = (props, ref) => {
                 next = 0;
               }
               return (pre as number) + (next as number);
-            }),
+            })
           );
         setLogStarShowStatus((oldArr: any): Array<boolean | string> => {
           // 清除
@@ -139,8 +139,8 @@ const Rate = (props, ref) => {
                 next = 0;
               }
               return (pre as number) + (next as number);
-            },
-          ),
+            }
+          )
         );
     }
   };
@@ -165,7 +165,7 @@ const Rate = (props, ref) => {
     (i: number) => {
       return { color: starShowStatus[i] ? starColor : '#ccc' };
     },
-    [starShowStatus],
+    [starShowStatus]
   );
 
   return (

@@ -14,7 +14,7 @@ const getItem = (
   key: string | number,
   level: string | number,
   icon?: JSX.Element | null,
-  children?: Array<Object> | null,
+  children?: Array<Object> | null
 ) => {
   return {
     label,
@@ -72,7 +72,7 @@ describe('Menu', () => {
     const mockFn = jest.fn();
     const component = mount(<Menu items={items} handleRouteChange={mockFn} />);
     expect(
-      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height,
+      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height
     ).toBe('50px');
     component
       .find('.concis-menu .concis-menu-menuOptions .concis-menu-fatherTitle')
@@ -80,7 +80,7 @@ describe('Menu', () => {
       .simulate('click');
     await sleep(200);
     expect(
-      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height,
+      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height
     ).toBe('250px');
     component.find('.concis-menu .concis-menu-menuOptions div').at(1).simulate('click');
     expect(mockFn).toBeCalled();
@@ -88,7 +88,7 @@ describe('Menu', () => {
   it('test ableToggle menu correctly', async () => {
     const component = mount(<Menu items={items} ableToggle />);
     expect(
-      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height,
+      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height
     ).toBe('50px');
     component
       .find('.concis-menu .concis-menu-menuOptions .concis-menu-fatherTitle')
@@ -96,7 +96,7 @@ describe('Menu', () => {
       .simulate('click');
     await sleep(200);
     expect(
-      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height,
+      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height
     ).toBe('250px');
     component
       .find('.concis-menu .concis-menu-menuOptions .concis-menu-fatherTitle')
@@ -104,19 +104,19 @@ describe('Menu', () => {
       .simulate('click');
     await sleep(200);
     expect(
-      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height,
+      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height
     ).toBe('50px');
   });
   it('test defaultOpen menu correctly', () => {
     const component = mount(<Menu items={items} defaultOpen />);
     expect(
-      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height,
+      component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height
     ).toBe('250px');
     expect(
-      component.find('.concis-menu .concis-menu-menuOptions').at(1).getDOMNode().style.height,
+      component.find('.concis-menu .concis-menu-menuOptions').at(1).getDOMNode().style.height
     ).toBe('400px');
     expect(
-      component.find('.concis-menu .concis-menu-menuOptions').at(2).getDOMNode().style.height,
+      component.find('.concis-menu .concis-menu-menuOptions').at(2).getDOMNode().style.height
     ).toBe('250px');
   });
 });

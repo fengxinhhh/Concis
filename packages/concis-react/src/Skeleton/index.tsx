@@ -29,7 +29,7 @@ const Skeleton = (props, ref) => {
       }
       return {};
     },
-    [width],
+    [width]
   );
 
   return loading ? (

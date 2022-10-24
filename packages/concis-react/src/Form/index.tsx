@@ -107,7 +107,7 @@ const Form = <T,>(props: FormProps<T>) => {
         rules.forEach((rule: ruleType) => {
           isPass = validateRow(isPass, value, key, rule);
           const ruleDom = (ref as any).current.querySelector(
-            getClassNameByKey(`${key} .show-rule-label`),
+            getClassNameByKey(`${key} .show-rule-label`)
           );
           if (isPass && ruleDom) {
             ruleDom?.setAttribute('class', 'hide-rule-label');
@@ -141,14 +141,14 @@ const Form = <T,>(props: FormProps<T>) => {
       className: string,
       text: string,
       field: string,
-      ref: Ref<T | unknown> | null,
+      ref: Ref<T | unknown> | null
     ) {
       resultRules[field] = text;
       const hideDom = (ref as any).current.querySelector(
-        `${className} .hide-rule-label`,
+        `${className} .hide-rule-label`
       ) as HTMLElement;
       const showDom = (ref as any).current.querySelector(
-        `${className} .show-rule-label`,
+        `${className} .show-rule-label`
       ) as HTMLElement;
       if (hideDom && hideDom?.innerText) {
         hideDom.innerText = text;
@@ -169,7 +169,7 @@ const Form = <T,>(props: FormProps<T>) => {
         setReset(false);
       });
     },
-    [formControlRef],
+    [formControlRef]
   );
 
   const useFormContext = () => {

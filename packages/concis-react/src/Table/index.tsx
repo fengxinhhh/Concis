@@ -109,7 +109,7 @@ const Table = (props, ref) => {
       }
       return styleResult;
     },
-    [titleParams],
+    [titleParams]
   );
   const openRow = (row: object, key: number): void => {
     // 展开列表
@@ -252,7 +252,7 @@ const Table = (props, ref) => {
         color: thRow.sorter[1].sorted ? '#325DFF' : '#a9adb2',
       };
     },
-    [titleParams, doColumnData],
+    [titleParams, doColumnData]
   );
   const scrollTable = (e: any) => {
     if (virtualized) {
@@ -303,7 +303,7 @@ const Table = (props, ref) => {
     changePNumCallback &&
       changePNumCallback(
         pageNum,
-        tableData.slice((pageNum - 1) * pageSize, (pageNum - 1) * pageSize + pageSize),
+        tableData.slice((pageNum - 1) * pageSize, (pageNum - 1) * pageSize + pageSize)
       );
   };
   const changePageSizeCallback = (pageSize: number) => {

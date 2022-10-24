@@ -70,7 +70,7 @@ const RadioGroup = (props, ref) => {
       }
       return 'groupStyle';
     },
-    [children, boxStyle, value, selectIndex],
+    [children, boxStyle, value, selectIndex]
   );
 
   return (

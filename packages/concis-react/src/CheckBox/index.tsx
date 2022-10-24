@@ -39,7 +39,7 @@ const CheckBox = (props, ref) => {
     disabled ? 'disabled-checkbox' : '',
     group && group.length
       ? `concis-${darkTheme ? 'dark-' : ''}checkGroup`
-      : `concis-${darkTheme ? 'dark-' : ''}checkbox`,
+      : `concis-${darkTheme ? 'dark-' : ''}checkbox`
   );
 
   const defaultPrimaryColor = '#325DFF';
@@ -109,7 +109,7 @@ const CheckBox = (props, ref) => {
       }
       return checkBoxDom.noActived;
     },
-    [group],
+    [group]
   );
 
   return (

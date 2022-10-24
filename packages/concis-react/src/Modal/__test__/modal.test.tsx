@@ -130,7 +130,7 @@ describe('Modal', () => {
         .at(0)
         ?.getDOMNode()
         ?.getAttribute('class')
-        ?.includes('disabled'),
+        ?.includes('disabled')
     ).toBe(true);
     expect(
       wrapper
@@ -138,7 +138,7 @@ describe('Modal', () => {
         .at(1)
         ?.getDOMNode()
         ?.getAttribute('class')
-        ?.includes('disabled'),
+        ?.includes('disabled')
     ).toBe(true);
   });
 
@@ -149,7 +149,7 @@ describe('Modal', () => {
       .filterWhere((n: any) => n.text() === 'Open')
       .simulate('click');
     expect(
-      wrapper.find('.concis-modal .concis-modal-content-footer').getDOMNode().childNodes.length,
+      wrapper.find('.concis-modal .concis-modal-content-footer').getDOMNode().childNodes.length
     ).toBe(0);
   });
 
@@ -160,13 +160,13 @@ describe('Modal', () => {
           You can customize modal body text by the current situation. This modal will be closed
           immediately once you press the OK button.
         </p>
-      </Modal>,
+      </Modal>
     );
     expect(wrapper.find('.concis-modal .concis-modal-content-footer button').at(0)?.text()).toBe(
-      'Cancel',
+      'Cancel'
     );
     expect(wrapper.find('.concis-modal .concis-modal-content-footer button').at(1)?.text()).toBe(
-      'Ok',
+      'Ok'
     );
   });
 });

@@ -9,6 +9,7 @@
     "pre-commit": "pretty-quick --staged && npm run eslint && npm run stylelint",
     "eslint": "eslint docs/ packages/concis-react/src --cache --fix --quiet --ext .js,.jsx,.ts,.tsx",
     "stylelint": "stylelint '{packages,docs}/**/*.less' --fix",
+    "format": "prettier --config .prettierrc.js --write \"{packages,docs}/**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky install"
   },
   "license": "MIT",

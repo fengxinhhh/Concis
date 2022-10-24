@@ -42,7 +42,7 @@ describe('Form', () => {
         <Form.Item wrapperTol={5}>
           <Button type="primary">Submit</Button>
         </Form.Item>
-      </Form>,
+      </Form>
     );
     const formDom = component.find('.concis-form');
     expect(component.find('.concis-form')).toHaveLength(1);
@@ -54,7 +54,7 @@ describe('Form', () => {
         .at(2)
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('margin-bottom: 20px; margin-top: 40px;'),
+        ?.includes('margin-bottom: 20px; margin-top: 40px;')
     ).toBe(true);
     expect(
       component
@@ -62,7 +62,7 @@ describe('Form', () => {
         .at(3)
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('margin-bottom: 20px; margin-top: 25px;'),
+        ?.includes('margin-bottom: 20px; margin-top: 25px;')
     ).toBe(true);
   });
   it('test layout form show correctly', () => {
@@ -80,7 +80,7 @@ describe('Form', () => {
         <Form.Item wrapperTol={5}>
           <Button type="primary">Submit</Button>
         </Form.Item>
-      </Form>,
+      </Form>
     );
     expect(
       component
@@ -88,7 +88,7 @@ describe('Form', () => {
         .at(0)
         .getDOMNode()
         .getAttribute('style')
-        ?.includes('flex-direction: column; align-items: flex-start;'),
+        ?.includes('flex-direction: column; align-items: flex-start;')
     ).toBe(false);
   });
   it('test control form use correctly', () => {
@@ -123,7 +123,7 @@ describe('Form', () => {
             Submit
           </Button>
         </Form.Item>
-      </Form>,
+      </Form>
     );
     component.find('.concis-form .concis-form-item').at(4).find('button').simulate('click');
     expect(mockSubmitFn).toBeCalled();
@@ -162,7 +162,7 @@ describe('Form', () => {
             Reset
           </Button>
         </Form.Item>
-      </Form>,
+      </Form>
     );
     component
       .find('.concis-form .concis-form-item')
@@ -182,7 +182,7 @@ describe('Form', () => {
         .at(0)
         .find('input')
         .getDOMNode()
-        .getAttribute('value'),
+        .getAttribute('value')
     );
   });
 
@@ -212,7 +212,7 @@ describe('Form', () => {
         <Form.Item wrapperTol={5}>
           <Button type="primary">Submit</Button>
         </Form.Item>
-      </Form>,
+      </Form>
     );
     expect(component.find('.concis-form .disabled')).toHaveLength(1);
   });
@@ -244,10 +244,10 @@ describe('Form', () => {
         <Form.Item wrapperTol={5}>
           <Button type="primary">Submit</Button>
         </Form.Item>
-      </Form>,
+      </Form>
     );
     expect(
-      component.find('.concis-form .concis-form-item').at(1).find('.concis-form-item-disabled'),
+      component.find('.concis-form .concis-form-item').at(1).find('.concis-form-item-disabled')
     ).toHaveLength(1);
   });
 
@@ -276,7 +276,7 @@ describe('Form', () => {
             Register
           </Button>
         </Form.Item>
-      </Form>,
+      </Form>
     );
     component
       .find('.concis-form .concis-form-item')

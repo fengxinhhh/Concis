@@ -44,8 +44,8 @@ const YearPicker = (props, ref) => {
             value: year + i,
           };
         }),
-        3,
-      ),
+        3
+      )
     );
   }, [year]);
   useEffect(() => {
@@ -90,7 +90,7 @@ const YearPicker = (props, ref) => {
             {
               '--checked-color': getRenderColor(
                 (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor,
+                globalColor
               ),
               ...style,
             } as any

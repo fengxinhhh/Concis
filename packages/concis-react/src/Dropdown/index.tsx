@@ -189,7 +189,7 @@ const Dropdown = (props, ref) => {
                         'sub-list-item',
                         typeof subItem !== 'string' && subItem.disabled
                           ? 'sub-list-item-disabled'
-                          : '',
+                          : ''
                       )}
                       key={subIndex}
                       onClick={(e) => changeDropVal(subItem, e)}
@@ -222,7 +222,7 @@ const Dropdown = (props, ref) => {
           'concis-dropdown-result',
           `concis-dropdown-result-${status}`,
           disabled ? 'concis-dropdown-result-disabled' : '',
-          visible ? `concis-dropdown-result-${status}-active` : '',
+          visible ? `concis-dropdown-result-${status}-active` : ''
         )}
         onClick={(e) => {
           if (disabled || type !== 'click') return;
@@ -253,7 +253,7 @@ const Dropdown = (props, ref) => {
           className={cs(
             'concis-dropdown-content',
             colums ? 'concis-dropdown-content-colums' : '',
-            `concis-dropdown-content-${position}`,
+            `concis-dropdown-content-${position}`
           )}
           onMouseEnter={(e) => hoverMouseEvent('enter', e)}
           onMouseLeave={(e) => hoverMouseEvent('leave', e)}

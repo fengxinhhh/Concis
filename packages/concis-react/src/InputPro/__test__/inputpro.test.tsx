@@ -32,7 +32,7 @@ describe('InputPro', () => {
     expect(component.find('.concis-input-pro-tragger').length).toBe(1);
     component.find('.concis-input-pro .concis-input-pro-tragger span').at(1).simulate('click');
     expect(component.find('.concis-input-pro input').getDOMNode().getAttribute('value')).toBe(
-      'TypeScript',
+      'TypeScript'
     );
   });
 
@@ -46,7 +46,7 @@ describe('InputPro', () => {
         .find('.concis-input-pro-tragger')
         .getDOMNode()
         .getAttribute('style')
-        .includes('left: 25%; top: calc(100% + 5px)'),
+        .includes('left: 25%; top: calc(100% + 5px)')
     ).toBe(true);
     component.setProps({ align: 'top' });
     expect(
@@ -59,7 +59,7 @@ describe('InputPro', () => {
           .find('.concis-input-pro-tragger')
           .getDOMNode()
           .getAttribute('style')
-          .includes('bottom: calc(100% + 5px);'),
+          .includes('bottom: calc(100% + 5px);')
     ).toBe(true);
     component.setProps({ align: 'left' });
     expect(
@@ -72,7 +72,7 @@ describe('InputPro', () => {
           .find('.concis-input-pro-tragger')
           .getDOMNode()
           .getAttribute('style')
-          .includes('top: -120%;'),
+          .includes('top: -120%;')
     ).toBe(true);
     component.setProps({ align: 'right' });
     expect(
@@ -85,7 +85,7 @@ describe('InputPro', () => {
           .find('.concis-input-pro-tragger')
           .getDOMNode()
           .getAttribute('style')
-          .includes('top: -120%;'),
+          .includes('top: -120%;')
     ).toBe(true);
   });
 

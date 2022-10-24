@@ -61,7 +61,7 @@ describe('Dropdown', () => {
     await sleep(200);
     expect(wrapper.find('.concis-dropdown .concis-dropdown-content').length).toBe(1);
     expect(
-      wrapper.find('.concis-dropdown .concis-dropdown-content').getDOMNode().childNodes.length,
+      wrapper.find('.concis-dropdown .concis-dropdown-content').getDOMNode().childNodes.length
     ).toBe(3);
   });
 
@@ -71,7 +71,7 @@ describe('Dropdown', () => {
     await sleep(200);
     expect(wrapper.find('.concis-dropdown .concis-dropdown-content').length).toBe(1);
     expect(
-      wrapper.find('.concis-dropdown .concis-dropdown-content').getDOMNode().childNodes.length,
+      wrapper.find('.concis-dropdown .concis-dropdown-content').getDOMNode().childNodes.length
     ).toBe(3);
   });
 
@@ -94,7 +94,7 @@ describe('Dropdown', () => {
     expect(wrapper.find('.concis-dropdown .concis-dropdown-content-colums').length).toBe(1);
     expect(
       wrapper.find('.concis-dropdown .concis-dropdown-content-colums').getDOMNode().childNodes
-        .length,
+        .length
     ).toBe(50);
   });
 
@@ -136,7 +136,7 @@ describe('Dropdown', () => {
     await sleep(200);
     expect(
       wrapper.find('.concis-dropdown .concis-dropdown-content .list').at(0).getDOMNode().childNodes
-        .length,
+        .length
     ).toBe(2);
   });
 

@@ -122,18 +122,18 @@ const Tree = (props, ref) => {
           updateVal = updateVal.split(',');
           updateVal.splice(
             activedVal.split(',').findIndex((t) => t === clickTreeNode.title),
-            1,
+            1
           );
           updateVal = updateVal.join(',');
           setActivedVal(updateVal);
           chooseCallback && chooseCallback(updateVal);
         } else {
           setActivedVal(
-            activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`,
+            activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`
           );
           chooseCallback &&
             chooseCallback(
-              activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`,
+              activedVal === '' ? clickTreeNode.title : `${activedVal},${clickTreeNode.title}`
             );
         }
       } else {
@@ -181,7 +181,7 @@ const Tree = (props, ref) => {
         return globalColor || (darkTheme ? '#325DFF' : '#3C7EFF');
       }
     },
-    [activedVal],
+    [activedVal]
   );
 
   const clearCallback = () => {

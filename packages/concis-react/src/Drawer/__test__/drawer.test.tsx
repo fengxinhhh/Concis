@@ -174,7 +174,7 @@ describe('Drawer test', () => {
         .find('.concis-drawer-content')
         .getDOMNode()
         ?.getAttribute('style')
-        ?.includes('top: 0px; left: 0px;'),
+        ?.includes('top: 0px; left: 0px;')
     ).toBe(true);
     change();
     expect(
@@ -187,7 +187,7 @@ describe('Drawer test', () => {
           .find('.concis-drawer-content')
           .getDOMNode()
           ?.getAttribute('style')
-          ?.includes('right: 0px;'),
+          ?.includes('right: 0px;')
     ).toBe(true);
     change();
     expect(
@@ -200,7 +200,7 @@ describe('Drawer test', () => {
           .find('.concis-drawer-content')
           .getDOMNode()
           ?.getAttribute('style')
-          ?.includes('width: 100%;'),
+          ?.includes('width: 100%;')
     ).toBe(true);
     change();
     expect(
@@ -213,7 +213,7 @@ describe('Drawer test', () => {
           .find('.concis-drawer-content')
           .getDOMNode()
           ?.getAttribute('style')
-          ?.includes('width: 100%;'),
+          ?.includes('width: 100%;')
     ).toBe(true);
   });
 
@@ -227,7 +227,7 @@ describe('Drawer test', () => {
     }
     open();
     expect(
-      wrapper.find('.concis-drawer .concis-drawer-content-footer').getDOMNode().innerHTML,
+      wrapper.find('.concis-drawer .concis-drawer-content-footer').getDOMNode().innerHTML
     ).toBe('');
   });
 
@@ -245,7 +245,7 @@ describe('Drawer test', () => {
         .find('.concis-drawer .concis-drawer-content')
         ?.getDOMNode()
         ?.getAttribute('style')
-        ?.includes('width: 600px'),
+        ?.includes('width: 600px')
     ).toBe(true);
   });
 });

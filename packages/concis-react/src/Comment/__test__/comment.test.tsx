@@ -85,27 +85,25 @@ describe('test Comment', () => {
           content: 'Hello Concis,coding is life,comment body content.',
           datetime: '2022-7-24',
         }}
-      />,
+      />
     );
     expect(component.find('.concis-comment').length).toBe(1);
     expect(
-      component.find('.concis-comment .concis-avatar img').getDOMNode().getAttribute('src'),
+      component.find('.concis-comment .concis-avatar img').getDOMNode().getAttribute('src')
     ).toBe('https://concis.org.cn/images/swiper-img1.webp');
     expect(
-      component
-        .find('.concis-comment .comment-content .comment-content-header .author span')
-        .text(),
+      component.find('.concis-comment .comment-content .comment-content-header .author span').text()
     ).toBe('Concis');
     expect(
-      component.find('.concis-comment .comment-content .comment-content-header .date-time').text(),
+      component.find('.concis-comment .comment-content .comment-content-header .date-time').text()
     ).toBe('2022-7-24');
     expect(component.find('.concis-comment .comment-content .content').text()).toBe(
-      'Hello Concis,coding is life,comment body content.',
+      'Hello Concis,coding is life,comment body content.'
     );
     expect(
       component
         .find('.concis-comment .comment-content .comment-content-actions .action')
-        .getDOMNode().childNodes.length,
+        .getDOMNode().childNodes.length
     ).toBe(3);
     component
       .find('.concis-comment .comment-content .comment-content-actions .action .item')
@@ -117,7 +115,7 @@ describe('test Comment', () => {
         .at(0)
         .find('span')
         .at(1)
-        .text(),
+        .text()
     ).toBe('52');
     component
       .find('.concis-comment .comment-content .comment-content-actions .action .item')
@@ -129,7 +127,7 @@ describe('test Comment', () => {
         .at(1)
         .find('span')
         .at(1)
-        .text(),
+        .text()
     ).toBe('13');
   });
 
@@ -147,10 +145,10 @@ describe('test Comment', () => {
           datetime: '2022-7-24',
           afterAuthor: <span>钻石用户</span>,
         }}
-      />,
+      />
     );
     expect(
-      component.find('.concis-comment .comment-content-header .extra-header span').text(),
+      component.find('.concis-comment .comment-content-header .extra-header span').text()
     ).toBe('钻石用户');
   });
 });

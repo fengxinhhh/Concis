@@ -43,7 +43,7 @@ const TreeView = (props, ref) => {
   const resolveTreeData = (
     treeData: Array<treeData>,
     nowIndexLevel: number,
-    prev: treeData | null,
+    prev: treeData | null
   ) => {
     // 二次处理treeData
     const newTreeData = [...treeData];
@@ -251,7 +251,7 @@ const TreeView = (props, ref) => {
         return mapFn(treeData);
       }
     },
-    [stateTreeData],
+    [stateTreeData]
   );
 
   const dragStartTree = (e: any, treeData: treeData) => {
@@ -447,7 +447,7 @@ const TreeView = (props, ref) => {
         );
       });
     },
-    [stateTreeData, loadingTreeNode],
+    [stateTreeData, loadingTreeNode]
   );
 
   return (

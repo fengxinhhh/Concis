@@ -31,7 +31,7 @@ const Comment = (props, ref) => {
         {
           '--global-color': getRenderColor(
             (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-            globalColor,
+            globalColor
           ),
           '--header-align': align === 'left' ? 'flex-start' : 'space-between',
           ...style,

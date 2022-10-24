@@ -14,7 +14,7 @@ describe(`badge`, () => {
     const component = mount(
       <Badge count={9} style={{ marginRight: '25px' }}>
         <Avatar shape="square">Num</Avatar>
-      </Badge>,
+      </Badge>
     );
     expect(component.find('.concis-badge')).toHaveLength(1);
     expect(component.find('.concis-avatar')).toHaveLength(1);
@@ -24,7 +24,7 @@ describe(`badge`, () => {
     const component = mount(
       <Badge count={9} dot dotStyle={{ width: 10, height: 10 }}>
         <Avatar shape="square">Dot</Avatar>
-      </Badge>,
+      </Badge>
     );
     expect(component.find('.concis-badge')).toHaveLength(1);
     expect(component.find('.concis-avatar')).toHaveLength(1);
@@ -42,7 +42,7 @@ describe(`badge`, () => {
     const component = mount(
       <Badge count={9} dot offset={[-2, 0]} style={{ marginRight: '25px' }}>
         <span style={{ color: '#325DFF' }}>Link</span>
-      </Badge>,
+      </Badge>
     );
     expect(component.find('.concis-badge span').at(0).text()).toBe('Link');
     expect(
@@ -50,7 +50,7 @@ describe(`badge`, () => {
         .find('.concis-badge .concis-badge-dot')
         .getDOMNode()
         ?.getAttribute('style')
-        ?.includes('right: -2px; top: 0px;'),
+        ?.includes('right: -2px; top: 0px;')
     ).toBe(true);
   });
   test('test text badge show correctly', () => {
@@ -61,7 +61,7 @@ describe(`badge`, () => {
             <ClockCircleOutlined />
           </span>
         </Avatar>
-      </Badge>,
+      </Badge>
     );
     expect(component.find('.concis-badge-text').text()).toBe('HOT');
   });

@@ -12,7 +12,7 @@ function Group(props: ButtonGroupProps, ref) {
   const classNames = cs(
     prefixCls,
     className,
-    darkTheme ? 'concis-dark-button-group' : 'concis-button-group',
+    darkTheme ? 'concis-dark-button-group' : 'concis-button-group'
   );
 
   return (

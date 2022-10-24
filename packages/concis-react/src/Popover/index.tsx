@@ -174,7 +174,7 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
         </div>
       </div>
     );
-  },
+  }
 );
 
 export default Popover;

@@ -23,7 +23,7 @@ describe('mountTest', () => {
       <GlobalConfig globalColor="red">
         <Button>button test</Button>
         <Loading />
-      </GlobalConfig>,
+      </GlobalConfig>
     );
     expect(component.find('.concis-button button').getDOMNode().style.background).toBe('red');
     expect(
@@ -31,7 +31,7 @@ describe('mountTest', () => {
         .find('.concis-loading')
         .getDOMNode()
         .getAttribute('style')
-        .includes('--global-color: red'),
+        .includes('--global-color: red')
     ).toBe(true);
   });
 
@@ -40,7 +40,7 @@ describe('mountTest', () => {
       <GlobalConfig darkTheme>
         <Button>button test</Button>
         <CheckBox>5</CheckBox>
-      </GlobalConfig>,
+      </GlobalConfig>
     );
     expect(component.find('.concis-dark-button')).toHaveLength(1);
     expect(component.find('.concis-dark-checkbox')).toHaveLength(1);
@@ -51,7 +51,7 @@ describe('mountTest', () => {
       <GlobalConfig darkTheme globalColor="red">
         <Button>button test</Button>
         <CheckBox>5</CheckBox>
-      </GlobalConfig>,
+      </GlobalConfig>
     );
     expect(component.find('.concis-dark-button')).toHaveLength(1);
     expect(component.find('.concis-dark-checkbox')).toHaveLength(1);

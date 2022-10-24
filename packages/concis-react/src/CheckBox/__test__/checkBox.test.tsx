@@ -14,7 +14,7 @@ describe('CheckBox', () => {
     const component = mount(
       <CheckBox checked checkCallback={mockFn}>
         Apple
-      </CheckBox>,
+      </CheckBox>
     );
     expect(component.find('.concis-checkbox-actived')).toHaveLength(1);
     act(() => {
@@ -29,7 +29,7 @@ describe('CheckBox', () => {
     const component = mount(
       <CheckBox checked disabled>
         Apple
-      </CheckBox>,
+      </CheckBox>
     );
     expect(component.find('.concis-checkbox-disabled')).toHaveLength(1);
     act(() => {
@@ -60,11 +60,11 @@ describe('CheckBox', () => {
     expect(component.find('.concis-checkGroup')).toHaveLength(1);
     expect(component.find('.concis-checkGroup .groupBox')).toHaveLength(3);
     expect(component.find('.concis-checkGroup .groupBox .concis-checkbox-noActived')).toHaveLength(
-      1,
+      1
     );
     expect(component.find('.concis-checkGroup .groupBox .concis-checkbox-actived')).toHaveLength(1);
     expect(component.find('.concis-checkGroup .groupBox .concis-checkbox-disabled')).toHaveLength(
-      1,
+      1
     );
   });
 });

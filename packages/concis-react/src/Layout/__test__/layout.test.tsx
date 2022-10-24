@@ -34,7 +34,7 @@ describe('Layout', () => {
         <Header>header</Header>
         <Content row={10}>content</Content>
         <Footer>footer</Footer>
-      </Layout>,
+      </Layout>
     );
     expect(component.find('.concis-header').text()).toBe('header');
     expect(component.find('.concis-layout-content').text()).toBe('content');
@@ -50,7 +50,7 @@ describe('Layout', () => {
           <Content row={7}>content</Content>
         </Layout>
         <Footer>footer</Footer>
-      </Layout>,
+      </Layout>
     );
     expect(component.find('.concis-header').text()).toBe('header');
     expect(component.find('.concis-layout .concis-layout-content').text()).toBe('content');
@@ -79,25 +79,25 @@ describe('Layout', () => {
       container
         ?.querySelector('.header')
         ?.getAttribute('style')
-        ?.includes('background: rgb(154, 231, 217)'),
+        ?.includes('background: rgb(154, 231, 217)')
     );
     expect(
       container
         ?.querySelector('.slider')
         ?.getAttribute('style')
-        ?.includes('font-size: 12px; background: rgb(107, 201, 183)'),
+        ?.includes('font-size: 12px; background: rgb(107, 201, 183)')
     );
     expect(
       container
         ?.querySelector('.layout-content')
         ?.getAttribute('style')
-        ?.includes('font-size: 50px; background: rgb(159, 209, 200)'),
+        ?.includes('font-size: 50px; background: rgb(159, 209, 200)')
     );
     expect(
       container
         ?.querySelector('.footer')
         ?.getAttribute('style')
-        ?.includes('background: rgb(154, 231, 217)'),
+        ?.includes('background: rgb(154, 231, 217)')
     );
   });
 });

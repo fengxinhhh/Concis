@@ -50,11 +50,11 @@ describe('loading', () => {
     ReactDOM.render(component, container);
     const loadingDom = container?.querySelector('.concis-loading');
     expect(
-      loadingDom?.getAttribute('style')?.includes('margin-left: 100px; width: 3em; height: 3em;'),
+      loadingDom?.getAttribute('style')?.includes('margin-left: 100px; width: 3em; height: 3em;')
     );
     const svgDom = loadingDom?.querySelector('svg');
     expect(
-      svgDom?.getAttribute('width') === '3em' && svgDom?.getAttribute('height') === '3em',
+      svgDom?.getAttribute('width') === '3em' && svgDom?.getAttribute('height') === '3em'
     ).toBe(true);
   });
 });

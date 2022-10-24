@@ -37,7 +37,7 @@ const BackTop: FC<BackTopProps> = (props) => {
   const classNames = cs(
     prefixCls,
     props.className,
-    darkTheme ? 'concis-dark-back-top' : 'concis-back-top',
+    darkTheme ? 'concis-dark-back-top' : 'concis-back-top'
   );
 
   // acquire default container

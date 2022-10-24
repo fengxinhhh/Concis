@@ -41,7 +41,7 @@ const Image = (props, ref) => {
     prefixCls,
     className,
     `concis-${darkTheme ? 'dark-' : ''}image`,
-    `${preview ? 'concis-preview-image' : ''}`,
+    `${preview ? 'concis-preview-image' : ''}`
   );
 
   // 显示预览大图

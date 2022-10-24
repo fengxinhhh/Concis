@@ -108,7 +108,7 @@ const Select = (props, ref) => {
         handleTextChange(e.target.value);
       }
     },
-    [selected],
+    [selected]
   );
   const clearSearchSelect = (e: React.SyntheticEvent) => {
     e.stopPropagation();

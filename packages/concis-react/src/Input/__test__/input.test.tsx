@@ -38,7 +38,7 @@ describe('Input', () => {
   it('test password Input Component correctly', () => {
     const mockFn = jest.fn();
     const component = mount(
-      <Input type="password" placeholder="请输入" showTogglePwd handleIptChange={mockFn} />,
+      <Input type="password" placeholder="请输入" showTogglePwd handleIptChange={mockFn} />
     );
     expect(component.find('.concis-input span')).toHaveLength(1);
     expect(component.find('input').getDOMNode().getAttribute('type')).toBe('password');
@@ -58,7 +58,7 @@ describe('Input', () => {
         step={1.5}
         handleIptChange={changeValFn}
         handleNumChange={changeNumFn}
-      />,
+      />
     );
     expect(component.find('input')).toHaveLength(1);
     expect(component.find('.numTags')).toHaveLength(1);
@@ -89,7 +89,7 @@ describe('Input', () => {
         handleIptFocus={handleIptFocus}
         handleClick={handleClick}
         handleIptBlur={handleIptBlur}
-      />,
+      />
     );
 
     const input = component.find('input');
