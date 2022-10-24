@@ -1,5 +1,5 @@
 ---
-title: TreeView 树型控件
+title: TreeView 树形控件
 nav:
   title: 组件
   path: /common
@@ -8,7 +8,7 @@ group:
 mobile: false
 ---
 
-# TreeView 树型控件
+# TreeView 树形控件
 
 多层次的结构列表。
 
