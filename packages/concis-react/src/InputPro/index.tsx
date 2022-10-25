@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, useMemo, forwardRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { on, off } from '../common_utils/dom/event';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -38,9 +39,9 @@ const InputPro = (props, ref) => {
     }
   }, [formCtx.submitStatus]);
   useEffect(() => {
-    window.addEventListener('click', reset);
+    on(window, 'click', reset)();
     return () => {
-      window.removeEventListener('click', reset);
+      off(window, 'click', reset)();
     };
   }, []);
 

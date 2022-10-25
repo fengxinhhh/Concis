@@ -10,6 +10,7 @@ import {
   ZoomOutOutlined,
   ZoomInOutlined,
 } from '@ant-design/icons';
+import { on, off } from '../common_utils/dom/event';
 import { ImageProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -58,7 +59,7 @@ const Image = (props, ref) => {
   useEffect(() => {
     if (!preview) return;
     getPreviewPath();
-    window.addEventListener('click', handleClose);
+    on(window, 'click', handleClose)();
     function getPreviewPath() {
       if (Array.isArray(preview)) {
         setPreviewList(preview);
@@ -67,7 +68,7 @@ const Image = (props, ref) => {
       }
     }
     return () => {
-      preview && window.removeEventListener('click', handleClose);
+      preview && off(window, 'click', handleClose)();
     };
   }, [preview]);
 

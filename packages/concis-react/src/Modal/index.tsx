@@ -8,6 +8,7 @@ import {
   WarningFilled,
   CloseCircleFilled,
 } from '@ant-design/icons';
+import { on, off } from '../common_utils/dom/event';
 import Button from '../Button';
 import { ModalProps, ConfirmType } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -65,9 +66,9 @@ const Modal = (props: ModalProps) => {
   }, [visible]);
 
   useEffect(() => {
-    !cancelOnlyByButton && wrapperVisible && window.addEventListener('click', clickDocumentCancel);
+    !cancelOnlyByButton && wrapperVisible && on(window, 'click', clickDocumentCancel)();
     return () => {
-      !cancelOnlyByButton && window.removeEventListener('click', clickDocumentCancel);
+      !cancelOnlyByButton && off(window, 'click', clickDocumentCancel)();
     };
   }, [wrapperVisible, cancelOnlyByButton]);
 

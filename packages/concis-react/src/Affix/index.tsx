@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext, forwardRef } from 'react';
 import type { AffixProps, offsetProps } from './interface';
+import { on, off } from '../common_utils/dom/event';
 import type { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -26,7 +27,7 @@ const Affix = (props, ref) => {
 
   function getOffset(affixEl) {
     if (affixType === 'scroll') {
-      window.addEventListener('scroll', screenScroll);
+      on(window, 'scroll', screenScroll)();
       affixEl.position = 'relative';
     } else {
       affixEl.position = 'fixed';
@@ -66,6 +67,7 @@ const Affix = (props, ref) => {
     });
     return () => {
       io.unobserve(el);
+      off(window, 'scroll', screenScroll)();
     };
   }, []);
 

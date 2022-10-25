@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, useMemo, forwardRef } from 'react';
 import { DownOutlined, RightOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
+import { on, off } from '../common_utils/dom/event';
 import { DropdownProps, dataType } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -43,12 +44,12 @@ const Dropdown = (props, ref) => {
       });
     });
     if (type === 'click') {
-      window.addEventListener('click', reset);
+      on(window, 'click', reset)();
     }
 
     return () => {
       if (type === 'click') {
-        window.removeEventListener('click', reset);
+        off(window, 'click', reset)();
       }
     };
   }, []);

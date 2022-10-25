@@ -7,6 +7,7 @@ import {
   SwapRightOutlined,
 } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
+import { on, off } from '../../common_utils/dom/event';
 import type { RangeProps } from './interface';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
@@ -74,10 +75,10 @@ const RangeDatePicker = (props, ref) => {
     const handleClick = () => {
       setRenderShowDialog(false);
     };
-    window.addEventListener('click', handleClick);
+    on(window, 'click', handleClick)();
 
     return () => {
-      window.removeEventListener('click', handleClick);
+      off(window, 'click', handleClick)();
     };
   }, []);
 

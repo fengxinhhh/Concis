@@ -6,6 +6,7 @@ import Input from '../Input';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
+import { on, off } from '../common_utils/dom/event';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
@@ -34,8 +35,15 @@ const Tree = (props, ref) => {
 
   useEffect(() => {
     resolveTreeData(treeData as Array<treeNode>, 1);
-    window.addEventListener('click', () => setVisible(false));
+    function reset() {
+      setVisible(false);
+    }
+    on(window, 'click', reset)();
+    return () => {
+      off(window, 'click', reset)();
+    };
   }, []);
+
   useEffect(() => {
     // 用于监听Form组件的重置任务
     if (formCtx.reset) {
@@ -43,6 +51,7 @@ const Tree = (props, ref) => {
       setActivedVal('');
     }
   }, [formCtx.reset]);
+
   useEffect(() => {
     if (formCtx.submitStatus) {
       formCtx.getChildVal(activedVal);
@@ -69,6 +78,7 @@ const Tree = (props, ref) => {
     });
     setStateTreeData(treeData); // 更新状态
   };
+
   const toggleTreeMenu = (clickTreeNode: treeNode) => {
     // 菜单切换或直接选中终极节点
     if (clickTreeNode?.children?.length) {
@@ -144,6 +154,7 @@ const Tree = (props, ref) => {
       }
     }
   };
+
   const handleIptChange = (val: string) => {
     // 文本改变回调
     if (avaSearch) {
@@ -152,10 +163,12 @@ const Tree = (props, ref) => {
       setActivedVal('');
     }
   };
+
   const handleClick = () => {
     // 点击回调
     setVisible(!visible);
   };
+
   const handleIptFocus = () => {
     // 聚焦回调
     setTimeout(() => {
@@ -165,10 +178,12 @@ const Tree = (props, ref) => {
       }
     }, 150);
   };
+
   const handleIptBlur = () => {
     // 失去焦点回调
     setIsFocus(false);
   };
+
   const searchStyle = useCallback(
     (treeNode: treeNode): string => {
       if (avaChooseMore) {
@@ -188,6 +203,7 @@ const Tree = (props, ref) => {
     // 清空
     setActivedVal('');
   };
+
   const render = (data: Array<treeNode> = stateTreeData) => {
     // 动态规划render函数
     return (data || []).map((treeNode: treeNode, index) => {

@@ -9,6 +9,7 @@ import React, {
   useImperativeHandle,
 } from 'react';
 import lodash from 'lodash';
+import { on, off } from '../common_utils/dom/event';
 import type { popoverProps, alignStyle, PopoverRef } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -56,15 +57,16 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
         setShowDialog(false);
       }
       if (type === 'click') {
-        window.addEventListener('click', resetVisible);
+        on(window, 'click', resetVisible)();
       }
 
       return () => {
         if (type === 'click') {
-          window.removeEventListener('click', resetVisible);
+          off(window, 'click', resetVisible)();
         }
       };
     }, []);
+
     useEffect(() => {
       // 依赖于父组件的状态改变，关闭popover
       if (
@@ -109,6 +111,7 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
         isUnMounted = false;
       };
     }, [showDialog]);
+
     const clickToggleDialog = (e: any) => {
       // 点击打开dialog
       e.stopPropagation();
@@ -116,12 +119,14 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
         setShowDialog(!showDialog);
       }
     };
+
     const hoverOpenDialog = lodash.debounce(() => {
       // 移入打开dialog
       if (type === 'hover' && showDialog === false) {
         setShowDialog(true);
       }
     }, 200);
+
     const hoverCloseDialog = lodash.debounce(() => {
       // 移开关闭dialog
       if (type === 'hover' && showDialog === true) {

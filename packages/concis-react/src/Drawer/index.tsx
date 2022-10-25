@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext, useMemo, forwardRef } f
 import lodash from 'lodash';
 import { CSSTransition } from 'react-transition-group';
 import { CloseOutlined } from '@ant-design/icons';
+import { on, off } from '../common_utils/dom/event';
 import Button from '../Button';
 import { DrawerProps, alignProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -57,9 +58,9 @@ const Drawer = (props, ref) => {
   }, [visible]);
 
   useEffect(() => {
-    wrapperVisible && window.addEventListener('click', clickDocumentCancel);
+    wrapperVisible && on(window, 'click', clickDocumentCancel)();
     return () => {
-      window.removeEventListener('click', clickDocumentCancel);
+      wrapperVisible && off(window, 'click', clickDocumentCancel)();
     };
   }, [wrapperVisible]);
 
