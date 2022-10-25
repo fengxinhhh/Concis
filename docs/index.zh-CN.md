@@ -38,40 +38,13 @@ import { Section } from './site/Section';
 import './site/styles.less';
 
 export default () => (
-  <Section
-    title="答疑报错，请联系我"
-    style={{ marginTop: 140, fontWeight: 'bold' }}
-    titleStyle={{ paddingBottom: 140 }}
-    scale={1.2}
-  >
-    <a href="https://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
-      <img src="https://concis.org.cn/images/wechat-self.jpg" style={{ width: '400px' }} />
-    </a>
-  </Section>
-);
-```
-
-```tsx
-/**
- * inline: true
- */
-import React from 'react';
-import { Section } from './site/Section';
-import './site/styles.less';
-
-export default () => (
-  <Section
-    title="感谢所有贡献者"
-    style={{ marginTop: 140, fontWeight: 'bold' }}
-    titleStyle={{ paddingBottom: 140 }}
-    scale={0.8}
-  >
+  <Section title="感谢所有贡献者" style={{ marginTop: 140, fontWeight: 'bold' }} scale={0.6}>
     <a
       href="https://github.com/fengxinhhh/concis/graphs/contributors"
       target="_blank"
       rel="noreferrer"
     >
-      <img src="https://contrib.rocks/image?repo=fengxinhhh/concis" width={600} />
+      <img src="https://contrib.rocks/image?repo=fengxinhhh/concis" width={800} />
     </a>
   </Section>
 );

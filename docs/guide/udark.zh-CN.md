@@ -17,9 +17,9 @@ Concis 内置提供了暗黑模式的主题，暗黑模式的优势在于在弱�
 
 基于 Concis 全家桶默认主题和暗黑主题的素材。
 
-<img src="https://concis.org.cn/images/concis-light-template.jpg" />
+<img src="https://concis.org.cn/images/example-pic.jpeg" />
 
-<img src="https://concis.org.cn/images/concis-dark-template.jpg" />
+<img src="https://concis.org.cn/images/example-dark-pic.jpeg" />
 
 ## 使用
 
@@ -37,7 +37,7 @@ root.render(
     <GlobalConfig darkTheme>
       <App />
     </GlobalConfig>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 ```
 
