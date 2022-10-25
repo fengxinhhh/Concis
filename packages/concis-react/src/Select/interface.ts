@@ -50,6 +50,11 @@ interface SelectProps {
    */
   clearable?: Boolean;
   /**
+   * @description 状态
+   * @default false
+   */
+  type?: 'primary' | 'warning' | 'error' | 'success';
+  /**
    * @description 选择后的回调
    * @default {}
    */

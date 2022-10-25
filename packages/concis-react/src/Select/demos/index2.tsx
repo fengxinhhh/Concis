@@ -24,7 +24,7 @@ export default function SelectDemo1() {
   return (
     <Select
       option={option}
-      width={200}
+      width={100}
       disabled
       handleSelectCallback={handleSelectCallback}
       placeholder="请选择"

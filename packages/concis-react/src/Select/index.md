@@ -46,21 +46,28 @@ Configure `showSearch` to enable enterable state.
 
 <code src="./demos/index5.tsx" />
 
+## Button style
+
+Configure `type` to switch to a button selector. There are four options: `primary`, `error`, `warning`, `success`.
+
+<code src="./demos/index6.tsx" />
+
 ## API
 
-| Name                 | Description                   | Type             | Default |
-| -------------------- | ----------------------------- | ---------------- | ------- |
-| className            | Custom class name             | `string`         | `--`    |
-| style                | Custom styles                 | `CSSProperties`  | `--`    |
-| option               | selector data                 | `Array<Options>` | `[]`    |
-| width                | width                         | `number`         | `80px`  |
-| placeholder          | hint                          | `string`         | `--`    |
-| disabled             | disabled state                | `boolean`        | `false` |
-| loading              | loading state                 | `boolean`        | `false` |
-| showSearch           | Enterable state               | `boolean`        | `false` |
-| clearable            | Can be cleared in input state | `boolean`        | `false` |
-| handleSelectCallback | Callback after selection      | `Function`       | `--`    |
-| handleTextChange     | callback after input          | `Function`       | `--`    |
+| Name                 | Description                   | Type                                  | Default |
+| -------------------- | ----------------------------- | ------------------------------------- | ------- |
+| className            | Custom class name             | `string`                              | `--`    |
+| style                | Custom styles                 | `CSSProperties`                       | `--`    |
+| option               | selector data                 | `Array<Options>`                      | `[]`    |
+| width                | width                         | `number`                              | `80px`  |
+| placeholder          | hint                          | `string`                              | `--`    |
+| type                 | button style                  | `primary / error / warning / success` | `--`    |
+| disabled             | disabled state                | `boolean`                             | `false` |
+| loading              | loading state                 | `boolean`                             | `false` |
+| showSearch           | Enterable state               | `boolean`                             | `false` |
+| clearable            | Can be cleared in input state | `boolean`                             | `false` |
+| handleSelectCallback | Callback after selection      | `Function`                            | `--`    |
+| handleTextChange     | callback after input          | `Function`                            | `--`    |
 
 ## Options API
 

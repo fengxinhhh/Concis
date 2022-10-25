@@ -158,6 +158,166 @@ html[data-prefers-color='dark'] {
       background-color: #474749 !important;
     }
   }
+
+  .primary-selected {
+    border: 1px solid @concis-dark-primary-color;
+
+    .selected {
+      background: transparent !important;
+
+      .placeholder,
+      .size,
+      span {
+        color: @concis-dark-primary-color;
+      }
+    }
+
+    &:hover {
+      .selected:not(.disabled-selected) {
+        background: @concis-dark-primary-color !important;
+
+        .placeholder,
+        .size,
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .error-selected {
+    border: 1px solid @concis-dark-danger-color;
+
+    .selected {
+      background: transparent !important;
+
+      .placeholder,
+      .size,
+      span {
+        color: @concis-dark-danger-color;
+      }
+    }
+
+    &:hover {
+      .selected:not(.disabled-selected) {
+        background: @concis-dark-danger-color !important;
+
+        .placeholder,
+        .size,
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .warning-selected {
+    border: 1px solid @concis-dark-warning-color;
+
+    .selected {
+      background: transparent !important;
+
+      .placeholder,
+      .size,
+      span {
+        color: @concis-dark-warning-color;
+      }
+    }
+
+    &:hover:not(.disabled-selected) {
+      .selected {
+        background: @concis-dark-warning-color !important;
+
+        .placeholder,
+        .size,
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .success-selected {
+    border: 1px solid @concis-dark-info-color;
+
+    .selected {
+      background: transparent !important;
+
+      .placeholder,
+      .size,
+      span {
+        color: @concis-dark-info-color;
+      }
+    }
+
+    &:hover:not(.disabled-selected) {
+      .selected {
+        background: @concis-dark-info-color !important;
+
+        .placeholder,
+        .size,
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .isChoose.primary-selected {
+    border: 1px solid @concis-dark-primary-color;
+
+    .selected {
+      background-color: @concis-dark-primary-color !important;
+
+      .placeholder,
+      .size,
+      span {
+        color: #fff;
+      }
+    }
+  }
+
+  .isChoose.error-selected {
+    border: 1px solid @concis-dark-danger-color;
+
+    .selected {
+      background-color: @concis-dark-danger-color !important;
+
+      .placeholder,
+      .size,
+      span {
+        color: #fff;
+      }
+    }
+  }
+
+  .isChoose.warning-selected {
+    border: 1px solid @concis-dark-warning-color;
+
+    .selected {
+      background-color: @concis-dark-warning-color !important;
+
+      .placeholder,
+      .size,
+      span {
+        color: #fff;
+      }
+    }
+  }
+
+  .isChoose.success-selected {
+    border: 1px solid @concis-dark-info-color;
+
+    .selected {
+      background-color: @concis-dark-info-color !important;
+
+      .placeholder,
+      .size,
+      span {
+        color: #fff;
+      }
+    }
+  }
   //steps
   .concis-steps .step-content .step-line .step-box {
     background-color: transparent;

@@ -7,7 +7,10 @@ import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
+import './styles/index.module.less';
+
+const disabledColor = '#F2F3F5',
+  defaultColor = '#325dff';
 
 const Select = (props, ref) => {
   const {
@@ -20,6 +23,7 @@ const Select = (props, ref) => {
     loading,
     showSearch,
     clearable,
+    type,
     handleSelectCallback,
     handleTextChange,
   } = props;
@@ -30,7 +34,15 @@ const Select = (props, ref) => {
   const formCtx: any = useContext(ctx);
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}select`);
+  const classNames = useMemo(() => {
+    return cs(
+      prefixCls,
+      className,
+      `concis-${darkTheme ? 'dark-' : ''}select`,
+      type ? `${type}-selected` : null,
+      visible ? 'isChoose' : null
+    );
+  }, [visible, darkTheme]);
 
   const closeSelect = (e) => {
     if (!e.target?.getAttribute('class')?.includes('selected')) {
@@ -73,10 +85,10 @@ const Select = (props, ref) => {
     if (disabled || loading) {
       return {
         cursor: 'not-allowed',
-        background: '#F2F3F5',
+        background: !type ? disabledColor : null,
       };
     }
-  }, [disabled, loading]);
+  }, [disabled, loading, type]);
 
   const toggleOptions = (e: any) => {
     // 切换下拉
@@ -105,7 +117,7 @@ const Select = (props, ref) => {
   }, [option, selected]);
 
   const handleInputChange = useCallback(
-    (e: any) => {
+    (e) => {
       // 输入后的回调
       setSelected(e.target.value);
       if (handleTextChange) {
@@ -133,7 +145,7 @@ const Select = (props, ref) => {
           ...style,
           ...ownsWidth,
           ...disabledStyle,
-          '--global-color': disabled ? '#ccc' : globalColor || '#325DFF',
+          '--global-color': disabled || loading ? '#ccc' : globalColor || defaultColor,
           '--option-size': `${
             (showSearch ? inputFilterOtpions.length : option?.length) * 33 || 0
           }px`,
@@ -142,7 +154,7 @@ const Select = (props, ref) => {
       ref={ref}
     >
       <div
-        className={`selected ${disabled ? 'disabled-selected' : ''}`}
+        className={cs('selected', disabled || loading ? 'disabled-selected' : null)}
         onClick={showSearch ? null : toggleOptions}
         style={disabledStyle}
       >
@@ -205,10 +217,10 @@ const Select = (props, ref) => {
                   s.disabled
                     ? ({
                         cursor: 'not-allowed',
-                        background: '#F2F3F5',
+                        background: disabledColor,
                         '--line-disabled': '#000000',
                       } as any)
-                    : ({ '--line-disabled': globalColor || '#325DFF' } as any)
+                    : ({ '--line-disabled': globalColor || defaultColor } as any)
                 }
                 onClick={(e) => changeOptions(s as Options, e)}
               >
