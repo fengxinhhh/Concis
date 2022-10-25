@@ -9,8 +9,8 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './styles/index.module.less';
 
-const disabledColor = '#F2F3F5',
-  defaultColor = '#325dff';
+//  const disabledColor = '#F2F3F5';
+const defaultColor = '#325dff';
 
 const Select = (props, ref) => {
   const {
@@ -85,7 +85,7 @@ const Select = (props, ref) => {
     if (disabled || loading) {
       return {
         cursor: 'not-allowed',
-        background: !type ? disabledColor : null,
+        // background: !type ? disabledColor : null,
       };
     }
   }, [disabled, loading, type]);
@@ -217,7 +217,7 @@ const Select = (props, ref) => {
                   s.disabled
                     ? ({
                         cursor: 'not-allowed',
-                        background: disabledColor,
+                        // background: disabledColor,
                         '--line-disabled': '#000000',
                       } as any)
                     : ({ '--line-disabled': globalColor || defaultColor } as any)

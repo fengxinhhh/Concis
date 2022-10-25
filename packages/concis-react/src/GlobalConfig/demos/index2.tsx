@@ -156,7 +156,7 @@ export default function index1() {
           <Radio>Watch</Radio>
         </RadioGroup>
         <p />
-        <Select type="primary" option={option} width={200} placeholder="请选择" />
+        <Select option={option} width={200} placeholder="请选择" />
         <p />
         <Tree treeData={treeData} />
         <p />
