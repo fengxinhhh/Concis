@@ -43,6 +43,10 @@
     cursor: pointer;
     transition: 0.2s linear;
   }
+
+  .active {
+    border-radius: 15px 0 0 15px;
+  }
 }
 
 .concis-menu {
@@ -67,7 +71,7 @@
     ::after {
       width: 3px;
       height: @concis-option-height;
-      background-color: var(--global-color);
+      background-color: @concis-dark-primary-color;
       content: '';
     }
   }
@@ -90,7 +94,7 @@
 
   .active {
     color: #fff !important;
-    background-color: var(--global-menu-option-bg);
+    background: rgba(60, 126, 255, 0.5);
 
     .concis-dark-menu-fatherTitle:hover {
       color: #fff !important;

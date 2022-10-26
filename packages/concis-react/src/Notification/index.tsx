@@ -116,7 +116,6 @@ function remove(id: string, position: string, callback: Function) {
   for (const key in children) {
     if (children[key].getAttribute('class') === `${position}-${id}`) {
       const removeDom = children[key];
-      console.log(removeDom.childNodes);
       removeDom.childNodes[0].style.opacity = 0;
       setTimeout(() => {
         container?.removeChild(removeDom);
@@ -173,7 +172,8 @@ const Notification = (props: NotificationProps<string>) => {
   const classNames = cs(
     prefixCls,
     className,
-    dark ? 'concis-dark-notifica-container' : 'concis-notifica-container'
+    dark ? 'concis-dark-notifica-container' : 'concis-notifica-container',
+    `concis-${type}-notifica`
   );
 
   useEffect(() => {
@@ -281,7 +281,7 @@ const Notification = (props: NotificationProps<string>) => {
     >
       <div className="title">
         <div className="title-left">
-          {messageIcon}
+          <div className="notification-icon">{messageIcon}</div>
           <span className="title-content">{title}</span>
         </div>
         {clearable && <CloseOutlined className="close-icon" onClick={closeMessage} />}

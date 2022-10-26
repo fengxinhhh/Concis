@@ -34,14 +34,40 @@ html[data-prefers-color='dark'] {
   //message
   .concis-message-container {
     color: @concis-dark-font-color;
-    background-color: #000;
-    border: 1px solid #939393;
+    border: 1px solid transparent;
+  }
+  .concis-message-container.concis-info-message,
+  .concis-message-container.concis-normal-message,
+  .concis-message-container.concis-loading-message {
+    background-color: #253757;
+  }
+  .concis-message-container.concis-success-message {
+    background-color: #22482c;
+  }
+  .concis-message-container.concis-warning-message {
+    background-color: #573d25;
+  }
+  .concis-message-container.concis-error-message {
+    background-color: #553332;
   }
   //notification
   .concis-notifica-container {
     color: @concis-dark-font-color;
-    background-color: #000;
-    border: 1px solid #939393;
+    border: 1px solid transparent;
+  }
+  .concis-notifica-container.concis-info-notifica,
+  .concis-notifica-container.concis-normal-notifica,
+  .concis-notifica-container.concis-loading-notifica {
+    background-color: #253757;
+  }
+  .concis-notifica-container.concis-success-notifica {
+    background-color: #22482c;
+  }
+  .concis-notifica-container.concis-warning-notifica {
+    background-color: #573d25;
+  }
+  .concis-notifica-container.concis-error-notifica {
+    background-color: #553332;
   }
   //skeleton
   .concis-skeleton-avatar,
@@ -405,7 +431,7 @@ html[data-prefers-color='dark'] {
 
     .active {
       color: #fff !important;
-      background-color: @concis-dark-primary-color;
+      background: rgba(60, 126, 255, 0.5);
 
       .concis-menu-fatherTitle:hover {
         color: #fff !important;

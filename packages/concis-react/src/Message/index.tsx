@@ -114,7 +114,8 @@ const Message = (props: MessageProps<string>) => {
   const classNames = cs(
     prefixCls,
     className,
-    dark ? 'concis-dark-message-container' : 'concis-message-container'
+    dark ? 'concis-dark-message-container' : 'concis-message-container',
+    `concis-${type}-message`
   );
 
   useEffect(() => {
