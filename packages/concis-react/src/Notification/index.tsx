@@ -19,6 +19,11 @@ let topLeftMessageNum: number = 0;
 let topRightMessageNum: number = 0;
 let bottomLeftMessageNum: number = 0;
 let bottomRightMessageNum: number = 0;
+const primaryColor = '#325dff',
+  errorColor = '#f53f3f',
+  successColor = '#00b42a',
+  warningColor = '#ff7d00',
+  defaultFontSize = '24px';
 
 // 添加消息窗口
 function addInstance(
@@ -219,22 +224,22 @@ const Notification = (props: NotificationProps<string>) => {
 
   const messageIcon = useMemo(() => {
     if (type === 'info') {
-      return <ExclamationCircleFilled style={{ color: '#325DFF', fontSize: '24px' }} />;
+      return <ExclamationCircleFilled style={{ color: primaryColor, fontSize: defaultFontSize }} />;
     }
     if (type === 'error') {
-      return <CloseCircleFilled style={{ color: '#f53f3f', fontSize: '24px' }} />;
+      return <CloseCircleFilled style={{ color: errorColor, fontSize: defaultFontSize }} />;
     }
     if (type === 'normal') {
       return <></>;
     }
     if (type === 'success') {
-      return <CheckCircleFilled style={{ color: '#19b42a', fontSize: '24px' }} />;
+      return <CheckCircleFilled style={{ color: successColor, fontSize: defaultFontSize }} />;
     }
     if (type === 'warning') {
-      return <ExclamationCircleFilled style={{ color: '#fa7d00', fontSize: '24px' }} />;
+      return <ExclamationCircleFilled style={{ color: warningColor, fontSize: defaultFontSize }} />;
     }
     if (type === 'loading') {
-      return <LoadingOutlined style={{ color: '#325DFF', fontSize: '24px' }} />;
+      return <LoadingOutlined style={{ color: primaryColor, fontSize: defaultFontSize }} />;
     }
   }, [type]);
 

@@ -9,6 +9,8 @@ import { ctx } from '../Form';
 import Input from '../Input';
 import './index.module.less';
 
+const defaultInputProColor = '#325dff';
+
 const InputPro = (props, ref) => {
   const {
     style,
@@ -33,11 +35,13 @@ const InputPro = (props, ref) => {
       setValue('');
     }
   }, [formCtx.reset]);
+
   useEffect(() => {
     if (formCtx.submitStatus) {
       formCtx.getChildVal(value);
     }
   }, [formCtx.submitStatus]);
+
   useEffect(() => {
     on(window, 'click', reset)();
     return () => {
@@ -48,13 +52,16 @@ const InputPro = (props, ref) => {
   const reset = () => {
     setIsFocus(false);
   };
+
   const handleIptChange = (val: string) => {
     setValue(val);
     handleChange && handleChange(val);
   };
+
   const handleIptFocus = () => {
     setIsFocus(true);
   };
+
   const chooseVal = <T extends string, U>(val: T, disabled: U, e: any): void => {
     e.stopPropagation();
     if (disabled) return;
@@ -62,6 +69,7 @@ const InputPro = (props, ref) => {
     handleClick && handleClick(val);
     setIsFocus(false);
   };
+
   const traggerTransform = useMemo(() => {
     switch (align) {
       case 'top':
@@ -92,6 +100,7 @@ const InputPro = (props, ref) => {
       }
     }
   }, [align]);
+
   const traggerOptionClass = <T extends string, U>(label: T, disabled: U) => {
     if (disabled) {
       return 'disabled-option';
@@ -101,10 +110,11 @@ const InputPro = (props, ref) => {
     }
     return 'option';
   };
+
   return (
     <div
       className={classNames}
-      style={{ ...style, '--select-color': globalColor || '#325dff' } as any}
+      style={{ ...style, '--select-color': globalColor || defaultInputProColor } as any}
       onClick={(e) => e.stopPropagation()}
       ref={ref}
     >

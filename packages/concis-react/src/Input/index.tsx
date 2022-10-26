@@ -8,6 +8,10 @@ import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
 type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLElement>, 'type'>; // 原生Input接口
+
+const defaultInputWidth = '170px',
+  defaultFocusColor = '#325dff';
+
 const Input = (props, ref) => {
   const {
     className,
@@ -47,6 +51,7 @@ const Input = (props, ref) => {
       setIptValue('');
     }
   }, [formCtx.reset]);
+
   useEffect(() => {
     if (formCtx.submitStatus && !isFather) {
       formCtx.getChildVal(iptValue);
@@ -62,6 +67,7 @@ const Input = (props, ref) => {
     setIptValue(val);
     handleIptChange && handleIptChange(val);
   };
+
   const blurIpt = () => {
     // 失去焦点
     if (type === 'num') {
@@ -79,12 +85,15 @@ const Input = (props, ref) => {
     }
     handleIptBlur && handleIptBlur();
   };
+
   const focusIpt = () => {
     handleIptFocus && handleIptFocus(iptValue);
   };
+
   const iptHandleClick = () => {
     handleClick && handleClick();
   };
+
   const addNum = () => {
     // 加
     if (type === 'num' && isNaN(Number(iptValue))) {
@@ -95,6 +104,7 @@ const Input = (props, ref) => {
     handleNumChange && handleNumChange(res);
     setIptValue(res);
   };
+
   const lowNum = () => {
     // 减
     if (type === 'num' && isNaN(Number(iptValue))) {
@@ -105,6 +115,7 @@ const Input = (props, ref) => {
     handleNumChange && handleNumChange(res);
     setIptValue(res);
   };
+
   // 获取数字框范围内的值
   const getNum = (num: number) => {
     if (step && typeof max === 'number' && num > max) {
@@ -115,24 +126,30 @@ const Input = (props, ref) => {
     }
     return num;
   };
+
   const iptType = useMemo(() => {
     if (showTogglePwd && type === 'password') {
       return pwdIptState ? 'password' : 'text';
     }
     return type || 'text';
   }, [type, showTogglePwd, pwdIptState]);
+
   const exticStyle = useMemo(() => {
-    const style = { width: '170px' };
+    const style = { width: defaultInputWidth };
     if (width) {
       style.width = `${width}px`;
     }
     return { ...style, ...moreStyle };
   }, [width, moreStyle]);
+
   return (
-    <div className={classNames} style={{ width: width ? `${width}px` : '170px', ...style }}>
+    <div
+      className={classNames}
+      style={{ width: width ? `${width}px` : defaultInputWidth, ...style }}
+    >
       <input
         className="input"
-        style={{ ...exticStyle, '--focus-color': globalColor || '#325dff' } as any}
+        style={{ ...exticStyle, '--focus-color': globalColor || defaultFocusColor } as any}
         type={iptType}
         placeholder={placeholder}
         value={defaultValue || iptValue}

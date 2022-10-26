@@ -7,6 +7,12 @@ import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import './index.module.less';
 
+const darkThemeColor = '#3C7EFF',
+  lightThemeColor = '#325DFF',
+  lightMenuOptionBg = '#e6f7ff',
+  defaultOpenHeight = '50px',
+  optionWidth = '220px';
+
 const Menu = (props, ref) => {
   const [nowActiveMainKey, setNowActiveMainKey] = useState(''); // 选中的一级菜单key
   const [nowActiveKey, setNowActiveKey] = useState(''); // 选中的子菜单key
@@ -43,6 +49,7 @@ const Menu = (props, ref) => {
     }
     setParentMenuHeightList(initList);
   }, []);
+
   useEffect(() => {
     handleRouteChange && handleRouteChange(nowActiveKey);
   }, [nowActiveKey]);
@@ -76,23 +83,25 @@ const Menu = (props, ref) => {
     return obj;
   };
 
-  const toggleFirstMenu = (fMenu: RenderOptions, e: any) => {
+  const toggleFirstMenu = (fMenu: RenderOptions, e) => {
     // 点击父级菜单
     e.stopPropagation();
     const selectKey = fMenu.key;
     const refreshObject = { ...parentMenuHeightList };
     refreshObject[selectKey].height =
-      refreshObject[selectKey].height === '50px'
+      refreshObject[selectKey].height === defaultOpenHeight
         ? `${(refreshObject[selectKey].childNum + 1) * 50}px`
-        : '50px';
+        : defaultOpenHeight;
     if (ableToggle) {
       // 手风琴折叠
-      if (refreshObject[selectKey].height !== '50px') {
+      if (refreshObject[selectKey].height !== defaultOpenHeight) {
         for (const key in refreshObject) {
           if (key !== selectKey) {
-            refreshObject[key].height = '50px';
+            refreshObject[key].height = defaultOpenHeight;
             if (refreshObject[key].children) {
-              refreshObject[key].children.map((item: MenuHeightProps) => (item.height = '50px'));
+              refreshObject[key].children.map(
+                (item: MenuHeightProps) => (item.height = defaultOpenHeight)
+              );
             }
           }
         }
@@ -101,20 +110,20 @@ const Menu = (props, ref) => {
       // 普通折叠
       if (refreshObject[selectKey].children.length !== 0) {
         refreshObject[selectKey].children.forEach((c: MenuHeightProps) => {
-          c.height = '50px';
+          c.height = defaultOpenHeight;
         });
       }
     }
     setParentMenuHeightList(refreshObject);
   };
-  const toggleChildMenu = (cMenu: RenderOptions, e: any, fKey: string) => {
+
+  const toggleChildMenu = (cMenu: RenderOptions, fKey: string) => {
     // 点击子级菜单
-    if ((cMenu.level === 2 && !cMenu.children) || cMenu.level === 3) {
+    function activeChildMenu() {
       setNowActiveMainKey(fKey);
       setNowActiveKey(cMenu.key as string);
     }
-    if (cMenu.level === 2) {
-      // 二级菜单扩展切换
+    function activeFatherMenu() {
       const refreshObject = { ...parentMenuHeightList };
       for (const key in refreshObject) {
         if (
@@ -128,9 +137,9 @@ const Menu = (props, ref) => {
             (item: MenuHeightProps) => item.key === cMenu.key
           );
           refreshObject[key].children[childIndex].height =
-            refreshObject[key].children[childIndex].height === '50px'
+            refreshObject[key].children[childIndex].height === defaultOpenHeight
               ? `${(refreshObject[key].children[childIndex].childNum + 1) * 50}px`
-              : '50px';
+              : defaultOpenHeight;
           let parentHeight =
             (refreshObject[key].childNum - refreshObject[key].children.length) * 50 + 50; // 改变子菜单高度后统计父菜单高度
           parentHeight += refreshObject[key].children.reduce(
@@ -143,7 +152,7 @@ const Menu = (props, ref) => {
       }
       setParentMenuHeightList(refreshObject);
     }
-    if (cMenu.level === 3) {
+    function activeThirdMenu() {
       for (const key in parentMenuHeightList) {
         if (
           parentMenuHeightList[key].children &&
@@ -155,7 +164,20 @@ const Menu = (props, ref) => {
         }
       }
     }
+    if ((cMenu.level === 2 && !cMenu.children) || cMenu.level === 3) {
+      // 选中子菜单
+      activeChildMenu();
+    }
+    if (cMenu.level === 2) {
+      // 二级菜单扩展切换
+      activeFatherMenu();
+    }
+    if (cMenu.level === 3) {
+      // 三选中级菜单
+      activeThirdMenu();
+    }
   };
+
   const firstMenuHeight = (key: number) => {
     // 第一级菜单高度
     if (parentMenuHeightList[key]) {
@@ -164,9 +186,10 @@ const Menu = (props, ref) => {
       };
     }
     return {
-      height: '50px',
+      height: defaultOpenHeight,
     };
   };
+
   const childMenuHeight = useCallback(
     (key: number) => {
       // 第二级菜单高度
@@ -181,11 +204,12 @@ const Menu = (props, ref) => {
         }
       }
       return {
-        height: '50px',
+        height: defaultOpenHeight,
       };
     },
     [parentMenuHeightList]
   );
+
   const customWidth = useMemo(() => {
     if (width) {
       if (typeof width === 'string') {
@@ -200,7 +224,7 @@ const Menu = (props, ref) => {
       }
     }
     return {
-      width: '220px',
+      width: optionWidth,
     };
   }, [width]);
 
@@ -225,11 +249,11 @@ const Menu = (props, ref) => {
                     ? `${classFirstName}-activeFatherTitle`
                     : `${classFirstName}-fatherTitle`
                 }
-                onClick={(e) => toggleChildMenu(m, e, childM.key as string)}
+                onClick={(e) => toggleChildMenu(m, childM.key as string)}
               >
                 <span>{m.label}</span>
                 {m.children &&
-                  (childMenuHeight(m.key).height === '50px' ? (
+                  (childMenuHeight(m.key).height === defaultOpenHeight ? (
                     <CaretDownOutlined />
                   ) : (
                     <CaretUpOutlined />
@@ -252,17 +276,17 @@ const Menu = (props, ref) => {
         {
           ...customWidth,
           ...style,
-          '--global-color': globalColor || darkTheme ? '#3C7EFF' : '#325DFF',
+          '--global-color': globalColor || darkTheme ? darkThemeColor : lightThemeColor,
           '--global-menu-option-bg': darkTheme
-            ? '#3C7EFF'
+            ? darkThemeColor
             : theme === ('dark' || 'auto')
-            ? '#3C7EFF'
-            : '#e6f7ff',
+            ? darkThemeColor
+            : lightMenuOptionBg,
         } as any
       }
       ref={ref}
     >
-      {items?.map((m: any) => {
+      {items?.map((m) => {
         return (
           <div key={m.key}>
             <div className={`${classFirstName}-menuOptions`} style={firstMenuHeight(m.key)}>
@@ -278,7 +302,7 @@ const Menu = (props, ref) => {
                   <i>{m.icon}</i>
                   <span>{m.label}</span>
                 </div>
-                {firstMenuHeight(m.key).height === '50px' ? (
+                {firstMenuHeight(m.key).height === defaultOpenHeight ? (
                   <CaretDownOutlined />
                 ) : (
                   <CaretUpOutlined />

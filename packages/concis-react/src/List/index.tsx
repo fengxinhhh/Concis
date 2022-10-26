@@ -45,7 +45,7 @@ const List = (props, ref) => {
         return [...old];
       });
     } else if (virtualListProps) {
-      let rowHeight = document.querySelector('.concis-list-item')?.clientHeight as any;
+      let rowHeight = document.querySelector('.concis-list-item')?.clientHeight as number;
       switch (size) {
         case 'default':
           rowHeight += 26;
@@ -94,6 +94,7 @@ const List = (props, ref) => {
     // 表整体样式
     return style;
   }, [style]);
+
   const listContentStyle = useMemo(() => {
     // 表正文样式
     const returnStyle: listContentStyle = {};
@@ -103,7 +104,9 @@ const List = (props, ref) => {
     }
     return returnStyle;
   }, [lazyLoad, defaultShowNum]);
+
   const scrollList = () => {
+    // 懒加载滚动
     const { scrollHeight, clientHeight, scrollTop } = listContentRef.current as any;
     const bottomTran = scrollHeight - clientHeight - scrollTop; // 距离底部距离
     if (bottomTran <= 10) {
@@ -118,7 +121,9 @@ const List = (props, ref) => {
       lazyScrollToBottom && lazyScrollToBottom(bottomTran, false);
     }
   };
+
   const victurlScroll = () => {
+    // 虚拟列表滚动
     const startIndex = Math.floor(
       ((victurlListContentRef.current as HTMLElement).scrollTop / listItemHeight.current) as number
     );

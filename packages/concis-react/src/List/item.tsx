@@ -32,6 +32,7 @@ const Item = (props, ref) => {
     }
     return defaultStyles;
   }, [size]);
+
   return (
     <div className={classNames} style={listItemStyle} ref={ref}>
       {children}

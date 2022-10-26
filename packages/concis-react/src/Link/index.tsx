@@ -16,7 +16,7 @@ const Link = (props, ref) => {
     className,
     darkTheme ? 'concis-dark-link' : 'concis-link',
     `concis-link-${status}`,
-    disabled ? 'concis-link-disabled' : ''
+    disabled ? 'concis-link-disabled' : null
   );
 
   const TagWrapper = !disabled && href ? 'a' : 'span';

@@ -18,6 +18,11 @@ import useOverFlowScroll from '../common_utils/hooks/useOverFlowScroll';
 import confirm, { isPromiseFn } from './confirm';
 import './index.module.less';
 
+const primaryColor = '#325dff',
+  errorColor = '#f53f3f',
+  successColor = '#00b42a',
+  warningColor = '#ff7d00';
+
 const addInstance = (props: ModalProps, type: ConfirmType) => {
   confirm(props, type);
 };
@@ -148,15 +153,15 @@ const Modal = (props: ModalProps) => {
   const titleIcon = useMemo(() => {
     switch (type) {
       case 'info':
-        return <ExclamationCircleFilled style={{ color: '#325DFF' }} />;
+        return <ExclamationCircleFilled style={{ color: primaryColor }} />;
       case 'success':
-        return <CheckCircleFilled style={{ color: '#00b42a' }} />;
+        return <CheckCircleFilled style={{ color: successColor }} />;
       case 'warning':
-        return <WarningFilled style={{ color: '#ff7d00' }} />;
+        return <WarningFilled style={{ color: warningColor }} />;
       case 'error':
-        return <CloseCircleFilled style={{ color: '#f53f3f' }} />;
+        return <CloseCircleFilled style={{ color: errorColor }} />;
       default: {
-        return <ExclamationCircleFilled style={{ color: '#325DFF' }} />;
+        return <ExclamationCircleFilled style={{ color: primaryColor }} />;
       }
     }
   }, [type]);

@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect, useState, createRef, useContext } from 'react';
+import React, { FC, memo, useEffect, useState, useRef, useContext } from 'react';
 import type { LazyLoadProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -7,7 +7,7 @@ import { globalCtx } from '../GlobalConfig';
 const LazyLoad: FC<LazyLoadProps> = (props: LazyLoadProps) => {
   const { children, style, className, delay } = props;
   const [showEl, setShowEl] = useState(false);
-  const lazyRef = createRef();
+  const lazyRef = useRef<HTMLDivElement>(null);
   const { prefixCls } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, 'concis-lazyLoad');
@@ -35,7 +35,7 @@ const LazyLoad: FC<LazyLoadProps> = (props: LazyLoadProps) => {
   };
 
   return (
-    <div className={classNames} style={style} ref={lazyRef as any}>
+    <div className={classNames} style={style} ref={lazyRef}>
       {showEl && children}
     </div>
   );

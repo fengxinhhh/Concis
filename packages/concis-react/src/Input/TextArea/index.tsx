@@ -7,6 +7,8 @@ import './index.module.less';
 
 type NativeTextareaProps = Omit<React.TextareaHTMLAttributes<HTMLElement>, 'type'>;
 
+const defaultFocusColor = '#325dff';
+
 const TextArea = (props, ref) => {
   const {
     className,
@@ -68,7 +70,7 @@ const TextArea = (props, ref) => {
     >
       <textarea
         className="textarea"
-        style={{ ...moreStyle, '--focus-color': globalColor || '#325dff' } as any}
+        style={{ ...moreStyle, '--focus-color': globalColor || defaultFocusColor } as any}
         placeholder={placeholder}
         value={defaultValue || txaValue}
         onChange={onChangeTxa}

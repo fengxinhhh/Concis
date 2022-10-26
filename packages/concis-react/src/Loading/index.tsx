@@ -7,6 +7,8 @@ import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../common_utils/getRenderColor';
 import './index.module.less';
 
+const maskBg = '#2b2b2b';
+
 const Loading = (props, ref) => {
   const {
     type = 'default',
@@ -34,7 +36,8 @@ const Loading = (props, ref) => {
         return 'concis-loading';
     }
   }
-  const classNames = cs(prefixCls, className, getLoadingClass());
+
+  const classNames = useMemo(() => cs(prefixCls, className, getLoadingClass()), [type]);
 
   useEffect(() => {
     if (type === 'dot') {
@@ -47,7 +50,7 @@ const Loading = (props, ref) => {
   }, [activeDotIndex]);
 
   const loadingStyle = useMemo(() => {
-    const returnStyle: any = style;
+    const returnStyle: React.CSSProperties = style;
     returnStyle.width = width;
     returnStyle.height = height;
     return returnStyle;
@@ -56,19 +59,7 @@ const Loading = (props, ref) => {
   const renderLoadingContainer = useMemo(() => {
     if (type === 'default') {
       return (
-        <div
-          className={classNames}
-          style={
-            {
-              ...loadingStyle,
-              '--global-color': getRenderColor(
-                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
-              ),
-            } as any
-          }
-          ref={ref}
-        >
+        <>
           <div className="loading-container" style={loadingStyle}>
             {icon || (
               <svg
@@ -86,23 +77,12 @@ const Loading = (props, ref) => {
             )}
           </div>
           {loadingText && <div className="text">{loadingText}</div>}
-        </div>
+        </>
       );
     }
     if (type === 'dot') {
       return (
-        <div
-          className={classNames}
-          style={
-            {
-              '--global-color': getRenderColor(
-                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
-              ),
-            } as any
-          }
-          ref={ref}
-        >
+        <>
           {new Array(3).fill('').map((item, index) => {
             return (
               <div className={activeDotIndex === index ? 'dot-active' : 'dot'} key={index}>
@@ -110,29 +90,18 @@ const Loading = (props, ref) => {
               </div>
             );
           })}
-        </div>
+        </>
       );
     }
     if (type === 'strip') {
       return (
-        <div
-          className={classNames}
-          style={
-            {
-              '--global-color': getRenderColor(
-                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
-              ),
-            } as any
-          }
-          ref={ref}
-        >
+        <>
           {new Array(6).fill('').map((item, index) => {
             return (
               <div className="strip-list" style={{ '--lineIndex': index } as any} key={index} />
             );
           })}
-        </div>
+        </>
       );
     }
   }, [type, activeDotIndex, globalColor]);
@@ -140,9 +109,20 @@ const Loading = (props, ref) => {
   return (
     <Fragment>
       {mask && (
-        <div className="concis-loading-dialog" style={darkTheme ? { background: '#2b2b2b' } : {}} />
+        <div className="concis-loading-dialog" style={darkTheme ? { background: maskBg } : {}} />
       )}
-      {renderLoadingContainer}
+      <div
+        className={classNames}
+        style={Object.assign(type === 'default' ? loadingStyle : {}, {
+          '--global-color': getRenderColor(
+            (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+            globalColor
+          ),
+        } as React.CSSProperties)}
+        ref={ref}
+      >
+        {renderLoadingContainer}
+      </div>
     </Fragment>
   );
 };

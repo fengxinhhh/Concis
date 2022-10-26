@@ -16,6 +16,11 @@ import './index.module.less';
 let container: HTMLDivElement | null;
 let topMessageNum: number = 0;
 let bottomMessageNum: number = 0;
+const primaryColor = '#325dff',
+  errorColor = '#f53f3f',
+  successColor = '#00b42a',
+  warningColor = '#ff7d00',
+  defaultFontSize = '16px';
 
 function addInstance(
   type: 'info' | 'success' | 'warning' | 'error' | 'normal' | 'loading',
@@ -135,22 +140,22 @@ const Message = (props: MessageProps<string>) => {
 
   const messageIcon = useMemo(() => {
     if (type === 'info') {
-      return <ExclamationCircleFilled style={{ color: '#325DFF', fontSize: '16px' }} />;
+      return <ExclamationCircleFilled style={{ color: primaryColor, fontSize: defaultFontSize }} />;
     }
     if (type === 'error') {
-      return <CloseCircleFilled style={{ color: '#f53f3f', fontSize: '16px' }} />;
+      return <CloseCircleFilled style={{ color: errorColor, fontSize: defaultFontSize }} />;
     }
     if (type === 'normal') {
       return <></>;
     }
     if (type === 'success') {
-      return <CheckCircleFilled style={{ color: '#00b42a', fontSize: '16px' }} />;
+      return <CheckCircleFilled style={{ color: successColor, fontSize: defaultFontSize }} />;
     }
     if (type === 'warning') {
-      return <ExclamationCircleFilled style={{ color: '#ff7d00', fontSize: '16px' }} />;
+      return <ExclamationCircleFilled style={{ color: warningColor, fontSize: defaultFontSize }} />;
     }
     if (type === 'loading') {
-      return <LoadingOutlined style={{ color: '#325DFF', fontSize: '16px' }} />;
+      return <LoadingOutlined style={{ color: primaryColor, fontSize: defaultFontSize }} />;
     }
   }, [type]);
   const closeMessage = () => {
