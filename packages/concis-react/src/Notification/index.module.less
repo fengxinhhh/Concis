@@ -23,6 +23,11 @@
     align-items: center;
     justify-content: space-between;
 
+    .title-left {
+      display: flex;
+      align-items: center;
+    }
+
     .title-content {
       margin-left: @concis-transform-lg;
       font-weight: 500;
@@ -50,9 +55,27 @@
 
 .concis-dark-notifica-container {
   color: @concis-dark-font-color;
-  background-color: #000;
-  border: 1px solid #939393;
+  border: 1px solid transparent;
 }
+
+.concis-dark-notifica-container.concis-info-notifica,
+.concis-dark-notifica-container.concis-normal-notifica,
+.concis-dark-notifica-container.concis-loading-notifica {
+  background-color: #253757;
+}
+
+.concis-dark-notifica-container.concis-success-notifica {
+  background-color: #22482c;
+}
+
+.concis-dark-notifica-container.concis-warning-notifica {
+  background-color: #573d25;
+}
+
+.concis-dark-notifica-container.concis-error-notifica {
+  background-color: #553332;
+}
+
 @media screen and (max-width: 400px) {
   .concis-notifica-container,
   .concis-dark-notifica-container {

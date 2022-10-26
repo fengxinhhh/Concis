@@ -139,13 +139,14 @@ const Popover: FC<popoverProps> = forwardRef<PopoverRef, popoverProps>(
         opacity: 0,
       };
       if (align === 'bottom') {
+        alignStyle.top = `${showBtnSize.height + 5}px`;
       } else if (align === 'top') {
-        alignStyle.bottom = `${showBtnSize.height}px`;
+        alignStyle.bottom = `${showBtnSize.height + 5}px`;
       } else if (align === 'right') {
-        alignStyle.left = `${showBtnSize.width}px`;
+        alignStyle.left = `${showBtnSize.width + 5}px`;
         alignStyle.bottom = `${Number(showBtnSize.height) / 2}px`;
       } else if (align === 'left') {
-        alignStyle.right = `${showBtnSize.width}px`;
+        alignStyle.right = `${showBtnSize.width + 5}px`;
         alignStyle.bottom = `${Number(showBtnSize.height) / 2}px`;
       }
       if (!noBorder) {

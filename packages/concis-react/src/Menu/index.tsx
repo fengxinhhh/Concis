@@ -7,7 +7,7 @@ import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import './index.module.less';
 
-const darkThemeColor = '#3C7EFF',
+const darkThemeColor = 'rgba(60, 126, 255, 0.6)',
   lightThemeColor = '#325DFF',
   lightMenuOptionBg = '#e6f7ff',
   defaultOpenHeight = '50px',

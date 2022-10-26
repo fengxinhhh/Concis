@@ -17,9 +17,9 @@ Concis 内置提供了暗黑模式的主题，暗黑模式的优势在于在弱�
 
 基于 Concis 全家桶默认主题和暗黑主题的素材。
 
-<img src="https://concis.org.cn/images/example-demo.jpeg" />
+<img src="https://concis.org.cn/images/examplepic.jpeg" />
 
-<img src="https://concis.org.cn/images/example-dark-demo.jpeg" />
+<img src="https://concis.org.cn/images/example-darkpic.jpeg" />
 
 ## 使用
 

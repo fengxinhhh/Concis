@@ -82,9 +82,9 @@ pnpm examples:dev
 
 访问`http://localhost:5173`。
 
-<img src="https://concis.org.cn/images/example-demo.jpeg" />
+<img src="https://concis.org.cn/images/examplepic.jpeg" />
 
-<img src="https://concis.org.cn/images/example-dark-demo.jpeg" />
+<img src="https://concis.org.cn/images/example-darkpic.jpeg" />
 
 # 相关链接
 
