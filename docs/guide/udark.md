@@ -17,9 +17,9 @@ Concis built in provides the theme of dark mode. The advantage of dark mode is t
 
 Based on the default theme and dark theme of Concis Family Bucket.
 
-<img src="https://concis.org.cn/images/example-pic.jpeg" />
+<img src="https://concis.org.cn/images/example-demo.jpeg" />
 
-<img src="https://concis.org.cn/images/example-dark-pic.jpeg" />
+<img src="https://concis.org.cn/images/example-dark-demo.jpeg" />
 
 ## Using
 

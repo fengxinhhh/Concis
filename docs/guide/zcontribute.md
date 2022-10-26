@@ -100,9 +100,9 @@ pnpm example:dev
 
 Visit `http://localhost:5173`.
 
-<img src="https://concis.org.cn/images/example-pic.jpeg" />
+<img src="https://concis.org.cn/images/example-demo.jpeg" />
 
-<img src="https://concis.org.cn/images/example-dark-pic.jpeg" />
+<img src="https://concis.org.cn/images/example-dark-demo.jpeg" />
 
 ## Feedback
 
