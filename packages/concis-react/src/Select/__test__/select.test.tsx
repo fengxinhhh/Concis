@@ -118,4 +118,17 @@ describe('Select', () => {
     expect(selectCallback).toBeCalled();
     expect(component.find('.selected input').getDOMNode().getAttribute('value') === 'Mucy');
   });
+
+  it('test button type Select correctly', () => {
+    const component = mount(
+      <Select option={option} width={200} type="primary" placeholder="请输入" />
+    );
+    expect(component.find('.concis-select.primary-selected')).toHaveLength(1);
+    component.setProps({ type: 'error' });
+    expect(component.find('.concis-select.error-selected')).toHaveLength(1);
+    component.setProps({ type: 'warning' });
+    expect(component.find('.concis-select.warning-selected')).toHaveLength(1);
+    component.setProps({ type: 'success' });
+    expect(component.find('.concis-select.success-selected')).toHaveLength(1);
+  });
 });

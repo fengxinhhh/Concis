@@ -42,7 +42,7 @@ const Select = (props, ref) => {
       type ? `${type}-selected` : null,
       visible ? 'isChoose' : null
     );
-  }, [visible, darkTheme]);
+  }, [visible, darkTheme, type]);
 
   const closeSelect = (e) => {
     if (!e.target?.getAttribute('class')?.includes('selected')) {

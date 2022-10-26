@@ -4,7 +4,7 @@ export default function addEventListener(
   cb: (this: Element, ev: Event) => any,
   options?: boolean | AddEventListenerOptions
 ) {
-  target.addEventListener(eventType, cb, options);
+  target?.addEventListener(eventType, cb, options);
   return {
     remove() {
       target.removeEventListener(eventType, cb, options);

@@ -61,7 +61,7 @@ export function setupIntersectionObserverMock({
 
     unobserve: (target: Element) => void = (element) => {
       MockIntersectionObserver.observeElement = MockIntersectionObserver.observeElement.filter(
-        (ele) => ele.element !== element,
+        (ele) => ele.element !== element
       );
       unobserve();
     };
@@ -69,7 +69,7 @@ export function setupIntersectionObserverMock({
     callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void;
 
     constructor(
-      callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void,
+      callback: (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => void
     ) {
       this.callback = callback;
     }
