@@ -23,7 +23,11 @@ export default function TimePickerDemo1() {
   };
   return (
     <>
-      <CheckBox group={checkGroup} checkGroupCallback={checkGroupCallback} />
+      <CheckBox
+        group={checkGroup}
+        checkGroupCallback={checkGroupCallback}
+        style={{ padding: '5px 0' }}
+      />
     </>
   );
 }

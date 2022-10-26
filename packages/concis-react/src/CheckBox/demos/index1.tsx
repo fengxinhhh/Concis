@@ -10,7 +10,7 @@ export default function TimePickerDemo1() {
   };
 
   return (
-    <CheckBox checked checkCallback={checkCallback}>
+    <CheckBox checked checkCallback={checkCallback} style={{ padding: '5px 0' }}>
       Apple
     </CheckBox>
   );

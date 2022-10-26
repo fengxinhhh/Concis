@@ -28,11 +28,11 @@ export default function TimePickerDemo1() {
   };
   return (
     <>
-      <CheckBox checked={checkAll} checkCallback={checkCallback}>
+      <CheckBox checked={checkAll} checkCallback={checkCallback} style={{ padding: '5px 0' }}>
         全选
       </CheckBox>
       <p />
-      <CheckBox group={checkGroup} />
+      <CheckBox group={checkGroup} style={{ padding: '5px 0' }} />
     </>
   );
 }

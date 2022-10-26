@@ -3,6 +3,7 @@ import { ButtonGroupProps } from './interface';
 import cs from '../common_utils/classNames';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import { globalCtx } from '../GlobalConfig';
+import './index.module.less';
 
 function Group(props: ButtonGroupProps, ref) {
   const { children, style, className } = props;

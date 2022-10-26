@@ -15,6 +15,8 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
+const defaultPrimaryColor = '#325DFF';
+
 const CheckBox = (props, ref) => {
   const {
     children,
@@ -41,8 +43,6 @@ const CheckBox = (props, ref) => {
       ? `concis-${darkTheme ? 'dark-' : ''}checkGroup`
       : `concis-${darkTheme ? 'dark-' : ''}checkbox`
   );
-
-  const defaultPrimaryColor = '#325DFF';
 
   const checkBoxDom = {
     disabled: <div className="concis-checkbox-disabled" />,

@@ -24,6 +24,10 @@
     width: @concis-font-sm;
     height: @concis-font-sm;
     margin-left: 5px;
+    padding: 7px;
+    box-sizing: border-box;
+    transition: 0.2s linear;
+    border-radius: 5px;
   }
 
   &-disabled {
@@ -34,14 +38,13 @@
   &-actived {
     color: @concis-white-color;
     background: var(--global-color);
-    border: 1px solid transparent;
+    border: 1px solid var(--global-color);
   }
 
   &-noActived {
     color: @concis-white-color;
     background: @concis-white-color;
     border: 1px solid @concis-disabled-color;
-    transition: 0.3s linear;
 
     &:hover {
       border: 1px solid #afacac;
@@ -51,6 +54,7 @@
   .text {
     margin-left: 5px;
     font-size: @concis-font-md;
+    user-select: none;
   }
 
   .disabled {
