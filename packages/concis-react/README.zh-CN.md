@@ -9,7 +9,7 @@
 
 <div align="center">
 
-一套轻量级 React UI 组件库。
+快速构建 React 应用程序的高性能、轻量级 UI 库。
 
 <img src="https://img.shields.io/github/stars/fengxinhhh/concis" alt="stars">
 <img src="https://img.shields.io/badge/react-v18.2.0%2B-%23407fbc" alt="react">

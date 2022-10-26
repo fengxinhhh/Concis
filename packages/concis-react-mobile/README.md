@@ -9,7 +9,7 @@
 
 <div align="center">
  
-A Lightweight React UI components library.
+High-performance, lightweight UI library for rapidly building React applications.
 
 <img src="https://img.shields.io/github/stars/fengxinhhh/concis" alt="stars">
 <img src="https://img.shields.io/badge/react-v18.2.0%2B-%23407fbc" alt="react">
