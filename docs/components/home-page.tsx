@@ -90,8 +90,13 @@ export default () => {
               <span className="version">v{version}</span>
             </p>
             <p className="buttons">
-              <a href="/#/guide/introduce">{locale === 'zh-CN' ? '开始' : 'Start'}</a>
-              <a className="componentBtn" href="/#/common/button">
+              <a href={locale === 'zh-CN' ? '/#/zh-CN/guide/introduce' : '/#/guide/introduce'}>
+                {locale === 'zh-CN' ? '开始' : 'Start'}
+              </a>
+              <a
+                className="componentBtn"
+                href={locale === 'zh-CN' ? '/#/zh-CN/common/button' : '/#/guide/introduce'}
+              >
                 {locale === 'zh-CN' ? '组件' : 'Components'}
               </a>
               <a className="githubBtn" href="https://github.com/fengxinhhh/Concis">
