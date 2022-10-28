@@ -20,7 +20,7 @@ mobile: false
 
 最基本的日期选择器。
 
-<code src="./demos/index1.tsx" />
+<!-- <code src="./demos/index1.tsx" />
 
 ## 年份选择器
 
@@ -32,7 +32,7 @@ mobile: false
 
 通过 `MonthPicker` 使用年份选择器。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx" /> -->
 
 ## 区间式日期选择器
 
@@ -42,6 +42,7 @@ mobile: false
 
 ## 重置时间
 
+<!--
 配置 `showClear` 即可重置开始、结束时间。
 
 <code src="./demos/index5.tsx" />
@@ -50,7 +51,7 @@ mobile: false
 
 通过 `align` 指定出现方向，可选参数有 `left`、`right`、`top`、`bottom`。
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx" /> -->
 
 ## DatePicker、MonthPicker、YearPicker API
 

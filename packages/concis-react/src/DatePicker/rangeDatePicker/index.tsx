@@ -1,4 +1,12 @@
-import React, { useEffect, useState, useCallback, useRef, useContext, forwardRef } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+  useContext,
+  forwardRef,
+  RefObject,
+} from 'react';
 import {
   DoubleLeftOutlined,
   LeftOutlined,
@@ -7,7 +15,7 @@ import {
   SwapRightOutlined,
 } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
-import { on, off } from '../../common_utils/dom/event';
+import { onClickOutSide, dispatchRef } from '../../common_utils/dom/event';
 import type { RangeProps } from './interface';
 import Input from '../../Input';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
@@ -49,6 +57,7 @@ const RangeDatePicker = (props, ref) => {
 
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}range-picker`);
   const activeBorderDom = useRef(null);
+  const rangePickerDom = useRef(null);
 
   useEffect(() => {
     const { startYear, startMonth } = startDate;
@@ -75,10 +84,12 @@ const RangeDatePicker = (props, ref) => {
     const handleClick = () => {
       setRenderShowDialog(false);
     };
-    on(window, 'click', handleClick)();
+    const destoryEvent = onClickOutSide(rangePickerDom, handleClick);
+    // on(window, 'click', handleClick)();
 
     return () => {
-      off(window, 'click', handleClick)();
+      // off(window, 'click', handleClick)();
+      destoryEvent();
     };
   }, []);
 
@@ -429,7 +440,10 @@ const RangeDatePicker = (props, ref) => {
       className={classNames}
       onClick={(e) => e.stopPropagation()}
       style={{ '--hover-color': globalColor || defaultPrimaryColor, ...style } as any}
-      ref={ref}
+      ref={(node) => {
+        rangePickerDom.current = node;
+        dispatchRef<RefObject<HTMLElement> | HTMLElement>(ref, node);
+      }}
     >
       <div className="rangePicker" onClick={(e) => e.stopPropagation()}>
         <Input
