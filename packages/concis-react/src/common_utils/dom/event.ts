@@ -34,9 +34,9 @@ function onClickOutSide(el: RefObject<HTMLElement> | HTMLElement, handler: Event
       handler.call(this, e);
     }
   };
-  window.addEventListener('mousedown', clickOutsideHandler);
+  on(window, 'mousedown', clickOutsideHandler)();
   return function () {
-    window.removeEventListener('mousedown', clickOutsideHandler);
+    off(window, 'mousedown', clickOutsideHandler)();
   };
 }
 
