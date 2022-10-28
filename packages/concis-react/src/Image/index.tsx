@@ -1,4 +1,12 @@
-import React, { useState, useContext, useEffect, forwardRef, useMemo } from 'react';
+import React, {
+  useState,
+  useContext,
+  useEffect,
+  forwardRef,
+  useMemo,
+  useRef,
+  RefObject,
+} from 'react';
 import { CSSTransition } from 'react-transition-group';
 import {
   EyeOutlined,
@@ -10,7 +18,7 @@ import {
   ZoomOutOutlined,
   ZoomInOutlined,
 } from '@ant-design/icons';
-import { on, off } from '../common_utils/dom/event';
+import { onClickOutSide, dispatchRef } from '../common_utils/dom/event';
 import { ImageProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -55,11 +63,12 @@ const Image = (props, ref) => {
   const [previewList, setPreviewList] = useState<string[]>([]);
   // 预览下标
   const [previewShowIndex, setPreviewShowIndex] = useState(0);
+  const imageDom = useRef(null);
 
   useEffect(() => {
     if (!preview) return;
     getPreviewPath();
-    on(window, 'click', handleClose)();
+    const destoryEvent = onClickOutSide(imageDom, handleClose);
     function getPreviewPath() {
       if (Array.isArray(preview)) {
         setPreviewList(preview);
@@ -68,7 +77,7 @@ const Image = (props, ref) => {
       }
     }
     return () => {
-      preview && off(window, 'click', handleClose)();
+      preview && destoryEvent();
     };
   }, [preview]);
 
@@ -223,7 +232,14 @@ const Image = (props, ref) => {
 
   return (
     <>
-      <div className={classNames} style={{ ...style }} ref={ref}>
+      <div
+        className={classNames}
+        style={{ ...style }}
+        ref={(node) => {
+          imageDom.current = node;
+          dispatchRef<RefObject<HTMLElement> | HTMLElement>(ref, node);
+        }}
+      >
         <img
           src={src}
           alt={alt}

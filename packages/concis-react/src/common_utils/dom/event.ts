@@ -34,9 +34,9 @@ function onClickOutSide(el: RefObject<HTMLElement> | HTMLElement, handler: Event
       handler.call(this, e);
     }
   };
-  on(window, 'mousedown', clickOutsideHandler)();
+  on(window, 'click', clickOutsideHandler)();
   return function () {
-    off(window, 'mousedown', clickOutsideHandler)();
+    off(window, 'click', clickOutsideHandler)();
   };
 }
 
@@ -46,7 +46,7 @@ function dispatchRef<T>(ref: RefCallback<T> | RefObject<HTMLElement | null>, com
     if (typeof ref === 'function') {
       ref(componentElement);
     } else if (typeof ref === 'object') {
-      (ref.current as T) = componentElement;
+      (ref.current as unknown) = componentElement;
     }
   }
 }

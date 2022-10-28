@@ -1,7 +1,15 @@
-import React, { useContext, useState, useEffect, useMemo, forwardRef } from 'react';
+import React, {
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+  forwardRef,
+  useRef,
+  RefObject,
+} from 'react';
 import { DownOutlined, RightOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
-import { on, off } from '../common_utils/dom/event';
+import { onClickOutSide, dispatchRef } from '../common_utils/dom/event';
 import { DropdownProps, dataType } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -25,6 +33,7 @@ const Dropdown = (props, ref) => {
   const [visible, setVisible] = useState(false);
   const [dropValue, setDropValue] = useState(placeholder);
   const [dropData, setDropData] = useState<Array<string | dataType>>(data);
+  const dropdownDom = useRef(null);
 
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -43,13 +52,14 @@ const Dropdown = (props, ref) => {
         return item;
       });
     });
+    let destoryEvent;
     if (type === 'click') {
-      on(window, 'click', reset)();
+      destoryEvent = onClickOutSide(dropdownDom, reset);
     }
 
     return () => {
       if (type === 'click') {
-        off(window, 'click', reset)();
+        destoryEvent();
       }
     };
   }, []);
@@ -156,14 +166,14 @@ const Dropdown = (props, ref) => {
     // 多列平铺
     if (colums) {
       return dropData?.map((item, index) => {
-        return <Option item={item} index={index} />;
+        return <Option item={item} key={index} />;
       });
     }
 
     // 常规下拉
     return dropData?.map((item, index) => {
       return (
-        <Option item={item} index={index}>
+        <Option item={item} key={index}>
           {typeof item !== 'string' && item?.children && (
             <RightOutlined className="drop-down-icon" />
           )}
@@ -216,7 +226,10 @@ const Dropdown = (props, ref) => {
     <div
       className={classNames}
       style={{ '--colums-width': `${columsWidth}px`, ...style } as any}
-      ref={ref}
+      ref={(node) => {
+        dropdownDom.current = node;
+        dispatchRef<RefObject<HTMLElement> | HTMLElement>(ref, node);
+      }}
     >
       <div
         className={cs(

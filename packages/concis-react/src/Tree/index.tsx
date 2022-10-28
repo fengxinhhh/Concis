@@ -1,4 +1,13 @@
-import React, { Fragment, useState, useEffect, useCallback, useContext, forwardRef } from 'react';
+import React, {
+  Fragment,
+  useState,
+  useEffect,
+  useCallback,
+  useContext,
+  forwardRef,
+  useRef,
+  RefObject,
+} from 'react';
 import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
 import type { treeProps, treeNode } from './interface';
@@ -6,7 +15,7 @@ import Input from '../Input';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
-import { on, off } from '../common_utils/dom/event';
+import { onClickOutSide, dispatchRef } from '../common_utils/dom/event';
 import { globalCtx } from '../GlobalConfig';
 import './index.module.less';
 
@@ -26,6 +35,7 @@ const Tree = (props, ref) => {
   const [activedVal, setActivedVal] = useState<string>(''); // 选中的节点值
   const [visible, setVisible] = useState<boolean>(false); // 容器状态
   const [isFocus, setIsFocus] = useState(false); // 聚焦状态
+  const treeDom = useRef(null);
 
   const formCtx: any = useContext(ctx);
 
@@ -38,9 +48,9 @@ const Tree = (props, ref) => {
     function reset() {
       setVisible(false);
     }
-    on(window, 'click', reset)();
+    const destoryEvent = onClickOutSide(treeDom, reset);
     return () => {
-      off(window, 'click', reset)();
+      destoryEvent();
     };
   }, []);
 
@@ -242,7 +252,14 @@ const Tree = (props, ref) => {
 
   return (
     <Fragment>
-      <div className={classNames} style={style} ref={ref} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={classNames}
+        style={style}
+        ref={(node) => {
+          treeDom.current = node;
+          dispatchRef<RefObject<HTMLElement> | HTMLElement>(ref, node);
+        }}
+      >
         <Input
           moreStyle={avaSearch ? {} : { caretColor: 'transparent' }}
           placeholder={avaSearch ? '请输入' : ''}

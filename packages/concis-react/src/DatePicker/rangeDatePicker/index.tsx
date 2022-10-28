@@ -85,10 +85,8 @@ const RangeDatePicker = (props, ref) => {
       setRenderShowDialog(false);
     };
     const destoryEvent = onClickOutSide(rangePickerDom, handleClick);
-    // on(window, 'click', handleClick)();
 
     return () => {
-      // off(window, 'click', handleClick)();
       destoryEvent();
     };
   }, []);

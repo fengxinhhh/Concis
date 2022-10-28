@@ -1,7 +1,16 @@
-import React, { useMemo, useEffect, useState, useCallback, useContext, forwardRef } from 'react';
+import React, {
+  useMemo,
+  useEffect,
+  useState,
+  useCallback,
+  useContext,
+  forwardRef,
+  useRef,
+  RefObject,
+} from 'react';
 import { DownOutlined, UpOutlined, LoadingOutlined, CloseOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
-import { on, off } from '../common_utils/dom/event';
+import { onClickOutSide, dispatchRef } from '../common_utils/dom/event';
 import type { SelectProps, Options } from './interface';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -30,6 +39,7 @@ const Select = (props, ref) => {
   const [selected, setSelected] = useState<string | number | any>('');
   const [selectedValue, setSelectedValue] = useState<string | number | any>('');
   const [visible, setVisible] = useState(false);
+  const selectDom = useRef(null);
 
   const formCtx: any = useContext(ctx);
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
@@ -51,9 +61,9 @@ const Select = (props, ref) => {
   };
 
   useEffect(() => {
-    on(window, 'click', closeSelect)();
+    const destoryEvent = onClickOutSide(selectDom, closeSelect);
     return () => {
-      off(window, 'click', closeSelect)();
+      destoryEvent();
     };
   }, []);
 
@@ -92,14 +102,14 @@ const Select = (props, ref) => {
 
   const toggleOptions = (e: any) => {
     // 切换下拉
-    e.stopPropagation();
+    // e.stopPropagation();
     if (disabled || loading) return;
     setVisible(!visible);
   };
 
   const changeOptions = (v: Options, e: any) => {
     // 选择选项
-    e.stopPropagation();
+    // e.stopPropagation();
     if (v.disabled) return;
     setVisible(false);
     setSelected(v.label);
@@ -128,7 +138,7 @@ const Select = (props, ref) => {
   );
 
   const clearSearchSelect = (e: React.SyntheticEvent) => {
-    e.stopPropagation();
+    // e.stopPropagation();
     setSelectedValue('');
     setSelected('');
   };
@@ -151,7 +161,10 @@ const Select = (props, ref) => {
           }px`,
         } as any
       }
-      ref={ref}
+      ref={(node) => {
+        selectDom.current = node;
+        dispatchRef<RefObject<HTMLElement> | HTMLElement>(ref, node);
+      }}
     >
       <div
         className={cs('selected', disabled || loading ? 'disabled-selected' : null)}
