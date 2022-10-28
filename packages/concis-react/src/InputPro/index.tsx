@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext, useMemo, forwardRef } from 'react';
+import React, { useState, useEffect, useContext, useMemo, forwardRef, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { on, off } from '../common_utils/dom/event';
+import { onClickOutSide } from '../common_utils/dom/event';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -24,6 +24,7 @@ const InputPro = (props, ref) => {
 
   const [value, setValue] = useState('');
   const [isFocus, setIsFocus] = useState(false);
+  const inputProEl = useRef<HTMLDivElement>(null);
 
   const { prefixCls, darkTheme, globalColor } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -43,9 +44,9 @@ const InputPro = (props, ref) => {
   }, [formCtx.submitStatus]);
 
   useEffect(() => {
-    on(window, 'click', reset)();
+    const destoryEvent = onClickOutSide(inputProEl, reset);
     return () => {
-      off(window, 'click', reset)();
+      destoryEvent();
     };
   }, []);
 
@@ -115,8 +116,14 @@ const InputPro = (props, ref) => {
     <div
       className={classNames}
       style={{ ...style, '--select-color': globalColor || defaultInputProColor } as any}
-      onClick={(e) => e.stopPropagation()}
-      ref={ref}
+      ref={(node) => {
+        inputProEl.current = node;
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (ref && typeof ref === 'object') {
+          ref.current = node;
+        }
+      }}
     >
       <Input
         placeholder="请输入"
