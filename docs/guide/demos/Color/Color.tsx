@@ -21,7 +21,9 @@ export default function Color(props: ColorProps) {
                 className="color-name"
                 style={{ color: i < 5 ? '#000000' : '#ffffff' }}
               >{`${theme}-${i + 1}`}</div>
-              <div className="color-val">{c}</div>
+              <div className="color-val" style={{ color: i < 5 ? '#000000' : '#ffffff' }}>
+                {c}
+              </div>
             </div>
           );
         })}
