@@ -95,7 +95,7 @@ export default () => {
               </a>
               <a
                 className="componentBtn"
-                href={locale === 'zh-CN' ? '/#/zh-CN/common/button' : '/#/guide/introduce'}
+                href={locale === 'zh-CN' ? '/#/zh-CN/common/button' : '/#/guide/button'}
               >
                 {locale === 'zh-CN' ? '组件' : 'Components'}
               </a>
