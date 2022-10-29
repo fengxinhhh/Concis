@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://concis.org.cn/#/" target="_blank">
+  <a href="https://concis.org.cn" target="_blank">
     <img alt="Concis Logo" width="200" src="https://concis.org.cn/images/concis-logo.png"/>
   </a>
 </div>
