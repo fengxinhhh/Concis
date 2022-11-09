@@ -20,13 +20,19 @@ mobile: false
 
 ## Basic usage
 
+Basic split line component.
+
 <code src="./demos/index1.tsx"/>
 
 ## Font size
 
+Customize font size via `fontSize`.
+
 <code src="./demos/index2.tsx"/>
 
 ## Alignment
+
+Alignment is selected via `align`, which defaults to `center`.
 
 <code src="./demos/index4.tsx"/>
 
