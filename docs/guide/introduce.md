@@ -18,6 +18,8 @@ Concis is a lightweight React UI component library that supports multiple module
 
 - 🛡 Developed using TypeScript to provide a complete type definition file.
 
+- 😄 Built-in tracking system, no need to introduce external SDK.
+
 - ⚙️ Full link development and design tool system.
 
 - 🌍 Dozens of international languages are supported.
