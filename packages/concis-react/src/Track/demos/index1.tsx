@@ -1,5 +1,5 @@
 import React from 'react';
-import { Track } from 'concis';
+import { Track, Button } from 'concis';
 
 export default function TrackDemo1() {
   const ref = React.useRef(null);
@@ -12,7 +12,7 @@ export default function TrackDemo1() {
   return (
     <div>
       <Track ref={ref} />
-      <span onClick={collect}>收集当前页面数据</span>
+      <Button handleClick={collect}>collect page info</Button>
     </div>
   );
 }
