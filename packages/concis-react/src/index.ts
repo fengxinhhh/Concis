@@ -57,3 +57,4 @@ export { default as Nav } from './Nav';
 export { default as PreviewJump } from './PreviewJump';
 export { default as Highlight } from './Highlight';
 export { default as Zoombox } from './Zoombox';
+export { default as Track } from './Track';
