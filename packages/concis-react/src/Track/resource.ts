@@ -2,7 +2,7 @@ import type { resourceItemType } from './interface';
 
 const getResources = () => {
   if (!window.performance) return;
-  const data = window.performance.getEntriesByType('resource');
+  let data = window.performance.getEntriesByType('resource');
   const resource = {
     xmlhttprequest: [],
     css: [],
@@ -33,6 +33,7 @@ const getResources = () => {
         startTime: performance.now(),
       });
   });
+  data = Array.from(new Set([...data]));
   function isCache(entry) {
     // 直接从缓存读取或 304
     return entry.transferSize === 0 || (entry.transferSize !== 0 && entry.encodedBodySize === 0);

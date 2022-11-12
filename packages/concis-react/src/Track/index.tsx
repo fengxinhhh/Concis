@@ -1,4 +1,11 @@
-import React, { useEffect, useState, useRef, forwardRef, useImperativeHandle } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  Fragment,
+} from 'react';
 import type { userInfoType } from './interface';
 import {
   collectFP,
@@ -10,22 +17,51 @@ import {
   collectParseDOMTree,
   collectWhiteTime,
   // collectDOMReadyTime,
-  collectLoadTime,
+  // collectLoadTime,
 } from './performance';
 import { monitorXHRRequest, monitorFetchRequest } from './request';
 import { getResources } from './resource';
 import { getUserIp, getNativeBrowserInfo } from './userInfo';
 import { getJavaScriptError, getJavaScriptAsyncError } from './error';
+import { onClick } from './domChange';
 
 const Track = (props, ref) => {
   const { children } = props;
 
+  const [refresh, setRefresh] = useState(false);
   const [performanceData, setPerformanceData] = useState({});
   const xhrRequestResList = useRef([]);
   const fetchRequestResList = useRef([]);
   const resourceList = useRef({});
   const userInfo = useRef({});
   const errorList = useRef([]);
+  const clickEventList = useRef([]);
+  const enterPageTime = useRef(new Date());
+
+  // 监听url变化，Track内部重新统计数据
+  const _wr = function (type) {
+    const orig = window.history[type];
+    return function () {
+      const rv = orig.apply(this);
+      const e = new Event(type);
+      window.dispatchEvent(e);
+      return rv;
+    };
+  };
+  window.history.pushState = _wr('pushState');
+  window.history.replaceState = _wr('replaceState');
+  window.addEventListener('replaceState', function (e) {
+    console.log('THEY DID IT AGAIN! replaceState 111111');
+    setRefresh(!refresh);
+  });
+  window.addEventListener('pushState', function (e) {
+    console.log('THEY DID IT AGAIN! pushState 2222222');
+    setRefresh(!refresh);
+  });
+  window.addEventListener('hashchange', function (e) {
+    console.log('THEY DID IT AGAIN! pushState 2222222');
+    setRefresh(!refresh);
+  });
 
   useImperativeHandle(ref, () => ({
     callbackTrackData,
@@ -33,11 +69,12 @@ const Track = (props, ref) => {
 
   // 收集性能参数
   const collectPerformance = async () => {
+    console.log('start');
     const fp = await collectFP();
     const fcp = await collectFCP();
     const lcp = await collectLCP();
     // const domReadyTime = await collectDOMReadyTime();
-    const loadTime = await collectLoadTime();
+    // const loadTime = await collectLoadTime();
     const dnsQueryTime = collectDNSQueryTime();
     const tcpConnectTime = collectTCPConnectTime();
     const requestTime = collectRequestTime();
@@ -53,7 +90,7 @@ const Track = (props, ref) => {
       parseDOMTreeTime,
       whiteTime,
       // domReadyTime,
-      loadTime,
+      // loadTime,
     });
   };
 
@@ -91,7 +128,14 @@ const Track = (props, ref) => {
     });
   };
 
-  // 上报数据
+  // 收集页面点击事务
+  const collectClick = () => {
+    onClick((res) => {
+      clickEventList.current.push(res);
+    });
+  };
+
+  // 收集所有数据
   const callbackTrackData = () => {
     return {
       performanceData,
@@ -100,28 +144,36 @@ const Track = (props, ref) => {
       resourceList: resourceList.current,
       userInfo: userInfo.current,
       errorList: errorList.current,
+      clickEventList: clickEventList.current,
+      leaveTime: Math.round(
+        Math.abs((enterPageTime.current as Date).getTime() - new Date().getTime()) / 1000
+      ),
     };
   };
 
-  const over = () => {
-    console.log('performance: ', performanceData);
-    console.log('xhr network: ', xhrRequestResList.current);
-    console.log('fetch network: ', fetchRequestResList.current);
-    console.log('resource: ', resourceList.current);
-    console.log('userInfo: ', userInfo.current);
-    console.log('error: ', errorList.current);
-  };
+  // debugger
+  // const over = () => {
+  //   console.log('performance: ', performanceData);
+  //   console.log('xhr network: ', xhrRequestResList.current);
+  //   console.log('fetch network: ', fetchRequestResList.current);
+  //   console.log('resource: ', resourceList.current);
+  //   console.log('userInfo: ', userInfo.current);
+  //   console.log('error: ', errorList.current);
+  //   console.log('click: ', clickEventList.current);
+  // };
 
+  // 路由切换时，重新统计数据
   useEffect(() => {
     collectPerformance();
     collectRequest();
     collectResources();
     collectUserInfo();
     collectError();
+    collectClick();
     // fetch('http://localhost:8888');
-  }, []);
+  }, [refresh]);
 
-  return <div onClick={over}>track{children}</div>;
+  return <Fragment>{children}</Fragment>;
 };
 
 export default forwardRef(Track);

@@ -57,10 +57,20 @@ type userInfoType = {
   cname: string;
 };
 
+type eventDom = {
+  tagName: string;
+  path: string[];
+  outerHTML: string;
+  innerHTML: string;
+  offsetWidth: number;
+  offsetHeight: number;
+};
+
 export type {
   resourceItemType,
   fetchRequestType,
   xhrRequestType,
   nativeBrowserInfoType,
   userInfoType,
+  eventDom,
 };
