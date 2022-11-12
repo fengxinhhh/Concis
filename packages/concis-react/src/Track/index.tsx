@@ -147,16 +147,26 @@ const Track = (props, ref) => {
     };
   };
 
+  // 切换页面时，重置所有数据
+  const resetData = () => {
+    enterPageTime.current = new Date();
+    xhrRequestResList.current = [];
+    fetchRequestResList.current = [];
+    resourceList.current = {};
+    userInfo.current = {};
+    errorList.current = [];
+    clickEventList.current = [];
+  };
+
   // 路由切换时，重新统计数据
   useEffect(() => {
-    console.log('start');
+    resetData();
     collectPerformance();
     collectRequest();
     collectResources();
     collectUserInfo();
     collectError();
     collectClick();
-    enterPageTime.current = new Date();
     // fetch('http://localhost:8888');
   }, [refresh]);
 
