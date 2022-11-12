@@ -41,13 +41,15 @@ const Track = (props, ref) => {
   // 监听url变化，Track内部重新统计数据
   const _wr = function (type) {
     const orig = window.history[type];
-    return function () {
-      const rv = orig.apply(this);
-      const e = new Event(type);
+    return function (...args) {
+      const rv = orig.apply(this, args);
+      const e: any = new Event(type);
+      e.arguments = args;
       window.dispatchEvent(e);
       return rv;
     };
   };
+
   window.history.pushState = _wr('pushState');
   window.history.replaceState = _wr('replaceState');
   window.addEventListener('replaceState', function (e) {
