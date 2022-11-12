@@ -56,3 +56,5 @@ function App() {
 ```
 
 Of course, based on the generality of the `Track` component itself, you can also call the `callbackTrackData` method anywhere you want to collect data by passing down the `ref` of the `Track`.
+
+The component itself has built-in monitoring for `url` changes. You can synchronously monitor `url` changes in business and obtain the data of the corresponding page.

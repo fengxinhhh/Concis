@@ -30,12 +30,12 @@ const Track = (props, ref) => {
 
   const [refresh, setRefresh] = useState(false);
   const [performanceData, setPerformanceData] = useState({});
-  const xhrRequestResList = useRef([]);
-  const fetchRequestResList = useRef([]);
-  const resourceList = useRef({});
-  const userInfo = useRef({});
-  const errorList = useRef([]);
-  const clickEventList = useRef([]);
+  const [xhrRequestResListState, setXhrRequestResListState] = useState([]);
+  const [fetchRequestResListState, setFetchRequestResListState] = useState([]);
+  const [resourceListState, setResourceListState] = useState({});
+  const [userInfoState, setUserInfoState] = useState({});
+  const [errorListState, setErrorListState] = useState([]);
+  const [clickEventListState, setClickEventListState] = useState([]);
   const enterPageTime = useRef(null);
 
   // 监听url变化，Track内部重新统计数据
@@ -93,41 +93,54 @@ const Track = (props, ref) => {
   // 收集网络请求参数
   const collectRequest = () => {
     monitorXHRRequest((res) => {
-      xhrRequestResList.current.push(res);
+      setXhrRequestResListState((xhrRequestResListState) => {
+        return [...xhrRequestResListState, res];
+      });
     });
     monitorFetchRequest((res) => {
-      fetchRequestResList.current.push(res);
+      setFetchRequestResListState((fetchRequestResListState) => {
+        return [...fetchRequestResListState, res];
+      });
     });
   };
 
   // 收集静态资源信息参数
   const collectResources = () => {
-    resourceList.current = getResources();
+    const resourceList = getResources();
+    setResourceListState(resourceList);
   };
 
   // 收集用户信息参数
   const collectUserInfo = async () => {
     const userIp = await getUserIp();
-    userInfo.current = {
-      ...(userIp as userInfoType),
-      ...getNativeBrowserInfo(),
-    };
+    setUserInfoState((userInfoState) => {
+      return {
+        ...(userIp as userInfoType),
+        ...getNativeBrowserInfo(),
+      };
+    });
   };
 
   // 收集错误捕捉信息
   const collectError = () => {
     getJavaScriptError((res) => {
-      errorList.current.push(res);
+      setErrorListState((errorListState) => {
+        return [...errorListState, res];
+      });
     });
     getJavaScriptAsyncError((res) => {
-      errorList.current.push(res);
+      setErrorListState((errorListState) => {
+        return [...errorListState, res];
+      });
     });
   };
 
   // 收集页面点击事务
   const collectClick = () => {
     onClick((res) => {
-      clickEventList.current.push(res);
+      setClickEventListState((clickEventListState) => {
+        return [...clickEventListState, res];
+      });
     });
   };
 
@@ -135,12 +148,12 @@ const Track = (props, ref) => {
   const callbackTrackData = () => {
     return {
       performanceData,
-      xhrRequestResList: xhrRequestResList.current,
-      fetchRequestResList: fetchRequestResList.current,
-      resourceList: resourceList.current,
-      userInfo: userInfo.current,
-      errorList: errorList.current,
-      clickEventList: clickEventList.current,
+      xhrRequestResList: xhrRequestResListState,
+      fetchRequestResList: fetchRequestResListState,
+      resourceList: resourceListState,
+      userInfo: userInfoState,
+      errorList: errorListState,
+      clickEventList: clickEventListState,
       leaveTime: Math.round(
         Math.abs((enterPageTime.current as Date).getTime() - new Date().getTime()) / 1000
       ),
@@ -150,12 +163,13 @@ const Track = (props, ref) => {
   // 切换页面时，重置所有数据
   const resetData = () => {
     enterPageTime.current = new Date();
-    xhrRequestResList.current = [];
-    fetchRequestResList.current = [];
-    resourceList.current = {};
-    userInfo.current = {};
-    errorList.current = [];
-    clickEventList.current = [];
+    setPerformanceData({});
+    setXhrRequestResListState([]);
+    setFetchRequestResListState([]);
+    setResourceListState({});
+    setUserInfoState({});
+    setErrorListState([]);
+    setClickEventListState([]);
   };
 
   // 路由切换时，重新统计数据
