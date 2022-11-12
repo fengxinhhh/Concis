@@ -36,7 +36,7 @@ const Track = (props, ref) => {
   const userInfo = useRef({});
   const errorList = useRef([]);
   const clickEventList = useRef([]);
-  const enterPageTime = useRef(new Date());
+  const enterPageTime = useRef(null);
 
   // 监听url变化，Track内部重新统计数据
   const _wr = function (type) {
@@ -52,18 +52,13 @@ const Track = (props, ref) => {
 
   window.history.pushState = _wr('pushState');
   window.history.replaceState = _wr('replaceState');
-  window.addEventListener('replaceState', function (e) {
-    console.log('THEY DID IT AGAIN! replaceState 111111');
+
+  function refreshComponent() {
     setRefresh(!refresh);
-  });
-  window.addEventListener('pushState', function (e) {
-    console.log('THEY DID IT AGAIN! pushState 2222222');
-    setRefresh(!refresh);
-  });
-  window.addEventListener('hashchange', function (e) {
-    console.log('THEY DID IT AGAIN! pushState 2222222');
-    setRefresh(!refresh);
-  });
+  }
+  window.addEventListener('replaceState', refreshComponent);
+  window.addEventListener('pushState', refreshComponent);
+  window.addEventListener('hashchange', refreshComponent);
 
   useImperativeHandle(ref, () => ({
     callbackTrackData,
@@ -71,7 +66,6 @@ const Track = (props, ref) => {
 
   // 收集性能参数
   const collectPerformance = async () => {
-    console.log('start');
     const fp = await collectFP();
     const fcp = await collectFCP();
     const lcp = await collectLCP();
@@ -153,25 +147,16 @@ const Track = (props, ref) => {
     };
   };
 
-  // debugger
-  // const over = () => {
-  //   console.log('performance: ', performanceData);
-  //   console.log('xhr network: ', xhrRequestResList.current);
-  //   console.log('fetch network: ', fetchRequestResList.current);
-  //   console.log('resource: ', resourceList.current);
-  //   console.log('userInfo: ', userInfo.current);
-  //   console.log('error: ', errorList.current);
-  //   console.log('click: ', clickEventList.current);
-  // };
-
   // 路由切换时，重新统计数据
   useEffect(() => {
+    console.log('start');
     collectPerformance();
     collectRequest();
     collectResources();
     collectUserInfo();
     collectError();
     collectClick();
+    enterPageTime.current = new Date();
     // fetch('http://localhost:8888');
   }, [refresh]);
 
