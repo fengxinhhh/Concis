@@ -1,9 +1,18 @@
-type resourceItemType = {
+type resourceItemType<T> = {
   initiatorType: string;
-  transferSize: number;
+  transferSize: T;
   nextHopProtocol: string;
   name: string;
-  duration: number;
+  duration: T;
+  domainLookupEnd: T;
+  domainLookupStart: T;
+  connectEnd: T;
+  connectStart: T;
+  redirectEnd: T;
+  redirectStart: T;
+  responseStart: T;
+  encodedBodySize: T;
+  decodedBodySize: T;
 };
 
 type xhrRequestType = {
@@ -30,4 +39,28 @@ type fetchRequestType = {
   url: RequestInfo | URL;
 };
 
-export type { resourceItemType, fetchRequestType, xhrRequestType };
+type nativeBrowserInfoType = {
+  domain?: string;
+  url?: string;
+  title?: string;
+  referrer?: string;
+  screenHeight?: number | string;
+  screenWidth?: number | string;
+  color?: number;
+  lang?: string;
+  ua?: string;
+};
+
+type userInfoType = {
+  cid: string;
+  cip: string;
+  cname: string;
+};
+
+export type {
+  resourceItemType,
+  fetchRequestType,
+  xhrRequestType,
+  nativeBrowserInfoType,
+  userInfoType,
+};
