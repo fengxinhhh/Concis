@@ -32,6 +32,9 @@ const YearPicker = (props, ref) => {
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}year-picker`);
   const [clickDate, setClickDate] = useState(new Date());
+
+  const basePopoverStyle = { boxShadow: '0 0 5px 2px #d0d0d0', bottom: '45px' };
+
   useEffect(() => {
     const length12 = new Array(12).fill('');
     setYearList(
@@ -48,21 +51,25 @@ const YearPicker = (props, ref) => {
       )
     );
   }, [year]);
+
   useEffect(() => {
     // 用于监听Form组件的重置任务
     if (formCtx.reset) {
       setDateValue('');
     }
   }, [formCtx.reset]);
+
   useEffect(() => {
     if (formCtx.submitStatus) {
       formCtx.getChildVal(dateValue);
     }
   }, [formCtx.submitStatus]);
+
   const clearCallback = () => {
     setDateValue('');
     handleChange && handleChange(null);
   };
+
   const setInputVal = (data: YearItemProps) => {
     if (data.disable) {
       return;
@@ -82,6 +89,7 @@ const YearPicker = (props, ref) => {
       align={align}
       dialogWidth="auto"
       closeDeps={[dateValue]}
+      style={basePopoverStyle}
       content={
         <div
           className={classNames}

@@ -47,6 +47,7 @@ const Popover = forwardRef<PopoverRef, popoverProps>((props, ref) => {
   }));
 
   useEffect(() => {
+    console.log(style);
     setShowBtnSize({
       width: (showBtnRef.current as any).offsetWidth,
       height: (showBtnRef.current as any).offsetHeight,

@@ -1,5 +1,4 @@
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 import DatePicker from '../../../src/DatePicker/DatePicker';
 import MonthPicker from '../../../src/DatePicker/MonthPicker';
 import YearPicker from '../../../src/DatePicker/YearPicker';
@@ -25,19 +24,16 @@ describe('DatePicker', () => {
         handleChange={mockFn}
       />
     );
-    expect(component.find('.concis-date-picker')).toHaveLength(1);
-    expect(
-      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0')
-    ).toBe(true);
-    act(() => {
-      component.find('input').simulate('focus');
-    });
-    component.update();
-    component.find('.concis-date-picker table tr td:not(.day-empty)').at(0).simulate('click');
-    expect(mockFn).toBeCalled();
-    expect(
-      component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[2]
-    ).toBe('01');
+    expect(component.find('.concis-date-picker')).toHaveLength(0);
+    component.find('.concis-popover-card input').simulate('focus');
+    setTimeout(() => {
+      expect(component.find('.pop-dialog').length).toBe(1);
+      component.find('.concis-date-picker table tr td:not(.day-empty)').at(0).simulate('click');
+      expect(mockFn).toBeCalled();
+      expect(
+        component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[2]
+      ).toBe('01');
+    }, 200);
   });
   it('test MonthPicker correctly', () => {
     const mockFn = jest.fn();
@@ -49,19 +45,15 @@ describe('DatePicker', () => {
         handleChange={mockFn}
       />
     );
-    expect(component.find('.concis-month-picker')).toHaveLength(1);
-    expect(
-      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0')
-    ).toBe(true);
-    act(() => {
-      component.find('input').simulate('focus');
-    });
-    component.update();
-    component.find('.concis-month-picker table tr').at(0).find('td').at(0).simulate('click');
-    expect(mockFn).toBeCalled();
-    expect(
-      component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[1]
-    ).toBe('01');
+    expect(component.find('.concis-month-picker')).toHaveLength(0);
+    component.find('.concis-popover-card input').simulate('focus');
+    setTimeout(() => {
+      component.find('.concis-month-picker table tr').at(0).find('td').at(0).simulate('click');
+      expect(mockFn).toBeCalled();
+      expect(
+        component.find('.concis-input input').getDOMNode()?.getAttribute('value')?.split('-')[1]
+      ).toBe('01');
+    }, 200);
   });
   it('test YearPicker correctly', () => {
     const mockFn = jest.fn();
@@ -73,19 +65,15 @@ describe('DatePicker', () => {
         handleChange={mockFn}
       />
     );
-    expect(component.find('.concis-year-picker')).toHaveLength(1);
-    expect(
-      component.find('.pop-dialog').getDOMNode().getAttribute('style')?.includes('opacity: 0')
-    ).toBe(true);
-    act(() => {
-      component.find('input').simulate('focus');
-    });
-    component.update();
-    component.find('.concis-year-picker table tr').at(0).find('td').at(0).simulate('click');
-    expect(mockFn).toBeCalled();
-    expect(component.find('.concis-input input').getDOMNode()?.getAttribute('value')).toBe(
-      String(new Date().getFullYear())
-    );
+    expect(component.find('.concis-year-picker')).toHaveLength(0);
+    component.find('.concis-popover-card input').simulate('focus');
+    setTimeout(() => {
+      component.find('.concis-year-picker table tr').at(0).find('td').at(0).simulate('click');
+      expect(mockFn).toBeCalled();
+      expect(component.find('.concis-input input').getDOMNode()?.getAttribute('value')).toBe(
+        String(new Date().getFullYear())
+      );
+    }, 200);
   });
   it('test range DatePicker show correctly', () => {
     // 测试区间式选择器的正确性

@@ -35,6 +35,8 @@ const MonthPicker = (props, ref) => {
   const [clickDate, setClickDate] = useState(new Date());
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}month-picker`);
 
+  const basePopoverStyle = { boxShadow: '0 0 5px 2px #d0d0d0', bottom: '45px' };
+
   useEffect(() => {
     // 用于监听Form组件的重置任务
     if (formCtx.reset) {
@@ -72,6 +74,7 @@ const MonthPicker = (props, ref) => {
       align={align}
       dialogWidth="auto"
       closeDeps={[dateValue]}
+      style={basePopoverStyle}
       content={
         <div
           className={classNames}

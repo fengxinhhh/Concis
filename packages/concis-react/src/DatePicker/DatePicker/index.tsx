@@ -39,12 +39,15 @@ const DatePicker = (props, ref) => {
   const [nowDayList, setNowDayList] = useState<DateItemProps[][]>([]);
   const [dateValue, setDateValue] = useState('');
 
+  const basePopoverStyle = { boxShadow: '0 0 5px 2px #d0d0d0', bottom: '45px' };
+
   const formCtx = useContext(ctx);
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}date-picker`);
 
   const [clickDate, setClickDate] = useState(new Date());
+
   useEffect(() => {
     const { year, month } = nowDate;
     // 1号是星期几
@@ -69,6 +72,7 @@ const DatePicker = (props, ref) => {
       )
     );
   }, [nowDate.year, nowDate.month]);
+
   useEffect(() => {
     // 用于监听Form组件的重置任务
     if (formCtx.reset) {
@@ -76,6 +80,7 @@ const DatePicker = (props, ref) => {
       setDateValue('');
     }
   }, [formCtx.reset]);
+
   useEffect(() => {
     if (formCtx.submitStatus) {
       formCtx.getChildVal(dateValue);
@@ -86,6 +91,7 @@ const DatePicker = (props, ref) => {
     setDateValue('');
     handleChange && handleChange(null);
   };
+
   const setInputVal = (data: DateItemProps) => {
     if (data.disable) {
       return;
@@ -99,9 +105,11 @@ const DatePicker = (props, ref) => {
     });
     handleChange && handleChange(data.date);
   };
+
   const setYear = (year: number): void => {
     setNowDate({ ...nowDate, year });
   };
+
   const setMonth = (month: number, type: string): void => {
     let date = {} as NowDateProps;
     if (type === 'add') {
@@ -117,6 +125,7 @@ const DatePicker = (props, ref) => {
     }
     setNowDate(date);
   };
+
   const isSameDate = (date: Date) => {
     return (
       date.getFullYear() === clickDate.getFullYear() &&
@@ -131,6 +140,7 @@ const DatePicker = (props, ref) => {
       align={align}
       dialogWidth="auto"
       closeDeps={[dateValue]}
+      style={basePopoverStyle}
       content={
         <div
           className={classNames}
