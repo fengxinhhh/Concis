@@ -10,6 +10,7 @@
   .open-container {
     position: relative;
     width: auto;
+    border: 5px solid transparent;
 
     .pop-dialog {
       position: absolute;
@@ -37,4 +38,24 @@
   div {
     color: @concis-dark-font-color !important;
   }
+}
+
+.fadeIn-enter,
+.fadeIn-appear {
+  opacity: 0;
+}
+
+.fadeIn-enter-active,
+.fadeIn-appear-active {
+  opacity: 1;
+  transition: opacity 0.2s linear;
+}
+
+.fadeIn-exit {
+  opacity: 1;
+}
+
+.fadeIn-exit-active {
+  opacity: 0;
+  transition: opacity 0.2s linear;
 }

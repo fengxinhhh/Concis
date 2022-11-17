@@ -57,11 +57,11 @@ type alignStyle = {
   top?: string;
   bottom?: string;
   border?: string;
-  opacity: number;
+  width: string;
 };
 
 type PopoverRef = {
-  setShowDialog: unknown;
+  setShowDialog: (visible: boolean) => void;
 };
 
 export type { popoverProps, alignStyle, PopoverRef };

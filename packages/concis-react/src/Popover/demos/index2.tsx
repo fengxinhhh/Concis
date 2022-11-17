@@ -8,7 +8,7 @@ export default function MenuDemos1() {
         type="click"
         style={{ padding: '0 0 15px 15px' }}
         align="right"
-        dialogWidth={300}
+        dialogWidth={200}
         content={
           <>
             <p style={{ color: '#1d2129', fontSize: '16px' }}>Title</p>

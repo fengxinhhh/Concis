@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState, forwardRef } from 'react';
 import type { TimePickerProps } from './interface';
+import type { PopoverRef } from '../Popover/interface';
 import Input from '../Input';
 import Popover from '../Popover';
 import Button from '../Button';
@@ -31,6 +32,7 @@ const TimePicker = (props, ref) => {
     clearCallback,
     changeCallback,
   } = props;
+
   const HOUR_LIST = getIdxArr(24);
   const MIN_AND_SEC_LIST = getIdxArr(60);
   const NOW_TIME = new Date();
@@ -40,21 +42,16 @@ const TimePicker = (props, ref) => {
   const [timeValue, setTimeValue] = useState(defaultTime);
   const formCtx = useContext(ctx);
   const parentRef = useRef(null);
+  const popoverRef = useRef<PopoverRef>(null);
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}time-picker`);
-  const changeTime = (newHour: number = hour, newMin: number = min, newSecond: number = second) => {
-    const time = `${newHour < 10 ? `0${newHour}` : String(newHour)}:${
-      newMin < 10 ? `0${newMin}` : String(newMin)
-    }:${newSecond < 10 ? `0${newSecond}` : String(newSecond)}`;
-    changeCallback && changeCallback(time);
-    handleConfirm && handleConfirm(time);
-    setTimeValue(time);
-  };
+
   useEffect(() => {
     setHour(NOW_TIME.getHours());
     setMin(NOW_TIME.getMinutes());
     setSecond(NOW_TIME.getSeconds());
   }, []);
+
   useEffect(() => {
     // 用于监听Form组件的重置任务
     if (formCtx.reset) {
@@ -64,18 +61,42 @@ const TimePicker = (props, ref) => {
       setTimeValue('');
     }
   }, [formCtx.reset]);
+
   useEffect(() => {
     if (formCtx.submitStatus) {
       formCtx.getChildVal(`${hour}:${min}:${second}`);
     }
   }, [formCtx.submitStatus]);
 
+  useEffect(() => {
+    scrollTo(0);
+  }, [hour]);
+
+  useEffect(() => {
+    scrollTo(1);
+  }, [min]);
+
+  useEffect(() => {
+    scrollTo(2);
+  }, [second]);
+
+  const changeTime = (newHour: number = hour, newMin: number = min, newSecond: number = second) => {
+    const time = `${newHour < 10 ? `0${newHour}` : String(newHour)}:${
+      newMin < 10 ? `0${newMin}` : String(newMin)
+    }:${newSecond < 10 ? `0${newSecond}` : String(newSecond)}`;
+    changeCallback && changeCallback(time);
+    handleConfirm && handleConfirm(time);
+    setTimeValue(time);
+    popoverRef.current.setShowDialog(false);
+  };
+
   const handleClear = () => {
     setTimeValue('');
     clearCallback && clearCallback();
   };
-  const scrollTo = (eventIdx: number, idx: number): boolean => {
-    const divDom = (parentRef.current as any).querySelectorAll('.time-panel div')[idx];
+
+  const scrollTo = (idx: number): boolean => {
+    const divDom = (parentRef.current as any)?.querySelectorAll('.time-panel div')[idx];
     if (!divDom || !divDom.scrollTo) {
       return false;
     }
@@ -83,21 +104,14 @@ const TimePicker = (props, ref) => {
     divDom.scrollTo(0, divDom.querySelector(`.active`).offsetTop - 7);
     return true;
   };
-  useEffect(() => {
-    scrollTo(hour, 0);
-  }, [hour]);
-  useEffect(() => {
-    scrollTo(min, 1);
-  }, [min]);
-  useEffect(() => {
-    scrollTo(second, 2);
-  }, [second]);
+
   return (
     <Popover
       type="click"
       align={align}
       dialogWidth="auto"
       closeDeps={[timeValue]}
+      ref={popoverRef}
       content={
         <div className={classNames} style={style} ref={ref}>
           <div
