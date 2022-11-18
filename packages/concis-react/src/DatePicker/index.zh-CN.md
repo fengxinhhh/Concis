@@ -54,22 +54,22 @@ mobile: false
 
 ## DatePicker、MonthPicker、YearPicker API
 
-| Name         | Description            | Type            | Default      |
-| ------------ | ---------------------- | --------------- | ------------ |
-| style        | 自定义样式             | `CSSProperties` | `--`         |
-| className    | 类名                   | `string`        | `--`         |
-| format       | 设置日期的格式化       | `string`        | `YYYY-MM-DD` |
-| showClear    | 显示日期重置按钮       | `boolean`       | `false`      |
-| align        | 方向                   | `string`        | `top`        |
-| handleChange | 选择完毕后的回调函数   | `Function`      | `--`         |
-| disableCheck | 验证是否禁用选项的函数 | `Function`      | `--`         |
+| Name         | Description            | Type                          | Default      |
+| ------------ | ---------------------- | ----------------------------- | ------------ |
+| style        | 自定义样式             | `CSSProperties`               | `--`         |
+| className    | 类名                   | `string`                      | `--`         |
+| format       | 设置日期的格式化       | `string`                      | `YYYY-MM-DD` |
+| showClear    | 显示日期重置按钮       | `boolean`                     | `false`      |
+| align        | 方向                   | `left / right / bottom / top` | `top`        |
+| handleChange | 选择完毕后的回调函数   | `Function`                    | `--`         |
+| disableCheck | 验证是否禁用选项的函数 | `Function`                    | `--`         |
 
 ## RangeDatePicker API
 
-| Name         | Description      | Type            | Default  |
-| ------------ | ---------------- | --------------- | -------- |
-| style        | 自定义样式       | `CSSProperties` | `--`     |
-| className    | 类名             | `string`        | `--`     |
-| showClear    | 显示日期重置按钮 | `boolean`       | `false`  |
-| align        | 方向             | `string`        | `bottom` |
-| handleChange | 日期改变回调函数 | `Function`      | `--`     |
+| Name         | Description      | Type                          | Default  |
+| ------------ | ---------------- | ----------------------------- | -------- |
+| style        | 自定义样式       | `CSSProperties`               | `--`     |
+| className    | 类名             | `string`                      | `--`     |
+| showClear    | 显示日期重置按钮 | `boolean`                     | `false`  |
+| align        | 方向             | `left / right / bottom / top` | `bottom` |
+| handleChange | 日期改变回调函数 | `Function`                    | `--`     |

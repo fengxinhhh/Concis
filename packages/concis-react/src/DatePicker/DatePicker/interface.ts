@@ -25,7 +25,7 @@ interface DatePickerProps {
    * @description 方向
    * @default false
    */
-  align?: string;
+  align?: 'left' | 'right' | 'bottom' | 'top';
   /**
    * @description 选择完毕后的回调函数
    * @default Function

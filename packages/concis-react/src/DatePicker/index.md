@@ -54,22 +54,22 @@ The orientation is specified by `align`, optional parameters are `left`, `right`
 
 ## DatePicker, MonthPicker, YearPicker API
 
-| Name         | Description                                   | Type            | Default      |
-| ------------ | --------------------------------------------- | --------------- | ------------ |
-| style        | Custom styles                                 | `CSSProperties` | `--`         |
-| className    | class name                                    | `string`        | `--`         |
-| format       | Set the format of the date                    | `string`        | `YYYY-MM-DD` |
-| showClear    | Show date reset button                        | `boolean`       | `false`      |
-| align        | orientation                                   | `string`        | `top`        |
-| handleChange | callback function after selection             | `Function`      | `--`         |
-| disableCheck | A function to verify if an option is disabled | `Function`      | `--`         |
+| Name         | Description                                   | Type                          | Default      |
+| ------------ | --------------------------------------------- | ----------------------------- | ------------ |
+| style        | Custom styles                                 | `CSSProperties`               | `--`         |
+| className    | class name                                    | `string`                      | `--`         |
+| format       | Set the format of the date                    | `string`                      | `YYYY-MM-DD` |
+| showClear    | Show date reset button                        | `boolean`                     | `false`      |
+| align        | orientation                                   | `left / right / bottom / top` | `top`        |
+| handleChange | callback function after selection             | `Function`                    | `--`         |
+| disableCheck | A function to verify if an option is disabled | `Function`                    | `--`         |
 
 ## RangeDatePicker API
 
-| Name         | Description                   | Type            | Default  |
-| ------------ | ----------------------------- | --------------- | -------- |
-| style        | Custom styles                 | `CSSProperties` | `--`     |
-| className    | class name                    | `string`        | `--`     |
-| showClear    | Show date reset button        | `boolean`       | `false`  |
-| align        | orientation                   | `string`        | `bottom` |
-| handleChange | Date change callback function | `Function`      | `--`     |
+| Name         | Description                   | Type                          | Default  |
+| ------------ | ----------------------------- | ----------------------------- | -------- |
+| style        | Custom styles                 | `CSSProperties`               | `--`     |
+| className    | class name                    | `string`                      | `--`     |
+| showClear    | Show date reset button        | `boolean`                     | `false`  |
+| align        | orientation                   | `left / right / bottom / top` | `bottom` |
+| handleChange | Date change callback function | `Function`                    | `--`     |

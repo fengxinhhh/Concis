@@ -18,7 +18,7 @@ interface RangeProps {
    * @description 方向
    * @default bottom
    */
-  align?: string;
+  align?: 'left' | 'right' | 'bottom' | 'top';
   /**
    * @description 日期改变回调函数
    */

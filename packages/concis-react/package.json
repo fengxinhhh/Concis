@@ -45,7 +45,7 @@
     "core-js": "^3.24.1",
     "dayjs": "^1.11.4",
     "lodash": "^4.17.21",
-    "react-is": "^18.2.0",
+    "react-is": "^17.0.0",
     "styled-components": "^5.3.6",
     "tslib": "^2.4.0"
   },

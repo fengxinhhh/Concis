@@ -16,11 +16,11 @@ function getActiveColor(color) {
 function getAlignTransform(align) {
   const alignMap = {
     left: {
-      right: '500px',
+      right: '100%',
       bottom: '20px',
     },
     right: {
-      left: '360px',
+      left: '100%',
       bottom: '20px',
     },
     top: {
@@ -35,11 +35,12 @@ function getAlignTransform(align) {
   `;
 }
 
-const RangeDatePickerStyle = styled.div<{ activedColor; align }>`
+const RangeDatePickerStyle = styled.span<{ activedColor; align }>`
   .concis-range-picker,
   .concis-dark-range-picker {
     position: relative;
     user-select: none;
+    display: inline-block;
 
     .rangePicker {
       position: relative;
