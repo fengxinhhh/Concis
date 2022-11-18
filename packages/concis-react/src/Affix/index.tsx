@@ -4,7 +4,7 @@ import { on, off } from '../common_utils/dom/event';
 import type { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
+import { AffixStyle } from './style';
 
 const Affix = (props, ref) => {
   const {
@@ -59,7 +59,7 @@ const Affix = (props, ref) => {
   }
 
   useEffect(() => {
-    const el = document.querySelector('.concis-affix') as Element;
+    const el = document.querySelector(`.concis${darkTheme ? '-dark' : ''}-affix`) as Element;
     io = new IntersectionObserver((entries) => elementObverse(entries));
     io.observe(el); // 数据劫持监听
     setAffixElOffset((old) => {
@@ -102,16 +102,18 @@ const Affix = (props, ref) => {
   };
 
   return (
-    <div
-      className={classNames}
-      ref={ref}
-      style={{
-        ...(affixElOffset as React.HtmlHTMLAttributes<any>),
-        ...style,
-      }}
-    >
-      {children}
-    </div>
+    <AffixStyle>
+      <div
+        className={classNames}
+        ref={ref}
+        style={{
+          ...(affixElOffset as React.HtmlHTMLAttributes<any>),
+          ...style,
+        }}
+      >
+        {children}
+      </div>
+    </AffixStyle>
   );
 };
 

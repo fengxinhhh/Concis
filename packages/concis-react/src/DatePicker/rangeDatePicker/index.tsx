@@ -15,20 +15,21 @@ import {
   SwapRightOutlined,
 } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
+import { RangeDatePickerStyle } from './style';
 import { onClickOutSide, dispatchRef } from '../../common_utils/dom/event';
 import type { RangeProps } from './interface';
 import Input from '../../Input';
+import { getSiteTheme } from '../../common_utils/storage/getSiteTheme';
+import { getRenderColor } from '../../common_utils/getRenderColor';
 import { GlobalConfigProps } from '../../GlobalConfig/interface';
 import cs from '../../common_utils/classNames';
 import { globalCtx } from '../../GlobalConfig';
 import { ctx } from '../../Form';
-import './index.module.less';
 
 const dateReg = /^([1-2]\d{3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][0-9]|30|31)$/;
-const defaultPrimaryColor = '#325DFF';
 
 const RangeDatePicker = (props, ref) => {
-  const { className, showClear, align, handleChange, style } = props;
+  const { className, showClear, align = 'bottom', handleChange, style } = props;
 
   const [startDate, setStartDate] = useState({
     startYear: new Date().getFullYear(),
@@ -79,6 +80,8 @@ const RangeDatePicker = (props, ref) => {
     setEndDayListArray(endDayList);
     setEndMonthFirstDay(endFirstDay);
   }, [startDate.startYear, startDate.startMonth, endDate.endYear, endDate.endMonth]);
+
+  const siteTheme = getSiteTheme();
 
   useEffect(() => {
     const handleClick = () => {
@@ -376,47 +379,6 @@ const RangeDatePicker = (props, ref) => {
     });
   };
 
-  const activeStyles = () => {
-    // 选中的样式
-    return {
-      activeDay: {
-        color: '#fff',
-        background: globalColor || defaultPrimaryColor,
-        fontWeight: 'bold',
-        borderRadius: '5px',
-      },
-      showDialog: {
-        opacity: 1,
-      },
-    };
-  };
-
-  const alignFn = useCallback(() => {
-    if (!align) {
-      return {
-        bottom: {
-          top: '40px',
-        },
-      };
-    }
-    return {
-      right: {
-        left: '360px',
-        bottom: '20px',
-      },
-      left: {
-        right: '600px',
-        bottom: '20px',
-      },
-      top: {
-        bottom: '40px',
-      },
-      bottom: {
-        top: '40px',
-      },
-    }[align];
-  }, [align]);
-
   const disabledClass = useCallback(
     (day: number | string) => {
       if (day === '') {
@@ -434,162 +396,164 @@ const RangeDatePicker = (props, ref) => {
   );
 
   return (
-    <div
-      className={classNames}
-      onClick={(e) => e.stopPropagation()}
-      style={{ '--hover-color': globalColor || defaultPrimaryColor, ...style } as any}
-      ref={(node) => {
-        rangePickerDom.current = node;
-        dispatchRef<RefObject<HTMLElement> | HTMLElement>(ref, node);
-      }}
+    <RangeDatePickerStyle
+      activedColor={getRenderColor(
+        (siteTheme === 'dark' || siteTheme === 'auto' || darkTheme) as boolean,
+        globalColor
+      )}
+      align={align}
     >
-      <div className="rangePicker" onClick={(e) => e.stopPropagation()}>
-        <Input
-          placeholder="请输入开始日期"
-          defaultValue={
-            startTime || `${startDate.startYear}-${startDate.startMonth}-${startDate.startDay}`
-          }
-          handleIptChange={(v: string) => setStartTime(v)}
-          handleIptFocus={() => iptFocus('left')}
-          handleKeyDown={(e: any) => enterChangeStartTime(e)}
-          handleIptBlur={blurStartTime}
-          clearCallback={clearStartTime}
-          showClear={showClear}
-          isFather
-        />
-        <SwapRightOutlined style={{ color: '#cccccc', fontSize: '20px' }} />
-        <Input
-          placeholder="请输入结束日期"
-          defaultValue={endTime || `${endDate.endYear}-${endDate.endMonth}-${endDate.endDay}`}
-          handleIptChange={(v: string) => setEndTime(v)}
-          handleIptFocus={() => iptFocus('right')}
-          handleKeyDown={(e: any) => enterChangeEndTime(e)}
-          handleIptBlur={blurEndTime}
-          clearCallback={clearEndTime}
-          showClear={showClear}
-          isFather
-        />
-        <div className="activeBorder" ref={activeBorderDom} />
-      </div>
-      <CSSTransition
-        in={renderShowDialog}
-        timeout={300}
-        appear
-        classNames="fadeIn"
-        mountOnEnter
-        onEnter={(e) => {
-          e.style.display = 'flex';
-        }}
-        onExited={(e) => {
-          e.style.display = 'none';
+      <div
+        className={classNames}
+        onClick={(e) => e.stopPropagation()}
+        style={style}
+        ref={(node) => {
+          rangePickerDom.current = node;
+          dispatchRef<RefObject<HTMLElement> | HTMLElement>(ref, node);
         }}
       >
-        <div
-          className="date-box"
-          onClick={(e) => e.stopPropagation()}
-          style={{ ...alignFn() } as any}
-        >
-          <div className="left">
-            <div className="top-bar">
-              <div className="icon">
-                <DoubleLeftOutlined
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => preYear('start')}
-                />
-                <LeftOutlined
-                  style={{ marginLeft: '10px', cursor: 'pointer' }}
-                  onClick={() => preMonth('start')}
-                />
-              </div>
-              <div className="info">
-                {startDate.startYear}年 {startDate.startMonth}月
-              </div>
-              <div>
-                <RightOutlined style={{ cursor: 'pointer' }} onClick={() => nextMonth('start')} />
-                <DoubleRightOutlined
-                  style={{ marginLeft: '10px', cursor: 'pointer' }}
-                  onClick={() => nextYear('start')}
-                />
-              </div>
-            </div>
-            <div className="week">
-              <div>一</div>
-              <div>二</div>
-              <div>三</div>
-              <div>四</div>
-              <div>五</div>
-              <div>六</div>
-              <div>日</div>
-            </div>
-            <div className="day-list">
-              {startDayListArray.map((i: string | number, index) => {
-                return (
-                  <div
-                    key={index}
-                    className={i === '' ? 'white' : 'box-list'}
-                    style={
-                      i === startDate.startDay
-                        ? (activeStyles().activeDay as React.CSSProperties)
-                        : {}
-                    }
-                    onClick={() => chooseStartDay(Number(i))}
-                  >
-                    {i}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className="right">
-            <div className="top-bar">
-              <div>
-                <DoubleLeftOutlined style={{ cursor: 'pointer' }} onClick={() => preYear('end')} />
-                <LeftOutlined
-                  style={{ marginLeft: '10px', cursor: 'pointer' }}
-                  onClick={() => preMonth('end')}
-                />
-              </div>
-              <div className="info">
-                {endDate.endYear}年 {endDate.endMonth}月
-              </div>
-
-              <div className="icon">
-                <RightOutlined style={{ cursor: 'pointer' }} onClick={() => nextMonth('end')} />
-                <DoubleRightOutlined
-                  style={{ marginLeft: '10px', cursor: 'pointer' }}
-                  onClick={() => nextYear('end')}
-                />
-              </div>
-            </div>
-            <div className="week">
-              <div>一</div>
-              <div>二</div>
-              <div>三</div>
-              <div>四</div>
-              <div>五</div>
-              <div>六</div>
-              <div>日</div>
-            </div>
-            <div className="day-list">
-              {endDayListArray.map((i: string | number, index) => {
-                return (
-                  <div
-                    key={index}
-                    className={disabledClass(i)}
-                    style={
-                      i === endDate.endDay ? (activeStyles().activeDay as React.CSSProperties) : {}
-                    }
-                    onClick={() => chooseEndDay(Number(i))}
-                  >
-                    {i}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+        <div className="rangePicker" onClick={(e) => e.stopPropagation()}>
+          <Input
+            placeholder="请输入开始日期"
+            defaultValue={
+              startTime || `${startDate.startYear}-${startDate.startMonth}-${startDate.startDay}`
+            }
+            handleIptChange={(v: string) => setStartTime(v)}
+            handleIptFocus={() => iptFocus('left')}
+            handleKeyDown={(e: any) => enterChangeStartTime(e)}
+            handleIptBlur={blurStartTime}
+            clearCallback={clearStartTime}
+            showClear={showClear}
+            isFather
+          />
+          <SwapRightOutlined style={{ color: '#cccccc', fontSize: '20px' }} />
+          <Input
+            placeholder="请输入结束日期"
+            defaultValue={endTime || `${endDate.endYear}-${endDate.endMonth}-${endDate.endDay}`}
+            handleIptChange={(v: string) => setEndTime(v)}
+            handleIptFocus={() => iptFocus('right')}
+            handleKeyDown={(e: any) => enterChangeEndTime(e)}
+            handleIptBlur={blurEndTime}
+            clearCallback={clearEndTime}
+            showClear={showClear}
+            isFather
+          />
+          <div className="activeBorder" ref={activeBorderDom} />
         </div>
-      </CSSTransition>
-    </div>
+        <CSSTransition
+          in={renderShowDialog}
+          timeout={300}
+          appear
+          classNames="fadeIn"
+          mountOnEnter
+          onEnter={(e) => {
+            e.style.display = 'flex';
+          }}
+          onExited={(e) => {
+            e.style.display = 'none';
+          }}
+        >
+          <div className="date-box" onClick={(e) => e.stopPropagation()}>
+            <div className="left">
+              <div className="top-bar">
+                <div className="icon">
+                  <DoubleLeftOutlined
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => preYear('start')}
+                  />
+                  <LeftOutlined
+                    style={{ marginLeft: '10px', cursor: 'pointer' }}
+                    onClick={() => preMonth('start')}
+                  />
+                </div>
+                <div className="info">
+                  {startDate.startYear}年 {startDate.startMonth}月
+                </div>
+                <div>
+                  <RightOutlined style={{ cursor: 'pointer' }} onClick={() => nextMonth('start')} />
+                  <DoubleRightOutlined
+                    style={{ marginLeft: '10px', cursor: 'pointer' }}
+                    onClick={() => nextYear('start')}
+                  />
+                </div>
+              </div>
+              <div className="week">
+                <div>一</div>
+                <div>二</div>
+                <div>三</div>
+                <div>四</div>
+                <div>五</div>
+                <div>六</div>
+                <div>日</div>
+              </div>
+              <div className="day-list">
+                {startDayListArray.map((i: string | number, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className={cs(
+                        i === '' ? 'white' : 'box-list',
+                        i === startDate.startDay ? 'actived' : ''
+                      )}
+                      onClick={() => chooseStartDay(Number(i))}
+                    >
+                      {i}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="right">
+              <div className="top-bar">
+                <div>
+                  <DoubleLeftOutlined
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => preYear('end')}
+                  />
+                  <LeftOutlined
+                    style={{ marginLeft: '10px', cursor: 'pointer' }}
+                    onClick={() => preMonth('end')}
+                  />
+                </div>
+                <div className="info">
+                  {endDate.endYear}年 {endDate.endMonth}月
+                </div>
+
+                <div className="icon">
+                  <RightOutlined style={{ cursor: 'pointer' }} onClick={() => nextMonth('end')} />
+                  <DoubleRightOutlined
+                    style={{ marginLeft: '10px', cursor: 'pointer' }}
+                    onClick={() => nextYear('end')}
+                  />
+                </div>
+              </div>
+              <div className="week">
+                <div>一</div>
+                <div>二</div>
+                <div>三</div>
+                <div>四</div>
+                <div>五</div>
+                <div>六</div>
+                <div>日</div>
+              </div>
+              <div className="day-list">
+                {endDayListArray.map((i: string | number, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className={cs(disabledClass(i), i === endDate.endDay ? 'actived' : '')}
+                      onClick={() => chooseEndDay(Number(i))}
+                    >
+                      {i}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </CSSTransition>
+      </div>
+    </RangeDatePickerStyle>
   );
 };
 

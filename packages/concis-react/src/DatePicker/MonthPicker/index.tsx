@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext, forwardRef } from 'react';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
+import { MonthPickerStyle } from './style';
 import type { MonthPickerProps } from './interface';
 import Input from '../../Input';
 import Popover from '../../Popover';
@@ -10,7 +11,6 @@ import { globalCtx } from '../../GlobalConfig';
 import { getSiteTheme } from '../../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../../common_utils/getRenderColor';
 import { ctx } from '../../Form';
-import './index.module.less';
 
 const MonthPicker = (props, ref) => {
   const {
@@ -30,10 +30,11 @@ const MonthPicker = (props, ref) => {
   ];
   const [startYear, setStartYear] = useState(dayjs().get('year'));
   const [dateValue, setDateValue] = useState('');
+  const [clickDate, setClickDate] = useState(new Date());
   const formCtx = useContext(ctx);
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
-  const [clickDate, setClickDate] = useState(new Date());
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}month-picker`);
+  const siteTheme = getSiteTheme();
 
   const basePopoverStyle = { boxShadow: '0 0 5px 2px #d0d0d0', bottom: '45px' };
 
@@ -44,15 +45,18 @@ const MonthPicker = (props, ref) => {
       setDateValue('');
     }
   }, [formCtx.reset]);
+
   useEffect(() => {
     if (formCtx.submitStatus) {
       formCtx.getChildVal(dateValue);
     }
   }, [formCtx.submitStatus]);
+
   const clearCallback = () => {
     setDateValue('');
     handleChange && handleChange(null);
   };
+
   const setInputVal = (date: Date) => {
     if (disableCheck(date)) {
       return;
@@ -61,6 +65,7 @@ const MonthPicker = (props, ref) => {
     setDateValue(dayjs(date).format(format));
     handleChange && handleChange(date);
   };
+
   const isSameDate = (date: Date) => {
     return (
       date.getFullYear() === clickDate.getFullYear() &&
@@ -69,68 +74,63 @@ const MonthPicker = (props, ref) => {
   };
 
   return (
-    <Popover
-      type="click"
-      align={align}
-      dialogWidth="auto"
-      closeDeps={[dateValue]}
-      style={basePopoverStyle}
-      content={
-        <div
-          className={classNames}
-          style={
-            {
-              '--checked-color': getRenderColor(
-                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
-              ),
-              ...style,
-            } as any
-          }
-          ref={ref}
-        >
-          <div className="month-picker-select">
-            <div className="left-select">
-              <DoubleLeftOutlined onClick={() => setStartYear(startYear - 1)} />
-            </div>
-            <div className="middle-select">
-              <span>{startYear}</span>-<span>{startYear + 12}</span>
-            </div>
-            <div className="right-select">
-              <DoubleRightOutlined onClick={() => setStartYear(startYear + 1)} />
-            </div>
-          </div>
-          <table>
-            <tbody>
-              {monthList.map((row, idx) => (
-                <tr key={idx}>
-                  {row.map((month, i) => (
-                    <td
-                      key={i}
-                      onClick={() => setInputVal(new Date(startYear, idx * 3 + i))}
-                      className={`${
-                        disableCheck(new Date(startYear, idx * 3 + i)) ? 'disable' : ''
-                      }  ${isSameDate(new Date(startYear, idx * 3 + i)) ? 'active' : ''}`}
-                    >
-                      <span>{month}</span>
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      }
+    <MonthPickerStyle
+      activedOptionColor={getRenderColor(
+        (siteTheme === 'dark' || siteTheme === 'auto' || darkTheme) as boolean,
+        globalColor
+      )}
     >
-      <Input
-        placeholder="请选择日期"
-        defaultValue={dateValue}
-        type="primary"
-        showClear={showClear}
-        clearCallback={clearCallback}
-        isFather
-      />
-    </Popover>
+      <Popover
+        type="click"
+        align={align}
+        dialogWidth="auto"
+        closeDeps={[dateValue]}
+        style={basePopoverStyle}
+        content={
+          <div className={classNames} style={style} ref={ref}>
+            <div className="month-picker-select">
+              <div className="left-select">
+                <DoubleLeftOutlined onClick={() => setStartYear(startYear - 1)} />
+              </div>
+              <div className="middle-select">
+                <span>{startYear}</span>-<span>{startYear + 12}</span>
+              </div>
+              <div className="right-select">
+                <DoubleRightOutlined onClick={() => setStartYear(startYear + 1)} />
+              </div>
+            </div>
+            <table>
+              <tbody>
+                {monthList.map((row, idx) => (
+                  <tr key={idx}>
+                    {row.map((month, i) => (
+                      <td
+                        key={i}
+                        onClick={() => setInputVal(new Date(startYear, idx * 3 + i))}
+                        className={`${
+                          disableCheck(new Date(startYear, idx * 3 + i)) ? 'disable' : ''
+                        }  ${isSameDate(new Date(startYear, idx * 3 + i)) ? 'active' : ''}`}
+                      >
+                        <span>{month}</span>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        }
+      >
+        <Input
+          placeholder="请选择日期"
+          defaultValue={dateValue}
+          type="primary"
+          showClear={showClear}
+          clearCallback={clearCallback}
+          isFather
+        />
+      </Popover>
+    </MonthPickerStyle>
   );
 };
 

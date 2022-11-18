@@ -198,12 +198,12 @@ const Tree = (props, ref) => {
     (treeNode: treeNode): string => {
       if (avaChooseMore) {
         if (activedVal.split(',').includes(treeNode.title)) {
-          return globalColor || (darkTheme ? '#325DFF' : 'rgba(60, 126, 255, 0.6)');
+          return globalColor || (darkTheme ? '#325DFF' : '#3C7EFF');
         }
       }
       // 搜索高亮样式
       if (treeNode.title.includes(activedVal) && activedVal !== '') {
-        return globalColor || (darkTheme ? '#325DFF' : 'rgba(60, 126, 255, 0.6)');
+        return globalColor || (darkTheme ? '#325DFF' : '#3C7EFF');
       }
     },
     [activedVal]

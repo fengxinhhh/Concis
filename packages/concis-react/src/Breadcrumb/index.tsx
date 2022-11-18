@@ -1,10 +1,10 @@
 import React, { Children, useContext, Fragment, forwardRef, useMemo } from 'react';
+import { BreadcrumbStyle } from './style';
 import { BreadcrumbProps } from './interface';
 import BreadcrumbItem from './item';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
 
 const Breadcrumb = (props: BreadcrumbProps, ref) => {
   const { children, className, style, separator = '/', maxCount } = props;
@@ -34,12 +34,14 @@ const Breadcrumb = (props: BreadcrumbProps, ref) => {
   }, [childrenList, children]);
 
   return (
-    <div className={classNames} style={style} ref={ref}>
-      {renderBreadcrumb}
-      {maxCount && maxCount < childrenList.length && (
-        <span className="concis-breadcrumb-item-ellipse">...</span>
-      )}
-    </div>
+    <BreadcrumbStyle>
+      <div className={classNames} style={style} ref={ref}>
+        {renderBreadcrumb}
+        {maxCount && maxCount < childrenList.length && (
+          <span className="concis-breadcrumb-item-ellipse">...</span>
+        )}
+      </div>
+    </BreadcrumbStyle>
   );
 };
 

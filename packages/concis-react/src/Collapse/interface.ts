@@ -89,7 +89,7 @@ interface CollapseHeaderProps {
    * @description 头部高度
    * @default 0
    */
-  headerHeight?: CSSProperties;
+  headerHeight?: number;
 }
 
 export type { CollapseItemProps, CollapseProps, CollapseHeaderProps };

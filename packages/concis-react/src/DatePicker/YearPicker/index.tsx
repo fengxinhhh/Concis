@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext, forwardRef } from 'react';
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons';
 import chunk from 'lodash/chunk';
+import { YearPickerStyle } from './style';
 import type { YearPickerProps, YearItemProps } from './interface';
 import Input from '../../Input';
 import Popover from '../../Popover';
@@ -10,7 +11,6 @@ import { globalCtx } from '../../GlobalConfig';
 import { getSiteTheme } from '../../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../../common_utils/getRenderColor';
 import { ctx } from '../../Form';
-import './index.module.less';
 
 const dayjs = require('dayjs');
 
@@ -27,12 +27,13 @@ const YearPicker = (props, ref) => {
   const [year, setYear] = useState(dayjs().get('year'));
   const [yearList, setYearList] = useState<YearItemProps[][]>([]);
   const [dateValue, setDateValue] = useState('');
-  const formCtx = useContext(ctx);
-
-  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
-  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}year-picker`);
   const [clickDate, setClickDate] = useState(new Date());
 
+  const formCtx = useContext(ctx);
+  const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
+
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}year-picker`);
+  const siteTheme = getSiteTheme();
   const basePopoverStyle = { boxShadow: '0 0 5px 2px #d0d0d0', bottom: '45px' };
 
   useEffect(() => {
@@ -84,68 +85,63 @@ const YearPicker = (props, ref) => {
   };
 
   return (
-    <Popover
-      type="click"
-      align={align}
-      dialogWidth="auto"
-      closeDeps={[dateValue]}
-      style={basePopoverStyle}
-      content={
-        <div
-          className={classNames}
-          ref={ref}
-          style={
-            {
-              '--checked-color': getRenderColor(
-                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
-              ),
-              ...style,
-            } as any
-          }
-        >
-          <div className="year-picker-select">
-            <div className="left-select">
-              <DoubleLeftOutlined onClick={() => setYear(year - 12)} />
-            </div>
-            <div className="middle-select">
-              <span>{year}</span>-<span>{year + 11}</span>
-            </div>
-            <div className="right-select">
-              <DoubleRightOutlined onClick={() => setYear(year + 12)} />
-            </div>
-          </div>
-          <table>
-            <tbody>
-              {yearList.map((row, idx) => (
-                <tr key={idx}>
-                  {row.map((date, i) => (
-                    <td
-                      key={i}
-                      onClick={() => setInputVal(date)}
-                      className={`${date.disable ? 'disable' : ''}  ${
-                        isSameDate(date.date) ? 'active' : ''
-                      }`}
-                    >
-                      <span>{date.value}</span>
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      }
+    <YearPickerStyle
+      activedOptionColor={getRenderColor(
+        (siteTheme === 'dark' || siteTheme === 'auto' || darkTheme) as boolean,
+        globalColor
+      )}
     >
-      <Input
-        placeholder="请选择日期"
-        defaultValue={dateValue}
-        type="primary"
-        showClear={showClear}
-        clearCallback={clearCallback}
-        isFather
-      />
-    </Popover>
+      <Popover
+        type="click"
+        align={align}
+        dialogWidth="auto"
+        closeDeps={[dateValue]}
+        style={basePopoverStyle}
+        content={
+          <div className={classNames} ref={ref} style={style}>
+            <div className="year-picker-select">
+              <div className="left-select">
+                <DoubleLeftOutlined onClick={() => setYear(year - 12)} />
+              </div>
+              <div className="middle-select">
+                <span>{year}</span>-<span>{year + 11}</span>
+              </div>
+              <div className="right-select">
+                <DoubleRightOutlined onClick={() => setYear(year + 12)} />
+              </div>
+            </div>
+            <table>
+              <tbody>
+                {yearList.map((row, idx) => (
+                  <tr key={idx}>
+                    {row.map((date, i) => (
+                      <td
+                        key={i}
+                        onClick={() => setInputVal(date)}
+                        className={`${date.disable ? 'disable' : ''}  ${
+                          isSameDate(date.date) ? 'active' : ''
+                        }`}
+                      >
+                        <span>{date.value}</span>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        }
+      >
+        <Input
+          placeholder="请选择日期"
+          defaultValue={dateValue}
+          type="primary"
+          showClear={showClear}
+          clearCallback={clearCallback}
+          isFather
+        />
+      </Popover>
+    </YearPickerStyle>
   );
 };
 

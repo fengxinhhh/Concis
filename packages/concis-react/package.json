@@ -40,10 +40,12 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.18.10",
     "@babel/preset-react": "^7.18.6",
+    "@emotion/react": "^11.10.5",
     "cimi": "1.2.0",
     "core-js": "^3.24.1",
     "dayjs": "^1.11.4",
     "lodash": "^4.17.21",
+    "styled-components": "^5.3.6",
     "tslib": "^2.4.0"
   },
   "devDependencies": {

@@ -79,7 +79,7 @@ const RadioGroup = (props, ref) => {
       style={
         {
           ...style,
-          '--global-color': getRenderColor(theme === ('auto' || 'dark'), globalColor),
+          '--global-color': getRenderColor(theme === 'auto' || theme === 'dark', globalColor),
         } as any
       }
       ref={ref}

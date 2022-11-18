@@ -6,11 +6,11 @@ import {
   CloseOutlined,
 } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
+import { AlertStyle } from './style';
 import { AlertProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
 
 const Alert = (props, ref) => {
   const {
@@ -56,35 +56,37 @@ const Alert = (props, ref) => {
   };
 
   return (
-    <CSSTransition
-      in={visible}
-      timeout={200}
-      appear
-      mountOnEnter
-      classNames="fadeContent"
-      unmountOnExit
-      onEnter={(e: HTMLDivElement) => {
-        e.style.display = 'flex';
-      }}
-      onExited={(e: HTMLDivElement) => {
-        e.style.display = 'none';
-      }}
-    >
-      <div className={classNames} style={style} ref={ref}>
-        <div className="alert-content">
-          {showIcon && <div className="alert-icon">{leftIcon}</div>}
-          <div className="alert-text">
-            {title && <div className="title">{title}</div>}
-            {content}
+    <AlertStyle>
+      <CSSTransition
+        in={visible}
+        timeout={200}
+        appear
+        mountOnEnter
+        classNames="fadeContent"
+        unmountOnExit
+        onEnter={(e: HTMLDivElement) => {
+          e.style.display = 'flex';
+        }}
+        onExited={(e: HTMLDivElement) => {
+          e.style.display = 'none';
+        }}
+      >
+        <div className={classNames} style={style} ref={ref}>
+          <div className="alert-content">
+            {showIcon && <div className="alert-icon">{leftIcon}</div>}
+            <div className="alert-text">
+              {title && <div className="title">{title}</div>}
+              {content}
+            </div>
           </div>
+          {showClear && (
+            <div className="close-icon" onClick={close}>
+              {closeElement || <CloseOutlined />}
+            </div>
+          )}
         </div>
-        {showClear && (
-          <div className="close-icon" onClick={close}>
-            {closeElement || <CloseOutlined />}
-          </div>
-        )}
-      </div>
-    </CSSTransition>
+      </CSSTransition>
+    </AlertStyle>
   );
 };
 

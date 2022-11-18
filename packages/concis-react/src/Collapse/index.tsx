@@ -1,4 +1,5 @@
 import React, { useState, createContext, useContext, forwardRef } from 'react';
+import { CollapseStyle } from './style';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -7,9 +8,6 @@ import { CollapseProps } from './interface';
 import './style/index.module.less';
 
 export const ctx = createContext<any>({} as any); // 顶层通信装置
-
-const darkBorderColor = '#484849',
-  lightBorderColor = 'rgba(229, 230,235,1)';
 
 const Collapse = (props, ref) => {
   const {
@@ -28,6 +26,8 @@ const Collapse = (props, ref) => {
   const { prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
   const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}collapse-box`);
+  const siteTheme = getSiteTheme();
+
   const providerList = {
     // 父组件状态管理store
     activeKeyList,
@@ -39,25 +39,16 @@ const Collapse = (props, ref) => {
   };
 
   return (
-    <ctx.Provider value={providerList}>
-      <div
-        className={classNames}
-        style={
-          noBorder
-            ? { ...style }
-            : {
-                ...style,
-                border:
-                  getSiteTheme() === ('dark' || 'auto') || darkTheme
-                    ? `1px solid ${darkBorderColor}`
-                    : `1px solid ${lightBorderColor}`,
-              }
-        }
-        ref={ref}
-      >
-        {children}
-      </div>
-    </ctx.Provider>
+    <CollapseStyle
+      isDark={siteTheme === 'dark' || siteTheme === 'auto' || darkTheme}
+      noBorder={noBorder}
+    >
+      <ctx.Provider value={providerList}>
+        <div className={classNames} style={style} ref={ref}>
+          {children}
+        </div>
+      </ctx.Provider>
+    </CollapseStyle>
   );
 };
 

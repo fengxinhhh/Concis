@@ -1,9 +1,9 @@
 import React, { createContext, useContext, forwardRef } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { AvatarGroupStyle } from './style/group';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { groupProps } from './interface';
-import './styles/group.module.less';
 
 export const ctx = createContext<any>({} as any); // 顶层通信装置
 
@@ -16,11 +16,13 @@ const AvatarGroup = (props, ref) => {
 
   const groupProps = props;
   return (
-    <ctx.Provider value={groupProps}>
-      <div className={classNames} ref={ref}>
-        {children}
-      </div>
-    </ctx.Provider>
+    <AvatarGroupStyle>
+      <ctx.Provider value={groupProps}>
+        <div className={classNames} ref={ref}>
+          {children}
+        </div>
+      </ctx.Provider>
+    </AvatarGroupStyle>
   );
 };
 

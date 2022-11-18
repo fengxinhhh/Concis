@@ -6,6 +6,7 @@ import {
   RightOutlined,
 } from '@ant-design/icons';
 import chunk from 'lodash/chunk';
+import { DatePickerStyle } from './style';
 import type { DatePickerProps, DateItemProps, NowDateProps } from './interface';
 import Input from '../../Input';
 import Popover from '../../Popover';
@@ -15,7 +16,6 @@ import { globalCtx } from '../../GlobalConfig';
 import { getSiteTheme } from '../../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../../common_utils/getRenderColor';
 import { ctx } from '../../Form';
-import './index.module.less';
 
 const dayjs = require('dayjs');
 
@@ -29,24 +29,25 @@ const DatePicker = (props, ref) => {
     disableCheck = () => false,
     format = 'YYYY-MM-DD',
   } = props;
+
   const today = {
     year: new Date().getFullYear(),
     month: new Date().getMonth() + 1,
     day: new Date().getDate(),
   };
+
   const [nowDate, setNowDate] = useState(today);
   const titleList = ['日', '一', '二', '三', '四', '五', '六'];
   const [nowDayList, setNowDayList] = useState<DateItemProps[][]>([]);
   const [dateValue, setDateValue] = useState('');
-
-  const basePopoverStyle = { boxShadow: '0 0 5px 2px #d0d0d0', bottom: '45px' };
-
+  const [clickDate, setClickDate] = useState(new Date());
   const formCtx = useContext(ctx);
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
-  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}date-picker`);
+  const basePopoverStyle = { boxShadow: '0 0 5px 2px #d0d0d0', bottom: '45px' };
 
-  const [clickDate, setClickDate] = useState(new Date());
+  const classNames = cs(prefixCls, className, `concis-${darkTheme ? 'dark-' : ''}date-picker`);
+  const siteTheme = getSiteTheme();
 
   useEffect(() => {
     const { year, month } = nowDate;
@@ -135,78 +136,73 @@ const DatePicker = (props, ref) => {
   };
 
   return (
-    <Popover
-      type="click"
-      align={align}
-      dialogWidth="auto"
-      closeDeps={[dateValue]}
-      style={basePopoverStyle}
-      content={
-        <div
-          className={classNames}
-          style={
-            {
-              '--checked-color': getRenderColor(
-                (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                globalColor
-              ),
-              ...style,
-            } as any
-          }
-          ref={ref}
-        >
-          <div className="date-picker-select">
-            <div className="left-select">
-              <DoubleLeftOutlined onClick={() => setYear(nowDate.year - 1)} />
-              <LeftOutlined onClick={() => setMonth(nowDate.month - 1, 'del')} />
+    <DatePickerStyle
+      activedOptionColor={getRenderColor(
+        (siteTheme === 'dark' || siteTheme === 'auto' || darkTheme) as boolean,
+        globalColor
+      )}
+    >
+      <Popover
+        type="click"
+        align={align}
+        dialogWidth="auto"
+        closeDeps={[dateValue]}
+        style={basePopoverStyle}
+        content={
+          <div className={classNames} style={style} ref={ref}>
+            <div className="date-picker-select">
+              <div className="left-select">
+                <DoubleLeftOutlined onClick={() => setYear(nowDate.year - 1)} />
+                <LeftOutlined onClick={() => setMonth(nowDate.month - 1, 'del')} />
+              </div>
+              <div className="middle-select">
+                <span>{nowDate.year}</span>-<span>{nowDate.month}</span>
+              </div>
+              <div className="right-select">
+                <RightOutlined onClick={() => setMonth(nowDate.month + 1, 'add')} />
+                <DoubleRightOutlined onClick={() => setYear(nowDate.year + 1)} />
+              </div>
             </div>
-            <div className="middle-select">
-              <span>{nowDate.year}</span>-<span>{nowDate.month}</span>
-            </div>
-            <div className="right-select">
-              <RightOutlined onClick={() => setMonth(nowDate.month + 1, 'add')} />
-              <DoubleRightOutlined onClick={() => setYear(nowDate.year + 1)} />
-            </div>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                {titleList.map((title, idx) => (
-                  <th key={idx}>{title}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {nowDayList.map((row, idx) => (
-                <tr key={idx}>
-                  {row.map((day, idx) => (
-                    <td
-                      key={idx}
-                      onClick={() => setInputVal(day)}
-                      className={`${day.value === '' ? 'day-empty' : ''} ${
-                        day.disable ? 'disable' : ''
-                      } ${isSameDate(day.date) ? 'active' : ''}`}
-                    >
-                      {day.value}
-                    </td>
+            <table>
+              <thead>
+                <tr>
+                  {titleList.map((title, idx) => (
+                    <th key={idx}>{title}</th>
                   ))}
                 </tr>
-              ))}
-              {nowDayList.length >= 6 ? <></> : <tr className="empty-row" />}
-            </tbody>
-          </table>
-        </div>
-      }
-    >
-      <Input
-        placeholder="请选择日期"
-        defaultValue={dateValue}
-        type="primary"
-        showClear={showClear}
-        clearCallback={clearCallback}
-        isFather
-      />
-    </Popover>
+              </thead>
+              <tbody>
+                {nowDayList.map((row, idx) => (
+                  <tr key={idx}>
+                    {row.map((day, idx) => (
+                      <td
+                        key={idx}
+                        onClick={() => setInputVal(day)}
+                        className={`${day.value === '' ? 'day-empty' : ''} ${
+                          day.disable ? 'disable' : ''
+                        } ${isSameDate(day.date) ? 'active' : ''}`}
+                      >
+                        {day.value}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+                {nowDayList.length >= 6 ? <></> : <tr className="empty-row" />}
+              </tbody>
+            </table>
+          </div>
+        }
+      >
+        <Input
+          placeholder="请选择日期"
+          defaultValue={dateValue}
+          type="primary"
+          showClear={showClear}
+          clearCallback={clearCallback}
+          isFather
+        />
+      </Popover>
+    </DatePickerStyle>
   );
 };
 

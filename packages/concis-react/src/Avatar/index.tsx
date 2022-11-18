@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useMemo, useRef, forwardRef } from 'react';
+import React, { useContext, useEffect, useRef, forwardRef } from 'react';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
+import { AvatarStyle } from './style';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { ctx } from './group';
-import { avatarProps, avatarStyles } from './interface';
-import './styles/avatar.module.less';
+import { avatarProps } from './interface';
 
 const Avatar = (props, ref) => {
   const {
@@ -12,7 +12,6 @@ const Avatar = (props, ref) => {
     className,
     style = {},
     size = 40,
-    shape,
     autoFixFontSize = true,
     triggerType = 'button',
     triggerIcon,
@@ -43,66 +42,41 @@ const Avatar = (props, ref) => {
       }
     }
   };
-  const formatStyle = useMemo(() => {
-    // 整合所有头像传参样式
-    const returnStyle: avatarStyles = { ...groupProps.groupStyle, ...style };
-    if (Object.keys(groupProps).length > 0) {
-      // 头像组
-      if (groupProps.size) {
-        returnStyle.width = `${groupProps.size}px`;
-        returnStyle.height = `${groupProps.size}px`;
-        returnStyle.fontSize = `${groupProps.size / 3}px`;
-      }
-    } else {
-      // 单头像
-      if (size) {
-        returnStyle.width = `${size}px`;
-        returnStyle.height = `${size}px`;
-        returnStyle.fontSize = `${size / 3}px`;
-      }
-    }
-    if (shape && shape === 'square') {
-      returnStyle.borderRadius = '5px';
-    }
-    return returnStyle;
-  }, [style, shape, size, groupProps]);
-  const buttonDialogTransform = useMemo(() => {
-    return shape === 'square'
-      ? { right: '-2px', bottom: '-2px' }
-      : { right: '2px', bottom: '-2px' };
-  }, [triggerType]);
+
   const handleClick = () => {
     triggerClick && triggerClick();
   };
 
   return (
-    <div className={classNames} style={formatStyle} ref={ref}>
-      {children && (children as any).type === 'img' ? (
-        children
-      ) : (
-        <div ref={textRef} className="text-ref">
-          {children}
-        </div>
-      )}
-      {
-        // 按钮式dialog
-        triggerType === 'button' && triggerIcon && (
-          <div className="button-dialog" style={buttonDialogTransform} onClick={handleClick}>
-            {triggerIcon}
+    <AvatarStyle props={props} groupProps={groupProps}>
+      <div className={classNames} style={{ ...groupProps.groupStyle, ...style }} ref={ref}>
+        {children && (children as any).type === 'img' ? (
+          children
+        ) : (
+          <div ref={textRef} className="text-ref">
+            {children}
           </div>
-        )
-      }
-      {
-        // 内嵌式dialog
-        triggerType === 'mask' && triggerIcon && (
-          <div className="dialog">
-            <div className="icon" onClick={handleClick}>
+        )}
+        {
+          // 按钮式dialog
+          triggerType === 'button' && triggerIcon && (
+            <div className="button-dialog" onClick={handleClick}>
               {triggerIcon}
             </div>
-          </div>
-        )
-      }
-    </div>
+          )
+        }
+        {
+          // 内嵌式dialog
+          triggerType === 'mask' && triggerIcon && (
+            <div className="dialog">
+              <div className="icon" onClick={handleClick}>
+                {triggerIcon}
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </AvatarStyle>
   );
 };
 

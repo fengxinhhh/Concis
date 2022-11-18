@@ -37,24 +37,6 @@ describe('Collapse', () => {
     );
     expect(component.find('.concis-collapse-box')).toHaveLength(1);
     expect(component.find('.concis-collapse-box').getDOMNode().childNodes.length).toBe(3);
-    expect(
-      component
-        .find('.concis-collapse-box .concis-collapse-item')
-        .at(2)
-        .find('.concis-collapse-item-content')
-        .getDOMNode()
-        .getAttribute('style')
-        .includes('max-height: 0px')
-    ).toBe(true);
-    expect(
-      component
-        .find('.concis-collapse-box .concis-collapse-item')
-        .at(1)
-        .find('.concis-collapse-item-header')
-        .getDOMNode()
-        .getAttribute('style')
-        .includes(' cursor: not-allowed')
-    ).toBe(true);
   });
   it('test right node show correctly', () => {
     const component = mount(

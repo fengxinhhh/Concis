@@ -1,14 +1,12 @@
 import React, { useMemo, useEffect, useContext, useState, forwardRef } from 'react';
+import { CollapseItemStyle } from './style/item';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import Header from './Header';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { CollapseItemProps } from './interface';
-import './style/item.module.less';
 import useStateCallback from '../common_utils/hooks/useStateCallback';
-import { ctx } from './index';
-
-const disabledColor = '#c9cdd4';
+import { ctx } from '.';
 
 const CollapseItem = (props, ref) => {
   const { children, className, header, disabled = false, listKey, extra } = props;
@@ -75,37 +73,28 @@ const CollapseItem = (props, ref) => {
     }
   };
 
-  const headerHeight = useMemo(() => {
-    // 展开高度
-    return {
-      maxHeight: `${contentDomHeight}px`,
-    };
-  }, [contentDomHeight]);
-
   const renderHeader = useMemo(() => {
     return (
-      <div
-        className="concis-collapse-item-header"
-        onClick={toggleContent}
-        style={disabled ? { color: disabledColor, cursor: 'not-allowed' } : {}}
-      >
+      <div className="concis-collapse-item-header" onClick={toggleContent}>
         <Header
           headerAlign={headerAlign}
-          headerHeight={headerHeight}
+          headerHeight={contentDomHeight}
           header={header}
           extra={extra}
         />
       </div>
     );
-  }, [headerAlign, headerHeight, header, extra, disabled]);
+  }, [headerAlign, contentDomHeight, header, extra, disabled]);
 
   return (
-    <div className={classNames} ref={ref}>
-      {renderHeader}
-      <div className="concis-collapse-item-content" style={headerHeight}>
-        {lazyLoad ? hasOpen && children : children}
+    <CollapseItemStyle disabled={disabled} itemHeight={contentDomHeight}>
+      <div className={classNames} ref={ref}>
+        {renderHeader}
+        <div className="concis-collapse-item-content">
+          {lazyLoad ? hasOpen && children : children}
+        </div>
       </div>
-    </div>
+    </CollapseItemStyle>
   );
 };
 

@@ -1,9 +1,9 @@
 import React, { useMemo, useContext, forwardRef } from 'react';
+import { BackTopStyle } from './style';
 import { badgeProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
 
 const Badge = (props, ref) => {
   const {
@@ -56,13 +56,9 @@ const Badge = (props, ref) => {
   }, [children, count, maxCount]);
 
   return (
-    <>
+    <BackTopStyle globalColor={globalColor}>
       {children ? (
-        <div
-          className={classNames}
-          style={{ ...style, ...({ '--global-color': globalColor || '#f53f3f' } as any) }}
-          ref={ref}
-        >
+        <div className={classNames} ref={ref} style={style}>
           {children}
           {dot ? (
             <span
@@ -84,14 +80,13 @@ const Badge = (props, ref) => {
             ...style,
             ...dotStyle,
             ...countStyle,
-            ...{ '--global-color': globalColor || '#f53f3f' },
           }}
           ref={ref}
         >
           {computedCount}
         </div>
       )}
-    </>
+    </BackTopStyle>
   );
 };
 

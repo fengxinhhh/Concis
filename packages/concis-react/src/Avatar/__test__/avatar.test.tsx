@@ -81,10 +81,6 @@ describe('Avatar', () => {
           ?.includes(`background: ${avatarStyleList[index].background}`) &&
           avatar.querySelector('.text-ref')?.innerHTML === avatarStyleList[index].content
       ).toBe(true);
-      if (index === 0) {
-        // 测试头像形状
-        expect(avatar.getAttribute('style')?.includes(`border-radius: 5px`)).toBe(true);
-      }
     });
   });
 

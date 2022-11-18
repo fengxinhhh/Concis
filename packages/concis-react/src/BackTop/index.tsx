@@ -1,6 +1,7 @@
 import React, { createRef, useContext, useEffect, useRef, useState, memo, FC } from 'react';
 import lodash from 'lodash';
 import { CSSTransition } from 'react-transition-group';
+import { BackTopStyle } from './style';
 import addEventListener from '../common_utils/dom/addEventListener';
 import getScrollTop from '../common_utils/dom/getScrollTop';
 import scrollTo from '../common_utils/dom/scrollTo';
@@ -8,7 +9,6 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import { BackTopProps } from './interface';
-import './index.module.less';
 
 const defaultChildren = (
   <div className="default-child">
@@ -99,9 +99,11 @@ const BackTop: FC<BackTopProps> = (props) => {
   }, [props.target]);
 
   return (
-    <div className={classNames} style={props.style} ref={ref} onClick={scrollToTop}>
-      {renderChildren()}
-    </div>
+    <BackTopStyle>
+      <div className={classNames} style={props.style} ref={ref} onClick={scrollToTop}>
+        {renderChildren()}
+      </div>
+    </BackTopStyle>
   );
 };
 

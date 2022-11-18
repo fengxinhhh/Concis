@@ -1,21 +1,12 @@
-import React, {
-  useState,
-  useCallback,
-  useMemo,
-  Fragment,
-  useEffect,
-  useContext,
-  forwardRef,
-} from 'react';
+import React, { useState, useCallback, useMemo, useEffect, useContext, forwardRef } from 'react';
 import { CheckOutlined } from '@ant-design/icons';
+import { CheckBoxStyle } from './style';
 import type { checkGroup, checkBoxProps } from './interface';
+import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
-
-const defaultPrimaryColor = '#325DFF';
 
 const CheckBox = (props, ref) => {
   const {
@@ -34,7 +25,9 @@ const CheckBox = (props, ref) => {
 
   const formCtx: any = useContext(ctx);
 
+  const siteTheme = getSiteTheme();
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
+
   const classNames = cs(
     prefixCls,
     className,
@@ -75,6 +68,7 @@ const CheckBox = (props, ref) => {
     setCheckStatus(!checkStatus);
     checkCallback && checkCallback(!checkStatus);
   };
+
   const toggleGroupCheckedStatus = (index: number) => {
     // 切换多选组状态
     const oldCheckGroup = [...checkGroup];
@@ -113,13 +107,12 @@ const CheckBox = (props, ref) => {
   );
 
   return (
-    <Fragment>
+    <CheckBoxStyle
+      activeColor={globalColor}
+      darkTheme={darkTheme || siteTheme === 'auto' || siteTheme === 'dark'}
+    >
       {group && group.length ? (
-        <div
-          className={classNames}
-          style={{ '--global-color': globalColor || defaultPrimaryColor, ...style } as any}
-          ref={ref}
-        >
+        <div className={classNames} style={style} ref={ref}>
           <div className="concis-checkbox-content">
             {group.map((c: checkGroup, i: number) => {
               return (
@@ -136,19 +129,14 @@ const CheckBox = (props, ref) => {
           </div>
         </div>
       ) : (
-        <div
-          className={classNames}
-          onClick={toggleCheckedStatus}
-          style={{ '--global-color': globalColor || defaultPrimaryColor, ...style } as any}
-          ref={ref}
-        >
+        <div className={classNames} onClick={toggleCheckedStatus} style={style} ref={ref}>
           <div className="concis-checkbox-content">
             {renderCheckBoxDom}
             <div className={disabled ? `text disabled` : `text`}>{children}</div>
           </div>
         </div>
       )}
-    </Fragment>
+    </CheckBoxStyle>
   );
 };
 

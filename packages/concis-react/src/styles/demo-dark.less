@@ -379,13 +379,16 @@ html[data-prefers-color='dark'] {
     }
   }
   //Comment
-  .comment-content {
-    border-top: 1px solid #484849;
+  .concis-comment {
+    .comment-content {
+      border-top: 1px solid #484849;
+    }
+
+    .comment-content-actions .item {
+      color: #fffe;
+    }
   }
 
-  .comment-content-actions .item {
-    color: #fffe;
-  }
   //list
   .concis-list {
     color: #8b8b8b;
@@ -485,23 +488,32 @@ html[data-prefers-color='dark'] {
     }
   }
 
-  .concis-year-picker table tr .disable:not(.day-empty),
-  .concis-month-picker table tr .disable:not(.day-empty) {
-    span {
-      background: #515357;
-    }
-  }
-
   .concis-date-picker .input {
     color: @concis-dark-font-color;
     background-color: transparent;
   }
 
-  .concis-date-picker {
+  .concis-date-picker,
+  .concis-month-picker,
+  .concis-year-picker {
     .disable:not(.day-empty) {
       background: #5c5c5c !important;
     }
   }
+
+  .concis-date-picker .date-picker-select,
+  .concis-month-picker .month-picker-select,
+  .concis-year-picker .year-picker-select {
+    .left-select,
+    .right-select {
+      span {
+        &:hover {
+          background-image: linear-gradient(#5c5c5c, #5c5c5c);
+        }
+      }
+    }
+  }
+
   //form
   .concis-form .disabled,
   .concis-form-item-disabled {

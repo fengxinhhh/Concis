@@ -56,11 +56,5 @@ interface avatarProps {
    */
   triggerClick?: Function;
 }
-type avatarStyles = {
-  width?: number | string;
-  height?: number | string;
-  fontSize?: string;
-  borderRadius?: string;
-};
 
-export type { groupProps, avatarProps, avatarStyles };
+export type { groupProps, avatarProps };

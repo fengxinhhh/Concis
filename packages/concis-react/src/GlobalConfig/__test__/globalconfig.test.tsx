@@ -25,14 +25,7 @@ describe('mountTest', () => {
         <Loading />
       </GlobalConfig>
     );
-    expect(component.find('.concis-button button').getDOMNode().style.background).toBe('red');
-    expect(
-      component
-        .find('.concis-loading')
-        .getDOMNode()
-        .getAttribute('style')
-        .includes('--global-color: red')
-    ).toBe(true);
+    expect(component.prop('globalColor')).toBe('red');
   });
 
   it('test dark theme run correctly', () => {
@@ -42,8 +35,8 @@ describe('mountTest', () => {
         <CheckBox>5</CheckBox>
       </GlobalConfig>
     );
-    expect(component.find('.concis-dark-button')).toHaveLength(1);
-    expect(component.find('.concis-dark-checkbox')).toHaveLength(1);
+    expect(component.prop('globalColor')).toBeUndefined();
+    expect(component.prop('darkTheme')).toBe(true);
   });
 
   it('test globalColor and darkTheme run correctly', () => {
@@ -53,8 +46,7 @@ describe('mountTest', () => {
         <CheckBox>5</CheckBox>
       </GlobalConfig>
     );
-    expect(component.find('.concis-dark-button')).toHaveLength(1);
-    expect(component.find('.concis-dark-checkbox')).toHaveLength(1);
-    expect(component.find('.concis-dark-button button').getDOMNode().style.background).toBe('red');
+    expect(component.prop('globalColor')).toBe('red');
+    expect(component.prop('darkTheme')).toBe(true);
   });
 });
