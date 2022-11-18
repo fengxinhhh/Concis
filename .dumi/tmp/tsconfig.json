@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "baseUrl": "../",
+    "strict": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@/*": ["*"],
+      "@@/*": [".umi/*"],
+      "umi": [
+        "/Users/apple/Desktop/Concis/node_modules/.pnpm/registry.npmmirror.com+umi@4.0.32_ytirsdfjrd6qitzvcje6fgo3mq/node_modules/umi"
+      ],
+      "umi/typings": [".umi/typings"]
+    }
+  },
+  "include": ["../.umirc.ts", "../**/*.d.ts", "../**/*.ts", "../**/*.tsx"]
+}

@@ -1,18 +1,18 @@
 {
   "presets": [
     [
-        "@babel/preset-env",{
-            "targets":{
-                "node":"current"
-            }
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
         }
+      },
+      "@babel/preset-react"
     ]
   ],
   "plugins": [
-      // 解决多个地方使用相同代码导致打包重复的问题
-      ["@babel/plugin-transform-runtime"]
+    // 解决多个地方使用相同代码导致打包重复的问题
+    ["@babel/plugin-transform-runtime", "babel-plugin-styled-components"]
   ],
-  "ignore": [
-      "node_modules/**"
-    ]
+  "ignore": ["node_modules/**"]
 }
