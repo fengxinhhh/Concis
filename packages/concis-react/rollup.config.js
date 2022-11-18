@@ -34,7 +34,15 @@ export default {
       targets: ['web-react'],
     }),
     resolve(),
-    commonjs(),
+    commonjs({
+      ignoreGlobal: true,
+      include: /\/node_modules\//,
+      external: ['react', 'react-dom', 'styled-components'],
+      namedExports: {
+        react: Object.keys(require('react')),
+        'react-is': Object.keys(require('react-is')),
+      },
+    }),
     babel({
       exclude: 'node_modules/**',
       runtimeHelpers: true,
