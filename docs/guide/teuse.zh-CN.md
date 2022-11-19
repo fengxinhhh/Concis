@@ -1,34 +1,38 @@
 ---
-nav:
-  title: 指南
-  path: /guide
+order: 1
+title: 快速开始
+toc: false
 ---
 
 # 快速开始
 
 Concis 致力于提供给程序员愉悦的开发体验。
 
-<Alert>在开始之前，推荐先学习 React 和 ES2015，并正确安装和配置了 Node.js v8 或以上。官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识，并且已经完全掌握了 React 全家桶的正确开发方式。如果你刚开始学习前端或者 React，将 UI 框架作为你的第一步可能不是最好的主意。</Alert>
+:::warning{title=注意}
+在开始之前，推荐先学习 React 和 ES2015，并正确安装和配置了 Node.js v8 或以上。官方指南假设你已了解关于 HTML、CSS 和 JavaScript 的中级知识，并且已经完全掌握了 React 全家桶的正确开发方式。如果你刚开始学习前端或者 React，将 UI 框架作为你的第一步可能不是最好的主意。
+:::
 
 ## 第一个例子
 
 这是一个最简单的 Concis 组件的在线 codesandbox 演示。
 
-```tsx
+```tsx pure
 /**
  * inline: true
  */
 import React from 'react';
-import { Section } from '../site/Section';
-import '../site/styles.less';
+
+import { Section } from './site/Section';
+
+import './site/styles.less';
 
 export default () => (
-  <Section titleStyle={{ paddingBottom: 100, fontWeight: 'bold' }}>
+  <Section titleStyle={{ paddingBottom: 100, fontWeight: `bold` }}>
     <iframe
       className="codesandbox"
       src="https://codesandbox.io/s/concis-up772x?file=/src/App.js"
-      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+      allow="accelerometer; ambient- light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+      sandbox="allow- forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
     ></iframe>
   </Section>
 );
@@ -46,14 +50,14 @@ Concis 在打包产物中提供了`ejs`、`cjs`、`umd` 三种模块化文件，
 
 使用 cjs 模块:
 
-```tsx pure
+```
 import React from 'react';
 import { Button } from 'concis/web-react/cjs';
 ```
 
 使用 ejs 模块:
 
-```tsx pure
+```
 import React from 'react';
 import { Button } from 'concis/web-react/es';
 ```

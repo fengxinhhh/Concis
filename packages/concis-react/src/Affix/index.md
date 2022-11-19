@@ -1,11 +1,12 @@
 ---
+category: Components
 title: Affix
-nav:
-  title: Component
-  path: /common
+subtitle: 固钉
+demo:
+  cols: 2
 group:
-  title: Navigation
-mobile: false
+  title: 其他
+  order: 7
 ---
 
 # Affix

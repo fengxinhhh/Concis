@@ -1,7 +1,7 @@
 ---
-nav:
-  title: 指南
-  path: /guide
+order: 10
+title: 贡献指南
+toc: false
 ---
 
 # 贡献指南
@@ -26,13 +26,13 @@ nav:
 
 clone 完项目以后直接在根目录安装项目中所有依赖：
 
-```tsx pure
+```
 pnpm install
 ```
 
 此时即可通过打开本地文档服务器
 
-```tsx pure
+```
 pnpm run start
 ```
 
@@ -40,13 +40,13 @@ pnpm run start
 
 打包方式分文档打包和 npm 打包:
 
-```tsx pure
+```
 pnpm run docs:build        //文档打包，产物于docs-dist
 ```
 
 在 packages/子包目录下执行:
 
-```tsx pure
+```
 pnpm run build             //npm打包，产物于web-react
 ```
 
@@ -54,7 +54,7 @@ pnpm run build             //npm打包，产物于web-react
 
 在 packages/自包目录下执行对指定包的组件进行单元测试和 e2e 测试。
 
-```tsx pure
+```
 pnpm run test:unit          //单元测试，对应/__tests__/unit
 pnpm run test:e2e          //e2e测试，对应/__tests__/e2e
 ```
@@ -83,7 +83,7 @@ pnpm run test:e2e          //e2e测试，对应/__tests__/e2e
 
 在 example 文件夹中，有一个 `vite` + `react` 的工程运行环境，你可以在该环境中体验 `concis` 组件，在项目根目录运行命令:
 
-```tsx pure
+```
 pnpm example:dev
 ```
 

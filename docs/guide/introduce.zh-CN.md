@@ -1,7 +1,7 @@
 ---
-nav:
-  title: 指南
-  path: /guide
+order: 0
+title: 介绍
+toc: false
 ---
 
 # 介绍
@@ -56,7 +56,9 @@ Concis 支持`cjs`、`ejs`、`umd` 三种模块，定制化你的 Web 运行环�
 
 拉取分支 fengxinhhh/Concis/master 分支即可。
 
-<Alert>注意：建议分支名为[feat]-[name]，[feat]是这个分支的类型，可选的有[feat][unitest][docs][bugfix][other]，[name]则是名字，自定义就好了。eg. unittest-core(意为：对核心补充单测)</Alert>
+:::warning{title=注意}
+建议分支名为[feat]-[name]，[feat]是这个分支的类型，可选的有[feat][unitest][docs][bugfix][other]，[name]则是名字，自定义就好了。eg. unittest-core(意为：对核心补充单测)
+:::
 
 #### 提交代码
 

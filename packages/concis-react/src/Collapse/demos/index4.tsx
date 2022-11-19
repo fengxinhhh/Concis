@@ -1,6 +1,6 @@
 import React from 'react';
 import { BankOutlined } from '@ant-design/icons';
-import { Collapse, CollapseItem, Divider } from 'concis';
+import { Collapse, CollapseItem, Divider } from '../..';
 
 export default function CollapseDemo3() {
   return (

@@ -1,8 +1,7 @@
 ---
-nav:
-  title: 设计
-  path: /guide
-mobile: false
+order: 6
+title: 定制主题
+toc: false
 ---
 
 # 定制主题
@@ -23,7 +22,7 @@ Concis 的样式使用了 Less 作为开发语言，并定义了一系列全局/
 
 GlobalConfig 使用 React 的 context 特性，只需在应用外围包裹一次即可全局生效。
 
-```tsx pure
+```
 import { GlobalConfig } from 'concis';
 
 // ...

@@ -1,7 +1,7 @@
 ---
-nav:
-  title: Guide
-  path: /guide
+order: 4
+title: Vscode support
+toc: false
 ---
 
 # vscode support

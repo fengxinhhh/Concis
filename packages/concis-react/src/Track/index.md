@@ -22,7 +22,7 @@ Usually, the interface report push operation is performed after the collection.
 
 The `App` component in your project looks like this:
 
-```tsx pure
+```
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import A from './pages/A';

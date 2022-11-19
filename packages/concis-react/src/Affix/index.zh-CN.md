@@ -1,11 +1,13 @@
 ---
-title: Affix 固钉
-nav:
-  title: 组件
-  path: /common
+category: Components
+title: Affix
+subtitle: 固钉
+cover: https://gw.alipayobjects.com/zos/alicdn/tX6-md4H6/Affix.svg
+demo:
+  cols: 2
 group:
-  title: 导航
-mobile: false
+  title: 其他
+  order: 7
 ---
 
 # Affix 固钉
@@ -22,7 +24,7 @@ mobile: false
 
 - 在首屏时保持元素位置，在滚动后脱离文档流至指定位置
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## API
 

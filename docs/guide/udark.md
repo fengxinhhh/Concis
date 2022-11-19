@@ -1,8 +1,7 @@
 ---
-nav:
-  title: Guide
-  path: /guide
-mobile: false
+order: 2
+title: Dark mode
+toc: false
 ---
 
 # Dark mode
@@ -25,7 +24,7 @@ Based on the default theme and dark theme of Concis Family Bucket.
 
 Through the `GlobalConfig` component, the `darkTheme` attribute can be configured to take effect.
 
-```tsx pure
+```
 
 import React from "react';
 

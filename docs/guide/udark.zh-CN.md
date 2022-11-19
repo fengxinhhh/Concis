@@ -1,8 +1,7 @@
 ---
-nav:
-  title: 设计
-  path: /guide
-mobile: false
+order: 2
+title: 暗黑模式
+toc: false
 ---
 
 # 暗黑模式
@@ -25,7 +24,7 @@ Concis 内置提供了暗黑模式的主题，暗黑模式的优势在于在弱�
 
 通过 `GlobalConfig` 组件，配置 `darkTheme` 属性即可生效。
 
-```tsx pure
+```
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';

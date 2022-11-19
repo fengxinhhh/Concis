@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Affix, Button } from 'concis';
+import { Affix, Button } from '../..';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function AffixDemo1() {

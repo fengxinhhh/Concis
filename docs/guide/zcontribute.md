@@ -1,7 +1,7 @@
 ---
-nav:
-  title: Guide
-  path: /guide
+order: 10
+title: Contribution Guideliness
+toc: false
 ---
 
 # Contribution Guidelines
@@ -26,7 +26,7 @@ For more information, please refer to the writing method of online components in
 
 After clone finishes the project, install all dependencies in the project directly in the root directory:
 
-```tsx pure
+```
 
 pnpm install
 
@@ -34,7 +34,7 @@ pnpm install
 
 You can now open the local document server by
 
-```tsx pure
+```
 
 pnpm run start
 
@@ -44,7 +44,7 @@ pnpm run start
 
 Packaging methods include document packaging and npm packaging:
 
-```tsx pure
+```
 
 Pnpm run docs:build   //The document is packaged and produced in docs dist
 
@@ -52,7 +52,7 @@ Pnpm run docs:build   //The document is packaged and produced in docs dist
 
 Execute in the packages or sub package directory:
 
-```tsx pure
+```
 
 Pnpm run build    //npm package, produced in web react
 
@@ -62,7 +62,7 @@ Pnpm run build    //npm package, produced in web react
 
 Perform unit tests and e2e tests on the components of the specified package in the packages/self package directory.
 
-```tsx pure
+```
 
 Pnpm run test:unit   //Unit test, corresponding/__tests__/ unit
 
@@ -94,7 +94,7 @@ For the component library npm package, you can view the corresponding command in
 
 In the example folder, there is a `vite` + `react` project runtime environment, in which you can experience the `concis` component, run the command in the project root directory:
 
-```tsx pure
+```
 pnpm example:dev
 ```
 

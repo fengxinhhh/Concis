@@ -18,7 +18,7 @@ import {
   Steps,
   Step,
   InputPro,
-} from 'concis';
+} from '../..';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 const option = [

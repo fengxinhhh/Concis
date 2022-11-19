@@ -1,8 +1,7 @@
 ---
-nav:
-  title: Guide
-  path: /guide
-mobile: false
+order: 6
+title: Custom themes
+toc: false
 ---
 
 # Custom themes
@@ -23,7 +22,7 @@ If you have suggested built- in less variables (not limited to color variables),
 
 GlobalConfig uses the context feature of React, which only needs to be wrapped around the application once to take effect globally.
 
-```tsx pure
+```
 import { GlobalConfig } from 'concis';
 
 // ...

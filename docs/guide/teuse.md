@@ -1,31 +1,30 @@
 ---
-nav:
-  title: Guide
-  path: /guide
+order: 1
+title: Quick start
+toc: false
 ---
 
 # Quick start
 
 Concis is committed to providing programmers with a pleasant development experience.
 
-<Alert>Before starting, it is recommended to learn React.
+:::warning{title=Warning}
+Before starting, it is recommended to learn React.
+:::
 
 ## First example
 
 This is an online code sandbox demonstration of the simplest Concis component.
 
-```tsx
+```tsx pure
 /**
-
-* inline: true
-
-*/
-
+ * inline: true
+ */
 import React from 'react';
 
-import { Section } from '../site/Section';
+import { Section } from './site/Section';
 
-import '../site/styles.less';
+import './site/styles.less';
 
 export default () => (
   <Section titleStyle={{ paddingBottom: 100, fontWeight: `bold` }}>
@@ -51,14 +50,14 @@ Concis provides three types of modular files in the packaging product: `ejs`、`
 
 Use the cjs module:
 
-```tsx pure
+```
 import React from 'react';
 import { Button } from 'concis/web-react/cjs';
 ```
 
 Use the ejs module:
 
-```tsx pure
+```
 import React from 'react';
 import { Button } from 'concis/web-react/es';
 ```

@@ -1,7 +1,7 @@
 ---
-nav:
-  title: Guide
-  path: /guide
+order: 3
+title: Color
+toc: false
 ---
 
 # Color

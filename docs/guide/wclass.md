@@ -1,7 +1,7 @@
 ---
-nav:
-  title: Guide
-  path: /guide
+order: 5
+title: Custom class name
+toc: false
 ---
 
 # Custom class name
@@ -12,7 +12,7 @@ In the global configuration, you can define a wildcard class name and mount it o
 
 The configuration method is very simple. Also, in <a href="https://concis.org.cn/#/common/global-config">GlobalConfig</a> component provides the prefixCls attribute, which can be configured globally, as follows:
 
-```tsx pure
+```
 
 import { GlobalConfig } from `concis/web- react`;
 
@@ -60,7 +60,7 @@ To sum up, if you need to customize the class name, please pay attention to the 
 
 In addition to the class name configured by GlobalConfig, you also choose the method of customizing the class name of a single component. Each component of Concis supports customization by passing in the className separately, as follows:
 
-```tsx pure
+```
 <Button className="my- button-className" type="primary">
   Hello Concis
 </Button>

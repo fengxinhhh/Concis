@@ -22,7 +22,7 @@ mobile: false
 
 你的项目中 `App` 组件看起来就像是这样：
 
-```tsx pure
+```
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import A from './pages/A';

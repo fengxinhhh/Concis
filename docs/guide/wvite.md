@@ -1,14 +1,14 @@
 ---
-nav:
-  title: Guide
-  path: /guide
+order: 7
+title: Use in Vite
+toc: false
 ---
 
 # Use in Vite
 
 You can use vite to quickly build a react project and install preset packages, such as react and react-dom.
 
-```tsx pure
+```
 
 npm run create vite
 
@@ -20,7 +20,7 @@ Then select the `react ts` template to install the default dependency of the pro
 
 Install Concis through the command:
 
-```tsx pure
+```
 
 npm i --save-dev concis
 
@@ -28,7 +28,7 @@ npm i --save-dev concis
 
 ## Introduction and use
 
-```tsx pure
+```
 
 import { Button } from `concis`;
 
@@ -46,7 +46,7 @@ const App = () => (
 
 Modify src/App Css. Antd/dist/antd.css is introduced at the top of the file.
 
-```tsx pure
+```
 
 @import 'concis/web-react/style/index.css';
 
