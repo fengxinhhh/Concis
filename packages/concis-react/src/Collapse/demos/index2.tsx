@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, CollapseItem, Divider } from '../..';
+import { Collapse, CollapseItem, Divider } from 'concis';
 
 export default function CollapseDemo2() {
   return (

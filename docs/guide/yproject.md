@@ -1,7 +1,6 @@
 ---
 order: 9
 title: Use in TypeScript
-toc: false
 ---
 
 # Use in TypeScript
@@ -14,13 +13,13 @@ concis is based on the latest stable version of TypeScript (>=4.0.0), make sure 
 
 ## Installation and initialization
 
-```
+```bash
 create-react-app my-ts-app --typescript
 ```
 
 ## Configuring the TypeScript environment
 
-```
+```bash
 npm i typescript --save-dev
 Npx tsc --init     //Initialize the tsconfig.json file and configure it
 
@@ -34,7 +33,7 @@ This completes the installation of all the dependent packages of TypeScript in t
 
 Create a new typeings.d.ts in the project root directory. For the type configuration of the default import module:
 
-```
+```tsx pure
 declare module 'concis';
 ```
 
@@ -42,7 +41,7 @@ declare module 'concis';
 
 Install concis through the command:
 
-```
+```bash
 
 npm i --save-dev concis
 
@@ -52,7 +51,7 @@ npm i --save-dev concis
 
 Create a new tsx file in the project and write it to:
 
-```
+```tsx pure
 import { Button, DatePicker, Loading } from 'concis';
 
 const App = () => (
@@ -64,7 +63,7 @@ const App = () => (
 
 Modify src/App.css. concis/web-react/style/index.css is introduced at the top of the file.
 
-```
+```bash
 
 @import "~concis/web-react/style/index.css";
 

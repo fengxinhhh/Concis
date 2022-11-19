@@ -22,25 +22,25 @@ The difference from Tooltip is that users can operate on elements on the floatin
 
 Basic bubble card.
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## Click
 
 Configure `type = click` to switch to click trigger.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Different directions
 
 Through `align`, switch different appearance directions, optional `left`, `right`, `top`, `bottom`.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Closed in floating layer
 
 Declare a separate `ref` through `useRef` and pass it to `Popover`, and call `ref.current.setShowDialog` to switch the display state.
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

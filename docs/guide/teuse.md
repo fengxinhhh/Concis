@@ -1,7 +1,6 @@
 ---
 order: 1
 title: Quick start
-toc: false
 ---
 
 # Quick start
@@ -16,7 +15,7 @@ Before starting, it is recommended to learn React.
 
 This is an online code sandbox demonstration of the simplest Concis component.
 
-```tsx pure
+```tsx | demo
 /**
  * inline: true
  */

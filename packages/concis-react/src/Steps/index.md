@@ -20,25 +20,25 @@ When a task is complex or has a priority relationship, it is decomposed into a s
 
 Basic step bar component.
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## Additional parameters
 
 Use `subTitle` to configure the step subtitle and `description` to configure the step description.
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 ## Traversal use
 
 Iterate over components.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Clickable
 
 Click the toggle step to get the clicked `current` through `onChange`.
 
-<code src="./demos/index4.tsx"/>
+<code src="./demos/index4.tsx"></code>
 
 ## Steps API
 

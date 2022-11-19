@@ -20,37 +20,37 @@ Navigation menu is the soul of a website. Users rely on navigation to jump from 
 
 The most basic navigation menu.
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## Custom Width
 
 Configure `width` custom width.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Dark style
 
 Configure `dark` to enable the dark style (experience in the dark mode of the official website).
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Accordion style
 
 Configure `ableToggle` to enable accordion switching.
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## Interaction
 
 - Apply to quick layout Layout Slider sidebar
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## Default expansion
 
 Configure `defaultOpen` default deployment.
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx"></code>
 
 ## API
 

@@ -22,25 +22,25 @@ Radio box.
 
 Basic radio buttons.
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## Disable
 
 Disabled with `disabled`.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Scalability
 
 Radio group, enable extended mode by configuring `canAddOption`.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Box style single choice
 
 Configure box mode radio buttons via `boxStyle`.
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

@@ -1,14 +1,13 @@
 ---
 order: 8
 title: Use in Create-react-app
-toc: false
 ---
 
 # Use in Create-react-app
 
 You can use create-react-app or build a package management project directory by yourself, and install preset packages, such as react and react-dom.
 
-```
+```bash
 
 create-react-app myapp
 
@@ -16,7 +15,7 @@ create-react-app myapp
 
 Or
 
-```
+```bash
 
 mkdir myapp && cd myapp
 npm init - y
@@ -28,7 +27,7 @@ npm i --save-dev react react-dom
 
 Install Concis through the command:
 
-```
+```bash
 
 npm i --save-dev concis
 
@@ -36,7 +35,7 @@ npm i --save-dev concis
 
 ## Introduction and use
 
-```
+```tsx pure
 import { Button } from 'concis';
 
 const App = () => (
@@ -48,7 +47,7 @@ const App = () => (
 
 Modify `src/App.css`. `concis/web-react/style/index.css` is introduced at the top of the file.
 
-```
+```bash
 
 @import 'concis/web-react/style/index.css';
 

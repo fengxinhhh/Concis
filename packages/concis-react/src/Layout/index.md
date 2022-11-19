@@ -26,13 +26,13 @@ mobile: false
 
 ## Classic Page Layout
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## Custom Styles
 
 <p>Select your own style according to business requirements</p>
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 ## Layout, Header, Slider, Content, Footer API
 

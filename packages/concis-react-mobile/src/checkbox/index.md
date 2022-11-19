@@ -13,7 +13,7 @@ Select multiple options in a group.
 
 ## Basic use
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 <API></API>
 

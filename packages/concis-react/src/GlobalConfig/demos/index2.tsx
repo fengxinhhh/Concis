@@ -18,7 +18,7 @@ import {
   Steps,
   Step,
   InputPro,
-} from '../..';
+} from 'concis';
 
 const option = [
   {

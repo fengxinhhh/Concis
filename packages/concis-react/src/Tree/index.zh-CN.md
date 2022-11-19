@@ -20,25 +20,25 @@ mobile: false
 
 最基本的使用。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 搜索
 
 通过 `avaSearch` 搜索。
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 ## 默认展开
 
 配置 `defaultOpen` 默认展开所有节点。
 
-<code src="./demos/index3.tsx"/>
+<code src="./demos/index3.tsx"></code>
 
 ## 多选
 
 通过 `avaChooseMore` 支持多选。
 
-<code src="./demos/index4.tsx"/>
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

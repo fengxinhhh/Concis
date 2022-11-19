@@ -1,14 +1,13 @@
 ---
 order: 7
 title: 在 Vite 中使用
-toc: false
 ---
 
 # 在 Vite 中使用
 
 你可以使用 vite 快速搭建一个 react 项目，安装完预设包，如 react、react-dom。
 
-```
+```bash
 npm run create vite
 ```
 
@@ -18,13 +17,13 @@ npm run create vite
 
 通过命令安装 Concis：
 
-```
+```bash
 npm i --save-dev concis
 ```
 
 ## 引入和使用
 
-```
+```tsx pure
 import { Button } from 'concis';
 
 const App = () => (
@@ -36,7 +35,7 @@ const App = () => (
 
 修改 src/App.css，在文件顶部引入 `concis/web-react/style/index.css`。
 
-```
+```bash
 @import 'concis/web-react/style/index.css';
 ```
 

@@ -18,7 +18,7 @@ The `Track` component exposes the `callbackTrackData` method, which can be calle
 
 Usually, the interface report push operation is performed after the collection.
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 The `App` component in your project looks like this:
 

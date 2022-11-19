@@ -20,7 +20,7 @@ It is often used in the first screen of long list SPA to lazy load the lower and
 
 For elements that you want to load lazily, you can directly wrap them in the `LazyLoad` component. When the element appears in the viewport area, it will be automatically loaded, which is of great help for performance improvement.
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## API
 

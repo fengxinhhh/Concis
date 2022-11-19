@@ -1,7 +1,6 @@
 ---
 order: 3
 title: Color
-toc: false
 ---
 
 # Color
@@ -16,7 +15,7 @@ The color palette contains 13 common colors, and each color is divided into 10 g
 
 You can directly use these less color variables in the project under the installation environment of less.
 
-```tsx
+```tsx | demo
 /**
  * inline: true
  */

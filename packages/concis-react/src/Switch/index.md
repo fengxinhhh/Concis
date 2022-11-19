@@ -22,31 +22,31 @@ Switch selector.
 
 The most basic use.
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## Disable Status
 
 Disabled is enabled via `disabled`.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Different sizes
 
 If you think the default is larger, switch to the small switch through `small`.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Text and Icons
 
 `checkedChildren` customizes the checked content, `unCheckedChildren` customizes the unchecked content.
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## Loading
 
 Toggle the loading switch via `loading`.
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## API
 

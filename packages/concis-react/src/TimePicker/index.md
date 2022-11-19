@@ -20,25 +20,25 @@ Controls for entering or selecting dates.
 
 The most basic use.
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## Show Clear Button
 
 Display the clear button via `showClear`.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Confirm callback
 
 Get the time after confirmation with `handleConfirm`.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Disable the hour minute second option
 
 Some options are individually disabled via `disableHour`, `disableMin`, `disableSecond`.
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

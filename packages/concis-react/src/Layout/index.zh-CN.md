@@ -22,13 +22,13 @@ mobile: false
 
 ## 经典页面布局
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 自定义样式
 
 <p>根据业务需求选择自身样式</p>
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 ## Layout、Header、Slider、Content、Footer API
 

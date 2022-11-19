@@ -20,37 +20,37 @@ Controls for entering or selecting dates.
 
 The most basic date picker.
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## Year Selector
 
 Use the year picker with `YearPicker`.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Month Selector
 
 Use the year picker with `MonthPicker`.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Interval Date Selector
 
 Use the year picker via `RangeDatePicker`.
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## Reset time
 
 Configure `showClear` to reset the start and end times.
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## Direction of occurrence
 
 The orientation is specified by `align`, optional parameters are `left`, `right`, `top`, `bottom`.
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx"></code>
 
 ## DatePicker, MonthPicker, YearPicker API
 

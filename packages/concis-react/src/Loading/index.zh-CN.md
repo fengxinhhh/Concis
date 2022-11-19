@@ -16,19 +16,19 @@ mobile: false
 
 一个简单的 loading 状态。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 省略号加载
 
 配置 type=dot，可以展示省略号显示。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 列表式加载
 
 配置 type=strip，可以展示列表式显示。
 
-<code src="./demos/index7.tsx" />
+<code src="./demos/index7.tsx"></code>
 
 ## 蒙层
 
@@ -36,25 +36,25 @@ mobile: false
 
 注意：需对外层容器设置 position: relative 使得加载 Icon 在中心点。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 加载文字
 
 配置 loadingText，设置加载文字。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## 不同大小
 
 通过 width、height，自定义大小。
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## 自定义图标
 
 通过 icon 属性，设置自定义图标，自定义图标大小不支持 width、height 属性。
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx"></code>
 
 ## API
 

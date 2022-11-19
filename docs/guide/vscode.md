@@ -1,7 +1,6 @@
 ---
 order: 4
 title: Vscode support
-toc: false
 ---
 
 # vscode support

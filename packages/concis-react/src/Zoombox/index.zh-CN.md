@@ -16,37 +16,37 @@ mobile: false
 
 最基本的使用。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 在 Modal 中使用
 
 `Zoombox` 支持在 `concis` 的任何容器类组件中配套使用，如 `Modal`。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 多盒子
 
 多个 `Zoombox` 自适应。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 禁止选中
 
 通过 `notAllowed` 防止在缩放时选中容器内文本。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## 最小宽高限制
 
 通过 `minWidth`、`minHeight` 限制最小宽高。
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## 无边框
 
 配置 `noBorder` 设置无边框。
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx"></code>
 
 ## API
 

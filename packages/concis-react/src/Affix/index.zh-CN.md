@@ -1,13 +1,11 @@
 ---
-category: Components
-title: Affix
-subtitle: 固钉
-cover: https://gw.alipayobjects.com/zos/alicdn/tX6-md4H6/Affix.svg
-demo:
-  cols: 2
+title: Affix 固钉
+nav:
+  title: 组件
+  path: /common
 group:
   title: 其他
-  order: 7
+mobile: false
 ---
 
 # Affix 固钉

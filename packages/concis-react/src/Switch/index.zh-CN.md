@@ -22,31 +22,31 @@ mobile: false
 
 最基本的使用。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 禁用状态
 
 通过 `disabled` 开启禁用。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 不同大小
 
 如果觉得默认比较大，通过 `small` 切换到小开关。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 文字和图标
 
 `checkedChildren` 自定义选中内容， `unCheckedChildren` 自定义未选中内容。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## 加载中
 
 通过 `loading` 切换到加载开关。
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## API
 

@@ -1,7 +1,6 @@
 ---
 order: 1
 title: 快速开始
-toc: false
 ---
 
 # 快速开始
@@ -16,7 +15,7 @@ Concis 致力于提供给程序员愉悦的开发体验。
 
 这是一个最简单的 Concis 组件的在线 codesandbox 演示。
 
-```tsx pure
+```tsx | demo
 /**
  * inline: true
  */

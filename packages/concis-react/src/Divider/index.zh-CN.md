@@ -22,19 +22,19 @@ mobile: false
 
 基础分割线组件。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 字体大小
 
 通过 `fontSize` 自定义字体大小。
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 ## 对齐方式
 
 通过 `align` 选择对齐方式，默认为 `center`。
 
-<code src="./demos/index4.tsx"/>
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

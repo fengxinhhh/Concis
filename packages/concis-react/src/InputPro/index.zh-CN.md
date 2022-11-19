@@ -16,19 +16,19 @@ mobile: false
 
 基础预选择输入框组件。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 不同位置
 
 配置`align`改变预选择出现位置，有`left`、`right`、`top`、`bottom`四个位置。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 单独禁用
 
 配置`option`项中`disabled`属性，实现单项禁用。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## API
 

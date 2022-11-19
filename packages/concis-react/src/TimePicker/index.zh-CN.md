@@ -20,25 +20,25 @@ mobile: false
 
 最基本的使用。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 展示清除按钮
 
 通过 `showClear` 显示清除按钮。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 确认回调
 
 通过 `handleConfirm` 获取确认后的时间。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 禁用时分秒选项
 
 通过 `disableHour`、 `disableMin`、 `disableSecond` 单独禁用某些选项。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

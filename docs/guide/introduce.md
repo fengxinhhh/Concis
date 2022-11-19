@@ -1,7 +1,6 @@
 ---
 order: 0
 title: Introduce
-toc: false
 ---
 
 # Introduce

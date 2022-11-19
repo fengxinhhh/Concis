@@ -1,7 +1,6 @@
 ---
 order: 10
 title: Contribution Guideliness
-toc: false
 ---
 
 # Contribution Guidelines
@@ -14,9 +13,9 @@ If you want to contribute, but have no way to start, here you can start faster a
 
 The project is currently divided into PC components and Mobile components. The technology stack is React+TypeScript. The main business is stored in the project root directory - >packages directory.
 
-- Concis react contains the component code on the PC side and some configuration files.
+- `Concis react` contains the component code on the PC side and some configuration files.
 
-- Concis react mobile contains the mobile side`s build code and some configuration files (not yet started).
+- `Concis react mobile` contains the mobile side`s build code and some configuration files (not yet started).
 
 In the directory of all components in the project, you can write component cases in demos under each component. For example, Button component has six cases. Finally, it is in the index under the component directory The component page is automatically generated in md.
 
@@ -26,7 +25,7 @@ For more information, please refer to the writing method of online components in
 
 After clone finishes the project, install all dependencies in the project directly in the root directory:
 
-```
+```bash
 
 pnpm install
 
@@ -34,7 +33,7 @@ pnpm install
 
 You can now open the local document server by
 
-```
+```bash
 
 pnpm run start
 
@@ -44,17 +43,17 @@ pnpm run start
 
 Packaging methods include document packaging and npm packaging:
 
-```
+```bash
 
-Pnpm run docs:build   //The document is packaged and produced in docs dist
+pnpm run docs:build   //The document is packaged and produced in docs dist
 
 ```
 
 Execute in the packages or sub package directory:
 
-```
+```bash
 
-Pnpm run build    //npm package, produced in web react
+pnpm run build    //npm package, produced in web react
 
 ```
 
@@ -62,11 +61,11 @@ Pnpm run build    //npm package, produced in web react
 
 Perform unit tests and e2e tests on the components of the specified package in the packages/self package directory.
 
-```
+```bash
 
-Pnpm run test:unit   //Unit test, corresponding/__tests__/ unit
+pnpm run test:unit   //Unit test, corresponding/__tests__/ unit
 
-Pnpm run test:e2e   //e2e test, corresponding/__tests__/ e2e
+pnpm run test:e2e   //e2e test, corresponding/__tests__/ e2e
 
 ```
 
@@ -82,11 +81,11 @@ If you have any good ideas, such as new components, style fixes, project archite
 
 After you have cloned the Concis code and installed all dependencies with npm install, you can also run the following common commands:
 
-- pnpm start runs the Concis website locally.
+- `pnpm start` runs the Concis website locally.
 
-- pnpm test:jest tests unit, e2e tests for all packages.
+- `pnpm test:jest` tests unit, e2e tests for all packages.
 
-- pnpm docs:build to package the website web package.
+- `pnpm docs:build` to package the website web package.
 
 For the component library npm package, you can view the corresponding command in package.json in the corresponding subpackage in the packages directory.
 
@@ -94,7 +93,7 @@ For the component library npm package, you can view the corresponding command in
 
 In the example folder, there is a `vite` + `react` project runtime environment, in which you can experience the `concis` component, run the command in the project root directory:
 
-```
+```bash
 pnpm example:dev
 ```
 
@@ -106,6 +105,6 @@ Visit `http://localhost:5173`.
 
 ## Feedback
 
-f you encounter any problems or suggestions for improvement, please contact and leave a message.
+If you encounter any problems or suggestions for improvement, please contact and leave a message.
 
 <img src="https://concis.org.cn/images/wechat-self.jpg" width="50%" />

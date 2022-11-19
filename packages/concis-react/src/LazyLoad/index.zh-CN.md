@@ -20,7 +20,7 @@ mobile: false
 
 对于想进行懒加载的元素，直接包裹在 `LazyLoad` 组件中即可，当元素出现在视窗区域，则会自动加载，对于性能提升有极大帮助。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## API
 
