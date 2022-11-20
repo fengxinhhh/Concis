@@ -1,0 +1,42 @@
+.concis-demo-tabs {
+  position: fixed;
+  top: 114px;
+  max-height: calc(90vh - 144px);
+  list-style: none;
+  z-index: 10;
+  right: 0;
+  width: 136px;
+  margin: 0;
+  padding: 0 24px 0 0;
+  background-color: #fff;
+  box-sizing: content-box;
+  overflow: auto;
+  li {
+    position: relative;
+    margin: 0;
+    padding: 4px 0 4px 6px;
+    text-indent: 12px;
+    font-size: 13px;
+    line-height: 1.40625;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    a {
+      color: #454d64;
+      text-decoration: none;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        display: inline-block;
+        width: 2px;
+        background: #ebedf1;
+      }
+    }
+    .active:before {
+      background: #4569d4;
+    }
+  }
+}

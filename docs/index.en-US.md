@@ -1,4 +1,5 @@
 ---
+title: Concis - Lightweight component library
 hero:
   title: Concis
   description: A high-performance, lightweight UI library for quickly building React applications

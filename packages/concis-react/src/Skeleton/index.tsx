@@ -1,9 +1,9 @@
 import React, { useContext, useCallback, forwardRef } from 'react';
 import { SkeletonProps } from './interface';
+import { SkeletonStyle } from './style';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
 
 const Skeleton = (props, ref) => {
   const { className, style, loading = true, title, avatar, row = 3, width = [], size = 40 } = props;
@@ -32,22 +32,22 @@ const Skeleton = (props, ref) => {
     [width]
   );
 
-  return loading ? (
-    <div
-      className={classNames}
-      style={{ '--skeleton-container-avatar-size': `${size}px`, ...style } as any}
-      ref={ref}
-    >
-      {avatar && <div className={`${firstClass}-avatar`} />}
-      <div className={`${firstClass}-container`}>
-        {title && <div className={`${firstClass}-container-title`} />}
-        {new Array(row).fill('').map((r, i) => {
-          return <div className={`${firstClass}-container-line`} style={lineHeight(i)} />;
-        })}
-      </div>
-    </div>
-  ) : (
-    <></>
+  return (
+    <SkeletonStyle avatarSize={size}>
+      {loading ? (
+        <div className={classNames} style={style} ref={ref}>
+          {avatar && <div className={`${firstClass}-avatar`} />}
+          <div className={`${firstClass}-container`}>
+            {title && <div className={`${firstClass}-container-title`} />}
+            {new Array(row).fill('').map((r, i) => {
+              return <div className={`${firstClass}-container-line`} style={lineHeight(i)} />;
+            })}
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+    </SkeletonStyle>
   );
 };
 

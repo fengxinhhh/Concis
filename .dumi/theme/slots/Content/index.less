@@ -1,0 +1,128 @@
+@import (reference) '../../styles/variables.less';
+
+.markdown {
+  color: @c-text;
+
+  // hyperlink
+  a {
+    color: @c-primary;
+  }
+
+  // inline code
+  *:not(pre) code {
+    padding: 2px 5px;
+    color: #d56161;
+    background: darken(@c-site-bg, 2%);
+    border-radius: 2px;
+  }
+
+  // pre tag
+  pre {
+    font-size: 14px;
+    padding-left: 24px;
+    padding-right: 24px;
+    background-color: tint(@c-site-bg, 50%);
+  }
+
+  // table
+  table {
+    width: 100%;
+  }
+
+  th {
+    background-color: tint(@c-site-bg, 50%);
+  }
+
+  th,
+  td {
+    padding-block-start: 10px;
+    padding-block-end: 10px;
+    padding-inline-start: 16px;
+    padding-inline-end: 16px;
+    border-color: @c-border-light;
+  }
+
+  // blockquote
+  blockquote {
+    font-style: italic;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    background-color: tint(@c-site-bg, 50%);
+    border-left: 5px solid @c-border-light;
+  }
+
+  // list
+  ul li {
+    line-height: 1.8;
+  }
+
+  // anchor of headings
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    > a[aria-hidden]:first-child {
+      float: left;
+      width: 20px;
+      padding-inline-end: 4px;
+      margin-inline-start: -24px;
+      color: @c-text;
+      // hide phantom blank node
+      font-size: 0;
+      text-align: right;
+      line-height: inherit;
+
+      [data-direction='rtl'] & {
+        float: right;
+      }
+
+      &:hover {
+        border: 0;
+      }
+
+      > .icon-link::before {
+        content: '#';
+        color: @c-text-secondary;
+        font-size: 20px;
+      }
+    }
+
+    &:not(:hover) > a[aria-hidden]:first-child > .icon-link {
+      visibility: hidden;
+    }
+  }
+}
+
+.@{prefix}-content {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  &:not([data-no-sidebar]) {
+    padding: @s-content-padding @s-content-padding 0;
+    background-color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 8px 24px 0 rgb(0 0 0 / 5%);
+
+    @media @mobile {
+      max-width: initial;
+      margin: 0 -24px;
+      padding: 24px 24px 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+
+  .@{prefix}-header + main > &,
+  .@{prefix}-doc-layout-mobile-bar + main > & {
+    min-height: calc(100vh - @s-header-height);
+
+    @media @mobile {
+      min-height: calc(100vh - @s-header-height-m);
+    }
+  }
+}

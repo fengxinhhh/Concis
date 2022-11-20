@@ -1,6 +1,7 @@
 import { defineConfig } from 'dumi';
 import style from './docs/siteIndexStyle';
 import path from 'path';
+import { version } from './packages/concis-react/package.json';
 
 export default defineConfig({
   favicons: ['http://concis.org.cn/images/concis-logo.png'],
@@ -15,6 +16,9 @@ export default defineConfig({
       { type: 'mobile', dir: '/packages/concis-react-mobile/src' },
     ],
     codeBlockMode: 'passive',
+  },
+  define: {
+    concisVersion: version,
   },
   alias: {
     concis: path.join(__dirname, 'packages/concis-react/src'),
