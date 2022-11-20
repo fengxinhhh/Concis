@@ -12,7 +12,7 @@ mobile: false
 
 Sets the spacing between components.
 
-## ##When to use
+## When to use
 
 Avoid components sticking together to open a unified space.
 

@@ -18,7 +18,7 @@ hero:
  */
 import React from 'react';
 import { Section } from './site/Section';
-import { LazyLoad } from '../packages/concis-react/src';
+import { LazyLoad } from 'concis';
 import './site/styles.less';
 export default () => (
   <Section
@@ -44,7 +44,7 @@ export default () => (
  */
 import React from 'react';
 import { Section } from './site/Section';
-import { LazyLoad } from '../packages/concis-react/src';
+import { LazyLoad } from 'concis';
 import './site/styles.less';
 
 export default () => (

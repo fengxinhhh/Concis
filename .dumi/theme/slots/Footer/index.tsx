@@ -1,5 +1,6 @@
 import { useSiteData } from 'dumi';
 import React, { type FC } from 'react';
+import { LazyLoad } from 'concis';
 import './index.less';
 
 const Footer: FC = () => {
@@ -8,7 +9,9 @@ const Footer: FC = () => {
   if (!themeConfig.footer) return null;
 
   return (
-    <div className="dumi-default-footer" dangerouslySetInnerHTML={{ __html: themeConfig.footer }} />
+    <LazyLoad>
+      <div className="dumi-default-footer">{themeConfig.footer}</div>
+    </LazyLoad>
   );
 };
 

@@ -4,14 +4,18 @@ import { Skeleton } from 'concis';
 import './index.less';
 
 const Content: FC<{ children: ReactNode }> = (props) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const visteredRouterList = useRef<string[]>([]);
   const sidebar = useSidebarData();
   let { pathname } = useLocation();
 
   // 承载一个loading，如果未访问过的路由，就显示loading，fix dumi native route bug
   useEffect(() => {
-    if (!visteredRouterList.current.includes(pathname)) {
+    if (
+      pathname !== '/' &&
+      pathname !== '/zh-CN' &&
+      !visteredRouterList.current.includes(pathname)
+    ) {
       setLoading(true);
       visteredRouterList.current = [...visteredRouterList.current, pathname];
       setTimeout(() => {
