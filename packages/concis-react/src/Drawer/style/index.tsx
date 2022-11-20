@@ -38,14 +38,13 @@ const darkDrawerStyle = `
 `;
 
 function getDrawerStyle(align: alignProps, width: number | string): React.CSSProperties {
-  console.log(width);
   const size = typeof width === 'string' ? width : `${width}%`;
 
   function getStyleByAlign(align: alignProps) {
     const map = {
       left: {
         top: 0,
-        right: 0,
+        left: 0,
         height: '100%',
         width: size,
       },

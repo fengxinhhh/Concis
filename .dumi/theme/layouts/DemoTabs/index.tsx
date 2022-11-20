@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMeta } from 'dumi';
-import { Affix } from 'concis';
 import './index.less';
 
 export default function DemoTabs() {
@@ -27,9 +26,9 @@ export default function DemoTabs() {
 
   const isInViewport = (dom) => {
     // 兼容写法
-    let viewPortHeight = window.innerHeight || document.documentElement.clientHeight;
-    let viewPortWidth = window.innerWidth || document.documentElement.clientWidth;
-    let { top, left, bottom, right } = dom.getBoundingClientRect();
+    const viewPortHeight = window.innerHeight || document.documentElement.clientHeight;
+    const viewPortWidth = window.innerWidth || document.documentElement.clientWidth;
+    const { top, left, bottom, right } = dom.getBoundingClientRect();
 
     // 返回元素是否在视口内、元素距离视窗顶部距离
     return {
@@ -79,7 +78,6 @@ export default function DemoTabs() {
   });
 
   return (
-    // <Affix affixType="scroll" offsetTop={30} offsetRight={30}>
     <ul className="dumi-default-doc-tabs">
       {toc.slice(1).map(({ id }) => {
         return (
@@ -95,6 +93,5 @@ export default function DemoTabs() {
         );
       })}
     </ul>
-    // </Affix>
   );
 }
