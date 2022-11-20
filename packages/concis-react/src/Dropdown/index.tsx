@@ -9,12 +9,12 @@ import React, {
 } from 'react';
 import { DownOutlined, RightOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
+import { DropdownStyle } from './style';
 import { onClickOutSide, dispatchRef } from '../common_utils/dom/event';
 import { DropdownProps, dataType } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './styles/index.module.less';
 
 const Dropdown = (props, ref) => {
   const {
@@ -223,59 +223,61 @@ const Dropdown = (props, ref) => {
   }, [status, dropValue, visible, dropData, position]);
 
   return (
-    <div
-      className={classNames}
-      style={{ '--colums-width': `${columsWidth}px`, ...style } as any}
-      ref={(node) => {
-        dropdownDom.current = node;
-        dispatchRef<RefObject<HTMLElement> | HTMLElement>(ref, node);
-      }}
-    >
+    <DropdownStyle columsWidth={columsWidth}>
       <div
-        className={cs(
-          'concis-dropdown-result',
-          `concis-dropdown-result-${status}`,
-          disabled ? 'concis-dropdown-result-disabled' : '',
-          visible ? `concis-dropdown-result-${status}-active` : ''
-        )}
-        onClick={(e) => {
-          if (disabled || type !== 'click') return;
-          e.stopPropagation();
-          setVisible(!visible);
-        }}
-        onMouseEnter={(e) => hoverMouseEvent('enter', e)}
-        onMouseLeave={(e) => hoverMouseEvent('leave', e)}
-      >
-        {dropValue}
-        <DownOutlined className="drop-icon" />
-      </div>
-      <CSSTransition
-        in={visible}
-        timeout={200}
-        appear
-        mountOnEnter
-        classNames="fadeContent"
-        unmountOnExit
-        onEnter={(e: HTMLDivElement) => {
-          e.style.display = colums ? 'flex' : 'inline-block';
-        }}
-        onExited={(e: HTMLDivElement) => {
-          e.style.display = 'none';
+        className={classNames}
+        style={style}
+        ref={(node) => {
+          dropdownDom.current = node;
+          dispatchRef<RefObject<HTMLElement> | HTMLElement>(ref, node);
         }}
       >
         <div
           className={cs(
-            'concis-dropdown-content',
-            colums ? 'concis-dropdown-content-colums' : '',
-            `concis-dropdown-content-${position}`
+            'concis-dropdown-result',
+            `concis-dropdown-result-${status}`,
+            disabled ? 'concis-dropdown-result-disabled' : '',
+            visible ? `concis-dropdown-result-${status}-active` : ''
           )}
+          onClick={(e) => {
+            if (disabled || type !== 'click') return;
+            e.stopPropagation();
+            setVisible(!visible);
+          }}
           onMouseEnter={(e) => hoverMouseEvent('enter', e)}
           onMouseLeave={(e) => hoverMouseEvent('leave', e)}
         >
-          {listELementRender}
+          {dropValue}
+          <DownOutlined className="drop-icon" />
         </div>
-      </CSSTransition>
-    </div>
+        <CSSTransition
+          in={visible}
+          timeout={200}
+          appear
+          mountOnEnter
+          classNames="fadeContent"
+          unmountOnExit
+          onEnter={(e: HTMLDivElement) => {
+            e.style.display = colums ? 'flex' : 'inline-block';
+          }}
+          onExited={(e: HTMLDivElement) => {
+            e.style.display = 'none';
+          }}
+        >
+          <div
+            className={cs(
+              'concis-dropdown-content',
+              colums ? 'concis-dropdown-content-colums' : '',
+              `concis-dropdown-content-${position}`
+            )}
+            onMouseEnter={(e) => hoverMouseEvent('enter', e)}
+            onMouseLeave={(e) => hoverMouseEvent('leave', e)}
+          >
+            {listELementRender}
+          </div>
+        </CSSTransition>
+      </div>
+    </DropdownStyle>
   );
 };
 

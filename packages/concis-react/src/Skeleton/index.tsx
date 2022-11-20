@@ -40,7 +40,9 @@ const Skeleton = (props, ref) => {
           <div className={`${firstClass}-container`}>
             {title && <div className={`${firstClass}-container-title`} />}
             {new Array(row).fill('').map((r, i) => {
-              return <div className={`${firstClass}-container-line`} style={lineHeight(i)} />;
+              return (
+                <div className={`${firstClass}-container-line`} style={lineHeight(i)} key={i} />
+              );
             })}
           </div>
         </div>

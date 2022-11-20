@@ -97,5 +97,15 @@ body {
         line-height: 1;
       }
     }
+
+    .@{prefix}-tocbar {
+      position: relative;
+      width: 100px;
+      min-height: calc(100vh - 76px);
+
+      @media @mobile {
+        display: none;
+      }
+    }
   }
 }
