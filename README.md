@@ -3,6 +3,7 @@
     <img alt="Concis Logo" width="200" src="https://concis.org.cn/images/concis-logo.png"/>
   </a>
 </div>
+
 <div align="center">
   <h1>Concis</h1>
 </div>
