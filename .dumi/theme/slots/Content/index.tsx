@@ -1,32 +1,15 @@
-import { useSidebarData, useLocation } from 'dumi';
-import React, { type FC, type ReactNode, useState, useEffect, useRef } from 'react';
+import { useSidebarData, useSiteData } from 'dumi';
+import React, { type FC, type ReactNode } from 'react';
 import { Skeleton } from 'concis';
 import './index.less';
 
 const Content: FC<{ children: ReactNode }> = (props) => {
-  const [loading, setLoading] = useState(false);
-  const visteredRouterList = useRef<string[]>([]);
   const sidebar = useSidebarData();
-  let { pathname } = useLocation();
-
-  // 承载一个loading，如果未访问过的路由，就显示loading，fix dumi native route bug
-  useEffect(() => {
-    if (
-      pathname !== '/' &&
-      pathname !== '/zh-CN' &&
-      !visteredRouterList.current.includes(pathname)
-    ) {
-      setLoading(true);
-      visteredRouterList.current = [...visteredRouterList.current, pathname];
-      setTimeout(() => {
-        setLoading(false);
-      }, 500);
-    }
-  }, [pathname]);
+  const { loading } = useSiteData();
 
   return (
     <div className="dumi-default-content" data-no-sidebar={!sidebar || undefined}>
-      {loading ? (
+      {loading && (
         <>
           <div style={{ width: '600px' }}>
             <Skeleton loading title />
@@ -43,11 +26,9 @@ const Content: FC<{ children: ReactNode }> = (props) => {
               <Skeleton loading title avatar row={4} width={['50%', '60%', '70%', '80%']} />
             </div>
           </div>
-          {props.children[props.children.length - 1]}
         </>
-      ) : (
-        props.children
       )}
+      {props.children}
     </div>
   );
 };

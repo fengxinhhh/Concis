@@ -1,23 +1,19 @@
 import React, { useState, useMemo, useContext, useEffect, forwardRef } from 'react';
 import { EyeOutlined, UpOutlined, DownOutlined } from '@ant-design/icons';
+import { InputStyle } from './style';
 import { InputProps } from './interface';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
 
 type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLElement>, 'type'>; // 原生Input接口
-
-const defaultInputWidth = '170px',
-  defaultFocusColor = '#325dff';
 
 const Input = (props, ref) => {
   const {
     className,
     style,
-    width,
-    moreStyle,
+    width = '170',
     type,
     placeholder,
     showClear,
@@ -60,7 +56,7 @@ const Input = (props, ref) => {
 
   const changeIpt = (e: React.ChangeEvent<HTMLInputElement>) => {
     // 改变文本框
-    if (moreStyle && Object.keys(moreStyle).includes('caretColor')) {
+    if (style && Object.keys(style).includes('caretColor')) {
       return;
     }
     const val = e.target.value;
@@ -134,72 +130,62 @@ const Input = (props, ref) => {
     return type || 'text';
   }, [type, showTogglePwd, pwdIptState]);
 
-  const exticStyle = useMemo(() => {
-    const style = { width: defaultInputWidth };
-    if (width) {
-      style.width = `${width}px`;
-    }
-    return { ...style, ...moreStyle };
-  }, [width, moreStyle]);
-
   return (
-    <div
-      className={classNames}
-      style={{ width: width ? `${width}px` : defaultInputWidth, ...style }}
-    >
-      <input
-        className="input"
-        style={{ ...exticStyle, '--focus-color': globalColor || defaultFocusColor } as any}
-        type={iptType}
-        placeholder={placeholder}
-        value={defaultValue || iptValue}
-        onChange={changeIpt}
-        onBlur={blurIpt}
-        onFocus={focusIpt}
-        onKeyUp={(e) => handleKeyDown && handleKeyDown(e)}
-        onClick={iptHandleClick}
-        ref={ref}
-      />
-      {
-        // 可清除
-        (showClear && (
-          <span
-            className="clear-svg input-clear"
-            onClick={(e) => {
-              e.stopPropagation();
-              setIptValue('');
-              clearCallback && clearCallback();
-            }}
-          >
-            <svg
-              viewBox="64 64 896 896"
-              focusable="false"
-              data-icon="close-circle"
-              width="1em"
-              height="1em"
-              fill="currentColor"
-              aria-hidden="true"
+    <InputStyle width={width} focusColor={globalColor}>
+      <div className={classNames} style={style}>
+        <input
+          className="input"
+          type={iptType}
+          placeholder={placeholder}
+          value={defaultValue || iptValue}
+          onChange={changeIpt}
+          onBlur={blurIpt}
+          onFocus={focusIpt}
+          onKeyUp={(e) => handleKeyDown && handleKeyDown(e)}
+          onClick={iptHandleClick}
+          ref={ref}
+        />
+        {
+          // 可清除
+          (showClear && (
+            <span
+              className="clear-svg input-clear"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIptValue('');
+                clearCallback && clearCallback();
+              }}
             >
-              <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z" />
-            </svg>
-          </span>
-        )) ||
-          // 密码框
-          (type === 'password' && showTogglePwd && (
-            <EyeOutlined
-              style={{ position: 'absolute', right: '5px', fontSize: '12px', cursor: 'pointer' }}
-              onClick={() => setPwdIptState(!pwdIptState)}
-            />
+              <svg
+                viewBox="64 64 896 896"
+                focusable="false"
+                data-icon="close-circle"
+                width="1em"
+                height="1em"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z" />
+              </svg>
+            </span>
           )) ||
-          // 数字框
-          (type === 'num' && (
-            <div className="numTags">
-              <UpOutlined style={{ cursor: 'pointer', fontSize: '10px' }} onClick={addNum} />
-              <DownOutlined style={{ cursor: 'pointer', fontSize: '10px' }} onClick={lowNum} />
-            </div>
-          ))
-      }
-    </div>
+            // 密码框
+            (type === 'password' && showTogglePwd && (
+              <EyeOutlined
+                style={{ position: 'absolute', right: '5px', fontSize: '12px', cursor: 'pointer' }}
+                onClick={() => setPwdIptState(!pwdIptState)}
+              />
+            )) ||
+            // 数字框
+            (type === 'num' && (
+              <div className="numTags">
+                <UpOutlined style={{ cursor: 'pointer', fontSize: '10px' }} onClick={addNum} />
+                <DownOutlined style={{ cursor: 'pointer', fontSize: '10px' }} onClick={lowNum} />
+              </div>
+            ))
+        }
+      </div>
+    </InputStyle>
   );
 };
 

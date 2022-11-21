@@ -153,18 +153,6 @@ describe('Tree', () => {
     expect(component.find('input').getDOMNode().value).toBe('leaf2');
     // expect(container.children().at(1).children().at(0).exists()).toBe(false);
     expect(chooseCallback).toBeCalled();
-    act(() => {
-      component
-        .find('.cocnis-tree-container')
-        .childAt(0)
-        .at(0)
-        .find('span')
-        .at(0)
-        .simulate('click');
-    });
-    component.update();
-    expect(component.find('input').getDOMNode().value).toBe('');
-    expect(chooseCallback).toBeCalled();
   });
   it('test tree props', () => {
     const component = mount(<Demo avaSearch avaChooseMore defaultOpen />);

@@ -9,6 +9,7 @@ export default defineConfig({
   history: {
     type: 'hash',
   },
+  hash: true,
   resolve: {
     docDirs: ['docs'],
     atomDirs: [
@@ -31,6 +32,7 @@ export default defineConfig({
     name: 'Concis',
     carrier: 'dumi', // 设备状态栏左侧的文本内容
     hd: true,
+    rtl: true,
     logo: 'http://concis.org.cn/images/concis-logo.png',
     footer:
       'Copyright © 2022-2022 Concis. All Rights Reserved. Concis 版权所有. 苏ICP备2022018060号',

@@ -52,17 +52,14 @@ export default () => (
     title="Thanks to all contributors~"
     style={{ marginTop: 140 }}
     titleStyle={{ paddingBottom: 100, fontWeight: 'bold', fontSize: 50, textAlign: 'center' }}
-    scale={0.6}
   >
-    <LazyLoad>
-      <a
-        href="https://github.com/fengxinhhh/concis/graphs/contributors"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img src="https://contrib.rocks/image?repo=fengxinhhh/concis" width={800} />
-      </a>
-    </LazyLoad>
+    <a
+      href="https://github.com/fengxinhhh/concis/graphs/contributors"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img src="https://contrib.rocks/image?repo=fengxinhhh/concis" width={800} />
+    </a>
   </Section>
 );
 ```

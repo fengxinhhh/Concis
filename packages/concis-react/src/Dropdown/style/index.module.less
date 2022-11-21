@@ -8,13 +8,14 @@
 @concis-dropdown-dark-default-hover-bg: #49494b;
 @concis-dropdown-dark-content-color: #373739;
 
-.concis-dropdown, .concis-dark-dropdown {
+.concis-dropdown,
+.concis-dark-dropdown {
   display: inline-block;
   position: relative;
 
   .concis-dropdown-result {
     font-size: @concis-font-md;
-    transition: .2s linear;
+    transition: 0.2s linear;
     height: 30px;
     cursor: pointer;
 
@@ -68,7 +69,10 @@
     color: @concis-primary-color;
   }
 
-  .concis-dropdown-result-primary, .concis-dropdown-result-error, .concis-dropdown-result-success, .concis-dropdown-result-warning {
+  .concis-dropdown-result-primary,
+  .concis-dropdown-result-error,
+  .concis-dropdown-result-success,
+  .concis-dropdown-result-warning {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -201,7 +205,7 @@
   }
 
   .concis-dropdown-result-disabled {
-    opacity: .6;
+    opacity: 0.6;
     cursor: not-allowed;
   }
   //列表
@@ -258,14 +262,14 @@
         }
 
         &-item-disabled {
-          opacity: .6;
+          opacity: 0.6;
           cursor: not-allowed;
         }
       }
     }
 
     .list-disabled {
-      opacity: .6;
+      opacity: 0.6;
       cursor: not-allowed;
     }
   }
@@ -456,4 +460,3 @@
     }
   }
 }
-
