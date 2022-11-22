@@ -60,14 +60,12 @@ describe('Menu', () => {
     expect(component.find('.concis-menu .concis-menu-menuOptions').at(1).children().length).toBe(4);
     expect(component.find('.concis-menu .concis-menu-menuOptions').at(2).children().length).toBe(5);
   });
-  it('test width props correctly', () => {
-    const component = mount(<Menu items={items} width={300} />);
-    expect(component.find('.concis-menu').getDOMNode().style.width).toBe('300px');
-  });
+
   it('test dark theme menu correctly', () => {
     const component = mount(<Menu items={items} dark />);
     expect(component.find('.concis-dark-menu').length).toBe(1);
   });
+
   it('test menu click toggle correctly', async () => {
     const mockFn = jest.fn();
     const component = mount(<Menu items={items} handleRouteChange={mockFn} />);
@@ -85,6 +83,7 @@ describe('Menu', () => {
     component.find('.concis-menu .concis-menu-menuOptions div').at(1).simulate('click');
     expect(mockFn).toBeCalled();
   });
+
   it('test ableToggle menu correctly', async () => {
     const component = mount(<Menu items={items} ableToggle />);
     expect(
@@ -107,6 +106,7 @@ describe('Menu', () => {
       component.find('.concis-menu .concis-menu-menuOptions').at(0).getDOMNode().style.height
     ).toBe('50px');
   });
+
   it('test defaultOpen menu correctly', () => {
     const component = mount(<Menu items={items} defaultOpen />);
     expect(

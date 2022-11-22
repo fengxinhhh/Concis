@@ -1,11 +1,11 @@
 import React, { createContext, useMemo, useState, useEffect, useRef, useContext } from 'react';
 import { TransitionGroup } from 'react-transition-group';
+import { ListStyle } from './style';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import { listProps, listHeaderStyle, listContentStyle } from './interface';
+import { listProps, listContentStyle } from './interface';
 import Item from './item';
-import './style/list.module.less';
 
 export const ctx = createContext<any>({}); // 顶层通信装置
 
@@ -70,31 +70,6 @@ const List = (props, ref) => {
     }
   }, [dataSource]);
 
-  const listHeaderStyle = useMemo(() => {
-    // 头部样式
-    const defaultStyles: listHeaderStyle = {};
-    switch (size) {
-      case 'default':
-        defaultStyles.padding = '12px 20px';
-        break;
-      case 'small':
-        defaultStyles.padding = '8px 20px';
-        break;
-      case 'large':
-        defaultStyles.padding = '16px 20px';
-        break;
-      default: {
-        defaultStyles.padding = '12px 20px';
-      }
-    }
-    return defaultStyles;
-  }, [size]);
-
-  const listStyle = useMemo(() => {
-    // 表整体样式
-    return style;
-  }, [style]);
-
   const listContentStyle = useMemo(() => {
     // 表正文样式
     const returnStyle: listContentStyle = {};
@@ -136,54 +111,56 @@ const List = (props, ref) => {
 
   // 这里懒加载、虚拟列表使用React动画会破坏效果，渲染全部元素，待定
   return (
-    <ctx.Provider value={contextProps}>
-      <div className={classNames} style={listStyle} ref={ref}>
-        <div className="list-header" style={listHeaderStyle}>
-          {header}
-        </div>
-        {virtualListProps ? (
-          <div
-            className="victurl-list-content"
-            style={{ height: `${(virtualShowNum * listItemHeight.current) as number}px` }}
-            ref={victurlListContentRef}
-            onScroll={victurlScroll}
-          >
+    <ListStyle size={size}>
+      <ctx.Provider value={contextProps}>
+        <div className={classNames} style={style} ref={ref}>
+          <div className="list-header">{header}</div>
+          {virtualListProps ? (
             <div
-              className="victurl-relly-content"
-              style={{
-                height: `${((dataSource.length * listItemHeight.current) as number) - scrollTop}px`,
-                transform: `translate(0, ${scrollTop}px)`,
-              }}
+              className="victurl-list-content"
+              style={{ height: `${(virtualShowNum * listItemHeight.current) as number}px` }}
+              ref={victurlListContentRef}
+              onScroll={victurlScroll}
             >
-              {/* <TransitionGroup> */}
-              {Array.isArray(formatDataSrouce) &&
-                formatDataSrouce.length !== 0 &&
-                formatDataSrouce.map(render)}
-              {/* </TransitionGroup> */}
-            </div>
-          </div>
-        ) : (
-          <div
-            className="list-content"
-            style={listContentStyle}
-            ref={listContentRef}
-            onScroll={scrollList}
-          >
-            {lazyLoad ? (
-              Array.isArray(formatDataSrouce) &&
-              formatDataSrouce.length !== 0 &&
-              formatDataSrouce.map(render)
-            ) : (
-              <TransitionGroup>
+              <div
+                className="victurl-relly-content"
+                style={{
+                  height: `${
+                    ((dataSource.length * listItemHeight.current) as number) - scrollTop
+                  }px`,
+                  transform: `translate(0, ${scrollTop}px)`,
+                }}
+              >
+                {/* <TransitionGroup> */}
                 {Array.isArray(formatDataSrouce) &&
                   formatDataSrouce.length !== 0 &&
                   formatDataSrouce.map(render)}
-              </TransitionGroup>
-            )}
-          </div>
-        )}
-      </div>
-    </ctx.Provider>
+                {/* </TransitionGroup> */}
+              </div>
+            </div>
+          ) : (
+            <div
+              className="list-content"
+              style={listContentStyle}
+              ref={listContentRef}
+              onScroll={scrollList}
+            >
+              {lazyLoad ? (
+                Array.isArray(formatDataSrouce) &&
+                formatDataSrouce.length !== 0 &&
+                formatDataSrouce.map(render)
+              ) : (
+                <TransitionGroup>
+                  {Array.isArray(formatDataSrouce) &&
+                    formatDataSrouce.length !== 0 &&
+                    formatDataSrouce.map(render)}
+                </TransitionGroup>
+              )}
+            </div>
+          )}
+        </div>
+      </ctx.Provider>
+    </ListStyle>
   );
 };
 

@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useContext, useMemo, forwardRef, useRef } from 'react';
+import React, { useState, useEffect, useContext, forwardRef, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { InputProStyle } from './style';
 import { onClickOutSide } from '../common_utils/dom/event';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -7,9 +8,6 @@ import { globalCtx } from '../GlobalConfig';
 import { InputProProps } from './interface';
 import { ctx } from '../Form';
 import Input from '../Input';
-import './index.module.less';
-
-const defaultInputProColor = '#325dff';
 
 const InputPro = (props, ref) => {
   const {
@@ -71,37 +69,6 @@ const InputPro = (props, ref) => {
     setIsFocus(false);
   };
 
-  const traggerTransform = useMemo(() => {
-    switch (align) {
-      case 'top':
-        return {
-          left: '25%',
-          bottom: 'calc(100% + 5px)',
-        };
-      case 'bottom':
-        return {
-          left: '25%',
-          top: 'calc(100% + 5px)',
-        };
-      case 'left':
-        return {
-          left: '-50%',
-          top: '-120%',
-        };
-      case 'right':
-        return {
-          right: '-50%',
-          top: '-120%',
-        };
-      default: {
-        return {
-          left: '25%',
-          bottom: 'calc(100% + 5px)',
-        };
-      }
-    }
-  }, [align]);
-
   const traggerOptionClass = <T extends string, U>(label: T, disabled: U) => {
     if (disabled) {
       return 'disabled-option';
@@ -113,61 +80,62 @@ const InputPro = (props, ref) => {
   };
 
   return (
-    <div
-      className={classNames}
-      style={{ ...style, '--select-color': globalColor || defaultInputProColor } as any}
-      ref={(node) => {
-        inputProEl.current = node;
-        if (typeof ref === 'function') {
-          ref(node);
-        } else if (ref && typeof ref === 'object') {
-          ref.current = node;
-        }
-      }}
-    >
-      <Input
-        placeholder="请输入"
-        width="200"
-        defaultValue={value}
-        showClear
-        handleIptFocus={handleIptFocus}
-        handleIptChange={handleIptChange}
-        clearCallback={() => {
-          setValue('');
-          handleClear && handleClear('');
-        }}
-        isFather
-      />
-      <CSSTransition
-        in={isFocus}
-        classNames="input-pro-tragger"
-        style={traggerTransform}
-        timeout={200}
-        appear
-        mountOnEnter
-        unmountOnExit
-        onEnter={(e: HTMLDivElement) => {
-          e.style.display = 'flex';
-        }}
-        onExited={(e: HTMLDivElement) => {
-          e.style.display = 'none';
+    <InputProStyle selectColor={globalColor} align={align}>
+      <div
+        className={classNames}
+        style={style}
+        ref={(node) => {
+          inputProEl.current = node;
+          if (typeof ref === 'function') {
+            ref(node);
+          } else if (ref && typeof ref === 'object') {
+            ref.current = node;
+          }
         }}
       >
-        <div className="concis-input-pro-tragger">
-          {option.map(({ label, disabled }, i) => {
-            return (
-              <span
-                className={traggerOptionClass<string, boolean | undefined>(label, disabled)}
-                key={i}
-                onClick={(e) => chooseVal<string, boolean | undefined>(label, disabled, e)}
-              >
-                {label}
-              </span>
-            );
-          })}
-        </div>
-      </CSSTransition>
-    </div>
+        <Input
+          placeholder="请输入"
+          width="200"
+          defaultValue={value}
+          showClear
+          handleIptFocus={handleIptFocus}
+          handleIptChange={handleIptChange}
+          clearCallback={() => {
+            setValue('');
+            handleClear && handleClear('');
+          }}
+          isFather
+        />
+        <CSSTransition
+          in={isFocus}
+          classNames="input-pro-tragger"
+          timeout={200}
+          appear
+          mountOnEnter
+          unmountOnExit
+          onEnter={(e: HTMLDivElement) => {
+            e.style.display = 'flex';
+          }}
+          onExited={(e: HTMLDivElement) => {
+            e.style.display = 'none';
+          }}
+        >
+          <div className="concis-input-pro-tragger">
+            {option.map(({ label, disabled }, i) => {
+              return (
+                <span
+                  className={traggerOptionClass<string, boolean | undefined>(label, disabled)}
+                  key={i}
+                  onClick={(e) => chooseVal<string, boolean | undefined>(label, disabled, e)}
+                >
+                  {label}
+                </span>
+              );
+            })}
+          </div>
+        </CSSTransition>
+      </div>
+    </InputProStyle>
   );
 };
 

@@ -40,12 +40,6 @@ mobile: false
 
 <code src="./demos/index4.tsx"></code>
 
-## 交互
-
-- 应用于快速布局 Layout-Slider 侧边栏中
-
-<code src="./demos/index5.tsx"></code>
-
 ## 默认展开
 
 配置 `defaultOpen` 默认展开。

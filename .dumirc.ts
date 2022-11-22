@@ -9,7 +9,7 @@ export default defineConfig({
   history: {
     type: 'hash',
   },
-  hash: true,
+  // hash: true,
   resolve: {
     docDirs: ['docs'],
     atomDirs: [

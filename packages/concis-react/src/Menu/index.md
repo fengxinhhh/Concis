@@ -40,12 +40,6 @@ Configure `ableToggle` to enable accordion switching.
 
 <code src="./demos/index4.tsx"></code>
 
-## Interaction
-
-- Apply to quick layout Layout Slider sidebar
-
-<code src="./demos/index5.tsx"></code>
-
 ## Default expansion
 
 Configure `defaultOpen` default deployment.

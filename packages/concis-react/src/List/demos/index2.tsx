@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { List } from 'concis';
-import './demo.module.less';
+import { ListDemoStyle } from './demoStyle';
+import './demoStyle.tsx';
 
 export default function listDemo1() {
   const [listSize, setListSize] = useState('default');
@@ -13,7 +14,7 @@ export default function listDemo1() {
   ];
 
   return (
-    <>
+    <ListDemoStyle>
       <span
         className={listSize === 'small' ? 'active-size-bar' : 'size-change-bar'}
         onClick={() => setListSize('small')}
@@ -41,6 +42,6 @@ export default function listDemo1() {
           return <List.Item style={{ fontSize: '14px' }}>{item}</List.Item>;
         }}
       />
-    </>
+    </ListDemoStyle>
   );
 }

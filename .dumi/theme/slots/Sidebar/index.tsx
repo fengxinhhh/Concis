@@ -8,7 +8,6 @@ const Sidebar: FC = () => {
 
   if (!sidebar) return null;
 
-  console.log(pathname);
   return (
     <>
       {pathname !== '/' && pathname !== '/zh-CN' && (
