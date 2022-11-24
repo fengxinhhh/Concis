@@ -8,11 +8,11 @@ import React, {
   forwardRef,
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { NavStyle } from './style';
 import { NavProps, lineStyleProps, dialogStyleProps, navDataOption } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './styles/index.module.less';
 
 const Nav = (props, ref) => {
   const { className, style, navData, navContent, leftSlot, rightSlot } = props;
@@ -116,75 +116,77 @@ const Nav = (props, ref) => {
   };
 
   return (
-    <div className={classNames} style={style} ref={ref} onMouseLeave={leaveNav}>
-      <div className="concis-nav-bar" ref={widthRef}>
-        {leftSlot && (
-          <div className="concis-nav-left" ref={leftNavRef}>
-            {leftSlot}
-          </div>
-        )}
-
-        {navData.map((item, index) => {
-          return (
-            <div
-              className="concis-nav-bar-option"
-              key={index}
-              onMouseEnter={() => enterNav(index)}
-              onClick={() => jump(item)}
-            >
-              {item.label}
+    <NavStyle>
+      <div className={classNames} style={style} ref={ref} onMouseLeave={leaveNav}>
+        <div className="concis-nav-bar" ref={widthRef}>
+          {leftSlot && (
+            <div className="concis-nav-left" ref={leftNavRef}>
+              {leftSlot}
             </div>
-          );
-        })}
-        <CSSTransition
-          in={visible}
-          timeout={200}
-          appear
-          classNames="fadeIn"
-          mountOnEnter
-          onEnter={(e) => {
-            e.style.display = 'inline-block';
-          }}
-          onExited={(e) => {
-            e.style.display = 'none';
-          }}
-        >
-          <>
-            <div className="line" style={lineStyle} />
-            {navContent && navContent.length > 0 && (
-              <CSSTransition
-                in={visible && hoverNavIndex !== -1}
-                timeout={100}
-                appear
-                classNames="dialogFade"
-                mountOnEnter
-                onEnter={(e) => {
-                  e.style.display = 'inline-block';
-                }}
-                onExited={(e) => {
-                  e.style.display = 'none';
-                }}
+          )}
+
+          {navData.map((item, index) => {
+            return (
+              <div
+                className="concis-nav-bar-option"
+                key={index}
+                onMouseEnter={() => enterNav(index)}
+                onClick={() => jump(item)}
               >
-                <>
-                  <div
-                    className="line-dialog"
-                    ref={contentRef}
-                    style={dialogStyle}
-                    onMouseLeave={leaveDialog}
-                  >
-                    {navContent[hoverNavIndex]}
-                  </div>
-                  <div className="line-dialog2" ref={dialogRef}>
-                    {navContent[hoverNavIndex]}
-                  </div>
-                </>
-              </CSSTransition>
-            )}
-          </>
-        </CSSTransition>
-        {rightSlot && <div className="concis-nav-right">{rightSlot}</div>}
+                {item.label}
+              </div>
+            );
+          })}
+          <CSSTransition
+            in={visible}
+            timeout={200}
+            appear
+            classNames="fadeIn"
+            mountOnEnter
+            onEnter={(e) => {
+              e.style.display = 'inline-block';
+            }}
+            onExited={(e) => {
+              e.style.display = 'none';
+            }}
+          >
+            <>
+              <div className="line" style={lineStyle} />
+              {navContent && navContent.length > 0 && (
+                <CSSTransition
+                  in={visible && hoverNavIndex !== -1}
+                  timeout={100}
+                  appear
+                  classNames="dialogFade"
+                  mountOnEnter
+                  onEnter={(e) => {
+                    e.style.display = 'inline-block';
+                  }}
+                  onExited={(e) => {
+                    e.style.display = 'none';
+                  }}
+                >
+                  <>
+                    <div
+                      className="line-dialog"
+                      ref={contentRef}
+                      style={dialogStyle}
+                      onMouseLeave={leaveDialog}
+                    >
+                      {navContent[hoverNavIndex]}
+                    </div>
+                    <div className="line-dialog2" ref={dialogRef}>
+                      {navContent[hoverNavIndex]}
+                    </div>
+                  </>
+                </CSSTransition>
+              )}
+            </>
+          </CSSTransition>
+          {rightSlot && <div className="concis-nav-right">{rightSlot}</div>}
+        </div>
       </div>
-    </div>
+    </NavStyle>
   );
 };
 

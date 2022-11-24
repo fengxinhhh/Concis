@@ -7,12 +7,12 @@ import {
   CloseOutlined,
 } from '@ant-design/icons';
 import ReactDOM from 'react-dom';
+import { NotificationStyle } from './style';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { NotificationProps, footerBtnVal } from './interface';
 import Button from '../Button';
-import './index.module.less';
 
 let container: HTMLDivElement | null;
 let topLeftMessageNum: number = 0;
@@ -243,17 +243,6 @@ const Notification = (props: NotificationProps<string>) => {
     }
   }, [type]);
 
-  const messageXtransform = useMemo(() => {
-    // 提示框水平位置，居左/居右
-    if (position?.includes('Left')) {
-      return {
-        left: '20px',
-      };
-    }
-    return {
-      right: '20px',
-    };
-  }, [position]);
   const closeMessage = () => {
     // close按钮关闭
     remove(messageBoxId as string, position as string, () => {
@@ -274,33 +263,31 @@ const Notification = (props: NotificationProps<string>) => {
   };
 
   return (
-    <div
-      className={classNames}
-      style={{ opacity: opac, ...messageXtransform, ...style }}
-      ref={messageDom}
-    >
-      <div className="title">
-        <div className="title-left">
-          <div className="notification-icon">{messageIcon}</div>
-          <span className="title-content">{title}</span>
-        </div>
-        {clearable && <CloseOutlined className="close-icon" onClick={closeMessage} />}
-      </div>
-      <div className="notification-content">{content}</div>
-      {showFooter && (
-        <div className="notification-footer">
-          <div />
-          <div>
-            <Button type="text" height={30} handleClick={enter}>
-              {(footerBtnVal as footerBtnVal).exit}
-            </Button>
-            <Button type="primary" height={30} style={{ marginLeft: '15px' }} handleClick={exit}>
-              {(footerBtnVal as footerBtnVal).enter}
-            </Button>
+    <NotificationStyle opacity={opac} position={position}>
+      <div className={classNames} style={style} ref={messageDom}>
+        <div className="title">
+          <div className="title-left">
+            <div className="notification-icon">{messageIcon}</div>
+            <span className="title-content">{title}</span>
           </div>
+          {clearable && <CloseOutlined className="close-icon" onClick={closeMessage} />}
         </div>
-      )}
-    </div>
+        <div className="notification-content">{content}</div>
+        {showFooter && (
+          <div className="notification-footer">
+            <div />
+            <div>
+              <Button type="text" height={30} handleClick={enter}>
+                {(footerBtnVal as footerBtnVal).exit}
+              </Button>
+              <Button type="primary" height={30} style={{ marginLeft: '15px' }} handleClick={exit}>
+                {(footerBtnVal as footerBtnVal).enter}
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
+    </NotificationStyle>
   );
 };
 

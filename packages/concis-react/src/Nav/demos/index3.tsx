@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, Button } from 'concis';
-import '../styles/demo.less';
+import { NavDemoStyle } from './demo';
 
 export default function index1() {
   const navData = [
@@ -45,8 +45,8 @@ export default function index1() {
   );
 
   return (
-    <div>
+    <NavDemoStyle>
       <Nav navData={navData} leftSlot={leftSlot} rightSlot={rightSlot} />
-    </div>
+    </NavDemoStyle>
   );
 }

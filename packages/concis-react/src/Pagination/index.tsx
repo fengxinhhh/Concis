@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useContext, forwardRef } from 'react';
 import { EllipsisOutlined, LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { PaginationStyle } from './style';
 import type { PaginationProps } from './interface';
 import { Select } from '..';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -7,7 +8,6 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../common_utils/getRenderColor';
-import './index.module.less';
 
 const Pagination = (props, ref) => {
   const {
@@ -206,107 +206,102 @@ const Pagination = (props, ref) => {
   };
 
   return (
-    <div
-      className={classNames}
-      style={
-        {
-          ...style,
-          '--global-color': getRenderColor(
-            (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-            globalColor
-          ),
-        } as any
-      }
-      ref={ref}
+    <PaginationStyle
+      globalColor={getRenderColor(
+        (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+        globalColor
+      )}
     >
-      <div
-        className={
-          nowIndex === 1
-            ? `${classFirstName}-prev ${classFirstName}-disabled`
-            : `${classFirstName}-prev`
-        }
-        onClick={prevPage}
-      >
-        <LeftOutlined />
-      </div>
-      <div
-        className={
-          nowIndex === 1
-            ? `${classFirstName}-actived ${classFirstName}-numberBox`
-            : `${classFirstName}-numberBox`
-        }
-        onClick={changePage(1)}
-      >
-        1
-      </div>
-      {nowIndex > 4 && totalPage > 6 && (
-        <div className={`${classFirstName}-numberBox`} onClick={prevFivePage}>
-          <EllipsisOutlined />
-        </div>
-      )}
-      {totalPage >= 1 &&
-        pageRenderArray.map((item: number, index: number) => {
-          return (
-            <div
-              className={
-                nowIndex === item
-                  ? `${classFirstName}-actived  ${classFirstName}-numberBox`
-                  : `${classFirstName}-numberBox`
-              }
-              key={index}
-              onClick={changePage(item)}
-            >
-              {item}
-            </div>
-          );
-        })}
-      {totalPage - nowIndex >= 4 && totalPage > 6 && (
-        <div className={`${classFirstName}-numberBox`} onClick={nextFivePage}>
-          <EllipsisOutlined />
-        </div>
-      )}
-      {totalPage > 1 && (
+      <div className={classNames} style={style} ref={ref}>
         <div
           className={
-            nowIndex === totalPage
+            nowIndex === 1
+              ? `${classFirstName}-prev ${classFirstName}-disabled`
+              : `${classFirstName}-prev`
+          }
+          onClick={prevPage}
+        >
+          <LeftOutlined />
+        </div>
+        <div
+          className={
+            nowIndex === 1
               ? `${classFirstName}-actived ${classFirstName}-numberBox`
               : `${classFirstName}-numberBox`
           }
-          onClick={changePage(totalPage)}
+          onClick={changePage(1)}
         >
-          {totalPage}
+          1
         </div>
-      )}
-      <div
-        className={
-          nowIndex === totalPage || totalPage <= 1
-            ? `${classFirstName}-next ${classFirstName}-disabled`
-            : `${classFirstName}-next`
-        }
-        onClick={nextPage}
-      >
-        <RightOutlined />
-      </div>
-      {Array.isArray(pageSizeOptions) && showSizeChanger && (
-        <Select
-          option={pageSizeOptions.map((item) => {
-            return {
-              label: `${item} 条/页`,
-              value: item,
-            };
+        {nowIndex > 4 && totalPage > 6 && (
+          <div className={`${classFirstName}-numberBox`} onClick={prevFivePage}>
+            <EllipsisOutlined />
+          </div>
+        )}
+        {totalPage >= 1 &&
+          pageRenderArray.map((item: number, index: number) => {
+            return (
+              <div
+                className={
+                  nowIndex === item
+                    ? `${classFirstName}-actived  ${classFirstName}-numberBox`
+                    : `${classFirstName}-numberBox`
+                }
+                key={index}
+                onClick={changePage(item)}
+              >
+                {item}
+              </div>
+            );
           })}
-          width={100}
-          handleSelectCallback={handleSelectCallback}
-        />
-      )}
-      {showJumpInput && (
-        <div className={`${classFirstName}-jumpBox`}>
-          <span>跳至</span>
-          <input type="text" className={`${classFirstName}-jumpBox-jump`} onKeyUp={jumpPageNum} />
-          <span>页</span>
+        {totalPage - nowIndex >= 4 && totalPage > 6 && (
+          <div className={`${classFirstName}-numberBox`} onClick={nextFivePage}>
+            <EllipsisOutlined />
+          </div>
+        )}
+        {totalPage > 1 && (
+          <div
+            className={
+              nowIndex === totalPage
+                ? `${classFirstName}-actived ${classFirstName}-numberBox`
+                : `${classFirstName}-numberBox`
+            }
+            onClick={changePage(totalPage)}
+          >
+            {totalPage}
+          </div>
+        )}
+        <div
+          className={
+            nowIndex === totalPage || totalPage <= 1
+              ? `${classFirstName}-next ${classFirstName}-disabled`
+              : `${classFirstName}-next`
+          }
+          onClick={nextPage}
+        >
+          <RightOutlined />
         </div>
-      )}
-    </div>
+        {Array.isArray(pageSizeOptions) && showSizeChanger && (
+          <Select
+            option={pageSizeOptions.map((item) => {
+              return {
+                label: `${item} 条/页`,
+                value: item,
+              };
+            })}
+            width={100}
+            handleSelectCallback={handleSelectCallback}
+          />
+        )}
+        {showJumpInput && (
+          <div className={`${classFirstName}-jumpBox`}>
+            <span>跳至</span>
+            <input type="text" className={`${classFirstName}-jumpBox-jump`} onKeyUp={jumpPageNum} />
+            <span>页</span>
+          </div>
+        )}
+      </div>
+    </PaginationStyle>
   );
 };
 

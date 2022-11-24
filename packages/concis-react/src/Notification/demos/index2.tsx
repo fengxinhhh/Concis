@@ -44,7 +44,8 @@ export default function index1() {
         Warning
       </Button>
       <Button
-        style={{ background: '#19b42a', marginRight: '20px' }}
+        type="info"
+        style={{ marginRight: '20px' }}
         handleClick={() =>
           Notification.success({
             title: 'Notification',
