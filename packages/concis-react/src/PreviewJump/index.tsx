@@ -1,11 +1,11 @@
 import React, { useContext, useState, useMemo, forwardRef } from 'react';
 import { EyeOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
+import { PreviewJumpStyle } from './style';
 import { PreviewJumpProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './styles/index.module.less';
 
 const PreviewJump = (props, ref) => {
   const { className, style, children, icon, jumpText, jumpContent, link, disabled } = props;
@@ -26,13 +26,6 @@ const PreviewJump = (props, ref) => {
     setVisible(true);
   };
 
-  const dialogContentStyle = useMemo(() => {
-    return {
-      bottom: visible ? '50px' : '-30px',
-      opacity: visible ? 1 : 0,
-    };
-  }, [visible]);
-
   const dialogContent = useMemo(() => {
     return (
       jumpContent || (
@@ -45,38 +38,34 @@ const PreviewJump = (props, ref) => {
   }, [icon, jumpText, jumpContent]);
 
   return (
-    <div
-      className={classNames}
-      style={{ '--cursorType': disabled ? 'not-allowed' : 'pointer', ...style } as any}
-      ref={ref}
-    >
-      <div className="concis-preview-content" onMouseEnter={hoverDialog}>
-        {children}
-      </div>
-      <CSSTransition
-        in={visible}
-        timeout={200}
-        appear
-        mountOnEnter
-        classNames="fadeContent"
-        unmountOnExit
-        onEnter={(e: HTMLDivElement) => {
-          e.style.display = 'flex';
-        }}
-        onExited={(e: HTMLDivElement) => {
-          e.style.display = 'none';
-        }}
+    <PreviewJumpStyle visible={visible} disabled={disabled}>
+      <div
+        className={classNames}
+        style={style}
+        ref={ref}
+        onMouseEnter={hoverDialog}
+        onMouseLeave={() => setVisible(false)}
       >
-        <div
-          className="concis-preview-dialog"
-          onMouseLeave={() => setVisible(false)}
-          onClick={jump}
-        />
-      </CSSTransition>
-      <div className="concis-preview-dialog-content" style={dialogContentStyle}>
-        {dialogContent}
+        <div className="concis-preview-content">{children}</div>
+        <CSSTransition
+          in={visible}
+          timeout={200}
+          appear
+          mountOnEnter
+          classNames="fadeContent"
+          unmountOnExit
+          onEnter={(e: HTMLDivElement) => {
+            e.style.display = 'flex';
+          }}
+          onExited={(e: HTMLDivElement) => {
+            e.style.display = 'none';
+          }}
+        >
+          <div className="concis-preview-dialog" onClick={jump} />
+        </CSSTransition>
+        <div className="concis-preview-dialog-content">{dialogContent}</div>
       </div>
-    </div>
+    </PreviewJumpStyle>
   );
 };
 

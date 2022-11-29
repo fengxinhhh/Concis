@@ -3,8 +3,8 @@ import React, {
   useCallback,
   useState,
   createRef,
-  useMemo,
   useContext,
+  useMemo,
   forwardRef,
 } from 'react';
 import {
@@ -13,6 +13,7 @@ import {
   CaretDownOutlined,
   SearchOutlined,
 } from '@ant-design/icons';
+import { TableStyle } from './style';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -21,7 +22,6 @@ import CheckBox from '../CheckBox';
 import Pagination from '../Pagination';
 import Popover from '../Popover';
 import Input from '../Input';
-import './style/index.module.less';
 
 let sTop = 0;
 const options = [10, 20, 30, 50];
@@ -111,6 +111,7 @@ const Table = (props, ref) => {
     },
     [titleParams]
   );
+
   const openRow = (row: object, key: number): void => {
     // 展开列表
     if (expandedRowRender) {
@@ -126,11 +127,13 @@ const Table = (props, ref) => {
       setDoTableData(newTableData);
     }
   };
+
   const radioSelectRow = (row: object): void => {
     // 单选行
     setRadioRow(row);
     radioSelectCallback && radioSelectCallback(row);
   };
+
   const checkedSelectRow = <T,>(checked: boolean, row: T): void => {
     // 多选单行
     setCheckedRow((old: any) => {
@@ -144,6 +147,7 @@ const Table = (props, ref) => {
       return [...old];
     });
   };
+
   const checkAll = (checked: boolean): void => {
     // 全部选中
     setCheckedRow((old: Array<object>) => {
@@ -158,6 +162,7 @@ const Table = (props, ref) => {
       return [...old];
     });
   };
+
   const sortColumn = (index: number, row: any, sortType: number) => {
     // 表格单列排序  -> 2为升序 3为降序
     const sortKey = row.dataIndex;
@@ -189,6 +194,7 @@ const Table = (props, ref) => {
       });
     }
   };
+
   const handleIptChange = (v: string | boolean, t: tableThType) => {
     // 筛选input改变回调
     setDoColumnData((old: Array<tableThType>) => {
@@ -200,6 +206,7 @@ const Table = (props, ref) => {
       return [...old];
     });
   };
+
   const filterList = (t: tableThType) => {
     setDoTableData((old: Array<object>) => {
       if (t.filter === true) {
@@ -212,6 +219,7 @@ const Table = (props, ref) => {
       return [...old];
     });
   };
+
   const renderContentTd = (rowData: object) => {
     // 渲染正文行
     return Object.entries(rowData).map((value: any, key) => {
@@ -224,6 +232,7 @@ const Table = (props, ref) => {
       }
     });
   };
+
   const sortIconStyle = useCallback(
     (thRow: any, iconType: number) => {
       // 表头排序按钮样式
@@ -254,6 +263,7 @@ const Table = (props, ref) => {
     },
     [titleParams, doColumnData]
   );
+
   const scrollTable = (e: any) => {
     if (virtualized) {
       // 虚拟加载
@@ -294,6 +304,7 @@ const Table = (props, ref) => {
       }
     }
   };
+
   const changePageCallback = (pageNum: number) => {
     // 页码改变回调
     setDoTableData((old) => {
@@ -306,6 +317,7 @@ const Table = (props, ref) => {
         tableData.slice((pageNum - 1) * pageSize, (pageNum - 1) * pageSize + pageSize)
       );
   };
+
   const changePageSizeCallback = (pageSize: number) => {
     // 页数改变回调
     setPageSize(pageSize);
@@ -315,6 +327,7 @@ const Table = (props, ref) => {
     });
     changePSizeCallback && changePSizeCallback(pageSize, tableData.slice(0, pageSize));
   };
+
   const dargStart = (e: any, index: number) => {
     e.nativeEvent.dataTransfer.setData('dragKey', index);
   };
@@ -329,9 +342,11 @@ const Table = (props, ref) => {
       return [...old];
     });
   };
+
   const dragOver = (e: any) => {
     e.nativeEvent.preventDefault();
   };
+
   const renderScrollList = useCallback(() => {
     // 虚拟列表tr栏渲染
     return doTableData?.map((t, key) => {
@@ -743,165 +758,142 @@ const Table = (props, ref) => {
       </tbody>
     );
   };
-  const paginationAlignStyle = useMemo(() => {
-    let returnStyle = {};
-    if (!paginationAlign) {
-      returnStyle = {
-        justifyContent: 'flex-start',
-      };
-    } else {
-      switch (paginationAlign) {
-        case 'left':
-          returnStyle = {
-            justifyContent: 'flex-start',
-          };
-          break;
-        case 'center':
-          returnStyle = {
-            justifyContent: 'center',
-          };
-          break;
-        case 'right':
-          returnStyle = {
-            justifyContent: 'flex-end',
-          };
-          break;
-        default: {
-          returnStyle = {
-            justifyContent: 'flex-end',
-          };
-        }
-      }
+
+  const tdListNum = useMemo(() => {
+    if (virtualized) {
+      return largeDateShowNum + 2;
     }
-    return returnStyle;
-  }, [paginationAlign]);
+    if (lazyLoad) {
+      return largeDateShowNum;
+    }
+  }, [virtualized, lazyLoad, largeDateShowNum]);
+
   return (
-    <div
-      className={classNames}
-      style={
-        virtualized || lazyLoad
-          ? {
-              height: `${
-                (largeDateShowNum + 2) *
-                (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight
-              }px`,
-              ...style,
-            }
-          : style
-      }
-      ref={ref}
-    >
+    <TableStyle paginationAlign={paginationAlign}>
       <div
-        className="table"
+        className={classNames}
         style={
           virtualized || lazyLoad
             ? {
-                maxHeight: `${
-                  (largeDateShowNum + 2) *
-                  (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight
+                height: `${
+                  tdListNum * (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight
                 }px`,
-                overflow: 'scroll',
-                position: 'absolute',
-                top: '40px',
-                left: '0',
+                ...style,
               }
-            : {}
+            : style
         }
-        onScroll={(e) => scrollTable(e)}
-        ref={scrollDom as any}
+        ref={ref}
       >
-        <table>
-          {
-            // 常规表格
-            !virtualized && (
-              <thead>
-                <tr>
-                  {(expandedRowRender || radio) && (
-                    <th style={{ textAlign: (align as any) || 'left' }} />
-                  )}
-                  {checked && (
-                    <th style={{ textAlign: (align as any) || 'left' }}>
-                      <CheckBox
-                        checked={checkedRow.length === doTableData.length}
-                        checkCallback={(checked: boolean) => checkAll(checked)}
-                      />
-                    </th>
-                  )}
-                  {doColumnData.map((t, key) => {
-                    return (
-                      <th key={key} style={tableStyle(t) as any} className="tableHead">
-                        <div
-                          style={{
-                            display: 'flex',
-                            justifyContent: align || 'flex-start',
-                            alignItems: 'center',
-                          }}
-                        >
-                          <span>{t.title}</span>
-                          {t?.sorter && avableSort && (
-                            <div className="sort-icon">
-                              <CaretUpOutlined
-                                onClick={() => sortColumn(key, t, 2)}
-                                style={sortIconStyle(t, 0)}
-                              />
-                              <CaretDownOutlined
-                                onClick={() => sortColumn(key, t, 3)}
-                                style={sortIconStyle(t, 1)}
-                              />
-                            </div>
-                          )}
-                          {t?.filter !== undefined && filter && (
-                            <Popover
-                              type="click"
-                              align="bottom"
-                              dialogWidth={130}
-                              noBorder
-                              content={
-                                <div className="filter-dialog">
-                                  <Input
-                                    placeholder="请输入"
-                                    width="70"
-                                    handleIptChange={(v: string) => handleIptChange(v, t)}
-                                  />
-                                  <div className="search-btn" onClick={() => filterList(t)}>
-                                    <SearchOutlined />
-                                  </div>
-                                </div>
-                              }
-                            >
-                              <div className="search-th-btn">
-                                <SearchOutlined />
-                              </div>
-                            </Popover>
-                          )}
-                        </div>
+        <div
+          className="table"
+          style={
+            virtualized || lazyLoad
+              ? {
+                  maxHeight: `${
+                    tdListNum * (document.querySelector('.victurl-scroll-tr') as any)?.offsetHeight
+                  }px`,
+                  overflow: 'scroll',
+                  position: 'absolute',
+                  top: '40px',
+                  left: '0',
+                }
+              : {}
+          }
+          onScroll={(e) => scrollTable(e)}
+          ref={scrollDom as any}
+        >
+          <table>
+            {
+              // 常规表格
+              !virtualized && (
+                <thead>
+                  <tr>
+                    {(expandedRowRender || radio) && (
+                      <th style={{ textAlign: (align as any) || 'left' }} />
+                    )}
+                    {checked && (
+                      <th style={{ textAlign: (align as any) || 'left' }}>
+                        <CheckBox
+                          checked={checkedRow.length === doTableData.length}
+                          checkCallback={(checked: boolean) => checkAll(checked)}
+                        />
                       </th>
-                    );
-                  })}
-                </tr>
-              </thead>
-            )
-          }
-          {
-            // 表正文
-            tableContentRender()
-          }
-        </table>
-      </div>
-      {pagination && (
-        <div className="pagination" style={paginationAlignStyle}>
-          <Pagination
-            style={paginationAlignStyle}
-            total={tableData.length}
-            showSizeChanger
-            pageSizeOptions={pageSizeOption || options}
-            showJumpInput
-            changePageSizeCallback={changePageSizeCallback}
-            changePageCallback={changePageCallback}
-          />
+                    )}
+                    {doColumnData.map((t, key) => {
+                      return (
+                        <th key={key} style={tableStyle(t) as any} className="tableHead">
+                          <div
+                            style={{
+                              display: 'flex',
+                              justifyContent: align || 'flex-start',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <span>{t.title}</span>
+                            {t?.sorter && avableSort && (
+                              <div className="sort-icon">
+                                <CaretUpOutlined
+                                  onClick={() => sortColumn(key, t, 2)}
+                                  style={sortIconStyle(t, 0)}
+                                />
+                                <CaretDownOutlined
+                                  onClick={() => sortColumn(key, t, 3)}
+                                  style={sortIconStyle(t, 1)}
+                                />
+                              </div>
+                            )}
+                            {t?.filter !== undefined && filter && (
+                              <Popover
+                                type="click"
+                                align="bottom"
+                                dialogWidth={130}
+                                noBorder
+                                content={
+                                  <div className="filter-dialog">
+                                    <Input
+                                      placeholder="请输入"
+                                      width="70"
+                                      handleIptChange={(v: string) => handleIptChange(v, t)}
+                                    />
+                                    <div className="search-btn" onClick={() => filterList(t)}>
+                                      <SearchOutlined />
+                                    </div>
+                                  </div>
+                                }
+                              >
+                                <div className="search-th-btn">
+                                  <SearchOutlined />
+                                </div>
+                              </Popover>
+                            )}
+                          </div>
+                        </th>
+                      );
+                    })}
+                  </tr>
+                </thead>
+              )
+            }
+            {
+              // 表正文
+              tableContentRender()
+            }
+          </table>
         </div>
-      )}
-    </div>
+        {pagination && (
+          <div className="pagination">
+            <Pagination
+              total={tableData.length}
+              showSizeChanger
+              pageSizeOptions={pageSizeOption || options}
+              showJumpInput
+              changePageSizeCallback={changePageSizeCallback}
+              changePageCallback={changePageCallback}
+            />
+          </div>
+        )}
+      </div>
+    </TableStyle>
   );
 };
 

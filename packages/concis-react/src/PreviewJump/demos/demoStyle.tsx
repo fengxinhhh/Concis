@@ -1,0 +1,22 @@
+import styled from 'styled-components';
+
+const DemoStyle = styled.div`
+  .preview-demo {
+    display: flex;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .introduce {
+      margin: 30px 0 0 30px;
+
+      h1 {
+        font-size: 38px;
+      }
+    }
+  }
+`;
+
+export { DemoStyle };

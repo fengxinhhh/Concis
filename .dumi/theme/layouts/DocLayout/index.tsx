@@ -56,9 +56,9 @@ const DocLayout: FC = () => {
           {outlet}
           <Footer />
         </Content>
-        <div className="dumi-default-tocbar">
+        {/* <div className="dumi-default-tocbar">
           <DemoTabs />
-        </div>
+        </div> */}
       </main>
     </div>
   );
