@@ -37,8 +37,8 @@ const RangeDatePicker = (props, ref) => {
     startDay: new Date().getDate(),
   });
   const [endDate, setEndDate] = useState({
-    endYear: new Date().getFullYear(),
-    endMonth: new Date().getMonth() + 2,
+    endYear: new Date().getFullYear() + +(new Date().getMonth() + 2 > 12),
+    endMonth: (new Date().getMonth() + 2) % 12,
     endDay: new Date().getDate(),
   });
   const [startTime, setStartTime] = useState('');
