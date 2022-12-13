@@ -1,19 +1,11 @@
-import React, {
-  Fragment,
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-  useContext,
-  forwardRef,
-} from 'react';
+import React, { useState, useEffect, useCallback, useRef, useContext, forwardRef } from 'react';
 import { RightCircleOutlined, LeftCircleOutlined } from '@ant-design/icons';
+import { SwiperStyle } from './style';
 import type { swiperProps, imgOptions } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import swiperIndex from './cardSwiperIndex';
-import './index.module.less';
 
 const Swiper = (props, ref) => {
   const {
@@ -91,6 +83,7 @@ const Swiper = (props, ref) => {
     const imgLen: number = imgList.length;
     setCardSwiperIndex(swiperIndex[imgLen]);
   }, []);
+
   useEffect(() => {
     if (autoPlayer) {
       if (card) {
@@ -119,6 +112,7 @@ const Swiper = (props, ref) => {
       });
     }, deply);
   };
+
   const cardAutoPlay = () => {
     // 卡片图自动播放
     cardTimer.current = setInterval(() => {
@@ -261,6 +255,7 @@ const Swiper = (props, ref) => {
       });
     }, deply);
   };
+
   const toggleNext = () => {
     if (rightTransform >= (renderImgList.length - 2) * pictureSize) {
       setTransition('');
@@ -273,6 +268,7 @@ const Swiper = (props, ref) => {
       setRightTransform(rightTransform + pictureSize);
     }
   };
+
   const togglePrev = () => {
     if (rightTransform <= 0) {
       setTransition('');
@@ -285,9 +281,11 @@ const Swiper = (props, ref) => {
       setRightTransform(rightTransform - pictureSize);
     }
   };
+
   const clickToggle = (index: number) => {
     setRightTransform((index + 1) * pictureSize);
   };
+
   const circleStyle = useCallback(
     (index: number) => {
       // 点击普通轮播图小圆点
@@ -305,6 +303,7 @@ const Swiper = (props, ref) => {
     },
     [rightTransform]
   );
+
   const cardImgStyle = useCallback(
     (option: number) => {
       // 卡片式轮播图片样式
@@ -344,6 +343,7 @@ const Swiper = (props, ref) => {
     },
     [cardImgTransform]
   );
+
   const toggleCard = (styles: any) => {
     // 卡片轮播手动切换
     if (styles.zIndex === 2 && styles.left !== 0) {
@@ -639,6 +639,7 @@ const Swiper = (props, ref) => {
       });
     }
   };
+
   const clickCardToggle = (index: number) => {
     // 点击卡片轮播图小圆点
     if (cardPlayCircleIndex < index) {
@@ -935,7 +936,7 @@ const Swiper = (props, ref) => {
   };
 
   return (
-    <Fragment>
+    <SwiperStyle>
       {!card ? (
         <div
           className={classNames}
@@ -1019,7 +1020,7 @@ const Swiper = (props, ref) => {
           )}
         </div>
       )}
-    </Fragment>
+    </SwiperStyle>
   );
 };
 

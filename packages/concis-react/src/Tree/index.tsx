@@ -10,6 +10,7 @@ import React, {
 } from 'react';
 import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
+import { TreeStyle } from './style';
 import type { treeProps, treeNode } from './interface';
 import Input from '../Input';
 import { ctx } from '../Form';
@@ -251,7 +252,7 @@ const Tree = (props, ref) => {
   };
 
   return (
-    <Fragment>
+    <TreeStyle>
       <div
         className={classNames}
         style={style}
@@ -261,7 +262,7 @@ const Tree = (props, ref) => {
         }}
       >
         <Input
-          moreStyle={avaSearch ? {} : { caretColor: 'transparent' }}
+          style={avaSearch ? {} : { caretColor: 'transparent' }}
           placeholder={avaSearch ? '请输入' : ''}
           width={width}
           defaultValue={activedVal}
@@ -297,7 +298,7 @@ const Tree = (props, ref) => {
           </div>
         </CSSTransition>
       </div>
-    </Fragment>
+    </TreeStyle>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { List } from 'concis';
-import './demo.module.less';
+import { ListDemoStyle } from './demoStyle';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function listDemo1() {
@@ -15,18 +15,20 @@ export default function listDemo1() {
   ];
 
   return (
-    <List
-      style={{ fontSize: '16px', width: '600px' }}
-      header="List title"
-      size="default"
-      dataSource={dataSource}
-      render={(item: string) => {
-        return (
-          <List.Item style={{ fontSize: '14px' }} key={item}>
-            <div className="list">{item}</div>
-          </List.Item>
-        );
-      }}
-    />
+    <ListDemoStyle>
+      <List
+        style={{ fontSize: '16px', width: '600px' }}
+        header="List title"
+        size="default"
+        dataSource={dataSource}
+        render={(item: string) => {
+          return (
+            <List.Item style={{ fontSize: '14px' }} key={item}>
+              <div className="list">{item}</div>
+            </List.Item>
+          );
+        }}
+      />
+    </ListDemoStyle>
   );
 }

@@ -6,6 +6,7 @@ nav:
 group:
   title: 数据录入
 mobile: false
+toc: content
 ---
 
 # Rate 评分
@@ -22,37 +23,37 @@ mobile: false
 
 基础评分组件。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 自定义颜色
 
 配置`starColor`属性自定义星星颜色。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 数量与默认显示
 
 通过`num`、`defaultShow`自定义星星数量和默认显示数量。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 只读
 
 配置`readonly`指定`Rate`为只读。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## 可清除
 
 指定`avaClear`允许双击清除评分。
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## 案例
 
 评分业务案例。
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx"></code>
 
 ## API
 

@@ -1,17 +1,16 @@
-import React, { useState, useEffect, useCallback, useMemo, useContext, forwardRef } from 'react';
+import React, { useState, useEffect, useCallback, useContext, forwardRef } from 'react';
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
+import { MenuStyle } from './style';
 import type { MenuProps, MenuHeightProps, RenderOptions } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
-import './index.module.less';
 
 const darkThemeColor = '#3C7EFF',
   lightThemeColor = '#325DFF',
   lightMenuOptionBg = '#e6f7ff',
-  defaultOpenHeight = '50px',
-  optionWidth = '220px';
+  defaultOpenHeight = '50px';
 
 const Menu = (props, ref) => {
   const [nowActiveMainKey, setNowActiveMainKey] = useState(''); // 选中的一级菜单key
@@ -210,24 +209,6 @@ const Menu = (props, ref) => {
     [parentMenuHeightList]
   );
 
-  const customWidth = useMemo(() => {
-    if (width) {
-      if (typeof width === 'string') {
-        return {
-          width: (width as string).includes('%') ? width : `${width}px`,
-        };
-      }
-      if (typeof width === 'number') {
-        return {
-          width: `${width}px`,
-        };
-      }
-    }
-    return {
-      width: optionWidth,
-    };
-  }, [width]);
-
   const renderChildOptions = (childM: RenderOptions): JSX.Element | any => {
     // 传入level为1的children，进行子项递归
     if (childM.children) {
@@ -270,50 +251,47 @@ const Menu = (props, ref) => {
   };
 
   return (
-    <div
-      className={classNames}
-      style={
-        {
-          ...customWidth,
-          ...style,
-          '--global-color': globalColor || darkTheme ? darkThemeColor : lightThemeColor,
-          '--global-menu-option-bg': darkTheme
-            ? darkThemeColor
-            : theme === ('dark' || 'auto')
-            ? darkThemeColor
-            : lightMenuOptionBg,
-        } as any
+    <MenuStyle
+      width={width}
+      globalColor={globalColor || darkTheme ? darkThemeColor : lightThemeColor}
+      menuOptionBg={
+        darkTheme
+          ? darkThemeColor
+          : theme === ('dark' || 'auto')
+          ? darkThemeColor
+          : lightMenuOptionBg
       }
-      ref={ref}
     >
-      {items?.map((m) => {
-        return (
-          <div key={m.key}>
-            <div className={`${classFirstName}-menuOptions`} style={firstMenuHeight(m.key)}>
-              <div
-                className={
-                  nowActiveMainKey === m.key
-                    ? `${classFirstName}-activeFatherTitle`
-                    : `${classFirstName}-fatherTitle`
-                }
-                onClick={(e) => toggleFirstMenu(m, e)}
-              >
-                <div className="left">
-                  <i>{m.icon}</i>
-                  <span>{m.label}</span>
+      <div className={classNames} style={style} ref={ref}>
+        {items?.map((m) => {
+          return (
+            <div key={m.key}>
+              <div className={`${classFirstName}-menuOptions`} style={firstMenuHeight(m.key)}>
+                <div
+                  className={
+                    nowActiveMainKey === m.key
+                      ? `${classFirstName}-activeFatherTitle`
+                      : `${classFirstName}-fatherTitle`
+                  }
+                  onClick={(e) => toggleFirstMenu(m, e)}
+                >
+                  <div className="left">
+                    <i>{m.icon}</i>
+                    <span>{m.label}</span>
+                  </div>
+                  {firstMenuHeight(m.key).height === defaultOpenHeight ? (
+                    <CaretDownOutlined />
+                  ) : (
+                    <CaretUpOutlined />
+                  )}
                 </div>
-                {firstMenuHeight(m.key).height === defaultOpenHeight ? (
-                  <CaretDownOutlined />
-                ) : (
-                  <CaretUpOutlined />
-                )}
+                <>{m.children && renderChildOptions(m)}</>
               </div>
-              <>{m.children && renderChildOptions(m)}</>
             </div>
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
+    </MenuStyle>
   );
 };
 

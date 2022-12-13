@@ -1,9 +1,9 @@
-import React, { Children, Fragment, useMemo, useContext, ReactNode, forwardRef } from 'react';
-import { SpaceProps, sizeType, spaceAlignParams } from './interface';
+import React, { Children, Fragment, useContext, ReactNode, forwardRef } from 'react';
+import { SpaceProps, sizeType } from './interface';
+import { SpaceStyle } from './style';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
 
 const Space = (props, ref) => {
   const {
@@ -38,6 +38,7 @@ const Space = (props, ref) => {
         return 8;
     }
   };
+
   const getMarginStyle = (index: number) => {
     const isLastDom = childrenList.length - 1 === index;
     if (!Array.isArray(size)) {
@@ -62,53 +63,21 @@ const Space = (props, ref) => {
         : { marginBottom: `${marginBottom}px` }
       : {};
   };
-  const getAlignStyle = () => {
-    switch (align) {
-      case 'start':
-        return {
-          alignItems: 'flex-start',
-        };
-      case 'center':
-        return {
-          alignItems: 'center',
-        };
-      case 'end':
-        return {
-          alignItems: 'flex-end',
-        };
-      case 'baseline':
-        return {
-          alignItems: 'baseline',
-        };
-      default:
-        return {
-          alignItems: 'center',
-        };
-    }
-  };
-  const spaceStyles = useMemo(() => {
-    const returnStyle: spaceAlignParams = direction === 'horizontal' ? getAlignStyle() : {};
-    returnStyle.display = 'flex';
-    if (direction === 'vertical') {
-      returnStyle.flexDirection = 'column';
-    } else {
-      returnStyle.flexDirection = 'row';
-    }
-    return returnStyle;
-  }, [direction, align]);
 
   return (
-    <div className={classNames} style={{ ...spaceStyles, ...style }} ref={ref}>
-      {childrenList.map((child: ReactNode, index: number) => {
-        return (
-          <Fragment key={index}>
-            <div className="concis-space-item" style={getMarginStyle(index)}>
-              {child}
-            </div>
-          </Fragment>
-        );
-      })}
-    </div>
+    <SpaceStyle direction={direction} align={align}>
+      <div className={classNames} style={style} ref={ref}>
+        {childrenList.map((child: ReactNode, index: number) => {
+          return (
+            <Fragment key={index}>
+              <div className="concis-space-item" style={getMarginStyle(index)}>
+                {child}
+              </div>
+            </Fragment>
+          );
+        })}
+      </div>
+    </SpaceStyle>
   );
 };
 

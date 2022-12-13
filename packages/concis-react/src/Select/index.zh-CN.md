@@ -6,6 +6,7 @@ nav:
 group:
   title: 数据录入
 mobile: false
+toc: content
 ---
 
 # Select 下拉菜单
@@ -20,37 +21,37 @@ mobile: false
 
 基础下拉框组件。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 禁用
 
 通过 `disabled` 禁用。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 加载
 
 通过 `loading` 禁用。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 下拉项单独禁用
 
 配置 `option` 单项 `disabled` 进行单项禁用。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## 可输入
 
 配置 `showSearch` 开启可输入状态。
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## 按钮风格
 
 配置 `type` 切换到按钮式选择器，可选 `primary`、`error`、`warning`、`success` 四种。
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx"></code>
 
 ## API
 

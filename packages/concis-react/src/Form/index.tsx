@@ -7,12 +7,12 @@ import React, {
   useCallback,
   useContext,
 } from 'react';
+import { FormStyle } from './style';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import FormItem from './form-item';
 import { FormProps, ruleType } from './interface';
-import './styles/index.module.less';
 
 export const ctx = createContext<any>({} as any); // 顶层通信装置
 
@@ -211,12 +211,14 @@ const Form = <T,>(props: FormProps<T>) => {
   }, [fieldList, formField]);
 
   return (
-    <ctx.Provider value={providerList}>
-      <div className={classNames} style={style} ref={formField || null}>
-        {disabled && <div className="disabled" />}
-        {children}
-      </div>
-    </ctx.Provider>
+    <FormStyle>
+      <ctx.Provider value={providerList}>
+        <div className={classNames} style={style} ref={formField || null}>
+          {disabled && <div className="disabled" />}
+          {children}
+        </div>
+      </ctx.Provider>
+    </FormStyle>
   );
 };
 

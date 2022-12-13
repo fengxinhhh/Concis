@@ -13,7 +13,7 @@ Make a single selection in a set of options.
 
 ## basic use
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 <API></API>
 

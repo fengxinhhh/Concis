@@ -1,7 +1,6 @@
 ---
-nav:
-  title: Guide
-  path: /guide
+order: 0
+title: Introduce
 ---
 
 # Introduce
@@ -56,7 +55,9 @@ Concis supports three modules: `cjs`、`ejs`、`umd`. It customizes your Web run
 
 Pull the branch fengxinhhh/Concis/master.
 
-<Alert>Note: It is recommended that the branch name is [feature] - [name]. [feature] is the type of the branch. The options include [feature] [unitest] [docs] [bugfix] [other], and [name] is the name. It is OK to customize it. Eg. unittest core
+:::warning{title=Warning}
+Note: It is recommended that the branch name is [feature] - [name]. [feature] is the type of the branch. The options include [feature] [unitest] [docs] [bugfix] [other], and [name] is the name. It is OK to customize it. Eg. unittest core
+:::
 
 ## Submission Code
 

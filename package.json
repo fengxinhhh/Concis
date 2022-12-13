@@ -8,9 +8,22 @@
     "test:pkg": "jest ./tests -u",
     "pre-commit": "pretty-quick --staged && npm run eslint && npm run stylelint",
     "eslint": "eslint docs/ packages/concis-react/src --cache --fix --quiet --ext .js,.jsx,.ts,.tsx",
-    "stylelint": "stylelint {packages,docs}/**/*.less --fix",
+    "stylelint": "stylelint {packages,docs,.dumi/theme}/**/*.less --fix",
     "format": "prettier --config .prettierrc.js --write \"{packages,docs}/**/*.{js,jsx,ts,tsx}\"",
-    "prepare": "husky install"
+    "prepare": "husky install && dumi setup"
+  },
+  "module": "es/index.js",
+  "typings": "es/index.d.ts",
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
   },
   "license": "MIT",
   "dependencies": {
@@ -56,7 +69,7 @@
     "@typescript-eslint/parser": "^4.33.0",
     "@umijs/fabric": "^2.12.2",
     "crypto-js": "^4.1.1",
-    "dumi": "^1.1.47",
+    "dumi": "2.0.7",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.15.0",

@@ -13,6 +13,6 @@ group:
 
 ## 基本使用
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 <API></API>

@@ -6,6 +6,7 @@ nav:
 group:
   title: 导航
 mobile: false
+toc: content
 ---
 
 # Pagination 分页器
@@ -21,25 +22,25 @@ mobile: false
 
 基础分页器。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 大数据分页
 
 当 `total` 数据量大时，自动展示为大数据分页状态。
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 ## 每页条数限制
 
 配置 `showSizeChanger` 增加每页显示条数限制 `select`。
 
-<code src="./demos/index3.tsx"/>
+<code src="./demos/index3.tsx"></code>
 
 ## 输入框跳转
 
 配置 `showJumpInput` 实现跳转式分页器，
 
-<code src="./demos/index4.tsx"/>
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

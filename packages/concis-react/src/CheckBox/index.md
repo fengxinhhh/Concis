@@ -6,6 +6,7 @@ nav:
 group:
   title: Data entry
 mobile: false
+toc: content
 ---
 
 # CheckBox
@@ -20,25 +21,25 @@ Checkbox component.
 
 Basic checkbox.
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## Disable
 
 Configure `disabled` to disable checkboxes.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Multiple choice group
 
 Multiple selection groups are implemented through the `group` parameter.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Select All
 
 A case.
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

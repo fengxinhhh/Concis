@@ -6,6 +6,7 @@ nav:
 group:
   title: 通用
 mobile: false
+toc: content
 ---
 
 # Link 链接
@@ -16,19 +17,19 @@ mobile: false
 
 基础链接。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 其他状态
 
 提供 `primary`、`error`、`warning`、`success` 四种状态，默认`primary`。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 图标链接
 
 配置 `icon` 属性展示图标，为 `true` 显示默认图标，也可以自定义图标。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## API
 

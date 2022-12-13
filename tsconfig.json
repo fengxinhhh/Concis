@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "baseUrl": "./",
     "target": "es6",
     "module": "es2015",
     "lib": ["dom", "dom.iterable", "esnext", "es2021"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
@@ -14,10 +15,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@/": ["./packages"]
+      "@/": ["./packages"],
+      "@@/*": [".dumi/tmp/*"]
     },
     "experimentalDecorators": true
   },

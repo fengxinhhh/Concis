@@ -1,7 +1,6 @@
 ---
-nav:
-  title: 指南
-  path: /guide
+order: 4
+title: vscode支持
 ---
 
 # vscode 支持

@@ -6,6 +6,7 @@ nav:
 group:
   title: 其他
 mobile: false
+toc: content
 ---
 
 # GlobalConfig 全局配置
@@ -32,7 +33,7 @@ export default () => (
 
 此处列出了 Concis 所有支持主题色自定义的组件，你可以在演示中切换主题色。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 暗黑模式
 
@@ -40,7 +41,7 @@ export default () => (
 
 在使用了暗黑模式的基础下，Concis 不建议同时使用自定义主题，虽然也做了兼容。
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 我们推荐使用 Concis 自带的项目背景色和字体色，配置如下：
 

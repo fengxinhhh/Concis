@@ -6,6 +6,7 @@ nav:
 group:
   title: 导航
 mobile: false
+toc: content
 ---
 
 # Menu 导航菜单
@@ -20,37 +21,31 @@ mobile: false
 
 最基础的导航菜单。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 自定义宽度
 
 配置 `width` 自定义宽度。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 深色风格
 
 配置 `dark` 开启深色风格（在官网深色模式下体验）。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 手风琴风格
 
 配置 `ableToggle` 开启手风琴切换。
 
-<code src="./demos/index4.tsx" />
-
-## 交互
-
-- 应用于快速布局 Layout-Slider 侧边栏中
-
-<code src="./demos/index5.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## 默认展开
 
 配置 `defaultOpen` 默认展开。
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx"></code>
 
 ## API
 

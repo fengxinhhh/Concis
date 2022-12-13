@@ -6,6 +6,7 @@ nav:
 group:
   title: 数据展示
 mobile: false
+toc: content
 ---
 
 # Comment 评论
@@ -20,31 +21,31 @@ mobile: false
 
 基本评论组件。
 
-<code src='./demos/index1.tsx'/>
+<code src='./demos/index1.tsx'></code>
 
 ## 嵌套评论
 
 可嵌套使用。
 
-<code src='./demos/index2.tsx' />
+<code src='./demos/index2.tsx'></code>
 
 ## 对齐方式
 
 配置 align=right，使日期右对齐。
 
-<code src='./demos/index5.tsx' />
+<code src='./demos/index5.tsx'></code>
 
 ## 头部额外内容
 
 配置 afterAuthor，个性化名字后的内容。
 
-<code src='./demos/index4.tsx' />
+<code src='./demos/index4.tsx'></code>
 
 ## 回复框
 
 实现一个基本的评论回复。
 
-<code src='./demos/index3.tsx' />
+<code src='./demos/index3.tsx'></code>
 
 ## API
 

@@ -6,6 +6,7 @@ nav:
 group:
   title: Data entry
 mobile: false
+toc: content
 ---
 
 # Tree
@@ -20,25 +21,25 @@ Similar to the Select control, TreeSelect can be used when the selectable data s
 
 The most basic use.
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## Search
 
 Search via `avaSearch`.
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 ## Default expansion
 
 Configure `defaultOpen` to expand all nodes by default.
 
-<code src="./demos/index3.tsx"/>
+<code src="./demos/index3.tsx"></code>
 
 ## Multiple choice
 
 Multiple selection is supported via `avaChooseMore`.
 
-<code src="./demos/index4.tsx"/>
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

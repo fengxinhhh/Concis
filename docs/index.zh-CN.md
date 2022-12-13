@@ -1,24 +1,30 @@
 ---
-title: 轻量级组件库
-full: true
-gapless: true
+title: Concis - 轻量级组件库
+hero:
+  title: Concis
+  description: A high-performance, lightweight UI library for quickly building React applications
+  actions:
+    - text: Start
+      link: /guide/introducezh-CN
+    - text: Components
+      link: /components/buttonzh-CN
 ---
 
 <code src="./components/home-page.tsx" inline="true"></code>
 
-```tsx
+```tsx | demo
 /**
  * inline: true
  */
 import React from 'react';
-import { LazyLoad } from 'concis';
 import { Section } from './site/Section';
+import { LazyLoad } from 'concis';
 import './site/styles.less';
 export default () => (
   <Section
-    title="在线体验Concis的极致性"
+    title="Experience the ultimate in Concis online"
     style={{ marginTop: 40 }}
-    titleStyle={{ paddingBottom: 100, fontWeight: 'bold' }}
+    titleStyle={{ paddingBottom: 100, fontWeight: 'bold', fontSize: 50, textAlign: 'center' }}
   >
     <LazyLoad>
       <iframe
@@ -32,31 +38,7 @@ export default () => (
 );
 ```
 
-```tsx
-/**
- * inline: true
- */
-import React from 'react';
-import { Section } from './site/Section';
-import { LazyLoad } from 'concis';
-import './site/styles.less';
-
-export default () => (
-  <Section title="感谢所有贡献者" style={{ marginTop: 140, fontWeight: 'bold' }} scale={0.6}>
-    <LazyLoad>
-      <a
-        href="https://github.com/fengxinhhh/concis/graphs/contributors"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img src="https://contrib.rocks/image?repo=fengxinhhh/concis" width={800} />
-      </a>
-    </LazyLoad>
-  </Section>
-);
-```
-
-```tsx
+```tsx | demo
 /**
  * inline: true
  */
@@ -67,18 +49,17 @@ import './site/styles.less';
 
 export default () => (
   <Section
-    style={{ marginTop: 140, fontWeight: 'bold' }}
-    titleStyle={{ paddingBottom: 140 }}
-    scale={1.2}
+    title="Thanks to all contributors~"
+    style={{ marginTop: 140 }}
+    titleStyle={{ paddingBottom: 100, fontWeight: 'bold', fontSize: 50, textAlign: 'center' }}
   >
-    <LazyLoad>
-      <div>
-        <span>Copyright © 2022-2022 Concis. All Rights Reserved. Concis 版权所有</span>
-        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
-          苏ICP备2022018060号
-        </a>
-      </div>
-    </LazyLoad>
+    <a
+      href="https://github.com/fengxinhhh/concis/graphs/contributors"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <img src="https://contrib.rocks/image?repo=fengxinhhh/concis" width={800} />
+    </a>
   </Section>
 );
 ```

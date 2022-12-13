@@ -1,0 +1,143 @@
+const animationStyle = `
+  .fadedrawer-enter,
+  .fadedrawer-appear {
+    opacity: 0;
+  }
+
+  .fadedrawer-enter-active,
+  .fadedrawer-appear-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+
+  .fadedrawer-exit {
+    opacity: 1;
+  }
+
+  .fadedrawer-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+
+  .fadedrawer-right-content-enter,
+  .fadedrawer-right-content-appear {
+    transform: translateX(100%);
+  }
+
+  .fadedrawer-right-content-enter-active,
+  .fadedrawer-right-content-appear-active {
+    transform: translateX(0);
+    transition: transform 300ms;
+  }
+
+  .fadedrawer-right-content-exit {
+    transform: translateX(0);
+  }
+
+  .fadedrawer-right-content-exit-active {
+    transform: translateX(100%);
+    transition: transform 300ms;
+  }
+
+  .fadedrawer-left-content-enter,
+  .fadedrawer-left-content-appear {
+    transform: translateX(-100%);
+  }
+
+  .fadedrawer-left-content-enter-active,
+  .fadedrawer-left-content-appear-active {
+    transform: translateX(0);
+    transition: transform 300ms;
+  }
+
+  .fadedrawer-left-content-exit {
+    transform: translateX(0);
+  }
+
+  .fadedrawer-left-content-exit-active {
+    transform: translateX(-100%);
+    transition: transform 300ms;
+  }
+
+  .fadedrawer-top-content-enter,
+  .fadedrawer-top-content-appear {
+    transform: translateY(-100%);
+  }
+
+  .fadedrawer-top-content-enter-active,
+  .fadedrawer-top-content-appear-active {
+    transform: translateY(0);
+    transition: transform 300ms;
+  }
+
+  .fadedrawer-top-content-exit {
+    transform: translateY(0);
+  }
+
+  .fadedrawer-top-content-exit-active {
+    transform: translateY(-100%);
+    transition: transform 300ms;
+  }
+
+  .fadedrawer-bottom-content-enter,
+  .fadedrawer-bottom-content-appear {
+    transform: translateY(100%);
+  }
+
+  .fadedrawer-bottom-content-enter-active,
+  .fadedrawer-bottom-content-appear-active {
+    transform: translateY(0);
+    transition: transform 300ms;
+  }
+
+  .fadedrawer-bottom-content-exit {
+    transform: translateY(0);
+  }
+
+  .fadedrawer-bottom-content-exit-active {
+    transform: translateY(100%);
+    transition: transform 300ms;
+  }
+
+  @media screen and (max-width: 767px) {
+    .concis-drawer {
+      &-content {
+        width: 90vw;
+      }
+    }
+
+    .fadeContent-enter,
+    .fadeContent-appear {
+      top: @concis-drawer-fadeExit-transform;
+      left: @concis-drawer-fadeExit-transform;
+      width: 80vw;
+      opacity: 0;
+    }
+
+    .fadeContent-enter-active,
+    .fadeContent-appear-active {
+      top: @concis-drawer-transform;
+      left: @concis-drawer-transform;
+      width: 90vw;
+      opacity: 1;
+      transition: top 200ms, width 200ms, left 200ms, opacity 200ms;
+    }
+
+    .fadeContent-exit {
+      top: @concis-drawer-transform;
+      left: @concis-drawer-transform;
+      width: 90vw;
+      opacity: 1;
+    }
+
+    .fadeContent-exit-active {
+      top: @concis-drawer-fadeExit-transform;
+      left: @concis-drawer-fadeExit-transform;
+      width: 80vw;
+      opacity: 0;
+      transition: top 200ms, width 200ms, left 200ms, opacity 100ms;
+    }
+  }
+`;
+
+export { animationStyle };

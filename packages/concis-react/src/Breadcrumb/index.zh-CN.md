@@ -6,6 +6,7 @@ nav:
 group:
   title: 导航
 mobile: false
+toc: content
 ---
 
 # Breadcrumb 面包屑
@@ -16,31 +17,31 @@ mobile: false
 
 最基础的面包屑菜单。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 自定义分隔符
 
 配置 `separator` 参数，自定义分隔符。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 自定义尺寸
 
 通过自定义面包屑组件样式，自定义尺寸大小。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 自定义内容
 
 每个 `Breadcrumb.Item` 都是一个 `ReactNode` ，可以传入文本外的任意元素。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## 省略
 
 配置 `maxCount` 指定最多显示面包屑数量，多余以 `...` 形式隐藏。
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## API
 

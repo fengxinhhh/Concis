@@ -5,7 +5,6 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { CollapseProps } from './interface';
-import './style/index.module.less';
 
 export const ctx = createContext<any>({} as any); // 顶层通信装置
 

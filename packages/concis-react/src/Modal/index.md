@@ -6,6 +6,7 @@ nav:
 group:
   title: Feedback
 mobile: false
+toc: content
 ---
 
 # Modal
@@ -16,13 +17,13 @@ Open a floating layer on the current page to carry related operations.
 
 The most basic dialog box.
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## Asynchronous shutdown
 
 Support `onOk` and `onCancel` to use `Promise` to asynchronously close dialog boxes.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Functional call
 
@@ -30,13 +31,13 @@ Through `Modal Confirm` Quick call to enable Modal. Asynchronous closing is also
 
 The difference between functional calling and component calling is that the former gives the Modal display status to the component hosting, and the latter places the Modal display status in the calling end hosting.
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## Message prompt
 
 There are four types of message prompts: `info`, `success`,`warning`, and`error`.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Custom Footer
 
@@ -44,7 +45,7 @@ Pass in `okButtonProps` and` cancelButtonProps` to customize the props of the OK
 
 `Footer ` Incoming `<></>` means there is no footer.
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## Custom Width
 
@@ -52,25 +53,25 @@ Use `width` to configure the percentage width of the dialog box.
 
 Set string to represent px value and number to represent percentage value.
 
-<code src="./demos/index9.tsx" />
+<code src="./demos/index9.tsx"></code>
 
 ## Customize button text
 
 Set `okText` and `cancelText` to customize button text.
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx"></code>
 
 ## Delay loading data
 
 The loading effect is displayed in the dialog box.
 
-<code src="./demos/index7.tsx" />
+<code src="./demos/index7.tsx"></code>
 
 ## With step bar dialog box
 
 Steps are displayed in the dialog box.
 
-<code src="./demos/index8.tsx" />
+<code src="./demos/index8.tsx"></code>
 
 ## API
 

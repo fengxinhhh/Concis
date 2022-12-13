@@ -6,6 +6,7 @@ nav:
 group:
   title: 数据展示
 mobile: false
+toc: content
 ---
 
 # Popover 气泡卡片
@@ -22,25 +23,25 @@ mobile: false
 
 基础气泡卡片。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 点击式
 
 配置 `type = click`，切换为点击式触发。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 不同方向
 
 通过 `align`，切换不同出现方向，可选 `left`、`right`、`top`、`bottom`。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 浮层内关闭
 
 通过 `useRef` 声明一个独立的 `ref` 并传给 `Popover`，调用 `ref.current.setShowDialog`，可切换显示状态。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

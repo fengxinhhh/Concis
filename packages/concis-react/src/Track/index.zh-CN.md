@@ -6,6 +6,7 @@ nav:
 group:
   title: 业务
 mobile: false
+toc: content
 ---
 
 # Track 埋点
@@ -18,11 +19,11 @@ mobile: false
 
 通常会在收集后进行接口上报推送操作。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 你的项目中 `App` 组件看起来就像是这样：
 
-```tsx pure
+```
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import A from './pages/A';

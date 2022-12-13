@@ -1,7 +1,6 @@
 ---
-nav:
-  title: 设计
-  path: /guide
+order: 3
+title: 色彩
 ---
 
 # 色彩
@@ -16,10 +15,7 @@ nav:
 
 你可以在安装 less 的环境下直接在项目中使用这些 less 色彩变量。
 
-```tsx
-/**
- * inline: true
- */
+```tsx | demo
 import React from 'react';
 import Color from './demos/Color/Color.tsx';
 import './demos/Color/color.less';

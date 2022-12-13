@@ -1,14 +1,13 @@
 ---
-nav:
-  title: 指南
-  path: /guide
+order: 7
+title: 在 Vite 中使用
 ---
 
 # 在 Vite 中使用
 
 你可以使用 vite 快速搭建一个 react 项目，安装完预设包，如 react、react-dom。
 
-```tsx pure
+```bash
 npm run create vite
 ```
 
@@ -18,7 +17,7 @@ npm run create vite
 
 通过命令安装 Concis：
 
-```tsx pure
+```bash
 npm i --save-dev concis
 ```
 
@@ -36,7 +35,7 @@ const App = () => (
 
 修改 src/App.css，在文件顶部引入 `concis/web-react/style/index.css`。
 
-```tsx pure
+```bash
 @import 'concis/web-react/style/index.css';
 ```
 

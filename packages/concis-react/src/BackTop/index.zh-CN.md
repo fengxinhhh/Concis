@@ -6,6 +6,7 @@ nav:
 group:
   title: 其他
 mobile: false
+toc: content
 ---
 
 # BackTop 回到顶部
@@ -24,13 +25,13 @@ mobile: false
 
 使用默认的按钮返回顶部。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 自定义样式
 
 可以自定义返回顶部的载体，你甚至可以塞一支火箭进去。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## API
 

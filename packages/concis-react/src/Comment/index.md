@@ -6,6 +6,7 @@ nav:
 group:
   title: Data display
 mobile: false
+toc: content
 ---
 
 # Comment
@@ -20,31 +21,31 @@ Feedback on website content and display comments.
 
 Basic comment component.
 
-<code src='./demos/index1.tsx'/>
+<code src='./demos/index1.tsx'></code>
 
 ## Nested comments
 
 It can be nested.
 
-<code src='./demos/index2.tsx' />
+<code src='./demos/index2.tsx'></code>
 
 ## Alignment
 
 Configure align=right to align the date to the right.
 
-<code src='./demos/index5.tsx' />
+<code src='./demos/index5.tsx'></code>
 
 ## Head Extra
 
 Configure afterAuthor to personalize the content after the name.
 
-<code src='./demos/index4.tsx' />
+<code src='./demos/index4.tsx'></code>
 
 ## Reply box
 
 Implement a basic comment reply.
 
-<code src='./demos/index3.tsx' />
+<code src='./demos/index3.tsx'></code>
 
 ## API
 

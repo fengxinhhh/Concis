@@ -6,6 +6,7 @@ nav:
 group:
   title: Other
 mobile: false
+toc: content
 ---
 
 # GlobalConfig
@@ -32,7 +33,7 @@ export default () => (
 
 All components of Concis that support theme color customization are listed here. You can switch theme colors in the demo.
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## Dark Mode
 
@@ -40,7 +41,7 @@ Turn on dark mode through darkTheme, and add dark style to all Concis.
 
 Based on the use of dark mode, Concis does not recommend using a custom theme at the same time, although it is also compatible.
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 We recommend using the project background color and font color provided by Concis. The configuration is as follows:
 

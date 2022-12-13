@@ -8,5 +8,6 @@ declare module '*.module.less' {
   export default classes;
 }
 declare module 'lodash';
+declare module 'concis';
 declare module 'crypto-js';
 declare module 'enzyme-adapter-react-16';

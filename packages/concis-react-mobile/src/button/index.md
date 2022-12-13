@@ -13,6 +13,6 @@ The button is used to start an instant operation.
 
 ## Basic use
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 <API></API>

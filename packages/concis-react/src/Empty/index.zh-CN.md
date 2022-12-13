@@ -6,6 +6,7 @@ nav:
 group:
   title: 数据展示
 mobile: false
+toc: content
 ---
 
 # Empty 空状态
@@ -16,19 +17,19 @@ mobile: false
 
 基础用法。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 自定义图标
 
 通过 `icon` ，配置自定义图标。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 自定义文案
 
 通过 `description` ，配置自定义文案。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## API
 

@@ -1,10 +1,10 @@
 import React, { memo, useContext, useRef, useMemo } from 'react';
+import { ZoomStyle } from './style';
 import type { ZoomboxProps } from './interface';
 import { on, off } from '../common_utils/dom/event';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import './index.module.less';
 
 const darkThemeBorderColor = '#484b49',
   lightThemeBorderColor = '#e5e6eb';
@@ -140,9 +140,11 @@ const Zoombox = (props: ZoomboxProps) => {
   }, [notAllowed, noBorder]);
 
   return (
-    <div className={classNames} style={zoomStyle} ref={zoomRef} onMouseDown={chooseZoomBox}>
-      {children}
-    </div>
+    <ZoomStyle>
+      <div className={classNames} style={zoomStyle} ref={zoomRef} onMouseDown={chooseZoomBox}>
+        {children}
+      </div>
+    </ZoomStyle>
   );
 };
 

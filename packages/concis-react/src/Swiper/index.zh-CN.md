@@ -6,6 +6,7 @@ nav:
 group:
   title: 数据展示
 mobile: false
+toc: content
 ---
 
 # Swiper 轮播图
@@ -24,25 +25,25 @@ mobile: false
 
 最基本的使用。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 自动播放
 
 通过 `autoPlayer` 自动播放，`deply` 设置播放时延。
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 ## 切换选项
 
 配置 `showTrigger` 展示小圆点。
 
-<code src="./demos/index3.tsx"/>
+<code src="./demos/index3.tsx"></code>
 
 ## 卡片式
 
 配置 `card` 切换到卡片式轮播图。
 
-<code src="./demos/index4.tsx"/>
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

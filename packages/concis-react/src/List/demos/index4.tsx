@@ -1,6 +1,7 @@
 import React from 'react';
 import { List, Avatar } from 'concis';
-import './demo.module.less';
+import { ListDemoStyle } from './demoStyle';
+import './demoStyle.tsx';
 
 export default function listDemo1() {
   const dataSource = [
@@ -287,26 +288,28 @@ export default function listDemo1() {
   ];
 
   return (
-    <List
-      style={{ fontSize: '16px', width: '600px' }}
-      header="List title"
-      size="default"
-      dataSource={dataSource}
-      render={(item: any) => {
-        return (
-          <List.Item style={{ fontSize: '14px' }}>
-            <div className="list">
-              <Avatar shape="square">A</Avatar>
-              <div className="text">
-                <span className="title">{item.title}</span>
-                <span className="content">{item.content}</span>
+    <ListDemoStyle>
+      <List
+        style={{ fontSize: '16px', width: '600px' }}
+        header="List title"
+        size="default"
+        dataSource={dataSource}
+        render={(item: any) => {
+          return (
+            <List.Item style={{ fontSize: '14px' }}>
+              <div className="list">
+                <Avatar shape="square">A</Avatar>
+                <div className="text">
+                  <span className="title">{item.title}</span>
+                  <span className="content">{item.content}</span>
+                </div>
               </div>
-            </div>
-          </List.Item>
-        );
-      }}
-      lazyLoad
-      defaultShowNum={10}
-    />
+            </List.Item>
+          );
+        }}
+        lazyLoad
+        defaultShowNum={10}
+      />
+    </ListDemoStyle>
   );
 }

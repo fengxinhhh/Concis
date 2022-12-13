@@ -7,6 +7,7 @@ const darkBorderColor = '#484849',
 
 function getCollapseBorder(isDark, noBorder) {
   if (!noBorder) {
+    console.log(isDark);
     return css`
       border: 1px solid ${isDark ? darkBorderColor : lightBorderColor};
     `;

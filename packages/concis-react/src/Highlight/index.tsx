@@ -1,9 +1,9 @@
 import React, { forwardRef, useMemo, useContext, Fragment } from 'react';
+import { HighlightStyle } from './style';
 import type { HighlightProps, highlightStyle, Options, Chunk } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import { globalCtx } from '../GlobalConfig';
 import cs from '../common_utils/classNames';
-import './index.module.less';
 
 // 根据query数组生成正则
 function buildRegex(query: string[]) {
@@ -55,18 +55,20 @@ const Highlight = (props, ref) => {
   }, [styles]);
 
   return (
-    <div className={classNames} style={style} ref={ref}>
-      {chunks?.map((chunk, index) => {
-        const { match, text } = chunk;
-        return match ? (
-          <span key={index} className="hightlight-text" style={lighLightStyle}>
-            {text}
-          </span>
-        ) : (
-          <Fragment key={index}>{text}</Fragment>
-        );
-      })}
-    </div>
+    <HighlightStyle>
+      <div className={classNames} style={style} ref={ref}>
+        {chunks?.map((chunk, index) => {
+          const { match, text } = chunk;
+          return match ? (
+            <span key={index} className="hightlight-text" style={lighLightStyle}>
+              {text}
+            </span>
+          ) : (
+            <Fragment key={index}>{text}</Fragment>
+          );
+        })}
+      </div>
+    </HighlightStyle>
   );
 };
 

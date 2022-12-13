@@ -105,32 +105,6 @@ function DiffFooterDemo() {
     </>
   );
 }
-function DiffWidthDemo() {
-  const [visible, setVisible] = useState(false);
-
-  function open() {
-    setVisible(true);
-  }
-
-  function onOk() {
-    setVisible(false);
-  }
-
-  function onCancel() {
-    setVisible(false);
-  }
-
-  return (
-    <>
-      <Button handleClick={open} type="primary">
-        Open
-      </Button>
-      <Drawer title="Title" visible={visible} width="600px" onOk={onOk} onCancel={onCancel}>
-        Content
-      </Drawer>
-    </>
-  );
-}
 
 describe('Drawer test', () => {
   beforeEach(() => {
@@ -169,52 +143,13 @@ describe('Drawer test', () => {
         .simulate('click');
     }
     open();
-    expect(
-      wrapper
-        .find('.concis-drawer-content')
-        .getDOMNode()
-        ?.getAttribute('style')
-        ?.includes('top: 0px; left: 0px;')
-    ).toBe(true);
+    expect(wrapper.find(Drawer).props().align).toBe('left');
     change();
-    expect(
-      wrapper
-        .find('.concis-drawer-content')
-        .getDOMNode()
-        ?.getAttribute('style')
-        ?.includes('top: 0px;') &&
-        wrapper
-          .find('.concis-drawer-content')
-          .getDOMNode()
-          ?.getAttribute('style')
-          ?.includes('right: 0px;')
-    ).toBe(true);
+    expect(wrapper.find(Drawer).props().align).toBe('right');
     change();
-    expect(
-      wrapper
-        .find('.concis-drawer-content')
-        .getDOMNode()
-        ?.getAttribute('style')
-        ?.includes('top: 0px;') &&
-        wrapper
-          .find('.concis-drawer-content')
-          .getDOMNode()
-          ?.getAttribute('style')
-          ?.includes('width: 100%;')
-    ).toBe(true);
+    expect(wrapper.find(Drawer).props().align).toBe('top');
     change();
-    expect(
-      wrapper
-        .find('.concis-drawer-content')
-        .getDOMNode()
-        ?.getAttribute('style')
-        ?.includes('bottom: 0px;') &&
-        wrapper
-          .find('.concis-drawer-content')
-          .getDOMNode()
-          ?.getAttribute('style')
-          ?.includes('width: 100%;')
-    ).toBe(true);
+    expect(wrapper.find(Drawer).props().align).toBe('bottom');
   });
 
   it('test no footer correctly', () => {
@@ -229,23 +164,5 @@ describe('Drawer test', () => {
     expect(
       wrapper.find('.concis-drawer .concis-drawer-content-footer').getDOMNode().innerHTML
     ).toBe('');
-  });
-
-  it('test diff width corr<ectly', () => {
-    const wrapper = mount(<DiffWidthDemo />);
-    function open() {
-      wrapper
-        .find('.concis-button-primary')
-        .filterWhere((n: any) => n.text() === 'Open')
-        .simulate('click');
-    }
-    open();
-    expect(
-      wrapper
-        .find('.concis-drawer .concis-drawer-content')
-        ?.getDOMNode()
-        ?.getAttribute('style')
-        ?.includes('width: 600px')
-    ).toBe(true);
   });
 });

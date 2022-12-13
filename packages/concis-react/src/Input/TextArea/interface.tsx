@@ -7,7 +7,7 @@ interface TextareaProps {
    * @description 自定义样式
    * @default {}
    */
-  moreStyle?: object;
+  style?: React.CSSProperties;
   /**
    * @description 提示
    * @default ''

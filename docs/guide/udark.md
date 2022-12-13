@@ -1,8 +1,6 @@
 ---
-nav:
-  title: Guide
-  path: /guide
-mobile: false
+order: 2
+title: Dark mode
 ---
 
 # Dark mode
@@ -41,11 +39,11 @@ root.render(
 
 <React.StrictMode>
 
-<GlobalConfig darkTheme>
+  <GlobalConfig darkTheme>
 
-<App />
+    <App />
 
-</GlobalConfig>
+  </GlobalConfig>
 
 </React.StrictMode>,
 

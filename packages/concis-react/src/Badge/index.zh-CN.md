@@ -6,6 +6,7 @@ nav:
 group:
   title: 数据展示
 mobile: false
+toc: content
 ---
 
 # Badge 徽标
@@ -16,31 +17,31 @@ mobile: false
 
 基础的用法。只需指定 count，即可显示徽标。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 独立使用
 
 children 为空时，将会独立展示徽标。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 小红点
 
 设置 dot，即可只显示小红点而不显示数字。count > 0 时才显示，并通过 offset 自定义小红点位置。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 文本内容
 
 设置 text，可设置徽标为文本内容。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## 最大值
 
 设置 maxCount，可以限制最大显示的徽标数值，超过将会加 + 后缀。maxCount 默认为 99。
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## API
 

@@ -1,8 +1,6 @@
 ---
-nav:
-  title: 设计
-  path: /guide
-mobile: false
+order: 6
+title: 定制主题
 ---
 
 # 定制主题

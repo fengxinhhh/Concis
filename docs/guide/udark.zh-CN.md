@@ -1,8 +1,6 @@
 ---
-nav:
-  title: 设计
-  path: /guide
-mobile: false
+order: 2
+title: 暗黑模式
 ---
 
 # 暗黑模式

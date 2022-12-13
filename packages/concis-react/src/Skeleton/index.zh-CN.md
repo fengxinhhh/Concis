@@ -6,6 +6,7 @@ nav:
 group:
   title: 反馈
 mobile: false
+toc: content
 ---
 
 # Skeleton 骨架屏
@@ -26,31 +27,31 @@ mobile: false
 
 最基本的骨架屏。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 显示标题
 
 配置 `title`，显示标题骨架。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 显示头像
 
 配置 `avatar`，显示标题骨架。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 自定义数量和宽度
 
 通过 `row` 配置展示列数，通过 `width` 配置每列宽度。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## 完整功能
 
 完整功能展示。
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## API
 

@@ -1,8 +1,6 @@
 ---
-nav:
-  title: Guide
-  path: /guide
-mobile: false
+order: 6
+title: Custom themes
 ---
 
 # Custom themes

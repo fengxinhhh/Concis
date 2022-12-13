@@ -6,6 +6,7 @@ nav:
 group:
   title: Data display
 mobile: false
+toc: content
 ---
 
 # Lightlight
@@ -16,19 +17,19 @@ Highlights based on keywords in a piece of text.
 
 The most basic use.
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## Multiple keywords
 
 Support `query` to pass in multiple keywords.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Highlight style
 
 Set the highlight style through `styles`, `px`, `py` represent horizontal and vertical `padding`; `mx`, `my` represent horizontal and vertical `margin`; `rounded` represent rounded corners; `bg` represent Customize background color.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## API
 

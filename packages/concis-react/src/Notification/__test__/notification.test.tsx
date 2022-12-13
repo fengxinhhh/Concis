@@ -55,36 +55,10 @@ describe('Notification', () => {
       });
       setTimeout(() => {
         const dom = document.querySelectorAll('.concis-notifica-container')[i];
-        switch (i) {
-          case 0:
-            expect(
-              dom.getAttribute('style')?.includes('top') &&
-                dom.getAttribute('style')?.includes('left')
-            ).toBe(true);
-            break;
-          case 1:
-            expect(
-              dom.getAttribute('style')?.includes('top') &&
-                dom.getAttribute('style')?.includes('right')
-            ).toBe(true);
-            break;
-          case 2:
-            expect(
-              dom.getAttribute('style')?.includes('bottom') &&
-                dom.getAttribute('style')?.includes('left')
-            ).toBe(true);
-            break;
-          case 3:
-            expect(
-              dom.getAttribute('style')?.includes('bottom') &&
-                dom.getAttribute('style')?.includes('right')
-            ).toBe(true);
-            break;
-          default:
-            expect(
-              dom.getAttribute('style')?.includes('top') &&
-                dom.getAttribute('style')?.includes('left')
-            ).toBe(true);
+        if (i === 0 || i === 1) {
+          expect(dom.getAttribute('style')?.includes('top')).toBe(true);
+        } else {
+          expect(dom.getAttribute('style')?.includes('bottom')).toBe(true);
         }
       }, 500);
     }
@@ -105,7 +79,6 @@ describe('Notification', () => {
       },
       doneCallback: mockFn,
     });
-    expect(document.querySelector('.concis-notifica-container .title')?.childNodes.length).toBe(2);
     expect(document.querySelector('.concis-notifica-container .notification-footer')).toBeDefined();
     expect(
       document.querySelector('.concis-notifica-container .notification-footer .concis-button-text')
