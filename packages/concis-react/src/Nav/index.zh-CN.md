@@ -16,19 +16,19 @@ mobile: false
 
 最基本的导航栏。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 悬浮消息框
 
 配置 `navContent` 参数，即可在悬浮对应菜单时弹出对应内容， `navContent` 的数组长度应该与 `navData` 对应。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 左右插槽
 
 提供 `leftSlot`、`rightSlot`，可在导航左右自定义内容。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## API
 

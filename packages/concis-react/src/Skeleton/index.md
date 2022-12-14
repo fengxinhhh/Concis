@@ -26,31 +26,31 @@ Provide a placeholder graphic combination where you need to wait for content to 
 
 The most basic skeleton screen.
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## Show Title
 
 Configure `title` to display the title skeleton.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Show avatar
 
 Configure `avatar` to display the title skeleton.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Custom quantity and width
 
 The number of columns is displayed through `row` configuration, and the width of each column is configured through `width`.
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## Full functionality
 
 Complete function demonstration.
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## API
 

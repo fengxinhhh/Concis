@@ -22,43 +22,43 @@ Entering content through the mouse or keyboard is the packaging of the most basi
 
 Basic input box component.
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## Multi scenario application
 
 Combined case.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Emptyable
 
 Configure `showClear` to clear the text.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Number Box
 
 Configure the numeric input box with `type = num`.
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## Basic text field
 
 Use a text field input box via `TextArea`.
 
-<code src="./demos/index6.tsx"/>
+<code src="./demos/index6.tsx"></code>
 
 ## Limit the maximum number of characters
 
 Configure `maxLength` to limit the maximum number of characters.
 
-<code src="./demos/index7.tsx"/>
+<code src="./demos/index7.tsx"></code>
 
 ## Removable text field
 
 Configure `showClear` to clear the text field.
 
-<code src="./demos/index8.tsx"/>
+<code src="./demos/index8.tsx"></code>
 
 ## API
 

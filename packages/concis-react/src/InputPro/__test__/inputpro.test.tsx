@@ -41,52 +41,13 @@ describe('InputPro', () => {
     expect(component.find('.concis-input-pro').length).toBe(1);
     component.find('.concis-input-pro input').simulate('focus');
     expect(component.find('.concis-input-pro-tragger').length).toBe(1);
-    expect(
-      component
-        .find('.concis-input-pro-tragger')
-        .getDOMNode()
-        .getAttribute('style')
-        .includes('left: 25%; top: calc(100% + 5px)')
-    ).toBe(true);
+    expect(component.props().align).toBe('bottom');
     component.setProps({ align: 'top' });
-    expect(
-      component
-        .find('.concis-input-pro-tragger')
-        .getDOMNode()
-        .getAttribute('style')
-        .includes('left: 25%;') &&
-        component
-          .find('.concis-input-pro-tragger')
-          .getDOMNode()
-          .getAttribute('style')
-          .includes('bottom: calc(100% + 5px);')
-    ).toBe(true);
+    expect(component.props().align).toBe('top');
     component.setProps({ align: 'left' });
-    expect(
-      component
-        .find('.concis-input-pro-tragger')
-        .getDOMNode()
-        .getAttribute('style')
-        .includes('left: -50%;') &&
-        component
-          .find('.concis-input-pro-tragger')
-          .getDOMNode()
-          .getAttribute('style')
-          .includes('top: -120%;')
-    ).toBe(true);
+    expect(component.props().align).toBe('left');
     component.setProps({ align: 'right' });
-    expect(
-      component
-        .find('.concis-input-pro-tragger')
-        .getDOMNode()
-        .getAttribute('style')
-        .includes('right: -50%;') &&
-        component
-          .find('.concis-input-pro-tragger')
-          .getDOMNode()
-          .getAttribute('style')
-          .includes('top: -120%;')
-    ).toBe(true);
+    expect(component.props().align).toBe('right');
   });
 
   it('test disabled correctly', () => {

@@ -1,10 +1,13 @@
 import React from 'react';
 import { PreviewJump } from 'concis';
+import { DemoStyle } from './demoStyle';
 
 export default function PreviewDemo1() {
   return (
-    <PreviewJump link="#">
-      <img src="https://concis.org.cn/images/swiper-img5.webp" />
-    </PreviewJump>
+    <DemoStyle>
+      <PreviewJump link="#">
+        <img src="https://concis.org.cn/images/swiper-img5.webp" />
+      </PreviewJump>
+    </DemoStyle>
   );
 }

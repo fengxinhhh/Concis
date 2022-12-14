@@ -16,19 +16,19 @@ mobile: false
 
 基础抽屉，点击触发按钮抽屉从右侧滑出，点击遮罩区关闭。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 不同方向
 
 配置`align`改变抽屉出现位置，可选`left`、`right`、`top`、`bottom`，默认为`right`。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 异步关闭
 
 支持`onCancel`、`onOk`为 Promise 写法，异步控制抽屉显示状态。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 自定义页脚
 
@@ -36,7 +36,7 @@ mobile: false
 
 `footer` 传入`<></>`则代表无页脚。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## 自定义宽度
 
@@ -44,13 +44,13 @@ mobile: false
 
 设置 `string` 代表 px 值，设置 `number` 代表百分比值。
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## 抽屉表单
 
 一个`Form` + `Drawer`的实例。
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx"></code>
 
 ## API
 

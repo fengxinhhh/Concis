@@ -7,11 +7,11 @@ import {
   LoadingOutlined,
   CloseOutlined,
 } from '@ant-design/icons';
+import { MessageStyle } from './style';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { MessageProps } from './interface';
-import './index.module.less';
 
 let container: HTMLDivElement | null;
 let topMessageNum: number = 0;
@@ -164,11 +164,13 @@ const Message = (props: MessageProps<string>) => {
   };
 
   return (
-    <div className={classNames} style={{ opacity: opac, ...style }} ref={messageDom}>
-      {messageIcon}
-      <span className="toast-content">{content}</span>
-      {clearable && <CloseOutlined onClick={closeMessage} />}
-    </div>
+    <MessageStyle>
+      <div className={classNames} style={{ opacity: opac, ...style }} ref={messageDom}>
+        {messageIcon}
+        <span className="toast-content">{content}</span>
+        {clearable && <CloseOutlined onClick={closeMessage} />}
+      </div>
+    </MessageStyle>
   );
 };
 

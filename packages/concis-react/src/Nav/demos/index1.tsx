@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav } from 'concis';
-import '../styles/demo.less';
+import { NavDemoStyle } from './demo';
 import usePageListener from '../../common_utils/hooks/usePageListener';
 
 export default function index1() {
@@ -34,8 +34,8 @@ export default function index1() {
   ];
 
   return (
-    <div>
+    <NavDemoStyle>
       <Nav navData={navData} />
-    </div>
+    </NavDemoStyle>
   );
 }

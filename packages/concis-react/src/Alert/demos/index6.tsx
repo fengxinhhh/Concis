@@ -1,5 +1,5 @@
 import React from 'react';
-import Alert from '..';
+import { Alert } from 'concis';
 
 export default function index1() {
   const margin = { margin: '15px 0' };

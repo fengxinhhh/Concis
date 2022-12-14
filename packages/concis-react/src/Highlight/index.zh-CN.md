@@ -16,19 +16,19 @@ mobile: false
 
 最基本的使用。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 多关键词
 
 支持 `query` 传入多个关键词。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 高亮样式
 
 通过 `styles` 设置高亮样式，`px`、`py` 代表横向、纵向 `padding`；`mx`、`my` 代表横向、纵向 `margin`；`rounded` 代表圆角；`bg` 代表自定义背景颜色。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## API
 

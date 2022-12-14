@@ -20,37 +20,37 @@ A pull- down menu pops up for the user to select an operation to replace the nat
 
 Basic dropdown box component.
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## Disable
 
 Disabled with `disabled`.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Loading
 
 Disabled by `loading`.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## Drop down items are disabled separately
 
 Configure `option` single item `disabled` for single item disable.
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## Enterable
 
 Configure `showSearch` to enable enterable state.
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## Button style
 
 Configure `type` to switch to a button selector. There are four options: `primary`, `error`, `warning`, `success`.
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx"></code>
 
 ## API
 

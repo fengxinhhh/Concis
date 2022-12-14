@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import { commonStyle } from '../../styles/common';
-
-const { concisPrimaryColor, concisDarkPrimaryColor } = commonStyle;
 
 const AffixStyle = styled.div`
   .concis-affix {
@@ -9,7 +6,6 @@ const AffixStyle = styled.div`
     z-index: 99;
     display: inline-block;
     color: #fff;
-    background-color: ${concisPrimaryColor};
   }
 
   .concis-dark-affix {
@@ -17,7 +13,6 @@ const AffixStyle = styled.div`
     z-index: 99;
     display: inline-block;
     color: #fff;
-    background-color: ${concisDarkPrimaryColor};
   }
 `;
 

@@ -6,7 +6,7 @@ const { render } = Enzyme;
 
 function demoTest(component: string) {
   const files = glob.sync(
-    path.resolve(__dirname, `../packages/concis-react/src/${component}/demos/*.tsx`),
+    path.resolve(__dirname, `../packages/concis-react/src/${component}/demos/*.tsx`)
   );
   files.shift();
   if (component === 'Modal') {

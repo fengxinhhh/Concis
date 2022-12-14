@@ -1,24 +1,25 @@
 ---
-nav:
-  title: 指南
-  path: /guide
+order: 9
+title: 在 TypeScript 中使用
 ---
 
 # 在 TypeScript 中使用
 
 使用 create-react-app 一步步地创建一个 TypeScript 项目，并引入 concis。
 
-<Alert>concis 基于最新稳定版本的 TypeScript（>=4.0.0），请确保项目中使用匹配的版本。</Alert>
+:::warning{title=注意}
+concis 基于最新稳定版本的 TypeScript（>=4.0.0），请确保项目中使用匹配的版本。
+:::
 
 ## 安装和初始化
 
-```tsx pure
+```bash
 create-react-app my-ts-app --typescript
 ```
 
 ## 配置 TypeScript 环境
 
-```tsx pure
+```bash
 npm i typescript --save-dev
 npx tsc --init            //初始化tsconfig.json文件并配置
 npm i --save-dev @types/react @types/react-dom @types/node
@@ -38,7 +39,7 @@ declare module 'concis';
 
 通过命令安装 concis：
 
-```tsx pure
+```bash
 npm i --save-dev concis
 ```
 
@@ -58,7 +59,7 @@ const App = () => (
 
 修改 src/App.css，在文件顶部引入 `concis/web-react/style/index.css`。
 
-```tsx pure
+```bash
 @import "~concis/web-react/style/index.css";
 ```
 

@@ -1,9 +1,9 @@
 import React, { useMemo, useContext, useCallback, forwardRef } from 'react';
+import { DividerStyle } from './style';
 import type { DividerProps } from './interface';
 import type { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
 
 const Divider = (props, ref) => {
   const { children, style, className, fontSize, align } = props;
@@ -51,19 +51,21 @@ const Divider = (props, ref) => {
   };
 
   return (
-    <div className={classNames} style={style} ref={ref}>
-      <div className={formatClass('line')} style={{ ...lineAlign }}>
-        {children && (
-          <>
-            <span className={formatClass('before-line-text')} style={lineStyle('left')} />
-            <span className={formatClass('line-text')} style={textStyle}>
-              {children}
-            </span>
-            <span className={formatClass('after-line-text')} style={lineStyle('right')} />
-          </>
-        )}
+    <DividerStyle>
+      <div className={classNames} style={style} ref={ref}>
+        <div className={formatClass('line')} style={{ ...lineAlign }}>
+          {children && (
+            <>
+              <span className={formatClass('before-line-text')} style={lineStyle('left')} />
+              <span className={formatClass('line-text')} style={textStyle}>
+                {children}
+              </span>
+              <span className={formatClass('after-line-text')} style={lineStyle('right')} />
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </DividerStyle>
   );
 };
 

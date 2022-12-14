@@ -1,7 +1,6 @@
 ---
-nav:
-  title: 指南
-  path: /guide
+order: 10
+title: 贡献指南
 ---
 
 # 贡献指南
@@ -14,9 +13,9 @@ nav:
 
 项目目前分为 PC 组件和 Mobile 组件，技术栈均为 React+TypeScript，在项目根目录-> packages 目录下，存放着主体业务。
 
-- concis-react 中包含 PC 端的组件代码以及一些配置文件。
+- `concis-react` 中包含 PC 端的组件代码以及一些配置文件。
 
-- concis-react-mobile 中包含 Mobile 端的组建代码以及一些配置文件(目前暂未开始)。
+- `concis-react-mobile` 中包含 Mobile 端的组建代码以及一些配置文件(目前暂未开始)。
 
 在项目中所有的组件目录下，你可以在每一个组件下的 demos 中编写组件的案例，如 Button 组件有 6 个案例，最后在组件目录下的 index.md 中自动生成组件页面。
 
@@ -26,13 +25,13 @@ nav:
 
 clone 完项目以后直接在根目录安装项目中所有依赖：
 
-```tsx pure
+```bash
 pnpm install
 ```
 
 此时即可通过打开本地文档服务器
 
-```tsx pure
+```bash
 pnpm run start
 ```
 
@@ -40,13 +39,13 @@ pnpm run start
 
 打包方式分文档打包和 npm 打包:
 
-```tsx pure
+```bash
 pnpm run docs:build        //文档打包，产物于docs-dist
 ```
 
 在 packages/子包目录下执行:
 
-```tsx pure
+```bash
 pnpm run build             //npm打包，产物于web-react
 ```
 
@@ -54,7 +53,7 @@ pnpm run build             //npm打包，产物于web-react
 
 在 packages/自包目录下执行对指定包的组件进行单元测试和 e2e 测试。
 
-```tsx pure
+```bash
 pnpm run test:unit          //单元测试，对应/__tests__/unit
 pnpm run test:e2e          //e2e测试，对应/__tests__/e2e
 ```
@@ -71,11 +70,11 @@ pnpm run test:e2e          //e2e测试，对应/__tests__/e2e
 
 当你 clone 了 Concis 的代码后并使用 npm install 安装完所有依赖后，你还可以运行如下几个常见的命令：
 
-- pnpm start 在本地运行 Concis 网站。
+- `pnpm start` 在本地运行 Concis 网站。
 
-- pnpm test:jest 测试所有包的 unit、e2e 测试。
+- `pnpm test:jest` 测试所有包的 unit、e2e 测试。
 
-- pnpm docs:build 打包网站 Web 包。
+- `pnpm docs:build` 打包网站 Web 包。
 
 对于组件库 npm 包，在 packages 目录下对应的子包中的 package.json 中可以查看相应命令。
 
@@ -83,7 +82,7 @@ pnpm run test:e2e          //e2e测试，对应/__tests__/e2e
 
 在 example 文件夹中，有一个 `vite` + `react` 的工程运行环境，你可以在该环境中体验 `concis` 组件，在项目根目录运行命令:
 
-```tsx pure
+```bash
 pnpm example:dev
 ```
 

@@ -18,13 +18,13 @@ import {
   ZoomOutOutlined,
   ZoomInOutlined,
 } from '@ant-design/icons';
+import { ImageStyle } from './style';
 import { onClickOutSide, dispatchRef } from '../common_utils/dom/event';
 import { ImageProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import useOverFlowScroll from '../common_utils/hooks/useOverFlowScroll';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
 
 const Image = (props, ref) => {
   const {
@@ -231,10 +231,10 @@ const Image = (props, ref) => {
   }, [preview, visible, scale, rotate, previewList, previewShowIndex, showOperation]);
 
   return (
-    <>
+    <ImageStyle>
       <div
         className={classNames}
-        style={{ ...style }}
+        style={style}
         ref={(node) => {
           imageDom.current = node;
           dispatchRef<RefObject<HTMLElement> | HTMLElement>(ref, node);
@@ -267,7 +267,7 @@ const Image = (props, ref) => {
         )}
       </div>
       {renderPreviewDialog}
-    </>
+    </ImageStyle>
   );
 };
 

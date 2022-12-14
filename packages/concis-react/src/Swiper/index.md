@@ -24,25 +24,25 @@ If there is an exception in use, try to turn off React strict mode (remove the<R
 
 The most basic use of.
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## Autoplay
 
 Autoplay via `autoPlayer`, and `deply` to set the playback delay.
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 ## Toggle Options
 
 Configure `showTrigger` to display small dots.
 
-<code src="./demos/index3.tsx"/>
+<code src="./demos/index3.tsx"></code>
 
 ## Card
 
 Configure `card` to switch to a card carousel.
 
-<code src="./demos/index4.tsx"/>
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

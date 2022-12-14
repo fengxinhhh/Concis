@@ -40,16 +40,16 @@ html[data-perfers-color="dark"] .__dumi-default-previewer{
 html[data-perfers-color="dark"] .__dumi-default-previewer .__dumi-default-previewer-actions {
   border-top: none !important;
 }
-.__dumi-default-menu-inner::-webkit-scrollbar {
+.dumi-default-sidebar::-webkit-scrollbar {
   width: 4px;    
   /*height: 4px;*/
 }
-.__dumi-default-menu-inner::-webkit-scrollbar-thumb {
+.dumi-default-sidebar::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
   background: rgba(0,0,0,0.2);
 }
-.__dumi-default-menu-inner::-webkit-scrollbar-track {
+.dumi-default-sidebar::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
   border-radius: 0;
   background: rgba(0,0,0,0.1);
@@ -63,6 +63,27 @@ html[data-perfers-color="dark"] .__dumi-default-previewer .__dumi-default-previe
 }
 .__dumi-default-navbar-logo:not([data-plaintext]) {
   padding-left: 66px !important;
+}
+.dumi-default-hero {
+  margin: -96px auto -300px auto !important;
+}
+.dumi-default-sidebar > dl > dd {
+  padding: 20px 0 !important;
+}
+.dumi-default-sidebar > dl > dd a {
+  font-size: 14px !important;
+}
+.dumi-default-sidebar {
+  width: 280px !important;
+}
+.dumi-default-header-left {
+  width: 304px !important;
+}
+.dumi-default-navbar > li > a {
+  font-size: 14px !important;
+}
+.dumi-default-logo img {
+  height: 60px !important;
 }
 `;
 

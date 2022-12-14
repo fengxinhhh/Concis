@@ -1,10 +1,10 @@
 import React, { useContext, forwardRef } from 'react';
 import { LinkOutlined } from '@ant-design/icons';
+import { LinkStyle } from './style';
 import { LinkProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
 
 const Link = (props, ref) => {
   const { children, className, style, href, status = 'primary', disabled, icon = false } = props;
@@ -22,10 +22,12 @@ const Link = (props, ref) => {
   const TagWrapper = !disabled && href ? 'a' : 'span';
 
   return (
-    <TagWrapper className={classNames} style={style} href={href} ref={ref}>
-      {icon && <div className="concis-link-icon">{icon === true ? <LinkOutlined /> : icon}</div>}
-      {children}
-    </TagWrapper>
+    <LinkStyle>
+      <TagWrapper className={classNames} style={style} href={href} ref={ref}>
+        {icon && <div className="concis-link-icon">{icon === true ? <LinkOutlined /> : icon}</div>}
+        {children}
+      </TagWrapper>
+    </LinkStyle>
   );
 };
 

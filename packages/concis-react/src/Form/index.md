@@ -18,13 +18,13 @@ mobile: false
 
 The most basic form.
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## layout
 
 Configure the `layout` property to `horizontal | vertical` to change the layout.
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 ## Controlled form and asynchronous validation
 
@@ -37,62 +37,62 @@ In this way, you can use the internal methods provided by the form to get the in
 
 In `rules`, you can add custom method `{fn: () => , message: 'custom prompt'}` to pass custom validation rules.
 
-<code src="./demos/index3.tsx"/>
+<code src="./demos/index3.tsx"></code>
 
 ## form reset
 
 Use the `Form.useForm().resetFields` method to reset the controlled items in the form.
 
-<code src="./demos/index4.tsx"/>
+<code src="./demos/index4.tsx"></code>
 
 ## disable globally
 
 Set the `disabled` property to disable it globally.
 
-<code src="./demos/index5.tsx"/>
+<code src="./demos/index5.tsx"></code>
 
 ## Single line disable
 
 Set the `disabled` property of `Form.Item` to disable for a single line.
 
-<code src="./demos/index7.tsx" />
+<code src="./demos/index7.tsx"></code>
 
 ## Registration form
 
 Registration form case.
 
-<code src="./demos/index8.tsx" />
+<code src="./demos/index8.tsx"></code>
 
 ## popup feedback
 
 Submit feedback through the `Message` component.
 
-<code src="./demos/index9.tsx" />
+<code src="./demos/index9.tsx"></code>
 
 ## Get form context
 
 Use `Form.useForm().useFormContext` to get form controlled parameters.
 
-<code src="./demos/index10.tsx" />
+<code src="./demos/index10.tsx"></code>
 
 ## full functionality
 
-<code src="./demos/index6.tsx"/>
+<code src="./demos/index6.tsx"></code>
 
 ## API
 
-| Name | Description | Type | Default |
-| --- | --- | --- | --- |
-| style | Custom styles | `CSSProperties` | `--` |
-| className | class name | `string` | `--` |
-| layout | layout | `horizontal / vertical` | `horizontal` |
-| formField | The unique ref of the form, the controlled form must be passed, declared through useRef | `any` | `--` |
-| disabled | globally disabled | `boolean` | `false` |
-| useForm | Hook exposed by the controlled form | `Function` | `--` |
-| onSubmit | useForm.onSubmit, submit event | `Function` | `--` |
-| resetFields | useForm.resetFields, resets form events | `Function` | `No data` |
-| validateFields | useForm.validateFields, manual validation event | `Function` | `--` |
-| useFormContext | useForm.useFormContext, get the current controlled state event of the form | `Function` | `--` |
+| Name           | Description                                                                             | Type                    | Default      |
+| -------------- | --------------------------------------------------------------------------------------- | ----------------------- | ------------ |
+| style          | Custom styles                                                                           | `CSSProperties`         | `--`         |
+| className      | class name                                                                              | `string`                | `--`         |
+| layout         | layout                                                                                  | `horizontal / vertical` | `horizontal` |
+| formField      | The unique ref of the form, the controlled form must be passed, declared through useRef | `any`                   | `--`         |
+| disabled       | globally disabled                                                                       | `boolean`               | `false`      |
+| useForm        | Hook exposed by the controlled form                                                     | `Function`              | `--`         |
+| onSubmit       | useForm.onSubmit, submit event                                                          | `Function`              | `--`         |
+| resetFields    | useForm.resetFields, resets form events                                                 | `Function`              | `No data`    |
+| validateFields | useForm.validateFields, manual validation event                                         | `Function`              | `--`         |
+| useFormContext | useForm.useFormContext, get the current controlled state event of the form              | `Function`              | `--`         |
 
 ## Form.Item API
 

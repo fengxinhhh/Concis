@@ -1,24 +1,25 @@
 ---
-nav:
-  title: Guide
-  path: /guide
+order: 9
+title: Use in TypeScript
 ---
 
 # Use in TypeScript
 
 Create a TypeScript project step by step using create-react-app and import concis.
 
-<Alert>concis is based on the latest stable version of TypeScript (>=4.0.0), make sure to use the matching version in your project.</Alert>
+:::warning{title=Warning}
+concis is based on the latest stable version of TypeScript (>=4.0.0), make sure to use the matching version in your project.
+:::
 
 ## Installation and initialization
 
-```tsx pure
+```bash
 create-react-app my-ts-app --typescript
 ```
 
 ## Configuring the TypeScript environment
 
-```tsx pure
+```bash
 npm i typescript --save-dev
 Npx tsc --init     //Initialize the tsconfig.json file and configure it
 
@@ -40,7 +41,7 @@ declare module 'concis';
 
 Install concis through the command:
 
-```tsx pure
+```bash
 
 npm i --save-dev concis
 
@@ -62,7 +63,7 @@ const App = () => (
 
 Modify src/App.css. concis/web-react/style/index.css is introduced at the top of the file.
 
-```tsx pure
+```bash
 
 @import "~concis/web-react/style/index.css";
 

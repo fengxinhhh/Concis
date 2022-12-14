@@ -16,37 +16,37 @@ Flexible and scalable presentation container.
 
 The most basic use.
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## Use in Modal
 
 `Zoombox` supports use with any container class component of `concis`, such as `Modal`.
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## Multiple boxes
 
 Multiple `Zoombox` adaptive.
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## disable selection
 
 Use `notAllowed` to prevent the text inside the container from being selected on zoom.
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## Minimum width and height limit
 
 The minimum width and height are limited by `minWidth`, `minHeight`.
 
-<code src="./demos/index5.tsx" />
+<code src="./demos/index5.tsx"></code>
 
 ## Rimless
 
 Configure `noBorder` to set no border.
 
-<code src="./demos/index6.tsx" />
+<code src="./demos/index6.tsx"></code>
 
 ## API
 

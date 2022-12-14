@@ -4,7 +4,7 @@ nav:
   title: Component
   path: /common
 group:
-  title: Navigation
+  title: Other
 mobile: false
 ---
 
@@ -22,7 +22,7 @@ Pin page elements to the visible range.
 
 - Keep the element position on the first screen, and leave the document flow to the specified position after scrolling
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## API
 

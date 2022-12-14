@@ -4,7 +4,7 @@ nav:
   title: 组件
   path: /common
 group:
-  title: 导航
+  title: 其他
 mobile: false
 ---
 
@@ -22,7 +22,7 @@ mobile: false
 
 - 在首屏时保持元素位置，在滚动后脱离文档流至指定位置
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## API
 

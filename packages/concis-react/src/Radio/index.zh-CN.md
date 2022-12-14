@@ -21,25 +21,25 @@ mobile: false
 
 基础单选框。
 
-<code src="./demos/index1.tsx" />
+<code src="./demos/index1.tsx"></code>
 
 ## 禁用
 
 通过 `disabled` 禁用。
 
-<code src="./demos/index2.tsx" />
+<code src="./demos/index2.tsx"></code>
 
 ## 扩展性
 
 单选组，通过配置 `canAddOption` 开启扩展模式。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 盒子样式单选
 
 通过 `boxStyle` 配置盒子模式单选框。
 
-<code src="./demos/index4.tsx" />
+<code src="./demos/index4.tsx"></code>
 
 ## API
 

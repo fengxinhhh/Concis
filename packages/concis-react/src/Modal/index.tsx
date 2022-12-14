@@ -8,6 +8,7 @@ import {
   WarningFilled,
   CloseCircleFilled,
 } from '@ant-design/icons';
+import { ModalStyle } from './style';
 import { on, off } from '../common_utils/dom/event';
 import Button from '../Button';
 import { ModalProps, ConfirmType } from './interface';
@@ -16,7 +17,6 @@ import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import useOverFlowScroll from '../common_utils/hooks/useOverFlowScroll';
 import confirm, { isPromiseFn } from './confirm';
-import './index.module.less';
 
 const primaryColor = '#325dff',
   errorColor = '#f53f3f',
@@ -167,86 +167,83 @@ const Modal = (props: ModalProps) => {
   }, [type]);
 
   return (
-    <div
-      className={classNames}
-      style={
-        { '--modal-width': `${typeof width === 'string' ? width : `${width}%`}`, ...style } as any
-      }
-    >
-      <CSSTransition
-        in={wrapperVisible}
-        timeout={200}
-        appear
-        mountOnEnter
-        classNames="fadeModal"
-        unmountOnExit
-        onEnter={(e: HTMLDivElement) => {
-          e.style.display = 'block';
-        }}
-        onExited={(e: HTMLDivElement) => {
-          e.style.display = 'none';
-        }}
-      >
-        <div className="concis-modal-dialog">
-          <CSSTransition
-            in={wrapperVisible}
-            timeout={200}
-            appear
-            mountOnEnter
-            classNames="fadeContent"
-            unmountOnExit
-            onEnter={(e: HTMLDivElement) => {
-              e.style.display = 'block';
-            }}
-            onExited={(e: HTMLDivElement) => {
-              e.style.display = 'none';
-            }}
-          >
-            <div className="concis-modal-content" onClick={(e: any) => e.stopPropagation()}>
-              <div className="concis-modal-content-header">
-                <div className="concis-title">
-                  <i />
-                  <div className="title">
-                    {type && titleIcon}
-                    <span> {title}</span>
+    <ModalStyle modalWidth={width}>
+      <div className={classNames} style={style}>
+        <CSSTransition
+          in={wrapperVisible}
+          timeout={200}
+          appear
+          mountOnEnter
+          classNames="fadeModal"
+          unmountOnExit
+          onEnter={(e: HTMLDivElement) => {
+            e.style.display = 'block';
+          }}
+          onExited={(e: HTMLDivElement) => {
+            e.style.display = 'none';
+          }}
+        >
+          <div className="concis-modal-dialog">
+            <CSSTransition
+              in={wrapperVisible}
+              timeout={200}
+              appear
+              mountOnEnter
+              classNames="fadeContent"
+              unmountOnExit
+              onEnter={(e: HTMLDivElement) => {
+                e.style.display = 'block';
+              }}
+              onExited={(e: HTMLDivElement) => {
+                e.style.display = 'none';
+              }}
+            >
+              <div className="concis-modal-content" onClick={(e: any) => e.stopPropagation()}>
+                <div className="concis-modal-content-header">
+                  <div className="concis-title">
+                    <i />
+                    <div className="title">
+                      {type && titleIcon}
+                      <span> {title}</span>
+                    </div>
+                    <CloseOutlined
+                      className="close-icon"
+                      style={{ fontSize: '12px' }}
+                      onClick={cancel}
+                    />
                   </div>
-                  <CloseOutlined
-                    className="close-icon"
-                    style={{ fontSize: '12px' }}
-                    onClick={cancel}
-                  />
+                </div>
+                <div className="concis-modal-content-view">{children}</div>
+                <div className="concis-modal-content-footer">
+                  {footer || (
+                    <>
+                      <Button
+                        type="text"
+                        loading={cancelLoading}
+                        className="cancel-btn button"
+                        handleClick={cancel}
+                        {...(Object.keys(cancelButtonProps).length && { ...cancelButtonProps })}
+                      >
+                        {cancelText || '取消'}
+                      </Button>
+                      <Button
+                        type="primary"
+                        loading={okLoading}
+                        className="enter-btn button"
+                        handleClick={finish}
+                        {...(Object.keys(okButtonProps).length && { ...okButtonProps })}
+                      >
+                        {okText || '确定'}
+                      </Button>
+                    </>
+                  )}
                 </div>
               </div>
-              <div className="concis-modal-content-view">{children}</div>
-              <div className="concis-modal-content-footer">
-                {footer || (
-                  <>
-                    <Button
-                      type="text"
-                      loading={cancelLoading}
-                      className="cancel-btn button"
-                      handleClick={cancel}
-                      {...(Object.keys(cancelButtonProps).length && { ...cancelButtonProps })}
-                    >
-                      {cancelText || '取消'}
-                    </Button>
-                    <Button
-                      type="primary"
-                      loading={okLoading}
-                      className="enter-btn button"
-                      handleClick={finish}
-                      {...(Object.keys(okButtonProps).length && { ...okButtonProps })}
-                    >
-                      {okText || '确定'}
-                    </Button>
-                  </>
-                )}
-              </div>
-            </div>
-          </CSSTransition>
-        </div>
-      </CSSTransition>
-    </div>
+            </CSSTransition>
+          </div>
+        </CSSTransition>
+      </div>
+    </ModalStyle>
   );
 };
 

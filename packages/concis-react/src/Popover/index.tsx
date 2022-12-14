@@ -1,19 +1,18 @@
 import React, {
   useState,
-  useEffect,
-  useMemo,
   useRef,
   useContext,
+  useEffect,
   forwardRef,
   useImperativeHandle,
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { PopoverStyle } from './style';
 import { on, off } from '../common_utils/dom/event';
-import type { popoverProps, alignStyle, PopoverRef } from './interface';
+import type { popoverProps, PopoverRef } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
 
 const Popover = forwardRef<PopoverRef, popoverProps>((props, ref) => {
   const {
@@ -47,7 +46,6 @@ const Popover = forwardRef<PopoverRef, popoverProps>((props, ref) => {
   }));
 
   useEffect(() => {
-    console.log(style);
     setShowBtnSize({
       width: (showBtnRef.current as any).offsetWidth,
       height: (showBtnRef.current as any).offsetHeight,
@@ -106,65 +104,49 @@ const Popover = forwardRef<PopoverRef, popoverProps>((props, ref) => {
     }
   };
 
-  const dialogStyle = useMemo(() => {
-    const alignStyle: alignStyle = { width: `${dialogWidth}px` };
-    const { width, height } = showBtnSize;
-    const popoverContentMargin = 5;
-    if (align === 'bottom') {
-      alignStyle.top = `${height + popoverContentMargin}px`;
-    } else if (align === 'top') {
-      alignStyle.bottom = `${height + popoverContentMargin}px`;
-    } else if (align === 'right') {
-      alignStyle.left = `${width + popoverContentMargin}px`;
-      alignStyle.bottom = `${Number(height) / 2}px`;
-    } else if (align === 'left') {
-      alignStyle.right = `${width + popoverContentMargin}px`;
-      alignStyle.bottom = `${Number(height) / 2}px`;
-    }
-    if (!noBorder) {
-      alignStyle.border = '1px solid #ccc';
-    }
-    return {
-      ...alignStyle,
-    };
-  }, [content, showDialog, defaultShow, showBtnSize]);
-
   return (
-    <div
-      className={classNames}
-      onMouseEnter={() => hoverOpenDialog()}
-      onMouseLeave={() => hoverCloseDialog()}
+    <PopoverStyle
+      align={align}
+      showBtnSize={showBtnSize}
+      dialogWidth={dialogWidth}
+      noBorder={noBorder}
     >
-      <div className="open-container">
-        <div className="show-btn" onClick={(e) => clickToggleDialog(e)} ref={showBtnRef as any}>
-          {children}
+      <div
+        className={classNames}
+        onMouseEnter={() => hoverOpenDialog()}
+        onMouseLeave={() => hoverCloseDialog()}
+      >
+        <div className="open-container">
+          <div className="show-btn" onClick={(e) => clickToggleDialog(e)} ref={showBtnRef as any}>
+            {children}
+          </div>
+          <CSSTransition
+            in={showDialog}
+            timeout={200}
+            appear
+            mountOnEnter
+            classNames="fadeIn"
+            onEnter={(e: HTMLDivElement) => {
+              e.style.display = 'block';
+            }}
+            onExited={(e: HTMLDivElement) => {
+              e.style.display = 'none';
+            }}
+          >
+            <React.Fragment>
+              <div
+                className="pop-dialog"
+                style={style}
+                onClick={(e) => e.stopPropagation()}
+                ref={dialogRef as any}
+              >
+                {content}
+              </div>
+            </React.Fragment>
+          </CSSTransition>
         </div>
-        <CSSTransition
-          in={showDialog}
-          timeout={200}
-          appear
-          mountOnEnter
-          classNames="fadeIn"
-          onEnter={(e: HTMLDivElement) => {
-            e.style.display = 'block';
-          }}
-          onExited={(e: HTMLDivElement) => {
-            e.style.display = 'none';
-          }}
-        >
-          <React.Fragment>
-            <div
-              className="pop-dialog"
-              style={{ ...dialogStyle, ...style }}
-              onClick={(e) => e.stopPropagation()}
-              ref={dialogRef as any}
-            >
-              {content}
-            </div>
-          </React.Fragment>
-        </CSSTransition>
       </div>
-    </div>
+    </PopoverStyle>
   );
 });
 

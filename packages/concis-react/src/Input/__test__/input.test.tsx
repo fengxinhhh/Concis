@@ -42,7 +42,7 @@ describe('Input', () => {
     );
     expect(component.find('.concis-input span')).toHaveLength(1);
     expect(component.find('input').getDOMNode().getAttribute('type')).toBe('password');
-    component.find('span').simulate('click');
+    component.find('span').at(1).simulate('click');
     expect(component.find('input').getDOMNode().getAttribute('type')).toBe('text');
   });
 

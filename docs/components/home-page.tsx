@@ -1,13 +1,12 @@
-import React, { useContext, useMemo } from 'react';
-import { context } from 'dumi/theme';
+import React, { useMemo } from 'react';
+import { useLocale } from 'dumi';
 import './home-page.less';
-import { version } from '../../packages/concis-react/package.json';
 
 export default () => {
-  const { locale } = useContext(context);
+  const { id } = useLocale();
 
   const characteristics = useMemo(() => {
-    if (locale === 'zh-CN') {
+    if (id === 'zh-CN') {
       return [
         {
           img: 'https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png',
@@ -73,52 +72,11 @@ export default () => {
         txt: 'concis additionally supports mobile components and provides pc/mobile dual-end support',
       },
     ];
-  }, [locale]);
+  }, [id]);
   return (
     <div className="homePage">
       {/* 内容部分 */}
       <div className="main">
-        <div className="header">
-          <div className="headerLeft">
-            <h1 className="title">Concis</h1>
-            <p className="description">
-              <span>
-                {locale === 'zh-CN'
-                  ? '体验轻量级React Web开发体验'
-                  : 'Lightweight React component library'}
-              </span>
-              <span className="version">v{version}</span>
-            </p>
-            <p className="buttons">
-              <a href={locale === 'zh-CN' ? '/#/zh-CN/guide/introduce' : '/#/guide/introduce'}>
-                {locale === 'zh-CN' ? '开始' : 'Start'}
-              </a>
-              <a
-                className="componentBtn"
-                href={locale === 'zh-CN' ? '/#/zh-CN/common/button' : '/#/guide/button'}
-              >
-                {locale === 'zh-CN' ? '组件' : 'Components'}
-              </a>
-              <a className="githubBtn" href="https://github.com/fengxinhhh/Concis">
-                {locale === 'zh-CN' ? '在Github上查看' : 'View on Github'}
-              </a>
-            </p>
-          </div>
-          <div className="headerRight">
-            <img
-              className="headerImage"
-              alt="header-image"
-              src="https://concis.org.cn/images/concis-logo.png"
-            />
-            <div className="headerImageBg" />
-            <span className="plus">+</span>
-            <img
-              className="headerImage"
-              alt="header-image"
-              src="https://concis.org.cn/images/react-icon.svg"
-            />
-          </div>
-        </div>
         {/* 功能特性 */}
         <div className="group">
           <ul className="features">

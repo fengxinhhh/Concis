@@ -20,25 +20,25 @@ mobile: false
 
 基础步骤条组件。
 
-<code src="./demos/index1.tsx"/>
+<code src="./demos/index1.tsx"></code>
 
 ## 额外参数
 
 通过 `subTitle` 配置步骤子标题、 `description` 配置步骤描述。
 
-<code src="./demos/index2.tsx"/>
+<code src="./demos/index2.tsx"></code>
 
 ## 遍历使用
 
 遍历组件。
 
-<code src="./demos/index3.tsx" />
+<code src="./demos/index3.tsx"></code>
 
 ## 可点击
 
 点击切换步骤，通过 `onChange` 获取点击的 `current`。
 
-<code src="./demos/index4.tsx"/>
+<code src="./demos/index4.tsx"></code>
 
 ## Steps API
 

@@ -261,7 +261,7 @@ const Tree = (props, ref) => {
         }}
       >
         <Input
-          moreStyle={avaSearch ? {} : { caretColor: 'transparent' }}
+          style={avaSearch ? {} : { caretColor: 'transparent' }}
           placeholder={avaSearch ? '请输入' : ''}
           width={width}
           defaultValue={activedVal}

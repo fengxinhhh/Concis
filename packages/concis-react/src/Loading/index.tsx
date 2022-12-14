@@ -1,4 +1,5 @@
-import React, { useEffect, useState, Fragment, useMemo, useContext, forwardRef } from 'react';
+import React, { useEffect, useState, useMemo, useContext, forwardRef } from 'react';
+import { LoadingStyle } from './style';
 import { LoadingProps } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
@@ -6,8 +7,6 @@ import { globalCtx } from '../GlobalConfig';
 import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import { getRenderColor } from '../common_utils/getRenderColor';
 import './index.module.less';
-
-const maskBg = '#2b2b2b';
 
 const Loading = (props, ref) => {
   const {
@@ -107,23 +106,22 @@ const Loading = (props, ref) => {
   }, [type, activeDotIndex, globalColor]);
 
   return (
-    <Fragment>
-      {mask && (
-        <div className="concis-loading-dialog" style={darkTheme ? { background: maskBg } : {}} />
+    <LoadingStyle
+      globalColor={getRenderColor(
+        (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+        globalColor
       )}
+      darkTheme={darkTheme}
+    >
+      {mask && <div className="concis-loading-dialog" />}
       <div
         className={classNames}
-        style={Object.assign(type === 'default' ? loadingStyle : {}, {
-          '--global-color': getRenderColor(
-            (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-            globalColor
-          ),
-        } as React.CSSProperties)}
+        style={Object.assign(type === 'default' ? loadingStyle : {})}
         ref={ref}
       >
         {renderLoadingContainer}
       </div>
-    </Fragment>
+    </LoadingStyle>
   );
 };
 
