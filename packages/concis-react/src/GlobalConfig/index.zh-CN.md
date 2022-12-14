@@ -6,6 +6,7 @@ nav:
 group:
   title: 其他
 mobile: false
+toc: content
 ---
 
 # GlobalConfig 全局配置

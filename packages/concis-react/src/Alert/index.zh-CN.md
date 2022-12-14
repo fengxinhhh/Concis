@@ -6,6 +6,7 @@ nav:
 group:
   title: 反馈
 mobile: false
+toc: content
 ---
 
 # Alert 警告提示

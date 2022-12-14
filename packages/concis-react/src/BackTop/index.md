@@ -6,6 +6,7 @@ nav:
 group:
   title: Other
 mobile: false
+toc: content
 ---
 
 # BackTop

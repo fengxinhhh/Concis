@@ -9,10 +9,10 @@ import {
   CloseCircleOutlined,
 } from '@ant-design/icons';
 import { isNumber } from 'util';
+import { UploadStyle } from './style';
 import Button from '../Button';
 import { FileItem, UploadProps } from './interface';
 import List from '../List';
-import './styles/index.module.less';
 import Image from '../Image';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
@@ -201,37 +201,39 @@ const Upload = (props, ref) => {
     );
   }, [fileList]);
   return (
-    <div className={classNames} style={style} ref={ref}>
-      <input
-        accept={accept}
-        multiple={multiple}
-        onChange={fileChange}
-        type="file"
-        ref={inputRef}
-        style={{ display: 'none' }}
-      />
-      {showType === 'file' && (
-        <Button
-          handleClick={uploadClick}
-          icon={<UploadOutlined />}
-          style={{ margin: '8px' }}
-          type="primary"
-        >
-          上传
-        </Button>
-      )}
-      {fileList.length !== 0 && domNode}
-      {showType === 'image-list' && (
-        <Button
-          type="text"
-          handleClick={uploadClick}
-          style={{}}
-          width={100}
-          height={100}
-          icon={<PlusOutlined />}
+    <UploadStyle>
+      <div className={classNames} style={style} ref={ref}>
+        <input
+          accept={accept}
+          multiple={multiple}
+          onChange={fileChange}
+          type="file"
+          ref={inputRef}
+          style={{ display: 'none' }}
         />
-      )}
-    </div>
+        {showType === 'file' && (
+          <Button
+            handleClick={uploadClick}
+            icon={<UploadOutlined />}
+            style={{ margin: '8px' }}
+            type="primary"
+          >
+            上传
+          </Button>
+        )}
+        {fileList.length !== 0 && domNode}
+        {showType === 'image-list' && (
+          <Button
+            type="text"
+            handleClick={uploadClick}
+            style={{}}
+            width={100}
+            height={100}
+            icon={<PlusOutlined />}
+          />
+        )}
+      </div>
+    </UploadStyle>
   );
 };
 export default forwardRef<unknown, UploadProps>(Upload);

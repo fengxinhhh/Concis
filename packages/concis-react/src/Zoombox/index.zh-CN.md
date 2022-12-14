@@ -6,6 +6,7 @@ nav:
 group:
   title: 其他
 mobile: false
+toc: content
 ---
 
 # Zoombox 缩放盒子

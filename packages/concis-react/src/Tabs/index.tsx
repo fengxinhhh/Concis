@@ -1,4 +1,5 @@
 import React, { ReactNode, useState, useMemo, createContext, useContext } from 'react';
+import { TabsStyle } from './style';
 import TabPane from './tab-pane';
 import TabHeader from './tab-header';
 import TabContent from './tab-content';
@@ -6,7 +7,6 @@ import { TabsProps } from './interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import './styles/index.less';
 
 function getPaneChild(props: TabsProps) {
   const { children } = props;
@@ -112,19 +112,13 @@ function Tabs(props: TabsProps) {
   }, [tabPosition, activeKey, type, size]);
 
   return (
-    <ctx.Provider value={tabsContext}>
-      <div
-        className={classNames}
-        style={
-          {
-            ...style,
-            '--align-way': tabPosition === 'top' || tabPosition === 'bottom' ? 'block' : 'flex',
-          } as any
-        }
-      >
-        {domLayout}
-      </div>
-    </ctx.Provider>
+    <TabsStyle alignway={tabPosition === 'top' || tabPosition === 'bottom' ? 'block' : 'flex'}>
+      <ctx.Provider value={tabsContext}>
+        <div className={classNames} style={style}>
+          {domLayout}
+        </div>
+      </ctx.Provider>
+    </TabsStyle>
   );
 }
 

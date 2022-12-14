@@ -7,6 +7,7 @@ group:
   title: Data display
 mobile: false
 toc: content
+toc: content
 ---
 
 # Popover

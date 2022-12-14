@@ -6,6 +6,7 @@ nav:
 group:
   title: Feedback
 mobile: false
+toc: content
 ---
 
 # Modal

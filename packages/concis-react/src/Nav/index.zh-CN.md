@@ -6,6 +6,7 @@ nav:
 group:
   title: 导航
 mobile: false
+toc: content
 ---
 
 # Nav 顶栏导航

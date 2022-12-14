@@ -6,6 +6,7 @@ nav:
 group:
   title: 数据录入
 mobile: false
+toc: content
 ---
 
 # Input 输入框

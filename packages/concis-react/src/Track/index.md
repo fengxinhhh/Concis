@@ -6,6 +6,7 @@ nav:
 group:
   title: Business
 mobile: false
+toc: content
 ---
 
 # Track

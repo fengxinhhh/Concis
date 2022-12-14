@@ -6,6 +6,7 @@ nav:
 group:
   title: 数据展示
 mobile: false
+toc: content
 ---
 
 # Swiper 轮播图

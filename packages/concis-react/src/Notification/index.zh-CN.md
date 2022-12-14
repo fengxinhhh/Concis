@@ -6,6 +6,7 @@ nav:
 group:
   title: 反馈
 mobile: false
+toc: content
 ---
 
 # Notification 通知提醒框

@@ -6,6 +6,7 @@ nav:
 group:
   title: Common
 mobile: false
+toc: content
 ---
 
 # LazyLoad

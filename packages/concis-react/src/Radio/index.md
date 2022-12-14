@@ -6,6 +6,7 @@ nav:
 group:
   title: Data entry
 mobile: false
+toc: content
 ---
 
 # Radio

@@ -1,10 +1,10 @@
-import React, { useContext, useMemo, useState, forwardRef } from 'react';
+import React, { useContext, useState, forwardRef } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
+import { TagStyle } from './style';
 import { TagProps } from './interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
-import './index.module.less';
 
 const Tag = (props, ref) => {
   const {
@@ -41,43 +41,31 @@ const Tag = (props, ref) => {
     setShow(false);
     closeCallback && closeCallback();
   };
-  const mergeStyle = useMemo(() => {
-    const returnStyle: any = { ...style, '--size': '' };
-    if (color) {
-      returnStyle.color = color;
-    }
-    if (tagBackground) {
-      returnStyle.background = tagBackground;
-    }
-    if (checkable && !visible) {
-      returnStyle.background = 'transparent';
-    }
-    switch (size) {
-      case 'large':
-        returnStyle['--size'] = '32px';
-        break;
-      case 'medium':
-        returnStyle['--size'] = '28px';
-        break;
-      case 'default':
-        returnStyle['--size'] = '24px';
-        break;
-      case 'small':
-        returnStyle['--size'] = '20px';
-        break;
-      default:
-        returnStyle['--size'] = '24px';
-    }
-    return returnStyle;
-  }, [color, tagBackground, visible, size]);
+
+  const getTagSize = () => {
+    const sizeMap = {
+      large: '32px',
+      medium: '28px',
+      default: '24px',
+      small: '20px',
+    };
+    return sizeMap[size] || sizeMap.default;
+  };
 
   return show ? (
-    <div className={classNames} style={mergeStyle} ref={ref} onClick={clickTag}>
-      <div className="tag-content">
-        <div className="tag-text">{children}</div>
-        {closeable && <CloseOutlined className="close-icon" onClick={closeTag} />}
+    <TagStyle
+      size={getTagSize}
+      color={color}
+      tagBackground={tagBackground}
+      isCheckable={checkable && !visible}
+    >
+      <div className={classNames} style={style} ref={ref} onClick={clickTag}>
+        <div className="tag-content">
+          <div className="tag-text">{children}</div>
+          {closeable && <CloseOutlined className="close-icon" onClick={closeTag} />}
+        </div>
       </div>
-    </div>
+    </TagStyle>
   ) : (
     <></>
   );

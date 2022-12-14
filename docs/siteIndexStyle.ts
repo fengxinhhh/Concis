@@ -85,6 +85,10 @@ html[data-perfers-color="dark"] .__dumi-default-previewer .__dumi-default-previe
 .dumi-default-logo img {
   height: 60px !important;
 }
+.dumi-default-doc-layout > main > .dumi-default-doc-layout-toc-wrapper {
+  position: fixed !important;
+  right: 0;
+}
 `;
 
 export default style;

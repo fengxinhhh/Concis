@@ -6,6 +6,7 @@ nav:
 group:
   title: 通用
 mobile: false
+toc: content
 ---
 
 # Button 按钮

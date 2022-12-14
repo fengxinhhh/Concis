@@ -6,6 +6,7 @@ nav:
 group:
   title: 布局
 mobile: false
+toc: content
 ---
 
 # Space 间距

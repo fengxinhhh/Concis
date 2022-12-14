@@ -6,6 +6,7 @@ nav:
 group:
   title: 反馈
 mobile: false
+toc: content
 ---
 
 # Drawer 抽屉

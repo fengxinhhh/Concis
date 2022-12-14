@@ -35,6 +35,28 @@ function getAlignTransform(align) {
   `;
 }
 
+const animationStyle = css`
+  .fadeIn-enter,
+  .fadeIn-appear {
+    opacity: 0;
+  }
+
+  .fadeIn-enter-active,
+  .fadeIn-appear-active {
+    opacity: 1;
+    transition: opacity 0.3s linear;
+  }
+
+  .fadeIn-exit {
+    opacity: 1;
+  }
+
+  .fadeIn-exit-active {
+    opacity: 0;
+    transition: opacity 0.3s linear;
+  }
+`;
+
 const RangeDatePickerStyle = styled.span<{ activedColor; align }>`
   .concis-range-picker,
   .concis-dark-range-picker {
@@ -187,6 +209,8 @@ const RangeDatePickerStyle = styled.span<{ activedColor; align }>`
       }
     }
   }
+
+  ${animationStyle}
 `;
 
 export { RangeDatePickerStyle };

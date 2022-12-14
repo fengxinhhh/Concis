@@ -6,6 +6,7 @@ nav:
 group:
   title: Layout
 mobile: false
+toc: content
 ---
 
 # Divider

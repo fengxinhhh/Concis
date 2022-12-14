@@ -6,6 +6,7 @@ nav:
 group:
   title: Navigation
 mobile: false
+toc: content
 ---
 
 # Pagination

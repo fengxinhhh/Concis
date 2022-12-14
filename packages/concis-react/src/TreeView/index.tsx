@@ -5,11 +5,11 @@ import {
   CheckOutlined,
   LoadingOutlined,
 } from '@ant-design/icons';
+import { TreeViewStyle } from './style';
 import { treeViewProps, treeData, loadingTreeNodeType } from './interface';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
-import './index.module.less';
 
 const TreeView = (props, ref) => {
   const {
@@ -451,15 +451,11 @@ const TreeView = (props, ref) => {
   );
 
   return (
-    <Fragment>
-      <div
-        className={classNames}
-        style={{ '--global-color': globalColor || '#325DFF', ...style } as any}
-        ref={ref}
-      >
+    <TreeViewStyle globalColor={globalColor}>
+      <div className={classNames} style={style} ref={ref}>
         {render(stateTreeData)}
       </div>
-    </Fragment>
+    </TreeViewStyle>
   );
 };
 

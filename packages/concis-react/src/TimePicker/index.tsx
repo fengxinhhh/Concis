@@ -4,7 +4,7 @@ import type { PopoverRef } from '../Popover/interface';
 import Input from '../Input';
 import Popover from '../Popover';
 import Button from '../Button';
-import './index.module.less';
+import { TimePickerStyle } from './style';
 import cs from '../common_utils/classNames';
 import { globalCtx } from '../GlobalConfig';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
@@ -106,109 +106,111 @@ const TimePicker = (props, ref) => {
   };
 
   return (
-    <Popover
-      type="click"
-      align={align}
-      dialogWidth="auto"
-      closeDeps={[timeValue]}
-      ref={popoverRef}
-      content={
-        <div className={classNames} style={style} ref={ref}>
-          <div
-            ref={parentRef}
-            className="time-panel"
-            style={
-              {
-                '--checked-color': getRenderColor(
-                  (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
-                  globalColor
-                ),
-              } as any
-            }
-          >
-            <div>
-              {HOUR_LIST.map((_) => (
-                <span
-                  className={`${Number(_) === hour ? 'active' : ''} ${
-                    disableHour !== undefined && disableHour(_) ? 'disable' : ''
-                  }`}
-                  onClick={(e) => {
-                    if (disableHour === undefined || !disableHour(_)) {
-                      setHour(Number(_));
-                    }
-                  }}
-                  key={_}
-                >
-                  {_}
-                </span>
-              ))}
+    <TimePickerStyle>
+      <Popover
+        type="click"
+        align={align}
+        dialogWidth="auto"
+        closeDeps={[timeValue]}
+        ref={popoverRef}
+        content={
+          <div className={classNames} style={style} ref={ref}>
+            <div
+              ref={parentRef}
+              className="time-panel"
+              style={
+                {
+                  '--checked-color': getRenderColor(
+                    (getSiteTheme() === ('dark' || 'auto') || darkTheme) as boolean,
+                    globalColor
+                  ),
+                } as any
+              }
+            >
+              <div>
+                {HOUR_LIST.map((_) => (
+                  <span
+                    className={`${Number(_) === hour ? 'active' : ''} ${
+                      disableHour !== undefined && disableHour(_) ? 'disable' : ''
+                    }`}
+                    onClick={(e) => {
+                      if (disableHour === undefined || !disableHour(_)) {
+                        setHour(Number(_));
+                      }
+                    }}
+                    key={_}
+                  >
+                    {_}
+                  </span>
+                ))}
+              </div>
+              <div>
+                {MIN_AND_SEC_LIST.map((_) => (
+                  <span
+                    className={`${Number(_) === min ? 'active' : ''} ${
+                      disableMin !== undefined && disableMin(_) ? 'disable' : ''
+                    }`}
+                    onClick={(e) => {
+                      if (disableMin === undefined || !disableMin(_)) {
+                        setMin(Number(_));
+                      }
+                    }}
+                    key={_}
+                  >
+                    {_}
+                  </span>
+                ))}
+              </div>
+              <div>
+                {MIN_AND_SEC_LIST.map((_) => (
+                  <span
+                    className={`${Number(_) === second ? 'active' : ''} ${
+                      disableSecond !== undefined && disableSecond(_) ? 'disable' : ''
+                    }`}
+                    onClick={(e) => {
+                      if (disableSecond === undefined || !disableSecond(_)) {
+                        setSecond(Number(_));
+                      }
+                    }}
+                    key={_}
+                  >
+                    {_}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div>
-              {MIN_AND_SEC_LIST.map((_) => (
+            <div className="time-footer">
+              <Button type="text" height={25}>
                 <span
-                  className={`${Number(_) === min ? 'active' : ''} ${
-                    disableMin !== undefined && disableMin(_) ? 'disable' : ''
-                  }`}
-                  onClick={(e) => {
-                    if (disableMin === undefined || !disableMin(_)) {
-                      setMin(Number(_));
-                    }
+                  onClick={() => {
+                    const hour = new Date().getHours();
+                    const min = new Date().getMinutes();
+                    const second = new Date().getSeconds();
+                    setHour(hour);
+                    setMin(min);
+                    setSecond(second);
+                    changeTime(hour, min, second);
                   }}
-                  key={_}
                 >
-                  {_}
+                  此刻
                 </span>
-              ))}
-            </div>
-            <div>
-              {MIN_AND_SEC_LIST.map((_) => (
-                <span
-                  className={`${Number(_) === second ? 'active' : ''} ${
-                    disableSecond !== undefined && disableSecond(_) ? 'disable' : ''
-                  }`}
-                  onClick={(e) => {
-                    if (disableSecond === undefined || !disableSecond(_)) {
-                      setSecond(Number(_));
-                    }
-                  }}
-                  key={_}
-                >
-                  {_}
-                </span>
-              ))}
+              </Button>
+              <Button type="primary" height={25}>
+                <span onClick={() => changeTime()}>确定</span>
+              </Button>
             </div>
           </div>
-          <div className="time-footer">
-            <Button type="text" height={25}>
-              <span
-                onClick={() => {
-                  const hour = new Date().getHours();
-                  const min = new Date().getMinutes();
-                  const second = new Date().getSeconds();
-                  setHour(hour);
-                  setMin(min);
-                  setSecond(second);
-                  changeTime(hour, min, second);
-                }}
-              >
-                此刻
-              </span>
-            </Button>
-            <Button type="primary" height={25}>
-              <span onClick={() => changeTime()}>确定</span>
-            </Button>
-          </div>
-        </div>
-      }
-    >
-      <Input
-        placeholder={placeholder}
-        defaultValue={timeValue}
-        type="primary"
-        showClear={showClear}
-        clearCallback={handleClear}
-      />
-    </Popover>
+        }
+      >
+        <Input
+          placeholder={placeholder}
+          defaultValue={timeValue}
+          type="primary"
+          showClear={showClear}
+          clearCallback={handleClear}
+        />
+      </Popover>
+    </TimePickerStyle>
   );
 };
 export default forwardRef<unknown, TimePickerProps>(TimePicker);

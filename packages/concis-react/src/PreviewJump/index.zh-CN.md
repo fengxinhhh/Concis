@@ -6,6 +6,7 @@ nav:
 group:
   title: 通用
 mobile: false
+toc: content
 ---
 
 # PreviewJump 预览式跳转
