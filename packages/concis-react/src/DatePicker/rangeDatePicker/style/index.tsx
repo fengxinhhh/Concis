@@ -207,6 +207,16 @@ const RangeDatePickerStyle = styled.span<{ activedColor; align }>`
       .day-list .disabled-day {
         opacity: 0.6;
       }
+
+      .left,
+      .right {
+        .box-list,
+        .day-box,
+        .top-bar,
+        .week {
+          color: #fff;
+        }
+      }
     }
   }
 
