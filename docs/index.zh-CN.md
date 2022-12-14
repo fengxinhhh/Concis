@@ -2,7 +2,7 @@
 title: Concis - 轻量级组件库
 hero:
   title: Concis
-  description: A high-performance, lightweight UI library for quickly building React applications
+  description: 用于快速构建React应用程序的高性能、轻量级UI库
   actions:
     - text: Start
       link: /guide/introducezh-CN

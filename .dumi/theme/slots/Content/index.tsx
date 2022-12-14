@@ -11,6 +11,7 @@ const Content: FC<{ children: ReactNode }> = (props) => {
 
   useEffect(() => {
     setCloading(true);
+    console.log(pathname);
   }, [pathname]);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const Content: FC<{ children: ReactNode }> = (props) => {
 
   return (
     <div className="dumi-default-content" data-no-sidebar={!sidebar || undefined}>
-      {cLoading && (
+      {pathname !== '/' && pathname !== 'zh-CN' && cLoading && (
         <>
           <div style={{ width: '600px' }}>
             <Skeleton loading title />
