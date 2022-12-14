@@ -1,5 +1,5 @@
 import { useSidebarData, useSiteData, useLocation } from 'dumi';
-import React, { type FC, type ReactNode, useRef } from 'react';
+import React, { type FC, type ReactNode, useState, useEffect } from 'react';
 import { Skeleton } from 'concis';
 import './index.less';
 
@@ -7,12 +7,21 @@ const Content: FC<{ children: ReactNode }> = (props) => {
   const sidebar = useSidebarData();
   const { loading } = useSiteData();
   const { pathname } = useLocation();
-  const p = useRef(pathname);
-  console.log(9, loading, p.current, pathname);
+  const [cLoading, setCloading] = useState(false);
+
+  useEffect(() => {
+    setCloading(true);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!loading) {
+      setCloading(false);
+    }
+  }, [loading]);
 
   return (
     <div className="dumi-default-content" data-no-sidebar={!sidebar || undefined}>
-      {p.current !== pathname && loading && (
+      {cLoading && (
         <>
           <div style={{ width: '600px' }}>
             <Skeleton loading title />
