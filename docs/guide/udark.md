@@ -9,7 +9,7 @@ title: Dark mode
 
 Concis built in provides the theme of dark mode. The advantage of dark mode is that it has higher readability in low light environment.
 
-<code src="../../packages/concis-react/src/GlobalConfig/demos/index2.tsx" />
+<code src="../../packages/concis-react/src/GlobalConfig/demos/index2.tsx"></code>
 
 ## Cases
 

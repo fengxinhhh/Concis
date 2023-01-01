@@ -9,7 +9,7 @@ title: 暗黑模式
 
 Concis 内置提供了暗黑模式的主题，暗黑模式的优势在于在弱光环境下具有更高的可读性。
 
-<code src="../../packages/concis-react/src/GlobalConfig/demos/index2.tsx" />
+<code src="../../packages/concis-react/src/GlobalConfig/demos/index2.tsx"></code>
 
 ## 案例
 

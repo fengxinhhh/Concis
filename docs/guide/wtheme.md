@@ -7,7 +7,7 @@ title: Custom themes
 
 Concis design specifications and technology support flexible style customization to meet the diverse visual needs of business and branding, and support the configuration of global theme colors.
 
-<code src="../../packages/concis-react/src/GlobalConfig/demos/index1.tsx" />
+<code src="../../packages/concis-react/src/GlobalConfig/demos/index1.tsx"></code>
 
 ## Color variables provided by Concis
 

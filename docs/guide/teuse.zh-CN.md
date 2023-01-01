@@ -49,14 +49,14 @@ Concis 在打包产物中提供了`ejs`、`cjs`、`umd` 三种模块化文件，
 
 使用 cjs 模块:
 
-```
+```tsx
 import React from 'react';
 import { Button } from 'concis/web-react/cjs';
 ```
 
 使用 ejs 模块:
 
-```
+```tsx
 import React from 'react';
 import { Button } from 'concis/web-react/es';
 ```

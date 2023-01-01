@@ -40,6 +40,9 @@ html[data-perfers-color="dark"] .__dumi-default-previewer{
 html[data-perfers-color="dark"] .__dumi-default-previewer .__dumi-default-previewer-actions {
   border-top: none !important;
 }
+.dumi-default-sidebar {
+  max-height: 100% !important;
+}
 .dumi-default-sidebar::-webkit-scrollbar {
   width: 4px;    
   /*height: 4px;*/

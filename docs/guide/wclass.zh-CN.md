@@ -53,7 +53,7 @@ export default () => (
 
 除了 GlobalConfig 配置的类名以外，你同样选择单组件类名自定义的方式，Concis 每一个组件都支持单独传入 className 来进行自定义，就像这样：
 
-```
+```tsx
 <Button className="my-button-className" type="primary">
   Hello Concis
 </Button>

@@ -49,14 +49,14 @@ Concis provides three types of modular files in the packaging product: `ejs`、`
 
 Use the cjs module:
 
-```
+```tsx
 import React from 'react';
 import { Button } from 'concis/web-react/cjs';
 ```
 
 Use the ejs module:
 
-```
+```tsx
 import React from 'react';
 import { Button } from 'concis/web-react/es';
 ```

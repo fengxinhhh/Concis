@@ -4,12 +4,12 @@ import path from 'path';
 import { version } from './packages/concis-react/package.json';
 
 export default defineConfig({
-  favicons: ['http://concis.org.cn/images/concis-logo.png'],
+  favicons: ['https://concis.org.cn/images/concis-logo.png'],
   outputPath: 'docs-dist',
   history: {
     type: 'hash',
   },
-  // hash: true,
+  hash: false,
   resolve: {
     docDirs: ['docs'],
     atomDirs: [
@@ -33,7 +33,7 @@ export default defineConfig({
     carrier: 'dumi', // 设备状态栏左侧的文本内容
     hd: true,
     rtl: true,
-    logo: 'http://concis.org.cn/images/concis-logo.png',
+    logo: 'https://concis.org.cn/images/concis-logo.png',
     footer:
       'Copyright © 2022-2022 Concis. All Rights Reserved. Concis 版权所有. 苏ICP备2022018060号',
     nav: [

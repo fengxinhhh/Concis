@@ -7,7 +7,7 @@ title: 定制主题
 
 Concis 设计规范和技术上支持灵活的样式定制，以满足业务和品牌上多样化的视觉需求，支持全局主题颜色的配置。
 
-<code src="../../packages/concis-react/src/GlobalConfig/demos/index1.tsx" />
+<code src="../../packages/concis-react/src/GlobalConfig/demos/index1.tsx"></code>
 
 ## Concis 提供的色彩变量
 
