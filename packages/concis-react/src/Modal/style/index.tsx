@@ -143,7 +143,6 @@ const ModalStyle = styled.div<{ modalWidth }>`
       }
 
       &-footer {
-        width: 100%;
         padding: 16px ${concisTransformLg};
         text-align: right;
 

@@ -9,7 +9,12 @@ export default function AffixDemo1() {
   return (
     <div>
       {align === 'top' && (
-        <Affix affixType="scroll" offsetTop={100} offsetLeft={600} style={{ padding: '10px 30px' }}>
+        <Affix
+          affixType="scroll"
+          offsetTop={100}
+          offsetLeft={600}
+          style={{ padding: '10px 30px', background: '#325dff' }}
+        >
           <div>top Affix</div>
         </Affix>
       )}
@@ -18,7 +23,7 @@ export default function AffixDemo1() {
           affixType="scroll"
           offsetBottom={100}
           offsetLeft={600}
-          style={{ padding: '10px 30px' }}
+          style={{ padding: '10px 30px', background: '#325dff' }}
         >
           <div>bottom Affix</div>
         </Affix>
