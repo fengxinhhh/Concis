@@ -130,7 +130,6 @@ const DrawerStyle = styled.div<{ align; width }>`
       }
 
       &-footer {
-        width: 100%;
         padding: 16px ${concisTransformLg};
         text-align: right;
 

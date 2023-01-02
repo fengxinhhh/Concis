@@ -20,6 +20,7 @@ import React from 'react';
 import { Section } from './site/Section';
 import { LazyLoad } from 'concis';
 import './site/styles.less';
+
 export default () => (
   <Section
     title="Experience the ultimate in Concis online"
