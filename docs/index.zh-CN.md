@@ -22,12 +22,13 @@ import { LazyLoad } from 'concis';
 import './site/styles.less';
 export default () => (
   <Section
-    title="Experience the ultimate in Concis online"
+    title="在线体验Concis的极致性"
     style={{ marginTop: 40 }}
     titleStyle={{ paddingBottom: 100, fontWeight: 'bold', fontSize: 50, textAlign: 'center' }}
   >
     <LazyLoad>
       <iframe
+        style={{ width: '100%' }}
         className="codesandbox"
         src="https://codesandbox.io/s/concis-up772x?file=/src/App.js"
         allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
@@ -49,7 +50,7 @@ import './site/styles.less';
 
 export default () => (
   <Section
-    title="Thanks to all contributors~"
+    title="感谢所有贡献者们~"
     style={{ marginTop: 140 }}
     titleStyle={{ paddingBottom: 100, fontWeight: 'bold', fontSize: 50, textAlign: 'center' }}
   >
