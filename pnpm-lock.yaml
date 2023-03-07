@@ -31,7 +31,7 @@ importers:
       core-js: ^3.24.1
       crypto-js: ^4.1.1
       dayjs: ^1.11.4
-      dumi: 2.0.18
+      dumi: 2.1.1
       dumi-theme-default: ^1.1.23
       eslint: ^7.32.0
       eslint-config-airbnb: ^17.1.1
@@ -125,7 +125,7 @@ importers:
       '@typescript-eslint/parser': registry.npmmirror.com/@typescript-eslint/parser/4.33.0_wnilx7boviscikmvsfkd6ljepe
       '@umijs/fabric': registry.npmmirror.com/@umijs/fabric/2.14.0
       crypto-js: registry.npmmirror.com/crypto-js/4.1.1
-      dumi: 2.0.18_t7xnja4chyseq62ompwv74shom
+      dumi: 2.1.1_t7xnja4chyseq62ompwv74shom
       eslint: registry.npmmirror.com/eslint/7.32.0
       eslint-config-airbnb: registry.npmmirror.com/eslint-config-airbnb/17.1.1_rnazsd3m5sairuu5a4uit6mrwe
       eslint-config-prettier: registry.npmmirror.com/eslint-config-prettier/6.15.0_eslint@7.32.0
@@ -4056,8 +4056,8 @@ packages:
       - react-dom
     dev: false
 
-  /dumi/2.0.18_t7xnja4chyseq62ompwv74shom:
-    resolution: {integrity: sha512-b90imq+zVSFdG7+sPsE1NHWVEQhcFVyocqtyecXAXIQ89ns/QLoTk6JT1CmmRDtbFoaT3roAr76v0sfDyyKm9Q==}
+  /dumi/2.1.1_t7xnja4chyseq62ompwv74shom:
+    resolution: {integrity: sha512-floBBYhvu2Q16V/vGSxUarWtIQnlExD3pWQGLPe2/NWL6GIB5xYnBwlga9kJPJVKsYsIaQ9VpbxzRjILYQm0mQ==}
     hasBin: true
     peerDependencies:
       react: '>=16.8'
