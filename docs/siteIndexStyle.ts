@@ -88,6 +88,11 @@ html[data-perfers-color="dark"] .__dumi-default-previewer .__dumi-default-previe
 .dumi-default-logo img {
   height: 60px !important;
 }
+.dumi-default-doc-layout {
+  .dumi-default-header .dumi-default-header-content, main {
+    max-width: 1802px;
+  }
+}
 `;
 
 export default style;
