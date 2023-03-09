@@ -36,20 +36,36 @@ export default defineConfig({
     logo: 'https://concis.org.cn/images/concis-logo.png',
     footer:
       'Copyright © 2022-2022 Concis. All Rights Reserved. Concis 版权所有. 苏ICP备2022018060号',
-    nav: [
-      {
-        title: '指南',
-        link: '/guide/introduce',
-      },
-      {
-        title: '组件',
-        link: '/components/button',
-      },
-      {
-        title: 'GitHub',
-        link: 'https://github.com/fengxinhhh/Concis',
-      },
-    ],
+    nav: {
+      'zh-CN': [
+        {
+          title: '指南',
+          link: '/guide/introducezh-CN',
+        },
+        {
+          title: '组件',
+          link: '/components/buttonzh-CN',
+        },
+        {
+          title: 'GitHub',
+          link: 'https://github.com/fengxinhhh/Concis',
+        },
+      ],
+      'en-US': [
+        {
+          title: '指南',
+          link: '/guide/introduce',
+        },
+        {
+          title: '组件',
+          link: '/components/button',
+        },
+        {
+          title: 'GitHub',
+          link: 'https://github.com/fengxinhhh/Concis',
+        },
+      ],
+    },
   },
   styles: [style],
 });

@@ -91,6 +91,16 @@ html[data-perfers-color="dark"] .__dumi-default-previewer .__dumi-default-previe
 main, .dumi-default-header-content {
   max-width: 1802px !important;
 }
+[data-prefers-color=dark] .markdown {
+  color: #c6c9cd;
+}
+[data-prefers-color=dark] .markdown th {
+  background-color: #020305 !important;
+  border-color: #2a353c !important;
+}
+[data-prefers-color=dark] .dumi-default-sidebar>dl>dd>a {
+  color: #8590a0;
+}
 `;
 
 export default style;

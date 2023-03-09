@@ -22,7 +22,7 @@ const Content: FC<{ children: ReactNode }> = (props) => {
 
   return (
     <div className="dumi-default-content" data-no-sidebar={!sidebar || undefined}>
-      {pathname !== '/' && pathname !== 'zh-CN' && cLoading && (
+      {pathname !== '/' && pathname !== '/zh-CN' && cLoading && (
         <>
           <div style={{ width: '600px' }}>
             <Skeleton loading title />

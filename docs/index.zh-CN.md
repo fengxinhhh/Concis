@@ -4,9 +4,9 @@ hero:
   title: Concis
   description: 用于快速构建React应用程序的高性能、轻量级UI库
   actions:
-    - text: Start
+    - text: 快速开始
       link: /guide/introducezh-CN
-    - text: Components
+    - text: 组件
       link: /components/buttonzh-CN
 ---
 
