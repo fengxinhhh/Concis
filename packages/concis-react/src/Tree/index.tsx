@@ -1,30 +1,60 @@
-import React, {
-  Fragment,
-  useState,
-  useEffect,
-  useCallback,
-  useContext,
-  forwardRef,
-  useRef,
-  RefObject,
-} from 'react';
+import React, { FC, memo, Fragment, useState, useEffect, useCallback, useContext } from 'react';
 import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
-import { TreeStyle } from './style';
-import type { treeProps, treeNode } from './interface';
 import Input from '../Input';
 import { ctx } from '../Form';
 import { GlobalConfigProps } from '../GlobalConfig/interface';
 import cs from '../common_utils/classNames';
-import { onClickOutSide, dispatchRef } from '../common_utils/dom/event';
 import { globalCtx } from '../GlobalConfig';
+import { getSiteTheme } from '../common_utils/storage/getSiteTheme';
 import './index.module.less';
 
-const Tree = (props, ref) => {
+interface treeProps {
+  /**
+   * @description 类名
+   */
+  className?: string;
+  /**
+   * @description Tree配置参数
+   */
+  treeData: Array<treeNode>;
+  /**
+   * @description 宽度
+   * @default 200px
+   */
+  width?: string;
+  /**
+   * @description 支持搜索
+   * @default false
+   */
+  avaSearch?: boolean;
+  /**
+   * @description 支持多选
+   * @default false
+   */
+  avaChooseMore?: boolean;
+  /**
+   * @description 全展开
+   * @default false
+   */
+  defaultOpen?: boolean;
+  /**
+   * @description 选择回调函数
+   */
+  chooseCallback?: Function;
+}
+export interface treeNode {
+  title: string;
+  value: string;
+  level?: number;
+  height?: string;
+  children?: Array<treeNode>;
+}
+
+const Tree: FC<treeProps> = (props) => {
   const {
     width = '200',
     className,
-    style,
     treeData,
     avaSearch,
     avaChooseMore,
@@ -36,9 +66,10 @@ const Tree = (props, ref) => {
   const [activedVal, setActivedVal] = useState<string>(''); // 选中的节点值
   const [visible, setVisible] = useState<boolean>(false); // 容器状态
   const [isFocus, setIsFocus] = useState(false); // 聚焦状态
-  const treeDom = useRef(null);
 
   const formCtx: any = useContext(ctx);
+
+  const theme = getSiteTheme();
 
   const { globalColor, prefixCls, darkTheme } = useContext(globalCtx) as GlobalConfigProps;
 
@@ -46,15 +77,8 @@ const Tree = (props, ref) => {
 
   useEffect(() => {
     resolveTreeData(treeData as Array<treeNode>, 1);
-    function reset() {
-      setVisible(false);
-    }
-    const destoryEvent = onClickOutSide(treeDom, reset);
-    return () => {
-      destoryEvent();
-    };
+    window.addEventListener('click', () => setVisible(false));
   }, []);
-
   useEffect(() => {
     // 用于监听Form组件的重置任务
     if (formCtx.reset) {
@@ -62,7 +86,6 @@ const Tree = (props, ref) => {
       setActivedVal('');
     }
   }, [formCtx.reset]);
-
   useEffect(() => {
     if (formCtx.submitStatus) {
       formCtx.getChildVal(activedVal);
@@ -89,7 +112,6 @@ const Tree = (props, ref) => {
     });
     setStateTreeData(treeData); // 更新状态
   };
-
   const toggleTreeMenu = (clickTreeNode: treeNode) => {
     // 菜单切换或直接选中终极节点
     if (clickTreeNode?.children?.length) {
@@ -165,7 +187,6 @@ const Tree = (props, ref) => {
       }
     }
   };
-
   const handleIptChange = (val: string) => {
     // 文本改变回调
     if (avaSearch) {
@@ -174,12 +195,10 @@ const Tree = (props, ref) => {
       setActivedVal('');
     }
   };
-
   const handleClick = () => {
     // 点击回调
     setVisible(!visible);
   };
-
   const handleIptFocus = () => {
     // 聚焦回调
     setTimeout(() => {
@@ -189,23 +208,30 @@ const Tree = (props, ref) => {
       }
     }, 150);
   };
-
   const handleIptBlur = () => {
     // 失去焦点回调
     setIsFocus(false);
   };
-
   const searchStyle = useCallback(
     (treeNode: treeNode): string => {
       if (avaChooseMore) {
         if (activedVal.split(',').includes(treeNode.title)) {
+          if (theme === 'auto' || 'dark') {
+            return globalColor || (darkTheme ? '#3C7EFF' : '#325DFF');
+          }
           return globalColor || (darkTheme ? '#325DFF' : '#3C7EFF');
         }
+        return theme === 'light' ? '#000000' : '#ffffffe6';
       }
+
       // 搜索高亮样式
       if (treeNode.title.includes(activedVal) && activedVal !== '') {
+        if (theme === 'auto' || 'dark') {
+          return globalColor || (darkTheme ? '#3C7EFF' : '#325DFF');
+        }
         return globalColor || (darkTheme ? '#325DFF' : '#3C7EFF');
       }
+      return theme === 'light' ? '#000000' : '#ffffffe6';
     },
     [activedVal]
   );
@@ -214,7 +240,6 @@ const Tree = (props, ref) => {
     // 清空
     setActivedVal('');
   };
-
   const render = (data: Array<treeNode> = stateTreeData) => {
     // 动态规划render函数
     return (data || []).map((treeNode: treeNode, index) => {
@@ -252,17 +277,10 @@ const Tree = (props, ref) => {
   };
 
   return (
-    <TreeStyle>
-      <div
-        className={classNames}
-        style={style}
-        ref={(node) => {
-          treeDom.current = node;
-          dispatchRef<RefObject<HTMLElement> | HTMLElement>(ref, node);
-        }}
-      >
+    <Fragment>
+      <div className={classNames} onClick={(e) => e.stopPropagation()}>
         <Input
-          style={avaSearch ? {} : { caretColor: 'transparent' }}
+          moreStyle={avaSearch ? {} : { caretColor: 'transparent' }}
           placeholder={avaSearch ? '请输入' : ''}
           width={width}
           defaultValue={activedVal}
@@ -298,8 +316,8 @@ const Tree = (props, ref) => {
           </div>
         </CSSTransition>
       </div>
-    </TreeStyle>
+    </Fragment>
   );
 };
 
-export default forwardRef<unknown, treeProps>(Tree);
+export default memo(Tree);

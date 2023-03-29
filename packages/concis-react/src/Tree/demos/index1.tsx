@@ -41,3 +41,21 @@ export default function MenuDemos1() {
   };
   return <Tree treeData={treeData} chooseCallback={chooseCallback} />;
 }
+
+function arrToTree(arr) {
+  function fn(cId) {
+    const cArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      const element = arr[i];
+      if (element.parentId == cId) {
+        if (!cId || !element.child) {
+          element.child = [];
+        }
+        element.child = fn(element.id);
+        cArr.push(element);
+      }
+    }
+    return cArr;
+  }
+  fn('');
+}
