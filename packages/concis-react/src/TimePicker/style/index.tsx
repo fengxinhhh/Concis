@@ -34,7 +34,8 @@ const TimePickerStyle = styled.div<{ checkColor }>`
         max-height: 200px;
         padding: 5px 0;
         overflow: auto;
-
+        scrollbar-width: none;
+        
         span {
           display: flex;
           align-items: center;
