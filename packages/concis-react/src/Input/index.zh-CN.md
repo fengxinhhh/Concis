@@ -68,7 +68,6 @@ toc: content
 | className       | 自定义类名                                   | `string`        | `--`    |
 | style           | 自定义样式                                   | `CSSProperties` | `--`    |
 | width           | 自定义宽度                                   | `string`        | `170px` |
-| moreStyle       | 自定义样式                                   | `CSSProperties` | `--`    |
 | type            | 输入框类型                                   | `string`        | `text`  |
 | placeholder     | 提示                                         | `string`        | `--`    |
 | showClear       | 显示清空按钮                                 | `boolean`       | `false` |

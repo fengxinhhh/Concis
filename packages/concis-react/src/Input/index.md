@@ -68,7 +68,6 @@ Configure `showClear` to clear the text field.
 | className       | Custom class name                                     | `string`        | `--`    |
 | style           | Custom styles                                         | `CSSProperties` | `--`    |
 | width           | custom width                                          | `string`        | `170px` |
-| moreStyle       | Custom styles                                         | `CSSProperties` | `--`    |
 | type            | input box type                                        | `string`        | `text`  |
 | placeholder     | hint                                                  | `string`        | `--`    |
 | showClear       | Show clear button                                     | `boolean`       | `false` |
