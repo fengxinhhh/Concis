@@ -30,6 +30,7 @@
     "replase:upgrade": "npm run build && cimi upgradeBeta master",
     "test:unit": "jest ./src/*/__test__/*.test.tsx --silent=false -u",
     "test:demo": "jest ./src/*/__test__/demo.test.ts --silent=false -u",
+    "test:e2e": "jest ./src/*/__test__/e2e/*.test.tsx --silent=false -u",
     "upgrade": "node ../../scripts/replace-version-in-pc.ts"
   },
   "files": [
