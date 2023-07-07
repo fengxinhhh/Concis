@@ -1,0 +1,35 @@
+.site-section {
+  margin: 0 auto;
+}
+.site-section .codesandbox {
+  height: 700px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px #555;
+}
+.site-section .site-section-body {
+  text-align: center;
+}
+.site-section img {
+  margin: 0 auto;
+  border-radius: 4px;
+}
+@media screen and (max-width: 500px) {
+  .site-section img {
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 4px;
+  }
+  .site-section .codesandbox {
+    width: 400px;
+    height: 700px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px #555;
+  }
+}
+#root {
+  overflow: hidden;
+}
