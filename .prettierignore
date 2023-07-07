@@ -1,8 +1,0 @@
-.dumi/tmp
-.dumi/tmp-production
-*.yaml
-**/*.svg
-**/*.ejs
-**/*.html
-package.json
-packages/concis-react/web-react

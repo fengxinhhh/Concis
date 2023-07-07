@@ -16,7 +16,6 @@ logs
 
 # bundle files
 /es
-/docs-dist
 /lib
 /packages/*/dist
 /packages/concis-react/web-react
